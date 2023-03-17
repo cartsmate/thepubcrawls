@@ -18,7 +18,7 @@ def map_by_all():
     df_all_trunc = df_all[['name', 'station_identity']]
     df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()
     df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity').rename(columns={'name': 'count'}).astype(str)
-    df_all_latlng['colour'] = config['colour_all']
+    df_all_latlng['colour'] = config['colour_primary']
     station_all_json = function.df_to_dict(df_all_latlng)
 
     view = "all"

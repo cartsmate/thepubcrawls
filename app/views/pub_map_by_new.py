@@ -32,4 +32,4 @@ def map_by_new():
     view = "new"
     return render_template('pub_map.html', google_key=config['google_key'],
                            full=new_json, summary=station_new_json,
-                           icon_hole=False, info_box=False, map_view=view, map_lat=lat, map_lng=lng, map_zoom=zoom)
+                           icon_hole=False, info_box=False, map_view=view)
