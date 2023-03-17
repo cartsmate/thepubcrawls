@@ -19,7 +19,7 @@ def pub_delete(pub_id):
     s3_resp = function.write_csv_to_s3(df_reviews.to_csv(sep=',', encoding='utf-8', index=False),
                                        config['aws_key_review'])
     # print(s3_resp)
-    return redirect(url_for('map_stations'))
+    return redirect(url_for('pub_map'))
 
         # except Exception as e:
         #     print(e)

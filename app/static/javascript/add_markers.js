@@ -7,18 +7,19 @@ function add_markers(map, zoom, data) {
     var infowindow = new google.maps.InfoWindow();
     var marker, i, j;
     for (var key in data) {
+        console.log(data[key])
         var pinColor = data[key].colour
         if (zoom >= 15) {
             var pinHole = pinSVGHole
             var label = {
-                text: String(data[key].count),
+                text: " ",
                 color: "white",
                 fontSize: "1px",
             };
         } else {
             var pinHole = pinSVGFilled
             var label = {
-                text: " ",
+                text: data[key].count,
                 color: "white",
                 fontSize: "12px",
             };

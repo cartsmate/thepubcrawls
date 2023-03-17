@@ -14,6 +14,7 @@ def pub_map():
     df_stations = function.get_stations()
 
     df_all = function.get_pubs_reviews()
+    df_all['colour'] = '#1AA7EC'
     all_json = function.df_to_dict(df_all)
     df_all_trunc = df_all[['name', 'station_identity']]
     df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()

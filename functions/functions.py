@@ -70,11 +70,11 @@ class Functions:
                                                            'entertainment', 'food', 'friendliness',
                                                            'opening', 'price', 'selection']].sum(axis=1)
         df_pubs_reviews['colour'] = np.where(df_pubs_reviews['reviewer'] == 'BOTH',
-                                             config['colour_review'],
+                                             config['colour_reviewed'],
                                              np.where(df_pubs_reviews['reviewer'] == 'ANDY',
-                                                      config['colour_review'],
+                                                      config['colour_reviewed'],
                                                       np.where(df_pubs_reviews['reviewer'] == 'AVNI',
-                                                               config['colour_review'],
+                                                               config['colour_reviewed'],
                                                                config['colour_new'])))
         df_pubs_reviews.fillna(0, inplace=True)
         return df_pubs_reviews
@@ -107,11 +107,11 @@ class Functions:
                                                        'entertainment', 'food', 'friendliness', 'opening', 'price',
                                                        'selection']].sum(axis=1)
         df_pub_review['colour'] = np.where(df_pub_review['reviewer'] == 'BOTH',
-                                           config['colour_review'],
+                                           config['colour_reviewed'],
                                            np.where(df_pub_review['reviewer'] == 'ANDY',
-                                                    config['colour_review'],
+                                                    config['colour_reviewed'],
                                                     np.where(df_pub_review['reviewer'] == 'AVNI',
-                                                             config['colour_review'],
+                                                             config['colour_reviewed'],
                                                              config['colour_new'])))
         return df_pub_review
 

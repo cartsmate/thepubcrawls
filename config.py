@@ -37,8 +37,12 @@ class Configurations:
         config['control_dropdown'] = constants.get("Controls", "DROPDOWN")
         config['control_slider'] = constants.get("Controls", "SLIDER")
 
+        config['colour_all'] = constants.get("Colours", "ALL")
         config['colour_new'] = constants.get("Colours", "NEW")
-        config['colour_review'] = constants.get("Colours", "REVIEW")
+        config['colour_reviewed'] = constants.get("Colours", "REVIEWED")
+        config['colour_black'] = constants.get("Colours", "BLACK")
+        config['colour_red'] = constants.get("Colours", "RED")
+        config['colour_primary'] = constants.get("Colours", "PRIMARY")
 
         with open(os.getcwd() + '/config.json') as file:  # Opening JSON file
             config_file = json.load(file)  # returns JSON object as a dictionary
