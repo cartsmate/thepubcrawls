@@ -35,7 +35,6 @@ class Functions:
         return df_pubs_station
 
     def get_pubs_by_star(self, star_id):
-        # print(star)
         df_pubs_reviews = self.get_pubs_reviews()
         df_pubs_by_star = df_pubs_reviews.loc[df_pubs_reviews['star'] == star_id]
         return df_pubs_by_star
@@ -59,6 +58,11 @@ class Functions:
         df_stations = self.get_records(config['aws_prefix_station'],
                                        json.loads(config['model_station']))
         return df_stations
+
+    def get_pubs_new(self):
+        df_pubs_new = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
+        df_pubs_new = df_pubs_new.loc[df_pubs_new['reviewer'] != 'BOTH']
+        return df_pubs_new
 
     def get_pubs_reviews(self):
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')

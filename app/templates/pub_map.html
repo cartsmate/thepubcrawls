@@ -10,7 +10,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/add_listen_click.js') }}"></script>
 
 <script>
-function listen_zoom(map, pubs_reviews, stations, map_lat, map_lng) {
+function listen_zoom(map, data, data2, map_lat, map_lng) {
     map.addListener('center_changed', function() {
         console.log('center_change')
         var center = map.getCenter();
@@ -20,57 +20,147 @@ function listen_zoom(map, pubs_reviews, stations, map_lat, map_lng) {
     })
     map.addListener('zoom_changed', function() {
         console.log('zoom_changed')
-        console.log('map_lat: ' + map_lat);
-        console.log('map_lng: ' + map_lng);
+        console.log(document.querySelector('input[name="optradio"]:checked').value)
+        var center = map.getCenter();
+        map_lat = center.lat();
+        map_lng = center.lng();
+
         var newZoom = map.getZoom();
         if (newZoom >=15){
-            showMap("venues", pubs_reviews, stations, newZoom, map_lat, map_lng)
+            data = all_summary
         } else {
-            showMap("stations", pubs_reviews, stations, newZoom, map_lat, map_lng)
+            data = all_data
         }
+        showMap(data2, newZoom, map_lat, map_lng)
     });
 }
 function onLoad(){
     console.log("onLoad in pub_map")
     var map_lat = avg_lat
     var map_lng = avg_lng
-<!--    console.log('map_lat: ' + map_lat)-->
-<!--    console.log('map_lng: ' + map_lng)-->
-<!--    console.log('map_view: ' + map_view)-->
+    var map_view = {{ map_view | tojson }}
+<!--    switch(map_view) {-->
+<!--        case 'all':-->
+<!--            document.getElementById("option1").checked = true;-->
+<!--            All_pubs(map.getZoom(), map.getCenter().lat(), map.getCenter().lng())-->
+<!--            break;-->
+<!--        case 'reviewed':-->
+<!--            document.getElementById("option2").checked = true;-->
+<!--            Reviewed_pubs(map.getZoom(), map.getCenter().lat(), map.getCenter().lng())-->
+<!--            break;-->
+<!--        case 'new':-->
+<!--            document.getElementById("option3").checked = true;-->
+<!--            New_pubs(map.getZoom(), map.getCenter().lat(), map.getCenter().lng())-->
+<!--            break;-->
+<!--        default:-->
+<!--            document.getElementById("option1").checked = true;-->
+<!--            All_pubs(map.getZoom(), map.getCenter().lat(), map.getCenter().lng())-->
+<!--            break;-->
+<!--    }-->
 }
-function showMap(map_view, pubs_reviews, stations, zoom, lat, lng){
-    console.log('show map view: ' + map_view)
-    if (map_view == 'stations') {
-        data = stations
+function New_pubs(zoom, lat, lng){
+    console.log('NEW')
+    var center = map.getCenter();
+    lat = center.lat();
+    lng = center.lng();
+    console.log('lat: ' + lat + " | lng: " + lng)
+    new_data = {{ new_data | tojson }}
+    new_summary = {{ new_summary | tojson }}
+    if (zoom >= 15) {
+        showMap(new_summary, zoom, lat, lng)
     } else {
-        data = pubs_reviews
+        showMap(new_data, zoom, lat, lng)
     }
+}
+function Reviewed_pubs(zoom, lat, lng){
+    console.log('REVIEWED')
+    var center = map.getCenter();
+    lat = center.lat();
+    lng = center.lng();
+    reviewed_data = {{ reviewed_data | tojson }}
+    reviewed_summary = {{ reviewed_summary | tojson }}
+    if (zoom >= 15) {
+        showMap(reviewed_summary, zoom, lat, lng)
+    } else {
+        showMap(reviewed_data, zoom, lat, lng)
+    }
+}
+function pub_map_toggle(type){
+    var zoom = map.getZoom();
+    console.log('zoom: ' + zoom)
+    var center = map.getCenter();
+    lat = center.lat();
+    lng = center.lng();
+    all_data = {{ all_data | tojson }}
+    all_summary = {{ all_summary | tojson }}
+    reviewed_data = {{ reviewed_data | tojson }}
+    reviewed_summary = {{ reviewed_summary | tojson }}
+    new_data = {{ new_data | tojson }}
+    new_summary = {{ new_summary | tojson }}
+    if (zoom >= 15) {
+        switch(type){
+            case 'all':
+                data = all_summary
+                break;
+            case 'reviewed':
+                data = reviewed_summary
+                break;
+            case 'new':
+                data = new_summary
+                break;
+        }
+    } else {
+        switch(type){
+            case 'all':
+                data = all_data
+                break;
+            case 'reviewed':
+                data = reviewed_data
+                break;
+            case 'new':
+                data = new_data
+                break;
+        }
+    }
+    showMap(data, zoom, lat, lng)
+}
+function showMap(data, zoom, lat, lng){
     map = show_map(lat, lng, zoom)
-    add_markers(map, map_view, data);
+    add_markers(map, zoom, data);
     add_listen_click();
-    listen_zoom(map, pubs_reviews, stations, lat, lng)
+    listen_zoom(map, data, lat, lng)
 }
 function initMap(){
-    console.log("initMap in pub_map");
-    var stations = {{ stations | tojson }};
-    var pubs_reviews = {{ pubs_reviews | tojson }};
-    var map_view = {{ map_view | tojson }}
-    if (map_view == 'stations') {
-        data = stations
-    } else {
-        data = pubs_reviews
-    }
-    let { avg_lat, avg_lng } = latlng_avg(data);
-    showMap(map_view, pubs_reviews, stations, 13, avg_lat, avg_lng)
+    var all_summary = {{ all_summary | tojson }}
+    let { avg_lat, avg_lng } = latlng_avg(all_summary);
+    zoom = 13
+    showMap(all_summary, zoom, avg_lat, avg_lng)
 }
+
 </script>
 {% endblock %}
 
-{% block slider %}{% endblock %}
+{% block slider %}
+  <div class="form-check-inline">
+      <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optradio" id="all_pubs" value="1" onclick="pub_map_toggle('all')" checked />All
+      </label>
+  </div>
+  <div class="form-check-inline">
+      <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optradio" id="new_pubs" value="2" onclick="pub_map_toggle('new')";>New
+      </label>
+  </div>
+  <div class="form-check-inline">
+      <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optradio" id="reviewed_pubs" value="3" onclick="pub_map_toggle('reviewed')";>Reviewed
+      </label>
+  </div>
+{% endblock %}
 
 {% block full_screen %}<div id="map" style="width:100%; height:450px;"></div>{% endblock %}
 
-{% block navbar_map %}<a class="nav-link active_custom" href="/pub/map/stations">Map View</a>{% endblock %}
+{% block navbar_map %}<a class="nav-link active_custom" href="/pub/map">Map View</a>{% endblock %}
 {% block pub_read_btn %}{% endblock %}
 {% block pub_edit_btn %}{% endblock %}
 {% block pub_del_btn %}{% endblock %}
