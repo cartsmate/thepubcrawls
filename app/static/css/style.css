@@ -20,13 +20,6 @@
     color: white !important
 }
 
-input[type=radio] {
-    border: 0px;
-    width: 100px;
-    height: 2em;
-    padding: 5px;
-    margin: auto;
-}
 /* Container holding the image and the text */
 .container-photo {
   position: relative;
