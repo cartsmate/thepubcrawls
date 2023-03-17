@@ -30,7 +30,7 @@ def pub_add():
                         friendliness=0, opening=0, price=0, selection=0, reviewer="")
     df_pub_review = pd.merge(pd.DataFrame([add_pub.__dict__]), pd.DataFrame([add_review.__dict__]), on='pub_identity')
     df_pub_review['station'] = ""
-    df_pub_review['colour'] = config['colour_review']
+    df_pub_review['colour'] = config['colour_reviewed']
     df_pub_review['score'] = 0
     pub_review_json = function.df_to_dict(df_pub_review)
     pubs_reviews_json = function.df_to_dict(function.get_pubs_reviews())

@@ -9,12 +9,12 @@
 <script>
 function onLoad(){
     console.log("onLoad in pub_list");
+    filter = {{ filter | tojson }}
+    var header_listing = String(filter['0']).toUpperCase() + String(filter).substring(1)
+    document.getElementById("header_listing").innerHTML = "<h1>" + header_listing + "</h1>"
     var map_lat = {{ map_lat | tojson }}
     var map_lng = {{ map_lng | tojson }}
     var map_view = {{ map_view | tojson }}
-    //console.log('map_lat: ' + map_lat)
-    //console.log('map_lng: ' + map_lng)
-    //console.log('map_view: ' + map_view)
     pubs_reviews = {{ pubs_reviews | tojson }};
     switch(map_view) {
         case 'list':
@@ -107,16 +107,13 @@ function Reset() {
     </div>
     <div class="form-check-inline">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optradio" id="reset" value="4" onclick="Reset()";>Reset
+            <input type="radio" class="form-check-input" name="optradio" id="reset" value="4" onclick="Reset()";>
         </label>
     </div>
 {% endblock %}
 
-{% block full_screen %}
-<div style="overflow-x:scroll">
-    <div id="table-pubs-json" style="background-color:white;" >
-    </div>
-</div>
+{% block form %}
+<div id="table-pubs-json" style="background-color:white; overflow-x:scroll" ></div>
 {% endblock %}
 
 {% block navbar_list %}<a class="nav-link active_custom" href="/pub/list">Listing</a>{% endblock %}

@@ -2,7 +2,7 @@ function filter_table(mouse) {
     document.getElementById("table-pubs-json").innerHTML = '<p>' + mouse + '</p>'
 }
 
-function create_table(data) {
+function create_table(filter, data) {
     console.log("create list of pubs")
     table_string = '<table id="pub_list" class="table table-striped">'
     table_string += '<thead><tr>' +

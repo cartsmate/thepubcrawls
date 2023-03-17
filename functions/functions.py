@@ -35,7 +35,6 @@ class Functions:
         return df_pubs_station
 
     def get_pubs_by_star(self, star_id):
-        # print(star)
         df_pubs_reviews = self.get_pubs_reviews()
         df_pubs_by_star = df_pubs_reviews.loc[df_pubs_reviews['star'] == star_id]
         return df_pubs_by_star
@@ -60,17 +59,22 @@ class Functions:
                                        json.loads(config['model_station']))
         return df_stations
 
+    def get_pubs_new(self):
+        df_pubs_new = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
+        df_pubs_new = df_pubs_new.loc[df_pubs_new['reviewer'] != 'BOTH']
+        return df_pubs_new
+
     def get_pubs_reviews(self):
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
         df_pubs_reviews['score'] = df_pubs_reviews.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
                                                            'entertainment', 'food', 'friendliness',
                                                            'opening', 'price', 'selection']].sum(axis=1)
         df_pubs_reviews['colour'] = np.where(df_pubs_reviews['reviewer'] == 'BOTH',
-                                             config['colour_review'],
+                                             config['colour_reviewed'],
                                              np.where(df_pubs_reviews['reviewer'] == 'ANDY',
-                                                      config['colour_review'],
+                                                      config['colour_reviewed'],
                                                       np.where(df_pubs_reviews['reviewer'] == 'AVNI',
-                                                               config['colour_review'],
+                                                               config['colour_reviewed'],
                                                                config['colour_new'])))
         df_pubs_reviews.fillna(0, inplace=True)
         return df_pubs_reviews
@@ -103,11 +107,11 @@ class Functions:
                                                        'entertainment', 'food', 'friendliness', 'opening', 'price',
                                                        'selection']].sum(axis=1)
         df_pub_review['colour'] = np.where(df_pub_review['reviewer'] == 'BOTH',
-                                           config['colour_review'],
+                                           config['colour_reviewed'],
                                            np.where(df_pub_review['reviewer'] == 'ANDY',
-                                                    config['colour_review'],
+                                                    config['colour_reviewed'],
                                                     np.where(df_pub_review['reviewer'] == 'AVNI',
-                                                             config['colour_review'],
+                                                             config['colour_reviewed'],
                                                              config['colour_new'])))
         return df_pub_review
 
