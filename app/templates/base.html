@@ -13,16 +13,14 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         {% block script %}{% endblock %}
     </head>
-    <body onload="onLoad()">
-        <div class="container-fluid" style="background-color:#CDCDCD;">
+    <body onload="onLoad()" style="background-color:#CDCDCD;">
+        <div class="container-fluid">
             <div class="row header_band" id="header_band"><a class="mx-auto">The Pub Crawls</a></div>
-            <div class="row" style="padding: 15px 15px;">{% block navbar %}{% endblock %}</div>
-            <div class="row" style="margin: 0 0 15px 5px">{% block slider %}{% endblock %}</div>
-            <div class="row" style="padding: 0 15px;">{% block full_screen %}{% endblock %}</div>
-            <div class="row" style="padding: 15px 15px;">
-                <div class="col-md-6">
-                    <div class="row"><a class="mx-auto" id="header_listing"></a></div>
-                    <div class="row">{% block form %}{% endblock %}</div>
+            <div class="row" style="margin: 5px 0 0 15px;">{% block navbar %}{% endblock %}</div>
+            <div class="row" style="margin: 0 0 0 15px;">{% block slider %}{% endblock %}</div>
+            <div class="row" style="margin: 0 0 0 0;">{% block full_screen %}{% endblock %}</div>
+            <div class="row" style="margin: 0 0 0 0;">
+                <div class="col-md-6">{% block form %}{% endblock %}</div>
                 <div class="col-md-6">{% block image %}{% endblock %}</div>
             </div>
         </div>

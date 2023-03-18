@@ -38,7 +38,7 @@ function initMap(){
     stations = {{ stations | tojson }}
     key = {{ google_key | tojson }}
     let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
-    map = show_map(avg_lat, avg_lng, 15)
+    map = show_map(avg_lat, avg_lng, 13)
     add_markers(map, "venue", pubs_reviews)
     var class_event_handler = new ClickEventHandler(map, origin, key, stations);
     const input = document.getElementById("search-input-navbar");

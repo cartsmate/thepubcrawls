@@ -37,15 +37,23 @@ def pub_read(pub_id):
                       latitude=request.form['latitude'], longitude=request.form['longitude'],
                       station_identity=request.form['station_identity'], category=request.form['category'].lower())
         df_new_pub = pd.DataFrame([new_pub.__dict__])
+        if request.form.get('star') is None:
+            star = ""
+        else:
+            star = request.form.get('star').lower()
+        if request.form.get('reviewer') is None:
+            reviewer = ""
+        else:
+            reviewer = request.form.get('reviewer').lower()
         new_review = Review(review_identity=request.form['pub_identity'], pub_identity=pub_id,
                             review_deletion=request.form['review_deletion'],
                             visit=request.form['visit'],
-                            star=request.form.get('star').lower(), atmosphere=request.form['atmosphere'],
+                            star=star, atmosphere=request.form['atmosphere'],
                             cleanliness=request.form['cleanliness'], clientele=request.form['clientele'],
                             decor=request.form['decor'], entertainment=request.form['entertainment'],
                             food=request.form['food'], friendliness=request.form['friendliness'],
                             opening=request.form['opening'], price=request.form['price'],
-                            selection=request.form['selection'], reviewer=request.form['reviewer'])
+                            selection=request.form['selection'], reviewer=reviewer)
         df_new_review = pd.DataFrame([new_review.__dict__])
         print(df_new_review)
         if df_pub_review.empty:
@@ -83,7 +91,7 @@ def pub_read(pub_id):
                 print('DUPLCATE PLACE ID')
                 df_pubs_reviews = function.get_pubs_reviews()
                 df_pub_review = df_pubs_reviews.loc[df_pubs_reviews['place'] == str(place)]
-                pub_review_json = df_to_dict(df_pub_review)
+                pub_review_json = function.df_to_dict(df_pub_review)
                 dupe_id = df_pub_review['pub_identity']
                 return render_template("pop_up_dupe.html", pub_review=pub_review_json, dupe_id=dupe_id)
         else:
@@ -97,14 +105,22 @@ def pub_read(pub_id):
             df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'latitude'] = request.form['latitude']
             df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'longitude'] = request.form['longitude']
             df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'station_identity'] = request.form['station_identity']
-            df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'category'] = request.form['category'].lower()
+            df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'category'] = request.form['category']
 
             s3_resp = function.write_csv_to_s3(df_pubs.to_csv(sep=',', encoding='utf-8', index=False),
                                                config['aws_key_pub'])
 
             df_reviews = function.get_reviews()
+            if request.form.get('star') is None:
+                star = ""
+            else:
+                star = request.form.get('star').lower()
+            if request.form.get('reviewer') is None:
+                reviewer = ""
+            else:
+                reviewer = request.form.get('reviewer').lower()
             df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'visit'] = request.form['visit']
-            df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'star'] = request.form.get('star').lower()
+            df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'star'] = star
             df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'atmosphere'] = request.form['atmosphere']
             df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'cleanliness'] = request.form['cleanliness']
             df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'clientele'] = request.form['clientele']
@@ -115,7 +131,7 @@ def pub_read(pub_id):
             df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'opening'] = request.form['opening']
             df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'price'] = request.form['price']
             df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'selection'] = request.form['selection']
-            df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'reviewer'] = request.form['reviewer']
+            df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'reviewer'] = reviewer
 
             s3_resp = function.write_csv_to_s3(df_reviews.to_csv(sep=',', encoding='utf-8', index=False),
                                                config['aws_key_review'])

@@ -1,1 +1,101 @@
-https://maps.googleapis.com/maps/api/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood&key=YOUR_API_KEY
+{% extends 'navbar.html' %}
+
+{% block title %}Crawls{% endblock %}
+
+{% block script %}
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=marker&callback=initMap" type="text/javascript"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/show_map.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/latlng_avg.js') }}"></script>
+<script>
+function onLoad(){
+    console.log("onLoad in pub_crawl")
+
+}
+
+function initMap(){
+    pubs = {{ pubs | tojson }}
+    console.log(pubs)
+    let { avg_lat, avg_lng } = latlng_avg(pubs);
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 7,
+        center: { lat: avg_lat, lng: avg_lng },
+    });
+
+    directionsRenderer.setMap(map);
+
+      const onChangeHandler = function () {
+    calculateAndDisplayRoute(directionsService, directionsRenderer);
+  };
+
+  document.getElementById("start").addEventListener("change", onChangeHandler);
+  document.getElementById("end").addEventListener("change", onChangeHandler);
+
+}
+
+function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+  directionsService
+    .route({
+      origin: {
+        query: document.getElementById("start").value,
+      },
+      destination: {
+        query: document.getElementById("end").value,
+      },
+      travelMode: google.maps.TravelMode.DRIVING,
+    })
+    .then((response) => {
+        console.log(response)
+      directionsRenderer.setDirections(response);
+    })
+
+}
+</script>
+{% endblock %}
+
+{% block full_screen %}
+<div id="floating-panel">
+      <b>Start: </b>
+      <select id="start">
+        <option value="chicago, il">Chicago</option>
+        <option value="st louis, mo">St Louis</option>
+        <option value="joplin, mo">Joplin, MO</option>
+        <option value="oklahoma city, ok">Oklahoma City</option>
+        <option value="amarillo, tx">Amarillo</option>
+        <option value="gallup, nm">Gallup, NM</option>
+        <option value="flagstaff, az">Flagstaff, AZ</option>
+        <option value="winona, az">Winona</option>
+        <option value="kingman, az">Kingman</option>
+        <option value="barstow, ca">Barstow</option>
+        <option value="san bernardino, ca">San Bernardino</option>
+        <option value="los angeles, ca">Los Angeles</option>
+      </select>
+      <b>End: </b>
+      <select id="end">
+        <option value="chicago, il">Chicago</option>
+        <option value="st louis, mo">St Louis</option>
+        <option value="joplin, mo">Joplin, MO</option>
+        <option value="oklahoma city, ok">Oklahoma City</option>
+        <option value="amarillo, tx">Amarillo</option>
+        <option value="gallup, nm">Gallup, NM</option>
+        <option value="flagstaff, az">Flagstaff, AZ</option>
+        <option value="winona, az">Winona</option>
+        <option value="kingman, az">Kingman</option>
+        <option value="barstow, ca">Barstow</option>
+        <option value="san bernardino, ca">San Bernardino</option>
+        <option value="los angeles, ca">Los Angeles</option>
+      </select>
+    </div>
+    <div id="map" style="width:100%; height:450px;"></div>
+
+{% endblock %}
+
+{% block pub_read_btn %}{% endblock %}
+{% block pub_edit_btn %}{% endblock %}
+{% block pub_del_btn %}{% endblock %}
+{% block rev_read_btn %}{% endblock %}
+{% block rev_add_btn %}{% endblock %}
+{% block rev_edit_btn %}{% endblock %}
+{% block rev_del_btn %}{% endblock %}
+{% block search_btn %}{% endblock %}
