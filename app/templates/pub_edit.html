@@ -37,12 +37,12 @@ function mapIt(pub_review){
     lng = pub_review[0]['longitude']
     map = show_map(lat, lng, 19)
 
-    add_markers(map, "venues", pub_review)
+    marker = add_markers(map, "venues", pub_review)
 
     var class_event_handler = new ClickEventHandler(map, origin, key, stations);
     const input = document.getElementById("search-input-navbar");
     const searchBox = new google.maps.places.SearchBox(input);
-    map_listen_click(map, stations)
+    map_listen_click(map, stations, marker)
     listen_search(map, searchBox);
     map_listen_bounds(searchBox, stations);
     function isIconMouseEvent(e) {

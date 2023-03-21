@@ -1,0 +1,192 @@
+{% extends 'navbar.html' %}
+
+{% block title %}Crawls{% endblock %}
+
+{% block script %}
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=marker&callback=initMap" type="text/javascript"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/show_map.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/latlng_avg.js') }}"></script>
+<script>
+function onLoad(){
+    console.log("onLoad in pub_crawl")
+
+}
+function initMap() {
+    var directionsService = new google.maps.DirectionsService();
+    var directionsRenderer = new google.maps.DirectionsRenderer();
+
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom:7,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    directionsRenderer.setMap(map);
+<!--    directionsRenderer.setPanel(document.getElementById('panel'));-->
+
+    var request = {
+        origin: {placeId: "ChIJVSZzVR8FdkgRTyQkxxLQmVU"},
+        destination: {placeId: "ChIJsXacseYddkgRzSGYDh8KAAw"},
+        waypoints: [{ stopover: true, location: { placeId: "ChIJR2j_SAAddkgRUVNtRRazMKk" } }],
+        optimizeWaypoints: false,
+        travelMode: google.maps.DirectionsTravelMode.WALKING
+    };
+
+    directionsService.route(request, function(response, status) {
+        var no_of_legs = response.routes[0].legs.length
+        console.log('no_of_legs: ' + no_of_legs)
+        for (let i = 0; i < response.routes[0].legs.length; i++) {
+            console.log(response.routes[0].legs[i].duration.value/60)
+        }
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsRenderer.setDirections(response);
+        }
+    });
+
+};
+</script>
+<script>
+function pubCrawl() {
+    console.log('the pub crawl function')
+    document.getElementById('the_crawl').value = "THE PUB CRAWL"
+    console.log(request.form['start_point'])
+}
+</script>
+{% endblock %}
+
+{% block full_screen %}
+<div id="floating-panel">
+    <b>Begin:</b>
+    <select id="begin">
+        {% for place in place_list %}
+            <option value="{{place}}">{{place}}</option>
+        {% endfor %}
+    </select>
+      <b>Finish:</b>
+    <select id="finish">
+        {% for place in place_list %}
+            <option value="{{place}}">{{place}}</option>
+        {% endfor %}
+    </select>
+</div>
+<div>
+    <strong>Start: </strong>
+    <select id="starting" onchange="calcRoute();">
+        <option value="chicago, il">Chicago</option>
+        <option value="st louis, mo">St Louis</option>
+        <option value="joplin, mo">Joplin, MO</option>
+        <option value="oklahoma city, ok">Oklahoma City</option>
+        <option value="amarillo, tx">Amarillo</option>
+        <option value="gallup, nm">Gallup, NM</option>
+        <option value="flagstaff, az">Flagstaff, AZ</option>
+        <option value="winona, az">Winona</option>
+        <option value="kingman, az">Kingman</option>
+        <option value="barstow, ca">Barstow</option>
+        <option value="san bernardino, ca">San Bernardino</option>
+        <option value="los angeles, ca">Los Angeles</option>
+    </select>
+    <strong>End: </strong>
+    <select id="end" onchange="calcRoute();">
+        <option value="chicago, il">Chicago</option>
+        <option value="st louis, mo">St Louis</option>
+        <option value="joplin, mo">Joplin, MO</option>
+        <option value="oklahoma city, ok">Oklahoma City</option>
+        <option value="amarillo, tx">Amarillo</option>
+        <option value="gallup, nm">Gallup, NM</option>
+        <option value="flagstaff, az">Flagstaff, AZ</option>
+        <option value="winona, az">Winona</option>
+        <option value="kingman, az">Kingman</option>
+        <option value="barstow, ca">Barstow</option>
+        <option value="san bernardino, ca">San Bernardino</option>
+        <option value="los angeles, ca">Los Angeles</option>
+    </select>
+</div>
+<div id="the_crawl"></div>
+{% endblock %}
+
+{% block form %}
+<div id="map" style="width:100%; height:450px;"></div>
+<div id="panel" style="width: 300px; float: right;"></div>
+{% endblock %}
+
+{% block image %}
+<form action="{{ url_for('pub_crawl_show') }}" method="post">
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="start">Start pub:</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="start" name="start">
+              <option value="">Select starting pub ---</option>
+                {% for place in place_list %}
+                    <option value="{{place}}">{{place}}</option>
+                {% endfor %}
+          </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="walk">Max walk:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="walk" name="walk">
+                <option value="">Select maximum walk between venues ---</option>
+                <option value="1">1 min</option>
+                <option value="3">3 min</option>
+                <option value="5">5 min</option>
+                <option value="10">10 min</option>
+                <option value="15">15 min</option>
+                <option value="16">15+ min</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="favourite">Favourite cat:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="favourite" name="favourite">
+                <option value="">Choose favourite pub category ---</option>
+                <option value="atmosphere">Atmosphere</option>
+                <option value="cleanliness">Cleanliness</option>
+                <option value="clientele">Clientele</option>
+                <option value="decor">Decor</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="food">Food</option>
+                <option value="friendliness">Friendliness</option>
+                <option value="opening">Opening</option>
+                <option value="price">Price</option>
+                <option value="selection">Selection</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="stops">No.of stops:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="stops" name="stops">
+                <option value="">Select number of pub visits ---</option>
+                {% for number in range_list %}
+                    <option value="{{number}}">{{number}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+     <div class="form-group row">
+        <label class="control-label col-sm-2" for="criteria">Criteria:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="criteria" name="criteria">
+                <option value="">Select venue score criteria ---</option>
+                    <option value="average">Average score</option>
+                    <option value="highest">Highest score</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit">Submit</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+{% block pub_read_btn %}{% endblock %}
+{% block pub_edit_btn %}{% endblock %}
+{% block pub_del_btn %}{% endblock %}
+{% block rev_read_btn %}{% endblock %}
+{% block rev_add_btn %}{% endblock %}
+{% block rev_edit_btn %}{% endblock %}
+{% block rev_del_btn %}{% endblock %}
+{% block search_btn %}{% endblock %}

@@ -8,6 +8,15 @@
     }
 }
 
+@media screen and (max-width: 480px) {
+$('#example').dataTable({
+    "bPaginate": false,
+    "bLengthChange": false,
+    "bFilter": true,
+    "bInfo": false,
+    "bAutoWidth": false });
+});
+
 .score {
     color: #0275d8;
 }

@@ -23,6 +23,6 @@ def map_by_reviewed():
     station_reviewed_json = function.df_to_dict(df_reviewed_latlng)
 
     view = "reviewed"
-    return render_template('pub_map.html', google_key=config['google_key'],
+    return render_template('pub_map_reviewed.html', google_key=config['google_key'],
                            full=reviewed_json, summary=station_reviewed_json,
                            icon_hole=False, info_box=False, map_view=view, map_lat=51.5, map_lng=-0.1)
