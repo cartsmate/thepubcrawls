@@ -34,9 +34,8 @@ function initMap() {
 
     directionsService.route(request, function(response, status) {
         var no_of_legs = response.routes[0].legs.length
-        console.log('no_of_legs: ' + no_of_legs)
         for (let i = 0; i < response.routes[0].legs.length; i++) {
-            console.log(response.routes[0].legs[i].duration.value/60)
+            duration = response.routes[0].legs[i].duration.value/60
         }
         if (status == google.maps.DirectionsStatus.OK) {
             directionsRenderer.setDirections(response);
@@ -45,13 +44,7 @@ function initMap() {
 
 };
 </script>
-<script>
-function pubCrawl() {
-    console.log('the pub crawl function')
-    document.getElementById('the_crawl').value = "THE PUB CRAWL"
-    console.log(request.form['start_point'])
-}
-</script>
+
 {% endblock %}
 
 {% block full_screen %}
