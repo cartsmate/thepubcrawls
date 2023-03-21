@@ -1,0 +1,48 @@
+{% extends 'navbar.html' %}
+
+{% block title %}Pub Crawls Showing{% endblock %}
+
+{% block script %}
+<script>
+function onLoad(){
+    console.log("onLoad in pub_crawl_show")
+    start = {{ start | tojson }}
+    walk = {{ walk | tojson }}
+    favourite = {{ favourite | tojson }}
+    stops = {{ stops | tojson }}
+    criteria = {{ criteria | tojson }}
+    document.getElementById("start").innerHTML = "start: " + start
+    document.getElementById("walk").innerHTML = "walk: " + walk
+    document.getElementById("favourite").innerHTML = "favourite: " + favourite
+    document.getElementById("stops").innerHTML = "stops: " + stops
+    document.getElementById("criteria").innerHTML = "criteria: " +  criteria
+}
+
+</script>
+
+{% endblock %}
+
+{% block full_screen %}
+<div class="col">
+    <div class="row" id="start"></div>
+    <div class="row" id="walk"></div>
+    <div class="row" id="favourite"></div>
+    <div class="row" id="stops"></div>
+    <div class="row" id="criteria"></div>
+</div>
+{% endblock %}
+
+{% block form %}
+{% endblock %}
+
+{% block image %}
+{% endblock %}
+
+{% block pub_read_btn %}{% endblock %}
+{% block pub_edit_btn %}{% endblock %}
+{% block pub_del_btn %}{% endblock %}
+{% block rev_read_btn %}{% endblock %}
+{% block rev_add_btn %}{% endblock %}
+{% block rev_edit_btn %}{% endblock %}
+{% block rev_del_btn %}{% endblock %}
+{% block search_btn %}{% endblock %}

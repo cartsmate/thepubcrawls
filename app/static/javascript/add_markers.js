@@ -74,4 +74,5 @@ function add_markers(map, zoom, data) {
             })(marker, key));
         }
     }
+    return marker
 }

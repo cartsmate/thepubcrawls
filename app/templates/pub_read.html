@@ -33,14 +33,12 @@ function onLoad(){
 function initMap(){
     console.log("initMap in pub_read");
     pub_review = {{ pub_review | tojson }}
-<!--    console.log('pub_review: ' + pub_review[0]['pub_identity'])-->
     key = {{ google_key | tojson }}
     lat = pub_review[0]['latitude']
     lng = pub_review[0]['longitude']
-    map = show_map(lat, lng, 19)
-    var icon_hole = true;
-    var info_box = false;
-    add_markers(map, "venues", pub_review)
+    zoom = 19
+    map = show_map(lat, lng, zoom)
+    add_markers(map, zoom, pub_review)
 }
 
 </script>

@@ -30,6 +30,6 @@ def map_by_new():
     station_new_json = function.df_to_dict(df_new_latlng)
 
     view = "new"
-    return render_template('pub_map.html', google_key=config['google_key'],
+    return render_template('pub_map_new.html', google_key=config['google_key'],
                            full=new_json, summary=station_new_json,
                            icon_hole=False, info_box=False, map_view=view)
