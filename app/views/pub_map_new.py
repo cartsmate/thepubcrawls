@@ -25,7 +25,8 @@ def map_by_new():
     new_json = function.df_to_dict(df_new)
     df_new_trunc = df_new[['name', 'station_identity']]
     df_new_count = df_new_trunc.groupby(['station_identity'], as_index=False).count()
-    df_new_latlng = pd.merge(df_new_count, df_stations, how='left', on='station_identity').rename(columns={'name': 'count'}).astype(str)
+    df_new_latlng = pd.merge(df_new_count, df_stations, how='left', on='station_identity')\
+        .rename(columns={'name': 'count'}).astype(str)
     df_new_latlng['colour'] = config['colour_new']
     station_new_json = function.df_to_dict(df_new_latlng)
 
