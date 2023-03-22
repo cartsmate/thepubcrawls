@@ -23,9 +23,10 @@ def pub_crawl():
     station_list = df_new_latlng['station'].tolist()
     all_json = function.df_to_dict(df_new_latlng)
     place_json = function.df_to_dict(df_all[['name', 'place']])
-    df_small = df_all[['name', 'place']]
+    df_small = df_all[['name', 'place', 'score']].sort_values(by='score', ascending=False)
     # place_list = df_all[['name', 'place']].tolist()
     place_list = df_small.values.tolist()
+
     range_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
     return render_template('pub_crawl.html', google_key=config['google_key'], pubs=all_json, pub_list=pub_list,
                            station_list=station_list, place_list=place_list, range_list=range_list)

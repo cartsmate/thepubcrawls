@@ -25,7 +25,7 @@ def pub_crawl_show():
             walk = request.form['walk']
         except:
             walk = "NONE"
-        start = request.form['start']
+            start = request.form['start']
         try:
             favourite = request.form['favourite']
         except:

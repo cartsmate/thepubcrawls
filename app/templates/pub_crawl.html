@@ -9,12 +9,11 @@
 <script>
 function onLoad(){
     console.log("onLoad in pub_crawl")
-
 }
+
 function initMap() {
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
-
 
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom:7,
@@ -99,7 +98,7 @@ function initMap() {
     <div class="form-group row">
         <label class="control-label col-sm-2" for="favourite">Favourite cat:</label>
         <div class="col-sm-10">
-            <select class="form-control" id="favourite" name="favourite" disabled>
+            <select class="form-control" id="favourite" name="favourite">
                 <option value="">Choose favourite pub category ---</option>
                 <option value="atmosphere">Atmosphere</option>
                 <option value="cleanliness">Cleanliness</option>
