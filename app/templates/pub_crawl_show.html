@@ -25,11 +25,12 @@ function initMap(){
     pub = {{ pub | tojson }}
     var stop_offs = []
     // start pub //
-    console.log(favourite)
     if ( favourite = "" ) {
+        console.log(favourite)
         var favourite_score = pub[0]['score']
         var favourite_name = 'Score'
     } else {
+        console.log(favourite)
         var favourite_score = pub[0][favourite]
         var favourite_name = favourite
     }
