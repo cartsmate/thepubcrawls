@@ -58,7 +58,7 @@ function initMap() {
 
 {% block image %}
 <form action="{{ url_for('pub_crawl_show') }}" method="post">
-    <div class="form-group row">
+    <!--<div class="form-group row">
         <label class="control-label col-sm-2" for="station">Start area:</label>
         <div class="col-sm-10">
           <select class="form-control" id="station" name="station" disabled>
@@ -69,12 +69,12 @@ function initMap() {
               <option selected="selected">ANY</option>
           </select>
         </div>
-    </div>
+    </div>-->
     <div class="form-group row">
         <label class="control-label col-sm-2" for="start">Start pub:</label>
         <div class="col-sm-10">
-          <select class="form-control" id="start" name="start">
-              <option value="">Select starting pub ---</option>
+          <select class="form-control" id="start" name="start" required>
+              <option value=""></option>
                 {% for place in place_list %}
                     <option value="{{place[1]}}">{{place[0]}}</option>
                 {% endfor %}
@@ -84,19 +84,19 @@ function initMap() {
     <div class="form-group row">
         <label class="control-label col-sm-2" for="walk">Max walk:</label>
         <div class="col-sm-10">
-            <select class="form-control" id="walk" name="walk" disabled>
-                <option value="">Select maximum walk between venues ---</option>
+            <select class="form-control" id="walk" name="walk">
+                <option value="0">Select maximum walk between venues ---</option>
                 <option value="1">1 min</option>
                 <option value="3">3 min</option>
                 <option value="5">5 min</option>
                 <option value="10">10 min</option>
                 <option value="15">15 min</option>
-                <option value="16">15+ min</option>
+                <option value="0">15+ min</option>
             </select>
         </div>
     </div>
     <div class="form-group row">
-        <label class="control-label col-sm-2" for="favourite">Favourite cat:</label>
+        <label class="control-label col-sm-2" for="favourite">Favourite:</label>
         <div class="col-sm-10">
             <select class="form-control" id="favourite" name="favourite">
                 <option value="">Choose favourite pub category ---</option>
@@ -116,21 +116,20 @@ function initMap() {
     <div class="form-group row">
         <label class="control-label col-sm-2" for="stops">No.of stops:</label>
         <div class="col-sm-10">
-            <select class="form-control" id="stops" name="stops">
-                <option value="">Select number of pub visits ---</option>
+            <select class="form-control" id="stops" name="stops" required>
+                <option value=""></option>
                 {% for number in range_list %}
                     <option value="{{number}}">{{number}}</option>
                 {% endfor %}
             </select>
         </div>
     </div>
-     <div class="form-group row">
+    <div class="form-group row">
         <label class="control-label col-sm-2" for="criteria">Criteria:</label>
         <div class="col-sm-10">
-            <select class="form-control" id="criteria" name="criteria" disabled>
-                <option value="">Select venue score criteria ---</option>
-                    <option value="average">Average score</option>
-                    <option value="highest">Highest score</option>
+            <select class="form-control" id="criteria" name="criteria">
+                <option value="NEAREST">Nearest</option>
+                <option value="SCORE">Highest rated</option>
             </select>
         </div>
     </div>

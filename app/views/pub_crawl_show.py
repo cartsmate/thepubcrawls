@@ -25,7 +25,7 @@ def pub_crawl_show():
             walk = request.form['walk']
         except:
             walk = "NONE"
-            start = request.form['start']
+        start = request.form['start']
         try:
             favourite = request.form['favourite']
         except:
@@ -36,6 +36,7 @@ def pub_crawl_show():
         except:
             criteria = "NONE"
         df_pubs = function.get_pubs_reviews()
+        print(start)
         df_pub = df_pubs.loc[df_pubs['place'] == start]
         pubs_json = function.df_to_dict(df_pubs)
         pub_json = function.df_to_dict(df_pub)
