@@ -36,8 +36,8 @@ def pub_crawl_show():
         except:
             criteria = "NONE"
         df_pubs = function.get_pubs_reviews()
-        print(start)
         df_pub = df_pubs.loc[df_pubs['place'] == start]
+        print(df_pub)
         pubs_json = function.df_to_dict(df_pubs)
         pub_json = function.df_to_dict(df_pub)
         return render_template('pub_crawl_show.html', google_key=config['google_key'], station=station, start=start,

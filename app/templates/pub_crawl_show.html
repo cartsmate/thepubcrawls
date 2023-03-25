@@ -10,8 +10,10 @@
 var duration = 0;
 function onLoad(){
     console.log("onLoad in pub_crawl_show")
-    var header_listing = String(favourite['0']).toUpperCase() + String(favourite).substring(1)
-    document.getElementById("header_listing").innerHTML = "<h2>" + header_listing + " pub crawl</h2>"
+    if ( favourite != "" ) {
+        var header_listing = String(favourite['0']).toUpperCase() + String(favourite).substring(1)
+        document.getElementById("header_listing").innerHTML = "<h2>" + header_listing + " pub crawl</h2>"
+    }
 }
 function initMap(){
     key = {{ google_key | tojson }}
@@ -25,16 +27,15 @@ function initMap(){
     pub = {{ pub | tojson }}
     var stop_offs = []
     // start pub //
-    if ( favourite = "" ) {
-        console.log('favourite: ' + favourite)
+    if ( favourite = "all" ) {
         var favourite_score = pub[0]['score']
         var favourite_name = 'Score'
     } else {
-        console.log('favourite: ' + favourite)
         var favourite_score = pub[0][favourite]
         var favourite_name = favourite
     }
     pub_stop_obj = {
+        pub_identity: pubs[0]['pub_identity'],
         name: pub[0]['name'],
         place: pub[0]['place'],
         lat: pub[0]['latitude'],
@@ -49,12 +50,14 @@ function initMap(){
         walk_limit: 0
     }
     pubs = pubs.filter (obj => !(obj.place == pub_stop_obj.place))
-    pubs = pubs.filter (obj => (obj[favourite] >= 7 || obj['star'] == favourite))
+    if ( favourite != "all" ) {
+        pubs = pubs.filter (obj => (obj[favourite] >= 7 || obj['star'] == favourite))
+    }
 
+    //console.log('pubs: ' + JSON.stringify(pubs))
     if (pubs.length > 0 ) {
         stop_offs.push(pub_stop_obj)
         for (let i=0; i<stops-1; i++) {
-            console.log('pubs: ' + pubs)
             list_got = distancing(stop_offs[i].lat, stop_offs[i].lng, pubs, favourite, walk)
             if ( list_got === undefined ) {
             //if ( Object.keys(list_got).length = 0 ) {
@@ -79,7 +82,7 @@ function distancing(lat, lng, pubs, favourite, walk) {
         if ( walk != 0 ) {
             var walk_limit = walk * 0.0007
             if (tot_diff < walk_limit) {
-                if ( favourite = "" ) {
+                if ( favourite = "all" ) {
                     var favourite_score = pubs[i]['score']
                     var favourite_name = 'Score'
                 } else {
@@ -87,6 +90,7 @@ function distancing(lat, lng, pubs, favourite, walk) {
                     var favourite_name = favourite
                 }
                 var record = {
+                    pub_identity: pubs[i]['pub_identity'],
                     name: pubs[i]['name'],
                     place: pubs[i]['place'],
                     lat: pubs[i]['latitude'],
@@ -103,7 +107,7 @@ function distancing(lat, lng, pubs, favourite, walk) {
                 records.push(record);
             }
         } else {
-            if ( favourite = "" ) {
+            if ( favourite = "all" ) {
                 var favourite_score = pubs[i]['score']
                 var favourite_name = 'Score'
             } else {
@@ -111,6 +115,7 @@ function distancing(lat, lng, pubs, favourite, walk) {
                 var favourite_name = favourite
             }
             var record = {
+                pub_identity: pubs[i]['pub_identity'],
                 name: pubs[i]['name'],
                 place: pubs[i]['place'],
                 lat: pubs[i]['latitude'],
@@ -127,28 +132,37 @@ function distancing(lat, lng, pubs, favourite, walk) {
 
             records.push(record);
         }
-        console.log('record: ' + record)
     }
     if ( criteria == 'NEAREST' ) {
-        console.log('nearest')
         records = records.sort((a, b) => {
             if (a.distance < b.distance) {
                 return -1;
             }
         });
     } else {
-        console.log('highest rated')
         records = records.sort((a, b) => {
             if (a.score > b.score) {
                 return -1;
             }
         });
     }
-    console.log(records)
+    //console.log('records: ' + JSON.stringify(records))
     return records[0]
 }
 
 function pubCrawl(stop_offs) {
+    for (let i=0; i<stop_offs.length; i++) {
+        console.log(stop_offs[i])
+    }
+    stop_offs = stop_offs.sort((a, b) => {
+        if (a.distance < b.distance) {
+            return -1;
+        }
+    });
+    for (let i=0; i<stop_offs.length; i++) {
+        console.log(stop_offs[i])
+    }
+    //console.log('ordered: ' + JSON.stringify(stop_distance_order))
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
 
@@ -212,7 +226,6 @@ function populate_table(stop_offs) {
     table_string += '<thead><tr>' +
                         '<th>Stop</th>' +
                         '<th>Name</th>' +
-                        '<th>{{favourite}}</th>' +
                         '<th>Score</th>' +
                         '<th>Walk</th>' +
                         '</tr></thead>'
@@ -230,8 +243,7 @@ function populate_table(stop_offs) {
         }
         table_string += '<tr>' +
             '<td>' + letters[i] + '</td>' +
-            '<td>' + stop_offs[i]['name'] + '</td>' +
-            '<td>' + stop_offs[i].favourite_score + '</td>' +
+            '<td><a href="/pub/' + stop_offs[i]['pub_identity'] + '">' + stop_offs[i]['name'] + '</a></td>' +
             '<td>' + stop_offs[i].score + '</td>' +
             '<td>' + min_calc + '</td>' +
             '</tr>'
@@ -270,13 +282,7 @@ function noCrawl(pub_stop_obj) {
 
 {% block full_screen %}
 <div id="header_listing"></div>
-<!--<div class="col">-->
-<!--    <div class="row" id="start">{{start}}</div>-->
-<!--    <div class="row" id="walk">{{walk}}</div>-->
-<!--    <div class="row" id="favourite">{{favourite}}</div>-->
-<!--    <div class="row" id="stops">{{stops}}</div>-->
-<!--    <div class="row" id="criteria">{{criteria}}</div>-->
-<!--</div>-->
+
 {% endblock %}
 
 {% block form %}
