@@ -1,0 +1,110 @@
+{% extends 'navbar.html' %}
+
+{% block title %}Test{% endblock %}
+
+{% block script %}
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=marker&callback=initMap" type="text/javascript"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/show_map.js') }}"></script>
+<!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
+<!--<script src="https://apis.google.com/js/api.js" type="text/javascript"></script>-->
+
+<script>
+function initMap(){
+    key = {{ google_key | tojson }}
+    map = show_map(52, 0, 13)
+
+}
+var tester = "tester"
+function onLoad(){
+//"use strict";
+    var request = {
+        origin: {placeId: "ChIJD7fiBh9u5kcRYJSMaMOCCwQ"},
+        destination: {placeId: "ChIJPStI0CVu5kcRUBqUaMOCCwU"},
+        travelMode: google.maps.DirectionsTravelMode.WALKING
+    };
+    testPromise2(request).then((value) => {
+        console.log('here')
+        const tester = value.routes[0].legs[0].duration.value
+        console.log(tester)
+    });
+    console.log(tester)
+}
+function gogo(input_val) {
+    input_val.then((value) => {
+        console.log('gogo: ' + value.routes[0].legs[0].duration.value);
+    });
+}
+
+function testPromise2(request) {
+    return new google.maps.DirectionsService().route(request, function(response, status) { });
+}
+
+let promiseCount = 0;
+
+function testPromise() {
+  const thisPromiseCount = ++promiseCount;
+  const log = document.getElementById("log");
+  // begin
+  log.insertAdjacentHTML("beforeend", `${thisPromiseCount}) Started<br>`);
+  // We make a new promise: we promise a numeric count of this promise,
+  // starting from 1 (after waiting 3s)
+  const p1 = new Promise((resolve, reject) => {
+    // The executor function is called with the ability
+    // to resolve or reject the promise
+    log.insertAdjacentHTML(
+      "beforeend",
+      `${thisPromiseCount}) Promise constructor<br>`,
+    );
+    // This is only an example to create asynchronism
+    setTimeout(() => {
+      // We fulfill the promise
+      resolve(thisPromiseCount);
+    }, Math.random() * 2000 + 1000);
+  });
+
+  // We define what to do when the promise is resolved with the then() call,
+  // and what to do when the promise is rejected with the catch() call
+  p1.then((val) => {
+    console.log(val)
+    // Log the fulfillment value
+    log.insertAdjacentHTML("beforeend", `${val}) Promise fulfilled<br>`);
+  }).catch((reason) => {
+    // Log the rejection reason
+    console.log(`Handle rejected promise (${reason}) here.`);
+  });
+  // end
+  log.insertAdjacentHTML("beforeend", `${thisPromiseCount}) Promise made<br>`);
+}
+
+</script>
+{% endblock %}
+
+{% block full_screen %}
+<div id="map" style="width:100%; height:400px;"></div>
+{% endblock %}
+
+{% block image %}
+<div class="col">
+    <button id="make-promise">Make a promise!</button>
+    <div id="log"></div>
+    <div id="result"></div>
+</div>
+{% endblock %}
+
+{% block form %}
+<div class="col">
+    <button id="make-promise2">Make a promise 222222!</button>
+    <div id="log2"></div>
+</div>
+{% endblock %}
+
+{% block navbar_test %}<a class="nav-link active_custom" href="/test">Test</a>{% endblock %}</li>
+{% block pub_read_btn %}{% endblock %}
+{% block pub_edit_btn %}{% endblock %}
+{% block pub_del_btn %}{% endblock %}
+{% block rev_read_btn %}{% endblock %}
+{% block rev_add_btn %}{% endblock %}
+{% block rev_edit_btn %}{% endblock %}
+{% block rev_del_btn %}{% endblock %}
+{% block search_btn %}{% endblock %}
+Footer
