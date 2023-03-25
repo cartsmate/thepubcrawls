@@ -3,7 +3,7 @@
 {% block title %}Crawls{% endblock %}
 
 {% block script %}
-<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=marker&callback=initMap" type="text/javascript"></script>-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=marker&callback=initMap" type="text/javascript"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/latlng_avg.js') }}"></script>
 <script>
@@ -24,9 +24,9 @@ function initMap() {
 <!--    directionsRenderer.setPanel(document.getElementById('panel'));-->
 
     var request = {
-        origin: {placeId: "ChIJVSZzVR8FdkgRTyQkxxLQmVU"},
-        destination: {placeId: "ChIJsXacseYddkgRzSGYDh8KAAw"},
-        waypoints: [{ stopover: true, location: { placeId: "ChIJR2j_SAAddkgRUVNtRRazMKk" } }],
+        origin: {placeId: "ChIJy2QpfVUDdkgR_ZjHMTwf28A"},
+        destination: {placeId: "ChIJYdET4FQDdkgRbjvXg_CcAm0"},
+        waypoints: [{stopover: true, location: { placeId: "ChIJNQsDclUDdkgRvZqcNZvdRgM" }}],
         optimizeWaypoints: false,
         travelMode: google.maps.DirectionsTravelMode.WALKING
     };
