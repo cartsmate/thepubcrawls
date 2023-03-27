@@ -10,57 +10,51 @@
 var duration = 0;
 function onLoad(){
     console.log("onLoad in pub_crawl_show")
-    if ( favourite != "" ) {
-        var header_listing = String(favourite['0']).toUpperCase() + String(favourite).substring(1)
-        document.getElementById("header_listing").innerHTML = "<h2>" + header_listing + " pub crawl</h2>"
-    }
+    var header_listing = String(crawl.favourite['0']).toUpperCase() + String(crawl.favourite).substring(1)
+    document.getElementById("header_listing").innerHTML = "<h2>" + header_listing + " pub crawl</h2>"
+
 }
 function initMap(){
     key = {{ google_key | tojson }}
     station = {{ station | tojson }}
-    start = {{ start | tojson }}
-    walk = {{ walk | tojson }}
-    favourite = {{ favourite | tojson }}
-    stops = {{ stops | tojson }}
-    criteria = {{ criteria | tojson }}
     pubs = {{ pubs | tojson }}
     pub = {{ pub | tojson }}
-    var stop_offs = []
-    // start pub //
-    if ( favourite = "all" ) {
-        var favourite_score = pub[0]['score']
-        var favourite_name = 'Score'
-    } else {
-        var favourite_score = pub[0][favourite]
-        var favourite_name = favourite
+    crawl = {
+        start: {{ start | tojson }},
+        walk: {{ walk | tojson }},
+        favourite: {{ favourite | tojson }},
+        stops: {{ stops | tojson }},
+        criteria: {{ criteria | tojson }}
     }
-    pub_stop_obj = {
-        pub_identity: pubs[0]['pub_identity'],
+    var stop_offs = []
+    if ( crawl.favourite = 'all' ) {
+        crawl.score = pub[0]['score']
+        crawl.score_name = 'Rating'
+    } else {
+        crawl.score = pub[0][favourite]
+        crawl.score_name = favourite
+    }
+    pub_first_stop = {
         name: pub[0]['name'],
-        place: pub[0]['place'],
-        lat: pub[0]['latitude'],
-        lng: pub[0]['longitude'],
+        distance_from_first: 0,
+        distance_next: 0,
         score: pub[0]['score'],
         star: pub[0]['star'],
         star_score: pub[0][pub[0]['star']],
-        favourite: favourite_name,
-        favourite_score: favourite_score,
-        distance: 0,
-        walk: walk,
-        walk_limit: 0
+        lat: pub[0]['latitude'],
+        lng: pub[0]['longitude'],
+        place: pub[0]['place'],
+        pub_identity: pubs[0]['pub_identity']
     }
-    pubs = pubs.filter (obj => !(obj.place == pub_stop_obj.place))
-    if ( favourite != "all" ) {
-        pubs = pubs.filter (obj => (obj[favourite] >= 7 || obj['star'] == favourite))
+    pubs = pubs.filter (obj => !(obj.place == pub_first_stop.place))
+    if ( crawl.favourite != 'all' ) {
+        pubs = pubs.filter (obj => (obj[crawl.favourite] >= 7 || obj['star'] == crawl.favourite))
     }
-
-    //console.log('pubs: ' + JSON.stringify(pubs))
     if (pubs.length > 0 ) {
-        stop_offs.push(pub_stop_obj)
-        for (let i=0; i<stops-1; i++) {
-            list_got = distancing(stop_offs[i].lat, stop_offs[i].lng, pubs, favourite, walk)
+        stop_offs.push(pub_first_stop)
+        for (let i=0; i<crawl.stops-1; i++) {
+            list_got = distancing(pub_first_stop, stop_offs[i], pubs, crawl)
             if ( list_got === undefined ) {
-            //if ( Object.keys(list_got).length = 0 ) {
                 break;
             } else {
                 stop_offs.push(list_got)
@@ -69,100 +63,69 @@ function initMap(){
         }
         pubCrawl(stop_offs);
     } else {
-        noCrawl(pub_stop_obj);
+        noCrawl(pub_first_stop);
     }
 }
 
-function distancing(lat, lng, pubs, favourite, walk) {
+function distancing(first, current, pubs, crawl) {
     records = []
     for (let i = 0; i < pubs.length; i++) {
-        lat_diff = Math.abs(pubs[i]['latitude'] - lat)
-        lng_diff = Math.abs(pubs[i]['longitude'] - lng)
+        lat_diff_0 = Math.abs(pubs[i]['latitude'] - first.lat)
+        lng_diff_0 = Math.abs(pubs[i]['longitude'] - first.lng)
+        tot_diff_0 = lat_diff_0 + lng_diff_0
+
+        lat_diff = Math.abs(pubs[i]['latitude'] - current.lat)
+        lng_diff = Math.abs(pubs[i]['longitude'] - current.lng)
         tot_diff = lat_diff + lng_diff
-        if ( walk != 0 ) {
-            var walk_limit = walk * 0.0007
-            if (tot_diff < walk_limit) {
-                if ( favourite = "all" ) {
-                    var favourite_score = pubs[i]['score']
-                    var favourite_name = 'Score'
-                } else {
-                    var favourite_score = pubs[i][favourite]
-                    var favourite_name = favourite
-                }
-                var record = {
-                    pub_identity: pubs[i]['pub_identity'],
-                    name: pubs[i]['name'],
-                    place: pubs[i]['place'],
-                    lat: pubs[i]['latitude'],
-                    lng: pubs[i]['longitude'],
-                    score: pubs[i]['score'],
-                    star: pubs[i]['star'],
-                    star_score: pubs[i][pubs[i]['star']],
-                    favourite: favourite_name,
-                    favourite_score: favourite_score,
-                    distance: tot_diff,
-                    walk: walk,
-                    walk_limit: walk_limit
-                }
-                records.push(record);
-            }
-        } else {
-            if ( favourite = "all" ) {
-                var favourite_score = pubs[i]['score']
-                var favourite_name = 'Score'
-            } else {
-                var favourite_score = pubs[i][favourite]
-                var favourite_name = favourite
-            }
+        if ( crawl.walk == 0 || tot_diff < crawl.walk * 0.000625 ) {
             var record = {
-                pub_identity: pubs[i]['pub_identity'],
                 name: pubs[i]['name'],
-                place: pubs[i]['place'],
-                lat: pubs[i]['latitude'],
-                lng: pubs[i]['longitude'],
+                distance_next: tot_diff,
+                distance_from_first: tot_diff_0,
                 score: pubs[i]['score'],
                 star: pubs[i]['star'],
                 star_score: pubs[i][pubs[i]['star']],
-                favourite: favourite_name,
-                favourite_score: favourite_score,
-                distance: tot_diff,
-                walk: walk,
-                walk_limit: walk_limit
+                lat: pubs[i]['latitude'],
+                lng: pubs[i]['longitude'],
+                place: pubs[i]['place'],
+                pub_identity: pubs[i]['pub_identity'],
             }
-
             records.push(record);
         }
     }
-    if ( criteria == 'NEAREST' ) {
+
+    if ( crawl.criteria == 'NEAREST' ) {
+        console.log('nearest')
         records = records.sort((a, b) => {
-            if (a.distance < b.distance) {
+            if (a.distance_next < b.distance_next) {
                 return -1;
             }
         });
     } else {
+        console.log('score')
         records = records.sort((a, b) => {
             if (a.score > b.score) {
                 return -1;
             }
         });
     }
-    //console.log('records: ' + JSON.stringify(records))
+    console.log('records: ' + JSON.stringify(records))
     return records[0]
 }
 
 function pubCrawl(stop_offs) {
-    for (let i=0; i<stop_offs.length; i++) {
+    /*for (let i=0; i<stop_offs.length; i++) {
         console.log(stop_offs[i])
-    }
+    }*/
     stop_offs = stop_offs.sort((a, b) => {
-        if (a.distance < b.distance) {
+        if (a.distance_from_first < b.distance_from_first) {
             return -1;
         }
     });
+    /*
     for (let i=0; i<stop_offs.length; i++) {
         console.log(stop_offs[i])
-    }
-    //console.log('ordered: ' + JSON.stringify(stop_distance_order))
+    }*/
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
 
@@ -179,11 +142,7 @@ function pubCrawl(stop_offs) {
         travelMode: google.maps.DirectionsTravelMode.WALKING
     };
     ways = []
-    /*
-    if (stop_offs.length > 1) {
-        destination: {placeId: stop_offs[stop_offs.length-1].place}
-    }
-    */
+
     if (stop_offs.length > 2) {
         for (let i=1; i<stop_offs.length-1; i++) {
             ways.push({stopover: true, location: { placeId: stop_offs[i].place }})
@@ -193,6 +152,7 @@ function pubCrawl(stop_offs) {
     directionsService.route(request, function(response, status) {
         var no_of_legs = response.routes[0].legs.length
         if (status == google.maps.DirectionsStatus.OK) {
+
             var optimised_route = response.geocoded_waypoints
             optimised_route[0]['duration'] = 0
             for (let i = 0; i < response.routes[0].legs.length; i++) {
@@ -204,7 +164,6 @@ function pubCrawl(stop_offs) {
             populate_table(merged)
             directionsRenderer.setDirections(response);
         }
-
     });
 }
 
@@ -221,7 +180,6 @@ function populate_table(stop_offs) {
         });
     }
     letters = ['A','B','C','D','E','F','G','H','I','J']
-    //var fav_caps = String("{{favourite}}").toUpperCase() + String("{{favourite}}").substring(1)
     table_string = '<table id="pub_list" class="table table-striped">'
     table_string += '<thead><tr>' +
                         '<th>Stop</th>' +
@@ -252,18 +210,18 @@ function populate_table(stop_offs) {
     document.getElementById('route').innerHTML = table_string
 }
 
-function noCrawl(pub_stop_obj) {
+function noCrawl(pub) {
     table_string = '<table id="pub_list" class="table table-striped">'
     table_string += '<thead><tr>' +
                         '<th>Stop</th>' +
                         '<th>Name</th>' +
-                        '<th>{{favourite}}</th>' +
+                        '<th>crawl.favourite</th>' +
                         '<th>Walk</th>' +
                     '</tr></thead>'
     table_string += '<tr>' +
         '<td>A</td>' +
         '<td>' + pub[0]['name'] + '</td>' +
-        '<td>' + pub[0].favourite_score + '</td>' +
+        '<td>' + pub[0]['score'] + '%</td>' +
         '<td></td>' +
                     '</tr>'
     table_string += '<tr>' +
