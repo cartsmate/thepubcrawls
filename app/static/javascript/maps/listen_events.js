@@ -25,7 +25,7 @@ function listen_events(lat, lng, stations, areas) {
             lat_diff = Math.abs(areas[i]['latitude'] - lat)
             lng_diff = Math.abs(areas[i]['longitude'] - lng)
             tot_diff = lat_diff + lng_diff
-            var record = { area: areas[i]['station'], distance: tot_diff}
+            var record = { area: areas[i]['area'], distance: tot_diff}
             records.push(record);
         }
         records = records.sort((a, b) => {

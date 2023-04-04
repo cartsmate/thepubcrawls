@@ -48,23 +48,7 @@ def pub_read(pub_id):
             reviewer = ""
         else:
             reviewer = request.form.get('reviewer').lower()
-        print(request.form['pub_identity'])
-        print(pub_id)
-        print(request.form['review_identity'])
-        print(request.form['review_deletion'])
-        print(request.form['visit'])
-        print(star)
-        print(request.form['atmosphere'])
-        print(request.form['cleanliness'])
-        print(request.form['clientele'])
-        print(request.form['decor'])
-        print(request.form['entertainment'])
-        print(request.form['food'])
-        print(request.form['friendliness'])
-        print(request.form['price'])
-        print(request.form['price'])
-        print(request.form['selection'])
-        print(reviewer)
+
         new_review = Review(review_identity=request.form['review_identity'], pub_identity=pub_id,
                             review_deletion=request.form['review_deletion'], visit=request.form['visit'], star=star,
                             atmosphere=request.form['atmosphere'], cleanliness=request.form['cleanliness'],
@@ -72,15 +56,7 @@ def pub_read(pub_id):
                             entertainment=request.form['entertainment'], food=request.form['food'],
                             friendliness=request.form['friendliness'], opening=request.form['opening'],
                             price=request.form['price'], selection=request.form['selection'], reviewer=reviewer)
-        # new_review = Review(review_identity=request.form['review_identity'], pub_identity=pub_id,
-        #                     review_deletion=request.form['review_deletion'],
-        #                     visit=request.form['visit'],
-        #                     star=star, atmosphere=request.form['atmosphere'],
-        #                     cleanliness=request.form['cleanliness'], clientele=request.form['clientele'],
-        #                     decor=request.form['decor'], entertainment=request.form['entertainment'],
-        #                     food=request.form['food'], friendliness=request.form['friendliness'],
-        #                     opening=request.form['opening'], price=request.form['price'],
-        #                     selection=request.form['selection'], reviewer=reviewer)
+
         print(new_review)
         df_new_review = pd.DataFrame([new_review.__dict__])
         print(df_new_review)
