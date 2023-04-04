@@ -8,7 +8,8 @@ function create_table(filter, data) {
     table_string += '<thead><tr>' +
                         '<th>Name</th>' +
                         '<th>Category</th>' +
-                        '<th>Location</th>' +
+                        '<th>Station</th>' +
+                        '<th>Area</th>' +
                         '<th>Star Quality</th>' +
                         '<th>Rev.</th>' +
                         '<th>Score</th>' +
@@ -20,7 +21,8 @@ function create_table(filter, data) {
         var name = pubs_reviews[key].name;
         var cat = pubs_reviews[key].category;
         var catCamel = String(cat['0']).toUpperCase() + String(cat).substring(1)
-        var location = pubs_reviews[key].station;
+        var station = pubs_reviews[key].station;
+        var area = pubs_reviews[key].area;
         var place = pubs_reviews[key].place;
         var latitude = parseFloat(pubs_reviews[key].latitude);
         var longitude = parseFloat(pubs_reviews[key].longitude);
@@ -28,6 +30,7 @@ function create_table(filter, data) {
         var starCamel = String(star['0']).toUpperCase() + String(star).substring(1)
         var score = pubs_reviews[key].score;
         var colour = pubs_reviews[key].colour;
+        var area = pubs_reviews[key].area;
         var identity_rev = pubs_reviews[key].review_identity;
         if (star == 0) {
             str_reviewed =
@@ -41,7 +44,8 @@ function create_table(filter, data) {
         table_string += '<tr>' +
             '<td><a href="/pub/' + identity + '">' + name + '</a></td>' +
             '<td><a href="/pub/category/' + cat + '">' + catCamel + '</a></td>' +
-            '<td><a href="/pub/location/' + location + '">' + location + '</a></td>' +
+            '<td><a href="/pub/station/' + station + '">' + station + '</a></td>' +
+            '<td><a href="/pub/area/' + area + '">' + area + '</a></td>' +
             str_reviewed +
             '<td><a href="/review/' + identity + '">' + score + '</a></td>' +
             '</tr>'

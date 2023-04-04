@@ -21,15 +21,13 @@ class ClickEventHandler {
     const me = this;
     this.placesService.getDetails({ placeId: placeId }, (place, status) => {
         if (status === "OK" && place && place.geometry && place.geometry.location) {
+            console.log('clickEventHandler class')
             document.getElementById("name").value = place.name;
             document.getElementById("address").value = place.formatted_address;
             document.getElementById("place").value = place.place_id;
 
-
             var place_text = String(place.types)
-
             var array2 = place_text.split(",")
-
             var text;
             var place_set = false;
             var myStringArray = array2;
@@ -43,7 +41,6 @@ class ClickEventHandler {
             }
             if (place_set == false) { text='Other' }
             document.getElementById("category").value = text;
-
         }
     });
 }

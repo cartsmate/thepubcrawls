@@ -1,4 +1,4 @@
-function insert_line(which_list, toggle, name, type, list_required, input_controls, dropdown_controls, slider_controls){
+function insert_line(which_list, toggle, name, type, list_required, date_controls, input_controls, dropdown_controls, slider_controls){
     var actual_width = window.innerWidth;
     if(actual_width < 480) {
         var slider_col = "col-sm-6"
@@ -98,7 +98,19 @@ function insert_line(which_list, toggle, name, type, list_required, input_contro
         value_node.setAttribute("style", "font-family:copperplate; font-size:40px; margin: auto");
         value_node.setAttribute("id", "value_" + name);
         document.getElementById(id_value_div).appendChild(value_node);
+    } else if (date_controls.includes(name)) {
+        const div_node = document.createElement("div");
+        div_node.setAttribute("class", "col-sm-9");
+        id_div = "div_" + name
+        div_node.setAttribute("id", id_div);
+        document.getElementById(id_row).appendChild(div_node);
+        const date_node = document.createElement("input");
+        date_node.setAttribute("type", "date");
+        date_node.setAttribute("id", name);
+        date_node.setAttribute("name", name);
+        document.getElementById(id_div).appendChild(date_node);
     } else {
+        console.log('name: ' + name)
         const div_node = document.createElement("div");
         div_node.setAttribute("class", "col-sm-9");
         id_div = "div_" + name

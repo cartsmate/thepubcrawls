@@ -7,24 +7,25 @@ function add_markers(map, zoom, data) {
     var infowindow = new google.maps.InfoWindow();
     var marker, i, j;
     for (var key in data) {
-        console.log(data[key])
+        //console.log(data[key])
         var pinColor = data[key].colour
-        if (zoom >= 15) {
-            var pinHole = pinSVGHole
-            var label = {
-                text: " ",
-                color: "white",
-                fontSize: "1px",
-            };
-        } else {
+        if (zoom < 16) {
             var pinHole = pinSVGFilled
             var label = {
                 text: data[key].count,
                 color: "white",
                 fontSize: "12px",
             };
+        } else {
+            var pinHole = pinSVGHole
+            var label = {
+                text: " ",
+                color: "white",
+                fontSize: "1px",
+            };
         }
-        var markerImage2 = {  // https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel
+        //console.log('label: ' + JSON.stringify(label))
+        var markerImage = {  // https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel
             path: pinHole,
             anchor: new google.maps.Point(12,17),
             fillOpacity: 1,
@@ -37,16 +38,28 @@ function add_markers(map, zoom, data) {
         if (typeof data[key].name != "undefined") {
             title_name = data[key].name
         } else {
-            title_name = data[key].station
+            title_name = data[key].area
         }
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(data[key].latitude, data[key].longitude),
             map: map,
             label: label,
-            icon: markerImage2,
+            icon: markerImage,
             title: title_name
         })
-        if (zoom >= 15) {
+        if (zoom < 16) {
+            google.maps.event.addListener(marker, 'click', (function (marker, key) {
+                return function () {
+                    set=data[key].area.trim().replace(/%20/g, " ");
+                    console.log(data[key].area)
+                    console.log(set)
+                    infowindow.x = set;
+                    infowindow.setContent("<p><b>" + set + "</b></p>" +
+                        "<a href='/pub/area/" + set + "'>list of local venues</a>");
+                    infowindow.open(map, marker);
+                }
+            })(marker, key));
+        } else {
             google.maps.event.addListener(marker, 'click', (function (marker, key) {
                 return function () {
                     infowindow.x = data[key].name;
@@ -55,20 +68,9 @@ function add_markers(map, zoom, data) {
                         "<p>category : " + data[key].category + "</p>" +
                         "<p>score : " + data[key].score + "</p>" +
                         "<p>best for : " + data[key].star + "</p>" +
-                        "<p>location : " + data[key].station + "</p>" +
+                        "<p>station : " + data[key].station + "</p>" +
+                        "<p>area : " + data[key].area + "</p>" +
                         "<a href='/pub/" + data[key].pub_identity + "'>click for more details</a>");
-                    infowindow.open(map, marker);
-                }
-            })(marker, key));
-        } else {
-            google.maps.event.addListener(marker, 'click', (function (marker, key) {
-                return function () {
-                    set=data[key].station.trim().replace(/%20/g, " ");
-                    console.log(data[key].station)
-                    console.log(set)
-                    infowindow.x = set;
-                    infowindow.setContent("<p><b>" + set + "</b></p>" +
-                        "<a href='/pub/location/" + set + "'>list of local venues</a>");
                     infowindow.open(map, marker);
                 }
             })(marker, key));

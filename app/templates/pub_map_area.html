@@ -10,13 +10,13 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 
 <script>
-function listen_zoom(map, station, area, full) {
+function listen_zoom(map, summary, full) {
     map.addListener('center_changed', function() {
         console.log('center_change')
     })
     map.addListener('zoom_changed', function() {
         var newZoom = map.getZoom();
-        showMap(station, area, full, map.getZoom(), map.getCenter().lat(), map.getCenter().lng())
+        showMap(summary, full, map.getZoom(), map.getCenter().lat(), map.getCenter().lng())
     });
 }
 function onLoad(){
@@ -33,29 +33,28 @@ function onLoad(){
             break;
         }
 }
-function showMap(station, area, full, zoom, lat, lng){
+function showMap(summary, full, zoom, lat, lng){
     console.log('showMap')
+    console.log('zoom: ' + zoom)
     map = show_map(lat, lng, zoom)
-    switch (true) {
-        case (zoom < 16):
-            data = area
-            break;
-        default:
-            data = full
+    if (zoom < 15) {
+        console.log('zoom<15: ' + zoom)
+        data = summary
+    } else {
+        console.log('zoom>=15: ' + zoom)
+        data = full
     }
-
     add_markers(map, zoom, data);
     add_listen_click();
-    listen_zoom(map, station, area, full)
+    listen_zoom(map, summary, full)
 }
 function initMap(){
     map_view =  {{ map_view | tojson }}
-    station = {{ station | tojson }}
-    area = {{ area | tojson }}
+    summary = {{ summary | tojson }}
     full = {{ full | tojson }}
-    let { avg_lat, avg_lng } = latlng_avg(area);
+    let { avg_lat, avg_lng } = latlng_avg(summary);
     zoom = 13
-    showMap(station, area, full, zoom, avg_lat, avg_lng)
+    showMap(summary, full, zoom, avg_lat, avg_lng)
 }
 function all_pubs(){
     location.href = "/pub/map/all";
@@ -92,7 +91,6 @@ function reviewed_pubs(){
 
 {% block full_screen %}<div id="map" style="width:100%; height:450px;"></div>{% endblock %}
 
-{% block navbar_map %}<a class="nav-link active_custom" href="/pub/map/all">Map View</a>{% endblock %}
 {% block pub_read_btn %}{% endblock %}
 {% block pub_edit_btn %}{% endblock %}
 {% block pub_del_btn %}{% endblock %}

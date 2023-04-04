@@ -1,4 +1,4 @@
-function map_listen_bounds(searchBox, stations) {
+function map_listen_bounds(map, searchBox, stations, areas) {
     let markers = [];
     searchBox.addListener("places_changed", () => {
         console.log('map_listen_bounds')
@@ -76,6 +76,22 @@ function map_listen_bounds(searchBox, stations) {
             });
             document.getElementById("station").value = records[0]['name']
             document.getElementById("station_identity").value = records[0]['id']
+
+            records = []
+            for (let i = 0; i < areas.length; i++) {
+                lat_diff = Math.abs(areas[i]['latitude'] - place.geometry.location.lat())
+                lng_diff = Math.abs(areas[i]['longitude'] - place.geometry.location.lng())
+                tot_diff = lat_diff + lng_diff
+                var record = { name: areas[i]['area'], id: areas[i]['area_identity'], distance: tot_diff}
+                records.push(record);
+            }
+            records = records.sort((a, b) => {
+                if (a.distance < b.distance) {
+                    return -1;
+                }
+            });
+            document.getElementById("area").value = records[0]['name']
+            document.getElementById("area_identity").value = records[0]['id']
         });
         map.setCenter({lat:lat1, lng:lng1});
 //        marker = new google.maps.Marker({

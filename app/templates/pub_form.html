@@ -7,15 +7,15 @@
 </div>
 {% for field in pub_fields %}
     {% if field in pub_visible %}
-        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'text', '{{list_required}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
+        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'text', '{{list_required}}', '{{date_controls}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
     {% else %}
-        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'hidden', '{{list_required}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
+        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'hidden', '{{list_required}}', '{{date_controls}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
     {% endif %}
 {% endfor %}
 {% for field in review_fields %}
     {% if field in review_visible %}
-        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'text', '{{list_required}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
+        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'text', '{{list_required}}', '{{date_controls}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
     {% else %}
-        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'hidden', '{{list_required}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
+        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'hidden', '{{list_required}}', '{{date_controls}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
     {% endif %}
 {% endfor %}

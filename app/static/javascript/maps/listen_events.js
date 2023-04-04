@@ -1,4 +1,4 @@
-function listen_events(lat, lng, stations) {
+function listen_events(lat, lng, stations, areas) {
 
     var get_location = function closest_station(lat, lng) {
         console.log("listen events: get_location")
@@ -16,6 +16,24 @@ function listen_events(lat, lng, stations) {
             }
         });
         document.getElementById("location").value = records[0]['station']
+    }
+
+    var get_area = function closest_area(lat, lng) {
+        console.log("listen events: get_area")
+        records = []
+        for (let i = 0; i < areas.length; i++) {
+            lat_diff = Math.abs(areas[i]['latitude'] - lat)
+            lng_diff = Math.abs(areas[i]['longitude'] - lng)
+            tot_diff = lat_diff + lng_diff
+            var record = { area: areas[i]['station'], distance: tot_diff}
+            records.push(record);
+        }
+        records = records.sort((a, b) => {
+            if (a.distance < b.distance) {
+                return -1;
+            }
+        });
+        document.getElementById("area").value = records[0]['area']
     }
 
     var get_latlng = function latlng_address(address) {
