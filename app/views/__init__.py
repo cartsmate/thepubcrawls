@@ -1,3 +1,4 @@
+from .admin import admin
 from .index import index
 from .home import home
 from .pub_list import pub_list
