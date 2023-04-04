@@ -17,8 +17,11 @@ class Functions:
         return df_dict
 
     def get_records(self, aws_prefix, list_of_columns):
-        df = self.read_s3_csv_to_df(aws_prefix, list_of_columns)
-        del_consol = aws_prefix + "_deletion"
+        df = self.read_csv(aws_prefix)
+        if aws_prefix == 'venue':
+            del_consol = 'pub' + "_deletion"
+        else:
+            del_consol = aws_prefix + "_deletion"
         df_false = df.loc[df[del_consol] != True]
         return df_false
 
@@ -30,9 +33,27 @@ class Functions:
     def get_pubs_station(self):
         df_pubs = self.get_pubs()
         df_stations = self.get_stations()
+        df_areas = self.get_areas()
         df_stations = df_stations[['station_identity', 'station']]
-        df_pubs_station = pd.merge(df_pubs, df_stations, how='left', on='station_identity')
+        df_areas = df_areas[['area_identity', 'area']]
+        df_pubs_stations = pd.merge(df_pubs, df_stations, how='left', on='station_identity')
+        df_pubs_areas = pd.merge(df_pubs_stations, df_areas, how='left', on='area_identity')
+        # print(df_pubs_areas)
+        return df_pubs_areas
+
+    def get_pubs_area(self):
+        df_pubs = self.get_pubs()
+        # df_stations = self.get_stations()
+        df_areas = self.get_areas()
+        # df_stations = df_stations[['station_identity', 'station']]
+        df_stations = df_areas[['area_identity', 'area']]
+        df_pubs_station = pd.merge(df_pubs, df_stations, how='left', on='area_identity')
         return df_pubs_station
+
+    def get_pubs_by_area(self, area_id):
+        df_pubs_reviews = self.get_pubs_reviews()
+        df_pubs_by_area = df_pubs_reviews.loc[df_pubs_reviews['area'] == area_id]
+        return df_pubs_by_area
 
     def get_pubs_by_star(self, star_id):
         df_pubs_reviews = self.get_pubs_reviews()
@@ -54,6 +75,11 @@ class Functions:
                                       json.loads(config['model_review']))
         return df_reviews
 
+    def get_areas(self):
+        df_areas = self.get_records(config['aws_prefix_area'],
+                                    json.loads(config['model_area']))
+        return df_areas
+
     def get_stations(self):
         df_stations = self.get_records(config['aws_prefix_station'],
                                        json.loads(config['model_station']))
@@ -63,6 +89,21 @@ class Functions:
         df_pubs_new = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
         df_pubs_new = df_pubs_new.loc[df_pubs_new['reviewer'] != 'BOTH']
         return df_pubs_new
+
+    def get_pubs_reviews_areas(self):
+        df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
+        df_pubs_reviews['score'] = df_pubs_reviews.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
+                                                           'entertainment', 'food', 'friendliness',
+                                                           'opening', 'price', 'selection']].sum(axis=1)
+        df_pubs_reviews['colour'] = np.where(df_pubs_reviews['reviewer'] == 'BOTH',
+                                             config['colour_reviewed'],
+                                             np.where(df_pubs_reviews['reviewer'] == 'ANDY',
+                                                      config['colour_reviewed'],
+                                                      np.where(df_pubs_reviews['reviewer'] == 'AVNI',
+                                                               config['colour_reviewed'],
+                                                               config['colour_new'])))
+        df_pubs_reviews.fillna(0, inplace=True)
+        return df_pubs_reviews
 
     def get_pubs_reviews(self):
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
@@ -86,9 +127,12 @@ class Functions:
     def get_pub_station(self, id_code):
         df_pub = self.get_pub(id_code)
         df_stations = self.get_stations()
+        df_areas = self.get_areas()
         df_stations = df_stations[['station_identity', 'station']]
+        df_areas = df_areas[['area_identity', 'area']]
         df_pub_station = pd.merge(df_pub, df_stations, how='left', on='station_identity')
-        return df_pub_station
+        df_pub_area = pd.merge(df_pub_station, df_areas, how='left', on='area_identity')
+        return df_pub_area
 
     def get_pub(self, id_code):
         df_pub = self.get_record(self.get_records(config['aws_prefix_pub'], json.loads(config['model_pub'])), id_code)
@@ -119,37 +163,39 @@ class Functions:
         new_id = str(uuid.uuid4())
         return new_id
 
-    def write_csv_to_s3(self, upload_object: object, s3_obj_name: object) -> object:
+    def s3_write(self, upload_object: object, s3_obj_name: object) -> object:
         client = boto3.client("s3", aws_access_key_id=config['access_id'], aws_secret_access_key=config['access_key'])
         client.put_object(Body=upload_object, Bucket=config['bucket_name'], Key=s3_obj_name)
+        # s3 = boto3.resource('s3')
+        # s3.Bucket('bucketname').upload_file('/local/file/here.txt', 'folder/sub/path/to/s3key')
+
+        # s3 = boto3.client('s3')
+        # s3.upload_file(upload_object, config['bucket_name'], s3_obj_name)
+
         s3_resp = client.head_object(Bucket=config['bucket_name'], Key=s3_obj_name)
         return s3_resp
 
-    def read_s3_csv_to_df(self, prefix, list_of_columns):
+    def read_csv(self, prefix):
+        obj_df = pd.read_csv(os.getcwd() + '/files/' + prefix + 's.csv')
+        return obj_df
+
+    def s3_read(self, prefix, list_of_columns):
         s3 = boto3.resource('s3',
                             aws_access_key_id=config['access_id'],
                             aws_secret_access_key=config['access_key'])
         my_bucket = s3.Bucket(config['bucket_name'])
         bucket_list = []
         for obj in my_bucket.objects.filter(Prefix=prefix):  # .all():
-            # print('file: ' + str(obj))
             if obj.key.find(".csv") != -1:
-                # print(obj.key)
                 bucket_list.append(obj.key)
-        # print('bucket_list: ' + str(bucket_list))
         if len(bucket_list) == 1:
             list_of_objects = []  # Initializing empty list of dataframes
             for bucket in bucket_list:  # pubs.csv
-                # print('file: ' + file)
                 obj = s3.Object(config['bucket_name'], bucket)
-                # print('obj: ' + str(obj))  # key='pubs.csv'
                 data = obj.get()['Body'].read()
-                # print('data: ' + str(data))   #file in bytes
                 list_of_objects.append(pd.read_csv(io.BytesIO(data), header=0, delimiter=",", low_memory=False))
             obj_df = pd.DataFrame(columns=list_of_columns)
-            # print('obj_df: ' + obj_df)
             for obj in list_of_objects:
-                # print(obj)
                 temp_df = pd.DataFrame(data=obj)
                 obj_df = pd.DataFrame(np.concatenate([obj_df.values, temp_df.values]), columns=obj_df.columns)
         else:

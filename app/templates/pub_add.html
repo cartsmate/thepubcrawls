@@ -3,28 +3,45 @@
 {% block title %}Add New Pub{% endblock %}
 
 {% block script %}
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/latlng_avg.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/show_map.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/add_markers.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/add_listen_click.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/map_listen_click.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/map_listen_bounds.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/listen_events.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/listen_search.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/class_event_handler.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/mouse_down_click.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/insert_line.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/populate_form.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_bounds.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_events.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_search.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/class_event_handler.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/mouse_down_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/insert_line.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_form.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/sum_score.js') }}"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap" type="text/javascript"></script>
+<script>
+var js = document.createElement("script");
+js.type = "text/javascript";
+if ( window.navigator.onLine == true) {
+    js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
+    document.head.appendChild(js)
+} else {
+    alert('You appear to offline so maps cannot be displayed')
+}
+</script>
+<script>
+    pub_review = {{ pub_review | tojson }}
+    console.log(pub_review)
+    pubs_reviews = {{ pubs_reviews | tojson }}
+    summary = {{ summary | tojson }}
+    full = {{ full | tojson }}
+</script>
 
 <script>
 function onLoad(){
     console.log("onLoad in add pub");
-    pub_review = {{ pub_review | tojson }}
+
     pub_fields = {{ pub_fields | tojson }}
     review_fields = {{ review_fields | tojson }}
     pub_review_fields = {{ pub_review_fields | tojson }}
+    date_controls = {{ date_controls | tojson }}
     input_controls = {{ input_controls | tojson }}
     dropdown_controls = {{ dropdown_controls | tojson }}
     slider_controls = {{ slider_controls | tojson }}
@@ -32,24 +49,74 @@ function onLoad(){
     form = {{ form | tojson }}
     populate_form(form)
 }
-
-function initMap(){
-    pubs_reviews = {{ pubs_reviews | tojson }}
-    stations = {{ stations | tojson }}
+function listen_zoom(map, summary, full) {
+    map.addListener('center_changed', function() {
+        console.log('center_change')
+    })
+    map.addListener('zoom_changed', function() {
+        var newZoom = map.getZoom();
+        showMap(summary, full, map.getZoom(), map.getCenter().lat(), map.getCenter().lng())
+    });
+}
+function showMap(summary, full, zoom, lat, lng){
+    console.log('showMap')
+    console.log('zoom: ' + zoom)
+    map = show_map(lat, lng, zoom)
+    if (zoom < 15) {
+        console.log('zoom<15: ' + zoom)
+        data = summary
+    } else {
+        console.log('zoom>=15: ' + zoom)
+        data = full
+    }
     key = {{ google_key | tojson }}
-    let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
-    map = show_map(avg_lat, avg_lng, 13)
-    add_markers(map, "venue", pubs_reviews)
-    var class_event_handler = new ClickEventHandler(map, origin, key, stations);
+    stations = {{ stations | tojson }}
+    areas = {{ areas | tojson }}
+    add_markers(map, zoom, data);
+    var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
     const input = document.getElementById("search-input-navbar");
     const searchBox = new google.maps.places.SearchBox(input);
-    map_listen_click(map, stations)
+    //add_listen_click();
+    map_listen_click(map, stations, areas);
+    listen_zoom(map, summary, full)
     listen_search(map, searchBox);
-    map_listen_bounds(searchBox, stations);
+    map_listen_bounds(map, searchBox, stations, areas);
     function isIconMouseEvent(e) {
         console.log("place icon clicked")
         return "placeId" in e;
     }
+}
+function initMap(){
+/*
+    pub_review = {{ pub_review | tojson }}
+    console.log(pub_review)
+    pubs_reviews = {{ pubs_reviews | tojson }}
+    summary = {{ summary | tojson }}
+    full = {{ full | tojson }}
+*/
+    let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
+    zoom = 13
+    showMap(summary, full, zoom, avg_lat, avg_lng)
+
+    /*
+
+    stations = {{ stations | tojson }}
+    areas = {{ areas | tojson }}
+    key = {{ google_key | tojson }}
+    let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
+    map = show_map(avg_lat, avg_lng, 13)
+    add_markers(map, 13, pubs_reviews, stations)
+    var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
+    const input = document.getElementById("search-input-navbar");
+    const searchBox = new google.maps.places.SearchBox(input);
+    map_listen_click(map, stations, areas)
+    listen_search(map, searchBox);
+    map_listen_bounds(searchBox, stations, areas);
+    function isIconMouseEvent(e) {
+        console.log("place icon clicked")
+        return "placeId" in e;
+    }
+    */
 }
 
 </script>

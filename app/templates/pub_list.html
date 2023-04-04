@@ -5,7 +5,7 @@
 {% block script %}
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='jquery/css/jquery.dataTables.min.css') }}">
 <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery.dataTables.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/create_table.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
 <script>
 function onLoad(){
     console.log("onLoad in pub_list");
@@ -17,14 +17,14 @@ function onLoad(){
     var map_view = {{ map_view | tojson }}
     pubs_reviews = {{ pubs_reviews | tojson }};
     switch(map_view) {
-        case 'list':
-            document.getElementById("location").checked = true;
-            Station()
-            break;
-        case 'station':
-            document.getElementById("location").checked = true;
-            Station()
-            break;
+<!--        case 'list':-->
+<!--            document.getElementById("station").checked = true;-->
+<!--            Station()-->
+<!--            break;-->
+<!--        case 'station':-->
+<!--            document.getElementById("station").checked = true;-->
+<!--            Station()-->
+<!--            break;-->
         case 'category':
             document.getElementById("type").checked = true;
             Type()
@@ -33,11 +33,29 @@ function onLoad(){
             document.getElementById("star").checked = true;
             Star()
             break;
+        case 'area':
+            document.getElementById("area").checked = true;
+            Area()
+            break;
         default:
-            document.getElementById("location").checked = true;
+            document.getElementById("area").checked = true;
             Station()
             break;
         }
+}
+
+function Area() {
+    document.getElementById("table-pubs-json").innerHTML = create_table(pubs_reviews)
+    $(document).ready(function () {
+        $('#pub_list').DataTable({
+            order: [[5, 'desc']],
+            columnDefs: [
+                    {target: 1, visible: false, searchable: false, },
+                    {target: 4, visible: false, searchable: false, },
+                    {target: 5, visible: false, searchable: false, },
+                        ]
+        });
+    });
 }
 
 function Station() {
@@ -49,6 +67,7 @@ function Station() {
                     {target: 1, visible: false, searchable: false, },
                     {target: 3, visible: false, searchable: false, },
                     {target: 4, visible: false, searchable: false, },
+                    {target: 5, visible: false, searchable: false, },
                         ]
         });
     });
@@ -60,9 +79,9 @@ function Type() {
         $('#pub_list').DataTable({
             order: [[5, 'desc']],
             columnDefs: [
-                    {target: 2, visible: false, searchable: false, },
                     {target: 3, visible: false, searchable: false, },
                     {target: 4, visible: false, searchable: false, },
+                    {target: 5, visible: false, searchable: false, },
                         ]
         });
     });
@@ -75,8 +94,8 @@ function Star() {
             order: [[5, 'desc']],
             columnDefs: [
                     {target: 1, visible: false, searchable: false, },
-                    {target: 2, visible: false, searchable: false, },
-                    {target: 4, visible: false, searchable: false, },
+                    {target: 3, visible: false, searchable: false, },
+                    {target: 5, visible: false, searchable: false, },
                         ]
         });
     });
@@ -90,9 +109,14 @@ function Reset() {
 {% endblock %}
 
 {% block slider %}
+<!--    <div class="form-check-inline">-->
+<!--        <label class="form-check-label">-->
+<!--            <input type="radio" class="form-check-input" name="optradio" id="location" value="1" onclick="Station()" />Location-->
+<!--        </label>-->
+<!--    </div>-->
     <div class="form-check-inline">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optradio" id="location" value="1" onclick="Station()" />Location
+            <input type="radio" class="form-check-input" name="optradio" id="area" value="1" onclick="Area()" />Area
         </label>
     </div>
     <div class="form-check-inline">
