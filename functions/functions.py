@@ -1,6 +1,5 @@
 import io
 import os
-import json
 import boto3
 import uuid
 import pandas as pd
@@ -8,6 +7,7 @@ import numpy as np
 from config import Configurations
 
 config = Configurations().get_config()
+config2 = Configurations().get_config2()
 
 
 class Functions:
@@ -20,14 +20,42 @@ class Functions:
         df = self.read_csv(aws_prefix)
         if aws_prefix == 'venue':
             del_consol = 'pub' + "_deletion"
+        elif aws_prefix == 'score':
+            del_consol = 'review' + "_deletion"
         else:
             del_consol = aws_prefix + "_deletion"
         df_false = df.loc[df[del_consol] != True]
         return df_false
 
+    def get_s3_records(self, aws_prefix, list_of_columns):
+        df = self.s3_read(aws_prefix, list_of_columns)
+        if aws_prefix == 'venue':
+            del_consol = 'pub' + "_deletion"
+        elif aws_prefix == 'score':
+            del_consol = 'review' + "_deletion"
+        else:
+            del_consol = aws_prefix + "_deletion"
+        df_false = df.loc[df[del_consol] != True]
+        return df_false
+
+    def get_s3_pubs(self):
+        df_pubs = self.get_s3_records(config['pub']['aws_prefix'], config['pub']['model'])
+        return df_pubs
+
+    def get_s3_reviews(self):
+        df_pubs = self.get_s3_records(config['review']['aws_prefix'], config['review']['model'])
+        return df_pubs
+
+    def get_s3_stations(self):
+        df_pubs = self.get_s3_records(config['station']['aws_prefix'], config['station']['model'])
+        return df_pubs
+
+    def get_s3_areas(self):
+        df_pubs = self.get_s3_records(config['area']['aws_prefix'], config['area']['model'])
+        return df_pubs
+
     def get_pubs(self):
-        df_pubs = self.get_records(config['aws_prefix_pub'],
-                                   json.loads(config['model_pub']))
+        df_pubs = self.get_records(config['pub']['aws_prefix'], config['pub']['model'])
         return df_pubs
 
     def get_pubs_station(self):
@@ -38,7 +66,6 @@ class Functions:
         df_areas = df_areas[['area_identity', 'area']]
         df_pubs_stations = pd.merge(df_pubs, df_stations, how='left', on='station_identity')
         df_pubs_areas = pd.merge(df_pubs_stations, df_areas, how='left', on='area_identity')
-        # print(df_pubs_areas)
         return df_pubs_areas
 
     def get_pubs_area(self):
@@ -71,18 +98,15 @@ class Functions:
         return df_pubs_by_station
 
     def get_reviews(self):
-        df_reviews = self.get_records(config['aws_prefix_review'],
-                                      json.loads(config['model_review']))
+        df_reviews = self.get_records(config['review']['aws_prefix'], config['review']['model'])
         return df_reviews
 
     def get_areas(self):
-        df_areas = self.get_records(config['aws_prefix_area'],
-                                    json.loads(config['model_area']))
+        df_areas = self.get_records(config['area']['aws_prefix'], config['area']['model'])
         return df_areas
 
     def get_stations(self):
-        df_stations = self.get_records(config['aws_prefix_station'],
-                                       json.loads(config['model_station']))
+        df_stations = self.get_records(config['station']['aws_prefix'], config['station']['model'])
         return df_stations
 
     def get_pubs_new(self):
@@ -96,12 +120,12 @@ class Functions:
                                                            'entertainment', 'food', 'friendliness',
                                                            'opening', 'price', 'selection']].sum(axis=1)
         df_pubs_reviews['colour'] = np.where(df_pubs_reviews['reviewer'] == 'BOTH',
-                                             config['colour_reviewed'],
+                                             config['colour']['reviewed'],
                                              np.where(df_pubs_reviews['reviewer'] == 'ANDY',
-                                                      config['colour_reviewed'],
+                                                      config['colour']['reviewed'],
                                                       np.where(df_pubs_reviews['reviewer'] == 'AVNI',
-                                                               config['colour_reviewed'],
-                                                               config['colour_new'])))
+                                                               config['colour']['reviewed'],
+                                                               config['colour']['new'])))
         df_pubs_reviews.fillna(0, inplace=True)
         return df_pubs_reviews
 
@@ -111,12 +135,12 @@ class Functions:
                                                            'entertainment', 'food', 'friendliness',
                                                            'opening', 'price', 'selection']].sum(axis=1)
         df_pubs_reviews['colour'] = np.where(df_pubs_reviews['reviewer'] == 'BOTH',
-                                             config['colour_reviewed'],
+                                             config['colour']['reviewed'],
                                              np.where(df_pubs_reviews['reviewer'] == 'ANDY',
-                                                      config['colour_reviewed'],
+                                                      config['colour']['reviewed'],
                                                       np.where(df_pubs_reviews['reviewer'] == 'AVNI',
-                                                               config['colour_reviewed'],
-                                                               config['colour_new'])))
+                                                               config['colour']['reviewed'],
+                                                               config['colour']['new'])))
         df_pubs_reviews.fillna(0, inplace=True)
         return df_pubs_reviews
 
@@ -135,12 +159,11 @@ class Functions:
         return df_pub_area
 
     def get_pub(self, id_code):
-        df_pub = self.get_record(self.get_records(config['aws_prefix_pub'], json.loads(config['model_pub'])), id_code)
+        df_pub = self.get_record(self.get_records(config['pub']['aws_prefix'], config['pub']['model']), id_code)
         return df_pub
 
     def get_review(self, pub_id):
-        df_reviews = self.get_records(config['aws_prefix_review'],
-                                      json.loads(config['model_review']))
+        df_reviews = self.get_records(config['review']['aws_prefix'], config['review']['model'])
         df_review = df_reviews.loc[df_reviews['pub_identity'] == pub_id]
         return df_review
 
@@ -151,12 +174,12 @@ class Functions:
                                                        'entertainment', 'food', 'friendliness', 'opening', 'price',
                                                        'selection']].sum(axis=1)
         df_pub_review['colour'] = np.where(df_pub_review['reviewer'] == 'BOTH',
-                                           config['colour_reviewed'],
+                                           config['colour']['reviewed'],
                                            np.where(df_pub_review['reviewer'] == 'ANDY',
-                                                    config['colour_reviewed'],
+                                                    config['colour']['reviewed'],
                                                     np.where(df_pub_review['reviewer'] == 'AVNI',
-                                                             config['colour_reviewed'],
-                                                             config['colour_new'])))
+                                                             config['colour']['reviewed'],
+                                                             config['colour']['new'])))
         return df_pub_review
 
     def generate_uuid(self):
@@ -164,15 +187,28 @@ class Functions:
         return new_id
 
     def s3_write(self, upload_object: object, s3_obj_name: object) -> object:
-        client = boto3.client("s3", aws_access_key_id=config['access_id'], aws_secret_access_key=config['access_key'])
-        client.put_object(Body=upload_object, Bucket=config['bucket_name'], Key=s3_obj_name)
+
+        client = boto3.client("s3", aws_access_key_id=config2['access_id'], aws_secret_access_key=config2['access_key'])
+
+        with io.StringIO() as csv_buffer:
+            upload_object.to_csv(csv_buffer, index=False)
+            response = client.put_object(Bucket=config2['bucket_name'], Key=s3_obj_name, Body=csv_buffer.getvalue())
+            status = response.get("ResponseMetadata", {}).get("HTTPStatusCode")
+            if status == 200:
+                print(f"Successful S3 put_object response. Status - {status}")
+            else:
+                print(f"Unsuccessful S3 put_object response. Status - {status}")
+
+
+        # client.put_object(Body=upload_object, Bucket=config2['bucket_name'], Key=s3_obj_name)
+
         # s3 = boto3.resource('s3')
         # s3.Bucket('bucketname').upload_file('/local/file/here.txt', 'folder/sub/path/to/s3key')
 
         # s3 = boto3.client('s3')
         # s3.upload_file(upload_object, config['bucket_name'], s3_obj_name)
 
-        s3_resp = client.head_object(Bucket=config['bucket_name'], Key=s3_obj_name)
+        s3_resp = client.head_object(Bucket=config2['bucket_name'], Key=s3_obj_name)
         return s3_resp
 
     def read_csv(self, prefix):
@@ -181,9 +217,9 @@ class Functions:
 
     def s3_read(self, prefix, list_of_columns):
         s3 = boto3.resource('s3',
-                            aws_access_key_id=config['access_id'],
-                            aws_secret_access_key=config['access_key'])
-        my_bucket = s3.Bucket(config['bucket_name'])
+                            aws_access_key_id=config2['access_id'],
+                            aws_secret_access_key=config2['access_key'])
+        my_bucket = s3.Bucket(config2['bucket_name'])
         bucket_list = []
         for obj in my_bucket.objects.filter(Prefix=prefix):  # .all():
             if obj.key.find(".csv") != -1:
@@ -191,7 +227,7 @@ class Functions:
         if len(bucket_list) == 1:
             list_of_objects = []  # Initializing empty list of dataframes
             for bucket in bucket_list:  # pubs.csv
-                obj = s3.Object(config['bucket_name'], bucket)
+                obj = s3.Object(config2['bucket_name'], bucket)
                 data = obj.get()['Body'].read()
                 list_of_objects.append(pd.read_csv(io.BytesIO(data), header=0, delimiter=",", low_memory=False))
             obj_df = pd.DataFrame(columns=list_of_columns)

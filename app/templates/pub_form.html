@@ -5,17 +5,49 @@
 <div class="form-group row collapse" id="review_collapse">
     <div class="col" id="rev_vis"></div>
 </div>
-{% for field in pub_fields %}
-    {% if field in pub_visible %}
-        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'text', '{{list_required}}', '{{date_controls}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
+{% for field in config['pub']['column'] %}
+    {% if field in config['pub']['visible'] %}
+        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'text', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}')</script>
     {% else %}
-        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'hidden', '{{list_required}}', '{{date_controls}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
+        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'hidden', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}')</script>
     {% endif %}
 {% endfor %}
-{% for field in review_fields %}
-    {% if field in review_visible %}
-        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'text', '{{list_required}}', '{{date_controls}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
+
+<script>
+var form_node = document.createElement("div");
+form_node.setAttribute("class", "form-group row");
+id_row = "row_checks"
+form_node.setAttribute("id", id_row);
+document.getElementById('pub_vis').appendChild(form_node);
+</script>
+{% for field in config['control']['check'] %}
+    <script>
+        var label_node = document.createElement("label");
+        label_node.setAttribute("class", "col-form-label");
+        label_node.setAttribute("for", '{{field}}');
+        label_node.setAttribute("style", "margin: auto; visibility: visible; display: block;");
+
+        var textnode = document.createTextNode('{{field}}');
+        label_node.appendChild(textnode);
+        document.getElementById(id_row).appendChild(label_node);
+
+        var div_node = document.createElement("div");
+        div_node.setAttribute("class", "col");
+        id_div = "div_" + '{{field}}'
+        div_node.setAttribute("id", id_div);
+        document.getElementById(id_row).appendChild(div_node);
+
+        var check_node = document.createElement("input");
+        check_node.setAttribute("type", "checkbox");
+        check_node.setAttribute("id", '{{field}}');
+        check_node.setAttribute("name", '{{field}}');
+        document.getElementById(id_div).appendChild(check_node);
+    </script>
+{% endfor %}
+{% for field in config['review']['column'] %}
+    {% if field in config['review']['visible'] %}
+        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'text', '{{config['review']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}')</script>
     {% else %}
-        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'hidden', '{{list_required}}', '{{date_controls}}', '{{input_controls}}', '{{dropdown_controls}}', '{{slider_controls}}')</script>
+        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'hidden', '{{config['review']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}')</script>
     {% endif %}
 {% endfor %}

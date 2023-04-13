@@ -110,7 +110,6 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
         date_node.setAttribute("name", name);
         document.getElementById(id_div).appendChild(date_node);
     } else {
-        console.log('name: ' + name)
         const div_node = document.createElement("div");
         div_node.setAttribute("class", "col-sm-9");
         id_div = "div_" + name

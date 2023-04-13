@@ -16,6 +16,9 @@ function onLoad(){
 
 </script>
 {% endblock %}
+{% block slider %}
+Welcome {{g.user.username}} to the Pub Crawls.  Please enjoy and drink responsibly .......
+{% endblock %}
 
 {% block full_screen %}
 <div class="container">
@@ -24,7 +27,7 @@ function onLoad(){
             {% for cl in col_loop %}
                 <div class="col-md-3">
                     <div class="container-photo">
-                        <img id="{{ photo }}" src="{{ url_for('static', filename='images/'+ photo_array[(rl*4)+cl] + '.jpg') }}"
+                        <img id="{{ photo }}" src="{{ url_for('static', filename='images/' + photo_array['review']['photo'][(rl*4)+cl] + '.jpg') }}"
                              class="w-100 shadow-1-strong rounded mb-4" style="height: 175px; width: 300px"/>
                         <div class="centered-photo">
                             <strong><a href="../pub/star/{{ photo_array[(rl*4)+cl] }}" style="color:#ffffff;">
