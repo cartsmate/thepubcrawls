@@ -4,3 +4,4 @@ __pycache__/
 *.ini
 files_z/
 .ipynb
+config.json
