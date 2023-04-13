@@ -4,6 +4,10 @@ function populate_form(form){
             if (dropdown_controls.includes(pub_review_fields[i])) {
                 var dropdown_str = String(pub_review[0][pub_review_fields[i]]['0']).toUpperCase() + String(pub_review[0][pub_review_fields[i]]).substring(1)
                 document.getElementById(pub_review_fields[i]).value = dropdown_str
+            } else if (check_controls.includes(pub_review_fields[i])) {
+                if (pub_review[0][pub_review_fields[i]] == true) {
+                    document.getElementById(pub_review_fields[i]).checked = true;
+                }
             } else {
                 document.getElementById(pub_review_fields[i]).value = pub_review[0][pub_review_fields[i]];
             }

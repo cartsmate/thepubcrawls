@@ -10,10 +10,9 @@ config = Configurations().get_config()
 functions = Functions()
 
 
-@app.route("/")
-@app.route("/index")
-def index():
+@app.route("/profile")
+def profile():
     if not g.user:
-        print('/index')
+        print('/profile')
         return redirect(url_for('login'))
-    return render_template('index.html')
+    return render_template('profile.html')

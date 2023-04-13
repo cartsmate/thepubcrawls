@@ -1,0 +1,45 @@
+{
+  "pub": {
+    "aws_key": "venues.csv",
+    "aws_prefix": "venue",
+    "model": ["pub_identity", "pub_deletion", "place", "name", "address", "latitude", "longitude", "category", "station_identity", "area_identity"],
+    "column": ["pub_identity", "pub_deletion", "place", "name", "address", "station", "area", "latitude", "longitude", "station_identity", "area_identity", "category", "score", "colour"],
+    "visible": ["name", "address", "category", "station", "area", "score"],
+    "required": ["latitude", "longitude", "place", "name", "address", "area", "station", "category"]
+  },
+  "review": {
+    "aws_key": "scores.csv",
+    "aws_prefix": "score",
+    "model": ["review_identity", "pub_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilet", "cheap", "games"],
+    "column": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilet", "cheap", "games"],
+    "visible": ["visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer"],
+    "photo": ["atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "blank1", "blank2"],
+    "score": ["atmosphere", "cleanliness", "clientele", "decor", "food", "friendliness", "price", "selection"]
+  },
+  "station": {
+    "aws_key": "stations.csv",
+    "aws_prefix": "station",
+    "model": ["station_identity", "station_deletion", "station", "latitude", "longitude", "zone", "postcode"]
+  },
+  "area": {
+    "aws_key": "areas.csv",
+    "aws_prefix": "area",
+    "model": ["area_identity", "area_deletion", "area", "type", "latitude", "longitude", "parent_identity"]
+  },
+  "control" : {
+    "date": ["visit"],
+    "input": ["name", "address", "station", "area"],
+    "dropdown": ["category", "star", "reviewer"],
+    "slider": ["score", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection"],
+    "check": ["tv", "garden", "music", "late", "meals", "toilet", "cheap", "games"]
+  },
+  "colour" : {
+    "all": "#2F2FA2",
+    "new": "#553D67",
+    "reviewed": "#FF0000",
+    "pink": "#F64C72",
+    "black": "#000000",
+    "red": "#FF0000",
+    "primary": "#0275d8"
+  }
+}

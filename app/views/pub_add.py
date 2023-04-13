@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 from datetime import date
-from flask import render_template
+from flask import render_template, redirect, url_for, g
 from app import app
 from ..models.pub import Pub
 from ..models.review import Review
@@ -14,6 +14,9 @@ function = Functions()
 
 @app.route("/pub/add/")
 def pub_add():
+    if not g.user:
+        print('/pub/map/all')
+        return redirect(url_for('login'))
     print('/pub/add')
     df_stations = function.get_stations()
     stations_json = function.df_to_dict(df_stations)

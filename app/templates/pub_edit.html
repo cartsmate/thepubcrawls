@@ -19,15 +19,17 @@
 function onLoad(){
     console.log("onLoad in pub_edit");
     pub_review = {{ pub_review | tojson }}
-    pub_fields = {{ pub_fields | tojson }}
-    review_fields = {{ review_fields | tojson }}
-    pub_review_fields = {{ pub_review_fields | tojson }}
-    date_controls = {{ date_controls | tojson }}
-    input_controls = {{ input_controls | tojson }}
-    dropdown_controls = {{ dropdown_controls | tojson }}
-    slider_controls = {{ slider_controls | tojson }}
-    score_list = {{ score_list | tojson }}
-    form = {{ form | tojson }}
+    config = {{ config | tojson }}
+    pub_fields = config['pub']['column']
+    review_fields = config['review']['column']
+    pub_review_fields = config['pub']['column'].concat(config['review']['column'])
+    date_controls = config['control']['date']
+    input_controls = config['control']['input']
+    dropdown_controls = config['control']['dropdown']
+    slider_controls = config['control']['slider']
+    check_controls = config['control']['check']
+    score_list = config['review']['score']
+    form = {{ form_type | tojson }}
     populate_form(form)
 
     var js = document.createElement("script");
