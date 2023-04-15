@@ -1,9 +1,0 @@
-{
-  "configs": {
-    "local_key": "AIzaSyCbb6tdoROEQuBKLZXybG5cNIB4UTc6A20",
-    "access_id": "AKIAUNBYSFXT5T2V7GHL",
-    "access_key": "x0EZdhPYFbHWq7wjTmwb1usrI5Y7xrOw+5Kb1Tvm",
-    "bucket_name": "s3-git-20221219-pubs",
-    "source": "aws"
-  }
-}
