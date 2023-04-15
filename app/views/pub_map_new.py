@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-from flask import render_template
+from flask import render_template, redirect, url_for, g
 from app import app
 from config import Configurations
 from functions.functions import Functions
@@ -11,6 +11,8 @@ function = Functions()
 
 @app.route("/pub/map/new")
 def map_by_new():
+    if not g.user:
+        return redirect(url_for('login'))
     print('/pub/map/new')
     # kwargs = json.loads(kwargs)
     # lat = kwargs['lat']

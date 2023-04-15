@@ -1,3 +1,4 @@
+from .a_index import a_index
 from .login import login
 from .profile import profile
 from .admin import admin

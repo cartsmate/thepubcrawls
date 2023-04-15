@@ -1,0 +1,1 @@
+const faceio = new faceIO("<Your Public ID here");

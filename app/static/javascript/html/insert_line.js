@@ -21,7 +21,9 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
     const textnode = document.createTextNode(name);
     label_node.appendChild(textnode);
     document.getElementById(id_row).appendChild(label_node);
-    if (dropdown_controls.includes(name) && (toggle == 'add' || toggle == 'edit')) {
+    console.log('name: ' + name)
+    if (dropdown_controls.includes(name)) {
+        console.log('dropdown')
         const div_node = document.createElement("div");
         div_node.setAttribute("class", "col-sm-9");
         id_div = "div_" + name
@@ -59,6 +61,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
             select_node.appendChild(option);
         }
     } else if (slider_controls.includes(name)) {
+        console.log('slider')
         const div_node = document.createElement("div");
         div_node.setAttribute("class", slider_col);
         id_div = "div_" + name
@@ -99,6 +102,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
         value_node.setAttribute("id", "value_" + name);
         document.getElementById(id_value_div).appendChild(value_node);
     } else if (date_controls.includes(name)) {
+        console.log('date')
         const div_node = document.createElement("div");
         div_node.setAttribute("class", "col-sm-9");
         id_div = "div_" + name
@@ -110,6 +114,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
         date_node.setAttribute("name", name);
         document.getElementById(id_div).appendChild(date_node);
     } else {
+        console.log('else')
         const div_node = document.createElement("div");
         div_node.setAttribute("class", "col-sm-9");
         id_div = "div_" + name

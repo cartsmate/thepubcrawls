@@ -7,6 +7,7 @@ function populate_form(form){
             } else if (check_controls.includes(pub_review_fields[i])) {
                 if (pub_review[0][pub_review_fields[i]] == true) {
                     document.getElementById(pub_review_fields[i]).checked = true;
+                    document.getElementById(pub_review_fields[i]).style = "1.0"
                 }
             } else {
                 document.getElementById(pub_review_fields[i]).value = pub_review[0][pub_review_fields[i]];

@@ -8,13 +8,16 @@ config = Configurations().get_config()
 
 class Dataframes:
 
-    def merge_to_csv(self, _get, new_df, key):
+    def merge_dfs(self, df_1, df_2):
+        print('Dataframe.merge_dfs')
+        df_merged = pd.merge(df_1, df_2, how='left', on='pub_identity')
+        return df_merged
 
-        df_appended = pd.concat([_get, pd.DataFrame([new_df.__dict__])], ignore_index=True)
-        df_appended.to_csv(os.getcwd() + '/files/' + config[key]['aws_key'], sep=',', encoding='utf-8', index=False)
+    def append_df(self, _get, new_df):
+        print('Dataframe: append_df')
+        df_appended = pd.concat([_get, new_df], ignore_index=True)
+        return df_appended
 
     def to_csv(self, df_appended, key):
+        print('Dataframes: to_csv')
         df_appended.to_csv(os.getcwd() + '/files/' + config[key]['aws_key'], sep=',', encoding='utf-8', index=False)
-
-        # Functions().get_s3_pubs().to_csv(os.getcwd() + '/files/' + config['pub']['aws_key'], sep=',', encoding='utf-8',
-        #                                  index=False)
