@@ -116,9 +116,10 @@ class Functions:
 
     def get_pubs_reviews_areas(self):
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
-        df_pubs_reviews['score'] = df_pubs_reviews.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
-                                                           'entertainment', 'food', 'friendliness',
-                                                           'opening', 'price', 'selection']].sum(axis=1)
+        df_pubs_reviews['score'] = df_pubs_reviews.loc[:, config['review']['score']].sum(axis=1)
+        # df_pubs_reviews['score'] = df_pubs_reviews.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
+        #                                                    'entertainment', 'food', 'friendliness',
+        #                                                    'opening', 'price', 'selection']].sum(axis=1)
         df_pubs_reviews['colour'] = np.where(df_pubs_reviews['reviewer'] == 'BOTH',
                                              config['colour']['reviewed'],
                                              np.where(df_pubs_reviews['reviewer'] == 'ANDY',
@@ -131,9 +132,10 @@ class Functions:
 
     def get_pubs_reviews(self):
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
-        df_pubs_reviews['score'] = df_pubs_reviews.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
-                                                           'entertainment', 'food', 'friendliness',
-                                                           'opening', 'price', 'selection']].sum(axis=1)
+        df_pubs_reviews['score'] = df_pubs_reviews.loc[:, config['review']['score']].sum(axis=1)
+        # df_pubs_reviews['score'] = df_pubs_reviews.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
+        #                                                    'entertainment', 'food', 'friendliness',
+        #                                                    'opening', 'price', 'selection']].sum(axis=1)
         df_pubs_reviews['colour'] = np.where(df_pubs_reviews['reviewer'] == 'BOTH',
                                              config['colour']['reviewed'],
                                              np.where(df_pubs_reviews['reviewer'] == 'ANDY',
@@ -170,9 +172,10 @@ class Functions:
     def get_pub_review(self, id_code):
         df_pub_review = pd.merge(self.get_pub_station(id_code), self.get_review(id_code), how='left', on='pub_identity')
 
-        df_pub_review['score'] = df_pub_review.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
-                                                       'entertainment', 'food', 'friendliness', 'opening', 'price',
-                                                       'selection']].sum(axis=1)
+        df_pub_review['score'] = df_pub_review.loc[:, config['review']['score']].sum(axis=1)
+        # df_pub_review['score'] = df_pub_review.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
+        #                                                'entertainment', 'food', 'friendliness', 'opening', 'price',
+        #                                                'selection']].sum(axis=1)
         df_pub_review['colour'] = np.where(df_pub_review['reviewer'] == 'BOTH',
                                            config['colour']['reviewed'],
                                            np.where(df_pub_review['reviewer'] == 'ANDY',
@@ -187,7 +190,7 @@ class Functions:
         return new_id
 
     def s3_write(self, upload_object: object, s3_obj_name: object) -> object:
-
+        print(upload_object)
         client = boto3.client("s3", aws_access_key_id=config2['access_id'], aws_secret_access_key=config2['access_key'])
 
         with io.StringIO() as csv_buffer:
@@ -195,9 +198,9 @@ class Functions:
             response = client.put_object(Bucket=config2['bucket_name'], Key=s3_obj_name, Body=csv_buffer.getvalue())
             status = response.get("ResponseMetadata", {}).get("HTTPStatusCode")
             if status == 200:
-                print(f"Successful S3 put_object response. Status - {status}")
+                print(f"Successful {upload_object} S3 put_object response. Status - {status}")
             else:
-                print(f"Unsuccessful S3 put_object response. Status - {status}")
+                print(f"Unsuccessful {upload_object }S3 put_object response. Status - {status}")
 
 
         # client.put_object(Body=upload_object, Bucket=config2['bucket_name'], Key=s3_obj_name)
@@ -212,10 +215,12 @@ class Functions:
         return s3_resp
 
     def read_csv(self, prefix):
+        print('read_csv')
         obj_df = pd.read_csv(os.getcwd() + '/files/' + prefix + 's.csv')
         return obj_df
 
     def s3_read(self, prefix, list_of_columns):
+        print('s3_read')
         s3 = boto3.resource('s3',
                             aws_access_key_id=config2['access_id'],
                             aws_secret_access_key=config2['access_key'])

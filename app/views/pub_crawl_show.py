@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for, g
 from app import app
 from config import Configurations
 from functions.functions import Functions
@@ -9,6 +9,9 @@ function = Functions()
 
 @app.route("/pub/crawl/show", methods=['GET', 'POST'])
 def pub_crawl_show():
+    if not g.user:
+        print('/index')
+        return redirect(url_for('login'))
     if request.method == 'GET':
         print('/pub/crawl/show: POST')
         start_inbound = request.form['start']

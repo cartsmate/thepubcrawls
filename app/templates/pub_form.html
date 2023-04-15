@@ -22,14 +22,6 @@ document.getElementById('pub_vis').appendChild(form_node);
 </script>
 {% for field in config['control']['check'] %}
     <script>
-        var label_node = document.createElement("label");
-        label_node.setAttribute("class", "col-form-label");
-        label_node.setAttribute("for", '{{field}}');
-        label_node.setAttribute("style", "margin: auto; visibility: visible; display: block;");
-
-        var textnode = document.createTextNode('{{field}}');
-        label_node.appendChild(textnode);
-        document.getElementById(id_row).appendChild(label_node);
 
         var div_node = document.createElement("div");
         div_node.setAttribute("class", "col");
@@ -37,11 +29,15 @@ document.getElementById('pub_vis').appendChild(form_node);
         div_node.setAttribute("id", id_div);
         document.getElementById(id_row).appendChild(div_node);
 
-        var check_node = document.createElement("input");
-        check_node.setAttribute("type", "checkbox");
-        check_node.setAttribute("id", '{{field}}');
-        check_node.setAttribute("name", '{{field}}');
-        document.getElementById(id_div).appendChild(check_node);
+        var img_node = document.createElement("img");
+        img_node.setAttribute("src", "{{ url_for('static', filename='icons/' + field + '.png') }}")
+        img_node.setAttribute("width", "50")
+        img_node.setAttribute("height", "50")
+        img_node.setAttribute("id", '{{field}}');
+        img_node.setAttribute("name", '{{field}}');
+        img_node.style.opacity = "0.25"
+
+        document.getElementById(id_div).appendChild(img_node);
     </script>
 {% endfor %}
 {% for field in config['review']['column'] %}
