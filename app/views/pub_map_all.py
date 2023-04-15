@@ -26,8 +26,24 @@ def map_by_all():
     df_areas = Functions().get_areas()
     df_all_area = df_all[['name', 'area_identity']]
     df_all_area_group = df_all_area.groupby(['area_identity'], as_index=False).count()
-    df_all_area_count = pd.merge(df_all_area_group, df_areas, how='left', on='area_identity')\
+    df_all_area_count = pd.merge(df_all_area_group, df_areas, how='left', on='area_identity') \
         .rename(columns={'name': 'count'}).astype(str)
+    # \
+    #     .drop('latitude', axis=1) \
+    #     .drop('longitude', axis=1)
+    print(df_all_area_group)
+    df_all_area = df_all[['latitude', 'area_identity']]
+    df_area_avg_lat = df_all_area.groupby(['area_identity'], as_index=False)['latitude'].mean() \
+        .rename(columns={'latitude': 'avg_latitude'}).astype(str)
+    df_lats = pd.merge(df_all_area_count, df_area_avg_lat, how='left', on='area_identity')
+    print(df_lats)
+    df_all_area = df_all[['longitude', 'area_identity']]
+    df_area_avg_lng = df_all_area.groupby(['area_identity'], as_index=False)['longitude'].mean() \
+        .rename(columns={'longitude': 'avg_longitude'}).astype(str)
+    print(df_area_avg_lng)
+    df_lngs = pd.merge(df_lats, df_area_avg_lat, how='left', on='area_identity')
+    print(df_lngs)
+
     df_all_area_count['colour'] = config['colour']['red']
     area_all_json = Functions().df_to_dict(df_all_area_count)
 

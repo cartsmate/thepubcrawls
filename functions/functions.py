@@ -116,7 +116,7 @@ class Functions:
 
     def get_pubs_reviews_areas(self):
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
-        df_pubs_reviews['score'] = df_pubs_reviews.loc[:, config['review']['score']].sum(axis=1)
+        df_pubs_reviews['score'] = round(df_pubs_reviews.loc[:, config['review']['score']].sum(axis=1) * 10)
         # df_pubs_reviews['score'] = df_pubs_reviews.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
         #                                                    'entertainment', 'food', 'friendliness',
         #                                                    'opening', 'price', 'selection']].sum(axis=1)
@@ -132,7 +132,7 @@ class Functions:
 
     def get_pubs_reviews(self):
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
-        df_pubs_reviews['score'] = df_pubs_reviews.loc[:, config['review']['score']].sum(axis=1)
+        df_pubs_reviews['score'] = round(df_pubs_reviews.loc[:, config['review']['score']].mean(axis=1) * 10)
         # df_pubs_reviews['score'] = df_pubs_reviews.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
         #                                                    'entertainment', 'food', 'friendliness',
         #                                                    'opening', 'price', 'selection']].sum(axis=1)
@@ -172,7 +172,7 @@ class Functions:
     def get_pub_review(self, id_code):
         df_pub_review = pd.merge(self.get_pub_station(id_code), self.get_review(id_code), how='left', on='pub_identity')
 
-        df_pub_review['score'] = df_pub_review.loc[:, config['review']['score']].sum(axis=1)
+        df_pub_review['score'] = round(df_pub_review.loc[:, config['review']['score']].mean(axis=1) * 10)
         # df_pub_review['score'] = df_pub_review.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
         #                                                'entertainment', 'food', 'friendliness', 'opening', 'price',
         #                                                'selection']].sum(axis=1)
@@ -198,9 +198,9 @@ class Functions:
             response = client.put_object(Bucket=config2['bucket_name'], Key=s3_obj_name, Body=csv_buffer.getvalue())
             status = response.get("ResponseMetadata", {}).get("HTTPStatusCode")
             if status == 200:
-                print(f"Successful {upload_object} S3 put_object response. Status - {status}")
+                print(f"Successful {s3_obj_name} S3 put_object response. Status - {status}")
             else:
-                print(f"Unsuccessful {upload_object }S3 put_object response. Status - {status}")
+                print(f"Unsuccessful {s3_obj_name }S3 put_object response. Status - {status}")
 
 
         # client.put_object(Body=upload_object, Bucket=config2['bucket_name'], Key=s3_obj_name)
