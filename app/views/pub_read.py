@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from flask import render_template, request, redirect, url_for, g
+from flask import render_template, request, redirect, url_for, g, session
 from app import app
 from config import Configurations
 from functions.functions import Functions
@@ -14,8 +14,7 @@ config2 = Configurations().get_config2()
 
 @app.route("/pub/<pub_id>", methods=['GET', 'POST'])
 def pub_read(pub_id):
-    if not g.user:
-        print('/index')
+    if session.get('logged_in') != True:
         return redirect(url_for('login'))
     print('pub_read')
     df_pub_review = Functions().get_pub_review(pub_id)
@@ -32,16 +31,6 @@ def pub_read(pub_id):
             if df_pub_review.loc[df_pub_review['place'] == str(request.form['place'])].empty:
                 print('new / not dupe pub')
                 df_new_pub = FormNew().get_pub(pub_id)
-                # print(Functions().get_pubs())
-                # if isinstance(Functions().get_pubs(), pd.DataFrame):
-                #     print('get_pubs is a dataframe')
-                # else:
-                #     print('df_new_pub is NOT NOT NOT a dataframe')
-                # # print(df_new_pub)
-                # if isinstance(df_new_pub, pd.DataFrame):
-                #     print('df_new_pub is a dataframe')
-                # else:
-                #     print('df_new_pub is NOT NOT NOT a dataframe')
 
                 df_pub_appended = Dataframes().append_df(Functions().get_pubs(), df_new_pub)
                 if df_pub_appended.shape[1] == len(config['pub']['model']):
@@ -51,7 +40,9 @@ def pub_read(pub_id):
                     print('Error in processing')
 
                 df_new_review = FormNew().get_review(pub_id)
+                print(df_new_review)
                 df_review_appended = Dataframes().append_df(Functions().get_reviews(), df_new_review)
+                print(df_review_appended)
                 if df_review_appended.shape[1] == len(config['review']['model']):
                     Dataframes().to_csv(df_review_appended, 'review')
                     s3_resp = Functions().s3_write(df_review_appended, config['review']['aws_key'])

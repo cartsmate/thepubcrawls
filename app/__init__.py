@@ -17,7 +17,7 @@ class User:
 users = []
 users.append(User(id=1, username='Andy', password='password'))
 users.append(User(id=2, username='Avni', password='secret'))
-users.append(User(id=2, username='a', password='q'))
+users.append(User(id=3, username='aaa', password='qqq'))
 
 
 # print(users)

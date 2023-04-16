@@ -1,5 +1,5 @@
 import pandas as pd
-from flask import render_template, request, url_for, g, redirect
+from flask import render_template, request, url_for, g, redirect, session
 from app import app
 from config import Configurations
 from functions.functions import Functions
@@ -10,7 +10,7 @@ function = Functions()
 
 @app.route("/pub/map/reviewed")
 def map_by_reviewed():
-    if not g.user:
+    if session.get('logged_in') != True:
         return redirect(url_for('login'))
     print('/pub/map/reviewed')
     df_stations = function.get_stations()

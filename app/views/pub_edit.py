@@ -1,5 +1,5 @@
 import json
-from flask import render_template, redirect, url_for, g
+from flask import render_template, redirect, url_for, g, session
 from app import app
 from config import Configurations
 from functions.functions import Functions
@@ -10,8 +10,7 @@ config2 = Configurations().get_config2()
 
 @app.route("/pub/edit/<pub_id>")
 def pub_edit(pub_id):
-    if not g.user:
-        print('/index')
+    if session.get('logged_in') != True:
         return redirect(url_for('login'))
     stations_json = Functions().df_to_dict(
         Functions().get_records(config['station']['aws_prefix'], config['station']['model']))

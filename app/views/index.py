@@ -13,7 +13,6 @@ functions = Functions()
 @app.route("/")
 @app.route("/index")
 def index():
-    if not g.user:
-        print('/index')
+    if session.get('logged_in') != True:
         return redirect(url_for('login'))
     return render_template('index.html')

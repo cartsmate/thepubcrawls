@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 from datetime import date
-from flask import render_template, redirect, url_for, g
+from flask import render_template, redirect, url_for, g, session
 from app import app
 from ..models.pub import Pub
 from ..models.review import Review
@@ -14,7 +14,7 @@ config2 = Configurations().get_config2()
 
 @app.route("/pub/add/")
 def pub_add():
-    if not g.user:
+    if session.get('logged_in') != True:
         return redirect(url_for('login'))
     df_stations = Functions().get_stations()
     stations_json = Functions().df_to_dict(df_stations)
