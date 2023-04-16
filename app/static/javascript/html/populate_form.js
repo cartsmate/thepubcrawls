@@ -7,7 +7,9 @@ function populate_form(form){
             } else if (check_controls.includes(pub_review_fields[i])) {
                 if (pub_review[0][pub_review_fields[i]] == true) {
                     document.getElementById(pub_review_fields[i]).checked = true;
-                    document.getElementById(pub_review_fields[i]).style = "1.0"
+                    document.getElementById(pub_review_fields[i]).style.hidden = "none";
+                    var text = "img_" + pub_review_fields[i]
+                    document.getElementById(text).style.opacity = "1"
                 }
             } else {
                 document.getElementById(pub_review_fields[i]).value = pub_review[0][pub_review_fields[i]];

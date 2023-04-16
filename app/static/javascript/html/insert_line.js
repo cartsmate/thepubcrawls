@@ -1,4 +1,4 @@
-function insert_line(which_list, toggle, name, type, list_required, date_controls, input_controls, dropdown_controls, slider_controls){
+function insert_line(which_list, toggle, name, type, list_required, date_controls, input_controls, dropdown_controls, slider_controls, check_controls){
     var actual_width = window.innerWidth;
     if(actual_width < 480) {
         var slider_col = "col-sm-6"
@@ -112,7 +112,10 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
         date_node.setAttribute("type", "date");
         date_node.setAttribute("id", name);
         date_node.setAttribute("name", name);
+        date_node.setAttribute("placeholder", "dd-mmm-yyyy");
         document.getElementById(id_div).appendChild(date_node);
+    } else if (check_controls.includes(name)) {
+
     } else {
         console.log('else')
         const div_node = document.createElement("div");

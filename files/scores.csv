@@ -1,4 +1,4 @@
-review_identity,pub_identity,review_deletion,visit,star,atmosphere,cleanliness,clientele,decor,entertainment,food,friendliness,opening,price,selection,reviewer,tv,garden,music,late,meals,toilet,cheap,games
+review_identity,pub_identity,review_deletion,visit,star,atmosphere,cleanliness,clientele,decor,entertainment,food,friendliness,opening,price,selection,reviewer,tv,garden,music,late,meals,toilets,cheap,games
 1869bc0d-e2a8-40c9-bcba-073bfaaa4ba0,00ffd490-b3b8-424d-b5d2-5122bbebdba2,False,test date,decor,6.0,5.0,6.0,8.0,2.0,5.0,4.0,5.0,2.0,3.0,,False,False,False,False,False,False,False,False
 e1c5fd3e-8fb3-40ff-a7cb-1bf2d20e8611,10f611a2-512f-4b07-aa57-8de878ccbb3b,False,test date,decor,7.0,10.0,6.0,10.0,0.0,3.0,9.0,5.0,0.0,8.0,both,False,False,False,False,False,False,False,False
 90ccf461-1a45-48ee-b8e2-9270e36393e4,0d3af39b-2da5-4ce4-bb58-734a1523af77,False,2023-02-16,clientele,8.0,4.0,9.0,7.0,6.0,7.0,7.0,8.0,7.0,8.0,BOTH,False,False,False,False,False,False,False,False
@@ -33,7 +33,7 @@ d7c7178c-b66b-458d-91cc-8690fdb52cae,7ed9d8f5-8c66-4cc4-a083-705f2322d4ff,False,
 9cf4a412-da94-48ec-b6f2-288bc0640422,8c8cb344-915a-458d-8931-f674e014c890,False,"Sat, 25 Feb 2023 00:00:00 GMT",friendliness,8.0,5.0,7.0,6.0,2.0,7.0,9.0,7.0,7.0,8.0,BOTH,False,False,False,False,False,False,False,False
 cc04425c-c1b5-4617-8fa2-0d27187baece,5d30094e-5fcc-4144-bed7-9aee72419468,False,test date,price,3.0,4.0,3.0,3.0,2.0,4.0,4.0,7.0,7.0,4.0,andy,False,False,False,False,False,False,False,False
 2a8f5f9f-e898-46a9-9afa-7e005297c8a1,b677a674-7b32-454b-9c52-cfb01f5f038e,False,test date,opening,3.0,5.0,5.0,6.0,1.0,8.0,5.0,10.0,5.0,8.0,andy,False,False,False,False,False,False,False,False
-843c4104-06da-46fb-95f9-afadcc31e47d,5e7a2cf0-e9bc-4fc8-818b-763244375ebf,False,test date,entertainment,8.0,7.0,7.0,9.0,10.0,10.0,7.0,7.0,4.0,8.0,undefinedan,False,False,False,False,True,True,False,True
+843c4104-06da-46fb-95f9-afadcc31e47d,5e7a2cf0-e9bc-4fc8-818b-763244375ebf,False,test date,entertainment,8.0,7.0,7.0,9.0,10.0,10.0,7.0,7.0,4.0,8.0,,False,False,False,False,True,False,False,True
 a5fa0050-10f1-4bdf-bc09-4ed243ebcd1b,168c5191-a91d-4774-af72-c0b60222cd5c,False,test date,entertainment,7.0,3.0,4.0,3.0,8.0,5.0,4.0,5.0,7.0,7.0,andy,False,False,False,False,False,False,False,False
 2a0b9403-c043-4bd7-b1d6-5365e311bd46,94d24fde-0b24-4bec-a05d-3c8ca530db55,False,test date,entertainment,8.0,2.0,5.0,4.0,10.0,5.0,7.0,5.0,5.0,6.0,andy,False,False,False,False,False,False,False,False
 f9442fbc-e259-45c0-ae3f-0da6d556b971,5b752b18-6d5f-404d-a831-cea145c34dae,False,test date,atmosphere,8.0,4.0,7.0,6.0,5.0,5.0,7.0,7.0,6.0,4.0,andy,False,False,False,False,False,False,False,False
@@ -45,7 +45,7 @@ f58ac6ba-f5ff-4496-84fc-720c42648bde,188ac738-7e4e-4433-ba8b-2e97b241bc1c,False,
 a4db7e64-777d-4cc1-a277-680bc51905e1,02587b03-dfd1-4ac7-a987-762c49d7648d,False,test date,selection,3.0,2.0,3.0,3.0,8.0,5.0,4.0,3.0,9.0,7.0,andy,False,False,False,False,False,False,False,False
 81ceb39b-e294-4fb0-a439-eda2fedb7788,e550bd4d-7593-458b-b7b7-a36bfa2dfd62,False,"Tue, 28 Feb 2023 00:00:00 GMT",entertainment,8.0,4.0,7.0,7.0,8.0,7.0,5.0,5.0,3.0,8.0,ANDY,False,False,False,False,False,False,False,False
 36317b41-aa5c-4fad-864b-23aba7489199,f787a138-53cb-45ca-a7f8-20564708f07b,False,test date,food,3.0,9.0,6.0,4.0,0.0,8.0,6.0,2.0,3.0,5.0,andy,False,False,False,False,False,False,False,False
-ab8ea498-4ac5-44fb-8fd5-2eca3dce0efa,c9a4f721-53ae-4482-916c-abc4e1ba52b1,False,"Tue, 28 Feb 2023 00:00:00 GMT",food,7.0,6.0,8.0,7.0,2.0,9.0,8.0,5.0,7.0,7.0,ANDY,False,False,False,False,False,False,False,False
+ab8ea498-4ac5-44fb-8fd5-2eca3dce0efa,c9a4f721-53ae-4482-916c-abc4e1ba52b1,False,test date,food,7,6,8,7,2,9,8,5,7,7,andy,False,False,False,False,True,False,False,False
 f265f887-8e50-4455-9e34-6bee5592823d,6bb18e6f-42e5-4f54-b98a-75302168364c,False,test date,selection,8.0,4.0,6.0,4.0,2.0,5.0,5.0,5.0,4.0,9.0,andy,False,False,False,False,False,False,False,False
 bb9eab9d-3941-4ac0-abde-5c4c0c15a4a6,034c5579-5369-44a3-8fc9-ffbeb832a84b,False,"Thu, 02 Mar 2023 00:00:00 GMT",atmosphere,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,5.0,ANDY,False,False,False,False,False,False,False,False
 1516f425-7fa0-4e38-bb51-2ced9cb160d5,52c555f4-007f-4dd1-9d75-a0dfc38425ad,False,"Fri, 03 Mar 2023 00:00:00 GMT",entertainment,8.0,8.0,7.0,8.0,10.0,8.0,8.0,7.0,5.0,5.0,Avni,False,False,False,False,False,False,False,False
@@ -66,7 +66,7 @@ fcd12e42-3d31-4ea7-81f9-87beeb15a366,fcd12e42-3d31-4ea7-81f9-87beeb15a366,False,
 ab307597-3cc6-4697-a160-1f8d0097e085,ab307597-3cc6-4697-a160-1f8d0097e085,False,test date,atmosphere,8.0,8.0,5.0,7.0,1.0,5.0,3.0,0.0,7.0,6.0,andy,False,False,False,False,False,False,False,False
 0c00dbd3-a6fd-4c6b-8006-2d98c0d8b175,0c00dbd3-a6fd-4c6b-8006-2d98c0d8b175,False,"March 25, 2023",friendliness,8.0,7.0,7.0,7.0,0.0,7.0,9.0,9.0,6.0,5.0,andy,False,False,False,False,False,False,False,False
 3c0e13d2-57f5-4e20-85da-8c49873b9224,3c0e13d2-57f5-4e20-85da-8c49873b9224,False,test date,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,False,False,False,False,False,False,False,False
-e7c2cc87-e065-41e0-b34e-5607b0d6cb68,e7c2cc87-e065-41e0-b34e-5607b0d6cb68,False,test date,food,8.0,8.0,8.0,8.0,0.0,10.0,8.0,5.0,3.0,3.0,,False,False,False,False,False,False,False,False
+e7c2cc87-e065-41e0-b34e-5607b0d6cb68,e7c2cc87-e065-41e0-b34e-5607b0d6cb68,False,test date,food,8.0,8.0,8.0,8.0,0.0,10.0,8.0,5.0,3.0,3.0,,False,False,False,False,True,True,False,False
 54ed8eb6-770a-4ed4-b269-a7c770447aed,54ed8eb6-770a-4ed4-b269-a7c770447aed,False,test date,selection,2.0,3.0,1.0,8.0,2.0,5.0,6.0,5.0,4.0,9.0,,False,False,False,False,False,False,False,False
 9a3d88cf-4910-4f24-921c-c20fe0febd29,1e2588e4-74eb-49b7-9c44-e9716b26c64d,,,,,,,,,,,,,,,False,False,False,False,False,False,False,False
 0512afe3-4cc4-4b01-82df-caee56e82b4d,589baf35-626d-4581-9a9f-b15e60f6fc84,,,,,,,,,,,,,,,False,False,False,False,False,False,False,False
@@ -84,3 +84,6 @@ c1016748-a1ef-4bbb-8a6d-6bfbb42643ce,a31e384d-2225-4a9d-9fe4-b4ef9cde5a34,False,
 70994cd8-b297-44bf-a0b9-207011a9392b,542b658e-2dea-46d4-b276-a52a106c30d1,False,"April 14, 2023",undefined,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,undefined,,,,,,,,
 3dacdce6-6383-4413-b7e2-548b74544650,04702c43-5189-4532-af11-e32315fbdd81,False,"April 14, 2023",undefined,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,undefined,,,,,,,,
 52f1f129-f6c1-49a0-960e-56b117a338dc,59e52a12-bcc2-40d7-9475-9cecea1bd362,False,"April 14, 2023",undefined,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,undefined,,,,,,,,
+932e298c-1c02-442c-90f1-a372d4b25ac2,68196501-34c4-4a4c-b4e4-9ac7d7dc48d6,False,"April 16, 2023",,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,False,True,False,False,False,False,True,False
+a42cbe65-56b6-4517-a737-6bb12ddfcd08,7b6e05c3-f6ca-4d6f-85d5-98ce06d82fb2,False,"April 16, 2023",,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,False,True,False,False,False,False,False,False
+a04df6b6-8c72-4384-a2fa-4331746ed08f,14900ddc-7bbd-4cf8-8f9f-019aca56b703,False,"April 16, 2023",,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,False,False,False,True,False,False,False,True

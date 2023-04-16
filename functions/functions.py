@@ -190,7 +190,8 @@ class Functions:
         return new_id
 
     def s3_write(self, upload_object: object, s3_obj_name: object) -> object:
-        print(upload_object)
+        print('s3_obj_name')
+        print(s3_obj_name)
         client = boto3.client("s3", aws_access_key_id=config2['access_id'], aws_secret_access_key=config2['access_key'])
 
         with io.StringIO() as csv_buffer:
