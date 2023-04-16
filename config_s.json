@@ -10,8 +10,8 @@
   "review": {
     "aws_key": "scores.csv",
     "aws_prefix": "score",
-    "model": ["review_identity", "pub_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilet", "cheap", "games"],
-    "column": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilet", "cheap", "games"],
+    "model": ["review_identity", "pub_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games"],
+    "column": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games"],
     "visible": ["visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer"],
     "photo": ["atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "blank1", "blank2"],
     "score": ["atmosphere", "cleanliness", "clientele", "decor", "food", "friendliness", "price", "selection"]
@@ -31,7 +31,7 @@
     "input": ["name", "address", "station", "area"],
     "dropdown": ["category", "star", "reviewer"],
     "slider": ["score", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection"],
-    "check": ["tv", "garden", "music", "late", "meals", "toilet", "cheap", "games"]
+    "check": ["tv", "garden", "music", "late", "meals", "toilets", "cheap", "games"]
   },
   "colour" : {
     "all": "#2F2FA2",

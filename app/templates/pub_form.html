@@ -7,11 +7,25 @@
 </div>
 {% for field in config['pub']['column'] %}
     {% if field in config['pub']['visible'] %}
-        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'text', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}')</script>
+        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'text', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}')</script>
     {% else %}
-        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'hidden', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}')</script>
+        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'hidden', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}')</script>
     {% endif %}
 {% endfor %}
+
+<script>
+function myFunction(check_item) {
+    console.log('myfunction')
+    console.log(check_item)
+  var checkBox = document.getElementById(check_item);
+  var text = document.getElementById("img_" + check_item);
+  if (checkBox.checked == true){
+    text.style.opacity = "1"
+  } else {
+     text.style.opacity = "0.25"
+  }
+}
+</script>
 
 <script>
 var form_node = document.createElement("div");
@@ -29,15 +43,32 @@ document.getElementById('pub_vis').appendChild(form_node);
         div_node.setAttribute("id", id_div);
         document.getElementById(id_row).appendChild(div_node);
 
+        var check_node = document.createElement("input");
+        check_node.setAttribute("type", 'checkbox');
+        check_node.setAttribute("id", '{{field}}');
+        check_node.setAttribute("name", '{{field}}');
+        check_node.setAttribute("style", "display: none;");
+        check_node.setAttribute("onclick", "myFunction('{{field}}')")
+        document.getElementById(id_div).appendChild(check_node);
+
+        var img_label_node = document.createElement("label")
+        img_label_node.setAttribute("for", '{{field}}');
+        id_img_label = "id_img_" + '{{field}}'
+        img_label_node.setAttribute("id", id_img_label);
+        document.getElementById(id_div).appendChild(img_label_node);
+
         var img_node = document.createElement("img");
         img_node.setAttribute("src", "{{ url_for('static', filename='icons/' + field + '.png') }}")
         img_node.setAttribute("width", "50")
         img_node.setAttribute("height", "50")
-        img_node.setAttribute("id", '{{field}}');
-        img_node.setAttribute("name", '{{field}}');
+        id_img = "img_" + '{{field}}'
+        img_node.setAttribute("id", id_img);
+        img_node.setAttribute("name", id_img);
         img_node.style.opacity = "0.25"
+        document.getElementById(id_img_label).appendChild(img_node);
 
-        document.getElementById(id_div).appendChild(img_node);
+
+
     </script>
 {% endfor %}
 {% for field in config['review']['column'] %}

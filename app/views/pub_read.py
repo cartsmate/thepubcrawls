@@ -18,7 +18,6 @@ def pub_read(pub_id):
     #     return redirect(url_for('login'))
     print('pub_read')
     df_pub_review = Functions().get_pub_review(pub_id)
-    print(df_pub_review)
     if request.method == 'GET':
         print('pub_read: GET')
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
@@ -28,7 +27,8 @@ def pub_read(pub_id):
         print('pub_read: POST')
         if df_pub_review.empty:
             print('new pub')
-            if df_pub_review.loc[df_pub_review['place'] == str(request.form['place'])].empty:
+            df_pubs_reviews = Functions().get_pubs_reviews()
+            if df_pubs_reviews.loc[df_pubs_reviews['place'] == str(request.form['place'])].empty:
                 print('new / not dupe pub')
                 df_new_pub = FormNew().get_pub(pub_id)
 
@@ -40,9 +40,11 @@ def pub_read(pub_id):
                     print('Error in processing')
 
                 df_new_review = FormNew().get_review(pub_id)
-                print(df_new_review)
+                # print('df_new_review')
+                # print(list(df_new_review))
                 df_review_appended = Dataframes().append_df(Functions().get_reviews(), df_new_review)
-                print(df_review_appended)
+                # print('df_review_appended')
+                # print(list(df_review_appended))
                 if df_review_appended.shape[1] == len(config['review']['model']):
                     Dataframes().to_csv(df_review_appended, 'review')
                     s3_resp = Functions().s3_write(df_review_appended, config['review']['aws_key'])
@@ -55,10 +57,11 @@ def pub_read(pub_id):
                 print('duplicate pub')
                 df_pubs_reviews = Functions().get_pubs_reviews()
                 dupe_id = df_pubs_reviews.loc[df_pubs_reviews['place'] == str(request.form['place'])]['pub_identity']
-                return render_template("pop_up_dupe.html",
-                                       pub_review=Functions().df_to_dict(
-                                           df_pubs_reviews.loc[df_pubs_reviews['place'] == str(request.form['place'])]),
-                                       dupe_id=dupe_id)
+                return redirect(url_for('pub_add'))
+                # return render_template("pop_up_dupe.html",
+                #                        pub_review=Functions().df_to_dict(
+                #                            df_pubs_reviews.loc[df_pubs_reviews['place'] == str(request.form['place'])]),
+                #                        dupe_id=dupe_id)
         else:
             print('edit pub')
             df_pubs_updated = FormInput().get_pub(Functions().get_pubs(), pub_id)
@@ -71,6 +74,6 @@ def pub_read(pub_id):
 
             df_pub_review = Functions().get_pub_review(pub_id)
             pub_review_json = Functions().df_to_dict(df_pub_review)
-            print(df_pub_review)
+            # print(df_pub_review)
             return render_template('pub_read.html', form_type='read', google_key=config2['google_key'],
                                    pub_review=pub_review_json, config=config)
