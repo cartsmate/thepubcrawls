@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from config import Config
+# from config import Config
 # from flask_login import LoginManager
 # login_manager = LoginManager()
 
@@ -25,8 +25,8 @@ users.append(User(id=3, username='aaa', password='qqq'))
 
 app = Flask(__name__)
 # app.secret_key = os.urandom(24)
-# app.config['SECRET_KEY'] = os.urandom(24)
-app.config.from_object(Config)
+app.config['SECRET_KEY'] = os.urandom(24)
+# app.config.from_object(Config)
 # app.config['SESSION_COOKIE_SECURE'] = True
 # print(app.secret_key)
 # login_manager.init_app(app)
