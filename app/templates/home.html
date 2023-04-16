@@ -17,7 +17,7 @@ function onLoad(){
 </script>
 {% endblock %}
 {% block slider %}
-Welcome {{g.user.username}} to the Pub Crawls.  Please enjoy and drink responsibly .......
+Welcome {{session.get('user_id')}} to the Pub Crawls.  Please enjoy and drink responsibly .......
 {% endblock %}
 
 {% block full_screen %}
