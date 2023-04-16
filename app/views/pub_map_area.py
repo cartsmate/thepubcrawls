@@ -10,8 +10,8 @@ config2 = Configurations().get_config2()
 
 @app.route("/pub/map/area")
 def map_by_area():
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    # if session.get('logged_in') != True:
+    #     return redirect(url_for('login'))
     # print('/pub/map/area')
     df_stations = Functions().get_stations()
     df_areas = Functions().get_areas()

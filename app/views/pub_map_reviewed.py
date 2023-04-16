@@ -10,8 +10,8 @@ function = Functions()
 
 @app.route("/pub/map/reviewed")
 def map_by_reviewed():
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    # if session.get('logged_in') != True:
+    #     return redirect(url_for('login'))
     print('/pub/map/reviewed')
     df_stations = function.get_stations()
 

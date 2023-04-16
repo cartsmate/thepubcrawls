@@ -12,6 +12,7 @@ functions = Functions()
 
 @app.route("/profile")
 def profile():
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     print('/profile')
+    #     return redirect(url_for('login'))
     return render_template('profile.html')

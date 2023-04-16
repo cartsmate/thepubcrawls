@@ -11,8 +11,8 @@ function = Functions()
 
 @app.route("/pub/map/new")
 def map_by_new():
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    # if session.get('logged_in') != True:
+    #     return redirect(url_for('login'))
     print('/pub/map/new')
     # kwargs = json.loads(kwargs)
     # lat = kwargs['lat']

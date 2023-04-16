@@ -11,8 +11,8 @@ config = Configurations().get_config()
 
 @app.route("/admin")
 def admin():
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    # if session.get('logged_in') != True:
+    #     return redirect(url_for('login'))
     df_areas = Functions().get_areas()
     df_pubs = Functions().get_pubs()
 

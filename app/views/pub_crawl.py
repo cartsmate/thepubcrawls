@@ -10,8 +10,8 @@ config2 = Configurations().get_config2()
 
 @app.route("/pub/crawl")
 def pub_crawl():
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    # if session.get('logged_in') != True:
+    #     return redirect(url_for('login'))
     df_stations = Functions().get_stations()
     df_all = Functions().get_pubs_reviews()
     pub_list = df_all['name'].tolist()
