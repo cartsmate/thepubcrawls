@@ -1,5 +1,5 @@
 import json
-from flask import render_template, redirect, url_for, g
+from flask import render_template, redirect, url_for, g, session
 from app import app
 from config import Configurations
 from functions.functions import Functions
@@ -9,7 +9,7 @@ config = Configurations().get_config()
 
 @app.route("/pub/list/<list_type>/<id_type>")
 def pub_list(list_type, id_type):
-    if not g.user:
+    if session.get('logged_in') != True:
         print('/pub/list/<list_type>/<id_type>')
         return redirect(url_for('login'))
     # df_pubs_reviews = function.get_pubs_reviews()

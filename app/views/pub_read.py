@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from flask import render_template, request, redirect, url_for, g
+from flask import render_template, request, redirect, url_for, g, session
 from app import app
 from config import Configurations
 from functions.functions import Functions
@@ -14,8 +14,7 @@ config2 = Configurations().get_config2()
 
 @app.route("/pub/<pub_id>", methods=['GET', 'POST'])
 def pub_read(pub_id):
-    if not g.user:
-        print('/index')
+    if session.get('logged_in') != True:
         return redirect(url_for('login'))
     print('pub_read')
     df_pub_review = Functions().get_pub_review(pub_id)

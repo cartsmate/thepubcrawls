@@ -28,6 +28,7 @@ def login():
         # if user and user.password == password:
         if True == True:
             session['user_id'] = user.id
+            session['logged_in'] = True
             return redirect(url_for('index'))
         return redirect(url_for('login'))
 
