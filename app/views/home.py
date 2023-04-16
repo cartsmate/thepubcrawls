@@ -11,8 +11,8 @@ config = Configurations().get_config()
 
 @app.route("/home/<on_line>")
 def home(on_line):
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    # if session.get('logged_in') != True:
+    #     return redirect(url_for('login'))
     if on_line == 'true':
         Functions().get_s3_pubs().to_csv(os.getcwd() + '/files/' + config['pub']['aws_key'], sep=',', encoding='utf-8', index=False)
         Functions().get_s3_reviews().to_csv(os.getcwd() + '/files/' + config['review']['aws_key'], sep=',', encoding='utf-8', index=False)

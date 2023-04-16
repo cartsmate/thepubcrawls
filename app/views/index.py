@@ -13,6 +13,8 @@ functions = Functions()
 @app.route("/")
 @app.route("/index")
 def index():
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    _get = session.get('logged_in')
+    print(_get)
+    # if session.get('logged_in') != True:
+    #     return redirect(url_for('login'))
     return render_template('index.html')

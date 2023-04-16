@@ -3,6 +3,10 @@ import json
 from configparser import ConfigParser
 
 
+class Config(object):
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+
+
 class Configurations:
 
     def get_config(self):

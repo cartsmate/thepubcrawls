@@ -14,8 +14,8 @@ config2 = Configurations().get_config2()
 
 @app.route("/pub/<pub_id>", methods=['GET', 'POST'])
 def pub_read(pub_id):
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    # if session.get('logged_in') != True:
+    #     return redirect(url_for('login'))
     print('pub_read')
     df_pub_review = Functions().get_pub_review(pub_id)
     print(df_pub_review)

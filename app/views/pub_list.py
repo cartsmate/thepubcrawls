@@ -9,9 +9,9 @@ config = Configurations().get_config()
 
 @app.route("/pub/list/<list_type>/<id_type>")
 def pub_list(list_type, id_type):
-    if session.get('logged_in') != True:
-        print('/pub/list/<list_type>/<id_type>')
-        return redirect(url_for('login'))
+    # if session.get('logged_in') != True:
+    #     print('/pub/list/<list_type>/<id_type>')
+    #     return redirect(url_for('login'))
     # df_pubs_reviews = function.get_pubs_reviews()
     # df_pubs_by_type = function.get_pubs_reviews().loc[function.get_pubs_reviews()[type] == id].sort_values(by=['score'], ascending=False)
     # kwargs = json.loads(kwargs)

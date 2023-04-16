@@ -9,8 +9,8 @@ function = Functions()
 
 @app.route("/pub/crawl/show", methods=['GET', 'POST'])
 def pub_crawl_show():
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    # if session.get('logged_in') != True:
+    #     return redirect(url_for('login'))
     if request.method == 'GET':
         print('/pub/crawl/show: POST')
         start_inbound = request.form['start']

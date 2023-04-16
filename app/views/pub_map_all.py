@@ -10,8 +10,8 @@ config2 = Configurations().get_config2()
 
 @app.route("/pub/map/all")
 def map_by_all():
-    if session.get('logged_in') != True:
-        return redirect(url_for('login'))
+    # if session.get('logged_in') != True:
+    #     return redirect(url_for('login'))
     df_all = Functions().get_pubs_reviews()
     all_json = Functions().df_to_dict(df_all)
 
