@@ -1,3 +1,4 @@
+import datetime
 from flask import request
 from config import Configurations
 
@@ -14,7 +15,7 @@ class FormInput:
         df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'address'] = request.form['address']
         df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'latitude'] = request.form['latitude']
         df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'longitude'] = request.form['longitude']
-        df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'category'] = request.form['category']
+        df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'category'] = request.form['category'].lower()
         df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'station_identity'] = request.form['station_identity']
         df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'area_identity'] = request.form['area_identity']
         return df_pubs
@@ -29,7 +30,7 @@ class FormInput:
             reviewer = ""
         else:
             reviewer = request.form.get('reviewer').lower()
-        df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'visit'] = "test date"
+        df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'visit'] = datetime.datetime.now().strftime("%d/%m/%Y")
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'star'] = star
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'atmosphere'] = request.form['atmosphere']
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'cleanliness'] = request.form['cleanliness']

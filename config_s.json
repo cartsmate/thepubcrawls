@@ -14,7 +14,7 @@
     "column": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games"],
     "visible": ["visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer"],
     "photo": ["atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "blank1", "blank2"],
-    "score": ["atmosphere", "cleanliness", "clientele", "decor", "food", "friendliness", "price", "selection"]
+    "score": ["atmosphere", "clientele", "decor", "friendliness", "selection"]
   },
   "station": {
     "aws_key": "stations.csv",

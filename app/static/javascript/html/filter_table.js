@@ -28,7 +28,7 @@ function Station() {
     });
 }
 
-function Type() {
+function Category() {
     document.getElementById("table-pubs-json").innerHTML = create_table(pubs_reviews)
     $(document).ready(function () {
         $('#pub_list').DataTable({

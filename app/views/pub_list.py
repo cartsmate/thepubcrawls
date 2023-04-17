@@ -21,12 +21,17 @@ def pub_list(list_type, id_type):
         pubs_reviews_json = Functions().df_to_dict(
             Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False))
     else:
-        pubs_reviews_json = Functions().df_to_dict(
-            Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type] == id_type]
-                .sort_values(by=['score'], ascending=False))
+        print('list_type')
+        print(list_type)
+        print('id_type')
+        print(id_type)
+        df = Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type] == id_type]\
+            .sort_values(by=['score'], ascending=False)
+        pubs_reviews_json = Functions().df_to_dict(df)
+        print(df)
     # view = "area"
-    return render_template('pub_list.html', filter=list_type, pubs_reviews=pubs_reviews_json, map_view=list_type,
-                           map_lat=51.5, map_lng=-0.1, type=type, id=id)
+    return render_template('pub_list.html', filter=id_type, pubs_reviews=pubs_reviews_json, map_view=list_type,
+                           map_lat=51.5, map_lng=-0.1, type=list_type, id=id_type)
 
 #
 # @app.route("/pub/list")
