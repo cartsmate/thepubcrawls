@@ -8,6 +8,18 @@ config = Configurations().get_config()
 
 class Dataframes:
 
+    def add_area(self, df):
+        print('Dataframe.add_area')
+        df_areas = Functions().get_areas()
+        df_merged = pd.merge(df, df_areas, on='area_identity', how='left')
+        return df_merged
+
+    def add_station(self, df):
+        print('Dataframe.add_area')
+        df_stations = Functions().get_stations()
+        df_merged = pd.merge(df, df_stations, on='station_identity', how='left')
+        return df_merged
+
     def merge_dfs(self, df_1, df_2):
         print('Dataframe.merge_dfs')
         df_merged = pd.merge(df_1, df_2, how='left', on='pub_identity')

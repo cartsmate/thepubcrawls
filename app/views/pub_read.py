@@ -4,7 +4,8 @@ from flask import render_template, request, redirect, url_for, g, session
 from app import app
 from config import Configurations
 from functions.functions import Functions
-from functions.form_input import FormInput
+# from functions.form_input import FormInput
+from app.static.pythonscripts.form_input import FormInput
 from app.static.pythonscripts.form_new import FormNew
 from app.static.pythonscripts.dataframes import Dataframes
 
@@ -51,8 +52,10 @@ def pub_read(pub_id):
                 else:
                     print('Error in processing')
                 df_new_merged = Dataframes().merge_dfs(df_new_pub, df_new_review)
+                df_area_added = Dataframes().add_area(df_new_merged)
+                df_station_added = Dataframes().add_station(df_area_added)
                 return render_template('pub_read.html', form_type='read', google_key=config2['google_key'],
-                                       pub_review=Functions().df_to_dict(df_new_merged), config=config)
+                                       pub_review=Functions().df_to_dict(df_station_added), config=config)
             else:
                 print('duplicate pub')
                 df_pubs_reviews = Functions().get_pubs_reviews()

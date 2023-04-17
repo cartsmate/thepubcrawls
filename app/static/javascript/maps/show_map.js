@@ -4,7 +4,10 @@ function show_map(lat, lng, zoom) {
     var map = new google.maps.Map(document.getElementById('map'), {
             center: new google.maps.LatLng(lat, lng),
             zoom: zoom,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            streetViewControl: false,
+            overviewMapControl: false,
+            rotateControl: false
         });
     return map
 }

@@ -20,7 +20,7 @@ function onLoad(){
     switch(map_view) {
         case 'category':
             document.getElementById("category").checked = true;
-            Type()
+            Category()
             break;
         case 'star':
             document.getElementById("star").checked = true;
@@ -48,7 +48,7 @@ function onLoad(){
     </div>
     <div class="form-check-inline">
         <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optradio" id="type" value="2" onclick="Type()";>Category
+            <input type="radio" class="form-check-input" name="optradio" id="category" value="2" onclick="Category()";>Category
         </label>
     </div>
     <div class="form-check-inline">
@@ -63,7 +63,7 @@ function onLoad(){
 <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
 {% endblock %}
 
-{% block navbar_list %}<a class="nav-link active_custom" href="/pub/list">Listing</a>{% endblock %}
+{% block navbar_list %}<a class="nav-link active_custom" href="{{ url_for('pub_list', list_type='all', id_type='all') }}">Listing</a>{% endblock %}
 {% block pub_read_btn %}{% endblock %}
 {% block pub_edit_btn %}{% endblock %}
 {% block pub_del_btn %}{% endblock %}

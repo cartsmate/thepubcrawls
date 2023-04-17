@@ -46,7 +46,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
                 option.text = "select venue star quality";
                 break;
             case 'reviewer':
-                var options = ['ANDY', 'AVNI', 'BOTH', 'OTHER']
+                var options = ['Andy', 'Avni', 'Both', 'Other']
                 option.text = "select reviewer";
                 break;
             default:
