@@ -25,7 +25,7 @@ function create_table(filter, data) {
              '<td>None</a></td>'
         } else {
             str_reviewed =
-            '<td><a href="/pub/list/star/' + pubs_reviews[key].star + '">' + camel_case(pubs_reviews[key].star) +'</a></td>' +
+            '<td><a href="/pub/list/star/' + pubs_reviews[key].star + '">' + camel_case(pubs_reviews[key].star) + '</a></td>' +
             '<td><a href="../review/' + pubs_reviews[key].pub_identity + '">Review</a></td>'
         }
         table_string += '<tr>' +

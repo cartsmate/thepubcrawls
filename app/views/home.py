@@ -26,7 +26,10 @@ def home(on_line):
     df_all_area_count = pd.merge(df_all_area_group, df_areas, how='left', on='area_identity') \
         .rename(columns={'name': 'count'}).astype(str) \
         .sort_values(by=['count'], ascending=False)
-    print(df_all_area_count)
+    # print(df_all_area_count)
     areas_json = Functions().df_to_dict(df_all_area_count)
-    return render_template('home.html', photo_array=config, map_view="stations", map_lat=51.5, map_lng=-0.1, config=config,
+    pubs_reviews_json = Functions().df_to_dict(
+        Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False))
+
+    return render_template('home.html', pubs_reviews=pubs_reviews_json, photo_array=config, map_view="stations", map_lat=51.5, map_lng=-0.1, config=config,
                            row_loop=range(3), col_loop=range(4), areas=areas_json)
