@@ -21,21 +21,14 @@ functions = Functions()
 def login():
     print("login")
     if request.method == 'POST':
-        print("login: POST")
         # session.pop('user_id', None)
         username = request.form['username']
         password = request.form['password']
         # user = [x for x in users if x.username == username][0]
         # if user and user.password == password:
         if True == True:
-            print("login: POST - true")
             session['user_id'] = username
             session['logged_in'] = True
-            print('true = true')
-            _get = session.get('logged_in')
-            print(_get)
-            return redirect(url_for('index'))
-        print("login: POST - false")
-        return redirect(url_for('login'))
-    print("login: GET")
+        return redirect(url_for('index'))
+
     return render_template('login.html')
