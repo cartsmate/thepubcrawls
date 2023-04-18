@@ -10,15 +10,17 @@ from functions.functions import Functions
 config = Configurations().get_config()
 
 
-@app.route("/home/<on_line>")
-def home(on_line):
+# @app.route("/home/<on_line>")
+# def home(on_line):
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
-    if on_line == 'true':
-        Functions().get_s3_pubs().to_csv(os.getcwd() + '/files/' + config['pub']['aws_key'], sep=',', encoding='utf-8', index=False)
-        Functions().get_s3_reviews().to_csv(os.getcwd() + '/files/' + config['review']['aws_key'], sep=',', encoding='utf-8', index=False)
-        Functions().get_s3_areas().to_csv(os.getcwd() + '/files/' + config['area']['aws_key'], sep=',', encoding='utf-8', index=False)
-        Functions().get_s3_stations().to_csv(os.getcwd() + '/files/' + config['station']['aws_key'], sep=',', encoding='utf-8', index=False)
+    # if on_line == 'true':
+    #     Functions().get_s3_pubs().to_csv(os.getcwd() + '/files/' + config['pub']['aws_key'], sep=',', encoding='utf-8', index=False)
+    #     Functions().get_s3_reviews().to_csv(os.getcwd() + '/files/' + config['review']['aws_key'], sep=',', encoding='utf-8', index=False)
+    #     Functions().get_s3_areas().to_csv(os.getcwd() + '/files/' + config['area']['aws_key'], sep=',', encoding='utf-8', index=False)
+    #     Functions().get_s3_stations().to_csv(os.getcwd() + '/files/' + config['station']['aws_key'], sep=',', encoding='utf-8', index=False)
+@app.route("/home/")
+def home():
     df_all = Functions().get_pubs_reviews()
     df_areas = Functions().get_areas()
     df_all_area = df_all[['name', 'area_identity']]
