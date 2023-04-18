@@ -173,6 +173,7 @@ class Functions:
         df_pub_review = pd.merge(self.get_pub_station(id_code), self.get_review(id_code), how='left', on='pub_identity')
 
         df_pub_review['score'] = round(df_pub_review.loc[:, config['review']['score']].mean(axis=1) * 10)
+        print(df_pub_review['score'])
         # df_pub_review['score'] = df_pub_review.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
         #                                                'entertainment', 'food', 'friendliness', 'opening', 'price',
         #                                                'selection']].sum(axis=1)

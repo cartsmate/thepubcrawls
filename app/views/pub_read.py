@@ -41,11 +41,7 @@ def pub_read(pub_id):
                     print('Error in processing')
 
                 df_new_review = FormNew().get_review(pub_id)
-                # print('df_new_review')
-                # print(list(df_new_review))
                 df_review_appended = Dataframes().append_df(Functions().get_reviews(), df_new_review)
-                # print('df_review_appended')
-                # print(list(df_review_appended))
                 if df_review_appended.shape[1] == len(config['review']['model']):
                     Dataframes().to_csv(df_review_appended, 'review')
                     s3_resp = Functions().s3_write(df_review_appended, config['review']['aws_key'])
