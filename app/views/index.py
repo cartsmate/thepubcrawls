@@ -13,7 +13,7 @@ functions = Functions()
 @app.route("/")
 def route():
     # return render_template('login.html')
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 
 @app.route("/index")
@@ -22,4 +22,5 @@ def index():
     # print(_get)
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
-    return render_template('index.html')
+    return redirect(url_for('home'))
+    # return render_template('index.html')
