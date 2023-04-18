@@ -4,7 +4,7 @@
     "aws_prefix": "venue",
     "model": ["pub_identity", "pub_deletion", "place", "name", "address", "latitude", "longitude", "category", "station_identity", "area_identity"],
     "column": ["pub_identity", "pub_deletion", "place", "name", "address", "station", "area", "latitude", "longitude", "station_identity", "area_identity", "category", "score", "colour"],
-    "visible": ["name", "address", "category", "station", "area", "score"],
+    "visible": ["area", "score", "category"],
     "required": ["latitude", "longitude", "place", "name", "address", "area", "station", "category"]
   },
   "review": {
