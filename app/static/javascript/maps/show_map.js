@@ -5,9 +5,8 @@ function show_map(lat, lng, zoom) {
             center: new google.maps.LatLng(lat, lng),
             zoom: zoom,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
-            streetViewControl: false,
-            overviewMapControl: false,
-            rotateControl: false
+            mapTypeControl: false,
+            streetViewControl: false
         });
     return map
 }
