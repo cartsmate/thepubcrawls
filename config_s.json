@@ -13,7 +13,7 @@
     "model": ["review_identity", "pub_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games"],
     "column": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games"],
     "visible": ["visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer"],
-    "photo": ["atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "blank1", "blank2"],
+    "photo": ["atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection"],
     "score": ["atmosphere", "clientele", "decor", "friendliness", "selection"]
   },
   "station": {
