@@ -12,6 +12,7 @@ functions = Functions()
 
 @app.route("/")
 def route():
+    # return render_template('login.html')
     return redirect(url_for('login'))
 
 
