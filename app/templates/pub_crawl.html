@@ -42,6 +42,38 @@ function initMap() {
     });
 
 };
+function removeOptions(selectElement) {
+   var i, L = selectElement.options.length - 1;
+   for(i = L; i >= 0; i--) {
+      selectElement.remove(i);
+   }
+}
+function area_changed(dropdown_pick) {
+    pub_area = {{ pub_area | tojson }}
+    var select = document.getElementById("start");
+    removeOptions(document.getElementById('start'));
+    var option = document.createElement("option");
+    option.text = "select from " + dropdown_pick + " pubs";
+    select.add(option);
+    if (dropdown_pick == 'all') {
+        for(var i = 0; i < pub_area.length; i++) {
+            var opt = pub_area[i][1];
+            var el = document.createElement("option");
+            el.textContent = pub_area[i][1];
+            el.value = pub_area[i][0];
+            select.appendChild(el);
+        }
+    } else {
+        filteredArray = pub_area.filter(item => item[2] == dropdown_pick);
+        for(var i = 0; i < filteredArray.length; i++) {
+            var opt = filteredArray[i][1];
+            var el = document.createElement("option");
+            el.textContent = filteredArray[i][1];
+            el.value = filteredArray[i][0];
+            select.appendChild(el);
+        }
+    }
+}
 </script>
 
 {% endblock %}
@@ -71,12 +103,23 @@ function initMap() {
         </div>
     </div>-->
     <div class="form-group row">
+        <label class="control-label col-sm-2" for="start">Area:</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="area" name="area" onchange="area_changed(this.value);">
+              <option value="all"></option>
+                {% for area in area_list %}
+                    <option value="{{area}}">{{area}}</option>
+                {% endfor %}
+          </select>
+        </div>
+    </div>
+    <div class="form-group row">
         <label class="control-label col-sm-2" for="start">Start pub:</label>
         <div class="col-sm-10">
           <select class="form-control" id="start" name="start" required>
               <option value=""></option>
-                {% for place in place_list %}
-                    <option value="{{place[1]}}">{{place[0]}}</option>
+                {% for pa in pub_area %}
+                    <option value="{{pa[0]}}">{{pa[1]}}</option>
                 {% endfor %}
           </select>
         </div>
@@ -99,17 +142,15 @@ function initMap() {
         <label class="control-label col-sm-2" for="favourite">Favourite:</label>
         <div class="col-sm-10">
             <select class="form-control" id="favourite" name="favourite">
-                <option value="all">Choose favourite pub category ---</option>
-                <option value="atmosphere">Atmosphere</option>
-                <option value="cleanliness">Cleanliness</option>
-                <option value="clientele">Clientele</option>
-                <option value="decor">Decor</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="food">Food</option>
-                <option value="friendliness">Friendliness</option>
-                <option value="opening">Opening</option>
-                <option value="price">Price</option>
-                <option value="selection">Selection</option>
+                <option value="all">Optional: pub feature ---</option>
+                <option value="tv">Live sport on tv</option>
+                <option value="garden">Outdoor space</option>
+                <option value="music">Live entertainment</option>
+                <option value="late">Past 11pm opening</option>
+                <option value="food">Serves food</option>
+                <option value="toilets">Super clean washrooms</option>
+                <option value="cheap">Money saver</option>
+                <option value="games">Board games and quiz nights</option>
             </select>
         </div>
     </div>
@@ -117,7 +158,7 @@ function initMap() {
         <label class="control-label col-sm-2" for="stops">No.of stops:</label>
         <div class="col-sm-10">
             <select class="form-control" id="stops" name="stops" required>
-                <option value=""></option>
+                <option style='color: #ffff00' value="">Required ...</option>
                 {% for number in range_list %}
                     <option value="{{number}}">{{number}}</option>
                 {% endfor %}

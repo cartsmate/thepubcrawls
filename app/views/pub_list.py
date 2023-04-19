@@ -9,16 +9,6 @@ config = Configurations().get_config()
 
 @app.route("/pub/list/<list_type>/<id_type>")
 def pub_list(list_type, id_type):
-    # if session.get('logged_in') != True:
-    #     print('/pub/list/<list_type>/<id_type>')
-    #     return redirect(url_for('login'))
-    # kwargs = json.loads(kwargs)
-    # list_type = kwargs['list_type']
-    # id_type = kwargs['id_type']
-    print('list_type')
-    print(list_type)
-    print('id_type')
-    print(id_type)
     if list_type == 'all':
         df = Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False)
         heading = "All pubs"
@@ -30,7 +20,6 @@ def pub_list(list_type, id_type):
         df = Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type] == id_type]\
             .sort_values(by=['score'], ascending=False)
         heading = id_type
-    print(df)
     pubs_reviews_json = Functions().df_to_dict(df)
     return render_template('pub_list.html', filter=heading, pubs_reviews=pubs_reviews_json, map_view=list_type,
                            map_lat=51.5, map_lng=-0.1, type=list_type, id=id_type)

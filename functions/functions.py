@@ -103,6 +103,7 @@ class Functions:
 
     def get_areas(self):
         df_areas = self.get_records(config['area']['aws_prefix'], config['area']['model'])
+        # print(df_areas)
         return df_areas
 
     def get_stations(self):
