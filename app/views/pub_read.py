@@ -1,7 +1,5 @@
 import os
 import pandas as pd
-from tkinter import *
-import tkinter.messagebox
 from flask import render_template, request, redirect, url_for, g, session, flash
 from app import app
 from config import Configurations
