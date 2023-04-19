@@ -52,11 +52,11 @@ function initMap(){
     }
     pubs = pubs.filter (obj => !(obj.place == pub_first_stop.place))
     if ( crawl.favourite != 'all' ) {
-        pubs = pubs.filter (obj => (obj[crawl.favourite] >= 7 || obj['star'] == crawl.favourite))
+        pubs = pubs.filter (obj => (obj[crawl.favourite] === true))
     }
     if (pubs.length > 0 ) {
         stop_offs.push(pub_first_stop)
-        for (let i=0; i<crawl.stops-1; i++) {
+        for (let i=0; i<crawl.stops; i++) {
             list_got = distancing(pub_first_stop, stop_offs[i], pubs, crawl)
             if ( list_got === undefined ) {
                 break;

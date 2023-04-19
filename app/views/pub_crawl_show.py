@@ -4,7 +4,7 @@ from config import Configurations
 from functions.functions import Functions
 
 config = Configurations().get_config()
-function = Functions()
+config2 = Configurations().get_config2()
 
 
 @app.route("/pub/crawl/show", methods=['GET', 'POST'])
@@ -13,12 +13,9 @@ def pub_crawl_show():
     #     return redirect(url_for('login'))
     if request.method == 'GET':
         print('/pub/crawl/show: POST')
-        start_inbound = request.form['start']
-        print('start: ' + start_inbound)
         return render_template('pub_crawl_show.html', methods='get')
     if request.method == 'POST':
         print('/pub/crawl/show: POST')
-
         try:
             station = request.form['station']
         except:
@@ -37,11 +34,10 @@ def pub_crawl_show():
             criteria = request.form['criteria']
         except:
             criteria = "NONE"
-        df_pubs = function.get_pubs_reviews()
+        df_pubs = Functions().get_pubs_reviews()
         df_pub = df_pubs.loc[df_pubs['place'] == start]
-        print(df_pub)
-        pubs_json = function.df_to_dict(df_pubs)
-        pub_json = function.df_to_dict(df_pub)
-        return render_template('pub_crawl_show.html', google_key=config['google_key'], station=station, start=start,
+        pubs_json = Functions().df_to_dict(df_pubs)
+        pub_json = Functions().df_to_dict(df_pub)
+        return render_template('pub_crawl_show.html', google_key=config2['google_key'], station=station, start=start,
                                walk=walk, favourite=favourite,
                                stops=stops, criteria=criteria, pubs=pubs_json, pub=pub_json)
