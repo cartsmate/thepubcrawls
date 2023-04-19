@@ -29,7 +29,7 @@ def pub_add():
                   longitude=-0.1, category="", station_identity="", area_identity="")
 
     add_review = Review(review_identity=str(Functions().generate_uuid()), pub_identity=new_pub_id, review_deletion=False,
-                        visit=date_now,
+                        visit=date_now, rank=0,
                         star="", atmosphere=0, cleanliness=0, clientele=0, decor=0, entertainment=0, food=0,
                         friendliness=0, opening=0, price=0, selection=0, reviewer="", tv=False, garden=False,
                         music=False, late=False, meals=False, toilets=False, cheap=False, games=False)

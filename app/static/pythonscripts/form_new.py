@@ -43,6 +43,7 @@ class FormNew:
                             meals=True if request.form.get('meals') == 'on' else False,
                             toilets=True if request.form.get('toilets') == 'on' else False,
                             cheap=True if request.form.get('cheap') == 'on' else False,
-                            games=True if request.form.get('games') == 'on' else False)
+                            games=True if request.form.get('games') == 'on' else False,
+                            rank=request.form['rank'])
         df_new_pub = pd.DataFrame([new_review.__dict__])
         return df_new_pub

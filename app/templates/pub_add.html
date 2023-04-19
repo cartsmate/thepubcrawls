@@ -1,4 +1,4 @@
-{% extends 'navbar.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Add New Pub{% endblock %}
 
@@ -84,15 +84,23 @@ function showMap(summary, full, zoom, lat, lng){
 </script>
 {% endblock %}
 
-{% block full_screen %}<div id="map" style="width:100%; height:400px;"></div>{% endblock %}
-
-{% block form %}
-<form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">
-    {% include "pub_form.html" %}
-    <div class="form-group row" style="margin: 15px 0;">
-        <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit" disabled>Submit</button>
+{% block full_screen %}
+<div class="col center-block">
+    <div class="row">
+        <div id="map" style="width:100%; height:400px;"></div>
     </div>
-</form>
+    <div class="row">
+        <input id="search-input-navbar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">
+            {% include "pub_form.html" %}
+            <div class="form-group row" style="margin: 15px 0;">
+                <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit" disabled>Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
 
 {% block pub_add_btn %}<a class="nav-link active_custom" href="{{ url_for('pub_add') }}">Add New Venue</a>{% endblock %}
