@@ -1,6 +1,8 @@
 import os
 import pandas as pd
-from flask import render_template, request, redirect, url_for, g, session
+from tkinter import *
+import tkinter.messagebox
+from flask import render_template, request, redirect, url_for, g, session, flash
 from app import app
 from config import Configurations
 from functions.functions import Functions
@@ -34,12 +36,15 @@ def pub_read(pub_id):
                 df_new_pub = FormNew().get_pub(pub_id)
 
                 df_pub_appended = Dataframes().append_df(Functions().get_pubs(), df_new_pub)
+                error=None
                 if df_pub_appended.shape[1] == len(config['pub']['model']):
                     Dataframes().to_csv(df_pub_appended, 'pub')
                     s3_resp = Functions().s3_write(df_pub_appended, config['pub']['aws_key'])
                 else:
                     print('Error in processing')
-
+                    # tkinter.messagebox.showwarning("Error in processing", "Failed to save new venue")
+                    error = "Failed to save new venue"
+                    flash(error)
                 df_new_review = FormNew().get_review(pub_id)
                 df_review_appended = Dataframes().append_df(Functions().get_reviews(), df_new_review)
                 if df_review_appended.shape[1] == len(config['review']['model']):
@@ -47,10 +52,16 @@ def pub_read(pub_id):
                     s3_resp = Functions().s3_write(df_review_appended, config['review']['aws_key'])
                 else:
                     print('Error in processing')
+                    # top = tkinter.Tk()
+                    # top.geometry("150x150")
+                    # tkinter.messagebox.showwarning("Error in processing", "Failed to save review")
+                    # top.mainloop()
+                    error = "Failed to save review"
+                    flash(error)
                 df_new_merged = Dataframes().merge_dfs(df_new_pub, df_new_review)
                 df_area_added = Dataframes().add_area(df_new_merged)
                 df_station_added = Dataframes().add_station(df_area_added)
-                return render_template('pub_read.html', form_type='read', google_key=config2['google_key'],
+                return render_template('pub_read.html', error=error, form_type='read', google_key=config2['google_key'],
                                        pub_review=Functions().df_to_dict(df_station_added), config=config)
             else:
                 print('duplicate pub')
