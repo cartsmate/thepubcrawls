@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Photo Upload{% endblock %}
+
+{% block script %}
+<script>
+function onLoad() {
+pub_identity = {{ pub_identity | tojson }}
+}
+</script>
+{% endblock %}
+
+{% block full_screen %}
+<div class="form-group row">
+    <h4>Select a photo to upload</h4>
+    <form method="post" action="{{ url_for('photo_upload', pub_identity=pub_identity)}}" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Submit" class="btn btn-info">
+        </p>
+    </form>
+</div>
+{% endblock %}

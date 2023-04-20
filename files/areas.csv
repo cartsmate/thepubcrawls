@@ -1,5 +1,4 @@
 area_identity,area_deletion,area,type,latitude,longitude,parent_identity
-_999,False,Test Area,area,51.5,-0.01,
 33869d87-05dc-4728-a03a-c94cbab80292,False,Belgravia,area,51.497189362627,-0.15312444757987,46d55da1-a72f-4221-bddc-676473092b49
 a8270094-1d5b-4558-a1d0-5be568497233,False,Shepherds Bush,area,51.50616,-0.22483,6e1f4a8e-094c-4453-810d-a9a871de29c4
 632602fe-f847-4e12-9e03-31e3d22aa344,False,Mayfair,area,51.51334,-0.14812,46d55da1-a72f-4221-bddc-676473092b49

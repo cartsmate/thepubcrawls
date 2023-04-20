@@ -8,9 +8,16 @@ from functions.functions import Functions
 from app.static.pythonscripts.form_input import FormInput
 from app.static.pythonscripts.form_new import FormNew
 from app.static.pythonscripts.dataframes import Dataframes
+from werkzeug.utils import secure_filename
 
 config = Configurations().get_config()
 config2 = Configurations().get_config2()
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route("/pub/<pub_id>", methods=['GET', 'POST'])
