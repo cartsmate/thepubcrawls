@@ -22,7 +22,6 @@ class Functions:
 
     def get_areas(self):
         df_areas = self.get_records(config['area']['aws_prefix'], config['area']['model'])
-        # print(df_areas)
         return df_areas
 
     def get_records(self, aws_prefix, list_of_columns):
@@ -79,9 +78,7 @@ class Functions:
 
     def get_pubs_area(self):
         df_pubs = self.get_pubs()
-        # df_stations = self.get_stations()
         df_areas = self.get_areas()
-        # df_stations = df_stations[['station_identity', 'station']]
         df_stations = df_areas[['area_identity', 'area']]
         df_pubs_station = pd.merge(df_pubs, df_stations, how='left', on='area_identity')
         return df_pubs_station
@@ -112,7 +109,6 @@ class Functions:
 
     def get_areas(self):
         df_areas = self.get_records(config['area']['aws_prefix'], config['area']['model'])
-        # print(df_areas)
         return df_areas
 
     def get_stations(self):
@@ -127,9 +123,6 @@ class Functions:
     def get_pubs_reviews_areas(self):
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
         df_pubs_reviews['score'] = round(df_pubs_reviews.loc[:, config['review']['score']].sum(axis=1) * 10)
-        # df_pubs_reviews['score'] = df_pubs_reviews.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
-        #                                                    'entertainment', 'food', 'friendliness',
-        #                                                    'opening', 'price', 'selection']].sum(axis=1)
         df_pubs_reviews['colour'] = np.where(df_pubs_reviews['reviewer'] == 'BOTH',
                                              config['colour']['reviewed'],
                                              np.where(df_pubs_reviews['reviewer'] == 'ANDY',
@@ -181,12 +174,7 @@ class Functions:
 
     def get_pub_review(self, id_code):
         df_pub_review = pd.merge(self.get_pub_station(id_code), self.get_review(id_code), how='left', on='pub_identity')
-
         df_pub_review['score'] = round(df_pub_review.loc[:, config['review']['score']].mean(axis=1) * 10)
-        print(df_pub_review['score'])
-        # df_pub_review['score'] = df_pub_review.loc[:, ['atmosphere', 'cleanliness', 'clientele', 'decor',
-        #                                                'entertainment', 'food', 'friendliness', 'opening', 'price',
-        #                                                'selection']].sum(axis=1)
         df_pub_review['colour'] = np.where(df_pub_review['reviewer'] == 'BOTH',
                                            config['colour']['reviewed'],
                                            np.where(df_pub_review['reviewer'] == 'ANDY',
@@ -201,8 +189,6 @@ class Functions:
         return new_id
 
     def s3_write(self, upload_object: object, s3_obj_name: object) -> object:
-        print('s3_obj_name')
-        print(s3_obj_name)
         client = boto3.client("s3", aws_access_key_id=config2['access_id'], aws_secret_access_key=config2['access_key'])
 
         with io.StringIO() as csv_buffer:
