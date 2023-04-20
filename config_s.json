@@ -7,6 +7,11 @@
     "visible": ["name", "area", "score", "category"],
     "required": ["latitude", "longitude", "place", "name", "address", "area", "station", "category"]
   },
+  "crawl": {
+    "aws_key": "crawls.csv",
+    "aws_prefix": "crawl",
+    "model": ["crawl_identity", "crawl_deletion", "start", "walk", "favourite", "stops", "criteria"]
+  },
   "review": {
     "aws_key": "scores.csv",
     "aws_prefix": "score",

@@ -8,6 +8,7 @@ from config import Configurations
 from functions.functions import Functions
 
 config = Configurations().get_config()
+config2 = Configurations().get_config2()
 
 
 # @app.route("/home/<on_line>")
@@ -32,6 +33,19 @@ def home():
     areas_json = Functions().df_to_dict(df_all_area_count)
     pubs_reviews_json = Functions().df_to_dict(
         Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False))
-
-    return render_template('home.html', pubs_reviews=pubs_reviews_json, photo_array=config, map_view="stations", map_lat=51.5, map_lng=-0.1, config=config,
-                           row_loop=range(3), col_loop=range(4), areas=areas_json)
+    df_crawl = Functions().get_crawls()
+    df_crawl_last = df_crawl.tail(1)
+    start = df_crawl_last['start'].values[0]
+    walk = df_crawl_last['walk'].apply(str).values[0]
+    favourite = df_crawl_last['favourite'].values[0]
+    stops = df_crawl_last['stops'].apply(str).values[0]
+    criteria = df_crawl_last['criteria'].values[0]
+    df_pubs = Functions().get_pubs_reviews()
+    df_pub = df_pubs.loc[df_pubs['place'] == start]
+    pubs_json = Functions().df_to_dict(df_pubs)
+    pub_json = Functions().df_to_dict(df_pub)
+    return render_template('home.html', pubs_reviews=pubs_reviews_json, photo_array=config, map_view="stations",
+                               map_lat=51.5, map_lng=-0.1, config=config, google_key=config2['google_key'],
+                               row_loop=range(3), col_loop=range(4), areas=areas_json, start=start,
+                                   walk=walk, favourite=favourite, stops=stops, criteria=criteria,
+                           pubs=pubs_json, pub=pub_json)
