@@ -21,7 +21,6 @@
     color: yellow;
 }
 </style>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=marker&callback=initMap" type="text/javascript"></script>
 <script>
 function myFunction(check_item) {
   var checkBox = document.getElementById(check_item);
@@ -42,8 +41,17 @@ function onLoad(){
     var config = {{ config | tojson }}
     var areas = {{ areas | tojson }}
     var pubs_reviews = {{ pubs_reviews | tojson }}
+    var js = document.createElement("script");
+    js.type = "text/javascript";
+    if ( window.navigator.onLine == true) {
+        js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
+        document.head.appendChild(js)
+    } else {
+        alert('You appear to offline so maps cannot be displayed')
+    }
 }
 function initMap(){
+
     key = {{ google_key | tojson }}
     pubs = {{ pubs | tojson }}
     pub = {{ pub | tojson }}
@@ -102,7 +110,7 @@ function initMap(){
     <p style="padding: 5px 0 0 0">
     Welcome to the Pub Crawls.
     Create your own pub crawl or search for pubs by location, rating or favourite features.
-    Please enjoy our site and remember to drink responsibly .......
+    Please enjoy the site and remember to drink responsibly .......
     </p>
 </div>
 
