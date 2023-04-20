@@ -16,6 +16,15 @@ class Functions:
         df_dict = df.to_dict(orient='records')
         return df_dict
 
+    def get_crawls(self):
+        df_crawls = self.get_records(config['crawl']['aws_prefix'], config['crawl']['model'])
+        return df_crawls
+
+    def get_areas(self):
+        df_areas = self.get_records(config['area']['aws_prefix'], config['area']['model'])
+        # print(df_areas)
+        return df_areas
+
     def get_records(self, aws_prefix, list_of_columns):
         df = self.read_csv(aws_prefix)
         if aws_prefix == 'venue':
