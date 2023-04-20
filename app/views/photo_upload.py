@@ -2,7 +2,7 @@ import os
 import json
 import pandas as pd
 from configparser import ConfigParser
-from PIL import Image
+# from PIL import Image
 from flask import render_template, redirect, url_for, g, session, request, flash
 from app import app
 from config import Configurations
