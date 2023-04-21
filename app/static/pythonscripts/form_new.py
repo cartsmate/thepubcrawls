@@ -15,7 +15,8 @@ class FormNew:
                       name=request.form['name'], address=request.form['address'],
                       latitude=request.form['latitude'], longitude=request.form['longitude'],
                       station_identity=request.form['station_identity'],
-                      area_identity=request.form['area_identity'], category=request.form['category'].lower())
+                      area_identity=request.form['area_identity'], category=request.form['category'].lower(),
+                      rank=request.form['rank'])
         df_new_pub = pd.DataFrame([new_pub.__dict__])
         return df_new_pub
 
@@ -43,7 +44,6 @@ class FormNew:
                             meals=True if request.form.get('meals') == 'on' else False,
                             toilets=True if request.form.get('toilets') == 'on' else False,
                             cheap=True if request.form.get('cheap') == 'on' else False,
-                            games=True if request.form.get('games') == 'on' else False,
-                            rank=request.form['rank'])
+                            games=True if request.form.get('games') == 'on' else False)
         df_new_pub = pd.DataFrame([new_review.__dict__])
         return df_new_pub

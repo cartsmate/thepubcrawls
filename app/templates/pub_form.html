@@ -7,9 +7,9 @@
 </div>
 {% for field in config['pub']['column'] %}
     {% if field in config['pub']['visible'] %}
-        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'text', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}')</script>
+        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'text', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}', '{{config['control']['star']}}')</script>
     {% else %}
-        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'hidden', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}')</script>
+        <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'hidden', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}', '{{config['control']['star']}}')</script>
     {% endif %}
 {% endfor %}
 
@@ -71,8 +71,8 @@ document.getElementById('pub_vis').appendChild(form_node);
 {% endfor %}
 {% for field in config['review']['column'] %}
     {% if field in config['review']['visible'] %}
-        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'text', '{{config['review']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}')</script>
+        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'text', '{{config['review']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}', '{{config['control']['star']}}')</script>
     {% else %}
-        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'hidden', '{{config['review']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}')</script>
+        <script>insert_line('rev_vis', '{{form}}', '{{field}}', 'hidden', '{{config['review']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}', '{{config['control']['star']}}')</script>
     {% endif %}
 {% endfor %}

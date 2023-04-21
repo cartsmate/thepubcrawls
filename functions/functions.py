@@ -165,6 +165,7 @@ class Functions:
 
     def get_pub(self, id_code):
         df_pub = self.get_record(self.get_records(config['pub']['aws_prefix'], config['pub']['model']), id_code)
+        # print(df_pub)
         return df_pub
 
     def get_review(self, pub_id):
