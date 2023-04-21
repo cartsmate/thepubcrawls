@@ -1,4 +1,4 @@
-function insert_line(which_list, toggle, name, type, list_required, date_controls, input_controls, dropdown_controls, slider_controls, check_controls){
+function insert_line(which_list, toggle, name, type, list_required, date_controls, input_controls, dropdown_controls, slider_controls, check_controls, star_controls){
     var actual_width = window.innerWidth;
     if(actual_width < 480) {
         var slider_col = "col-sm-6"
@@ -60,6 +60,38 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
             option.text = options[i];
             select_node.appendChild(option);
         }
+    } else if (star_controls.includes(name)) {
+        console.log('star')
+        const div_node = document.createElement("div");
+        div_node.setAttribute("class", "col-sm-9");
+        id_div = "div_" + name
+        div_node.setAttribute("id", id_div);
+        document.getElementById(id_row).appendChild(div_node);
+        const star_node1 = document.createElement("span");
+        star_node1.setAttribute("class", "fa fa-star fa-3x");
+        star_node1.setAttribute("id", name);
+        star_node1.setAttribute("name", name);
+        document.getElementById(id_div).appendChild(star_node1);
+        const star_node2 = document.createElement("span");
+        star_node2.setAttribute("class", "fa fa-star fa-3x");
+        star_node2.setAttribute("id", name + "2");
+        star_node2.setAttribute("name", name + "2");
+        document.getElementById(id_div).appendChild(star_node2);
+        const star_node3 = document.createElement("span");
+        star_node3.setAttribute("class", "fa fa-star fa-3x");
+        star_node3.setAttribute("id", name + "3");
+        star_node3.setAttribute("name", name + "3");
+        document.getElementById(id_div).appendChild(star_node3);
+        const star_node4 = document.createElement("span");
+        star_node4.setAttribute("class", "fa fa-star fa-3x");
+        star_node4.setAttribute("id", name + "4");
+        star_node4.setAttribute("name", name + "4");
+        document.getElementById(id_div).appendChild(star_node4);
+        const star_node5 = document.createElement("span");
+        star_node5.setAttribute("class", "fa fa-star fa-3x");
+        star_node5.setAttribute("id", name + "5");
+        star_node5.setAttribute("name", name + "5");
+        document.getElementById(id_div).appendChild(star_node5);
     } else if (slider_controls.includes(name)) {
         console.log('slider')
         const div_node = document.createElement("div");

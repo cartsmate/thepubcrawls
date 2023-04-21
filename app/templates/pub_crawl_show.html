@@ -1,4 +1,4 @@
-{% extends 'navbar.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Pub Crawls Showing{% endblock %}
 
@@ -78,13 +78,21 @@ function initMap(){
 <div id="header_listing"></div>
 {% endblock %}
 
-{% block form %}
-<div id="map" style="width:100%; height:450px;"></div>
+{% block map %}
+<div id="map" style="width:100%; height:200px;"></div>
 {% endblock %}
 
-{% block image %}
+{% block photo %}
 <div class="col">
     <div class="row" id="route"></div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="col">
+    <div class="row justify-content-center top-buffer">
+        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+    </div>
 </div>
 {% endblock %}
 

@@ -2,9 +2,9 @@
   "pub": {
     "aws_key": "venues.csv",
     "aws_prefix": "venue",
-    "model": ["pub_identity", "pub_deletion", "place", "name", "address", "latitude", "longitude", "category", "station_identity", "area_identity"],
-    "column": ["pub_identity", "pub_deletion", "place", "name", "address", "station", "area", "latitude", "longitude", "station_identity", "area_identity", "category", "score", "colour"],
-    "visible": ["name", "address", "station", "area", "score", "category"],
+    "model": ["pub_identity", "pub_deletion", "place", "name", "address", "latitude", "longitude", "category", "rank", "station_identity", "area_identity"],
+    "column": ["pub_identity", "pub_deletion", "place", "name", "address", "station", "area", "latitude", "longitude", "station_identity", "area_identity", "category", "colour", "rank"],
+    "visible": ["name", "address", "station", "area", "category", "rank"],
     "required": ["latitude", "longitude", "place", "name", "address", "area", "station", "category"]
   },
   "crawl": {
@@ -15,9 +15,9 @@
   "review": {
     "aws_key": "scores.csv",
     "aws_prefix": "score",
-    "model": ["review_identity", "pub_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "rank"],
-    "column": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "rank"],
-    "visible": ["visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "rank"],
+    "model": ["review_identity", "pub_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games"],
+    "column": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "score"],
+    "visible": ["visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "score"],
     "photo": ["atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection"],
     "score": ["atmosphere", "clientele", "decor", "friendliness", "selection"]
   },
@@ -36,7 +36,8 @@
     "input": ["name", "address", "station", "area"],
     "dropdown": ["category", "star", "reviewer"],
     "slider": ["score", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection"],
-    "check": ["tv", "garden", "music", "late", "meals", "toilets", "cheap", "games"]
+    "check": ["tv", "garden", "music", "late", "meals", "toilets", "cheap", "games"],
+    "star": ["rank"]
   },
   "colour" : {
     "all": "#2F2FA2",

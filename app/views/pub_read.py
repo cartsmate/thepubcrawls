@@ -26,6 +26,7 @@ def pub_read(pub_id):
     #     return redirect(url_for('login'))
     print('pub_read')
     df_pub_review = Functions().get_pub_review(pub_id)
+    print(df_pub_review['rank'])
     if request.method == 'GET':
         print('pub_read: GET')
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
