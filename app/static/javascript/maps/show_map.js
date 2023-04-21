@@ -6,7 +6,8 @@ function show_map(lat, lng, zoom) {
             zoom: zoom,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
-            streetViewControl: false
+            streetViewControl: false,
+            zoomControl: false
         });
     return map
 }
