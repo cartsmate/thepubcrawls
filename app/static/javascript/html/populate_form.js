@@ -18,9 +18,10 @@ function populate_form(form){
                 console.log('star: ' + pub_review_fields[i])
                 console.log('star controls..........')
                 console.log(pub_review[0][pub_review_fields[i]])
+                document.getElementById(pub_review_fields[i]).value = pub_review[0][pub_review_fields[i]];
                 if (pub_review[0][pub_review_fields[i]] >= 1) {
                     console.log('got a five !!!!!')
-                    document.getElementById(pub_review_fields[i]).className = "fa fa-star fa-3x checked"
+                    document.getElementById(pub_review_fields[i]+"1").className = "fa fa-star fa-3x checked"
                 }
                 if (pub_review[0][pub_review_fields[i]] >= 2) {
                     console.log('got a five !!!!!')

@@ -40,9 +40,9 @@ def pub_read(pub_id):
             if df_pubs_reviews.loc[df_pubs_reviews['place'] == str(request.form['place'])].empty:
                 print('new / not dupe pub')
                 df_new_pub = FormNew().get_pub(pub_id)
-
+                print('got new pub')
                 df_pub_appended = Dataframes().append_df(Functions().get_pubs(), df_new_pub)
-                error=None
+                print(df_pub_appended)
                 if df_pub_appended.shape[1] == len(config['pub']['model']):
                     Dataframes().to_csv(df_pub_appended, 'pub')
                     s3_resp = Functions().s3_write(df_pub_appended, config['pub']['aws_key'])

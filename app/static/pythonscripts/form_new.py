@@ -17,6 +17,7 @@ class FormNew:
                       station_identity=request.form['station_identity'],
                       area_identity=request.form['area_identity'], category=request.form['category'].lower(),
                       rank=request.form['rank'])
+        print(new_pub)
         df_new_pub = pd.DataFrame([new_pub.__dict__])
         return df_new_pub
 

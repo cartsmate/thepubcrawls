@@ -67,10 +67,26 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
         id_div = "div_" + name
         div_node.setAttribute("id", id_div);
         document.getElementById(id_row).appendChild(div_node);
+
+        var check_node = document.createElement("input");
+        check_node.setAttribute("type", 'checkbox');
+        check_node.setAttribute("id", name + "check1");
+        check_node.setAttribute("name", name + "check1");
+        check_node.setAttribute("style", "display: none;");
+        check_node.setAttribute("onclick", "myStarFunction(name + 'check1'')")
+        document.getElementById(id_div).appendChild(check_node);
+
+        const input_node = document.createElement("input");
+        input_node.setAttribute("name", name);
+        input_node.setAttribute("type", "text");
+        input_node.setAttribute("class", "form-control");
+        input_node.setAttribute("id", name);
+        input_node.setAttribute("style", "display: none;");
+        document.getElementById(id_div).appendChild(input_node);
         const star_node1 = document.createElement("span");
         star_node1.setAttribute("class", "fa fa-star fa-3x");
-        star_node1.setAttribute("id", name);
-        star_node1.setAttribute("name", name);
+        star_node1.setAttribute("id", name + "1");
+        star_node1.setAttribute("name", name + "1");
         document.getElementById(id_div).appendChild(star_node1);
         const star_node2 = document.createElement("span");
         star_node2.setAttribute("class", "fa fa-star fa-3x");
