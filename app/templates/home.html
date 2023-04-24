@@ -6,21 +6,12 @@
 <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
 <!--<script src="https://apis.google.com/js/api.js" type="text/javascript"></script>-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/distancing.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/display.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/display_none.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_table.js') }}"></script>
-<style>
-.top-buffer {
-    margin-top:20px;
-}
-.andy_width {
-    width: 100%
-}
-.checked {
-    color: yellow;
-}
-</style>
+
 <script>
 function myFunction(check_item) {
   var checkBox = document.getElementById(check_item);

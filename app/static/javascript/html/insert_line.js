@@ -62,52 +62,181 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
         }
     } else if (star_controls.includes(name)) {
         console.log('star')
-        const div_node = document.createElement("div");
-        div_node.setAttribute("class", "col-sm-9");
-        id_div = "div_" + name
-        div_node.setAttribute("id", id_div);
-        document.getElementById(id_row).appendChild(div_node);
 
-        var check_node = document.createElement("input");
-        check_node.setAttribute("type", 'checkbox');
-        check_node.setAttribute("id", name + "check1");
-        check_node.setAttribute("name", name + "check1");
-        check_node.setAttribute("style", "display: none;");
-        check_node.setAttribute("onclick", "myStarFunction(name + 'check1'')")
-        document.getElementById(id_div).appendChild(check_node);
+        const div_main_node = document.createElement("div");
+        div_main_node.setAttribute("class", "col-sm-9");
+        id_div = "div_" + name
+        div_main_node.setAttribute("id", id_div);
+        document.getElementById(id_row).appendChild(div_main_node);
+
+        const form_node = document.createElement("div");
+        form_node.setAttribute("class", "form-group row");
+        id_row = "id_row_" + name
+        form_node.setAttribute("id", id_row);
+        document.getElementById("div_rank").appendChild(form_node);
 
         const input_node = document.createElement("input");
-        input_node.setAttribute("name", name);
         input_node.setAttribute("type", "text");
         input_node.setAttribute("class", "form-control");
         input_node.setAttribute("id", name);
+        input_node.setAttribute("name", name);
         input_node.setAttribute("style", "display: none;");
         document.getElementById(id_div).appendChild(input_node);
-        const star_node1 = document.createElement("span");
-        star_node1.setAttribute("class", "fa fa-star fa-3x");
-        star_node1.setAttribute("id", name + "1");
-        star_node1.setAttribute("name", name + "1");
-        document.getElementById(id_div).appendChild(star_node1);
-        const star_node2 = document.createElement("span");
-        star_node2.setAttribute("class", "fa fa-star fa-3x");
-        star_node2.setAttribute("id", name + "2");
-        star_node2.setAttribute("name", name + "2");
-        document.getElementById(id_div).appendChild(star_node2);
-        const star_node3 = document.createElement("span");
-        star_node3.setAttribute("class", "fa fa-star fa-3x");
-        star_node3.setAttribute("id", name + "3");
-        star_node3.setAttribute("name", name + "3");
-        document.getElementById(id_div).appendChild(star_node3);
-        const star_node4 = document.createElement("span");
-        star_node4.setAttribute("class", "fa fa-star fa-3x");
-        star_node4.setAttribute("id", name + "4");
-        star_node4.setAttribute("name", name + "4");
-        document.getElementById(id_div).appendChild(star_node4);
-        const star_node5 = document.createElement("span");
-        star_node5.setAttribute("class", "fa fa-star fa-3x");
-        star_node5.setAttribute("id", name + "5");
-        star_node5.setAttribute("name", name + "5");
-        document.getElementById(id_div).appendChild(star_node5);
+
+        var div_node = document.createElement("div");
+        div_node.setAttribute("class", "col");
+        id_div1 = "div_" + name + "1"
+        div_node.setAttribute("id", id_div1);
+        document.getElementById("id_row_rank").appendChild(div_node);
+
+        var check_node = document.createElement("input");
+        check_node.setAttribute("type", 'checkbox');
+        check_node.setAttribute("id", 'rank1');
+        check_node.setAttribute("name", 'rank1');
+        check_node.setAttribute("style", "display: none;");
+        check_node.setAttribute("onclick", "starClick(1)")
+        document.getElementById(id_div1).appendChild(check_node);
+
+        var img_label_node = document.createElement("label")
+        img_label_node.setAttribute("for", 'rank1');
+        id_img_label = "id_img_" + 'rank1'
+        img_label_node.setAttribute("id", id_img_label);
+        document.getElementById(id_div1).appendChild(img_label_node);
+
+        var img_node = document.createElement("img");
+        img_node.setAttribute("src", "/static/icons/star.png")
+        img_node.setAttribute("width", "50")
+        img_node.setAttribute("height", "50")
+        id_img = "img_" + 'rank1'
+        img_node.setAttribute("id", id_img);
+        img_node.setAttribute("name", id_img);
+        img_node.style.opacity = "0.25"
+        document.getElementById(id_img_label).appendChild(img_node);
+
+
+        var div_node = document.createElement("div");
+        div_node.setAttribute("class", "col");
+        id_div2 = "div_" + name + "2"
+        div_node.setAttribute("id", id_div2);
+        document.getElementById("id_row_rank").appendChild(div_node);
+
+        var check_node = document.createElement("input");
+        check_node.setAttribute("type", 'checkbox');
+        check_node.setAttribute("id", 'rank2');
+        check_node.setAttribute("name", 'rank2');
+        check_node.setAttribute("style", "display: none;");
+        check_node.setAttribute("onclick", "starClick(2)")
+        document.getElementById(id_div2).appendChild(check_node);
+
+        var img_label_node = document.createElement("label")
+        img_label_node.setAttribute("for", 'rank2');
+        id_img_label = "id_img_" + 'rank2'
+        img_label_node.setAttribute("id", id_img_label);
+        document.getElementById(id_div2).appendChild(img_label_node);
+
+        var img_node = document.createElement("img");
+        img_node.setAttribute("src", "/static/icons/star.png")
+        img_node.setAttribute("width", "50")
+        img_node.setAttribute("height", "50")
+        id_img = "img_" + 'rank2'
+        img_node.setAttribute("id", id_img);
+        img_node.setAttribute("name", id_img);
+        img_node.style.opacity = "0.25"
+        document.getElementById(id_img_label).appendChild(img_node);
+
+
+        var div_node = document.createElement("div");
+        div_node.setAttribute("class", "col");
+        id_div3 = "div_" + name + "3"
+        div_node.setAttribute("id", id_div3);
+        document.getElementById("id_row_rank").appendChild(div_node);
+
+        var check_node = document.createElement("input");
+        check_node.setAttribute("type", 'checkbox');
+        check_node.setAttribute("id", 'rank3');
+        check_node.setAttribute("name", 'rank3');
+        check_node.setAttribute("style", "display: none;");
+        check_node.setAttribute("onclick", "starClick(3)")
+        document.getElementById(id_div3).appendChild(check_node);
+
+        var img_label_node = document.createElement("label")
+        img_label_node.setAttribute("for", 'rank3');
+        id_img_label = "id_img_" + 'rank3'
+        img_label_node.setAttribute("id", id_img_label);
+        document.getElementById(id_div3).appendChild(img_label_node);
+
+        var img_node = document.createElement("img");
+        img_node.setAttribute("src", "/static/icons/star.png")
+        img_node.setAttribute("width", "50")
+        img_node.setAttribute("height", "50")
+        id_img = "img_" + "rank3"
+        img_node.setAttribute("id", id_img);
+        img_node.setAttribute("name", id_img);
+        img_node.style.opacity = "0.25"
+        document.getElementById(id_img_label).appendChild(img_node);
+
+
+        var div_node = document.createElement("div");
+        div_node.setAttribute("class", "col");
+        id_div4 = "div_" + name + "4"
+        div_node.setAttribute("id", id_div4);
+        document.getElementById("id_row_rank").appendChild(div_node);
+
+        var check_node = document.createElement("input");
+        check_node.setAttribute("type", 'checkbox');
+        check_node.setAttribute("id", 'rank4');
+        check_node.setAttribute("name", 'rank4');
+        check_node.setAttribute("style", "display: none;");
+        check_node.setAttribute("onclick", "starClick(4)")
+        document.getElementById(id_div4).appendChild(check_node);
+
+        var img_label_node = document.createElement("label")
+        img_label_node.setAttribute("for", 'rank4');
+        id_img_label = "id_img_" + 'rank4'
+        img_label_node.setAttribute("id", id_img_label);
+        document.getElementById(id_div4).appendChild(img_label_node);
+
+        var img_node = document.createElement("img");
+        img_node.setAttribute("src", "/static/icons/star.png")
+        img_node.setAttribute("width", "50")
+        img_node.setAttribute("height", "50")
+        id_img = "img_" + 'rank4'
+        img_node.setAttribute("id", id_img);
+        img_node.setAttribute("name", id_img);
+        img_node.style.opacity = "0.25"
+        document.getElementById(id_img_label).appendChild(img_node);
+
+
+        var div_node = document.createElement("div");
+        div_node.setAttribute("class", "col");
+        id_div5 = "div_" + name + "5"
+        div_node.setAttribute("id", id_div5);
+        document.getElementById("id_row_rank").appendChild(div_node);
+
+        var check_node = document.createElement("input");
+        check_node.setAttribute("type", 'checkbox');
+        check_node.setAttribute("id", 'rank5');
+        check_node.setAttribute("name", 'rank5');
+        check_node.setAttribute("style", "display: none;");
+        check_node.setAttribute("onclick", "starClick(5)")
+        document.getElementById(id_div5).appendChild(check_node);
+
+        var img_label_node = document.createElement("label")
+        img_label_node.setAttribute("for", 'rank5');
+        id_img_label = "id_img_" + 'rank5'
+        img_label_node.setAttribute("id", id_img_label);
+        document.getElementById(id_div5).appendChild(img_label_node);
+
+        var img_node = document.createElement("img");
+        img_node.setAttribute("src", "/static/icons/star.png")
+        img_node.setAttribute("width", "50")
+        img_node.setAttribute("height", "50")
+        id_img = "img_" + 'rank5'
+        img_node.setAttribute("id", id_img);
+        img_node.setAttribute("name", id_img);
+        img_node.style.opacity = "0.25"
+        document.getElementById(id_img_label).appendChild(img_node);
+
     } else if (slider_controls.includes(name)) {
         console.log('slider')
         const div_node = document.createElement("div");
