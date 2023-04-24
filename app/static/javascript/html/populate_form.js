@@ -19,25 +19,48 @@ function populate_form(form){
                 console.log('star controls..........')
                 console.log(pub_review[0][pub_review_fields[i]])
                 document.getElementById(pub_review_fields[i]).value = pub_review[0][pub_review_fields[i]];
-                if (pub_review[0][pub_review_fields[i]] >= 1) {
-                    console.log('got a five !!!!!')
-                    document.getElementById(pub_review_fields[i]+"1").className = "fa fa-star fa-3x checked"
-                }
-                if (pub_review[0][pub_review_fields[i]] >= 2) {
-                    console.log('got a five !!!!!')
-                    document.getElementById(pub_review_fields[i]+"2").className = "fa fa-star fa-3x checked"
-                }
-                if (pub_review[0][pub_review_fields[i]] >= 3) {
-                    console.log('got a five !!!!!')
-                    document.getElementById(pub_review_fields[i]+"3").className = "fa fa-star fa-3x checked"
-                }
-                if (pub_review[0][pub_review_fields[i]] >= 4) {
-                    console.log('got a five !!!!!')
-                    document.getElementById(pub_review_fields[i]+"4").className = "fa fa-star fa-3x checked"
-                }
-                if (pub_review[0][pub_review_fields[i]] >= 5) {
-                    console.log('got a five !!!!!')
-                    document.getElementById(pub_review_fields[i]+"5").className = "fa fa-star fa-3x checked"
+                check_item = pub_review[0][pub_review_fields[i]]
+                switch(check_item) {
+                    case 1:
+                        console.log('1')
+                        document.getElementById("img_rank1").style.opacity = "1.0"
+                        document.getElementById("img_rank2").style.opacity = "0.25"
+                        document.getElementById("img_rank3").style.opacity = "0.25"
+                        document.getElementById("img_rank4").style.opacity = "0.25"
+                        document.getElementById("img_rank5").style.opacity = "0.25"
+                        break;
+                    case 2:
+                        console.log('2')
+                        document.getElementById("img_rank1").style.opacity = "1.0"
+                        document.getElementById("img_rank2").style.opacity = "1.0"
+                        document.getElementById("img_rank3").style.opacity = "0.25"
+                        document.getElementById("img_rank4").style.opacity = "0.25"
+                        document.getElementById("img_rank5").style.opacity = "0.25"
+                        break;
+                    case 3:
+                        console.log('3')
+                        document.getElementById("img_rank1").style.opacity = "1.0"
+                        document.getElementById("img_rank2").style.opacity = "1.0"
+                        document.getElementById("img_rank3").style.opacity = "1.0"
+                        document.getElementById("img_rank4").style.opacity = "0.25"
+                        document.getElementById("img_rank5").style.opacity = "0.25"
+                        break;
+                    case 4:
+                        console.log('4')
+                        document.getElementById("img_rank1").style.opacity = "1.0"
+                        document.getElementById("img_rank2").style.opacity = "1.0"
+                        document.getElementById("img_rank3").style.opacity = "1.0"
+                        document.getElementById("img_rank4").style.opacity = "1.0"
+                        document.getElementById("img_rank5").style.opacity = "0.25"
+                        break;
+                    case 5:
+                        console.log('5')
+                        document.getElementById("img_rank1").style.opacity = "1.0"
+                        document.getElementById("img_rank2").style.opacity = "1.0"
+                        document.getElementById("img_rank3").style.opacity = "1.0"
+                        document.getElementById("img_rank4").style.opacity = "1.0"
+                        document.getElementById("img_rank5").style.opacity = "1.0"
+                        break;
                 }
             } else {
                 console.log('else: ' + pub_review_fields[i])

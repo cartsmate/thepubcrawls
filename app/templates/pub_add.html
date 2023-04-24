@@ -4,6 +4,7 @@
 
 {% block script %}
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/check.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
@@ -102,6 +103,25 @@ function showMap(summary, full, zoom, lat, lng){
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block footer %}
+<div class="col">
+    <div class="row justify-content-center top-buffer">
+        <a class="btn btn-primary" href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}" role="button">Edit Pub</a>
+        <a class="btn btn-primary" href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}" role="button">Add Photo</a>
+        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+    </div>
+    <div class="row justify-content-center top-buffer">
+        <div>Dinner icon made by <a href="https://www.flaticon.com/authors/pause08">Pause08</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
+        <div>Park and star icons made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
+        <div>Live sport icon made by <a href="https://www.flaticon.com/authors/Mihimihi">Mihimihi</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
+        <div>Toilet icon made by <a href="https://www.flaticon.com/authors/syafii5758">syafii5758</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
+        <div>Nightclub icon made by <a href="https://www.flaticon.com/authors/iconixar">iconixar</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
+        <div>Dartboard icon made by <a href="https://www.flaticon.com/authors/nhor-phai">Nhor Phai</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block pub_add_btn %}<a class="nav-link active_custom" href="{{ url_for('pub_add') }}">Add New Venue</a>{% endblock %}
