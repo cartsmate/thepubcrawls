@@ -1,4 +1,4 @@
-{% extends 'navbar.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Edit Pub{% endblock %}
 
@@ -74,7 +74,32 @@ function initMap(){
 </script>
 {% endblock %}
 
-{% block full_screen %}<div id="map" style="width:100%; height:400px;"></div>{% endblock %}
+{% block full_screen %}
+<div class="col">
+    <div class="row">
+        <div class="col-12 center-block text-center">
+            <strong>
+                <a style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">{{pub_review[0]['name']}}</a>
+            </strong>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block map %}
+<div class="col">
+    <div class="row">
+        <div id="map" style="width:100%; height:300px;"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block photo %}
+<a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
+    <img src="{{ url_for('static', filename='images/venue/' + pub_review[0]['name'].lower() + '.jpeg') }}"
+     onerror="this.onerror=null; this.src='/static/icons/camera.png'" style="width: 100%; height:300px; object-fit: cover;" alt="upload photo">
+</a>
+{% endblock %}
 
 {% block form %}
 <form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">

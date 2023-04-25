@@ -17,6 +17,7 @@ function create_table(filter, data) {
                         '<th>Star Quality</th>' +
                         '<th>Rev.</th>' +
                         '<th>Score</th>' +
+                        '<th>Rank</th>' +
                         '</tr></thead>'
    for (var key in pubs_reviews) {
         if (pubs_reviews[key].star == 0) {
@@ -35,6 +36,7 @@ function create_table(filter, data) {
             '<td><a href="/pub/list/area/' + pubs_reviews[key].area + '">' + pubs_reviews[key].area + '</a></td>' +
             str_reviewed +
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].score + '</a></td>' +
+            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].rank + '</a></td>' +
             '</tr>'
     }
     table_string += '</table>'
