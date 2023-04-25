@@ -86,15 +86,16 @@ function initMap(){
 {% endblock %}
 
 {% block photo %}
-<div class="col">
-    <div class="row">
-        <img class="d-block w-100" src="{{ url_for('static', filename='images/venue/' + pub_review[0]['name'].lower() + '.jpeg') }}" style="width: 100%" alt="">
-    </div>
-</div>
+<a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
+    <img src="{{ url_for('static', filename='images/venue/' + pub_review[0]['name'].lower() + '.jpeg') }}"
+     onerror="this.onerror=null; this.src='/static/icons/camera_2.png'" style="width: 100%; height:300px; object-fit: cover;" alt="upload photo">
+</a>
 {% endblock %}
 
 {% block form %}
+<div class="col center-block">
     {% include "pub_form.html" %}
+</div>
 {% endblock %}
 
 {% block pub_read_btn %}<a class="nav-link active_custom" href="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}">View</a>{% endblock %}</li>
@@ -119,6 +120,7 @@ function initMap(){
         <div>Toilet icon made by <a href="https://www.flaticon.com/authors/syafii5758">syafii5758</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
         <div>Nightclub icon made by <a href="https://www.flaticon.com/authors/iconixar">iconixar</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
         <div>Dartboard icon made by <a href="https://www.flaticon.com/authors/nhor-phai">Nhor Phai</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
+        <div>Add image icon made by <a href="https://www.flaticon.com/authors/surang">surang</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
     </div>
 </div>
 

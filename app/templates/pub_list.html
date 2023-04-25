@@ -1,9 +1,10 @@
-{% extends 'navbar.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Listing View{% endblock %}
 
 {% block script %}
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='jquery/css/jquery.dataTables.min.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
 <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
@@ -17,50 +18,26 @@ function onLoad(){
     var map_lng = {{ map_lng | tojson }}
     var map_view = {{ map_view | tojson }}
     pubs_reviews = {{ pubs_reviews | tojson }};
-    switch(map_view) {
-        case 'category':
-            document.getElementById("category").checked = true;
-            Category()
-            break;
-        case 'star':
-            document.getElementById("star").checked = true;
-            Star()
-            break;
-        case 'area':
-            document.getElementById("area").checked = true;
-            Area()
-            break;
-        default:
-            document.getElementById("area").checked = true;
-            Area()
-            break;
-        }
+    list_type = {{ list_type | tojson }}
+    id_type = {{ id_type | tojson }}
+    if (list_type == 'area') {
+        console.log('area')
+        Area()
+    }
+
 }
 
 </script>
 {% endblock %}
 
-{% block slider %}
-    <div class="form-check-inline">
-        <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optradio" id="area" value="1" onclick="Area()" />Area
-        </label>
-    </div>
-    <div class="form-check-inline">
-        <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optradio" id="category" value="2" onclick="Category()";>Category
-        </label>
-    </div>
-    <div class="form-check-inline">
-        <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optradio" id="star" value="3" onclick="Star()";>Star Quality
-        </label>
-    </div>
+{% block full_screen %}
+<div class="col center-block">
+    <div id="header_listing"></div>
+</div>
 {% endblock %}
 
 {% block form %}
-<div id="header_listing"></div>
-<div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
+    <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
 {% endblock %}
 
 {% block navbar_list %}<a class="nav-link active_custom" href="{{ url_for('pub_list', list_type='all', id_type='all') }}">Listing</a>{% endblock %}
@@ -72,3 +49,12 @@ function onLoad(){
 {% block rev_edit_btn %}{% endblock %}
 {% block rev_del_btn %}{% endblock %}
 {% block search_btn %}{% endblock %}
+
+{% block footer %}
+<div class="col">
+    <div class="row justify-content-center top-buffer">
+        <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add Pub</a>
+        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
