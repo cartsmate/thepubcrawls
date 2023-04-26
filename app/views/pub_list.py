@@ -12,10 +12,15 @@ def pub_list(list_type, id_type):
     # if list_type == 'all':
     #     df = Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False)
     #     heading = "All pubs"
-    # if id_type == 'True':
-    #     df = Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type] == True] \
-    #         .sort_values(by=['score'], ascending=False)
-    if id_type == 'all':
+    if id_type == 'True':
+        df_scores = Functions().get_pubs_reviews()
+        # filters = scores.loc[(scores['garden'] == True)]
+        print(list_type.lower())
+        df = df_scores.loc[(df_scores[list_type.lower()] == True)]
+        # df = Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type.lower()] == True] \
+        #     .sort_values(by=['rank'], ascending=False)
+        heading = list_type
+    elif id_type == 'all':
         df = Functions().get_pubs_reviews()
         heading = list_type
     else:
