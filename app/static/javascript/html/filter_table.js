@@ -8,12 +8,12 @@ function Area() {
             order: [[7, 'desc']],
             columnDefs: [
                     {target: 0, visible: true, searchable: true, },
-                    {target: 1, visible: true, searchable: false, },
-                    {target: 2, visible: true, searchable: false, },
+                    {target: 1, visible: false, searchable: false, },
+                    {target: 2, visible: false, searchable: false, },
                     {target: 3, visible: false, searchable: false, },
                     {target: 4, visible: false, searchable: false, },
                     {target: 5, visible: false, searchable: false, },
-                    {target: 6, visible: true, searchable: true, },
+                    {target: 6, visible: false, searchable: false, },
                     {target: 7, visible: true, searchable: true, }
                         ]
         });
@@ -46,12 +46,12 @@ function Category() {
             order: [[7, 'desc']],
             columnDefs: [
                     {target: 0, visible: true, searchable: true, },
-                    {target: 1, visible: true, searchable: false, },
+                    {target: 1, visible: false, searchable: false, },
                     {target: 2, visible: false, searchable: false, },
                     {target: 3, visible: false, searchable: false, },
                     {target: 4, visible: false, searchable: false, },
                     {target: 5, visible: false, searchable: false, },
-                    {target: 6, visible: true, searchable: true, },
+                    {target: 6, visible: false, searchable: false, },
                     {target: 7, visible: true, searchable: true, }
                         ]
         });
