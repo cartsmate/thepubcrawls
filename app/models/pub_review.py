@@ -1,9 +1,9 @@
-from ..models.pub_identity import PubIdentity
+from functions.functions import Functions
 
 
-class Pub:
-    def __init__(self, pub_identity, pub_deletion, place, name, address,
-                 latitude, longitude, station_identity, area_identity, category, rank):
+class Pub_Review:
+    def __init__(self, pub_identity=str(Functions().generate_uuid()), pub_deletion=False, place="", name="", address="",
+                 latitude=51.5, longitude=-0.1, station_identity="", area_identity="", category="", rank=0):
         self.pub_identity = pub_identity
         self.pub_deletion = pub_deletion
         self.place = place

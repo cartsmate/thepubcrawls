@@ -29,7 +29,6 @@ def home():
     df_all_area_count = pd.merge(df_all_area_group, df_areas, how='left', on='area_identity') \
         .rename(columns={'name': 'count'}).astype(str) \
         .sort_values(by=['count'], ascending=False)
-    # print(df_all_area_count)
     areas_json = Functions().df_to_dict(df_all_area_count)
     pubs_reviews_json = Functions().df_to_dict(
         Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False))

@@ -9,17 +9,20 @@ config = Configurations().get_config()
 
 @app.route("/pub/list/<list_type>/<id_type>")
 def pub_list(list_type, id_type):
-    if list_type == 'all':
-        df = Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False)
-        heading = "All pubs"
-    elif id_type == 'True':
-        df = Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type] == True] \
-            .sort_values(by=['score'], ascending=False)
+    # if list_type == 'all':
+    #     df = Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False)
+    #     heading = "All pubs"
+    # if id_type == 'True':
+    #     df = Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type] == True] \
+    #         .sort_values(by=['score'], ascending=False)
+    if id_type == 'all':
+        df = Functions().get_pubs_reviews()
         heading = list_type
     else:
         df = Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type] == id_type]\
-            .sort_values(by=['score'], ascending=False)
+            .sort_values(by=['rank'], ascending=False)
         heading = id_type
+    print(df)
     pubs_reviews_json = Functions().df_to_dict(df)
     return render_template('pub_list.html', filter=heading, pubs_reviews=pubs_reviews_json, map_view=list_type,
                            map_lat=51.5, map_lng=-0.1, list_type=list_type, id_type=id_type)

@@ -1,4 +1,4 @@
-function displayCrawl(stop_offs) {
+function displayCrawl(stop_offs, locator) {
     /*for (let i=0; i<stop_offs.length; i++) {
         console.log(stop_offs[i])
     }*/
@@ -14,13 +14,19 @@ function displayCrawl(stop_offs) {
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
 
-    var map = new google.maps.Map(document.getElementById('map'), {
+
+
+    var map = new google.maps.Map(document.getElementById(locator), {
         zoom:7,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: false,
         streetViewControl: false
     });
-
+    map.addListener("click", (event) => {
+        console.log('you clicked on the map')
+        event.stop();
+        window.location.href = "/pub/crawl"
+    });
     directionsRenderer.setMap(map);
     var request = {
         origin: {placeId: stop_offs[0].place},
