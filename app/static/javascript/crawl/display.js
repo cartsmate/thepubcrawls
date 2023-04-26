@@ -14,13 +14,12 @@ function displayCrawl(stop_offs, locator) {
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
 
-
-
     var map = new google.maps.Map(document.getElementById(locator), {
         zoom:7,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: false,
-        streetViewControl: false
+        streetViewControl: false,
+        zoomControl: false
     });
     map.addListener("click", (event) => {
         console.log('you clicked on the map')
