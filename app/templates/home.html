@@ -98,7 +98,10 @@ function initMap(){
     var myOptions = {
         zoom: 14,
         center: new google.maps.LatLng(52.0, -0.02),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        zoomControl: false,
+        streetViewControl: false,
+        disableDefaultUI: true
     }
     map2 = new google.maps.Map(document.getElementById("map2"), myOptions)
     map2.addListener("click", (event) => {
