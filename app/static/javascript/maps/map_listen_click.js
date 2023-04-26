@@ -76,7 +76,9 @@ function map_listen_click(map, stations, areas) {
                 map: map,
                 icon: markerImage2,
             })
-            marker = add_markers(map, map.getZoom(), pub_review)
+
+
+
 
             var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
             const input = document.getElementById("search-input-navbar");

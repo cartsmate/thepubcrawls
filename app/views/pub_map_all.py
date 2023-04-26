@@ -31,22 +31,22 @@ def map_by_all():
     # \
     #     .drop('latitude', axis=1) \
     #     .drop('longitude', axis=1)
-    print(df_all_area_group)
+    # print(df_all_area_group)
     df_all_area = df_all[['latitude', 'area_identity']]
     df_area_avg_lat = df_all_area.groupby(['area_identity'], as_index=False)['latitude'].mean() \
         .rename(columns={'latitude': 'avg_latitude'}).astype(str)
     df_lats = pd.merge(df_all_area_count, df_area_avg_lat, how='left', on='area_identity')
-    print(df_lats)
+    # print(df_lats)
     df_all_area = df_all[['longitude', 'area_identity']]
     df_area_avg_lng = df_all_area.groupby(['area_identity'], as_index=False)['longitude'].mean() \
         .rename(columns={'longitude': 'avg_longitude'}).astype(str)
-    print(df_area_avg_lng)
+    # print(df_area_avg_lng)
     df_lngs = pd.merge(df_lats, df_area_avg_lat, how='left', on='area_identity')
-    print(df_lngs)
+    # print(df_lngs)
 
     df_all_area_count['colour'] = config['colour']['red']
     area_all_json = Functions().df_to_dict(df_all_area_count)
-
+    print(config2)
     view = "all"
     return render_template('pub_map_all.html', google_key=config2['google_key'],
                            full=all_json, station=station_all_json, area=area_all_json,

@@ -11,7 +11,7 @@ class FormNew:
 
     def get_pub(self, pub_id):
         print('Form_new: get_pub')
-        new_pub = Pub(pub_identity=pub_id, pub_deletion=request.form['pub_deletion'], place=request.form['place'],
+        new_pub = Pub(pub_identity=pub_id, pub_deletion=False, place=request.form['place'],
                       name=request.form['name'], address=request.form['address'],
                       latitude=request.form['latitude'], longitude=request.form['longitude'],
                       station_identity=request.form['station_identity'],
@@ -32,7 +32,7 @@ class FormNew:
         else:
             reviewer = request.form.get('reviewer').lower()
         new_review = Review(review_identity=request.form['review_identity'], pub_identity=pub_id,
-                            review_deletion=request.form['review_deletion'], visit=request.form['visit'], star=star,
+                            review_deletion=False, visit=request.form['visit'], star=star,
                             atmosphere=request.form['atmosphere'], cleanliness=request.form['cleanliness'],
                             clientele=request.form['clientele'], decor=request.form['decor'],
                             entertainment=request.form['entertainment'], food=request.form['food'],

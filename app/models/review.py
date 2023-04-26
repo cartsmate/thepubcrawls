@@ -1,10 +1,15 @@
+from datetime import date
+from functions.functions import Functions
+from ..models.pub_identity import PubIdentity
+
 
 class Review:
-    def __init__(self, review_identity, pub_identity, review_deletion, visit, star, reviewer,
-                 atmosphere, cleanliness, clientele, decor, entertainment, food, friendliness, opening, price, selection,
+    def __init__(self, review_identity, review_deletion, pub_identity,
+                 visit, star, reviewer, atmosphere, cleanliness,
+                 clientele, decor, entertainment, food, friendliness, opening, price, selection,
                  tv, garden, music, late, meals, toilets, cheap, games):
-        self.review_identity = review_identity
         self.pub_identity = pub_identity
+        self.review_identity = review_identity
         self.review_deletion = review_deletion
         self.visit = visit
         self.star = star

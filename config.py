@@ -3,12 +3,7 @@ import json
 from configparser import ConfigParser
 
 
-# class Config(object):
-#     SECRET_KEY = os.environ.get('SECRET_KEY')
-
-
 class Configurations:
-
     def get_config(self):
         with open(os.getcwd() + '/config_s.json') as file:  # Opening JSON file
             config = json.load(file)  # returns JSON object as a dictionary
@@ -18,7 +13,8 @@ class Configurations:
         try:
             directory_path = os.getcwd()
             constants = ConfigParser()
-            constants.read(directory_path + "/constants.ini")
+            filepath = directory_path + "/constants_s.ini"
+            constants.read(filepath)
             config2 = {
                 "google_key": constants.get('local', 'MAP'),
                 "access_id": constants.get('local', 'ID'),
