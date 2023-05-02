@@ -24,28 +24,7 @@ function myFunction(check_item) {
      text.style.opacity = "0.25"
   }
 }
-</script>
-<script>
-function onLoad(){
-    var photo_array = {{ photo_array | tojson }}
-    var map_lat = {{ map_lat | tojson }}
-    var map_lng = {{ map_lng | tojson }}
-    var map_view = {{ map_view | tojson }}
-    var config = {{ config | tojson }}
-    var areas = {{ areas | tojson }}
-    var pubs_reviews = {{ pubs_reviews | tojson }}
-    var js = document.createElement("script");
-    js.type = "text/javascript";
-    if ( window.navigator.onLine == true) {
-        js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
-        document.head.appendChild(js)
-    } else {
-        alert('You appear to offline so maps cannot be displayed')
-    }
-
-}
-function initMap(){
-
+function initMap() {
     key = {{ google_key | tojson }}
     pubs = {{ pubs | tojson }}
     pub = {{ pub | tojson }}
@@ -109,11 +88,31 @@ function initMap(){
         event.stop();
         window.location.href = "/pub/map/all"
     });
+}
 
+</script>
+
+<script>
+function onLoad(){
+    var photo_array = {{ photo_array | tojson }}
+    var map_lat = {{ map_lat | tojson }}
+    var map_lng = {{ map_lng | tojson }}
+    var map_view = {{ map_view | tojson }}
+    var config = {{ config | tojson }}
+    var areas = {{ areas | tojson }}
+    var pubs_reviews = {{ pubs_reviews | tojson }}
+    var js = document.createElement("script");
+    js.type = "text/javascript";
+    if ( window.navigator.onLine == true) {
+        js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
+        document.head.appendChild(js)
+    } else {
+        alert('You appear to offline so maps cannot be displayed')
+    }
 }
 </script>
 {% endblock %}
-<!--<strong>{{session.get('user_id')}}</strong>-->
+
 {% block slider %}
 <div class="col-12 center-block text-center">
     <p style="padding: 5px 0 0 0">
@@ -122,203 +121,15 @@ function initMap(){
     Please enjoy the site and remember to drink responsibly .......
     </p>
 </div>
-
 {% endblock %}
 
 {% block full_screen %}
-<div class="col">
-    <div class="row">
-        <div class="col-12 center-block text-center">
-            <strong>
-            <a href="/pub/crawl" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">Create your own pub crawl</a>
-            </strong>
-        </div>
-    </div>
-    <div class="row">
-        <div id="map" style="width:100%; height:200px;"></div>
-    </div>
-    <div class="row" id="route" hidden></div>
-    <div class="row top-buffer">
-        <div class="col-12 center-block text-center">
-            <strong>
-            <a style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">Search pubs by feature</a>
-            </strong>
-        </div>
-    </div>
-    <div class="row justify-content-center align-items-center" id="feature-list"></div>
-
-    <div class="row">
-        <div class="col-12 center-block text-center">
-            <strong>
-            <a href="/pub/list/area/all" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area</a>
-            </strong>
-        </div>
-    </div>
-    <div class="row">
-        <div id="carouselExampleIndicators" class="carousel slide andy_width" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                {% for x in areas.length %}
-                    <li data-target="#carouselExampleIndicators" data-slide-to="{{x}}"></li>
-                {% endfor %}
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ url_for('static', filename='images/location/' + areas[0]['area'].lower() + '.jpg') }}" style="height: 175px; width: 300px" alt="">
-                    <div class="carousel-caption">
-                        <a href="/pub/list/area/{{areas[0]['area']}}" style="font-weight: bold; font-size: 24px; color: #FFFFFF; text-decoration: none;">{{areas[0]['area']}}</a>
-                    </div>
-                </div>
-                {% for area in areas[1:] %}
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ url_for('static', filename='images/location/' + area['area'].lower() + '.jpg') }}" style="height: 175px; width: 300px" alt="">
-                        <div class="carousel-caption">
-                            <a href="/pub/list/area/{{area['area']}}" style="font-weight: bold; font-size: 24px; color: #FFFFFF; text-decoration: none;">{{area['area']}}</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-    <div class="row top-buffer">
-        <div class="col-12 center-block text-center">
-            <strong>
-            <a href="/pub/list/all/all" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">Search pubs by rating</a>
-            </strong>
-        </div>
-    </div>
-    <div class="row">
-        <div id="carouselExampleIndicators2" class="carousel slide andy_width" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                {% for x in pubs_reviews.length %}
-                    <li data-target="#carouselExampleIndicators" data-slide-to="{{x}}"></li>
-                {% endfor %}
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ url_for('static', filename='images/venue/' + pubs_reviews[0]['name'].lower() + '.jpeg') }}" style="height: 175px; width: 300px" alt="">
-                    <div class="carousel-caption">
-                        <a href="/pub/{{pubs_reviews[0]['pub_identity']}}" style="font-weight: bold; font-size: 24px; color: #FFFFFF; text-decoration: none;">{{pubs_reviews[0]['name']}}</a>
-                        <p>
-                            {% if (pubs_reviews[0]['score'] > 80) %}
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            {% elif (pubs_reviews[0]['score'] > 60) %}
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            {% elif (pubs_reviews[0]['score'] > 40) %}
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            {% elif (pubs_reviews[0]['score'] > 20) %}
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            {% elif (pubs_reviews[0]['score'] > 0) %}
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            {% else %}
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            {% endif %}
-                            </p>
-                    </div>
-                </div>
-                {% for pub in pubs_reviews[1:] %}
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ url_for('static', filename='images/venue/' + pub['name'].lower() + '.jpeg') }}" style="height: 175px; width: 300px" alt="">
-                        <div class="carousel-caption">
-                            <a href="/pub/{{pub['pub_identity']}}" style="font-weight: bold; font-size: 24px; color: #FFFFFF; text-decoration: none;">{{pub['name']}}</a>
-                            <p>
-                            {% if (pub['score'] > 80) %}
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            {% elif (pub['score'] > 60) %}
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            {% elif (pub['score'] > 40) %}
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            {% elif (pub['score'] > 20) %}
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            {% elif (pub['score'] > 0) %}
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            {% else %}
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-    <div class="row top-buffer">
-        <div class="col-12 center-block text-center">
-            <strong>
-            <a href="/pub/map/all" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">Search pubs by map location</a>
-            </strong>
-        </div>
-    </div>
-    <div>
-        <div class="row">
-            <div id="map2" style="width:100%; height:200px;"></div>
-        </div>
-    </div>
+<div class="col" id="main">
+    {% include "home_crawl.html" %}
+    {% include "home_features.html" %}
+    {% include "home_area.html" %}
+    {% include "home_rating.html" %}
+    {% include "home_location.html" %}
 </div>
 
 <script>
@@ -328,6 +139,7 @@ id_row = "row_checks"
 form_node.setAttribute("id", id_row);
 document.getElementById('feature-list').appendChild(form_node);
 </script>
+
 {% for field in config['control']['check'] %}
     <script>
 
@@ -351,6 +163,37 @@ document.getElementById('feature-list').appendChild(form_node);
         img_label_node.setAttribute("id", id_img_label);
         document.getElementById(id_div).appendChild(img_label_node);
 
+        switch('{{field}}') {
+            case 'tv':
+                name_label = "live sports"
+                break;
+            case 'garden':
+                name_label = "outside space"
+                break;
+            case 'music':
+                name_label = "live music"
+                break;
+            case 'late':
+                name_label = "past midnight"
+                break;
+            case 'meals':
+                name_label = "serves food"
+                break;
+            case 'toilets':
+                name_label = "clean toilets"
+                break;
+            case 'cheap':
+                name_label = "cheap pint"
+                break;
+            case 'games':
+                name_label = "pub games"
+                break;
+            default:
+                name_label = "error"
+        }
+        var textnode = document.createTextNode(name_label);
+        img_label_node.appendChild(textnode);
+
         var img_node = document.createElement("img");
         img_node.setAttribute("src", "{{ url_for('static', filename='icons/' + field + '.png') }}")
         img_node.setAttribute("width", "50")
@@ -366,19 +209,7 @@ document.getElementById('feature-list').appendChild(form_node);
 {% endblock %}
 
 {% block footer %}
-<div class="col">
-    <div class="row justify-content-center top-buffer">
-        <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add New</a>
-    </div>
-    <div class="row justify-content-center top-buffer">
-        <div>Dinner icon made by <a href="https://www.flaticon.com/authors/pause08">Pause08</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Park icon made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Live sport icon made by <a href="https://www.flaticon.com/authors/Mihimihi">Mihimihi</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Toilet icon made by <a href="https://www.flaticon.com/authors/syafii5758">syafii5758</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Nightclub icon made by <a href="https://www.flaticon.com/authors/iconixar">iconixar</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Dartboard icon made by <a href="https://www.flaticon.com/authors/nhor-phai">Nhor Phai</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-    </div>
-</div>
+{% include "footer.html" %}
 {% endblock %}
 
 
