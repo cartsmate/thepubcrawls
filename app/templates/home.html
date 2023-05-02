@@ -115,7 +115,7 @@ function onLoad(){
 
 {% block slider %}
 <div class="col-12 center-block text-center">
-    <p style="padding: 5px 0 0 0">
+    <p style="padding: 5px 0 0 0; font-size:8px">
     Welcome to the Pub Crawls.
     Create your own pub crawl or search for pubs by area, rating or favourite features.
     Please enjoy the site and remember to drink responsibly .......
@@ -132,80 +132,7 @@ function onLoad(){
     {% include "home_location.html" %}
 </div>
 
-<script>
-var form_node = document.createElement("div");
-form_node.setAttribute("class", "form-group row");
-id_row = "row_checks"
-form_node.setAttribute("id", id_row);
-document.getElementById('feature-list').appendChild(form_node);
-</script>
 
-{% for field in config['control']['check'] %}
-    <script>
-
-        var div_node = document.createElement("div");
-        div_node.setAttribute("class", "col");
-        id_div = "div_" + '{{field}}'
-        div_node.setAttribute("id", id_div);
-        document.getElementById(id_row).appendChild(div_node);
-
-        var check_node = document.createElement("input");
-        check_node.setAttribute("type", 'checkbox');
-        check_node.setAttribute("id", '{{field}}');
-        check_node.setAttribute("name", '{{field}}');
-        check_node.setAttribute("style", "display: none;");
-        check_node.setAttribute("onclick", "myFunction('{{field}}')")
-        document.getElementById(id_div).appendChild(check_node);
-
-        var img_label_node = document.createElement("label")
-        img_label_node.setAttribute("for", '{{field}}');
-        id_img_label = "id_img_" + '{{field}}'
-        img_label_node.setAttribute("id", id_img_label);
-        document.getElementById(id_div).appendChild(img_label_node);
-
-        switch('{{field}}') {
-            case 'tv':
-                name_label = "live sports"
-                break;
-            case 'garden':
-                name_label = "outside space"
-                break;
-            case 'music':
-                name_label = "live music"
-                break;
-            case 'late':
-                name_label = "past midnight"
-                break;
-            case 'meals':
-                name_label = "serves food"
-                break;
-            case 'toilets':
-                name_label = "clean toilets"
-                break;
-            case 'cheap':
-                name_label = "cheap pint"
-                break;
-            case 'games':
-                name_label = "pub games"
-                break;
-            default:
-                name_label = "error"
-        }
-        var textnode = document.createTextNode(name_label);
-        img_label_node.appendChild(textnode);
-
-        var img_node = document.createElement("img");
-        img_node.setAttribute("src", "{{ url_for('static', filename='icons/' + field + '.png') }}")
-        img_node.setAttribute("width", "50")
-        img_node.setAttribute("height", "50")
-        id_img = "img_" + '{{field}}'
-        img_node.setAttribute("id", id_img);
-        img_node.setAttribute("name", id_img);
-        img_node.style.opacity = "1"
-        document.getElementById(id_img_label).appendChild(img_node);
-
-    </script>
-{% endfor %}
 {% endblock %}
 
 {% block footer %}
