@@ -108,8 +108,8 @@ document.getElementById('pub_vis').appendChild(form_node);
 
         var img_node = document.createElement("img");
         img_node.setAttribute("src", "{{ url_for('static', filename='icons/' + field + '.png') }}")
-        img_node.setAttribute("width", "50")
-        img_node.setAttribute("height", "50")
+        img_node.setAttribute("width", "40")
+        img_node.setAttribute("height", "40")
         id_img = "img_" + '{{field}}'
         img_node.setAttribute("id", id_img);
         img_node.setAttribute("name", id_img);

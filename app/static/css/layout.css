@@ -7,3 +7,12 @@
 .checked {
     color: yellow;
 }
+.caption {
+    text-align:center;
+}
+.cap_image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}

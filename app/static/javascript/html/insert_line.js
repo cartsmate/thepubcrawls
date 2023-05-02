@@ -65,26 +65,25 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
 
         const div_main_node = document.createElement("div");
         div_main_node.setAttribute("class", "col-sm-9");
+        div_main_node.setAttribute("style", "padding-left:30px");
         id_div = "div_" + name
         div_main_node.setAttribute("id", id_div);
         document.getElementById(id_row).appendChild(div_main_node);
 
         const form_node = document.createElement("div");
-        form_node.setAttribute("class", "form-group row");
+        form_node.setAttribute("class", "row");
         id_row = "id_row_" + name
         form_node.setAttribute("id", id_row);
         document.getElementById("div_rank").appendChild(form_node);
 
         const input_node = document.createElement("input");
         input_node.setAttribute("type", "text");
-        input_node.setAttribute("class", "form-control");
         input_node.setAttribute("id", name);
         input_node.setAttribute("name", name);
         input_node.setAttribute("style", "display: none;");
         document.getElementById(id_div).appendChild(input_node);
 
         var div_node = document.createElement("div");
-        div_node.setAttribute("class", "col");
         id_div1 = "div_" + name + "1"
         div_node.setAttribute("id", id_div1);
         document.getElementById("id_row_rank").appendChild(div_node);
@@ -105,8 +104,8 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
 
         var img_node = document.createElement("img");
         img_node.setAttribute("src", "/static/icons/star.png")
-        img_node.setAttribute("width", "50")
-        img_node.setAttribute("height", "50")
+        img_node.setAttribute("width", "30")
+        img_node.setAttribute("height", "30")
         id_img = "img_" + 'rank1'
         img_node.setAttribute("id", id_img);
         img_node.setAttribute("name", id_img);
@@ -115,7 +114,6 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
 
 
         var div_node = document.createElement("div");
-        div_node.setAttribute("class", "col");
         id_div2 = "div_" + name + "2"
         div_node.setAttribute("id", id_div2);
         document.getElementById("id_row_rank").appendChild(div_node);
@@ -136,8 +134,8 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
 
         var img_node = document.createElement("img");
         img_node.setAttribute("src", "/static/icons/star.png")
-        img_node.setAttribute("width", "50")
-        img_node.setAttribute("height", "50")
+        img_node.setAttribute("width", "30")
+        img_node.setAttribute("height", "30")
         id_img = "img_" + 'rank2'
         img_node.setAttribute("id", id_img);
         img_node.setAttribute("name", id_img);
@@ -146,7 +144,6 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
 
 
         var div_node = document.createElement("div");
-        div_node.setAttribute("class", "col");
         id_div3 = "div_" + name + "3"
         div_node.setAttribute("id", id_div3);
         document.getElementById("id_row_rank").appendChild(div_node);
@@ -167,8 +164,8 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
 
         var img_node = document.createElement("img");
         img_node.setAttribute("src", "/static/icons/star.png")
-        img_node.setAttribute("width", "50")
-        img_node.setAttribute("height", "50")
+        img_node.setAttribute("width", "30")
+        img_node.setAttribute("height", "30")
         id_img = "img_" + "rank3"
         img_node.setAttribute("id", id_img);
         img_node.setAttribute("name", id_img);
@@ -177,7 +174,6 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
 
 
         var div_node = document.createElement("div");
-        div_node.setAttribute("class", "col");
         id_div4 = "div_" + name + "4"
         div_node.setAttribute("id", id_div4);
         document.getElementById("id_row_rank").appendChild(div_node);
@@ -198,8 +194,8 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
 
         var img_node = document.createElement("img");
         img_node.setAttribute("src", "/static/icons/star.png")
-        img_node.setAttribute("width", "50")
-        img_node.setAttribute("height", "50")
+        img_node.setAttribute("width", "30")
+        img_node.setAttribute("height", "30")
         id_img = "img_" + 'rank4'
         img_node.setAttribute("id", id_img);
         img_node.setAttribute("name", id_img);
@@ -208,7 +204,6 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
 
 
         var div_node = document.createElement("div");
-        div_node.setAttribute("class", "col");
         id_div5 = "div_" + name + "5"
         div_node.setAttribute("id", id_div5);
         document.getElementById("id_row_rank").appendChild(div_node);
@@ -229,8 +224,8 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
 
         var img_node = document.createElement("img");
         img_node.setAttribute("src", "/static/icons/star.png")
-        img_node.setAttribute("width", "50")
-        img_node.setAttribute("height", "50")
+        img_node.setAttribute("width", "30")
+        img_node.setAttribute("height", "30")
         id_img = "img_" + 'rank5'
         img_node.setAttribute("id", id_img);
         img_node.setAttribute("name", id_img);
