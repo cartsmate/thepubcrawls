@@ -26,20 +26,20 @@ function distancing(first, current, pubs, crawl) {
     }
 
     if ( crawl.criteria == 'NEAREST' ) {
-        console.log('nearest')
+        //console.log('nearest')
         records = records.sort((a, b) => {
             if (a.distance_next < b.distance_next) {
                 return -1;
             }
         });
     } else {
-        console.log('score')
+        //console.log('score')
         records = records.sort((a, b) => {
             if (a.score > b.score) {
                 return -1;
             }
         });
     }
-    console.log('records: ' + JSON.stringify(records))
+    //console.log('records: ' + JSON.stringify(records))
     return records[0]
 }
