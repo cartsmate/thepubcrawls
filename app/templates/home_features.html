@@ -6,13 +6,13 @@
     </div>
 </div>
 <!--<div class="row justify-content-center align-items-center" id="feature-list"></div>-->
-<div class="row" style="border-style:solid; background-color:#FFFFFF; height:200px;">
+<div class="row" style="border-style:solid; background-color:#FFFFFF; height:200px; border-width:thin">
     {% for field in config['control']['check'] %}
         <script>var id_img = "{{field}}" + "_img"</script>
         <div class="col" style="text-align: center;">
             <input type="checkbox" id="{{field}}" name="{{field}}" style="display: none;" onclick="myFunction('{{field}}')">
-            <label for="{{field}}" >
-                <img src="{{ url_for('static', filename='icons/' + field + '.png') }}" width="30" height="30" style="opacity: 1; margin:0px; padding:0px">
+            <label for="{{field}}"  >
+                <img src="{{ url_for('static', filename='icons/' + field + '.png') }}" width="30" height="30" style="opacity: 1; margin:0px; padding-top:5px">
             </label>
             <div class="caption" id="{{field}}_img" style="padding:0px; margin:0px"></div>
         </div>
