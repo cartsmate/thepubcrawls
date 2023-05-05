@@ -27,7 +27,7 @@ def pub_list(list_type, id_type):
         df = Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type] == id_type]\
             .sort_values(by=['rank'], ascending=False)
         heading = id_type
-    print(df)
+    # print(df)
     pubs_reviews_json = Functions().df_to_dict(df)
     return render_template('pub_list.html', filter=heading, pubs_reviews=pubs_reviews_json, map_view=list_type,
                            map_lat=51.5, map_lng=-0.1, list_type=list_type, id_type=id_type)

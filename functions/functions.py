@@ -137,7 +137,7 @@ class Functions:
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
         df_pubs_reviews['score'] = round(df_pubs_reviews.loc[:, config['review']['score']].mean(axis=1) * 10)
         df_pubs_reviews.fillna(0, inplace=True)
-        print(df_pubs_reviews)
+        # print(df_pubs_reviews)
         return df_pubs_reviews
 
     def get_record(self, dfs, id_code):

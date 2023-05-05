@@ -1,6 +1,6 @@
 function Area() {
     console.log('inside Area')
-    document.getElementById("table-pubs-json").innerHTML = create_table(pubs_reviews)
+    document.getElementById("table-pubs-json").innerHTML = create_table()
     $(document).ready(function () {
         $('#pub_list').DataTable({
             paging: false,
@@ -22,7 +22,7 @@ function Area() {
 
 function Station() {
     console.log('inside Station')
-    document.getElementById("table-pubs-json").innerHTML = create_table(pubs_reviews)
+    document.getElementById("table-pubs-json").innerHTML = create_table()
     $(document).ready(function () {
         $('#pub_list').DataTable({
             order: [[5, 'desc']],
@@ -38,7 +38,7 @@ function Station() {
 
 function Category() {
     console.log('inside Category')
-    document.getElementById("table-pubs-json").innerHTML = create_table(pubs_reviews)
+    document.getElementById("table-pubs-json").innerHTML = create_table()
     $(document).ready(function () {
         $('#pub_list').DataTable({
             paging: false,

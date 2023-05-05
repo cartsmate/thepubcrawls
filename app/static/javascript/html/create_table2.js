@@ -2,9 +2,9 @@ function camel_case(word) {
     return String(word['0']).toUpperCase() + String(word).substring(1)
 }
 
-function create_table() {
+function create_table2() {
     console.log("create_table")
-    table_string = '<table id="pub_list" class="table table-striped">'
+    table_string = '<table id="pub_list2" class="table table-striped">'
     table_string += '<thead><tr>' +
                         '<th>Name</th>' +
                         '<th>Category</th>' +

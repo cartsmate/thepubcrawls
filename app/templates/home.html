@@ -16,13 +16,34 @@
 
 <script>
 function myFunction(check_item) {
-  var checkBox = document.getElementById(check_item);
-  var text = document.getElementById("img_" + check_item);
-  if (checkBox.checked == true){
-    window.location.replace("/pub/list/" + check_item + "/True");
-  } else {
-     text.style.opacity = "0.25"
-  }
+    var checkBox = document.getElementById(check_item);
+    var image = document.getElementById(check_item + "_img");
+    var caption = document.getElementById(check_item + "_caption");
+    if (check_item == 'search') {
+        const myUrlWithParams = new URL("http://127.0.0.1:5000/pub/search/");
+        //myUrlWithParams.searchParams.append("pet", pet.checked);
+
+        myUrlWithParams.searchParams.append("tv", tv.checked);
+        myUrlWithParams.searchParams.append("garden", garden.checked);
+        myUrlWithParams.searchParams.append("music", music.checked);
+        myUrlWithParams.searchParams.append("late", late.checked);
+        myUrlWithParams.searchParams.append("meals", meals.checked);
+        myUrlWithParams.searchParams.append("toilets", toilets.checked);
+        myUrlWithParams.searchParams.append("cheap", cheap.checked);
+        myUrlWithParams.searchParams.append("games", games.checked);
+
+        console.log(myUrlWithParams.href);
+        window.location.replace(myUrlWithParams.href);
+    }
+    if (checkBox.checked == true){
+        //window.location.replace("/pub/list/" + check_item + "/True");
+        image.style.opacity = "1.00"
+        caption.style.opacity = "1.00"
+    } else {
+        image.style.opacity = "0.25"
+        caption.style.opacity = "0.25"
+    }
+    //console.log(image)
 }
 function initMap() {
     key = {{ google_key | tojson }}
@@ -113,18 +134,9 @@ function onLoad(){
 </script>
 {% endblock %}
 
-{% block slider %}
-<div class="col-12 center-block text-center">
-    <p style="padding: 5px 0 0 0; font-size:12px">
-    Welcome to the Pub Crawls.
-    Create your own pub crawl or search for pubs by area, rating or favourite features.
-    Please enjoy the site and remember to drink responsibly .......
-    </p>
-</div>
-{% endblock %}
-
 {% block full_screen %}
 <div class="col" id="main">
+    {% include "home_intro.html" %}
     {% include "home_crawl.html" %}
     {% include "home_features.html" %}
     {% include "home_area.html" %}
