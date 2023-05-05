@@ -19,7 +19,8 @@
             <div class="row header_band" id="header_band"><a class="mx-auto">The Pub Crawls</a></div>
             <div class="row" style="margin: 5px 0 0 0;">{% block navbar %}{% endblock %}</div>
             <div class="row" style="margin: 0 0 0 0;">{% block slider %}{% endblock %}</div>
-            <div class="row" style="margin: 0 0 0 0;">{% block full_screen %}{% endblock %}</div>
+            <div class="row" style="margin: 0 0 0 0;">
+                <div class="col-md-12 mx-auto">{% block full_screen %}{% endblock %}</div>
             <div class="row" style="margin: 0 0 0 0;">
                 <div class="col-md-6">{% block map %}{% endblock %}</div>
                 <div class="col-md-6">{% block photo %}{% endblock %}</div>

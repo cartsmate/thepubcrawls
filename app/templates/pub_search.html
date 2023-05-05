@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block script %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='jquery/css/jquery.dataTables.min.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table2.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table2.js') }}"></script>
+<script>
+    function myFunction(check_item) {
+        var checkBox = document.getElementById(check_item);
+        var image = document.getElementById(check_item + "_img");
+        var caption = document.getElementById(check_item + "_caption");
+        if (check_item == 'search') {
+            const myUrlWithParams = new URL("http://127.0.0.1:5000/pub/search/");
+            //myUrlWithParams.searchParams.append("pet", pet.checked);
+
+            myUrlWithParams.searchParams.append("tv", tv.checked);
+            myUrlWithParams.searchParams.append("garden", garden.checked);
+            myUrlWithParams.searchParams.append("music", music.checked);
+            myUrlWithParams.searchParams.append("late", late.checked);
+            myUrlWithParams.searchParams.append("meals", meals.checked);
+            myUrlWithParams.searchParams.append("toilets", toilets.checked);
+            myUrlWithParams.searchParams.append("cheap", cheap.checked);
+            myUrlWithParams.searchParams.append("games", games.checked);
+
+            console.log(myUrlWithParams.href);
+            window.location.replace(myUrlWithParams.href);
+        }
+        if (checkBox.checked == true){
+            //window.location.replace("/pub/list/" + check_item + "/True");
+            image.style.opacity = "1.00"
+            caption.style.opacity = "1.00"
+        } else {
+            image.style.opacity = "0.25"
+            caption.style.opacity = "0.25"
+        }
+        //console.log(image)
+    }
+
+    function onLoad() {
+        console.log('pub_search')
+        var config = {{ config | tojson }}
+        pubs_reviews = {{ pubs_reviews | tojson }};
+
+        if ({{ tv | tojson }} == 'true') {
+            document.getElementById("tv").checked = {{ tv | tojson }}
+            document.getElementById("tv_caption").style.opacity = "1.00"
+            document.getElementById("tv_img").style.opacity = "1.00";
+        }
+        if ({{ garden | tojson }} == 'true') {
+            document.getElementById("garden").checked = {{ garden | tojson }}
+            document.getElementById("garden_caption").style.opacity = "1.00"
+            document.getElementById("garden_img").style.opacity = "1.00";
+        }
+        if ({{ music | tojson }} == 'true') {
+            document.getElementById("music").checked = {{ music | tojson }}
+            document.getElementById("music_caption").style.opacity = "1.00"
+            document.getElementById("musiuc_img").style.opacity = "1.00";
+        }
+        if ({{ late | tojson }} == 'true') {
+            document.getElementById("late").checked = {{ late| tojson }}
+            document.getElementById("late_caption").style.opacity = "1.00"
+            document.getElementById("late_img").style.opacity = "1.00";
+        }
+        if ({{ meals | tojson }} == 'true') {
+            document.getElementById("meals").checked = {{ meals | tojson }}
+            document.getElementById("meals_caption").style.opacity = "1.00"
+            document.getElementById("meals_img").style.opacity = "1.00";
+        }
+        if ({{ tv | tojson }} == 'true') {
+            document.getElementById("tv").checked = {{ tv | tojson }}
+            document.getElementById("tv_caption").style.opacity = "1.00"
+            document.getElementById("tv_img").style.opacity = "1.00";
+        }
+        if ({{ toilets | tojson }} == 'true') {
+            document.getElementById("toilets").checked = {{ toilets | tojson }}
+            document.getElementById("toilets_caption").style.opacity = "1.00"
+            document.getElementById("toilets_img").style.opacity = "1.00";
+        }
+        if ({{ cheap | tojson }} == 'true') {
+            document.getElementById("cheap").checked = {{ cheap | tojson }}
+            document.getElementById("cheap_caption").style.opacity = "1.00"
+            document.getElementById("cheap_img").style.opacity = "1.00";
+        }
+        if ({{ games | tojson }} == 'true') {
+            document.getElementById("games").checked = {{ games | tojson }}
+            document.getElementById("games_caption").style.opacity = "1.00"
+            document.getElementById("games_img").style.opacity = "1.00";
+        }
+        Search()
+    }
+
+</script>
+{% endblock %}
+
+{% block full_screen %}
+    {% include "home_features.html" %}
+    <div id="table-pubs-json2" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
+    {% include "footer.html" %}
+{% endblock %}

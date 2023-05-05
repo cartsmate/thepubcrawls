@@ -9,6 +9,7 @@ from .pub_add import pub_add
 from .pub_read import pub_read
 from .pub_edit import pub_edit
 from .pub_delete import pub_delete
+from .pub_search import pub_search
 # from .pub_by_category import pub_by_category
 # from .pub_by_area import pub_by_area
 # from .pub_by_star import pub_by_star
