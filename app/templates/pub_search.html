@@ -5,8 +5,8 @@
 {% block script %}
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='jquery/css/jquery.dataTables.min.css') }}">
 <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery.dataTables.min.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table2.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table2.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
 <script>
     function myFunction(check_item) {
         var checkBox = document.getElementById(check_item);
@@ -95,8 +95,14 @@
 </script>
 {% endblock %}
 
-{% block full_screen %}
+{% block main %}
+<div class="col-md-12 mx-auto">
     {% include "home_features.html" %}
-    <div id="table-pubs-json2" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
+    <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
+    <div class="row justify-content-center top-buffer">
+        <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add New</a>
+        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+    </div>
     {% include "footer.html" %}
+</div>
 {% endblock %}

@@ -10,7 +10,7 @@ pub_identity = {{ pub_identity | tojson }}
 </script>
 {% endblock %}
 
-{% block full_screen %}
+{% block main %}
 <div class="form-group row">
     <h4>Select a photo to upload</h4>
     <form method="post" action="{{ url_for('photo_upload', pub_identity=pub_identity)}}" enctype="multipart/form-data">

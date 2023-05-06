@@ -134,14 +134,17 @@ function onLoad(){
 </script>
 {% endblock %}
 
-{% block full_screen %}
-<div class="col" id="main">
+{% block main %}
+<div class="col-md-12 mx-auto" id="main">
     {% include "home_intro.html" %}
     {% include "home_crawl.html" %}
     {% include "home_features.html" %}
     {% include "home_area.html" %}
     {% include "home_rating.html" %}
     {% include "home_location.html" %}
+    <div class="row justify-content-center top-buffer">
+        <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add New</a>
+    </div>
     {% include "footer.html" %}
 </div>
 {% endblock %}
