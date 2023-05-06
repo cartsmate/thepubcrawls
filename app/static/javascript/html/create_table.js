@@ -2,10 +2,15 @@ function camel_case(word) {
     return String(word['0']).toUpperCase() + String(word).substring(1)
 }
 
+function editClick(id) {
+    window.alert(id)
+}
+
 function create_table() {
     console.log("create_table")
     table_string = '<table id="pub_list" class="table table-striped">'
     table_string += '<thead><tr>' +
+                        '<th>Id</th>' +
                         '<th>Name</th>' +
                         '<th>Category</th>' +
                         '<th>Station</th>' +
@@ -22,8 +27,8 @@ function create_table() {
                         '<th>Toilets</th>' +
                         '<th>Cheap</th>' +
                         '<th>Games</th>' +
-                        '<th>E</th>' +
-                        '<th>D</th>' +
+                        '<th></th>' +
+                        '<th></th>' +
                         '</tr></thead>'
    for (var key in pubs_reviews) {
         if (pubs_reviews[key].star == 0) {
@@ -36,6 +41,7 @@ function create_table() {
             '<td><a href="../review/' + pubs_reviews[key].pub_identity + '">Review</a></td>'
         }
         table_string += '<tr>' +
+            '<td><a href="/pub/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].pub_identity + '</a></td>' +
             '<td><a href="/pub/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].name + '</a></td>' +
             '<td><a href="/pub/list/category/' + pubs_reviews[key].category + '">' + camel_case(pubs_reviews[key].category) + '</a></td>' +
             '<td><a href="/pub/list/station/' + pubs_reviews[key].station + '">' + pubs_reviews[key].station + '</a></td>' +
@@ -51,8 +57,8 @@ function create_table() {
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].toilets + '</a></td>' +
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].cheap + '</a></td>' +
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].games + '</a></td>' +
-            '<td><a href="/pub/' + pubs_reviews[key].pub_identity + '">EDIT</a></td>' +
-            '<td><a href="/pub/delete/' + pubs_reviews[key].pub_identity + '">DEL</a></td>' +
+            '<td><a href="/pub/edit/' + pubs_reviews[key].pub_identity + '"><img src="/static/icons/edit.png" style="width:30px;height:30px;"></a></td>' +
+            '<td><a href="/pub/delete/' + pubs_reviews[key].pub_identity + '"><img src="/static/icons/delete.png" style="width:30px;height:30px;"></a></td>' +
             '</tr>'
     }
     table_string += '</table>'

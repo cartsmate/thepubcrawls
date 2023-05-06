@@ -61,11 +61,9 @@ function initMap(){
     add_markers(map, zoom, pub_review)
 }
 </script>
-
-
 {% endblock %}
 
-{% block full_screen %}
+{% block main %}
 <div class="col">
     <div class="row">
         <div class="col-12 center-block text-center">
@@ -77,7 +75,7 @@ function initMap(){
 </div>
 {% endblock %}
 
-{% block map %}
+{% block left %}
 <div class="col">
     <div class="row">
         <div id="map" style="width:100%; height:300px;"></div>
@@ -85,7 +83,7 @@ function initMap(){
 </div>
 {% endblock %}
 
-{% block photo %}
+{% block right %}
 <a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
     <img src="{{ url_for('static', filename='images/venue/' + pub_review[0]['name'].lower() + '.jpeg') }}"
     onerror="this.onerror=null; this.src='/static/icons/camera.png'"
@@ -93,9 +91,14 @@ function initMap(){
 </a>
 {% endblock %}
 
-{% block form %}
+{% block centre %}
 <div class="col center-block">
     {% include "pub_form.html" %}
+    <div class="row justify-content-center top-buffer">
+        <a class="btn btn-primary" href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}" role="button">Edit Pub</a>
+        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+    </div>
+    {% include "footer.html" %}
 </div>
 {% endblock %}
 
@@ -106,23 +109,3 @@ function initMap(){
 {% block rev_del_btn %}{% endblock %}
 
 {% block search_btn %}{% endblock %}
-
-{% block footer %}
-<div class="col">
-    <div class="row justify-content-center top-buffer">
-        <a class="btn btn-primary" href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}" role="button">Edit Pub</a>
-        <a class="btn btn-primary" href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}" role="button">Add Photo</a>
-        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
-    </div>
-    <div class="row justify-content-center top-buffer">
-        <div>Dinner icon made by <a href="https://www.flaticon.com/authors/pause08">Pause08</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Park, edit and camera icons made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Live sport icon made by <a href="https://www.flaticon.com/authors/Mihimihi">Mihimihi</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Toilet icon made by <a href="https://www.flaticon.com/authors/syafii5758">syafii5758</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Nightclub icon made by <a href="https://www.flaticon.com/authors/iconixar">iconixar</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Dartboard icon made by <a href="https://www.flaticon.com/authors/nhor-phai">Nhor Phai</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-        <div>Add image icon made by <a href="https://www.flaticon.com/authors/surang">surang</a><a> from </a><a href="https://www.flaticon.com/"> www.flaticon.com</a></div>
-    </div>
-</div>
-
-{% endblock %}

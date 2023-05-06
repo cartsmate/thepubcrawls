@@ -71,7 +71,7 @@ function reviewed_pubs(){
 </script>
 {% endblock %}
 
-{% block slider %}
+{% block controls %}
   <div class="form-check-inline">
       <label class="form-check-label" style="color:#0275d8;">
           <input type="radio" class="form-check-input" name="optradio" id="all_pubs" value="1" onclick="all_pubs()" />All
@@ -89,7 +89,7 @@ function reviewed_pubs(){
   </div>
 {% endblock %}
 
-{% block full_screen %}<div id="map" style="width:100%; height:450px;"></div>{% endblock %}
+{% block main %}<div id="map" style="width:100%; height:450px;"></div>{% endblock %}
 
 {% block pub_read_btn %}{% endblock %}
 {% block pub_edit_btn %}{% endblock %}

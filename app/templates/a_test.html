@@ -79,11 +79,11 @@ function testPromise() {
 </script>
 {% endblock %}
 
-{% block full_screen %}
+{% block main %}
 <div id="map" style="width:100%; height:400px;"></div>
 {% endblock %}
 
-{% block image %}
+{% block left %}
 <div class="col">
     <button id="make-promise">Make a promise!</button>
     <div id="log"></div>
@@ -91,7 +91,7 @@ function testPromise() {
 </div>
 {% endblock %}
 
-{% block form %}
+{% block right %}
 <div class="col">
     <button id="make-promise2">Make a promise 222222!</button>
     <div id="log2"></div>

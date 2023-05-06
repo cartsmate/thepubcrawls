@@ -1,0 +1,90 @@
+<form action="{{ url_for('pub_crawl_show') }}" method="post">
+    <!--<div class="form-group row">
+        <label class="control-label col-sm-2" for="station">Start area:</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="station" name="station" disabled>
+              <option value="">Select starting area ---</option>
+                {% for station in station_list %}
+                    <option value="{{station}}">{{station}}</option>
+                {% endfor %}
+              <option selected="selected">ANY</option>
+          </select>
+        </div>
+    </div>-->
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="start">Area:</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="area" name="area" onchange="area_changed(this.value);">
+              <option value="all">Optional ...</option>
+                {% for area in area_list %}
+                    <option value="{{area}}">{{area}}</option>
+                {% endfor %}
+          </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="start">Start pub:</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="start" name="start" required>
+              <option value="">Required ...</option>
+                {% for pa in pub_area %}
+                    <option value="{{pa[0]}}">{{pa[1]}}</option>
+                {% endfor %}
+          </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="walk">Max walk:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="walk" name="walk">
+                <option value="0">Optional ... (max walk between pubs)</option>
+                <option value="1">1 min</option>
+                <option value="3">3 min</option>
+                <option value="5">5 min</option>
+                <option value="10">10 min</option>
+                <option value="15">15 min</option>
+                <option value="0">15+ min</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="favourite">Pub feature:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="favourite" name="favourite">
+                <option value="all">Optional ...</option>
+                <option value="tv">Live sport on tv</option>
+                <option value="garden">Outdoor space</option>
+                <option value="music">Live entertainment</option>
+                <option value="late">Past 11pm opening</option>
+                <option value="food">Serves food</option>
+                <option value="toilets">Super clean washrooms</option>
+                <option value="cheap">Money saver</option>
+                <option value="games">Board games and quiz nights</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="stops">No.of stops:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="stops" name="stops" required>
+                <option style='color: #ffff00' value="">Required ...</option>
+                {% for number in range_list %}
+                    <option value="{{number}}">{{number}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="criteria">Route criteria:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="criteria" name="criteria">
+                <option value="NEAREST">Next nearest</option>
+                <option value="SCORE">Next highest rated</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit">Submit</button>
+    </div>
+  </div>
+</form>

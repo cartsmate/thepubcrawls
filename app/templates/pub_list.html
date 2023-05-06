@@ -32,14 +32,16 @@ function onLoad(){
 </script>
 {% endblock %}
 
-{% block full_screen %}
-<div class="col center-block text-center">
+{% block main %}
+<div class="col-md-12 mx-auto">
     <div id="header_listing"></div>
-</div>
-{% endblock %}
-
-{% block form %}
     <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
+    <div class="row justify-content-center top-buffer">
+        <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add New</a>
+        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+    </div>
+    {% include "footer.html" %}
+</div>
 {% endblock %}
 
 {% block navbar_list %}<a class="nav-link active_custom" href="{{ url_for('pub_list', list_type='all', id_type='all') }}">Listing</a>{% endblock %}
@@ -51,12 +53,3 @@ function onLoad(){
 {% block rev_edit_btn %}{% endblock %}
 {% block rev_del_btn %}{% endblock %}
 {% block search_btn %}{% endblock %}
-
-{% block footer %}
-<div class="col">
-    <div class="row justify-content-center top-buffer">
-        <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add Pub</a>
-        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
-    </div>
-</div>
-{% endblock %}

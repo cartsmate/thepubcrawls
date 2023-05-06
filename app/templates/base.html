@@ -18,15 +18,14 @@
         <div class="container-fluid">
             <div class="row header_band" id="header_band"><a class="mx-auto">The Pub Crawls</a></div>
             <div class="row" style="margin: 5px 0 0 0;">{% block navbar %}{% endblock %}</div>
-            <div class="row" style="margin: 0 0 0 0;">{% block slider %}{% endblock %}</div>
+            <div class="row" style="margin: 0 0 0 0;">{% block controls %}{% endblock %}</div>
+            <div class="row" style="margin: 0 0 0 0;">{% block main %}{% endblock %}</div>
             <div class="row" style="margin: 0 0 0 0;">
-                <div class="col-md-12 mx-auto">{% block full_screen %}{% endblock %}</div>
-            <div class="row" style="margin: 0 0 0 0;">
-                <div class="col-md-6">{% block map %}{% endblock %}</div>
-                <div class="col-md-6">{% block photo %}{% endblock %}</div>
+                <div class="col-md-6">{% block left %}{% endblock %}</div>
+                <div class="col-md-6">{% block right %}{% endblock %}</div>
             </div>
             <div class="row" style="margin: 0 0 0 0;">
-                <div class="col-md-6 mx-auto">{% block form %}{% endblock %}</div>
+                <div class="col-md-6 mx-auto">{% block centre %}{% endblock %}</div>
             </div>
             <div>{% block footer %}{% endblock %}</div>
         </div>
