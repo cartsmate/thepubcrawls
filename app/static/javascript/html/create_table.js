@@ -47,8 +47,13 @@ function create_table() {
             '<td><a href="/pub/list/station/' + pubs_reviews[key].station + '">' + pubs_reviews[key].station + '</a></td>' +
             '<td><a href="/pub/list/area/' + pubs_reviews[key].area + '">' + pubs_reviews[key].area + '</a></td>' +
             str_reviewed +
-            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].score + '</a></td>' +
-            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].rank + '</a></td>' +
+            '<td><a href="/pub/list/area/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].score + '</a></td>' +
+            '<td>' +
+                '<div class="star_container">' +
+                    '<a href="/review/' + pubs_reviews[key].pub_identity + '"><img src="/static/icons/star.png" style="width:30px;height:30px;"></a>' +
+                    '<div class="star_centre">' + pubs_reviews[key].rank + '</div>' +
+                '</div>' +
+            '</td>' +
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].tv + '</a></td>' +
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].garden + '</a></td>' +
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].music + '</a></td>' +
