@@ -3,7 +3,10 @@ function featureClick(check_item) {
     var image = document.getElementById(check_item + "_img");
     var caption = document.getElementById(check_item + "_caption");
     if (check_item == 'search') {
-        const myUrlWithParams = new URL("http://127.0.0.1:5000/pub/search/");
+        var base_url = window.location.hostname
+        var full_url = "http://" + base_url + ":5000/pub/search/"
+        var full_url_prod = "http://" + base_url + "/pub/search/"
+        const myUrlWithParams = new URL(full_url_prod);
         //myUrlWithParams.searchParams.append("pet", pet.checked);
 
         myUrlWithParams.searchParams.append("tv", tv.checked);
