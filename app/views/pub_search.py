@@ -6,6 +6,7 @@ from config import Configurations
 from functions.functions import Functions
 
 config = Configurations().get_config()
+config2 = Configurations().get_config2()
 
 
 @app.route("/pub/search/")
@@ -77,4 +78,5 @@ def pub_search():
     pubs_reviews_json = Functions().df_to_dict(filtered_values)
     # ?tv = false & garden = false & music = false & late = false & meals = false & toilets = false & cheap = false & games = false
     return render_template('pub_search.html', config=config, pubs_reviews=pubs_reviews_json, tv=tv, garden=garden,
-                           music=music, late=late, meals=meals, toilets=toilets, cheap=cheap, games=games)
+                           music=music, late=late, meals=meals, toilets=toilets, cheap=cheap, games=games,
+                           config2=config2)

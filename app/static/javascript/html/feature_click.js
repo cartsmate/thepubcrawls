@@ -4,9 +4,14 @@ function featureClick(check_item) {
     var caption = document.getElementById(check_item + "_caption");
     if (check_item == 'search') {
         var base_url = window.location.hostname
-        var full_url = "http://" + base_url + ":5000/pub/search/"
-        var full_url_prod = "http://" + base_url + "/pub/search/"
-        const myUrlWithParams = new URL(full_url_prod);
+        console.log(base_url)
+        if (config2['env'] == 'prod') {
+            var url = "http://" + base_url + "/pub/search/"
+        } else {
+            var url = "http://" + base_url + ":5000/pub/search/"
+        }
+        console.log(url)
+        const myUrlWithParams = new URL(url);
         //myUrlWithParams.searchParams.append("pet", pet.checked);
 
         myUrlWithParams.searchParams.append("tv", tv.checked);

@@ -47,4 +47,4 @@ def home():
                                map_lat=51.5, map_lng=-0.1, config=config, google_key=config2['google_key'],
                                row_loop=range(3), col_loop=range(4), areas=areas_json, start=start,
                                    walk=walk, favourite=favourite, stops=stops, criteria=criteria,
-                           pubs=pubs_json, pub=pub_json)
+                           pubs=pubs_json, pub=pub_json, config2=config2)

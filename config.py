@@ -19,13 +19,15 @@ class Configurations:
                 "google_key": constants.get('local', 'MAP'),
                 "access_id": constants.get('local', 'ID'),
                 "access_key": constants.get('local', 'KEY'),
-                "bucket_name": constants.get('local', 'BUCKET')
+                "bucket_name": constants.get('local', 'BUCKET'),
+                "env": "qual"
             }
         except:
             config2 = {
                 "google_key": os.getenv("HEROKU_GOOGLE_API"),
                 "access_id": os.environ.get("ACCESS_ID"),
                 "access_key": os.environ.get("ACCESS_KEY"),
-                "bucket_name": os.environ.get("BUCKET_NAME")
+                "bucket_name": os.environ.get("BUCKET_NAME"),
+                "env": "prod"
             }
         return config2

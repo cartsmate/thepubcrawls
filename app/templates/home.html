@@ -101,6 +101,8 @@ function onLoad(){
     } else {
         alert('You appear to offline so maps cannot be displayed')
     }
+    config2 = {{ config2 | tojson }}
+    var env = config2['env']
 }
 </script>
 {% endblock %}
