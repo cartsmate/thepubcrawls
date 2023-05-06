@@ -14,21 +14,6 @@
 {% endfor %}
 
 <script>
-function starClick(check_item) {
-    console.log(check_item)
-    var checkBox = document.getElementById(check_item);
-    var text = document.getElementById("img_" + check_item);
-    if (checkBox.checked == true){
-        console.log('true')
-        text.style.opacity = "1"
-    } else {
-        console.log('false')
-        text.style.opacity = "0.25"
-    }
-}
-</script>
-
-<script>
 var form_node = document.createElement("div");
 form_node.setAttribute("class", "form-group row");
 id_row = "row_checks"
@@ -49,7 +34,7 @@ document.getElementById('pub_vis').appendChild(form_node);
         check_node.setAttribute("id", '{{field}}');
         check_node.setAttribute("name", '{{field}}');
         check_node.setAttribute("style", "display: none;");
-        check_node.setAttribute("onclick", "myFunction('{{field}}')")
+        check_node.setAttribute("onclick", "featureClick('{{field}}')")
         document.getElementById(id_div).appendChild(check_node);
 
         var img_label_node = document.createElement("label")

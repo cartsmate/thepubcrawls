@@ -46,14 +46,26 @@ function create_table() {
             '<td><a href="/pub/list/category/' + pubs_reviews[key].category + '">' + camel_case(pubs_reviews[key].category) + '</a></td>' +
             '<td><a href="/pub/list/station/' + pubs_reviews[key].station + '">' + pubs_reviews[key].station + '</a></td>' +
             '<td><a href="/pub/list/area/' + pubs_reviews[key].area + '">' + pubs_reviews[key].area + '</a></td>' +
-            str_reviewed +
             '<td><a href="/pub/list/area/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].score + '</a></td>' +
-            '<td>' +
-                '<div class="star_container">' +
-                    '<a href="/review/' + pubs_reviews[key].pub_identity + '"><img src="/static/icons/star.png" style="width:30px;height:30px;"></a>' +
-                    '<div class="star_centre">' + pubs_reviews[key].rank + '</div>' +
-                '</div>' +
-            '</td>' +
+            str_reviewed
+            if (pubs_reviews[key].rank != '0') {
+                table_string +=
+                    '<td>' +
+                        '<div class="star_container">' +
+                            '<img src="/static/icons/star.png" style="width:30px;height:30px;opacity:1.0;">' +
+                            '<div class="star_centre">' + pubs_reviews[key].rank + '</div>' +
+                        '</div>' +
+                    '</td>'
+            } else {
+                table_string +=
+                    '<td>' +
+                        '<div class="star_container">' +
+                            '<img src="/static/icons/star.png" style="width:30px;height:30px;opacity:0.25;">' +
+                            '<div class="star_centre"></div>' +
+                        '</div>' +
+                    '</td>'
+            }
+            table_string +=
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].tv + '</a></td>' +
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].garden + '</a></td>' +
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].music + '</a></td>' +
