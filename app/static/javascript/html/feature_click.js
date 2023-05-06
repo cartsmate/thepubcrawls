@@ -6,7 +6,7 @@ function featureClick(check_item) {
         var base_url = window.location.hostname
         var full_url = "http://" + base_url + ":5000/pub/search/"
         var full_url_prod = "http://" + base_url + "/pub/search/"
-        const myUrlWithParams = new URL(full_url_prod);
+        const myUrlWithParams = new URL(full_url);
         //myUrlWithParams.searchParams.append("pet", pet.checked);
 
         myUrlWithParams.searchParams.append("tv", tv.checked);

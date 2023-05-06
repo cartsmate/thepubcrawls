@@ -5,7 +5,7 @@ function Search() {
         $('#pub_list').DataTable({
             paging: false,
             info: false,
-            order: [[7, 'desc']],
+            order: [[8, 'desc']],
             searching: false,
             columnDefs: [
                     {target: 0, visible: false, searchable: false, },
@@ -39,7 +39,7 @@ function Area() {
         $('#pub_list').DataTable({
             paging: false,
             info: false,
-            order: [[7, 'desc']],
+            order: [[8, 'desc']],
             searching: false,
             columnDefs: [
                     {target: 0, visible: false, searchable: false, },
