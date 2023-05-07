@@ -39,7 +39,7 @@ function showMap(station, area, full, zoom, lat, lng){
     console.log('showMap')
     map = show_map(lat, lng, zoom)
     switch (true) {
-        case (zoom < 16):
+        case (zoom < 15):
             data = area
             break;
         default:
