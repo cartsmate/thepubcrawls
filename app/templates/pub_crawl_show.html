@@ -65,7 +65,7 @@ function initMap(){
                 pubs = pubs.filter (obj => !(obj.place == list_got.place))
             }
         }
-        displayCrawl(stop_offs);
+        displayCrawl(stop_offs, 'map');
     } else {
         displayNone(pub_first_stop);
     }
@@ -76,7 +76,6 @@ function initMap(){
 
 {% block main %}
     <div id="header_listing"></div>
-    {% include "footer.html" %}
 {% endblock %}
 
 {% block left %}
@@ -87,6 +86,13 @@ function initMap(){
 <div class="col">
     <div class="row" id="route"></div>
 </div>
+{% endblock %}
+
+{% block centre %}
+    <div class="row justify-content-center top-buffer">
+        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+    </div>
+    {% include "footer.html" %}
 {% endblock %}
 
 {% block navbar_crawls %}<a class="nav-link active_custom" href="/pub/crawl">Pub Crawls</a>{% endblock %}
