@@ -9,7 +9,7 @@ function add_markers(map, zoom, data) {
     for (var key in data) {
         //console.log(data[key])
         var pinColor = data[key].colour
-        if (zoom < 16) {
+        if (zoom < 15) {
             var pinHole = pinSVGFilled
             var label = {
                 text: data[key].count,
@@ -47,7 +47,7 @@ function add_markers(map, zoom, data) {
             icon: markerImage,
             title: title_name
         })
-        if (zoom < 16) {
+        if (zoom < 15) {
             google.maps.event.addListener(marker, 'click', (function (marker, key) {
                 return function () {
                     set=data[key].area.trim().replace(/%20/g, " ");
@@ -55,7 +55,7 @@ function add_markers(map, zoom, data) {
                     console.log(set)
                     infowindow.x = set;
                     infowindow.setContent("<p><b>" + set + "</b></p>" +
-                        "<a href='/pub/area/" + set + "'>list of local venues</a>");
+                        "<a href='/pub/list/area/" + set + "'>list of local venues</a>");
                     infowindow.open(map, marker);
                 }
             })(marker, key));
