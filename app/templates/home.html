@@ -14,19 +14,20 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_map_click.js') }}"></script>
+<!--<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_setup.js') }}"></script>-->
 
 <script>
-function initMap() {
-    key = {{ google_key | tojson }}
-    pubs = {{ pubs | tojson }}
-    pub = {{ pub | tojson }}
-    crawl = {
-        start: {{ start | tojson }},
-        walk: {{ walk | tojson }},
-        favourite: {{ favourite | tojson }},
-        stops: {{ stops | tojson }},
-        criteria: {{ criteria | tojson }}
-    }
+key = {{ google_key | tojson }}
+pubs = {{ pubs | tojson }}
+pub = {{ pub | tojson }}
+start = {{ start | tojson }}
+walk = {{ walk | tojson }}
+favourite = {{ favourite | tojson }}
+stops = {{ stops | tojson }}
+criteria = {{ criteria | tojson }}
+
+function mapSetup() {
+    crawl = { start, walk, favourite, stops, criteria }
     var stop_offs = []
     if ( crawl.favourite = 'all' ) {
         crawl.score = pub[0]['score']
@@ -81,7 +82,6 @@ function initMap() {
         window.location.href = "/pub/map/all"
     });
 }
-
 </script>
 
 <script>
@@ -96,13 +96,12 @@ function onLoad(){
     var js = document.createElement("script");
     js.type = "text/javascript";
     if ( window.navigator.onLine == true) {
-        js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
+        js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=mapSetup'
         document.head.appendChild(js)
     } else {
         alert('You appear to offline so maps cannot be displayed')
     }
     config2 = {{ config2 | tojson }}
-    var env = config2['env']
 }
 </script>
 {% endblock %}
@@ -113,7 +112,7 @@ function onLoad(){
     {% include "home_crawl.html" %}
     {% include "home_features.html" %}
     {% include "home_area.html" %}
-    {% include "home_rating.html" %}
+    <!--{% include "home_rating.html" %}-->
     {% include "home_location.html" %}
     <div class="row justify-content-center top-buffer">
         <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add New</a>
