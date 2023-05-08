@@ -1,4 +1,6 @@
 function featureClick(check_item) {
+    console.log("featureClick")
+    console.log(check_item)
     var checkBox = document.getElementById(check_item);
     var image = document.getElementById(check_item + "_img");
     var caption = document.getElementById(check_item + "_caption");
