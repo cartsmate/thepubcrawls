@@ -69,7 +69,7 @@ function mapSetup() {
     }
     var myOptions = {
         zoom: 14,
-        center: new google.maps.LatLng(52.0, -0.02),
+        center: new google.maps.LatLng(51.52302856214283,-0.1070362329483032),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         zoomControl: false,
         streetViewControl: false,
@@ -81,6 +81,7 @@ function mapSetup() {
         event.stop();
         window.location.href = "/pub/map/all"
     });
+    add_markers(map2, 16, pubs);
 }
 </script>
 

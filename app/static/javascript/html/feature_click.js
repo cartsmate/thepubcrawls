@@ -12,8 +12,7 @@ function featureClick(check_item) {
         }
         console.log(url)
         const myUrlWithParams = new URL(url);
-        //myUrlWithParams.searchParams.append("pet", pet.checked);
-
+        myUrlWithParams.searchParams.append("pet", pet.checked);
         myUrlWithParams.searchParams.append("tv", tv.checked);
         myUrlWithParams.searchParams.append("garden", garden.checked);
         myUrlWithParams.searchParams.append("music", music.checked);
@@ -22,6 +21,7 @@ function featureClick(check_item) {
         myUrlWithParams.searchParams.append("toilets", toilets.checked);
         myUrlWithParams.searchParams.append("cheap", cheap.checked);
         myUrlWithParams.searchParams.append("games", games.checked);
+        myUrlWithParams.searchParams.append("quiz", quiz.checked);
 
         console.log(myUrlWithParams.href);
         window.location.replace(myUrlWithParams.href);
