@@ -109,7 +109,6 @@ function showMap(summary, full, zoom, lat, lng){
 
 {% block centre %}
 <div class="row justify-content-center top-buffer">
-    <a class="btn btn-primary" href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}" role="button">Add Photo</a>
     <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
 </div>
 {% include "footer.html" %}
