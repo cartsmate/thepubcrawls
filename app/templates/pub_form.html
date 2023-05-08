@@ -1,7 +1,7 @@
 <div class="form-group row">
     <div class="col" id="pub_vis"></div>
 </div>
-<button type="button" class="btn btn-outline-primary btn-block" data-toggle="collapse" data-target="#review_collapse" ><Edit></Edit> Review</button>
+
 <div class="form-group row collapse" id="review_collapse">
     <div class="col" id="rev_vis"></div>
 </div>
@@ -12,48 +12,12 @@
         <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'hidden', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}', '{{config['control']['star']}}')</script>
     {% endif %}
 {% endfor %}
+<div class="row" style="background-color:#CDCDCD; height:100%;">
+    {% include "home_features.html" %}
+</div>
 
-<script>
-var form_node = document.createElement("div");
-form_node.setAttribute("class", "form-group row");
-id_row = "row_checks"
-form_node.setAttribute("id", id_row);
-document.getElementById('pub_vis').appendChild(form_node);
-</script>
-{% for field in config['control']['check'] %}
-    <script>
+<button type="button" class="btn btn-outline-primary btn-block" data-toggle="collapse" data-target="#review_collapse" ><Edit></Edit> Review</button>
 
-        var div_node = document.createElement("div");
-        div_node.setAttribute("class", "col");
-        id_div = "div_" + '{{field}}'
-        div_node.setAttribute("id", id_div);
-        document.getElementById(id_row).appendChild(div_node);
-
-        var check_node = document.createElement("input");
-        check_node.setAttribute("type", 'checkbox');
-        check_node.setAttribute("id", '{{field}}');
-        check_node.setAttribute("name", '{{field}}');
-        check_node.setAttribute("style", "display: none;");
-        check_node.setAttribute("onclick", "featureClick('{{field}}' + '_img')")
-        document.getElementById(id_div).appendChild(check_node);
-
-        var img_label_node = document.createElement("label")
-        img_label_node.setAttribute("for", '{{field}}');
-        id_img_label = '{{field}}' + "_caption"
-        img_label_node.setAttribute("id", id_img_label);
-        document.getElementById(id_div).appendChild(img_label_node);
-
-        var img_node = document.createElement("img");
-        img_node.setAttribute("src", "{{ url_for('static', filename='icons/' + field + '.png') }}")
-        img_node.setAttribute("width", "40")
-        img_node.setAttribute("height", "40")
-        id_img = "img_" + '{{field}}'
-        img_node.setAttribute("id", id_img);
-        img_node.setAttribute("name", id_img);
-        img_node.style.opacity = "0.25"
-        document.getElementById(id_img_label).appendChild(img_node);
-    </script>
-{% endfor %}
 
 {% for field in config['review']['column'] %}
     {% if field in config['review']['visible'] %}

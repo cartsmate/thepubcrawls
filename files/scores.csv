@@ -9,7 +9,7 @@ f5a12325-30b9-4a82-b84b-804fb6d24a65,2fb4fd5e-0efa-406b-9766-68a70919ff97,False,
 aa272853-1d21-42b2-a927-507904cbe0f3,e8cbe945-648f-4a82-8e4b-8a6eb043af7f,False,test date,friendliness,6.0,7.0,5.0,6.0,3.0,6.0,8.0,5.0,3.0,7.0,both,False,False,False,False,False,False,False,False,64.0
 9aa2f873-b061-4b53-9c8d-f2aedc25dfe7,5c5aa314-0ef0-4a92-9aa2-45e89bcd7f0c,False,2023-02-16,entertainment,8.0,9.0,8.0,7.0,10.0,5.0,8.0,7.0,4.0,7.0,BOTH,False,False,False,False,False,False,False,False,76.0
 b2fc5b4f-5be7-4366-a632-09e166da3bfa,0ca14449-0d5b-4e03-9247-99fed9cebbc3,False,2023-02-16,friendliness,8.0,8.0,9.0,9.0,6.0,5.0,9.0,4.0,4.0,4.0,BOTH,False,False,False,False,False,False,False,False,78.0
-a1f75b71-aeba-4a08-8a3c-ae5b3ae7098a,49bf46f8-088d-44aa-afee-c96875a311a7,False,test date,selection,4.0,6.0,5.0,3.0,2.0,6.0,7.0,5.0,5.0,8.0,both,False,False,False,False,False,False,False,False,54.0
+a1f75b71-aeba-4a08-8a3c-ae5b3ae7098a,49bf46f8-088d-44aa-afee-c96875a311a7,False,08/05/2023,selection,4,6,5,3,2,6,7,5,5,8,both,False,False,False,False,True,False,False,False,54.0
 8c8692f4-a7f3-4622-98a6-dec317bcca02,57fe4fa1-3339-47f7-be7c-8de1e4b539d6,False,2023-02-16,entertainment,8.0,6.0,7.0,7.0,10.0,7.0,7.0,5.0,3.0,4.0,BOTH,False,False,False,False,False,False,False,False,66.0
 9dbbb2b3-381a-43ad-892a-0ecdbc16bb35,9b7c0aba-1eb5-4006-887b-d7903b0a566d,False,test date,selection,5.0,3.0,5.0,6.0,5.0,6.0,6.0,5.0,6.0,0.0,both,False,False,False,False,False,False,False,False,44.0
 bc67b93f-1caf-4db7-a2b7-d09b9d1dccc2,79bfdc53-24f4-4f44-8b80-3a0a553b0898,False,test date,food,5.0,3.0,4.0,4.0,1.0,6.0,4.0,3.0,3.0,3.0,both,False,False,False,False,False,False,False,False,40.0
