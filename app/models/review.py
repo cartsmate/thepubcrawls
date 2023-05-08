@@ -7,7 +7,7 @@ class Review:
     def __init__(self, review_identity, review_deletion, pub_identity,
                  visit, star, reviewer, atmosphere, cleanliness,
                  clientele, decor, entertainment, food, friendliness, opening, price, selection,
-                 tv, garden, music, late, meals, toilets, cheap, games):
+                 tv, garden, music, late, meals, toilets, cheap, games, pet, quiz):
         self.pub_identity = pub_identity
         self.review_identity = review_identity
         self.review_deletion = review_deletion
@@ -32,3 +32,5 @@ class Review:
         self.toilets = toilets
         self.cheap = cheap
         self.games = games
+        self.pet = pet
+        self.quiz = quiz

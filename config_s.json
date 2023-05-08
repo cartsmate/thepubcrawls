@@ -40,12 +40,12 @@
     "star": ["rank"]
   },
   "colour" : {
-    "all": "#2F2FA2",
-    "new": "#553D67",
+    "all": "#FF0000",
+    "new": "#FF0000",
     "reviewed": "#FF0000",
     "pink": "#F64C72",
-    "black": "#000000",
+    "black": "#FF0000",
     "red": "#FF0000",
-    "primary": "#0275d8"
+    "primary": "#FF0000"
   }
 }

@@ -34,12 +34,12 @@ document.getElementById('pub_vis').appendChild(form_node);
         check_node.setAttribute("id", '{{field}}');
         check_node.setAttribute("name", '{{field}}');
         check_node.setAttribute("style", "display: none;");
-        check_node.setAttribute("onclick", "featureClick('{{field}}')")
+        check_node.setAttribute("onclick", "featureClick('{{field}}' + '_img')")
         document.getElementById(id_div).appendChild(check_node);
 
         var img_label_node = document.createElement("label")
         img_label_node.setAttribute("for", '{{field}}');
-        id_img_label = "id_img_" + '{{field}}'
+        id_img_label = '{{field}}' + "_caption"
         img_label_node.setAttribute("id", id_img_label);
         document.getElementById(id_div).appendChild(img_label_node);
 
