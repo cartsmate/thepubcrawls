@@ -5,7 +5,8 @@ from ..models.pub_identity import PubIdentity
 
 class Review:
     def __init__(self, review_identity, review_deletion, pub_identity,
-                 visit, star, reviewer, atmosphere, cleanliness,
+                 visit, star, reviewer, rating,
+                 atmosphere, cleanliness,
                  clientele, decor, entertainment, food, friendliness, opening, price, selection,
                  tv, garden, music, late, meals, toilets, cheap, games, pet, quiz):
         self.pub_identity = pub_identity
@@ -24,6 +25,7 @@ class Review:
         self.price = price
         self.selection = selection
         self.reviewer = reviewer
+        self.rating = rating
         self.tv = tv
         self.garden = garden
         self.music = music
