@@ -12,12 +12,14 @@
         <script>insert_line('pub_vis', '{{form}}', '{{field}}', 'hidden', '{{config['pub']['required']}}', '{{config['control']['date']}}', '{{config['control']['input']}}', '{{config['control']['dropdown']}}', '{{config['control']['slider']}}', '{{config['control']['check']}}', '{{config['control']['star']}}')</script>
     {% endif %}
 {% endfor %}
-<div class="row" style="background-color:#CDCDCD; height:100%;">
-    {% include "home_features.html" %}
+<div class="row" style="display: flex; align-items: center; background-color:#CDCDCD; height:100%;">
+    {% with search='off' %}
+        {% include "home_features.html" %}
+    {% endwith %}
 </div>
-
-<button type="button" class="btn btn-outline-primary btn-block" data-toggle="collapse" data-target="#review_collapse" ><Edit></Edit> Review</button>
-
+<div class="row justify-content-center" style="display: flex; align-items: center; margin: 15px 0;">
+    <button type="button" class="btn btn-outline-primary btn-block" data-toggle="collapse" data-target="#review_collapse" >Edit Review</button>
+</div>
 
 {% for field in config['review']['column'] %}
     {% if field in config['review']['visible'] %}

@@ -64,14 +64,10 @@ function initMap(){
 {% endblock %}
 
 {% block main %}
-<div class="col">
-    <div class="row">
-        <div class="col-12 center-block text-center">
-            <strong>
-                <a style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">{{pub_review[0]['name']}}</a>
-            </strong>
-        </div>
-    </div>
+<div class="col-md-12 center-block text-center">
+    <strong>
+        <a style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">{{pub_review[0]['name']}}</a>
+    </strong>
 </div>
 {% endblock %}
 
@@ -92,20 +88,12 @@ function initMap(){
 {% endblock %}
 
 {% block centre %}
-<div class="col center-block">
-    {% include "pub_form.html" %}
-    <div class="row justify-content-center top-buffer">
-        <a class="btn btn-primary" href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}" role="button">Edit Pub</a>
-        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+    <div class="col center-block">
+        {% include "pub_form.html" %}
+        <div class="row justify-content-center top-buffer">
+            <a class="btn btn-primary" href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}" role="button">Edit Pub</a>
+            <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+        </div>
+        {% include "footer.html" %}
     </div>
-    {% include "footer.html" %}
-</div>
 {% endblock %}
-
-{% block pub_read_btn %}<a class="nav-link active_custom" href="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}">View</a>{% endblock %}</li>
-{% block rev_read_btn %}{% endblock %}
-{% block rev_add_btn %}{% endblock %}
-{% block rev_edit_btn %}{% endblock %}
-{% block rev_del_btn %}{% endblock %}
-
-{% block search_btn %}{% endblock %}

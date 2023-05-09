@@ -112,7 +112,11 @@
 
 {% block main %}
 <div class="col-md-12 mx-auto">
-    {% include "home_features.html" %}
+    <div class="row" style="display: flex; align-items: center; border-style:solid; background-color:#FFFFFF; height:200px; border-width:thin">
+        {% with search='on' %}
+            {% include "home_features.html" %}
+        {% endwith %}
+    </div>
     <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
     <div class="row justify-content-center top-buffer">
         <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add New</a>
