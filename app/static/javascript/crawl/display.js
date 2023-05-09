@@ -11,8 +11,24 @@ function displayCrawl(stop_offs, locator) {
     for (let i=0; i<stop_offs.length; i++) {
         console.log(stop_offs[i])
     }*/
+    var pinColor = '#0275D8'
+    var pinSVGHole = "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z";
+    var labelOriginHole = new google.maps.Point(12,15);
+    var pinSVGFilled = "M 12,2 C 8.1340068,2 5,5.1340068 5,9 c 0,5.25 7,13 7,13 0,0 7,-7.75 7,-13 0,-3.8659932 -3.134007,-7 -7,-7 z";
+    var labelOriginFilled =  new google.maps.Point(12,9);
+    var pinHole = pinSVGHole
+    var markerImage = {  // https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel
+            path: pinHole,
+            anchor: new google.maps.Point(12,17),
+            fillOpacity: 1,
+            fillColor: pinColor,
+            strokeWeight: 2,
+            strokeColor: "white",
+            scale: 2,
+            labelOrigin: labelOriginHole
+        };
     var directionsService = new google.maps.DirectionsService();
-    var directionsRenderer = new google.maps.DirectionsRenderer();
+    var directionsRenderer = new google.maps.DirectionsRenderer({ suppressMarkers: false, markerOptions: {icon: markerImage}, polylineOptions: { strokeColor: '#0275D8' } });
 
     var map = new google.maps.Map(document.getElementById(locator), {
         zoom:7,
