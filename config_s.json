@@ -36,7 +36,7 @@
     "input": ["name", "address", "station", "area"],
     "dropdown": ["category", "star", "reviewer"],
     "slider": ["score", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection"],
-    "check": ["pet", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "quiz"],
+    "check": ["pet", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "quiz", "pool", "atmosphere"],
     "star": ["rank"]
   },
   "colour" : {
