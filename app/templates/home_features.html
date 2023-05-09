@@ -6,7 +6,7 @@
         <input type="checkbox" id="{{field}}" name="{{field}}" style="display: none;" onclick="featureClick('{{field}}')">
         <label for="{{field}}" style="margin:0px; padding:0px" >
             <img src="{{ url_for('static', filename='icons/' + field + '.png') }}" id="{{field}}_img" width="30" height="30"
-                 style="opacity: 0.25;">
+                 style="opacity: 0.5;">
         </label>
         <div class="caption" id="{{field}}_caption" style="padding:0px; margin:0px; opacity: 0.25"></div>
     </div>
@@ -41,6 +41,12 @@
             break;
         case 'quiz':
             name_label = "quiz night"
+            break;
+        case 'atmosphere':
+            name_label = "lively atmosphere"
+            break;
+        case 'pool':
+            name_label = "pool table"
             break;
         default:
             name_label = "error"
