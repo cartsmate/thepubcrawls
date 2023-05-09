@@ -94,21 +94,15 @@ function initMap(){
 {% endblock %}
 
 {% block centre %}
-<form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">
-    {% include "pub_form.html" %}
-    <div class="form-group row" style="margin: 15px 0;">
-        <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit">Submit</button>
+    <form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">
+        {% include "pub_form.html" %}
+        <div class="form-group row" style="margin: 15px 0;">
+            <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit">Submit</button>
+        </div>
+    </form>
+    <div class="row justify-content-center top-buffer" style="display: flex; align-items: center; ">
+        <a class="btn btn-primary" style="margin: 0 5px 10px 5px;" href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}" role="button">Add Photo</a>
+        <a class="btn btn-primary" style="margin: 0 5px 10px 5px;" href="{{ url_for('home') }}" role="button">Back to Home</a>
     </div>
-</form>
-<div class="row justify-content-center top-buffer">
-    <a class="btn btn-primary" href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}" role="button">Add Photo</a>
-    <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
-</div>
-{% include "footer.html" %}
+    {% include "footer.html" %}
 {% endblock %}
-
-{% block pub_edit_btn %}<a class="nav-link active_custom" href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}">Edit</a>{% endblock %}
-{% block rev_read_btn %}{% endblock %}
-{% block rev_add_btn %}{% endblock %}
-{% block rev_edit_btn %}{% endblock %}
-{% block rev_del_btn %}{% endblock %}

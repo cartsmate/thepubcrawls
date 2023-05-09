@@ -29,7 +29,7 @@ def pub_add():
         .rename(columns={'name': 'count'}).astype(str)
     df_all_latlng['colour'] = config['colour']['primary']
     station_all_json = Functions().df_to_dict(df_all_latlng)
-
+    parameter = ""
     return render_template("pub_add.html", form_type='add', google_key=config2['google_key'],
                            pubs_reviews=pubs_reviews_json, new_id=new_id, config=config,
                            # pub_review=pub_review_json,

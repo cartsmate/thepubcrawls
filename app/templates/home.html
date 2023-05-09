@@ -14,6 +14,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_map_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
 <!--<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_setup.js') }}"></script>-->
 
 <script>
@@ -25,6 +26,10 @@ walk = {{ walk | tojson }}
 favourite = {{ favourite | tojson }}
 stops = {{ stops | tojson }}
 criteria = {{ criteria | tojson }}
+
+function test_test() {
+    console.log('test test')
+    }
 
 function mapSetup() {
     crawl = { start, walk, favourite, stops, criteria }
@@ -118,27 +123,17 @@ function onLoad(){
             </strong>
         </div>
     </div>
-    <div class="row" style="border-style:solid; background-color:#FFFFFF; height:200px; border-width:thin">
-        {% include "home_features.html" %}
+    <div class="row" style="display: flex; align-items: center; border-style:solid; background-color:#D3D3D3; border-width:thin">
+        {% with search='on' %}
+            {% include "home_features.html" %}
+        {% endwith %}
     </div>
     {% include "home_area.html" %}
     <!--{% include "home_rating.html" %}-->
     {% include "home_location.html" %}
-    <div class="row justify-content-center top-buffer">
+    <div class="row justify-content-center top-buffer" style="display: flex; align-items: center;" >
         <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add New</a>
     </div>
     {% include "footer.html" %}
 </div>
 {% endblock %}
-
-{% block navbar_login %}{% endblock %}
-{% block navbar_admin %}{% endblock %}
-{% block navbar_home %}<a class="nav-link active_custom" href="/index">Home</a>{% endblock %}</li>
-{% block pub_read_btn %}{% endblock %}
-{% block pub_edit_btn %}{% endblock %}
-{% block pub_del_btn %}{% endblock %}
-{% block rev_read_btn %}{% endblock %}
-{% block rev_add_btn %}{% endblock %}
-{% block rev_edit_btn %}{% endblock %}
-{% block rev_del_btn %}{% endblock %}
-{% block search_btn %}{% endblock %}

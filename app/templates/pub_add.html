@@ -108,17 +108,8 @@ function showMap(summary, full, zoom, lat, lng){
 {% endblock %}
 
 {% block centre %}
-<div class="row justify-content-center top-buffer">
-    <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
-</div>
-{% include "footer.html" %}
+    <div class="row justify-content-center top-buffer" style="display: flex; align-items: center;">
+        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+    </div>
+    {% include "footer.html" %}
 {% endblock %}
-
-{% block pub_add_btn %}<a class="nav-link active_custom" href="{{ url_for('pub_add') }}">Add New Venue</a>{% endblock %}
-{% block pub_read_btn %}{% endblock %}
-{% block pub_edit_btn %}{% endblock %}
-{% block pub_del_btn %}{% endblock %}
-{% block rev_read_btn %}{% endblock %}
-{% block rev_add_btn %}{% endblock %}
-{% block rev_edit_btn %}{% endblock %}
-{% block rev_del_btn %}{% endblock %}

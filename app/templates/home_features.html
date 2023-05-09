@@ -1,58 +1,71 @@
 
 <!--<div class="row justify-content-center align-items-center" id="feature-list"></div>-->
 
-    {% for field in config['control']['check'] %}
-        <script>var id_img = "{{field}}" + "_img"</script>
-        <div class="col" style="text-align: center;">
-            <input type="checkbox" id="{{field}}" name="{{field}}" style="display: none;" onclick="featureClick('{{field}}')">
-            <label for="{{field}}"  >
-                <img src="{{ url_for('static', filename='icons/' + field + '.png') }}" id="{{field}}_img" width="30" height="30" style="opacity: 0.25; margin:0px; padding-top:5px">
-            </label>
-            <div class="caption" id="{{field}}_caption" style="padding:0px; margin:0px; opacity: 0.25"></div>
-        </div>
-        <script>
-        switch('{{field}}') {
-            case 'tv':
-                name_label = "live sports"
-                break;
-            case 'garden':
-                name_label = "outside space"
-                break;
-            case 'music':
-                name_label = "live music"
-                break;
-            case 'late':
-                name_label = "past midnight"
-                break;
-            case 'meals':
-                name_label = "serves food"
-                break;
-            case 'toilets':
-                name_label = "clean toilets"
-                break;
-            case 'cheap':
-                name_label = "cheap pint"
-                break;
-            case 'games':
-                name_label = "pub games"
-                break;
-            case 'pet':
-                name_label = "dog friendly"
-                break;
-            case 'quiz':
-                name_label = "quiz night"
-                break;
-            case 'search':
-                name_label = "search"
-                break;
-            default:
-                name_label = "error"
-        }
-        document.getElementById("{{field}}_caption").innerHTML += name_label;
-        document.getElementById("{{field}}_caption").style.fontSize = "x-small";
-        document.getElementById("{{field}}_caption").style.fontWeight = "bold";
+{% for field in config['control']['check'] %}
+    <div class="col" style="text-align: center; padding: 10px">
+        <input type="checkbox" id="{{field}}" name="{{field}}" style="display: none;" onclick="featureClick('{{field}}')">
+        <label for="{{field}}" style="margin:0px; padding:0px" >
+            <img src="{{ url_for('static', filename='icons/' + field + '.png') }}" id="{{field}}_img" width="30" height="30"
+                 style="opacity: 0.25;">
+        </label>
+        <div class="caption" id="{{field}}_caption" style="padding:0px; margin:0px; opacity: 0.25"></div>
+    </div>
+    <script>
+    switch('{{field}}') {
+        case 'tv':
+            name_label = "live sports"
+            break;
+        case 'garden':
+            name_label = "outside space"
+            break;
+        case 'music':
+            name_label = "live music"
+            break;
+        case 'late':
+            name_label = "past midnight"
+            break;
+        case 'meals':
+            name_label = "serves food"
+            break;
+        case 'toilets':
+            name_label = "clean toilets"
+            break;
+        case 'cheap':
+            name_label = "cheap pint"
+            break;
+        case 'games':
+            name_label = "pub games"
+            break;
+        case 'pet':
+            name_label = "dog friendly"
+            break;
+        case 'quiz':
+            name_label = "quiz night"
+            break;
+        default:
+            name_label = "error"
+    }
+    document.getElementById("{{field}}_caption").innerHTML += name_label;
+    document.getElementById("{{field}}_caption").style.fontSize = "x-small";
+    document.getElementById("{{field}}_caption").style.fontWeight = "bold";
 
+    </script>
+{% endfor %}
+
+
+{% if search == 'on' %}
+    <div class="col" style="text-align: center;">
+        <input type="checkbox" id="search" name="search" style="display: none;" onclick="featureClick('search')">
+        <label for="search"  >
+            <img src="{{ url_for('static', filename='icons/search.png') }}" id="search_img" width="30" height="30" style="opacity: 0.25; margin:0px; padding-top:5px">
+        </label>
+        <div class="caption" id="search_caption" style="padding:0px; margin:0px; opacity: 0.25"></div>
+    </div>
+    <script>
         document.getElementById("search_img").style.opacity = "1.00"
+        document.getElementById("search_caption").innerHTML += 'search';
+        document.getElementById("search_caption").style.fontSize = "x-small";
+        document.getElementById("search_caption").style.fontWeight = "bold";
         document.getElementById("search_caption").style.opacity = "1.00"
-        </script>
-    {% endfor %}
+    </script>
+{% endif %}
