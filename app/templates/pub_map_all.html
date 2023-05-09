@@ -46,7 +46,7 @@ function showMap(station, area, full, zoom, lat, lng){
             data = full
     }
 
-    add_markers(map, zoom, data);
+    add_markers(map, zoom, data, Boolean(true));
     add_listen_click();
     listen_zoom(map, station, area, full)
 }
