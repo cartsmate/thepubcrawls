@@ -1,11 +1,28 @@
-function featureClick(check_item) {
+function featureClick(check_item, auto_exec) {
     console.log("featureClick")
     console.log(check_item)
+    console.log(auto_exec)
     var checkBox = document.getElementById(check_item);
     var image = document.getElementById(check_item + "_img");
     var caption = document.getElementById(check_item + "_caption");
     var checkCol = document.getElementById(check_item + "_col");
-    if (check_item == 'search') {
+    if (checkBox.checked == true){
+        //window.location.replace("/pub/list/" + check_item + "/True");
+        image.style.opacity = "1.00"
+        caption.style.opacity = "1.00"
+        caption.style.color = "white"
+        checkCol.style.background = "#0275D8"
+    } else {
+        image.style.opacity = "1.0"
+        caption.style.opacity = "1.0"
+        caption.style.color = "black"
+        checkCol.style.background = "#D3D3D3"
+    }
+    if (auto_exec == 'on') {
+        featureSearch()
+    }
+    /*
+    if (auto_exec == 'on') {
         var base_url = window.location.hostname
         console.log(base_url)
         if (config2['env'] == 'prod') {
@@ -31,17 +48,7 @@ function featureClick(check_item) {
         console.log(myUrlWithParams.href);
         window.location.replace(myUrlWithParams.href);
     }
-    if (checkBox.checked == true){
-        //window.location.replace("/pub/list/" + check_item + "/True");
-        image.style.opacity = "1.00"
-        caption.style.opacity = "1.00"
-        caption.style.color = "white"
-        checkCol.style.background = "#0275D8"
-    } else {
-        image.style.opacity = "1.0"
-        caption.style.opacity = "1.0"
-        caption.style.color = "black"
-        checkCol.style.background = "#D3D3D3"
-    }
+
     //console.log(image)
+    */
 }

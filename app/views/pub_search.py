@@ -14,6 +14,12 @@ def pub_search():
     print('pub_search')
     # pet = request.args.get('pet')
 
+    pet = request.args.get('pet')
+    if pet.title() == 'True':
+        pet_list = ['True']
+    else:
+        pet_list = ['True', 'False']
+
     tv = request.args.get('tv')
     if tv.title() == 'True':
         tv_list = ['True']
@@ -62,9 +68,28 @@ def pub_search():
     else:
         games_list = ['True', 'False']
 
+    quiz = request.args.get('quiz')
+    if quiz.title() == 'True':
+        quizlist = ['True']
+    else:
+        quiz_list = ['True', 'False']
+
+    pool = request.args.get('pool')
+    if pool.title() == 'True':
+        pool_list = ['True']
+    else:
+        pool_list = ['True', 'False']
+
+    lively = request.args.get('lively')
+    if lively.title() == 'True':
+        lively_list = ['True']
+    else:
+        lively_list = ['True', 'False']
+
     df_scores = Functions().get_pubs_reviews()
 
     filtered_values = df_scores.loc[(
+        df_scores['pet'].astype(str).isin(pet_list) &
         df_scores['tv'].astype(str).isin(tv_list) &
         df_scores['garden'].astype(str).isin(garden_list) &
         df_scores['music'].astype(str).isin(music_list) &
@@ -72,11 +97,14 @@ def pub_search():
         df_scores['meals'].astype(str).isin(meals_list) &
         df_scores['toilets'].astype(str).isin(toilets_list) &
         df_scores['cheap'].astype(str).isin(cheap_list) &
-        df_scores['games'].astype(str).isin(games_list)
+        df_scores['games'].astype(str).isin(games_list) &
+        df_scores['quiz'].astype(str).isin(quiz_list) &
+        df_scores['pool'].astype(str).isin(pool_list) &
+        df_scores['lively'].astype(str).isin(lively_list)
     )]
     print(filtered_values[['name', 'tv', 'garden', 'meals', 'toilets', 'cheap', 'games']])
     pubs_reviews_json = Functions().df_to_dict(filtered_values)
     # ?tv = false & garden = false & music = false & late = false & meals = false & toilets = false & cheap = false & games = false
-    return render_template('pub_search.html', config=config, pubs_reviews=pubs_reviews_json, tv=tv, garden=garden,
-                           music=music, late=late, meals=meals, toilets=toilets, cheap=cheap, games=games,
-                           config2=config2)
+    return render_template('pub_search.html', config=config, pubs_reviews=pubs_reviews_json, pet=pet, tv=tv,
+                           garden=garden, music=music, late=late, meals=meals, toilets=toilets, cheap=cheap,
+                           games=games, quiz=quiz, pool=pool, lively=lively, config2=config2)
