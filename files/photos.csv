@@ -1,2 +1,89 @@
-photo_identity,pub_identity,photo_deletion,photo_id
-
+pub_identity,name,photo_identity,photo_deletion
+00ffd490-b3b8-424d-b5d2-5122bbebdba2,Katzenjammers,ad340446-f5a3-475e-8af1-8218b8dfe54c,False
+10f611a2-512f-4b07-aa57-8de878ccbb3b,The Shard,2cd0125d-a347-49dc-a2e0-b15e7cbe4c63,False
+7f3d8913-5a6d-40a4-a3e4-cd6eb0b0b8bf,The George,01a0c2e2-e1ee-46f1-9af1-7dd61e66e80f,False
+0d3af39b-2da5-4ce4-bb58-734a1523af77,Defectors Weld,7258c33d-54a1-4398-a795-05c40060fbd4,False
+b9f3cbd8-2466-4652-9158-0d8a432bc1e7,The Ned,cc7d4931-3eaf-48ab-8585-68a4bd2e3f62,False
+979b46f5-07a3-4f18-83de-ac5b365a8f1c,Core Bar,d1121015-1eab-470f-8f6c-dd1dc0e0743b,False
+fd1f6053-8868-419a-a445-fd24a21e8b99,Ye Olde Watling,1542fef8-d00f-4c89-bfac-d3fc32412a67,False
+e550bd4d-7593-458b-b7b7-a36bfa2dfd62,The Pavilion End,2eb869d7-2dfe-49fb-936e-915cf0291e71,False
+f787a138-53cb-45ca-a7f8-20564708f07b,High Timber,eebdedeb-fb70-43e9-a792-e806aef10eca,False
+efcf3870-da4d-4a44-9c1b-3d5be38edeaa,Marquess of Anglesey,7d6ef30e-7ef5-4fd9-8b34-2e5d64b83bd5,False
+eabe0a83-2841-4c72-b86a-4fb5504e2161,The George,b0298fea-a310-4be4-a87c-4481fd95d2dc,False
+75d7f798-4740-483c-9140-88318b66078e,The Coal Hole,bf2ac2c7-6821-4708-b8a6-f7ce2bdec3bf,False
+2fb4fd5e-0efa-406b-9766-68a70919ff97,Champagne and Fromage,bf8e97ae-75fa-42da-82a5-2c9ff9bf2ed4,False
+e8cbe945-648f-4a82-8e4b-8a6eb043af7f,Christophers,957e7a34-dd73-48a4-b73a-70e576b1ffa5,False
+5c5aa314-0ef0-4a92-9aa2-45e89bcd7f0c,CellarDoor,2e2a205b-4da1-4167-ac48-a45dd7710889,False
+0ca14449-0d5b-4e03-9247-99fed9cebbc3,Royal Festival Hall,03bca303-4d01-4068-b49e-99a5f0d81217,False
+6bb18e6f-42e5-4f54-b98a-75302168364c,Kings Stores,bbe24b3a-3b0a-4bfa-b131-10a31f86f86b,False
+49bf46f8-088d-44aa-afee-c96875a311a7,The Nags Head,92de0d2f-9a58-46ee-96d1-1d3fd2452e23,False
+57fe4fa1-3339-47f7-be7c-8de1e4b539d6,Circus,121592dd-00f5-48f2-b196-c77c1f90f07b,False
+9b7c0aba-1eb5-4006-887b-d7903b0a566d,Ye Olde Cock Tavern,735d9ddb-33eb-4f57-8552-68604b2a8f63,False
+79bfdc53-24f4-4f44-8b80-3a0a553b0898,El Vino Fleet Street,e80c80fe-c4c2-414e-aa29-670b684810db,False
+fc01e35d-870c-4e42-9465-9087f316a824,The Craft Beer Co,ab4875d8-58e2-42c8-a2d0-ef95dc37d343,False
+712563fe-a173-4e5f-ac01-7da8c79e2e73,Copita,56d34262-ee1f-442c-9fa3-c3c2ac0699e2,False
+6c3d8d8e-0d88-4610-849f-f8e54d9ca908,Barrio Soho,7f9ce4a0-eb33-4402-80e3-3dda3d5aa977,False
+d7ce77a7-de01-4e3d-ab87-6ebfc1b5f6f2,Reverend J W Simpson,0e224037-7fd8-4958-99b8-132c9e8a2229,False
+a9001d88-fd2e-4240-a95a-c98322365eb0,Fire Station,d78349ec-30be-465b-91c4-e78b8315c226,False
+9f2df78c-a1c4-4070-88da-8ba2d8bbe87d,Ye Olde Cheshire Cheese,a5eec8b4-8c9c-47dc-932a-1d5492582e7d,False
+8905f38f-5abe-4ff7-9b22-72ab50645c21,The Dovetail,30c13367-e6e1-43e3-8f7f-9c194e8fc78c,False
+85734c01-6261-4784-b024-637b12b8d4f4,Fullers Ale and Pie House,a0aba72c-4d8a-41ec-bdcf-dfb7c4119e19,False
+e96d9cfd-fb5e-4f5f-b722-bf6cd1ad3aad,Ship and Shovell,ee644fbd-bbb9-46c5-bb6b-0a1d8788c980,False
+168c5191-a91d-4774-af72-c0b60222cd5c,Famous Cock Tavern,d2edcf16-f575-46f9-ba9a-b6c9575716c2,False
+02587b03-dfd1-4ac7-a987-762c49d7648d,Ye Olde Rose and Crown,13545931-7718-4558-b95a-4d0e2cf3336c,False
+5d30094e-5fcc-4144-bed7-9aee72419468,The Village Pub,13eb8d0a-c206-4c0a-9edb-0300a4498325,False
+94d24fde-0b24-4bec-a05d-3c8ca530db55,The Old Queens Head Pub,2f4f767c-b455-4cf7-9470-4e21bc7fb59e,False
+8c8cb344-915a-458d-8931-f674e014c890,The Bell,ee02e00f-b765-479b-a63e-5e2510fe1f2e,False
+5b752b18-6d5f-404d-a831-cea145c34dae,Big Penny Social,d6f3db03-91b9-487b-92e4-431d24f45f22,False
+3e38be80-48d3-4177-a80d-7b670494e234,Mr Foggs Pawnbrokers,a117d187-833c-4074-890e-d9ba42807895,False
+cf5bc9ca-01c3-43e1-8b44-89b0cd5eac28,Barrafina,381f713e-7c94-468b-8fcb-e95b7cee4007,False
+0027d4bf-8c57-473e-aa7e-33a3b1b1d95b,The Gardeners Arms,25f12d20-6fcf-422a-beed-551410597572,False
+b677a674-7b32-454b-9c52-cfb01f5f038e,MEATliquor,e1390837-5883-4ecb-b69d-8ebc79011c7c,False
+5e7a2cf0-e9bc-4fc8-818b-763244375ebf,Swingers Crazy Golf,ebf12152-60d3-4439-a20c-7ae8bcb475a9,False
+52c555f4-007f-4dd1-9d75-a0dfc38425ad,Kibele Restaurant,352cd44a-ac81-413b-abdc-3676da4e065f,False
+dc3dc762-de64-421e-bc0b-e861e3766ae2,Laurels On The Roof,1fce2f83-0933-41ef-817a-e5be2341c7cf,False
+c7223326-661e-49ed-a0b2-da5bd4758508,Nightjar,7b3a2e5e-562a-441a-a31a-047a4060655b,False
+fc50544d-d56e-4358-92a2-38a33aae5071,Caravan Fitzrovia,b4bbcaa7-316e-4884-89e9-4cd48e5599c1,False
+610d6a7a-b922-4a4a-9302-6cdd869ce4f5,The Gunners,56396939-423f-4cac-a8b3-296da94f88df,False
+9ad4bece-d79b-44b3-9c2d-d57747e6c960,Yucatan Bar,4938b08f-6ce6-43b7-a0f0-d94c1c6901a8,False
+d5cd1760-b22e-49e8-832e-6eb5cab180f3,Pub On The Park,2692967f-8842-4cfc-828f-468f3fe2e76d,False
+ad2bbf86-9982-4180-a815-6e0b075eba1c,The White Hart,b53eee1b-a7a4-44a2-8ee2-5e71baa7a4d3,False
+e7e819fb-a913-467e-94d3-1ca2f6473a6e,Lord Raglan E17,e0390748-7550-4711-95b3-7fcef9de53fc,False
+32a17618-9e23-450c-b921-a6bab0dfdd6f,Caffe Concerto Piccadilly,1af771cd-aeae-4f10-97f0-7d65392baaa1,False
+d0511359-f648-4edc-baec-f2e5f751bb5c,The Jack Horner,b7accaef-ef59-4cab-aca5-efb893f3e907,False
+d066f8fb-821a-44d3-813c-21a1f8b48db2,The Enterprise,ad476450-0a0d-4500-b4e6-5d66700b6bb9,False
+fcd12e42-3d31-4ea7-81f9-87beeb15a366,The Old Kings Head,cfb846e7-fef3-4781-ad21-0c2c445090e3,False
+ab307597-3cc6-4697-a160-1f8d0097e085,Goldwood Sports Pub,3916383d-a6a3-4bb6-aed9-5af85ae79ab5,False
+0c00dbd3-a6fd-4c6b-8006-2d98c0d8b175,Turtle Bay Walthamstow,8fc5cd67-c29b-4adb-86f5-58f07ad3170b,False
+3c0e13d2-57f5-4e20-85da-8c49873b9224,Flat Iron Square,59d6790d-626a-4183-9f8f-20b04a3d43d3,False
+e7c2cc87-e065-41e0-b34e-5607b0d6cb68,Prime Steak and Grill,594fabcb-6933-44dc-b6f9-a9424d4abaf0,False
+54ed8eb6-770a-4ed4-b269-a7c770447aed,The Coach and Horses,7a80cb44-8bf0-4fb3-ae6f-07f0a8d9a498,False
+f5c9b11a-4373-4c3a-9690-8b1862976143,The Slaughtered Lamb,503b9b68-ef54-4426-a702-2b41645dbbb2,False
+59e52a12-bcc2-40d7-9475-9cecea1bd362,The Antelope,dd403216-3cce-4bb9-bde7-1be8c989ebf4,False
+68196501-34c4-4a4c-b4e4-9ac7d7dc48d6,The Hen and Chickens,98b45622-3f4c-4c65-8c1d-81f895037005,False
+7b6e05c3-f6ca-4d6f-85d5-98ce06d82fb2,Windmill Pub Clapham,1d7f36f7-6157-49ff-a91d-b7754476565c,False
+14900ddc-7bbd-4cf8-8f9f-019aca56b703,Ballie Ballerson London,8c28996b-b6c3-4517-b66a-1a96b82f9d29,False
+ee13cb9c-e89b-42e3-a6e8-23454e228923,Allsop Arms,77522937-7c03-4daa-a987-5b17dcc4d2a1,False
+6ad3e4af-c467-48a4-a6f8-eb445ada0e85,The Metropolitan Bar,821774cf-8e0b-46a5-ae30-d0f01bc105a8,False
+ec5ebd0b-b052-4d3f-ba4a-a3fbf7a2dd06,Prospect of Whitby,c2a5dec4-31d2-4e09-b5a6-bdeded5bf761,False
+07b38ff8-cbde-4e21-b2ba-9b30f8d84b52,The Clapton Hart,5639646d-f3f2-45a5-bd0c-f0c4c52b76b5,False
+2c45dc30-11d4-4290-b2af-903d5e8dbd18,The Worlds End,4653df8b-57bc-4fa2-96f8-dcf6d6669179,False
+87a138a4-3a59-4af2-820c-594da82f6a4c,The Avalon,ceeabe23-344a-4866-a35e-16b96caeb001,False
+e9a90efb-4211-4773-ba2a-aa720c6819d8,The Edinboro Castle,296b4cff-49d4-48ac-81d2-cbca44903bc3,False
+0ff37efc-ce5a-40c6-8564-87a81a5a1d18,The Highbury Barn Tavern,b5020095-52b7-4d8e-a7d1-2d56271358c7,False
+9d55c895-c6b3-4d75-980f-08b7cd2b7729,The Anglesea Arms,fd3538e2-9afe-42e8-b07e-5424df53f3e4,False
+8c67479e-24a0-4b77-9be3-f03934492828,Mare Street Market,dc2ff1eb-867f-4be1-b934-7ef51e5564c5,False
+6c285e80-cd56-4bee-b45c-cf16e9eee3b3,The Elephant and Castle Pub,7be127d1-e54a-489d-a541-9b99c9683027,False
+07e36512-d3ca-4e13-a882-c5a679f44e26,The Blind Beggar,9553743f-59de-44b3-96ba-3ed600ad7297,False
+e20f7dd9-3430-4e0c-8940-e123d1e1bec5,Goose Walthamstow,3bbc2316-4c23-4d6f-b2f5-d5b6ecd0f081,False
+9686aa90-38f8-46f3-b58c-17e9393d64f2,The White Bear,139a1102-bed0-4570-89f0-e98ca73178a9,False
+8a7db2ac-4b01-4263-8413-edd206070346,The Prince of Wales,9510bd32-44d7-4730-81bd-1c4aab8db353,False
+fc56fdcf-be32-4715-8bec-5bee3fd41ee9,Number 90 - Bar & Restaurant,2bd91294-896a-4585-8fec-bfc05fc39247,False
+485b02f4-2e07-404e-9774-f1a5be2f362b,The Sekforde,4e1575ac-2b92-48bd-bbed-8ca89fd178ce,False
+e82d4ba9-9b84-4ce1-966a-2894d3fb5c74,The Marian Anderson,34d7012a-b4f9-418c-b699-017f2b5b4a7d,False
+52e472f8-f3b8-411e-804b-2957e7ebe705,The Horseshoe,91139c31-f928-4fb2-976c-e734bfacab40,False
+23f7d768-510d-40de-b454-74d5e8f155ee,The Piano Works Farringdon,51fb5584-7368-49b6-82ad-22a35a7dd2f6,False
+15902683-9de7-4f30-b844-0d3afa2f8490,Ibérica,29a62963-dfd3-4fd8-a817-d3ec47d13fe7,False
+7ce45ed3-0ba2-4fd7-a5cc-0aaca8ebf2f5,The Gunmakers,e8e4a748-24e8-4572-bb6e-e52717d0b869,False
+147bd112-05ca-47ad-b39c-439acdbda4b9,The Coach,3f9214f4-7004-49e0-81a6-ba67df8fe4bb,False
+525edbdd-8eda-46f4-800d-013076d66f7f,The City Pride,6bea84ce-7c44-44c6-ac15-19fe653b84fa,False

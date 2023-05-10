@@ -14,6 +14,7 @@
         var checkBox = document.getElementById(check_item);
         var image = document.getElementById(check_item + "_img");
         var caption = document.getElementById(check_item + "_caption");
+        var checkCol = document.getElementById(check_item + "_col");
 
         if (check_item == 'search') {
             var base_url = window.location.hostname
@@ -37,6 +38,8 @@
             myUrlWithParams.searchParams.append("toilets", toilets.checked);
             myUrlWithParams.searchParams.append("cheap", cheap.checked);
             myUrlWithParams.searchParams.append("games", games.checked);
+            myUrlWithParams.searchParams.append("pool", pool.checked);
+            myUrlWithParams.searchParams.append("lively", lively.checked);
 
             console.log(myUrlWithParams.href);
             window.location.replace(myUrlWithParams.href);
@@ -45,9 +48,11 @@
             //window.location.replace("/pub/list/" + check_item + "/True");
             image.style.opacity = "1.00"
             caption.style.opacity = "1.00"
+            checkCol.style.background = "#0275D8"
         } else {
             image.style.opacity = "0.25"
             caption.style.opacity = "0.25"
+            checkCol.style.background = "#D3D3D3"
         }
         //console.log(image)
     }
@@ -63,46 +68,67 @@
             document.getElementById("tv").checked = {{ tv | tojson }}
             document.getElementById("tv_caption").style.opacity = "1.00"
             document.getElementById("tv_img").style.opacity = "1.00";
+            document.getElementById("tv_col").style.background = "#0275D8";
         }
         if ({{ garden | tojson }} == 'true') {
             document.getElementById("garden").checked = {{ garden | tojson }}
             document.getElementById("garden_caption").style.opacity = "1.00"
             document.getElementById("garden_img").style.opacity = "1.00";
+            document.getElementById("garden_col").style.background = "#0275D8";
         }
         if ({{ music | tojson }} == 'true') {
             document.getElementById("music").checked = {{ music | tojson }}
             document.getElementById("music_caption").style.opacity = "1.00"
-            document.getElementById("musiuc_img").style.opacity = "1.00";
+            document.getElementById("music_img").style.opacity = "1.00";
+            document.getElementById("music_col").style.background = "#0275D8";
         }
         if ({{ late | tojson }} == 'true') {
             document.getElementById("late").checked = {{ late| tojson }}
             document.getElementById("late_caption").style.opacity = "1.00"
             document.getElementById("late_img").style.opacity = "1.00";
+            document.getElementById("late_col").style.background = "#0275D8";
         }
         if ({{ meals | tojson }} == 'true') {
             document.getElementById("meals").checked = {{ meals | tojson }}
             document.getElementById("meals_caption").style.opacity = "1.00"
             document.getElementById("meals_img").style.opacity = "1.00";
+            document.getElementById("meals_col").style.background = "#0275D8";
         }
         if ({{ tv | tojson }} == 'true') {
             document.getElementById("tv").checked = {{ tv | tojson }}
             document.getElementById("tv_caption").style.opacity = "1.00"
             document.getElementById("tv_img").style.opacity = "1.00";
+            document.getElementById("tv_col").style.background = "#0275D8";
         }
         if ({{ toilets | tojson }} == 'true') {
             document.getElementById("toilets").checked = {{ toilets | tojson }}
             document.getElementById("toilets_caption").style.opacity = "1.00"
             document.getElementById("toilets_img").style.opacity = "1.00";
+            document.getElementById("toilets_col").style.background = "#0275D8";
         }
         if ({{ cheap | tojson }} == 'true') {
             document.getElementById("cheap").checked = {{ cheap | tojson }}
             document.getElementById("cheap_caption").style.opacity = "1.00"
             document.getElementById("cheap_img").style.opacity = "1.00";
+            document.getElementById("cheap_col").style.background = "#0275D8";
         }
         if ({{ games | tojson }} == 'true') {
             document.getElementById("games").checked = {{ games | tojson }}
             document.getElementById("games_caption").style.opacity = "1.00"
             document.getElementById("games_img").style.opacity = "1.00";
+            document.getElementById("games_col").style.background = "#0275D8";
+        }
+        if ({{ pool | tojson }} == 'true') {
+            document.getElementById("pool").checked = {{ games | tojson }}
+            document.getElementById("pool_caption").style.opacity = "1.00"
+            document.getElementById("pool_img").style.opacity = "1.00";
+            document.getElementById("pool_col").style.background = "#0275D8";
+        }
+        if ({{ lively | tojson }} == 'true') {
+            document.getElementById("lively").checked = {{ games | tojson }}
+            document.getElementById("lively_caption").style.opacity = "1.00"
+            document.getElementById("lively_img").style.opacity = "1.00";
+            document.getElementById("lively_col").style.background = "#0275D8";
         }
         Search()
     }
@@ -112,7 +138,7 @@
 
 {% block main %}
 <div class="col-md-12 mx-auto">
-    <div class="row" style="display: flex; align-items: center; border-style:solid; background-color:#FFFFFF; height:200px; border-width:thin">
+    <div class="row" style="display: flex; align-items: center; border-style:solid; background-color:#D3D3D3; border-width:thin">
         {% with search='on' %}
             {% include "home_features.html" %}
         {% endwith %}
