@@ -13,6 +13,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/show_map_home.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_search.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_map_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
 <!--<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_setup.js') }}"></script>-->
@@ -119,12 +120,12 @@ function onLoad(){
     <div class="row top-buffer">
         <div class="col-12 center-block text-center">
             <strong>
-            <a onclick="featureClick('search')" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">Search pubs by feature</a>
+            <a onclick="featureSearch()" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">Search pubs by feature</a>
             </strong>
         </div>
     </div>
     <div class="row" style="display: flex; align-items: center; border-style:solid; background-color:#D3D3D3; border-width:thin">
-        {% with search='on' %}
+        {% with auto_exec='off' %}
             {% include "home_features.html" %}
         {% endwith %}
     </div>

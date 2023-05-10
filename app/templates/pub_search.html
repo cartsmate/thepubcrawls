@@ -9,53 +9,8 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_search.js') }}"></script>
 <script>
-    function myFunction(check_item) {
-        var checkBox = document.getElementById(check_item);
-        var image = document.getElementById(check_item + "_img");
-        var caption = document.getElementById(check_item + "_caption");
-        var checkCol = document.getElementById(check_item + "_col");
-
-        if (check_item == 'search') {
-            var base_url = window.location.hostname
-            console.log(base_url)
-            if (env == 'prod') {
-                var url = "http://" + base_url + "/pub/search/"
-            } else {
-                var url = "http://" + base_url + ":5000/pub/search/"
-            }
-            console.log(url)
-            const myUrlWithParams = new URL(url);
-
-<!--            const myUrlWithParams = new URL("http://127.0.0.1:5000/pub/search/");-->
-            //myUrlWithParams.searchParams.append("pet", pet.checked);
-
-            myUrlWithParams.searchParams.append("tv", tv.checked);
-            myUrlWithParams.searchParams.append("garden", garden.checked);
-            myUrlWithParams.searchParams.append("music", music.checked);
-            myUrlWithParams.searchParams.append("late", late.checked);
-            myUrlWithParams.searchParams.append("meals", meals.checked);
-            myUrlWithParams.searchParams.append("toilets", toilets.checked);
-            myUrlWithParams.searchParams.append("cheap", cheap.checked);
-            myUrlWithParams.searchParams.append("games", games.checked);
-            myUrlWithParams.searchParams.append("pool", pool.checked);
-            myUrlWithParams.searchParams.append("lively", lively.checked);
-
-            console.log(myUrlWithParams.href);
-            window.location.replace(myUrlWithParams.href);
-        }
-        if (checkBox.checked == true){
-            //window.location.replace("/pub/list/" + check_item + "/True");
-            image.style.opacity = "1.00"
-            caption.style.opacity = "1.00"
-            checkCol.style.background = "#0275D8"
-        } else {
-            image.style.opacity = "0.25"
-            caption.style.opacity = "0.25"
-            checkCol.style.background = "#D3D3D3"
-        }
-        //console.log(image)
-    }
 
     function onLoad() {
         console.log('pub_search')
@@ -139,7 +94,7 @@
 {% block main %}
 <div class="col-md-12 mx-auto">
     <div class="row" style="display: flex; align-items: center; border-style:solid; background-color:#D3D3D3; border-width:thin">
-        {% with search='on' %}
+        {% with auto_exec='on' %}
             {% include "home_features.html" %}
         {% endwith %}
     </div>
