@@ -2,13 +2,13 @@
 <!--<div class="row justify-content-center align-items-center" id="feature-list"></div>-->
 
 {% for field in config['control']['check'] %}
-    <div class="col" style="text-align: center; padding: 10px">
+    <div class="col" style="text-align: center; padding: 10px" id="{{field}}_col">
         <input type="checkbox" id="{{field}}" name="{{field}}" style="display: none;" onclick="featureClick('{{field}}')">
         <label for="{{field}}" style="margin:0px; padding:0px" >
             <img src="{{ url_for('static', filename='icons/' + field + '.png') }}" id="{{field}}_img" width="30" height="30"
-                 style="opacity: 0.5;">
+                 style="opacity: 1.0;">
         </label>
-        <div class="caption" id="{{field}}_caption" style="padding:0px; margin:0px; opacity: 0.25"></div>
+        <div class="caption" id="{{field}}_caption" style="padding:0px; margin:0px; opacity: 1.0"></div>
     </div>
     <script>
     switch('{{field}}') {
@@ -42,8 +42,8 @@
         case 'quiz':
             name_label = "quiz night"
             break;
-        case 'atmosphere':
-            name_label = "lively atmosphere"
+        case 'lively':
+            name_label = "lively venue"
             break;
         case 'pool':
             name_label = "pool table"
@@ -58,7 +58,7 @@
     </script>
 {% endfor %}
 
-
+<!--
 {% if search == 'on' %}
     <div class="col" style="text-align: center;">
         <input type="checkbox" id="search" name="search" style="display: none;" onclick="featureClick('search')">
@@ -75,3 +75,4 @@
         document.getElementById("search_caption").style.opacity = "1.00"
     </script>
 {% endif %}
+-->

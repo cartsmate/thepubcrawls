@@ -4,6 +4,7 @@ function featureClick(check_item) {
     var checkBox = document.getElementById(check_item);
     var image = document.getElementById(check_item + "_img");
     var caption = document.getElementById(check_item + "_caption");
+    var checkCol = document.getElementById(check_item + "_col");
     if (check_item == 'search') {
         var base_url = window.location.hostname
         console.log(base_url)
@@ -24,6 +25,8 @@ function featureClick(check_item) {
         myUrlWithParams.searchParams.append("cheap", cheap.checked);
         myUrlWithParams.searchParams.append("games", games.checked);
         myUrlWithParams.searchParams.append("quiz", quiz.checked);
+        myUrlWithParams.searchParams.append("pool", pool.checked);
+        myUrlWithParams.searchParams.append("lively", pool.checked);
 
         console.log(myUrlWithParams.href);
         window.location.replace(myUrlWithParams.href);
@@ -32,9 +35,13 @@ function featureClick(check_item) {
         //window.location.replace("/pub/list/" + check_item + "/True");
         image.style.opacity = "1.00"
         caption.style.opacity = "1.00"
+        caption.style.color = "white"
+        checkCol.style.background = "#0275D8"
     } else {
-        image.style.opacity = "0.25"
-        caption.style.opacity = "0.25"
+        image.style.opacity = "1.0"
+        caption.style.opacity = "1.0"
+        caption.style.color = "black"
+        checkCol.style.background = "#D3D3D3"
     }
     //console.log(image)
 }

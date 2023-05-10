@@ -8,7 +8,7 @@ class Review:
                  visit, star, reviewer, rating,
                  atmosphere, cleanliness,
                  clientele, decor, entertainment, food, friendliness, opening, price, selection,
-                 tv, garden, music, late, meals, toilets, cheap, games, pet, quiz):
+                 tv, garden, music, late, meals, toilets, cheap, games, pet, quiz, pool, lively):
         self.pub_identity = pub_identity
         self.review_identity = review_identity
         self.review_deletion = review_deletion
@@ -36,3 +36,5 @@ class Review:
         self.games = games
         self.pet = pet
         self.quiz = quiz
+        self.pool = pool
+        self.lively = lively
