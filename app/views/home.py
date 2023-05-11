@@ -30,6 +30,7 @@ def home():
         .rename(columns={'name': 'count'}).astype(str) \
         .sort_values(by=['count'], ascending=False)
     areas_json = Functions().df_to_dict(df_all_area_count)
+    # print(df_all_area_count)
     pubs_reviews_json = Functions().df_to_dict(
         Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False))
     df_crawl = Functions().get_crawls()

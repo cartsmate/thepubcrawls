@@ -70,7 +70,7 @@ def pub_search():
 
     quiz = request.args.get('quiz')
     if quiz.title() == 'True':
-        quizlist = ['True']
+        quiz_list = ['True']
     else:
         quiz_list = ['True', 'False']
 
@@ -102,7 +102,7 @@ def pub_search():
         df_scores['pool'].astype(str).isin(pool_list) &
         df_scores['lively'].astype(str).isin(lively_list)
     )]
-    print(filtered_values[['name', 'tv', 'garden', 'meals', 'toilets', 'cheap', 'games']])
+    print(filtered_values[['pet', 'tv', 'garden', 'music', 'late', 'meals', 'toilets', 'cheap', 'games', 'quiz', 'pool', 'lively']])
     pubs_reviews_json = Functions().df_to_dict(filtered_values)
     # ?tv = false & garden = false & music = false & late = false & meals = false & toilets = false & cheap = false & games = false
     return render_template('pub_search.html', config=config, pubs_reviews=pubs_reviews_json, pet=pet, tv=tv,
