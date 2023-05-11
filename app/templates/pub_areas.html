@@ -3,12 +3,13 @@
 {% block title %}Areas{% endblock %}
 
 {% block script %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
 <script>
     areas = {{ areas | tojson }}
 
     function onLoad() {
         for (let i=0; i < areas.length; i++) {
-            document.getElementById("block_" + i).innerHTML = "<img style='object-fit: fit;' src='../static/images/location/" + areas[i]['photo_identity'] + ".jpg') }}'/><a href='/pub/list/area/" + areas[i]['area'] + "'>" + areas[i]['area'] + "</a>"
+            document.getElementById("block_" + i).innerHTML = "<div class='star_container'><a class='star_centre' href='/pub/list/area/" + areas[i]['area'] + "'><img alt='" + areas[i]['area'] + "' style='height:100px; width:150px;' src='../static/images/location/" + areas[i]['photo_identity'] + ".jpg') }}'/></a></div>"
         }
     }
 </script>
@@ -17,9 +18,9 @@
 {% block main %}
 <div class="col-md-12 mx-auto" style="border-style:solid; background-color:#D3D3D3; border-width:thin">
     {% for rl in range(6) %}
-        <div class="row" style="height:100px; display: flex; align-items: center; margin=5px; object-fit: fit;">
+        <div class="row" style="display: flex; align-items: center; margin=5px; object-fit: fit;">
             {% for cl in range(6) %}
-                <div class="col-md-2 mx-auto" id="block_{{(rl*6)+cl}}" style="height:100px; text-align: center; padding: 10px; object-fit: fit;"></div>
+                <div class="col-md-2 mx-auto" id="block_{{(rl*6)+cl}}" style="text-align: center; padding: 10px; object-fit: fit;"></div>
             {% endfor %}
         </div>
     {% endfor %}
