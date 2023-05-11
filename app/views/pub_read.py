@@ -26,11 +26,18 @@ def pub_read(pub_id):
     #     return redirect(url_for('login'))
     print('pub_read')
     df_pub_review = Functions().get_pub_review(pub_id)
-    print(df_pub_review['rank'])
+
+    df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
+    print(df_photos)
+    df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
+    print(df_pub_photos)
+    pub_review_json = Functions().df_to_dict(df_pub_photos)
+
+    # print(df_pub_review['rank'])
     if request.method == 'GET':
         print('pub_read: GET')
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
-                               pub_review=Functions().df_to_dict(df_pub_review), config=config)
+                               pub_review=pub_review_json, config=config)
 
     if request.method == 'POST':
         print('pub_read: POST')
@@ -89,7 +96,13 @@ def pub_read(pub_id):
             s3_resp = Functions().s3_write(df_review_updated, config['review']['aws_key'])
 
             df_pub_review = Functions().get_pub_review(pub_id)
-            pub_review_json = Functions().df_to_dict(df_pub_review)
+
+            df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
+            print(df_photos)
+            df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
+            print(df_pub_photos)
+            pub_review_json = Functions().df_to_dict(df_pub_photos)
+
             # print(df_pub_review)
             return render_template('pub_read.html', form_type='read', google_key=config2['google_key'],
                                    pub_review=pub_review_json, config=config)

@@ -37,19 +37,12 @@ function onLoad(){
     <div id="header_listing"></div>
     <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
     <div class="row justify-content-center top-buffer">
-        <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add New</a>
-        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+        <div class="col-md-3"></div>
+        <div class="col-md-2 mx-auto"><a class="btn btn-primary btn-block" href="{{ url_for('pub_add') }}" role="button">Add New</a></div>
+        <div class="col-md-2 mx-auto"><a class="btn btn-primary btn-block" href="{{ url_for('home') }}" role="button">Back to Home</a></div>
+        <div class="col-md-2 mx-auto"><a class="btn btn-primary btn-block" href="{{ url_for('pub_areas') }}" role="button">All Areas</a></div>
+        <div class="col-md-3"></div>
     </div>
     {% include "footer.html" %}
 </div>
 {% endblock %}
-
-{% block navbar_list %}<a class="nav-link active_custom" href="{{ url_for('pub_list', list_type='all', id_type='all') }}">Listing</a>{% endblock %}
-{% block pub_read_btn %}{% endblock %}
-{% block pub_edit_btn %}{% endblock %}
-{% block pub_del_btn %}{% endblock %}
-{% block rev_read_btn %}{% endblock %}
-{% block rev_add_btn %}{% endblock %}
-{% block rev_edit_btn %}{% endblock %}
-{% block rev_del_btn %}{% endblock %}
-{% block search_btn %}{% endblock %}

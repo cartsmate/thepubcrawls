@@ -81,7 +81,7 @@ function initMap(){
 
 {% block right %}
 <a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
-    <img src="{{ url_for('static', filename='images/venue/' + pub_review[0]['name'].lower() + '.jpeg') }}"
+    <img src="{{ url_for('static', filename='images/venue/' + pub_review[0]['photo_identity'] + '.jpeg') }}"
     onerror="this.onerror=null; this.src='/static/icons/camera.png'"
     style="height:300px; width:100%; display: block; object-fit: cover;" alt="upload photo">
 </a>

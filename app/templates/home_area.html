@@ -2,7 +2,7 @@
 <div class="row top-buffer">
     <div class="col-12 center-block text-center">
         <strong>
-        <a href="/pub/list/area/all" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area</a>
+        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area</a>
         </strong>
     </div>
 </div>
@@ -21,7 +21,7 @@
                 {% else %}
                     <div class="carousel-item">
                 {% endif %}
-                    <img class="d-block w-100" src="{{ url_for('static', filename='images/location/' + area['area'].lower() + '.jpg') }}"
+                    <img class="d-block w-100" src="{{ url_for('static', filename='images/location/' + area['photo_identity'] + '.jpg') }}"
                          style="height: 175px; width: 300px" alt="">
                     <div class="carousel-caption" style="top: 50%; transform: translateY(-50%);" >
                         <a href="/pub/list/area/{{area['area']}}" style="text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; font-weight: bold; font-size: 24px; color: #FFFFFF; text-decoration: none;">{{area['area']}}</a>

@@ -5,6 +5,7 @@ from .admin import admin
 from .index import index
 from .home import home
 from .pub_list import pub_list
+from .pub_areas import pub_areas
 from .pub_add import pub_add
 from .pub_read import pub_read
 from .pub_edit import pub_edit
