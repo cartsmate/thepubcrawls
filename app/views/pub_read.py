@@ -28,7 +28,7 @@ def pub_read(pub_id):
     df_pub_review = Functions().get_pub_review(pub_id)
 
     df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
-    print(df_photos)
+    # print(df_photos)
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
     print(df_pub_photos)
     pub_review_json = Functions().df_to_dict(df_pub_photos)
@@ -50,6 +50,7 @@ def pub_read(pub_id):
                 print('got new pub')
                 df_pub_appended = Dataframes().append_df(Functions().get_pubs(), df_new_pub)
                 # print(df_pub_appended)
+                error=""
                 if df_pub_appended.shape[1] == len(config['pub']['model']):
                     Dataframes().to_csv(df_pub_appended, 'pub')
                     s3_resp = Functions().s3_write(df_pub_appended, config['pub']['aws_key'])

@@ -38,6 +38,8 @@ class FormNew:
                             entertainment=request.form['entertainment'], food=request.form['food'],
                             friendliness=request.form['friendliness'], opening=request.form['opening'],
                             price=request.form['price'], selection=request.form['selection'], reviewer=reviewer,
+                            rating=request.form['rating'],
+                            pet=True if request.form.get('pet') == 'on' else False,
                             tv=True if request.form.get('tv') == 'on' else False,
                             garden=True if request.form.get('garden') == 'on' else False,
                             music=True if request.form.get('music') == 'on' else False,
@@ -45,6 +47,9 @@ class FormNew:
                             meals=True if request.form.get('meals') == 'on' else False,
                             toilets=True if request.form.get('toilets') == 'on' else False,
                             cheap=True if request.form.get('cheap') == 'on' else False,
-                            games=True if request.form.get('games') == 'on' else False)
+                            games=True if request.form.get('games') == 'on' else False,
+                            quiz=True if request.form.get('quiz') == 'on' else False,
+                            pool=True if request.form.get('pool') == 'on' else False,
+                            lively=True if request.form.get('lively') == 'on' else False)
         df_new_pub = pd.DataFrame([new_review.__dict__])
         return df_new_pub
