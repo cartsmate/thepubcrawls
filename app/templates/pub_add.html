@@ -100,7 +100,7 @@ function showMap(summary, full, zoom, lat, lng){
         <form action="{{ url_for('pub_read', pub_id=new_id) }}" method="post">
             {% include "pub_form.html" %}
             <div class="form-group row" style="margin: 15px 0;">
-                <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit" disabled>Submit</button>
+                <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit">Submit</button>
             </div>
         </form>
     </div>

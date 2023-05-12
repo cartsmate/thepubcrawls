@@ -43,7 +43,9 @@ class FormInput:
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'opening'] = request.form['opening']
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'price'] = request.form['price']
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'selection'] = request.form['selection']
+        df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'rating'] = request.form['rating']
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'reviewer'] = reviewer
+        df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'pet'] = True if request.form.get('pet') == 'on' else False
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'tv'] = True if request.form.get('tv') == 'on' else False
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'garden'] = True if request.form.get('garden') == 'on' else False
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'music'] = True if request.form.get('music') == 'on' else False
@@ -52,5 +54,8 @@ class FormInput:
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'toilets'] = True if request.form.get('toilets') == 'on' else False
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'cheap'] = True if request.form.get('cheap') == 'on' else False
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'games'] = True if request.form.get('games') == 'on' else False
+        df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'quiz'] = True if request.form.get('quiz') == 'on' else False
+        df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'pool'] = True if request.form.get('pool') == 'on' else False
+        df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'lively'] = True if request.form.get('lively') == 'on' else False
 
         return df_reviews

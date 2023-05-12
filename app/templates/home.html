@@ -132,9 +132,14 @@ function onLoad(){
     {% include "home_area.html" %}
     <!--{% include "home_rating.html" %}-->
     {% include "home_location.html" %}
+
     <div class="row justify-content-center top-buffer" style="display: flex; align-items: center;" >
         <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add New</a>
     </div>
-    {% include "footer.html" %}
+    <div class="row top-buffer" style="border-top: 1px solid;"></div>
+    <div class="row top-buffer">
+        {% include "footer.html" %}
+    </div>
+
 </div>
 {% endblock %}

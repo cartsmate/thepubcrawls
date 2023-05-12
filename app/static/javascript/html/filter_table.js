@@ -6,7 +6,6 @@ function Search() {
             paging: false,
             info: false,
             order: [[8, 'desc']],
-            searching: false,
             columnDefs: [
                     {target: 0, visible: false, searchable: false, },
                     {target: 1, visible: true, searchable: true, },
