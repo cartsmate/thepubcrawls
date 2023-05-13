@@ -93,6 +93,7 @@ function initMap(){
         {% include "pub_form.html" %}
         <div class="row justify-content-center top-buffer">
             <a class="btn btn-primary" href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}" role="button">Edit Pub</a>
+            <a class="btn btn-primary" href="{{ url_for('pub_list', list_type='area', id_type=pub_review[0]['area']) }}" role="button">Same area pubs</a>
             <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
         </div>
         {% include "footer.html" %}
