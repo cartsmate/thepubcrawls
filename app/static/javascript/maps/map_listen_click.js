@@ -6,6 +6,7 @@ function map_listen_click(map, stations, areas) {
             console.log('map_listen_click')
             if (document.getElementById("submit").disabled = true) {
                 document.getElementById("submit").disabled = false
+                document.getElementById("submit_message").style.display = "none"
             }
             // Call event.stop() on the event to prevent the default info window from showing.
             event.stop();
