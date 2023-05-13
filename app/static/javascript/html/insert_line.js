@@ -21,9 +21,9 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
     const textnode = document.createTextNode(name);
     label_node.appendChild(textnode);
     document.getElementById(id_row).appendChild(label_node);
-    console.log('name: ' + name)
+    //console.log('name: ' + name)
     if (dropdown_controls.includes(name)) {
-        console.log('dropdown')
+        //console.log('dropdown')
         const div_node = document.createElement("div");
         div_node.setAttribute("class", "col-sm-9");
         id_div = "div_" + name
@@ -61,7 +61,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
             select_node.appendChild(option);
         }
     } else if (star_controls.includes(name)) {
-        console.log('star')
+        //console.log('star')
 
         const div_main_node = document.createElement("div");
         div_main_node.setAttribute("class", "col-sm-9");
@@ -233,7 +233,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
         document.getElementById(id_img_label).appendChild(img_node);
 
     } else if (slider_controls.includes(name)) {
-        console.log('slider')
+        //console.log('slider')
         const div_node = document.createElement("div");
         div_node.setAttribute("class", slider_col);
         id_div = "div_" + name
@@ -274,7 +274,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
         value_node.setAttribute("id", "value_" + name);
         document.getElementById(id_value_div).appendChild(value_node);
     } else if (date_controls.includes(name)) {
-        console.log('date')
+        //console.log('date')
         const div_node = document.createElement("div");
         div_node.setAttribute("class", "col-sm-9");
         id_div = "div_" + name
@@ -289,7 +289,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
     } else if (check_controls.includes(name)) {
 
     } else {
-        console.log('else')
+        //console.log('else')
         const div_node = document.createElement("div");
         div_node.setAttribute("class", "col-sm-9");
         id_div = "div_" + name

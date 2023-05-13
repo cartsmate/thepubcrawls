@@ -58,9 +58,21 @@ function onLoad(){
 }
 
 function initMap(){
-    let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
+
+    //if (navigator.geolocation) {
+    //    navigator.geolocation.getCurrentPosition(showPosition);
+    //} else {
+        let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
+    //}
     zoom = 13
     showMap(summary, full, zoom, avg_lat, avg_lng)
+}
+
+function showPosition(position) {
+    console.log(showPosition)
+    const avg_lat = position.coords.latitude
+    const avg_lng = position.coords.longitude
+
 }
 
 function showMap(summary, full, zoom, lat, lng){
@@ -100,7 +112,8 @@ function showMap(summary, full, zoom, lat, lng){
         <form action="{{ url_for('pub_read', pub_id=new_id) }}" method="post">
             {% include "pub_form.html" %}
             <div class="form-group row" style="margin: 15px 0;">
-                <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit">Submit</button>
+                <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit" disabled>Submit</button>
+                <div id="submit_message" class="font-size: 8px; text-align: center"><i>Click venue on map before submitting</i></div>
             </div>
         </form>
     </div>
