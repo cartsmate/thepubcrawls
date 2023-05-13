@@ -18,20 +18,20 @@
             {% for cl in range(no_of_columns) %}
                 {% if ((rl*6)+cl < areas |length) %}
                     <div class="col-xs-2 star_container">
-                        <img style="height:150px; width: 200px; object-fit: cover"
+                        <img style="height:75px; width: 100px; object-fit: cover"
                              onerror="this.onerror=null;this.src='/static/icons/camera.png'"
                              src="{{ url_for('static', filename='images/location/' + areas[(rl*6)+cl]['photo_identity'] + '.jpg') }}">
                         <div class="star_centre" id="block_{{(rl*6)+cl}}">
-                            <a href="/pub/list/area/{{areas[(rl*6)+cl]['area']}}" style="text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; color: white; text-align: center; font-size:24px; font-weight: bold;">
+                            <a href="/pub/list/area/{{areas[(rl*6)+cl]['area']}}" style="text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; color: white; text-align: center; font-size:12px; font-weight: bold;">
                                 {{areas[(rl*6)+cl]['area']}}
                             </a>
                         </div>
                     </div>
                 {% else %}
                     <div class="col-xs-2 star_container">
-                        <img style="height:150px; width: 200px; object-fit: cover"
+                        <img style="height:75px; width: 100px; object-fit: cover"
                              src="{{ url_for('static', filename='icons/camera.png') }}">
-                        <div style="color: white; text-align: center; font-size:24px; font-weight: bold;" class="star_centre">{{(rl*6)+cl}}</div>
+                        <div style="color: white; text-align: center; font-size:12px; font-weight: bold;" class="star_centre">{{(rl*6)+cl}}</div>
                     </div>
                 {% endif %}
             {% endfor %}
