@@ -74,7 +74,7 @@ function initMap(){
 {% block left %}
 <div class="col">
     <div class="row">
-        <div id="map" style="width:100%; height:300px;"></div>
+        <div id="map" style="width:100%; height:150px;"></div>
     </div>
 </div>
 {% endblock %}
@@ -84,7 +84,7 @@ function initMap(){
 <a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
     <img src="{{ url_for('static', filename='images/venue/{{photo_id}}.jpeg') }}"
     onerror="this.onerror=null; this.src='/static/icons/camera.png'"
-    style="height:300px; width:100%; display: block; object-fit: cover;" alt="upload photo">
+    style="height:150px; width:100%; display: block; object-fit: cover;" alt="upload photo">
 </a>
 {% endblock %}
 

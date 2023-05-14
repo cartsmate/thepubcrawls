@@ -1,9 +1,9 @@
 function insert_line(which_list, toggle, name, type, list_required, date_controls, input_controls, dropdown_controls, slider_controls, check_controls, star_controls){
     var actual_width = window.innerWidth;
     if(actual_width < 480) {
-        var slider_col = "col-sm-6"
+        var slider_col = "col-xs-6"
     } else {
-        var slider_col = "col-sm-6"
+        var slider_col = "col-xs-6"
     }
     const form_node = document.createElement("div");
     form_node.setAttribute("class", "form-group row");
@@ -11,7 +11,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
     form_node.setAttribute("id", id_row);
     document.getElementById(which_list).appendChild(form_node);
     const label_node = document.createElement("label");
-    label_node.setAttribute("class", "col-sm-3 col-form-label");
+    label_node.setAttribute("class", "col-xs-2 col-form-label");
     label_node.setAttribute("for", name);
     if (type != "hidden") {
         label_node.setAttribute("style", "margin: auto; visibility: visible; display: block;");
@@ -25,7 +25,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
     if (dropdown_controls.includes(name)) {
         //console.log('dropdown')
         const div_node = document.createElement("div");
-        div_node.setAttribute("class", "col-sm-9");
+        div_node.setAttribute("class", "col-xs-6");
         id_div = "div_" + name
         div_node.setAttribute("id", id_div);
         document.getElementById(id_row).appendChild(div_node);
@@ -64,7 +64,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
         //console.log('star')
 
         const div_main_node = document.createElement("div");
-        div_main_node.setAttribute("class", "col-sm-9");
+        div_main_node.setAttribute("class", "col-xs-6");
         div_main_node.setAttribute("style", "padding-left:30px");
         id_div = "div_" + name
         div_main_node.setAttribute("id", id_div);
@@ -276,7 +276,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
     } else if (date_controls.includes(name)) {
         //console.log('date')
         const div_node = document.createElement("div");
-        div_node.setAttribute("class", "col-sm-9");
+        div_node.setAttribute("class", "col-xs-6");
         id_div = "div_" + name
         div_node.setAttribute("id", id_div);
         document.getElementById(id_row).appendChild(div_node);
@@ -291,7 +291,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
     } else {
         //console.log('else')
         const div_node = document.createElement("div");
-        div_node.setAttribute("class", "col-sm-9");
+        div_node.setAttribute("class", "col-xs-6");
         id_div = "div_" + name
         div_node.setAttribute("id", id_div);
         if (type != "hidden") {
