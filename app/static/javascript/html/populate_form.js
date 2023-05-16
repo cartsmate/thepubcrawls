@@ -10,7 +10,6 @@ function populate_form(form){
                     document.getElementById(pub_review_fields[i]).checked = true;
                     document.getElementById(pub_review_fields[i]).style.hidden = "none";
                     var text = "img_" + pub_review_fields[i]
-                    document.getElementById(text).style.opacity = "1"
                 }
             } else if (star_controls.includes(pub_review_fields[i])) {
                 document.getElementById(pub_review_fields[i]).value = pub_review[0][pub_review_fields[i]];
