@@ -26,6 +26,7 @@ def pub_areas():
         .rename(columns={'name': 'count'}).astype(str) \
         .sort_values(by=['latitude', 'longitude'], ascending=False)
     no_of_columns = 6
+
     no_of_records = df_all_area_count.shape[0]
     no_of_rows = math.ceil(no_of_records / no_of_columns)
 
@@ -47,7 +48,7 @@ def pub_areas():
         # print(df_temp_neg)
         df_ordered = pd.concat([df_temp_neg, df_temp_pos])
         print(df_ordered)
-        df_full = df_full.append(df_ordered)
+        df_full = pd.concat([df_full, df_ordered], ignore_index=True)
         print(df_full)
         # area_temp_list = df_ordered.values.tolist()
         # area_list.append(area_temp_list)

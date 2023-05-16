@@ -1,0 +1,42 @@
+<div class="form-group row">
+    <div class="col" id="pub_vis"></div>
+</div>
+
+{% for field in config['pub']['column'] %}
+    <div class="form-group row" id="row_{{field}}">
+        {% if field in config['pub']['visible'] %}
+            <label class="col-xs-2 col-form-label" for="{{field}}" style="text-align:right; margin: auto; visibility: visible; display: inline-block;">{{field}}</label>
+        {% else %}
+            <label class="col-xs-2 col-form-label" for="{{field}}" style="margin: auto; display: none;"></label>
+        {% endif %}
+        <div class="col-xs-6" id="div_{{field}}">
+            {% if field in config['control']['dropdown'] %}
+                {% include "control_dropdown.html" %}
+            {% elif field in config['control']['star'] %}
+                {% include "control_star.html" %}
+            {% elif field in config['control']['slider'] %}
+                {% include "control_slider.html" %}
+            {% elif field in config['control']['date'] %}
+                {% include "control_date.html" %}
+            {% else %}
+                <input class="form-control" type='text' name="{{field}}" id="{{field}}">
+                {% if field in config['pub']['visible'] %}
+                    <script>document.getElementById("div_{{field}}").style = "text-align:right; visibility: visible; display: block;"</script>
+                    <script>document.getElementById("{{field}}").style = "text-align:right; =visibility: visible; display: block;"</script>
+                {% else %}
+                    <script>document.getElementById("div_{{field}}").style = "display: none;"</script>
+                    <script>document.getElementById("{{field}}").style = "display: none;"</script>
+                {% endif %}
+            {% endif %}
+            {% if field in config['control']['required'] %}
+                <script>document.getElementById("{{field}}"}).required = true</script>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+
+<div class="row" style="display: flex; align-items: center; background-color:#CDCDCD; height:100%;">
+    {% with search='off' %}
+        {% include "home_features.html" %}
+    {% endwith %}
+</div>

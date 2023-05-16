@@ -29,7 +29,7 @@
   "area": {
     "aws_key": "areas.csv",
     "aws_prefix": "area",
-    "model": ["area_identity", "area_deletion", "area", "type", "latitude", "longitude", "parent_identity"]
+    "model": ["area_identity", "area_deletion", "area", "type", "latitude", "longitude", "parent_identity", "photo_identity"]
   },
   "photo": {
     "aws_key": "photos.csv",

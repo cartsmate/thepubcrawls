@@ -1,10 +1,12 @@
 import os
+import uuid
 import json
 import pandas as pd
 from configparser import ConfigParser
 # from PIL import Image
 from flask import render_template, redirect, url_for, g, session, request, flash
 from app import app
+from csv import writer
 from config import Configurations
 from functions.functions import Functions
 from werkzeug.utils import secure_filename
@@ -60,8 +62,14 @@ def photo_upload(pub_identity):
             print(y)
             fullfile = pub_name + y
             print(fullfile)
+            new_name = uuid.uuid4()
             # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            file.save(os.getcwd() + '/app/static/images/venue/' + fullfile)
+            file.save(os.getcwd() + '/files/static/images/venue/' + str(new_name))
+            new_row = [pub_identity, new_name, False]
+            with open(os.getcwd() + '/files/photos.csv', 'a') as f_object:
+                writer_object = writer(f_object)
+                writer_object.writerow(new_row)
+
             # print('upload_image filename: ' + filename)
 
             # img = Image.open(os.getcwd() + '/files/temp')

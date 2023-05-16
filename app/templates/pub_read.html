@@ -3,6 +3,7 @@
 {% block title %}Pub Details{% endblock %}
 
 {% block script %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_click.js') }}"></script>
@@ -33,7 +34,6 @@ function onLoad(){
     pub_fields = config['pub']['column']
     review_fields = config['review']['column']
     pub_review_fields = config['pub']['column'].concat(config['review']['column'])
-    console.log(pub_review_fields)
     input_controls = config['control']['input']
     dropdown_controls = config['control']['dropdown']
     slider_controls = config['control']['slider']
@@ -74,23 +74,24 @@ function initMap(){
 {% block left %}
 <div class="col">
     <div class="row">
-        <div id="map" style="width:100%; height:150px;"></div>
+        <div id="map" class="map_height"></div>
     </div>
 </div>
 {% endblock %}
 
 {% block right %}
-<script>var photo_id = str(pub_review[0]['photo_identity'])</script>
 <a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
-    <img src="{{ url_for('static', filename='images/venue/{{photo_id}}.jpeg') }}"
+    <img class="map_height"
+    src="{{ url_for('static', filename='images/venue/' + pub_review[0]['photo_identity'] + '.jpeg') }}"
     onerror="this.onerror=null; this.src='/static/icons/camera.png'"
-    style="height:150px; width:100%; display: block; object-fit: cover;" alt="upload photo">
+    style="display: block; object-fit: cover;" alt="upload photo">
 </a>
 {% endblock %}
 
 {% block centre %}
     <div class="col center-block">
-        {% include "pub_form.html" %}
+        {% include "pub_form_refactored.html" %}
+        {% include "review_form_refactored.html" %}
         <div class="row justify-content-center top-buffer">
             <a class="btn btn-primary" href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}" role="button">Edit Pub</a>
             <a class="btn btn-primary" href="{{ url_for('pub_list', list_type='area', id_type=pub_review[0]['area']) }}" role="button">Same area pubs</a>
