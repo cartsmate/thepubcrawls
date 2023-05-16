@@ -87,7 +87,7 @@ def pub_search():
         lively_list = ['True', 'False']
 
     df_scores = Functions().get_pubs_reviews()
-
+    print(df_scores)
     filtered_values = df_scores.loc[(
         df_scores['pet'].astype(str).isin(pet_list) &
         df_scores['tv'].astype(str).isin(tv_list) &

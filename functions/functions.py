@@ -47,20 +47,24 @@ class Functions:
         return df_false
 
     def get_s3_pubs(self):
-        df_pubs = self.get_s3_records(config['pub']['aws_prefix'], config['pub']['model'])
-        return df_pubs
+        df = self.get_s3_records(config['pub']['aws_prefix'], config['pub']['model'])
+        return df
 
     def get_s3_reviews(self):
-        df_pubs = self.get_s3_records(config['review']['aws_prefix'], config['review']['model'])
-        return df_pubs
+        df = self.get_s3_records(config['review']['aws_prefix'], config['review']['model'])
+        return df
 
     def get_s3_stations(self):
-        df_pubs = self.get_s3_records(config['station']['aws_prefix'], config['station']['model'])
-        return df_pubs
+        df = self.get_s3_records(config['station']['aws_prefix'], config['station']['model'])
+        return df
 
     def get_s3_areas(self):
-        df_pubs = self.get_s3_records(config['area']['aws_prefix'], config['area']['model'])
-        return df_pubs
+        df = self.get_s3_records(config['area']['aws_prefix'], config['area']['model'])
+        return df
+
+    def get_s3_crawls(self):
+        df = self.get_s3_records(config['crawl']['aws_prefix'], config['crawl']['model'])
+        return df
 
     def get_pubs(self):
         df_pubs = self.get_records(config['pub']['aws_prefix'], config['pub']['model'])
@@ -105,6 +109,7 @@ class Functions:
 
     def get_reviews(self):
         df_reviews = self.get_records(config['review']['aws_prefix'], config['review']['model'])
+        print(df_reviews)
         return df_reviews
 
     def get_areas(self):
@@ -135,8 +140,8 @@ class Functions:
 
     def get_pubs_reviews(self):
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
-        df_pubs_reviews['score'] = round(df_pubs_reviews.loc[:, config['review']['score']].mean(axis=1) * 10)
-        df_pubs_reviews.fillna(0, inplace=True)
+        # df_pubs_reviews['score'] = round(df_pubs_reviews.loc[:, config['review']['score']].mean(axis=1) * 10)
+        df_pubs_reviews.fillna(False, inplace=True)
         # print(df_pubs_reviews)
         return df_pubs_reviews
 

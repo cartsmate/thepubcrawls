@@ -36,6 +36,7 @@ def pub_read(pub_id):
     # print(df_pub_review['rank'])
     if request.method == 'GET':
         print('pub_read: GET')
+        print(df_pub_photos)
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
                                pub_review=pub_review_json, config=config)
 

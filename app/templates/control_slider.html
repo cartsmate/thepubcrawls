@@ -1,0 +1,13 @@
+<div class="slidecontainer" style="margin: auto; width: 100%" id="slider_div_{{field}}">
+    {% if field == 'score' %}
+        <input class="slider" type="range" min="0" max="100" value="0" id="{{field}}" name="{{field}}" style="width:100%">
+    {% else %}
+        <input class="slider" type="range" min="0" max="10" value="0" id="{{field}}" name="{{field}}" style="width:100%">
+    {% endif %}
+    {% if (toggle == 'read' or name == 'score') %}
+        document.getElementById("{{field}}").disabled = "true"
+    {% endif %}
+</div>
+<div class="col" id="value_div_{{field}}">
+    <div class="col score" style="font-family:copperplate; font-size:40px; margin: auto" id="value_{{field}}"></div>
+</div>
