@@ -25,7 +25,7 @@ def pub_areas():
     df_all_area_count = pd.merge(df_all_area_group, df_areas, how='left', on='area_identity') \
         .rename(columns={'name': 'count'}).astype(str) \
         .sort_values(by=['latitude', 'longitude'], ascending=False)
-    no_of_columns = 6
+    no_of_columns = 4
 
     no_of_records = df_all_area_count.shape[0]
     no_of_rows = math.ceil(no_of_records / no_of_columns)
