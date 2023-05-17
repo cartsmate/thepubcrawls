@@ -12,12 +12,12 @@
 {% endblock %}
 
 {% block main %}
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mx-auto" style="background-color:#D3D3D3;">
+<div class="col-xs-12 mx-auto" style="background-color:#D3D3D3;">
     {% for rl in range((areas |length//no_of_columns) |round) %}
         <div class="row" style="text-align: center; margin=5px;">
             {% for cl in range(no_of_columns) %}
                 {% if ((rl*no_of_columns)+cl < areas |length) %}
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 star_container">
+                    <div class="col-xs-2 star_container">
                         <img class="area_icons"
                              onerror="this.onerror=null;this.src='/static/icons/camera.png'"
                              src="{{ url_for('static', filename='images/location/' + areas[(rl*no_of_columns)+cl]['photo_identity'] + '.jpeg') }}">
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 {% else %}
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 star_container">
+                    <div class="col-xs-2 star_container">
                         <img class="area_icons"
                              src="">
                         <div style="color: white; text-align: center; font-size:11px; font-weight: bold;" class="star_centre"></div>
