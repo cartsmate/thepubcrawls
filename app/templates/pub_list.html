@@ -9,7 +9,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
 <script>
-function onLoad(){
+function onLoad() {
     console.log("onLoad in pub_list");
     filter = {{ filter | tojson }}
     var header_listing = String(filter['0']).toUpperCase() + String(filter).substring(1)
@@ -28,7 +28,6 @@ function onLoad(){
         Category()
     }
 }
-
 </script>
 {% endblock %}
 

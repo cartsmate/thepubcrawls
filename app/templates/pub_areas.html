@@ -16,15 +16,15 @@
     {% for rl in range(((areas |length//no_of_columns) |round)+1) %}
         <div class="row" style="text-align: center; margin=5px;">
             {% for cl in range(no_of_columns) %}
-                {% if ((rl*6)+cl < areas |length) %}
+                {% if ((rl*no_of_columns)+cl < areas |length) %}
                     <div class="col-xs-2 star_container">
                         <img style="height:67px; width: 90px; object-fit: cover"
                              onerror="this.onerror=null;this.src='/static/icons/camera.png'"
-                             src="{{ url_for('static', filename='images/location/' + areas[(rl*6)+cl]['photo_identity'] + '.jpeg') }}">
-                        <div class="star_centre" id="block_{{(rl*6)+cl}}">
-                            <a href="/pub/list/area/{{areas[(rl*6)+cl]['area']}}"
+                             src="{{ url_for('static', filename='images/location/' + areas[(rl*no_of_columns)+cl]['photo_identity'] + '.jpeg') }}">
+                        <div class="star_centre" id="block_{{(rl*no_of_columns)+cl}}">
+                            <a href="/pub/list/area/{{areas[(rl*no_of_columns)+cl]['area']}}"
                                style="text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; display: block; color: white; text-align: center; font-size: 11px; text-decoration: none; line-height: 15px">
-                                {{areas[(rl*6)+cl]['area']}}
+                                {{areas[(rl*no_of_columns)+cl]['area']}}
                             </a>
                         </div>
                     </div>
