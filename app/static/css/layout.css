@@ -37,11 +37,16 @@
         height: 400px;
     }
     .area_icons {
-        height:670px;
+        height:67px;
         width: 90px;
         object-fit: cover;
     }
 }
+.area_icons {
+        height:67px;
+        width: 90px;
+        object-fit: cover;
+    }
 .top-buffer {
     margin-top:20px;
 }
