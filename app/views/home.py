@@ -22,24 +22,28 @@ config2 = Configurations().get_config2()
     #     Functions().get_s3_stations().to_csv(os.getcwd() + '/files/' + config['station']['aws_key'], sep=',', encoding='utf-8', index=False)
 @app.route("/home/")
 def home():
+    if config2['env'] == 'prod':
+        df_pubs = Functions().get_s3_pubs()
+        df_pubs.to_csv(os.getcwd() + '/files/venues.csv', index=False, sep=',', encoding='utf-8')
 
-    df_pubs = Functions().get_s3_pubs()
-    df_pubs.to_csv(os.getcwd() + '/files/venues.csv', index=False, sep=',', encoding='utf-8')
+        df_reviews = Functions().get_s3_reviews()
+        df_reviews.to_csv(os.getcwd() + '/files/scores.csv', index=False, sep=',', encoding='utf-8')
 
-    df_reviews = Functions().get_s3_reviews()
-    df_reviews.to_csv(os.getcwd() + '/files/scores.csv', index=False, sep=',', encoding='utf-8')
+        df_areas = Functions().get_s3_areas()
+        df_areas.to_csv(os.getcwd() + '/files/areas.csv', index=False, sep=',', encoding='utf-8')
 
-    df_areas = Functions().get_s3_areas()
-    df_areas.to_csv(os.getcwd() + '/files/areas.csv', index=False, sep=',', encoding='utf-8')
+        df_crawls = Functions().get_s3_crawls()
+        df_crawls.to_csv(os.getcwd() + '/files/crawls.csv', index=False, sep=',', encoding='utf-8')
 
-    df_crawls = Functions().get_s3_crawls()
-    df_crawls.to_csv(os.getcwd() + '/files/crawls.csv', index=False, sep=',', encoding='utf-8')
+        df_stations = Functions().get_s3_stations()
+        df_stations.to_csv(os.getcwd() + '/files/stations.csv', index=False, sep=',', encoding='utf-8')
 
-    df_stations = Functions().get_s3_stations()
-    df_stations.to_csv(os.getcwd() + '/files/stations.csv', index=False, sep=',', encoding='utf-8')
-
-    df_photos = Functions().get_s3_photos()
-    df_photos.to_csv(os.getcwd() + '/files/photos.csv', index=False, sep=',', encoding='utf-8')
+        df_photos = Functions().get_s3_photos()
+        df_photos.to_csv(os.getcwd() + '/files/photos.csv', index=False, sep=',', encoding='utf-8')
+    else:
+        df_pubs = Functions().get_pubs()
+        df_areas = Functions().get_areas()
+        df_crawls = Functions().get_crawls()
 
     df_all_area = df_pubs[['name', 'area_identity']]
     print(df_all_area)
@@ -49,10 +53,6 @@ def home():
         .rename(columns={'name': 'count'}).astype(str) \
         .sort_values(by=['count'], ascending=False)
     areas_json = Functions().df_to_dict(df_all_area_count)
-    # print(df_all_area_count)
-    # pubs_reviews_json = Functions().df_to_dict(
-    #     Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False))
-    # df_crawl = Functions().get_crawls()
 
     df_crawl_last = df_crawls.tail(1)
     start = df_crawl_last['start'].values[0]
