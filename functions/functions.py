@@ -66,6 +66,10 @@ class Functions:
         df = self.get_s3_records(config['crawl']['aws_prefix'], config['crawl']['model'])
         return df
 
+    def get_s3_photos(self):
+        df = self.get_s3_records(config['photo']['aws_prefix'], config['photo']['model'])
+        return df
+
     def get_pubs(self):
         df_pubs = self.get_records(config['pub']['aws_prefix'], config['pub']['model'])
         return df_pubs
@@ -108,6 +112,7 @@ class Functions:
         return df_pubs_by_station
 
     def get_reviews(self):
+        print('get_reviews')
         df_reviews = self.get_records(config['review']['aws_prefix'], config['review']['model'])
         print(df_reviews)
         return df_reviews
@@ -142,7 +147,7 @@ class Functions:
         df_pubs_reviews = pd.merge(self.get_pubs_station(), self.get_reviews(), how='left', on='pub_identity')
         # df_pubs_reviews['score'] = round(df_pubs_reviews.loc[:, config['review']['score']].mean(axis=1) * 10)
         df_pubs_reviews.fillna(False, inplace=True)
-        # print(df_pubs_reviews)
+        print(df_pubs_reviews[['name', 'pet', 'tv', 'garden', 'music', 'late', 'meals', 'toilets', 'cheap', 'games', 'quiz', 'pool', 'lively']])
         return df_pubs_reviews
 
     def get_record(self, dfs, id_code):
@@ -166,14 +171,17 @@ class Functions:
 
     def get_review(self, pub_id):
         df_reviews = self.get_records(config['review']['aws_prefix'], config['review']['model'])
+        print('df_reviews')
+        print(df_reviews)
+        print(pub_id)
         df_review = df_reviews.loc[df_reviews['pub_identity'] == pub_id]
+        print('df_review')
+        print(df_review)
         return df_review
 
-    def get_photos(self):
-        df_photos = self.get_records()
     def get_pub_review(self, id_code):
         df_pub_review = pd.merge(self.get_pub_station(id_code), self.get_review(id_code), how='left', on='pub_identity')
-        df_pub_review['score'] = round(df_pub_review.loc[:, config['review']['score']].mean(axis=1) * 10)
+        # df_pub_review['score'] = round(df_pub_review.loc[:, config['review']['score']].mean(axis=1) * 10)
         df_pub_review['colour'] = np.where(df_pub_review['reviewer'] == 'BOTH',
                                            config['colour']['reviewed'],
                                            np.where(df_pub_review['reviewer'] == 'ANDY',
@@ -212,12 +220,12 @@ class Functions:
         return s3_resp
 
     def read_csv(self, prefix):
-        print('read_csv')
+        # print('read_csv')
         obj_df = pd.read_csv(os.getcwd() + '/files/' + prefix + 's.csv')
         return obj_df
 
     def s3_read(self, prefix, list_of_columns):
-        print('s3_read')
+        # print('s3_read')
         s3 = boto3.resource('s3',
                             aws_access_key_id=config2['access_id'],
                             aws_secret_access_key=config2['access_key'])

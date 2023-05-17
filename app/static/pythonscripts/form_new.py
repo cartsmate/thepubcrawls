@@ -31,14 +31,14 @@ class FormNew:
             reviewer = ""
         else:
             reviewer = request.form.get('reviewer').lower()
-        new_review = Review(review_identity=request.form['review_identity'], pub_identity=pub_id,
-                            review_deletion=False, visit=request.form['visit'], star=star,
+        new_review = Review(review_identity=request.form['review_identity'], review_deletion=False, pub_identity=pub_id,
+                            visit=request.form['visit'], star=star,
                             atmosphere=request.form['atmosphere'], cleanliness=request.form['cleanliness'],
                             clientele=request.form['clientele'], decor=request.form['decor'],
                             entertainment=request.form['entertainment'], food=request.form['food'],
                             friendliness=request.form['friendliness'], opening=request.form['opening'],
-                            price=request.form['price'], selection=request.form['selection'], reviewer=reviewer,
-                            rating=request.form['rating'],
+                            price=request.form['price'], selection=request.form['selection'],
+                            rating=request.form['rating'], reviewer=reviewer,
                             pet=True if request.form.get('pet') == 'on' else False,
                             tv=True if request.form.get('tv') == 'on' else False,
                             garden=True if request.form.get('garden') == 'on' else False,

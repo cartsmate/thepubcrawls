@@ -26,17 +26,17 @@ def pub_read(pub_id):
     #     return redirect(url_for('login'))
     print('pub_read')
     df_pub_review = Functions().get_pub_review(pub_id)
-
+    print(df_pub_review)
     df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
     # print(df_photos)
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
-    print(df_pub_photos)
+    # print(df_pub_photos)
     pub_review_json = Functions().df_to_dict(df_pub_photos)
 
     # print(df_pub_review['rank'])
     if request.method == 'GET':
         print('pub_read: GET')
-        print(df_pub_photos)
+        # print(df_pub_photos[['pet','tv','garden','music','late','meals','toilets','cheap','games','quiz','pool','lively']])
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
                                pub_review=pub_review_json, config=config)
 
@@ -100,9 +100,7 @@ def pub_read(pub_id):
             df_pub_review = Functions().get_pub_review(pub_id)
 
             df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
-            print(df_photos)
             df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
-            print(df_pub_photos)
             pub_review_json = Functions().df_to_dict(df_pub_photos)
 
             # print(df_pub_review)

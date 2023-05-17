@@ -9,7 +9,17 @@ class FormInput:
 
     def get_pub(self, df_pubs, pub_id):
         print('FormInput: get_pub')
-        df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'pub_deletion'] = request.form['pub_deletion']
+        # print(request.form['pub_deletion'])
+        # print(request.form['place'])
+        # print(request.form['name'])
+        # print(request.form['address'])
+        # print(request.form['latitude'])
+        # print(request.form['longitude'])
+        # print(request.form['category'].lower())
+        # print(request.form['rank'])
+        # print(request.form['station_identity'])
+        # print(request.form['area_identity'])
+        # df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'pub_deletion'] = request.form['pub_deletion']
         df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'place'] = request.form['place']
         df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'name'] = request.form['name']
         df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'address'] = request.form['address']
@@ -23,14 +33,40 @@ class FormInput:
 
     def get_review(self, df_reviews, pub_id):
         print('FormInput: get_review')
+        print(pub_id)
+        print(request.form.get('star').lower())
+        # print(request.form.get('reviewer').lower())
+        print(request.form['atmosphere'])
+        print(request.form['cleanliness'])
+        print(request.form['clientele'])
+        print(request.form['decor'])
+        print(request.form['entertainment'])
+        print(request.form['food'])
+        print(request.form['friendliness'])
+        print(request.form['opening'])
+        print(request.form['price'])
+        print(request.form['selection'])
+        print(request.form['rating'])
+        print(request.form.get('pet'))
+        print(request.form.get('tv'))
+        print(request.form.get('garden'))
+        print(request.form.get('music'))
+        print(request.form.get('late'))
+        print(request.form.get('meals'))
+        print(request.form.get('toilets'))
+        print(request.form.get('cheap'))
+        print(request.form.get('games'))
+        print(request.form.get('quiz'))
+        print(request.form.get('pool'))
+        print(request.form.get('lively'))
         if request.form.get('star') is None:
             star = ""
         else:
             star = request.form.get('star').lower()
-        if request.form.get('reviewer') is None:
-            reviewer = ""
-        else:
-            reviewer = request.form.get('reviewer').lower()
+        # if request.form.get('reviewer') is None:
+        #     reviewer = ""
+        # else:
+        #     reviewer = request.form.get('reviewer').lower()
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'visit'] = datetime.datetime.now().strftime("%d/%m/%Y")
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'star'] = star
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'atmosphere'] = request.form['atmosphere']
@@ -44,7 +80,7 @@ class FormInput:
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'price'] = request.form['price']
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'selection'] = request.form['selection']
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'rating'] = request.form['rating']
-        df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'reviewer'] = reviewer
+        # df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'reviewer'] = reviewer
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'pet'] = True if request.form.get('pet') == 'on' else False
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'tv'] = True if request.form.get('tv') == 'on' else False
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'garden'] = True if request.form.get('garden') == 'on' else False
@@ -57,5 +93,5 @@ class FormInput:
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'quiz'] = True if request.form.get('quiz') == 'on' else False
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'pool'] = True if request.form.get('pool') == 'on' else False
         df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'lively'] = True if request.form.get('lively') == 'on' else False
-
+        print(df_reviews.loc[df_reviews['pub_identity'] == pub_id])
         return df_reviews
