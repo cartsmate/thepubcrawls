@@ -72,31 +72,41 @@ function initMap(){
 {% endblock %}
 
 {% block left %}
-<div class="col">
-    <div class="row">
+<div class="row">
+    <div class="col-4">
+    </div>
+    <div class="col-8">
         <div id="map" class="map_height"></div>
     </div>
 </div>
 {% endblock %}
 
 {% block right %}
-<a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
-    <img class="map_height"
-    src="{{ url_for('static', filename='images/venue/' + pub_review[0]['photo_identity'] + '.jpeg') }}"
-    onerror="this.onerror=null; this.src='/static/icons/camera.png'"
-    style="display: block; object-fit: cover;" alt="upload photo">
-</a>
+<div class="row">
+    <div class="col-8">
+        <a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
+        <img class="map_height"
+        src="{{ url_for('static', filename='images/venue/' + pub_review[0]['photo_identity'] + '.jpeg') }}"
+        onerror="this.onerror=null; this.src='/static/icons/camera.png'"
+        style="display: block; object-fit: cover;" alt="upload photo"></a>
+    </div>
+    <div class="col-4">
+    </div>
+</div>
 {% endblock %}
 
 {% block centre %}
-    <div class="col center-block">
-        {% include "pub_form_refactored.html" %}
-        {% include "review_form_refactored.html" %}
-        <div class="row justify-content-center top-buffer">
-            <a class="btn btn-primary" href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}" role="button">Edit Pub</a>
-            <a class="btn btn-primary" href="{{ url_for('pub_list', list_type='area', id_type=pub_review[0]['area']) }}" role="button">Same area pubs</a>
-            <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
-        </div>
-        {% include "footer.html" %}
+    {% include "pub_form_refactored2.html" %}
+
+    <div class="row" style="display: flex; align-items: center; background-color:#CDCDCD;">
+        {% with search='off' %}
+            {% include "home_features.html" %}
+        {% endwith %}
     </div>
+    <div class="row justify-content-center top-buffer">
+        <a class="btn btn-primary" href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}" role="button">Edit Pub</a>
+        <a class="btn btn-primary" href="{{ url_for('pub_list', list_type='area', id_type=pub_review[0]['area']) }}" role="button">Same area pubs</a>
+        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
+    </div>
+    {% include "footer.html" %}
 {% endblock %}
