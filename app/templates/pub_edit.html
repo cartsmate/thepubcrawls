@@ -97,6 +97,9 @@ function initMap(){
     <form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">
         {% include "pub_form_refactored2.html" %}
         {% include "review_form_refactored.html" %}
+        <div class="form-group row">
+                {% include "home_features.html" %}
+            </div>
         <div class="form-group row" style="margin: 15px 0;">
             <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit">Submit</button>
             <div id="submit_message" class="font-size: 8px; text-align: center"><i>Click venue on map before submitting</i></div>
