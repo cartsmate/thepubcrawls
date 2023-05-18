@@ -9,16 +9,16 @@ class FormInput:
 
     def get_pub(self, df_pubs, pub_id):
         print('FormInput: get_pub')
-        # print(request.form['pub_deletion'])
-        # print(request.form['place'])
-        # print(request.form['name'])
-        # print(request.form['address'])
-        # print(request.form['latitude'])
-        # print(request.form['longitude'])
-        # print(request.form['category'].lower())
-        # print(request.form['rank'])
-        # print(request.form['station_identity'])
-        # print(request.form['area_identity'])
+        print(request.form['pub_deletion'])
+        print(request.form['place'])
+        print(request.form['name'])
+        print(request.form['address'])
+        print(request.form['latitude'])
+        print(request.form['longitude'])
+        print(request.form['category'].lower())
+        print(request.form['rank'])
+        print(request.form['station_identity'])
+        print(request.form['area_identity'])
         # df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'pub_deletion'] = request.form['pub_deletion']
         df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'place'] = request.form['place']
         df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'name'] = request.form['name']
