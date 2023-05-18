@@ -1,4 +1,3 @@
-from .a_index import a_index
 from .login import login
 from .profile import profile
 from .admin import admin
@@ -19,5 +18,5 @@ from .pub_map_new import map_by_new
 from .pub_map_reviewed import map_by_reviewed
 from .pub_crawl import pub_crawl
 from .pub_crawl_show import pub_crawl_show
-from .a_test import test
+from .pub_test import pub_test
 from .photo_upload import photo_upload

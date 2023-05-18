@@ -10,6 +10,7 @@ config = Configurations().get_config()
 
 @app.route("/")
 @app.route("/test")
-def test():
+def pub_test(x, y):
     print('/test')
-    return render_template('a_test.html', google_key=config['google_key'])
+    return x + y
+    # return render_template('a_test.html', google_key=config['google_key'])

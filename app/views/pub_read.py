@@ -30,7 +30,7 @@ def pub_read(pub_id):
     df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
     # print(df_photos)
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
-    # print(df_pub_photos)
+    print(df_pub_photos)
     pub_review_json = Functions().df_to_dict(df_pub_photos)
 
     # print(df_pub_review['rank'])
