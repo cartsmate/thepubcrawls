@@ -3,6 +3,7 @@ from flask import request
 from config import Configurations
 from app.models.pub import Pub
 from app.models.review import Review
+from functions.functions import Functions
 
 config = Configurations().get_config()
 
@@ -57,7 +58,7 @@ class FormNew:
         # #     reviewer = ""
         # # else:
         # #     reviewer = request.form.get('reviewer').lower()
-        new_review = Review(review_identity=request.form['review_identity'], review_deletion=False, pub_identity=pub_id,
+        new_review = Review(review_identity=Functions().generate_uuid(), review_deletion=False, pub_identity=pub_id,
                             visit=request.form['visit'],
                             star=star,
                             atmosphere=request.form['atmosphere'], cleanliness=request.form['cleanliness'],
