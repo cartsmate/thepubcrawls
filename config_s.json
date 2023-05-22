@@ -17,7 +17,7 @@
     "aws_prefix": "score",
     "model": ["review_identity", "review_deletion", "pub_identity", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "rating", "reviewer", "pet", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "quiz", "pool", "lively"],
     "column": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "rating", "reviewer", "pet", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "quiz", "pool", "lively"],
-    "visible": ["visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "reviewer", "score"],
+    "visible": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "rating", "reviewer", "pet", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "quiz", "pool", "lively"],
     "photo": ["atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection"],
     "score": ["atmosphere", "clientele", "decor", "friendliness", "selection"]
   },

@@ -65,7 +65,7 @@ def home():
     pubs_json = Functions().df_to_dict(df_pubs)
     pub_json = Functions().df_to_dict(df_pub)
     return render_template('home.html', pubs_reviews=pubs_json, photo_array=config, map_view="stations",
-                               map_lat=51.5, map_lng=-0.1, config=config, google_key=config2['google_key'],
-                               row_loop=range(3), col_loop=range(4), areas=areas_json, start=start,
-                                   walk=walk, favourite=favourite, stops=stops, criteria=criteria,
-                           pubs=pubs_json, pub=pub_json, config2=config2)
+                            map_lat=51.5, map_lng=-0.1, config=config, google_key=config2['google_key'],
+                            row_loop=range(3), col_loop=range(4), areas=areas_json, start=start,
+                            walk=walk, favourite=favourite, stops=stops, criteria=criteria,
+                            pubs=pubs_json, pub=pub_json, config2=config2, form_type='home')

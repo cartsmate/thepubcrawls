@@ -55,7 +55,7 @@ function map_listen_click(map, stations, areas) {
             //map.setCenter(event.latLng)
 
             map = show_map(lat_lng_obj.lat, lat_lng_obj.lng, map.getZoom())
-            if (document.getElementById('score').value > 0) {
+            if (document.getElementById('rating').value > 0) {
                 pinColor = "#FF0000"
             } else {
                 pinColor = "#553D67"
