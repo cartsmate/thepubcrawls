@@ -57,4 +57,5 @@ def pub_areas():
 
     areas_json = Functions().df_to_dict(df_full)
 
-    return render_template('pub_areas.html', areas=areas_json, pubs_reviews=pubs_reviews_json, no_of_columns=no_of_columns)
+    return render_template('pub_areas.html', areas=areas_json, pubs_reviews=pubs_reviews_json,
+                           no_of_columns=no_of_columns, form_type='areas')

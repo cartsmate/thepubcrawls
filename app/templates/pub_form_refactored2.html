@@ -30,8 +30,7 @@
                 <label class="col-xs-6 col-form-label" for="{{field}}" style="display: none;"></label>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="div_{{field}}">
-                <script>document.getElementById("div_{{field}}").style = "display: none;"</script>
-                <script>document.getElementById("{{field}}").style = "display: none;"</script>
+                <input class="form-control" type='text' name="{{field}}" id="{{field}}" style="display: none;">
             </div>
         </div>
     {% endif %}

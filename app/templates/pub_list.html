@@ -32,16 +32,13 @@ function onLoad() {
 {% endblock %}
 
 {% block main %}
-<div class="col-md-12 mx-auto">
-    <div id="header_listing"></div>
-    <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
-    <div class="row justify-content-center top-buffer">
-        <div class="col-md-3"></div>
-        <div class="col-md-2 mx-auto"><a class="btn btn-primary btn-block" href="{{ url_for('pub_add') }}" role="button">Add New</a></div>
-        <div class="col-md-2 mx-auto"><a class="btn btn-primary btn-block" href="{{ url_for('home') }}" role="button">Back to Home</a></div>
-        <div class="col-md-2 mx-auto"><a class="btn btn-primary btn-block" href="{{ url_for('pub_areas') }}" role="button">All Areas</a></div>
-        <div class="col-md-3"></div>
+    <div class="col-md-12 mx-auto">
+        <div id="header_listing"></div>
+        <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
     </div>
+{% endblock %}
+
+{% block centre %}
+    {% include "buttons.html" %}
     {% include "footer.html" %}
-</div>
 {% endblock %}

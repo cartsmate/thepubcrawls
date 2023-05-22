@@ -24,8 +24,8 @@ class FormNew:
 
     def get_review(self, pub_id):
         print('Form_new: get_review')
-        print(request.form.get('star').lower())
-        print(request.form.get('reviewer').lower())
+        print(request.form.get('star'))
+        print(request.form.get('reviewer'))
         print(request.form['atmosphere'])
         print(request.form['cleanliness'])
         print(request.form['clientele'])

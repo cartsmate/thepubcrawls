@@ -42,6 +42,13 @@
         object-fit: cover;
     }
 }
+.button_size {
+    width:60px;
+    height:60px;
+}
+.icon_spacing{
+    margin: 0 5px 10px 5px;
+}
 .map_height {
     width: 100%;
     height: 200px;
