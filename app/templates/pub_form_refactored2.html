@@ -2,10 +2,10 @@
 {% for field in config['pub']['column'] %}
     {% if field in config['pub']['visible'] %}
         <div class="form-group row" id="row_{{field}}">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align:right">
-                <label class="col-xs-6 col-form-label" for="{{field}}" >{{field}}</label>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:right">
+                <label class="col-form-label" for="{{field}}" >{{field}}</label>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="div_{{field}}" style="text-align:left">
+            <div style="text-align:left; visibility:visible; display:block;" class="col-xs-5 col-sm-5 col-md-5 col-lg-5" id="div_{{field}}" style="text-align:left">
                 {% if field in config['control']['dropdown'] %}
                     {% include "control_dropdown.html" %}
                 {% elif field in config['control']['star'] %}
@@ -15,12 +15,20 @@
                 {% elif field in config['control']['date'] %}
                     {% include "control_date.html" %}
                 {% else %}
-                    <input class="form-control" type='text' name="{{field}}" id="{{field}}">
-                    <script>document.getElementById("div_{{field}}").style = "text-align:left; visibility: visible; display: block;"</script>
-                    <script>document.getElementById("{{field}}").style = "text-align:left; =visibility: visible; display: block;"</script>
+                    <input style="text-align:left; visibility:visible; display:block;" class="form-control" type='text' name="{{field}}" id="{{field}}">
+                    {% if form_type == 'read' %}
+                        <script>document.getElementById("{{field}}").setAttribute("readonly", "true");</script>
+                    {% endif %}
                 {% endif %}
                 {% if field in config['control']['required'] %}
                     <script>document.getElementById("{{field}}"}).required = true</script>
+                {% endif %}
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+                {% if form_type != 'edit' %}
+                    <a href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}">
+                        <img src="/static/icons/buttons/edit.png" style="width:30px;height:30px;">
+                    </a>
                 {% endif %}
             </div>
         </div>
