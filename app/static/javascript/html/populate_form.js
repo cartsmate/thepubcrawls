@@ -1,15 +1,15 @@
 function populate_form(form){
     for (i = 0; i < pub_review_fields.length; i++) {
-        console.log(pub_review_fields[i])
+        //console.log(pub_review_fields[i])
         if (document.getElementById(pub_review_fields[i])) {
             if (dropdown_controls.includes(pub_review_fields[i])) {
-                console.log('dropdown')
+                //console.log('dropdown')
                 var dropdown_str = String(pub_review[0][pub_review_fields[i]]['0']).toUpperCase() + String(pub_review[0][pub_review_fields[i]]).substring(1)
                 document.getElementById(pub_review_fields[i]).value = dropdown_str
             } else if (check_controls.includes(pub_review_fields[i])) {
-                console.log('check')
+                //console.log('check')
                 if (pub_review[0][pub_review_fields[i]] == true) {
-                    console.log('true')
+                    //console.log('true')
                     document.getElementById(pub_review_fields[i]).checked = true;
                     document.getElementById(pub_review_fields[i]).style.hidden = "none";
                     var feature_img = pub_review_fields[i] + "_img"
@@ -23,7 +23,7 @@ function populate_form(form){
                 check_item = pub_review[0][pub_review_fields[i]]
                 switch(check_item) {
                     case 1:
-                        console.log('1')
+                        //console.log('1')
                         document.getElementById("img_rank1").style.opacity = "1.0"
                         document.getElementById("img_rank2").style.opacity = "0.25"
                         document.getElementById("img_rank3").style.opacity = "0.25"
@@ -31,7 +31,7 @@ function populate_form(form){
                         document.getElementById("img_rank5").style.opacity = "0.25"
                         break;
                     case 2:
-                        console.log('2')
+                        //console.log('2')
                         document.getElementById("img_rank1").style.opacity = "1.0"
                         document.getElementById("img_rank2").style.opacity = "1.0"
                         document.getElementById("img_rank3").style.opacity = "0.25"
@@ -39,7 +39,7 @@ function populate_form(form){
                         document.getElementById("img_rank5").style.opacity = "0.25"
                         break;
                     case 3:
-                        console.log('3')
+                        //console.log('3')
                         document.getElementById("img_rank1").style.opacity = "1.0"
                         document.getElementById("img_rank2").style.opacity = "1.0"
                         document.getElementById("img_rank3").style.opacity = "1.0"
@@ -47,7 +47,7 @@ function populate_form(form){
                         document.getElementById("img_rank5").style.opacity = "0.25"
                         break;
                     case 4:
-                        console.log('4')
+                        //console.log('4')
                         document.getElementById("img_rank1").style.opacity = "1.0"
                         document.getElementById("img_rank2").style.opacity = "1.0"
                         document.getElementById("img_rank3").style.opacity = "1.0"
@@ -55,7 +55,7 @@ function populate_form(form){
                         document.getElementById("img_rank5").style.opacity = "0.25"
                         break;
                     case 5:
-                        console.log('5')
+                        //console.log('5')
                         document.getElementById("img_rank1").style.opacity = "1.0"
                         document.getElementById("img_rank2").style.opacity = "1.0"
                         document.getElementById("img_rank3").style.opacity = "1.0"

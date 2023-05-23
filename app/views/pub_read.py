@@ -25,16 +25,22 @@ def pub_read(pub_id):
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
     print('pub_read')
-    pubs_reviews_json = Functions().df_to_dict(Functions().get_pubs_reviews())
+    df_pubs_reviews = Functions().get_pubs_reviews()
+    df_pubs_reviews['colour'] = '#0275d8'
+    df_pubs_reviews.loc[df_pubs_reviews['pub_identity'] == pub_id, 'colour'] = '#d9534f'
+    print(df_pubs_reviews)
+    pubs_reviews_json = Functions().df_to_dict(df_pubs_reviews)
+
     df_pub_review = Functions().get_pub_review(pub_id)
-    print(df_pub_review)
     df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
-    # print(df_photos)
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
     df_pub_photos = df_pub_photos.fillna('0')
-    print(df_pub_photos)
+    df_pub_photos['colour'] = '#d9534f'
+
     pub_review_json = Functions().df_to_dict(df_pub_photos)
     df_all = Functions().get_pubs_reviews()
+    df_all['colour'] = '#0275d8'
+    df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
     all_json = Functions().df_to_dict(df_all)
     df_stations = Functions().get_stations()
     areas_json = Functions().df_to_dict(Functions().get_records(config['area']['aws_prefix'], config['area']['model']))
@@ -43,7 +49,8 @@ def pub_read(pub_id):
     df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()
     df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity') \
         .rename(columns={'name': 'count'}).astype(str)
-    df_all_latlng['colour'] = config['colour']['primary']
+    # df_all_latlng['colour'] = config['colour']['primary']
+    df_all_latlng['colour'] = '#0275d8'
     station_all_json = Functions().df_to_dict(df_all_latlng)
 
     # print(df_pub_review['rank'])
@@ -90,11 +97,11 @@ def pub_read(pub_id):
                 df_new_merged = Dataframes().merge_dfs(df_new_pub, df_new_review)
                 df_area_added = Dataframes().add_area(df_new_merged)
                 df_station_added = Dataframes().add_station(df_area_added)
-
-
+                df_station_added['colour'] = '#d9534f'
+                pub_review_json = Functions().df_to_dict(df_station_added)
                 return render_template('pub_read.html', error=error, form_type='read', google_key=config2['google_key'],
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
-                                       pub_review=Functions().df_to_dict(df_station_added), config=config,
+                                       pub_review=pub_review_json, config=config,
                                        full=all_json, summary=station_all_json)
             else:
                 print('duplicate pub')
@@ -119,6 +126,7 @@ def pub_read(pub_id):
 
             df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
             df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
+            df_pub_photos['colour'] = '#d9534f'
             pub_review_json = Functions().df_to_dict(df_pub_photos)
 
             # print(df_pub_review)

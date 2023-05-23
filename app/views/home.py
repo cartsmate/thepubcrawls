@@ -62,8 +62,12 @@ def home():
     criteria = df_crawl_last['criteria'].values[0]
     # df_pubs = Functions().get_pubs_reviews()
     df_pub = df_pubs.loc[df_pubs['place'] == start]
-    pubs_json = Functions().df_to_dict(df_pubs)
+    df_pub['colour'] = '#d9534f'
     pub_json = Functions().df_to_dict(df_pub)
+
+    df_pubs['colour'] = '#0275d8'
+    pubs_json = Functions().df_to_dict(df_pubs)
+
     return render_template('home.html', pubs_reviews=pubs_json, photo_array=config, map_view="stations",
                             map_lat=51.5, map_lng=-0.1, config=config, google_key=config2['google_key'],
                             row_loop=range(3), col_loop=range(4), areas=areas_json, start=start,

@@ -72,7 +72,7 @@ function onLoad(){
 
 function initMap(){
     console.log("initMap in pub_read");
-    let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
+    let { avg_lat, avg_lng } = latlng_avg(pub_review);
     zoom = 13
     showMap({{summary | tojson}}, {{full | tojson}}, zoom, avg_lat, avg_lng)
 }
@@ -110,34 +110,24 @@ function showMap(summary, full, zoom, lat, lng){
 {% endblock %}
 
 {% block left %}
-<div class="row">
-    <div class="col-4">
-    </div>
-    <div class="col-8">
+    <div class="row">
         <div id="map" class="map_height"></div>
     </div>
-</div>
-<div class="row">
-    <div class="col-4">
-    </div>
-    <div class="col-8">
-        <input id="search-input-navbar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    </div>
-</div>
+    {% if read_type == 'add' %}
+        <div class="row">
+            <input id="search-input-navbar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block right %}
-<div class="row">
-    <div class="col-8">
+    <div class="row">
         <a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
         <img class="map_height"
         src="{{ url_for('static', filename='images/venue/' + pub_review[0]['photo_identity'] + '.jpeg') }}"
         onerror="this.onerror=null; this.src='/static/icons/buttons/camera.png'"
         style="display: block; object-fit: cover;" alt="upload photo"></a>
     </div>
-    <div class="col-4">
-    </div>
-</div>
 {% endblock %}
 
 {% block centre %}

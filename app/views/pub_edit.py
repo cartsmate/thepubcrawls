@@ -25,12 +25,17 @@ def pub_edit(pub_id):
     df_all_latlng['colour'] = config['colour']['primary']
     station_all_json = Functions().df_to_dict(df_all_latlng)
 
-    pubs_reviews_json = Functions().df_to_dict(Functions().get_pubs_reviews())
+    df_pubs_reviews = Functions().get_pubs_reviews()
+    df_pubs_reviews['colour'] = '#0275d8'
+    pubs_reviews_json = Functions().df_to_dict(df_pubs_reviews)
 
     df_pub_review = Functions().get_pub_review(pub_id)
     df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
+    df_pub_photos['colour'] = '#d9534f'
+    print(df_pub_photos)
     df_pub_photos.fillna(0)
+
     pub_review_json = Functions().df_to_dict(df_pub_photos)
 
     stations_json = Functions().df_to_dict(
