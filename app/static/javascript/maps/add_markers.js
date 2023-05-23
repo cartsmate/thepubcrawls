@@ -9,7 +9,8 @@ function add_markers(map, zoom, data, clickable) {
     for (var key in data) {
         //console.log(data[key])
         //var pinColor = data[key].colour
-        var pinColor = '#0275D8'
+        var pinColor = data[key].colour
+        console.log(data[key])
         if (zoom < 15) {
             var pinHole = pinSVGFilled
             var label = {

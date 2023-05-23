@@ -23,9 +23,12 @@ def pub_add():
     areas_json = Functions().df_to_dict(Functions().get_records(config['area']['aws_prefix'], config['area']['model']))
 
     new_id = str(Functions().generate_uuid())
-    pubs_reviews_json = Functions().df_to_dict(Functions().get_pubs_reviews())
+    df_pubs_reviews = Functions().get_pubs_reviews()
+
+    pubs_reviews_json = Functions().df_to_dict(df_pubs_reviews)
 
     df_all = Functions().get_pubs_reviews()
+    df_all['colour'] = '#0275d8'
     all_json = Functions().df_to_dict(df_all)
     df_all_trunc = df_all[['name', 'station_identity']]
     df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()
@@ -56,12 +59,7 @@ def pub_add():
     df_pub_photo = pd.merge(df_pub_review, df_new_photo, how='left', on='pub_identity')
     df_pub_photo['area'] = ""
     df_pub_photo['station'] = ""
-    print(df_pub_photo['station_identity'])
-    # df_areas = Functions().get_areas()
-    # df_pub_area = pd.merge(df_pub_photo, df_areas, how='left', on='area_identity')
-    #
-    # df_stations = Functions().get_stations()
-    # df_pub = pd.merge(df_pub_area, df_stations, how='left', on='station_identity')
+
     pub_json = Functions().df_to_dict(df_pub_photo)
 
     return render_template("pub_read.html", form_type='add', google_key=config2['google_key'],
