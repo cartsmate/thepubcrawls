@@ -1,36 +1,36 @@
 <div class="row justify-content-center top-buffer border-top">
     <div style="text-align: center;">
         <a href="{{url_for('pub_add')}}"><img src="/static/icons/footer/plus.png" class="button_size"></a>
-        <a style="color: white; fontWeight: bold; fontSize: x-small;">ADD</a>
+        <a class="button_caption">ADD</a>
     </div>
     {% if form_type == 'read' %}
         <div style="text-align: center;">
             <a href="{{url_for('photo_upload', pub_identity=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/camera.png" class="button_size"></a>
-            <a style="color: white; fontWeight: bold; fontSize: x-small;">UPLOAD</a>
+            <a class="button_caption">UPLOAD</a>
         </div>
         <div style="text-align: center;">
             <a href="{{url_for('pub_edit', pub_id=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/edit.png" class="button_size"></a>
-            <a style="color: white; fontWeight: bold; fontSize: x-small;">EDIT</a>
+            <a class="button_caption">EDIT</a>
         </div>
         <div style="text-align: center;">
             <a href="{{url_for('pub_list', list_type='area', id_type=pub_review[0]['area'])}}"><img src="/static/icons/footer/location.png" class="button_size"></a>
-            <a style="color: white; fontWeight: bold; fontSize: x-small;">LIST</a>
+            <a class="button_caption">LIST</a>
         </div>
     {% endif %}
     {% if (form_type  == 'add' or form_type == 'home') %}
         <div style="text-align: center;">
             <a href="{{url_for('pub_areas')}}"><img src="/static/icons/footer/areas.png" class="button_size"></a>
-            <a style="color: white; fontWeight: bold; fontSize: x-small;">AREAS</a>
+            <a class="button_caption">AREAS</a>
         </div>
         <div style="text-align: center;">
             <a href="{{url_for('admin')}}"><img src="/static/icons/footer/world.png" class="button_size"></a>
-            <a style="color: white; fontWeight: bold; fontSize: x-small;">ADMIN</a>
+            <a class="button_caption">ADMIN</a>
         </div>
     {% endif %}
     {% if (form_type != 'home') %}
         <div style="text-align: center;">
             <a href="{{url_for('home')}}"><img src="/static/icons/footer/home.png" class="button_size"></a>
-            <a style="color: white; fontWeight: bold; fontSize: x-small;">HOME</a>
+            <a class="button_caption">HOME</a>
         </div>
     {% endif %}
 </div>
