@@ -50,7 +50,6 @@ def pub_read(pub_id):
     df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity') \
         .rename(columns={'name': 'count'}).astype(str)
     # df_all_latlng['colour'] = config['colour']['primary']
-    df_all_latlng['colour'] = '#0275d8'
     station_all_json = Functions().df_to_dict(df_all_latlng)
 
     # print(df_pub_review['rank'])

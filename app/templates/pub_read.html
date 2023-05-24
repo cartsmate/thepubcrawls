@@ -142,8 +142,12 @@ function showMap(summary, full, zoom, lat, lng){
             </div>
             {% if form_type != 'read' %}
                 <div class="form-group row" style="margin: 15px 0;">
-                    <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit" disabled>Submit</button>
-                    <div id="submit_message" class="font-size: 8px; text-align: center"><i>Click venue on map before submitting</i></div>
+                    {% if form_type == 'add' %}
+                        <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit" disabled>Submit</button>
+                        <div id="submit_message" class="font-size: 8px; text-align: center"><i>Click venue on map before submitting</i></div>
+                    {% else %}
+                        <button type="submit" class="btn btn-primary btn-block" value="submit">Submit</button>
+                    {% endif %}
                 </div>
             {% endif %}
         </form>

@@ -25,7 +25,7 @@
                 {% endif %}
             </div>
             <div class="col" >
-                {% if form_type != 'edit' %}
+                {% if form_type == 'read' %}
                     <a href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}">
                         <img src="/static/icons/buttons/edit.png" style="width:30px;height:30px;">
                     </a>
