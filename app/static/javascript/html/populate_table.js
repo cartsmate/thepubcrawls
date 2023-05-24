@@ -15,7 +15,7 @@ function populate_table(stop_offs) {
     table_string += '<thead><tr>' +
                         '<th>Stop</th>' +
                         '<th>Name</th>' +
-                        '<th>Score</th>' +
+                        '<th>Rank</th>' +
                         '<th>Walk</th>' +
                         '</tr></thead>'
     for (let i=0; i< stop_offs.length; i++) {
@@ -30,12 +30,27 @@ function populate_table(stop_offs) {
         } else {
             secs_calc = (stop_offs[i]['duration'] - (Math.floor(stop_offs[i]['duration']/60))*60) + 'sec'
         }
-        table_string += '<tr>' +
-            '<td>' + letters[i] + '</td>' +
-            '<td><a href="/pub/' + stop_offs[i]['pub_identity'] + '">' + stop_offs[i]['name'] + '</a></td>' +
-            '<td>' + stop_offs[i].score + '</td>' +
-            '<td>' + min_calc + '</td>' +
-            '</tr>'
+        table_string += '<tr><td>' + letters[i] + '</td>' +
+            '<td><a href="/pub/' + stop_offs[i]['pub_identity'] + '">' + stop_offs[i]['name'] + '</a></td>'
+
+        if (stop_offs[i].rank != '0') {
+            table_string +=
+                '<td>' +
+                    '<div class="star_container">' +
+                        '<img src="/static/icons/star.png" style="width:30px;height:30px;opacity:1.0;">' +
+                        '<div class="star_centre">' + stop_offs[i].rank + '</div>' +
+                    '</div>' +
+                '</td>'
+        } else {
+            table_string +=
+                '<td>' +
+                    '<div class="star_container">' +
+                        '<img src="/static/icons/star.png" style="width:30px;height:30px;opacity:0.25;">' +
+                        '<div class="star_centre"></div>' +
+                    '</div>' +
+                '</td>'
+        }
+        table_string += '<td>' + min_calc + '</td></tr>'
     }
     table_string += '</table>'
     document.getElementById('route').innerHTML = table_string

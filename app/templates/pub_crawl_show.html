@@ -89,8 +89,6 @@ function initMap(){
 {% endblock %}
 
 {% block centre %}
-    <div class="row justify-content-center top-buffer">
-        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
-    </div>
+    {% include "buttons.html" % }
     {% include "footer.html" %}
 {% endblock %}

@@ -3,46 +3,109 @@
 {% block title %}Crawls{% endblock %}
 
 {% block script %}
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=marker&callback=initMap" type="text/javascript"></script>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
+<script type="text/javascript" async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=marker&callback=initMap"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_table.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/distancing.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/display.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/display_none.js') }}"></script>
 <script>
 function onLoad(){
     console.log("onLoad in pub_crawl")
-
+    {% if form_type == 'post' %}
+        var header_listing = String(crawl.favourite['0']).toUpperCase() + String(crawl.favourite).substring(1)
+        document.getElementById("header_listing").innerHTML = "<h2>" + header_listing + " pub crawl</h2>"
+    {% endif %}
 }
 
 function initMap() {
-    var directionsService = new google.maps.DirectionsService();
-    var directionsRenderer = new google.maps.DirectionsRenderer();
+    {% if form_type == 'get' %}
+        var directionsService = new google.maps.DirectionsService();
+        var directionsRenderer = new google.maps.DirectionsRenderer();
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom:7,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom:7,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
 
-    directionsRenderer.setMap(map);
-<!--    directionsRenderer.setPanel(document.getElementById('panel'));-->
+        directionsRenderer.setMap(map);
+    <!--    directionsRenderer.setPanel(document.getElementById('panel'));-->
 
-    var request = {
-        origin: {placeId: "ChIJy2QpfVUDdkgR_ZjHMTwf28A"},
-        destination: {placeId: "ChIJYdET4FQDdkgRbjvXg_CcAm0"},
-        waypoints: [{stopover: true, location: { placeId: "ChIJNQsDclUDdkgRvZqcNZvdRgM" }}],
-        optimizeWaypoints: false,
-        travelMode: google.maps.DirectionsTravelMode.WALKING
-    };
+        var request = {
+            origin: {placeId: "ChIJy2QpfVUDdkgR_ZjHMTwf28A"},
+            destination: {placeId: "ChIJYdET4FQDdkgRbjvXg_CcAm0"},
+            waypoints: [{stopover: true, location: { placeId: "ChIJNQsDclUDdkgRvZqcNZvdRgM" }}],
+            optimizeWaypoints: false,
+            travelMode: google.maps.DirectionsTravelMode.WALKING
+        };
 
-    directionsService.route(request, function(response, status) {
-        var no_of_legs = response.routes[0].legs.length
-        for (let i = 0; i < response.routes[0].legs.length; i++) {
-            duration = response.routes[0].legs[i].duration.value/60
+        directionsService.route(request, function(response, status) {
+            var no_of_legs = response.routes[0].legs.length
+            for (let i = 0; i < response.routes[0].legs.length; i++) {
+                duration = response.routes[0].legs[i].duration.value/60
+            }
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsRenderer.setDirections(response);
+            }
+        });
+    {% else %}
+        key = {{ google_key | tojson }}
+        station = {{ station | tojson }}
+        pubs = {{ pubs | tojson }}
+        pub = {{ pub | tojson }}
+        crawl = {
+            start: {{ start | tojson }},
+            walk: {{ walk | tojson }},
+            favourite: {{ favourite | tojson }},
+            stops: {{ stops | tojson }},
+            criteria: {{ criteria | tojson }}
         }
-        if (status == google.maps.DirectionsStatus.OK) {
-            directionsRenderer.setDirections(response);
+        var stop_offs = []
+        if ( crawl.favourite = 'all' ) {
+            crawl.score = pub[0]['score']
+            crawl.score_name = 'Rating'
+        } else {
+            crawl.score = pub[0][favourite]
+            crawl.score_name = favourite
         }
-    });
-
+        pub_first_stop = {
+            name: pub[0]['name'],
+            distance_from_first: 0,
+            distance_next: 0,
+            rank: pub[0]['rank'],
+            score: pub[0]['score'],
+            star: pub[0]['star'],
+            star_score: pub[0][pub[0]['star']],
+            lat: pub[0]['latitude'],
+            lng: pub[0]['longitude'],
+            place: pub[0]['place'],
+            pub_identity: pubs[0]['pub_identity']
+        }
+        pubs = pubs.filter (obj => !(obj.place == pub_first_stop.place))
+        if ( crawl.favourite != 'all' ) {
+            pubs = pubs.filter (obj => (obj[crawl.favourite] === true))
+        }
+        if (pubs.length > 0 ) {
+            stop_offs.push(pub_first_stop)
+            for (let i=0; i<crawl.stops; i++) {
+                list_got = distancing(pub_first_stop, stop_offs[i], pubs, crawl)
+                if ( list_got === undefined ) {
+                    break;
+                } else {
+                    stop_offs.push(list_got)
+                    pubs = pubs.filter (obj => !(obj.place == list_got.place))
+                }
+            }
+            displayCrawl(stop_offs, 'map');
+        } else {
+            displayNone(pub_first_stop);
+        }
+    {% endif %}
 };
+
 function removeOptions(selectElement) {
    var i, L = selectElement.options.length - 1;
    for(i = L; i >= 0; i--) {
@@ -50,58 +113,53 @@ function removeOptions(selectElement) {
    }
 }
 function area_changed(dropdown_pick) {
-    pub_area = {{ pub_area | tojson }}
-    var select = document.getElementById("start");
-    removeOptions(document.getElementById('start'));
-    var option = document.createElement("option");
-    option.text = "select from " + dropdown_pick + " pubs";
-    select.add(option);
-    if (dropdown_pick == 'all') {
-        for(var i = 0; i < pub_area.length; i++) {
-            var opt = pub_area[i][1];
-            var el = document.createElement("option");
-            el.textContent = pub_area[i][1];
-            el.value = pub_area[i][0];
-            select.appendChild(el);
+    {% if form_type == 'get' %}
+        pub_area = {{ pub_area | tojson }}
+        var select = document.getElementById("start");
+        removeOptions(document.getElementById('start'));
+        var option = document.createElement("option");
+        option.text = "select from " + dropdown_pick + " pubs";
+        select.add(option);
+        if (dropdown_pick == 'all') {
+            for(var i = 0; i < pub_area.length; i++) {
+                var opt = pub_area[i][1];
+                var el = document.createElement("option");
+                el.textContent = pub_area[i][1];
+                el.value = pub_area[i][0];
+                select.appendChild(el);
+            }
+        } else {
+            filteredArray = pub_area.filter(item => item[2] == dropdown_pick);
+            for(var i = 0; i < filteredArray.length; i++) {
+                var opt = filteredArray[i][1];
+                var el = document.createElement("option");
+                el.textContent = filteredArray[i][1];
+                el.value = filteredArray[i][0];
+                select.appendChild(el);
+            }
         }
-    } else {
-        filteredArray = pub_area.filter(item => item[2] == dropdown_pick);
-        for(var i = 0; i < filteredArray.length; i++) {
-            var opt = filteredArray[i][1];
-            var el = document.createElement("option");
-            el.textContent = filteredArray[i][1];
-            el.value = filteredArray[i][0];
-            select.appendChild(el);
-        }
-    }
+    {% endif %}
 }
 </script>
 
 {% endblock %}
 
 {% block left %}
-<div id="map" style="width:100%; height:200px;"></div>
-<div id="panel" style="width: 300px; float: right;"></div>
+    <div id="map" style="width:100%; height:200px;"></div>
+    {% if form_type == 'get' %}
+        <div id="panel" style="width: 300px; float: right;"></div>
+    {% endif %}
 {% endblock %}
 
 {% block right %}
-    {% include "crawl_selection.html" %}
+    {% if form_type == 'get' %}
+        {% include "crawl_selection.html" %}
+    {% else %}
+        {% include "crawl_route.html" %}
+    {% endif %}
 {% endblock %}
 
 {% block centre %}
-    <div id="the_crawl"></div>
-    <div class="row justify-content-center top-buffer">
-        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
-    </div>
+    {% include "buttons.html" %}
     {% include "footer.html" %}
 {% endblock %}
-
-{% block navbar_crawls %}<a class="nav-link active_custom" href="/pub/crawl">Pub Crawls</a>{% endblock %}
-{% block pub_read_btn %}{% endblock %}
-{% block pub_edit_btn %}{% endblock %}
-{% block pub_del_btn %}{% endblock %}
-{% block rev_read_btn %}{% endblock %}
-{% block rev_add_btn %}{% endblock %}
-{% block rev_edit_btn %}{% endblock %}
-{% block rev_del_btn %}{% endblock %}
-{% block search_btn %}{% endblock %}
