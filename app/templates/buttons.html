@@ -1,15 +1,36 @@
 <div class="row justify-content-center top-buffer border-top">
-    <a class="icon_spacing" href="{{url_for('pub_add')}}" role="button"><img src="/static/icons/footer/plus.png" class="button_size"></a>
+    <div style="text-align: center;">
+        <a href="{{url_for('pub_add')}}"><img src="/static/icons/footer/plus.png" class="button_size"></a>
+        <a style="color: white; fontWeight: bold; fontSize: x-small;">ADD</a>
+    </div>
     {% if form_type == 'read' %}
-        <a class="icon_spacing" href="{{url_for('photo_upload', pub_identity=pub_review[0]['pub_identity'])}}" role="button"><img src="/static/icons/buttons/camera.png" class="button_size"></a>
-        <a class="icon_spacing" href="{{url_for('pub_edit', pub_id=pub_review[0]['pub_identity'])}}" role="button"><img src="/static/icons/buttons/edit.png" class="button_size"></a>
-        <a class="icon_spacing" href="{{url_for('pub_list', list_type='area', id_type=pub_review[0]['area'])}}" role="button"><img src="/static/icons/footer/location.png" class="button_size"></a>
+        <div style="text-align: center;">
+            <a href="{{url_for('photo_upload', pub_identity=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/camera.png" class="button_size"></a>
+            <a style="color: white; fontWeight: bold; fontSize: x-small;">UPLOAD</a>
+        </div>
+        <div style="text-align: center;">
+            <a href="{{url_for('pub_edit', pub_id=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/edit.png" class="button_size"></a>
+            <a style="color: white; fontWeight: bold; fontSize: x-small;">EDIT</a>
+        </div>
+        <div style="text-align: center;">
+            <a class="icon_spacing" href="{{url_for('pub_list', list_type='area', id_type=pub_review[0]['area'])}}"><img src="/static/icons/footer/location.png" class="button_size"></a>
+            <a style="color: white; fontWeight: bold; fontSize: x-small;">LIST</a>
+        </div>
     {% endif %}
     {% if (form_type  == 'add' or form_type == 'home') %}
-        <a class="icon_spacing" href="{{url_for('pub_areas')}}" role="button"><img src="/static/icons/footer/areas.png" class="button_size"></a>
-        <a class="icon_spacing" href="{{url_for('admin')}}" role="button"><img src="/static/icons/footer/world.png" class="button_size"></a>
+        <div style="text-align: center;">
+            <a href="{{url_for('pub_areas')}}"><img src="/static/icons/footer/areas.png" class="button_size"></a>
+            <a style="color: white; fontWeight: bold; fontSize: x-small;">AREAS</a>
+        </div>
+        <div style="text-align: center;">
+            <a href="{{url_for('admin')}}"><img src="/static/icons/footer/world.png" class="button_size"></a>
+            <a style="color: white; fontWeight: bold; fontSize: x-small;">ADMIN</a>
+        </div>
     {% endif %}
     {% if (form_type != 'home') %}
-        <a class="icon_spacing" href="{{url_for('home')}}" role="button"><img src="/static/icons/footer/home.png" class="button_size"></a>
+        <div style="text-align: center;">
+            <a href="{{url_for('home')}}"><img src="/static/icons/footer/home.png" class="button_size"></a>
+            <a style="color: white; fontWeight: bold; fontSize: x-small;">HOME</a>
+        </div>
     {% endif %}
 </div>

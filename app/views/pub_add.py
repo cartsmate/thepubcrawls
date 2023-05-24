@@ -28,6 +28,25 @@ def pub_add():
     pubs_reviews_json = Functions().df_to_dict(df_pubs_reviews)
 
     df_all = Functions().get_pubs_reviews()
+    list_L = df_all[['latitude', 'longitude']].values.tolist()
+    L = [
+        (-74.2813611, 40.8752222),
+        (-73.4134167, 40.7287778),
+        (-74.3145014, 40.9475244),
+        (-74.2445833, 40.6174444),
+        (-74.4148889, 40.7993333),
+        (-73.7789256, 40.6397511)
+    ]
+    _lat = []
+    _long = []
+    for l in list_L:
+        _lat.append(l[0])
+        _long.append(l[1])
+
+    review_lat = sum(_lat) / len(_lat)
+    review_long = sum(_long) / len(_long)
+
+
     df_all['colour'] = '#0275d8'
     all_json = Functions().df_to_dict(df_all)
     df_all_trunc = df_all[['name', 'station_identity']]
@@ -41,7 +60,7 @@ def pub_add():
     now = datetime.now()
     date_time_str = now.strftime("%Y-%m-%d")
     new_pub = Pub(pub_identity=new_id, pub_deletion=False, place="", name="", address="",
-                  latitude=0, longitude=0, station_identity="", area_identity="", category="", rank=0)
+                  latitude=review_lat, longitude=review_long, station_identity="", area_identity="", category="", rank=0)
     df_new_pub = pd.DataFrame([new_pub.__dict__])
 
     new_review = Review(review_identity=str(Functions().generate_uuid()), review_deletion=False, pub_identity=new_id,
