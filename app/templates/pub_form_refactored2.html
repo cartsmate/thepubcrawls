@@ -2,10 +2,10 @@
 {% for field in config['pub']['column'] %}
     {% if field in config['pub']['visible'] %}
         <div class="form-group row" id="row_{{field}}">
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="text-align:right">
+            <div class="col" style="text-align:right">
                 <label class="col-form-label" for="{{field}}" >{{field}}</label>
             </div>
-            <div style="text-align:left; visibility:visible; display:block; text-align:left" class="col-xs-5 col-sm-5 col-md-5 col-lg-5" id="div_{{field}}">
+            <div class="col" id="div_{{field}}" style="text-align:left; visibility:visible; display:block; text-align:left" >
                 {% if field in config['control']['dropdown'] %}
                     {% include "control_dropdown.html" %}
                 {% elif field in config['control']['star'] %}
@@ -24,7 +24,7 @@
                     <script>document.getElementById("{{field}}"}).required = true</script>
                 {% endif %}
             </div>
-            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" >
+            <div class="col" >
                 {% if form_type != 'edit' %}
                     <a href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}">
                         <img src="/static/icons/buttons/edit.png" style="width:30px;height:30px;">
@@ -34,10 +34,10 @@
         </div>
     {% else %}
         <div class="form-group row" id="row_{{field}}" style="display: none;">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <label class="col-xs-6 col-form-label" for="{{field}}" style="display: none;"></label>
+            <div class="col">
+                <label class="col-form-label" for="{{field}}" style="display: none;"></label>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="div_{{field}}">
+            <div class="col" id="div_{{field}}">
                 <input class="form-control" type='text' name="{{field}}" id="{{field}}" style="display: none;">
             </div>
         </div>

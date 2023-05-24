@@ -45,6 +45,8 @@
 .button_size {
     width:60px;
     height:60px;
+    display: block;
+    margin: 0 auto;
 }
 .icon_spacing{
     margin: 0 5px 10px 5px;
