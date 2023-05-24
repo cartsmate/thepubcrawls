@@ -13,7 +13,7 @@
             <a style="color: white; fontWeight: bold; fontSize: x-small;">EDIT</a>
         </div>
         <div style="text-align: center;">
-            <a class="icon_spacing" href="{{url_for('pub_list', list_type='area', id_type=pub_review[0]['area'])}}"><img src="/static/icons/footer/location.png" class="button_size"></a>
+            <a href="{{url_for('pub_list', list_type='area', id_type=pub_review[0]['area'])}}"><img src="/static/icons/footer/location.png" class="button_size"></a>
             <a style="color: white; fontWeight: bold; fontSize: x-small;">LIST</a>
         </div>
     {% endif %}

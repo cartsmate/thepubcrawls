@@ -15,6 +15,8 @@ def pub_edit(pub_id):
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
     df_all = Functions().get_pubs_reviews()
+    df_all['colour'] = '#0275d8'
+    df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
     all_json = Functions().df_to_dict(df_all)
 
     df_stations = Functions().get_stations()
@@ -32,10 +34,10 @@ def pub_edit(pub_id):
     df_pub_review = Functions().get_pub_review(pub_id)
     df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
-    df_pub_photos['colour'] = '#d9534f'
+
     print(df_pub_photos)
     df_pub_photos.fillna(0)
-
+    df_pub_photos['colour'] = '#d9534f'
     pub_review_json = Functions().df_to_dict(df_pub_photos)
 
     stations_json = Functions().df_to_dict(
