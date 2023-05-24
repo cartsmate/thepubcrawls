@@ -8,7 +8,7 @@ function editClick(id) {
 
 function create_table() {
     console.log("create_table")
-    table_string = '<table id="pub_list" class="table table-striped">'
+    table_string = '<table id="pub_list" class="table table-striped" style="fontSize: small;">'
     table_string += '<thead><tr>' +
                         '<th>Id</th>' +
                         '<th>Name</th>' +
@@ -60,7 +60,7 @@ function create_table() {
                 table_string +=
                     '<td>' +
                         '<div class="star_container">' +
-                            '<img src="/static/icons/star.png" style="width:30px;height:30px;opacity:0.25;">' +
+                            '<img src="/static/icons/star.png" style="width:25px;height:25px;opacity:0.25;">' +
                             '<div class="star_centre"></div>' +
                         '</div>' +
                     '</td>'
@@ -74,8 +74,8 @@ function create_table() {
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].toilets + '</a></td>' +
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].cheap + '</a></td>' +
             '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].games + '</a></td>' +
-            '<td><a href="/pub/edit/' + pubs_reviews[key].pub_identity + '"><img src="/static/icons/buttons/edit.png" style="width:30px;height:30px;"></a></td>' +
-            '<td><a href="/pub/delete/' + pubs_reviews[key].pub_identity + '"><img src="/static/icons/buttons/delete.png" style="width:30px;height:30px;"></a></td>' +
+            '<td><a href="/pub/edit/' + pubs_reviews[key].pub_identity + '"><img src="/static/icons/buttons/edit.png" style="width:25px;height:25px;"></a></td>' +
+            '<td><a href="/pub/delete/' + pubs_reviews[key].pub_identity + '"><img src="/static/icons/buttons/delete.png" style="width:25px;height:25px;"></a></td>' +
             '</tr>'
     }
     table_string += '</table>'

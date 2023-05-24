@@ -15,7 +15,7 @@
                 {% elif field in config['control']['date'] %}
                     {% include "control_date.html" %}
                 {% else %}
-                    <input style="text-align:left; visibility:visible; display:block;" class="form-control" type='text' name="{{field}}" id="{{field}}">
+                    <input style="text-align:left; visibility:visible; display:block;" size="50" class="form-control" type='text' name="{{field}}" id="{{field}}">
                     {% if form_type == 'read' %}
                         <script>document.getElementById("{{field}}").setAttribute("readonly", "true");</script>
                     {% endif %}
