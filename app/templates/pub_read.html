@@ -19,6 +19,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/insert_line.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_form.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/star_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/edit_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/sum_score.js') }}"></script>
 <script>form = {{ form_type | tojson }}</script>
@@ -50,7 +51,7 @@ function onLoad(){
         js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
         document.head.appendChild(js)
     } else {
-        alert('You appear to offline so maps cannot be displayed')
+        //alert('You appear to offline so maps cannot be displayed')
     }
     pub_review = {{ pub_review | tojson }}
     zoom = 19

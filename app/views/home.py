@@ -46,9 +46,9 @@ def home():
         df_crawls = Functions().get_crawls()
 
     df_all_area = df_pubs[['name', 'area_identity']]
-    print(df_all_area)
+    # print(df_all_area)
     df_all_area_group = df_all_area.groupby(['area_identity'], as_index=False).count()
-    print(df_all_area_group)
+    # print(df_all_area_group)
     df_all_area_count = pd.merge(df_all_area_group, df_areas, how='left', on='area_identity') \
         .rename(columns={'name': 'count'}).astype(str) \
         .sort_values(by=['count'], ascending=False)
