@@ -1,12 +1,12 @@
 <div class="row justify-content-center top-buffer border-top">
     <div style="text-align: center;">
         <a href="{{url_for('pub_add')}}"><img src="/static/icons/footer/plus.png" class="button_size"></a>
-        <a class="button_caption">ADD</a>
+        <a class="button_caption">ADD/nUB</a>
     </div>
     {% if form_type == 'read' %}
         <div style="text-align: center;">
-            <a href="{{url_for('photo_upload', pub_identity=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/camera.png" class="button_size"></a>
-            <a class="button_caption">UPLOAD</a>
+            <a href="{{url_for('photo_upload', pub_identity=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/photo.png" class="button_size"></a>
+            <a class="button_caption">UPLOAD/nPHOTO</a>
         </div>
         <!--
         <div style="text-align: center;">

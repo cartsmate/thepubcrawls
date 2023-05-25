@@ -5,7 +5,7 @@ function editClick(edit_item) {
     console.log(editElement)
     editElement.src = "/static/icons/footer/plus.png"
 
-    var inputElement = document.getElementById(edit_item);
+    document.getElementById(edit_item).removeAttribute("readonly");
     console.log(inputElement)
 
 }
