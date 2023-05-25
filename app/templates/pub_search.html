@@ -98,11 +98,10 @@
             {% include "home_features.html" %}
         {% endwith %}
     </div>
-    <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
-    <div class="row justify-content-center top-buffer">
-        <a class="btn btn-primary" href="{{ url_for('pub_add') }}" role="button">Add New</a>
-        <a class="btn btn-primary" href="{{ url_for('home') }}" role="button">Back to Home</a>
-    </div>
-    {% include "footer.html" %}
 </div>
+{% endblock %}
+
+{% block centre %}
+    {% include "buttons.html" %}
+    {% include "footer.html" %}
 {% endblock %}
