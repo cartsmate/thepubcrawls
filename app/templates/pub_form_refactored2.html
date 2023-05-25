@@ -2,7 +2,7 @@
 {% for field in config['pub']['column'] %}
     {% if field in config['pub']['visible'] %}
         <div class="form-group row" id="row_{{field}}">
-            <div class="col" style="text-align:right; padding:0px; margin:0px;">
+            <div class="col" style="text-align:right; width:100px; padding:0px; margin:0px;">
                 <label class="col-form-label" style="width:100px; padding:0px; margin:0px;" for="{{field}}" >{{field}}</label>
             </div>
             <div class="col" id="div_{{field}}" style="width:250px; text-align:left; visibility:visible; display:block; text-align:left" >
@@ -26,9 +26,7 @@
             </div>
             <div class="col" style="padding:0px; margin:0px;" >
                 {% if form_type == 'read' %}
-                    <a href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}">
-                        <img src="/static/icons/buttons/edit.png" style="width:30px; height:30px; margin:0px; padding:0px;">
-                    </a>
+                    <img id="edit_{{field}}" src="/static/icons/buttons/edit.png" onclick="editClick('{{field}}')" style="width:30px; height:30px; margin:0px; padding:0px;">
                 {% endif %}
             </div>
         </div>

@@ -28,10 +28,6 @@ favourite = {{ favourite | tojson }}
 stops = {{ stops | tojson }}
 criteria = {{ criteria | tojson }}
 
-function test_test() {
-    console.log('test test')
-    }
-
 function mapSetup() {
     crawl = { start, walk, favourite, stops, criteria }
     var stop_offs = []
@@ -107,7 +103,7 @@ function onLoad(){
         js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=mapSetup'
         document.head.appendChild(js)
     } else {
-        alert('You appear to offline so maps cannot be displayed')
+        //alert('You appear to offline so maps cannot be displayed')
     }
     config2 = {{ config2 | tojson }}
 }
