@@ -73,7 +73,7 @@ function onLoad(){
 function initMap(){
     console.log("initMap in pub_read");
     let { avg_lat, avg_lng } = latlng_avg(pub_review);
-    zoom = 13
+    zoom = 15
     showMap({{summary | tojson}}, {{full | tojson}}, zoom, avg_lat, avg_lng)
 }
 

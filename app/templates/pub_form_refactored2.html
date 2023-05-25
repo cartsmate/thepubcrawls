@@ -2,10 +2,10 @@
 {% for field in config['pub']['column'] %}
     {% if field in config['pub']['visible'] %}
         <div class="form-group row" id="row_{{field}}">
-            <div class="col" style="text-align:right">
-                <label class="col-form-label" for="{{field}}" >{{field}}</label>
+            <div class="col" style="text-align:right; padding:0px; margin:0px;">
+                <label class="col-form-label" style="width:100px; padding:0px; margin:0px;" for="{{field}}" >{{field}}</label>
             </div>
-            <div class="col" id="div_{{field}}" style="text-align:left; visibility:visible; display:block; text-align:left" >
+            <div class="col" id="div_{{field}}" style="width:250px; text-align:left; visibility:visible; display:block; text-align:left" >
                 {% if field in config['control']['dropdown'] %}
                     {% include "control_dropdown.html" %}
                 {% elif field in config['control']['star'] %}
@@ -15,7 +15,7 @@
                 {% elif field in config['control']['date'] %}
                     {% include "control_date.html" %}
                 {% else %}
-                    <input style="text-align:left; visibility:visible; display:block;" size="50" class="form-control" type='text' name="{{field}}" id="{{field}}">
+                    <input style="text-align:left; visibility:visible; display:block; width:250px;" class="form-control" type='text' name="{{field}}" id="{{field}}">
                     {% if form_type == 'read' %}
                         <script>document.getElementById("{{field}}").setAttribute("readonly", "true");</script>
                     {% endif %}
@@ -24,10 +24,10 @@
                     <script>document.getElementById("{{field}}"}).required = true</script>
                 {% endif %}
             </div>
-            <div class="col" >
+            <div class="col" style="padding:0px; margin:0px;" >
                 {% if form_type == 'read' %}
                     <a href="{{ url_for('pub_edit', pub_id=pub_review[0]['pub_identity']) }}">
-                        <img src="/static/icons/buttons/edit.png" style="width:30px;height:30px;">
+                        <img src="/static/icons/buttons/edit.png" style="width:30px; height:30px; margin:0px; padding:0px;">
                     </a>
                 {% endif %}
             </div>
