@@ -49,9 +49,11 @@
     margin: 0 auto;
 }
 .button_caption {
-    color: white;
+    color: black;
     font-weight: bold;
     font-size: 10px;
+    margin: 0px;
+    padding: 0px
 }
 .icon_spacing{
     margin: 0 5px 10px 5px;
@@ -95,4 +97,6 @@
     position: relative;
     text-align: center;
     color: white;
+    padding:0px;
+    margin:0px
 }
