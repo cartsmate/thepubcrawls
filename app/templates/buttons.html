@@ -19,10 +19,10 @@
             <div class="button_caption">PUB<br>AREA</div>
         </div>
     {% endif %}
-    {% if (form_type  == 'add' or form_type == 'home') %}
+    {% if (form_type  == 'add' or form_type == 'home' or form_type == 'list') %}
         <div style="text-align: center;">
             <a href="{{url_for('pub_areas')}}"><img src="/static/icons/footer/areas.png" class="button_size"></a>
-            <div class="button_caption">PUB<br>AREAS</div>
+            <div class="button_caption">ALL<br>AREAS</div>
         </div>
         <div style="text-align: center;">
             <a href="{{url_for('admin')}}"><img src="/static/icons/footer/world.png" class="button_size"></a>

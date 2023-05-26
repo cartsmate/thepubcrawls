@@ -27,7 +27,12 @@
             <div class="row top-buffer" style="margin: 0 0 0 0;">
                 <div class="col-md-6 mx-auto">{% block centre %}{% endblock %}</div>
             </div>
-            <div>{% block footer %}{% endblock %}</div>
+            <div class="row top-buffer" style="margin: 0 0 0 0;">
+                <div class="col-md-6 mx-auto">
+                    {% include "buttons.html" %}
+                    {% include "footer.html" %}
+                </div>
+            </div>
         </div>
     </body>
 </html>

@@ -105,7 +105,7 @@ function showMap(summary, full, zoom, lat, lng){
 {% block main %}
 <div class="col-md-12 center-block text-center">
     <strong>
-        <a style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">{{pub_review[0]['name']}}</a>
+        <a style="background-color: #d9534f; font-weight: bold; font-size: 20px; color: white; text-decoration: none; padding: 5px 0 0 0">{{pub_review[0]['name']}}</a>
     </strong>
 </div>
 {% endblock %}
@@ -153,6 +153,4 @@ function showMap(summary, full, zoom, lat, lng){
             {% endif %}
         </form>
     </div>
-    {% include "buttons.html" %}
-    {% include "footer.html" %}
 {% endblock %}
