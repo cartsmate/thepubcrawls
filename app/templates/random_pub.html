@@ -1,0 +1,15 @@
+<div class="row top-buffer">
+    <div class="col-12 center-block text-center">
+        <strong>
+        <a href="/pub/map/all" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">Daily pub</a>
+        </strong>
+    </div>
+</div>
+<div>
+    <div class="row" style="border-style:solid; border-width:thin">
+        <img id="random" class="map_height"
+        src="{{ url_for('static', filename='images/venue/' + photo_id + '.jpeg') }}"
+        onerror="this.onerror=null; this.src='/static/icons/buttons/camera.png'"
+        style="display: block; object-fit: cover;" alt="upload photo"></a>
+    </div>
+</div>

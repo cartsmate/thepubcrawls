@@ -17,6 +17,6 @@ from .pub_map_all import map_by_all
 from .pub_map_new import map_by_new
 from .pub_map_reviewed import map_by_reviewed
 from .pub_crawl import pub_crawl
-from .pub_crawl_show import pub_crawl_show
+# from .pub_crawl_show import pub_crawl_show
 from .pub_test import pub_test
 from .photo_upload import photo_upload

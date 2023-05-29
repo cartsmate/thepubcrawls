@@ -129,6 +129,9 @@ def pub_read(pub_id):
             pub_review_json = Functions().df_to_dict(df_pub_photos)
 
             # print(df_pub_review)
+            df_pubs_reviews = Functions().get_pubs_reviews()
+            pubs_reviews_json = Functions().df_to_dict(df_pubs_reviews)
             return render_template('pub_read.html', form_type='read', google_key=config2['google_key'],
-                                   pub_review=pub_review_json, config=config, stations=stations_json, areas=areas_json,
+                                   pub_review=pub_review_json, pubs_reviews=pubs_reviews_json, config=config,
+                                   stations=stations_json, areas=areas_json,
                                    full=all_json, summary=station_all_json)

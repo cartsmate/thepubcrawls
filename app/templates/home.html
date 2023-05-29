@@ -97,6 +97,7 @@ function onLoad(){
     var config = {{ config | tojson }}
     var areas = {{ areas | tojson }}
     var pubs_reviews = {{ pubs_reviews | tojson }}
+    var photo_id = {{ photo_id | tojson }}
     var js = document.createElement("script");
     js.type = "text/javascript";
     if ( window.navigator.onLine == true) {
@@ -127,8 +128,11 @@ function onLoad(){
         {% endwith %}
     </div>
     {% include "home_area.html" %}
-
     {% include "home_location.html" %}
 
 </div>
+{% endblock %}
+
+{% block centre %}
+<h4><span id="visits"></span></h4>
 {% endblock %}

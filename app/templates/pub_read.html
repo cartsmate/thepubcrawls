@@ -54,6 +54,7 @@ function onLoad(){
         //alert('You appear to offline so maps cannot be displayed')
     }
     pub_review = {{ pub_review | tojson }}
+    console.log(pub_review[0]['pub_identity'])
     zoom = 19
     //map = show_map(pub_review[0]['latitude'], pub_review[0]['longitude'], zoom)
     //add_markers(map, zoom, pub_review)
@@ -133,7 +134,7 @@ function showMap(summary, full, zoom, lat, lng){
 
 {% block centre %}
     <div class="row justify-content-center align-items-center">
-        <form action="{{ url_for('pub_read', pub_id=new_id) }}" method="post">
+        <form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">
             {% include "pub_form_refactored2.html" %}
             {% include "review_form_refactored.html" %}
             <div class="row" style="display: flex; align-items: center; background-color:#CDCDCD;">

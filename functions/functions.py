@@ -16,6 +16,10 @@ class Functions:
         df_dict = df.to_dict(orient='records')
         return df_dict
 
+    def get_photos(self):
+        df_photos = self.get_records(config['photo']['aws_prefix'], config['photo']['model'])
+        return df_photos
+
     def get_crawls(self):
         df_crawls = self.get_records(config['crawl']['aws_prefix'], config['crawl']['model'])
         return df_crawls
