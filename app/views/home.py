@@ -1,5 +1,6 @@
 import os
 import json
+import random
 import pandas as pd
 from configparser import ConfigParser
 from flask import render_template, redirect, url_for, g, session
@@ -44,6 +45,7 @@ def home():
         df_pubs = Functions().get_pubs()
         df_areas = Functions().get_areas()
         df_crawls = Functions().get_crawls()
+        df_photos = Functions().get_photos()
 
     df_all_area = df_pubs[['name', 'area_identity']]
     # print(df_all_area)
@@ -67,9 +69,19 @@ def home():
 
     df_pubs['colour'] = '#0275d8'
     pubs_json = Functions().df_to_dict(df_pubs)
-
+    pubs_total = df_pubs.shape[0]
+    print('total: ' + str(pubs_total))
+    random_identity = random.randint(0, pubs_total)
+    # print('random: ' + str(pubs_random))
+    pub_random = df_pubs.iloc[[random_identity]]
+    df = pd.merge(pub_random, df_photos, how='left', on='pub_identity')
+    photo_id = df['photo_identity'].values[0]
+    print(photo_id)
+    # create random number
+    # find index from random number in df_pubs
+    # return single pub as random
     return render_template('home.html', pubs_reviews=pubs_json, photo_array=config, map_view="stations",
                             map_lat=51.5, map_lng=-0.1, config=config, google_key=config2['google_key'],
                             row_loop=range(3), col_loop=range(4), areas=areas_json, start=start,
-                            walk=walk, favourite=favourite, stops=stops, criteria=criteria,
+                            walk=walk, favourite=favourite, stops=stops, criteria=criteria, photo_id=photo_id,
                             pubs=pubs_json, pub=pub_json, config2=config2, form_type='home')

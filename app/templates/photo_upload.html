@@ -3,6 +3,7 @@
 {% block title %}Photo Upload{% endblock %}
 
 {% block script %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
 <script>
 function onLoad() {
 pub_identity = {{ pub_identity | tojson }}
