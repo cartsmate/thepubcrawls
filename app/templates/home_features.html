@@ -2,7 +2,7 @@
 <!--<div class="row justify-content-center align-items-center" id="feature-list"></div>-->
 
 {% for field in config['control']['check'] %}
-    <div class="col" style="text-align: center; padding: 10px; background: #CDCDCD;" id="{{field}}_col">
+    <div class="col" style="text-align:center; padding:10px; background:#D3D3D3;" id="{{field}}_col">
         <input type="checkbox" id="{{field}}" name="{{field}}" style="display: none;" onclick="featureClick('{{field}}', '{{auto_exec}}')">
         <label for="{{field}}" style="margin:0px; padding:0px" >
             <img src="{{ url_for('static', filename='icons/features/' + field + '.png') }}" id="{{field}}_img" width="30" height="30"

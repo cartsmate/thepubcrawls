@@ -19,7 +19,7 @@ function featureSearch() {
     myUrlWithParams.searchParams.append("games", games.checked);
     myUrlWithParams.searchParams.append("quiz", quiz.checked);
     myUrlWithParams.searchParams.append("pool", pool.checked);
-    myUrlWithParams.searchParams.append("lively", pool.checked);
+    myUrlWithParams.searchParams.append("lively", lively.checked);
 
     window.location.replace(myUrlWithParams.href);
 }

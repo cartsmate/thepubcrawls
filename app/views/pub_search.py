@@ -91,24 +91,24 @@ def pub_search():
     # filtered_values = df_scores.loc[(
     #     df_scores['meals'].astype(str).isin(meals_list)
     # )]
-    filtered_values = df_scores
+    # filtered_values = df_scores
     # print(meals_list)
     # print(filtered_values)
-    # filtered_values = df_scores.loc[(
-    #         df_scores['pet'].astype(str).isin(pet_list) &
-    #         df_scores['tv'].astype(str).isin(tv_list) &
-    #         df_scores['garden'].astype(str).isin(garden_list) &
-    #         df_scores['music'].astype(str).isin(music_list) &
-    #         df_scores['late'].astype(str).isin(late_list) &
-    #         df_scores['meals'].astype(str).isin(meals_list) &
-    #         df_scores['toilets'].astype(str).isin(toilets_list) &
-    #         df_scores['cheap'].astype(str).isin(cheap_list) &
-    #         df_scores['games'].astype(str).isin(games_list) &
-    #         df_scores['quiz'].astype(str).isin(quiz_list) &
-    #         df_scores['pool'].astype(str).isin(pool_list) &
-    #         df_scores['lively'].astype(str).isin(lively_list)
-    # )]
-    # print(filtered_values[['name', 'pet', 'tv', 'garden', 'music', 'late', 'meals', 'toilets', 'cheap', 'games', 'quiz', 'pool', 'lively']])
+    filtered_values = df_scores.loc[(
+            df_scores['pet'].astype(str).isin(pet_list) &
+            df_scores['tv'].astype(str).isin(tv_list) &
+            df_scores['garden'].astype(str).isin(garden_list) &
+            df_scores['music'].astype(str).isin(music_list) &
+            df_scores['late'].astype(str).isin(late_list) &
+            df_scores['meals'].astype(str).isin(meals_list) &
+            df_scores['toilets'].astype(str).isin(toilets_list) &
+            df_scores['cheap'].astype(str).isin(cheap_list) &
+            df_scores['games'].astype(str).isin(games_list) &
+            df_scores['quiz'].astype(str).isin(quiz_list) &
+            df_scores['pool'].astype(str).isin(pool_list) &
+            df_scores['lively'].astype(str).isin(lively_list)
+    )]
+    print(filtered_values[['name', 'pet', 'tv', 'garden', 'music', 'late', 'meals', 'toilets', 'cheap', 'games', 'quiz', 'pool', 'lively']])
     pubs_reviews_json = Functions().df_to_dict(filtered_values)
     # ?tv = false & garden = false & music = false & late = false & meals = false & toilets = false & cheap = false & games = false
     return render_template('pub_search.html', config=config, pubs_reviews=pubs_reviews_json, pet=pet, tv=tv,
