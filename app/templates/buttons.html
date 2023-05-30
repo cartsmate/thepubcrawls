@@ -8,18 +8,16 @@
             <a href="{{url_for('photo_upload', pub_identity=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/photo.png" class="button_size"></a>
             <div class="button_caption">UPLOAD<br>PHOTO</div>
         </div>
-        <!--
         <div style="text-align: center;">
             <a href="{{url_for('pub_edit', pub_id=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/edit.png" class="button_size"></a>
             <a class="button_caption">EDIT</a>
         </div>
-        -->
         <div style="text-align: center;">
             <a href="{{url_for('pub_list', list_type='area', id_type=pub_review[0]['area'])}}"><img src="/static/icons/footer/location.png" class="button_size"></a>
             <div class="button_caption">PUB<br>AREA</div>
         </div>
     {% endif %}
-    {% if (form_type  == 'add' or form_type == 'home' or form_type == 'list') %}
+    {% if (form_type  == 'add' or form_type == 'home' or form_type == 'list' or form_type == 'read') %}
         <div style="text-align: center;">
             <a href="{{url_for('pub_areas')}}"><img src="/static/icons/footer/areas.png" class="button_size"></a>
             <div class="button_caption">ALL<br>AREAS</div>
