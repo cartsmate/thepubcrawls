@@ -1,5 +1,6 @@
 from .login import login
 from .profile import profile
+from .acknowledgements import acknowledgements
 from .admin import admin
 from .index import index
 from .home import home

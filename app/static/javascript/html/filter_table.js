@@ -11,7 +11,7 @@ function Search() {
                     {target: 1, visible: true, searchable: true, },
                     {target: 2, visible: false, searchable: false, },
                     {target: 3, visible: false, searchable: false, },
-                    {target: 4, visible: false, searchable: false, },
+                    {target: 4, visible: true, searchable: false, },
                     {target: 5, visible: false, searchable: false, },
                     {target: 6, visible: false, searchable: false, },
                     {target: 7, visible: false, searchable: false, },
