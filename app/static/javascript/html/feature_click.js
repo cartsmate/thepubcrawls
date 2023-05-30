@@ -16,7 +16,7 @@ function featureClick(check_item, auto_exec) {
         image.style.opacity = "1.0"
         caption.style.opacity = "1.0"
         caption.style.color = "black"
-        checkCol.style.background = "#D3D3D3"
+        checkCol.style.background = "#CDCDCD"
     }
     if (auto_exec == 'on') {
         featureSearch()
