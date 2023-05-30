@@ -54,7 +54,7 @@ function onLoad(){
         //alert('You appear to offline so maps cannot be displayed')
     }
     pub_review = {{ pub_review | tojson }}
-    console.log(pub_review[0]['pub_identity'])
+    console.log(pub_review[0])
     zoom = 19
     //map = show_map(pub_review[0]['latitude'], pub_review[0]['longitude'], zoom)
     //add_markers(map, zoom, pub_review)
@@ -126,7 +126,7 @@ function showMap(summary, full, zoom, lat, lng){
     <div class="row">
         <a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
         <img class="map_height"
-        src="{{ url_for('static', filename='images/venue/' + pub_review[0]['photo_identity'] + '.jpeg') }}"
+        src="{{ url_for('static', filename='icons/buttons/camera.png') }}"
         onerror="this.onerror=null; this.src='/static/icons/buttons/camera.png'"
         style="display: block; object-fit: cover;" alt="upload photo"></a>
     </div>
@@ -150,6 +150,7 @@ function showMap(summary, full, zoom, lat, lng){
                     {% else %}
                         <button type="submit" class="btn btn-primary btn-block" value="submit">Submit</button>
                     {% endif %}
+                    <a href="{{url_for('pub_read', pub_id=pub_review[0]['pub_identity'])}}">Cancel</a>
                 </div>
             {% endif %}
         </form>

@@ -85,3 +85,5 @@ def home():
                             row_loop=range(3), col_loop=range(4), areas=areas_json, start=start,
                             walk=walk, favourite=favourite, stops=stops, criteria=criteria, photo_id=photo_id,
                             pubs=pubs_json, pub=pub_json, config2=config2, form_type='home')
+
+

@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+# from flask_restful import Api, Resource, reqparse
 # from config import Config
 # from flask_login import LoginManager
 # login_manager = LoginManager()
@@ -24,6 +25,7 @@ users.append(User(id=3, username='aaa', password='qqq'))
 # print(users)
 
 app = Flask(__name__)
+# app = Api(app)
 # app.secret_key = os.urandom(24)
 app.config['SECRET_KEY'] = os.urandom(24)
 # app.config.from_object(Config)
