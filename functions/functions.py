@@ -40,13 +40,17 @@ class Functions:
         return df_false
 
     def get_s3_records(self, aws_prefix, list_of_columns):
+        print(aws_prefix)
         df = self.s3_read(aws_prefix, list_of_columns)
+        print(df)
+
         if aws_prefix == 'venue':
             del_consol = 'pub' + "_deletion"
         elif aws_prefix == 'score':
             del_consol = 'review' + "_deletion"
         else:
             del_consol = aws_prefix + "_deletion"
+        print(del_consol)
         df_false = df.loc[df[del_consol] != True]
         return df_false
 

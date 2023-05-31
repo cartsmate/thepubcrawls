@@ -72,7 +72,7 @@ function onLoad(){
 function initMap(){
     console.log("initMap in pub_read");
     let { avg_lat, avg_lng } = latlng_avg(pub_review);
-    zoom = 15
+    zoom = 13
     showMap({{summary | tojson}}, {{full | tojson}}, zoom, avg_lat, avg_lng)
 }
 
@@ -122,9 +122,11 @@ function showMap(summary, full, zoom, lat, lng){
     <div class="row">
         <a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
         <img class="map_height"
-        src="{{ url_for('static', filename='icons/buttons/camera.png') }}"
-        onerror="this.onerror=null; this.src='/static/icons/buttons/camera.png'"
-        style="display: block; object-fit: cover;" alt="upload photo"></a>
+             src="{{ url_for('static', filename='images/venue/' + pub_review[0]['photo_identity'] + '.jpeg') }}"
+             onerror="this.onerror=null; this.src='/static/icons/buttons/camera.png'"
+             style="display: block; object-fit: cover;"
+             alt="upload photo">
+        </a>
     </div>
 {% endblock %}
 

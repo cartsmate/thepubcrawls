@@ -8,8 +8,11 @@ from flask import render_template, redirect, url_for, g, session, request, flash
 from app import app
 from csv import writer
 from config import Configurations
+from app.models.photo import Photo
 from functions.functions import Functions
 from werkzeug.utils import secure_filename
+from app.static.pythonscripts.dataframes import Dataframes
+
 
 UPLOAD_FOLDER = 'static/uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -64,7 +67,14 @@ def photo_upload(pub_identity):
             print(fullfile)
             new_name = uuid.uuid4()
             # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            file.save(os.getcwd() + '/files/static/images/venue/' + str(new_name))
+
+            new_photo = Photo(pub_identity=pub_identity, photo_identity=new_name, photo_deletion=False)
+            df_new_photo = pd.DataFrame([new_photo.__dict__])
+            df_photo_appended = Dataframes().append_df(Functions().get_photos(), df_new_photo)
+            Dataframes().to_csv(df_photo_appended, 'photo')
+            s3_resp = Functions().s3_write(df_photo_appended, config['photo']['aws_key'])
+
+            file.save(os.getcwd() + '/app/static/images/venue/' + str(new_name) + '.jpeg')
             new_row = [pub_identity, new_name, False]
             with open(os.getcwd() + '/files/photos.csv', 'a') as f_object:
                 writer_object = writer(f_object)

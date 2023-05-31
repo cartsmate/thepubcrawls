@@ -40,11 +40,8 @@ def pub_add(lat, lng):
 
     new_id = str(Functions().generate_uuid())
     df_pubs_reviews = Functions().get_pubs_reviews()
-
+    df_pubs_reviews['colour'] = '#0275d8'
     pubs_reviews_json = Functions().df_to_dict(df_pubs_reviews)
-
-
-
 
     df_all['colour'] = '#0275d8'
     all_json = Functions().df_to_dict(df_all)
