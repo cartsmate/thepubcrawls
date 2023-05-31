@@ -47,7 +47,18 @@ def map_by_all():
     df_all_area_count['colour'] = config['colour']['red']
     area_all_json = Functions().df_to_dict(df_all_area_count)
     print(config2)
+
     view = "all"
+    list_L = df_all[['latitude', 'longitude']].values.tolist()
+    _lat = []
+    _long = []
+    for l in list_L:
+        _lat.append(l[0])
+        _long.append(l[1])
+
+    review_lat = sum(_lat) / len(_lat)
+    review_long = sum(_long) / len(_long)
+
     return render_template('pub_map_all.html', google_key=config2['google_key'],
-                           full=all_json, station=station_all_json, area=area_all_json,
-                           icon_hole=False, info_box=False, map_view=view, map_lat=51.5, map_lng=-0.1)
+                           full=all_json, station=station_all_json, area=area_all_json, form_type='map',
+                           icon_hole=False, info_box=False, map_view=view, map_lat=review_lat, map_lng=review_long)

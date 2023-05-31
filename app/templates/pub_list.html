@@ -5,12 +5,25 @@
 {% block script %}
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='jquery/css/jquery.dataTables.min.css') }}">
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
 <script>
 function onLoad() {
     console.log("onLoad in pub_list");
+    var js = document.createElement("script");
+    js.type = "text/javascript";
+    if ( window.navigator.onLine == true) {
+        console.log('outside of function')
+        js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
+        document.head.appendChild(js)
+    } else {
+        //alert('You appear to offline so maps cannot be displayed')
+    }
+
     filter = {{ filter | tojson }}
     var header_listing = String(filter['0']).toUpperCase() + String(filter).substring(1)
     document.getElementById("header_listing").innerHTML = "<h2>" + header_listing + "</h2>"
@@ -28,12 +41,44 @@ function onLoad() {
         Category()
     }
 }
+function initMap(){
+    console.log("initMap in pub_read");
+    let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
+    zoom = 15
+    map = show_map(avg_lat, avg_lng, zoom)
+    key = {{ google_key | tojson }}
+    stations = {{ stations | tojson }}
+    areas = {{ areas | tojson }}
+    data = pubs_reviews
+    add_markers(map, zoom, data);
+    var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
+    const input = document.getElementById("search-input-navbar");
+    const searchBox = new google.maps.places.SearchBox(input);
+    map_listen_click(map, stations, areas);
+    listen_search(map, searchBox);
+    map_listen_bounds(map, searchBox, stations, areas);
+    function isIconMouseEvent(e) {
+        console.log("place icon clicked")
+        return "placeId" in e;
+    }
+}
 </script>
 {% endblock %}
 
 {% block main %}
+<div class="col-md-12 center-block text-center" style="background-color: #d9534f; ">
+    <div id="header_listing"></div>
+</div>
+{% endblock %}
+
+{% block left %}
+    <div class="row">
+        <div id="map" class="map_height"></div>
+    </div>
+{% endblock %}
+
+{% block right %}
     <div class="col-md-12 mx-auto">
-        <div id="header_listing"></div>
         <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
     </div>
 {% endblock %}

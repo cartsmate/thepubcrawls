@@ -16,8 +16,24 @@ config = Configurations().get_config()
 config2 = Configurations().get_config2()
 
 
-@app.route("/pub/add/")
-def pub_add():
+@app.route("/pub/add/<lat>/<lng>")
+def pub_add(lat, lng):
+    df_all = Functions().get_pubs_reviews()
+    if lat == 'None' and lng == 'None':
+        print('lat and lng is NONE')
+        list_L = df_all[['latitude', 'longitude']].values.tolist()
+        _lat = []
+        _long = []
+        for l in list_L:
+            _lat.append(l[0])
+            _long.append(l[1])
+
+        review_lat = sum(_lat) / len(_lat)
+        review_long = sum(_long) / len(_long)
+    else:
+        print('lat and lng RECEIVED')
+        review_lat = lat
+        review_long = lng
     df_stations = Functions().get_stations()
     stations_json = Functions().df_to_dict(df_stations)
     areas_json = Functions().df_to_dict(Functions().get_records(config['area']['aws_prefix'], config['area']['model']))
@@ -27,24 +43,7 @@ def pub_add():
 
     pubs_reviews_json = Functions().df_to_dict(df_pubs_reviews)
 
-    df_all = Functions().get_pubs_reviews()
-    list_L = df_all[['latitude', 'longitude']].values.tolist()
-    L = [
-        (-74.2813611, 40.8752222),
-        (-73.4134167, 40.7287778),
-        (-74.3145014, 40.9475244),
-        (-74.2445833, 40.6174444),
-        (-74.4148889, 40.7993333),
-        (-73.7789256, 40.6397511)
-    ]
-    _lat = []
-    _long = []
-    for l in list_L:
-        _lat.append(l[0])
-        _long.append(l[1])
 
-    review_lat = sum(_lat) / len(_lat)
-    review_long = sum(_long) / len(_long)
 
 
     df_all['colour'] = '#0275d8'

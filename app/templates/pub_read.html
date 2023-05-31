@@ -8,7 +8,6 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_bounds.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_events.js') }}"></script>
@@ -56,8 +55,6 @@ function onLoad(){
     pub_review = {{ pub_review | tojson }}
     console.log(pub_review[0])
     zoom = 19
-    //map = show_map(pub_review[0]['latitude'], pub_review[0]['longitude'], zoom)
-    //add_markers(map, zoom, pub_review)
     config = {{ config | tojson }}
     pub_fields = config['pub']['column']
     review_fields = config['review']['column']
@@ -91,7 +88,6 @@ function showMap(summary, full, zoom, lat, lng){
     var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
     const input = document.getElementById("search-input-navbar");
     const searchBox = new google.maps.places.SearchBox(input);
-    //add_listen_click();
     map_listen_click(map, stations, areas);
     listen_search(map, searchBox);
     map_listen_bounds(map, searchBox, stations, areas);
@@ -150,7 +146,7 @@ function showMap(summary, full, zoom, lat, lng){
                     {% else %}
                         <button type="submit" class="btn btn-primary btn-block" value="submit">Submit</button>
                     {% endif %}
-                    <a href="{{url_for('pub_read', pub_id=pub_review[0]['pub_identity'])}}">Cancel</a>
+                    <a href="{{url_for('pub_read', pub_id=pub_review[0]['pub_identity'])}}" style="color:#d9534f">Cancel</a>
                 </div>
             {% endif %}
         </form>
