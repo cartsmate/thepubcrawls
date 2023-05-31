@@ -56,6 +56,13 @@ def home():
         .sort_values(by=['count'], ascending=False)
     areas_json = Functions().df_to_dict(df_all_area_count)
 
+    df_all_area_group2 = df_all_area.groupby(['area_identity'], as_index=False).count()
+    print(df_all_area_group2)
+    df_all_area_count2 = pd.merge(df_all_area_group2, df_areas, how='left', on='area_identity')\
+        .sort_values(by=['area'], ascending=True)
+    print(df_all_area_count2)
+    areas_json2 = Functions().df_to_dict(df_all_area_count2)
+
     df_crawl_last = df_crawls.tail(1)
     start = df_crawl_last['start'].values[0]
     walk = df_crawl_last['walk'].apply(str).values[0]
@@ -93,7 +100,7 @@ def home():
 
     return render_template('home.html', pubs_reviews=pubs_json, photo_array=config, map_view="stations",
                             map_lat=review_lat, map_lng=review_long, config=config, google_key=config2['google_key'],
-                            row_loop=range(3), col_loop=range(4), areas=areas_json, start=start,
+                            row_loop=range(3), col_loop=range(4), areas=areas_json2, start=start,
                             walk=walk, favourite=favourite, stops=stops, criteria=criteria, photo_id=photo_id,
                             pubs=pubs_json, pub=pub_json, config2=config2, form_type='home')
 

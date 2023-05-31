@@ -98,10 +98,11 @@ def pub_read(pub_id):
                 df_station_added = Dataframes().add_station(df_area_added)
                 df_station_added['colour'] = '#d9534f'
                 pub_review_json = Functions().df_to_dict(df_station_added)
+
                 df_all = Functions().get_pubs_reviews()
                 df_all['colour'] = '#0275d8'
                 df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
-                print(df_all)
+                print(df_station_added)
                 pubs_reviews_json = Functions().df_to_dict(df_all)
                 return render_template('pub_read.html', error=error, form_type='read', google_key=config2['google_key'],
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
