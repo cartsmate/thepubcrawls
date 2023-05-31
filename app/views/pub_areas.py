@@ -29,11 +29,11 @@ def pub_areas():
 
     no_of_records = df_all_area_count.shape[0]
     no_of_rows = math.ceil(no_of_records / no_of_columns)
-
+    # print('no_of_rows: ' + str(no_of_rows))
     area_list = []
     df_full = pd.DataFrame()
     for y in range(no_of_rows):
-        print('y: ' + str(y))
+        # print('y: ' + str(y))
         df_temp = df_all_area_count
         first_col = no_of_columns * y
         # print('first_col: ' + str(first_col))
@@ -47,9 +47,9 @@ def pub_areas():
         df_temp_neg.sort_values(by=['longitude'], ascending=False, inplace=True)
         # print(df_temp_neg)
         df_ordered = pd.concat([df_temp_neg, df_temp_pos])
-        print(df_ordered)
+        # print(df_ordered)
         df_full = pd.concat([df_full, df_ordered], ignore_index=True)
-        print(df_full)
+        # print(df_full)
         # area_temp_list = df_ordered.values.tolist()
         # area_list.append(area_temp_list)
         # break
@@ -58,4 +58,4 @@ def pub_areas():
     areas_json = Functions().df_to_dict(df_full)
 
     return render_template('pub_areas.html', areas=areas_json, pubs_reviews=pubs_reviews_json,
-                           no_of_columns=no_of_columns, form_type='areas')
+                           no_of_columns=no_of_columns, form_type='areas', no_of_rows=no_of_rows)

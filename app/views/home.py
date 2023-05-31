@@ -80,8 +80,19 @@ def home():
     # create random number
     # find index from random number in df_pubs
     # return single pub as random
+
+    list_L = df_pubs[['latitude', 'longitude']].values.tolist()
+    _lat = []
+    _long = []
+    for l in list_L:
+        _lat.append(l[0])
+        _long.append(l[1])
+
+    review_lat = sum(_lat) / len(_lat)
+    review_long = sum(_long) / len(_long)
+
     return render_template('home.html', pubs_reviews=pubs_json, photo_array=config, map_view="stations",
-                            map_lat=51.5, map_lng=-0.1, config=config, google_key=config2['google_key'],
+                            map_lat=review_lat, map_lng=review_long, config=config, google_key=config2['google_key'],
                             row_loop=range(3), col_loop=range(4), areas=areas_json, start=start,
                             walk=walk, favourite=favourite, stops=stops, criteria=criteria, photo_id=photo_id,
                             pubs=pubs_json, pub=pub_json, config2=config2, form_type='home')

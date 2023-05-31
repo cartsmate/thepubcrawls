@@ -1,6 +1,6 @@
 <div class="row justify-content-center top-buffer">
     <div style="text-align: center;">
-        <a href="{{url_for('pub_add')}}"><img src="/static/icons/footer/plus.png" class="button_size"></a>
+        <a href="{{url_for('pub_add', lat=map_lat, lng=map_lng)}}"><img src="/static/icons/footer/plus.png" class="button_size"></a>
         <div class="button_caption">ADD<br>PUB</div>
     </div>
     {% if form_type == 'read' %}

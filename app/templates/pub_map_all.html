@@ -16,6 +16,9 @@
 function listen_zoom(map, station, area, full) {
     map.addListener('center_changed', function() {
         console.log('center_change')
+        var newCenter = map.getCenter();
+        console.log(newCenter.lat())
+        console.log(newCenter.lng())
     })
     map.addListener('zoom_changed', function() {
         var newZoom = map.getZoom();
@@ -24,6 +27,7 @@ function listen_zoom(map, station, area, full) {
 }
 function onLoad(){
     console.log("onLoad in pub_map")
+    form_type = {{ form_type | tojson }}
     switch(map_view) {
         case 'all':
             document.getElementById("all_pubs").checked = true;
@@ -48,8 +52,9 @@ function showMap(station, area, full, zoom, lat, lng){
     }
 
     add_markers(map, zoom, data, Boolean(true));
-    add_listen_click();
-    listen_zoom(map, station, area, full)
+    add_listen_click(map);
+    listen_zoom(map, station, area, full);
+
 }
 function initMap(){
     map_view =  {{ map_view | tojson }}
