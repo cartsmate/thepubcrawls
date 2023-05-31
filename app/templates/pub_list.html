@@ -11,6 +11,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery.dataTables.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 <script>
 function onLoad() {
     console.log("onLoad in pub_list");
@@ -51,6 +52,7 @@ function initMap(){
     areas = {{ areas | tojson }}
     data = pubs_reviews
     add_markers(map, zoom, data);
+    add_listen_click(map);
     var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
     const input = document.getElementById("search-input-navbar");
     const searchBox = new google.maps.places.SearchBox(input);

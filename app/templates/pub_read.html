@@ -83,7 +83,7 @@ function showMap(summary, full, zoom, lat, lng){
     key = {{ google_key | tojson }}
     stations = {{ stations | tojson }}
     areas = {{ areas | tojson }}
-    data = full
+    data = pubs_reviews
     add_markers(map, zoom, data);
     var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
     const input = document.getElementById("search-input-navbar");
