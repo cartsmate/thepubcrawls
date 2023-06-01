@@ -1,4 +1,8 @@
 <div class="row justify-content-center top-buffer">
+    <div style="text-align: center;">
+            <a href="{{url_for('pub_crawl')}}"><img src="/static/icons/footer/route.png" class="button_size"></a>
+            <div class="button_caption">PUB<br>CRAWL</div>
+        </div>
     {% if form_type != 'add' %}
         <div style="text-align: center;">
             <a href="{{url_for('pub_add', lat=map_lat, lng=map_lng)}}"><img src="/static/icons/footer/add.png" class="button_size"></a>
