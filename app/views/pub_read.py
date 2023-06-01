@@ -28,16 +28,18 @@ def pub_read(pub_id):
     df_pubs_reviews = Functions().get_pubs_reviews()
     df_pubs_reviews['colour'] = '#0275d8'
     df_pubs_reviews.loc[df_pubs_reviews['pub_identity'] == pub_id, 'colour'] = '#d9534f'
-    print(df_pubs_reviews)
+    # print(df_pubs_reviews)
     pubs_reviews_json = Functions().df_to_dict(df_pubs_reviews)
 
     df_pub_review = Functions().get_pub_review(pub_id)
+    print(df_pub_review)
     df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
+    print(df_photos)
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
 
     df_pub_photos = df_pub_photos.fillna('0')
     df_pub_photos['colour'] = '#d9534f'
-    print(df_pub_photos['photo_identity'])
+    print(df_pub_photos)
     pub_review_json = Functions().df_to_dict(df_pub_photos)
     df_all = Functions().get_pubs_reviews()
     df_all['colour'] = '#0275d8'
@@ -53,13 +55,26 @@ def pub_read(pub_id):
     # df_all_latlng['colour'] = config['colour']['primary']
     station_all_json = Functions().df_to_dict(df_all_latlng)
 
+
+
     # print(df_pub_review['rank'])
     if request.method == 'GET':
         print('pub_read: GET')
+        list_L = df_pub_photos[['latitude', 'longitude']].values.tolist()
+        _lat = []
+        _long = []
+        for l in list_L:
+            _lat.append(l[0])
+            _long.append(l[1])
+
+        review_lat = sum(_lat) / len(_lat)
+        review_long = sum(_long) / len(_long)
+
         # print(df_pub_photos[['pet','tv','garden','music','late','meals','toilets','cheap','games','quiz','pool','lively']])
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
                                pub_review=pub_review_json, config=config, stations=stations_json, areas=areas_json,
-                               full=all_json, summary=station_all_json, pubs_reviews=pubs_reviews_json)
+                               full=all_json, summary=station_all_json, pubs_reviews=pubs_reviews_json,
+                               map_lat=review_lat, map_lng=review_long)
 
     if request.method == 'POST':
         print('pub_read: POST')
@@ -105,10 +120,20 @@ def pub_read(pub_id):
                 df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
                 print(df_station_added)
                 pubs_reviews_json = Functions().df_to_dict(df_all)
+                list_L = df_station_added[['latitude', 'longitude']].values.tolist()
+                _lat = []
+                _long = []
+                for l in list_L:
+                    _lat.append(l[0])
+                    _long.append(l[1])
+
+                review_lat = sum(_lat) / len(_lat)
+                review_long = sum(_long) / len(_long)
+
                 return render_template('pub_read.html', error=error, form_type='read', google_key=config2['google_key'],
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                        pub_review=pub_review_json, config=config,
-                                       full=all_json, summary=station_all_json)
+                                       full=all_json, summary=station_all_json, map_lat=review_lat, map_lng=review_long)
             else:
                 print('duplicate pub')
                 df_pubs_reviews = Functions().get_pubs_reviews()
@@ -138,7 +163,18 @@ def pub_read(pub_id):
             # print(df_pub_review)
             df_pubs_reviews = Functions().get_pubs_reviews()
             pubs_reviews_json = Functions().df_to_dict(df_pubs_reviews)
+
+            list_L = df_pub_photos[['latitude', 'longitude']].values.tolist()
+            _lat = []
+            _long = []
+            for l in list_L:
+                _lat.append(l[0])
+                _long.append(l[1])
+
+            review_lat = sum(_lat) / len(_lat)
+            review_long = sum(_long) / len(_long)
+
             return render_template('pub_read.html', form_type='read', google_key=config2['google_key'],
                                    pub_review=pub_review_json, pubs_reviews=pubs_reviews_json, config=config,
                                    stations=stations_json, areas=areas_json,
-                                   full=all_json, summary=station_all_json)
+                                   full=all_json, summary=station_all_json, map_lat=review_lat, map_lng=review_long)

@@ -88,7 +88,7 @@ function pubSwitch() {
     var arr = [ 1, 9, 3, 8, 6, 1, 5, 9, 4, 7, 3, 8, 6, 9, 1 ];
 
     if (check_value == true) {
-        myNewArray= $(full).filter( function(i, n){
+        myNewArray= $(data).filter( function(i, n){
                         return n.rank>0;
                     });
         for(let i=0; i<myNewArray.length; i++){
@@ -97,7 +97,7 @@ function pubSwitch() {
         }
     } else {
         //alert('false')
-        myNewArray= full
+        myNewArray= data
         for(let i=0; i<myNewArray.length; i++){
             var newV = "#0275d8";
             myNewArray[i].colour = newV;
