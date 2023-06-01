@@ -133,8 +133,8 @@ function showMap(summary, full, zoom, lat, lng){
 {% block centre %}
     <div class="row justify-content-center align-items-center">
         <form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">
-            {% include "pub_form_refactored2.html" %}
-            {% include "review_form_refactored.html" %}
+            {% include "pub_form.html" %}
+            {% include "review_form.html" %}
             <div class="row" style="display: flex; align-items: center; background-color:#CDCDCD;">
                 {% with search='off' %}
                     {% include "home_features.html" %}
