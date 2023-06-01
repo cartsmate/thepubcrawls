@@ -44,7 +44,18 @@ def pub_edit(pub_id):
         Functions().get_records(config['station']['aws_prefix'], config['station']['model']))
     areas_json = Functions().df_to_dict(Functions().get_records(config['area']['aws_prefix'], config['area']['model']))
 
+    list_L = df_pub_photos[['latitude', 'longitude']].values.tolist()
+    _lat = []
+    _long = []
+    for l in list_L:
+        _lat.append(l[0])
+        _long.append(l[1])
+
+    review_lat = sum(_lat) / len(_lat)
+    review_long = sum(_long) / len(_long)
+
     return render_template('pub_read.html', form_type='edit', google_key=config2['google_key'],
                            pub_review=pub_review_json,
                            stations=stations_json, areas=areas_json, config=config,
-                           pubs_reviews=pubs_reviews_json, full=all_json, summary=station_all_json)
+                           pubs_reviews=pubs_reviews_json, full=all_json, summary=station_all_json,
+                           map_lat=review_lat, map_lng=review_long)

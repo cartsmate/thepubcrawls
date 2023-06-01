@@ -31,6 +31,7 @@ criteria = {{ criteria | tojson }}
 function mapSetup() {
     crawl = { start, walk, favourite, stops, criteria }
     var stop_offs = []
+    /*
     if ( crawl.favourite = 'all' ) {
         crawl.score = pub[0]['score']
         crawl.score_name = 'Rating'
@@ -38,13 +39,15 @@ function mapSetup() {
         crawl.score = pub[0][favourite]
         crawl.score_name = favourite
     }
+    */
     pub_first_stop = {
         name: pub[0]['name'],
         distance_from_first: 0,
         distance_next: 0,
-        score: pub[0]['score'],
-        star: pub[0]['star'],
-        star_score: pub[0][pub[0]['star']],
+        rank: pub[0]['rank'],
+        //score: pub[0]['score'],
+        //star: pub[0]['star'],
+        //star_score: pub[0][pub[0]['star']],
         lat: pub[0]['latitude'],
         lng: pub[0]['longitude'],
         place: pub[0]['place'],

@@ -40,9 +40,9 @@ class Functions:
         return df_false
 
     def get_s3_records(self, aws_prefix, list_of_columns):
-        print(aws_prefix)
+        # print(aws_prefix)
         df = self.s3_read(aws_prefix, list_of_columns)
-        print(df)
+        # print(df)
 
         if aws_prefix == 'venue':
             del_consol = 'pub' + "_deletion"
@@ -50,7 +50,7 @@ class Functions:
             del_consol = 'review' + "_deletion"
         else:
             del_consol = aws_prefix + "_deletion"
-        print(del_consol)
+        # print(del_consol)
         df_false = df.loc[df[del_consol] != True]
         return df_false
 
@@ -120,7 +120,7 @@ class Functions:
         return df_pubs_by_station
 
     def get_reviews(self):
-        print('get_reviews')
+        # print('get_reviews')
         df_reviews = self.get_records(config['review']['aws_prefix'], config['review']['model'])
         # print(df_reviews)
         return df_reviews
