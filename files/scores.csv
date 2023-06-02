@@ -75,7 +75,7 @@ e757332b-087e-492d-9c67-2464e38215a1,False,b2325cdd-c432-4b18-9acf-c539e97a5b7f,
 0b761c0e-8521-41e4-be5a-9ca10f1050a0,False,e79d06dd-6f1c-4162-9acd-b29f666bf4e7,2023-05-30,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,False,False,False,False,True,False,False,False,False,False,False
 e28f619e-f1db-4322-9031-149b87b6d62c,False,42d5431d-d6f1-435a-8d51-6a419cbc9516,2023-05-30,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,True,True,False,False,True,False,False,False,False,False,False
 b8ecd900-58b2-4990-917e-001ee286476a,False,350d77be-b4c5-4984-ab2f-6d2de41415e0,30/05/2023,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,True,True,True,False,False,True,False,False,False,True,False,False
-8fb07e3f-8030-4909-93df-6b36d75468e0,False,3c88a054-9473-4368-b392-af38c73e9797,2023-05-30,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,True,True,True,True,True,False,False,False,True,False,False
+8fb07e3f-8030-4909-93df-6b36d75468e0,False,3c88a054-9473-4368-b392-af38c73e9797,02/06/2023,,0,0,0,0,0,0,0,0,0,0,0,,False,True,True,True,True,True,False,False,False,True,False,False
 eb3a20ee-e620-47a0-896a-ee0f64c2c9b6,False,55f393ed-9aa5-4bb1-96b1-1b940022e694,2023-05-30,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,True,True,False,False,True,False,False,False,False,False,False
 bbb0d6f5-eb7e-4a55-9e97-36936216871b,False,5e058b73-66f3-4f57-9baf-87ec2eda01da,2023-05-30,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,True,True,False,False,False,True,False,False,False,True,False,False
 08ae6c25-4957-41cd-b77e-31cacd2dd329,False,4b0f5199-a980-4d1b-b0df-15fd21df824c,2023-05-30,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,False,True,False,False,True,False,False,False,False,False,False
@@ -126,4 +126,13 @@ caac8592-e55f-4be8-a7f3-40b0a4b0bf40,False,35b16663-5fcd-43fc-9f22-f4e1ae6e3304,
 6de42a2a-2391-44e3-be21-5cbe66100b41,False,57fbcd08-b7c0-4279-b268-7600aa09cc98,2023-06-01,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,True,True,False,False,True,False,False,False,False,False,False
 84453038-693b-427b-b753-3b3e4c53d932,False,9430e071-be89-43fc-8198-1078c99be6a0,2023-06-01,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,False,False,False,True,True,False,False,False,False,False,False
 452b3c96-32f9-4706-a524-96a9e6dc75ba,False,96ffc2fb-55cd-4c1b-a52c-707767216645,2023-06-01,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,False,True,False,True,True,False,False,False,False,False,False
-c7b4e608-cfc0-47b9-b6d0-cd1a50623648,False,16f76f29-ae95-49a7-8591-27ab87dd1bf4,2023-06-01,,0,0,0,0,0,0,0,0,0,0,0,,False,True,True,False,False,True,False,False,False,False,False,False
+c7b4e608-cfc0-47b9-b6d0-cd1a50623648,False,16f76f29-ae95-49a7-8591-27ab87dd1bf4,2023-06-01,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,True,True,False,False,True,False,False,False,False,False,False
+724b662a-5f5a-4c6e-aa48-0eb64fefea2c,False,859eb4d9-ba6e-43d6-b14b-275cf2a0b5ad,2023-06-02,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,False,True,True,False,False,False,False,False,False,False,False
+aeb2c371-3698-465c-abb9-4b566525495a,False,955ae281-5169-495d-ac79-8900c326b1a0,2023-06-02,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,False,True,False,False,True,False,False,False,False,False,False
+df84ec4a-961d-49ce-91a1-f8e4529ca608,False,21ba3669-2407-4fa3-928f-3ab6943c4917,2023-06-02,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,True,True,False,True,True,False,False,False,False,False,False
+8fe0eb15-4a2b-485c-98f7-35dcce85a146,False,3fae6292-bea4-4022-95ae-3dd2b2554e23,2023-06-02,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,True,True,True,False,False,True,False,False,False,False,False,False
+60e54654-b598-40d3-8090-81186c9213e6,False,662486bd-2954-486f-8cb3-d23dce0357ab,2023-06-02,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,False,True,False,False,True,False,False,False,False,False,False
+12b00d6d-fd39-4acd-a39b-15b60f7f4a2e,False,06f154c0-d04f-45a7-9c9b-2832b779a411,2023-06-02,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,False,True,False,False,True,False,False,False,False,False,False
+27d74cc0-f093-4ec6-ab0b-ea8154496718,False,6b75d781-b8c3-490d-b586-116dd69cad7c,2023-06-02,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,False,False,True,True,True,False,False,False,False,False,False
+448560c3-aad3-4da3-879d-28bbdbd60398,False,ed530a98-058f-4b2d-afb1-2adc4916e305,2023-06-02,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,True,False,True,True,False,True,False,False,False,False,False,False
+12bf96c7-2a2f-45c2-87e6-91b15817e0c9,False,0d7f42b0-6541-437c-a096-8d29675c3e0a,2023-06-02,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,,False,False,False,True,True,True,False,False,False,False,False,False

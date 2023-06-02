@@ -36,8 +36,11 @@ def pub_edit(pub_id):
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
 
     print(df_pub_photos)
-    df_pub_photos.fillna(0)
+    df_pub_photos.fillna('0', inplace=True)
+    # if 'photo_identity' not in df_pub_photos.columns:
+    #     df_pub_photos['photo_identity'] = '0'
     df_pub_photos['colour'] = '#d9534f'
+    print(df_pub_photos)
     pub_review_json = Functions().df_to_dict(df_pub_photos)
 
     stations_json = Functions().df_to_dict(

@@ -13,6 +13,7 @@ def pub_list(list_type, id_type):
     # if list_type == 'all':
     #     df = Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False)
     #     heading = "All pubs"
+    df_pubs_reviews = Functions().get_pubs_reviews()
     if id_type == 'True':
         df_scores = Functions().get_pubs_reviews()
         # filters = scores.loc[(scores['garden'] == True)]
@@ -27,9 +28,14 @@ def pub_list(list_type, id_type):
     else:
         df = Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type] == id_type]\
             .sort_values(by=['rank'], ascending=False)
+
+        df_pubs_reviews.loc[df_pubs_reviews[list_type] == id_type, 'colour'] = '#d9534f'
+        df_pubs_reviews.loc[df_pubs_reviews[list_type] != id_type, 'colour'] = '#0275d8'
+
         heading = id_type
     # print(df)
-    df['colour'] = '#0275d8'
+    # df['colour'] = '#0275d8'
+    pubs_reviews_all_json = Functions().df_to_dict(df_pubs_reviews)
     pubs_reviews_json = Functions().df_to_dict(df)
 
     list_L = df[['latitude', 'longitude']].values.tolist()
@@ -47,6 +53,7 @@ def pub_list(list_type, id_type):
     stations_json = Functions().df_to_dict(df_stations)
 
     return render_template('pub_list.html', filter=heading, pubs_reviews=pubs_reviews_json, map_view=list_type,
+                           pubs_reviews_all=pubs_reviews_all_json,
                            map_lat=review_lat, map_lng=review_long, list_type=list_type, id_type=id_type,
                            form_type='list', google_key=config2['google_key'],
                            stations=stations_json, areas=areas_json,)
