@@ -16,7 +16,7 @@ class FormInput:
         # print(request.form['latitude'])
         # print(request.form['longitude'])
         print(request.form['category'].lower())
-        # print(request.form['rank'])
+        print(request.form['rank'])
         # print(request.form['station_identity'])
         # print(request.form['area_identity'])
         # df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'pub_deletion'] = request.form['pub_deletion']

@@ -7,6 +7,7 @@ function starClick(check_item) {
         case 1:
             if (document.getElementById("img_rank1").style.opacity == "1" && document.getElementById("img_rank2").style.opacity != "1") {
                 document.getElementById("img_rank1").style.opacity = "0.25"
+                document.getElementById('rank').value = 0
             } else {
                 document.getElementById("img_rank1").style.opacity = "1.0"
             }
