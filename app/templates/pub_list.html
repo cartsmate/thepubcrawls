@@ -32,6 +32,7 @@ function onLoad() {
     var map_lng = {{ map_lng | tojson }}
     var map_view = {{ map_view | tojson }}
     pubs_reviews = {{ pubs_reviews | tojson }};
+    pubs_reviews_all = {{ pubs_reviews_all | tojson }};
     list_type = {{ list_type | tojson }}
     id_type = {{ id_type | tojson }}
     if (list_type == 'area') {
@@ -50,7 +51,7 @@ function initMap(){
     key = {{ google_key | tojson }}
     stations = {{ stations | tojson }}
     areas = {{ areas | tojson }}
-    data = pubs_reviews
+    data = pubs_reviews_all
     add_markers(map, zoom, data);
     add_listen_click(map);
     var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);

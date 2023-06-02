@@ -1,8 +1,12 @@
-<select class="form-control" id="{{field}}" name="{{field}}" style="width:220px;">
+{% if form_type == 'read' %}
+    <select class="form-control" id="{{field}}" name="{{field}}" style="width:220px;" disabled>
+{% else %}
+    <select class="form-control" id="{{field}}" name="{{field}}" style="width:220px;">
+{% endif %}
     {% if field=='category' %}
         <option value>select category</option>
         <option value="Bar">Bar</option>
-        <option value="Bar">Restaurant</option>
+        <option value="Restaurant">Restaurant</option>
         <option value="Other">Other</option>
     {% elif field=='star' %}
         <option value>select venue star quality</option>

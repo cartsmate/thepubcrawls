@@ -36,8 +36,7 @@ def pub_read(pub_id):
     df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
     print(df_photos)
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
-
-    df_pub_photos = df_pub_photos.fillna('0')
+    df_pub_photos.fillna('0', inplace=True)
     df_pub_photos['colour'] = '#d9534f'
     print(df_pub_photos)
     pub_review_json = Functions().df_to_dict(df_pub_photos)
@@ -158,6 +157,7 @@ def pub_read(pub_id):
             df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
             df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
             df_pub_photos['colour'] = '#d9534f'
+            df_pub_photos.fillna('0', inplace=True)
             pub_review_json = Functions().df_to_dict(df_pub_photos)
 
             # print(df_pub_review)
