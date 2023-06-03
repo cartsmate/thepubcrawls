@@ -39,7 +39,7 @@ def home():
     else:
         obj_df.to_csv(os.getcwd() + '/files/counter_qual.csv', sep=',', encoding='utf-8', index=False)
 
-    counter = obj_df["pub_counter"].values[0].astype(str).zfill(6)
+    counter = str(obj_df["pub_counter"].values[0]).zfill(6)
     print(counter)
     # df_pubs = Functions().get_s3_pubs()
     # df_pubs.to_csv(os.getcwd() + '/files/venues.csv', index=False, sep=',', encoding='utf-8')
