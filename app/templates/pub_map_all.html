@@ -28,29 +28,26 @@ function listen_zoom(map, station, area, full) {
 function onLoad(){
     console.log("onLoad in pub_map")
     form_type = {{ form_type | tojson }}
-    switch(map_view) {
-        case 'all':
-            document.getElementById("all_pubs").checked = true;
-            break;
-        case 'new':
-            document.getElementById("new_pubs").checked = true;
-            break;
-        case 'reviewed':
-            document.getElementById("reviewed_pubs").checked = true;
-            break;
-        }
 }
 function showMap(station, area, full, zoom, lat, lng){
     console.log('showMap')
     map = show_map(lat, lng, zoom)
     switch (true) {
         case (zoom < 15):
-            data = area
+            data = full
             break;
         default:
             data = full
     }
-
+    for(let i=0; i<data.length; i++){
+        if (data[i].rank > 0) {
+            var newV = "#d9534f";
+            data[i].colour = newV;
+        } else {
+            var newV = "#0275d8";
+            data[i].colour = newV;
+        }
+    }
     add_markers(map, zoom, data, Boolean(true));
     add_listen_click(map);
     listen_zoom(map, station, area, full);
@@ -84,11 +81,10 @@ function pubSwitch() {
     var lng = map.getCenter().lng()
     zoom = 13
 
-    //alert('lat: ' + lat + ' | ' + 'lng: ' + lng)
     var arr = [ 1, 9, 3, 8, 6, 1, 5, 9, 4, 7, 3, 8, 6, 9, 1 ];
 
     if (check_value == true) {
-        myNewArray= $(data).filter( function(i, n){
+        myNewArray= $(full).filter( function(i, n){
                         return n.rank>0;
                     });
         for(let i=0; i<myNewArray.length; i++){
@@ -96,24 +92,17 @@ function pubSwitch() {
             myNewArray[i].colour = newV;
         }
     } else {
-        //alert('false')
-        myNewArray= data
+        myNewArray= full
         for(let i=0; i<myNewArray.length; i++){
-            var newV = "#0275d8";
-            myNewArray[i].colour = newV;
+            if (myNewArray[i].rank > 0) {
+                var newV = "#d9534f";
+                myNewArray[i].colour = newV;
+            } else {
+                var newV = "#0275d8";
+                myNewArray[i].colour = newV;
+            }
         }
     }
-    for(let i=0; i<myNewArray.length; i++){
-        /*
-        if myNewArray[i].rank>0 {
-            var newV = "#0275d8";
-        } else {
-            var newV = "#d9534f";
-        }
-        */
-        myNewArray[i].colour = newV;
-    }
-    //alert(JSON.stringify(myNewArray[0]))
     map = show_map(lat, lng, zoom)
     add_markers(map, zoom, myNewArray, Boolean(true));
 }

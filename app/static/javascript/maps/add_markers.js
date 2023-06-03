@@ -12,7 +12,7 @@ function add_markers(map, zoom, data, clickable) {
         //var pinColor = data[key].colour
         var pinColor = data[key].colour
         console.log(pinColor)
-        if (zoom < 15) {
+        if (true == false) {
             var pinHole = pinSVGFilled
             var label = {
                 text: data[key].count,
@@ -58,7 +58,7 @@ function add_markers(map, zoom, data, clickable) {
             zIndex: indie
         })
         if (clickable == true) {
-            if (zoom < 15) {
+            if (true == false) {
                 google.maps.event.addListener(marker, 'click', (function (marker, key) {
                     return function () {
                         set=data[key].area.trim().replace(/%20/g, " ");
