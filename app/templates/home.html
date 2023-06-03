@@ -27,6 +27,7 @@ walk = {{ walk | tojson }}
 favourite = {{ favourite | tojson }}
 stops = {{ stops | tojson }}
 criteria = {{ criteria | tojson }}
+counter = {{ counter | tojson }}
 
 function mapSetup() {
     crawl = { start, walk, favourite, stops, criteria }
@@ -110,6 +111,33 @@ function onLoad(){
         //alert('You appear to offline so maps cannot be displayed')
     }
     config2 = {{ config2 | tojson }}
+
+    console.log(counter)
+
+    let result = counter.substring(0, 1);
+    console.log(result)
+    document.getElementById("digit_100000").innerHTML = result;
+
+    let result1 = counter.substring(1, 2);
+    console.log(result1)
+    document.getElementById("digit_10000").innerHTML = result1;
+
+    let result2 = counter.substring(2, 3);
+    console.log(result2)
+    document.getElementById("digit_1000").innerHTML = result2;
+
+    let result3 = counter.substring(3, 4);
+    console.log(result3)
+    document.getElementById("digit_100").innerHTML = result3;
+
+    let result4 = counter.substring(4, 5);
+    console.log(result4)
+    document.getElementById("digit_10").innerHTML = result4;
+
+    let result5 = counter.substring(5, 6);
+    console.log(result5)
+    document.getElementById("digit_1").innerHTML = result5;
+
 }
 </script>
 {% endblock %}
@@ -139,6 +167,15 @@ function onLoad(){
 </div>
 {% endblock %}
 
-{% block centre %}
-<h4><span id="visits"></span></h4>
+{% block counter %}
+    <div class="body counter">
+        <div id="digit_100000" class="span"></div>
+        <div id="digit_10000" class="span"></div>
+        <div id="digit_1000" class="span"></div>
+        <div id="digit_100" class="span"></div>
+        <div id="digit_10" class="span"></div>
+        <div id="digit_1" class="span"></div>
+    </div>
+    <div class="message">Unique Visits to this Page: </div>
+    <h3><span id="visits"></span></h3>
 {% endblock %}

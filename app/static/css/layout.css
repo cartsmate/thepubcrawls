@@ -150,3 +150,28 @@ input:checked + .slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
+
+.counter{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.message {
+    color: #000000;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 12px;
+}
+.span {
+  display: inline-block;
+  padding: 0px 5px 0px 5px;
+  border-radius: 6px;
+  background: #0275d8;
+  margin: 15px 1px 0px 1px;
+  font-size: 1rem;
+}
+.body {
+  color: #fff;
+  font-size: 12px;
+  font-family: Verdana;
+}

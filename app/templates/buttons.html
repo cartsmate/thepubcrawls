@@ -5,20 +5,18 @@
         </div>
     {% if form_type != 'add' %}
         <div style="text-align: center;">
-            <a href="{{url_for('pub_add', lat=map_lat, lng=map_lng)}}"><img src="/static/icons/footer/add.png" class="button_size"></a>
+            <a href="{{url_for('pub_add', lat=map_lat, lng=map_lng)}}"><img src="/static/icons/footer/add1.png" class="button_size"></a>
             <div class="button_caption">ADD<br>PUB</div>
         </div>
     {% endif %}
     {% if form_type == 'read' %}
-        <!--
         <div style="text-align: center;">
             <a href="{{url_for('photo_upload', pub_identity=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/photo.png" class="button_size"></a>
             <div class="button_caption">UPLOAD<br>PHOTO</div>
         </div>
-        -->
         <div style="text-align: center;">
-            <a href="{{url_for('pub_edit', pub_id=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/edit.png" class="button_size"></a>
-            <a class="button_caption">EDIT</a>
+            <a href="{{url_for('pub_edit', pub_id=pub_review[0]['pub_identity'])}}"><img src="/static/icons/footer/pencil.png" class="button_size"></a>
+            <div class="button_caption">EDIT<br>PUB</div>
         </div>
         <div style="text-align: center;">
             <a href="{{url_for('pub_list', list_type='area', id_type=pub_review[0]['area'])}}"><img src="/static/icons/footer/location.png" class="button_size"></a>
@@ -27,7 +25,7 @@
     {% endif %}
     {% if (form_type  == 'add' or form_type == 'home' or form_type == 'list' or form_type == 'read') %}
         <div style="text-align: center;">
-            <a href="{{url_for('pub_areas')}}"><img src="/static/icons/footer/areas.png" class="button_size"></a>
+            <a href="{{url_for('pub_areas')}}"><img src="/static/icons/footer/areas1.png" class="button_size"></a>
             <div class="button_caption">ALL<br>AREAS</div>
         </div>
     <!--
@@ -39,11 +37,11 @@
     {% endif %}
     {% if (form_type != 'home') %}
         <div style="text-align: center;">
-            <a href="{{url_for('map_by_all')}}"><img src="/static/icons/footer/maps.png" class="button_size"></a>
+            <a href="{{url_for('map_by_all')}}"><img src="/static/icons/footer/global.png" class="button_size"></a>
             <div class="button_caption">MAP<br>VIEW</div>
         </div>
         <div style="text-align: center;">
-            <a href="{{url_for('home')}}"><img src="/static/icons/footer/home.png" class="button_size"></a>
+            <a href="{{url_for('home')}}"><img src="/static/icons/footer/home1.png" class="button_size"></a>
             <div class="button_caption">RETURN<br>HOME</div>
         </div>
     {% endif %}
