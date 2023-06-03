@@ -13,7 +13,9 @@ def map_by_all():
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
     df_all = Functions().get_pubs_reviews()
+
     all_json = Functions().df_to_dict(df_all)
+
 
     df_stations = Functions().get_stations()
     df_all_station = df_all[['name', 'station_identity']]
