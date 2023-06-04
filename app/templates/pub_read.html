@@ -21,7 +21,9 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/edit_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/sum_score.js') }}"></script>
-<script>form = {{ form_type | tojson }}</script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_click_off.js') }}"></script>
+<script>form_type = {{ form_type | tojson }}</script>
 <style>
 .top-buffer {
     margin-top:20px;
@@ -37,7 +39,7 @@
 <script>
 function onLoad(){
     console.log("onLoad in pub_read");
-    form = {{ form_type | tojson }}
+    form_type = {{ form_type | tojson }}
 
     pubs_reviews = {{ pubs_reviews | tojson }}
     summary = {{ summary | tojson }}
@@ -66,7 +68,7 @@ function onLoad(){
     star_controls = config['control']['star']
     score_list = config['review']['score']
 
-    populate_form(form);
+    populate_form(form_type);
 }
 
 function initMap(){
@@ -85,15 +87,23 @@ function showMap(summary, full, zoom, lat, lng){
     areas = {{ areas | tojson }}
     data = pubs_reviews
     add_markers(map, zoom, data);
-    var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
-    const input = document.getElementById("search-input-navbar");
-    const searchBox = new google.maps.places.SearchBox(input);
-    map_listen_click(map, stations, areas);
-    listen_search(map, searchBox);
-    map_listen_bounds(map, searchBox, stations, areas);
-    function isIconMouseEvent(e) {
-        console.log("place icon clicked")
-        return "placeId" in e;
+    if (form_type == 'read') {
+        add_listen_click(map);
+    }
+    if (form_type == 'add') {
+        var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
+        const input = document.getElementById("search-input-navbar");
+        const searchBox = new google.maps.places.SearchBox(input);
+        map_listen_click(map, stations, areas);
+        listen_search(map, searchBox);
+        map_listen_bounds(map, searchBox, stations, areas);
+        function isIconMouseEvent(e) {
+            console.log("place icon clicked")
+            return "placeId" in e;
+        }
+    }
+    if (form_type == 'edit') {
+        listen_click_off(map);
     }
 }
 </script>

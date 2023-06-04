@@ -21,20 +21,3 @@ function add_listen_click(map) {
         }
     })
 }
-
-
-
-  map.addListener('click', function(event){
-    if (event.placeId) {
-      event.stop();
-
-      infowindow.setContent(
-        '<div>'
-        + '<strong>You clicked place</strong><br>'
-        + 'Place ID: ' + event.placeId + '<br>'
-        + 'Position: ' + event.latLng.lat() + ',' + event.latLng.lng() + '<br>'
-        + 'Put here information that you need'
-        + '</div>');
-      infowindow.open(map);
-    }
-  });
