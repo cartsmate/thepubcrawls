@@ -14,7 +14,7 @@ class Configurations:
     def get_config2(self):
         try:
             directory_path = os.getcwd()
-            directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
+            # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
             constants = ConfigParser()
             filepath = directory_path + "constants_s.ini"
             constants.read(filepath)
