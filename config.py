@@ -28,6 +28,7 @@ class Configurations:
             }
         except:
             config2 = {
+                "directory_path": os.getcwd(),
                 "google_key": os.getenv("HEROKU_GOOGLE_API"),
                 "access_id": os.environ.get("ACCESS_ID"),
                 "access_key": os.environ.get("ACCESS_KEY"),
