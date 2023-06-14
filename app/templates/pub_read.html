@@ -22,7 +22,9 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/sum_score.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
+<!--
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_click_off.js') }}"></script>
+-->
 <script>form_type = {{ form_type | tojson }}</script>
 <style>
 .top-buffer {
@@ -41,9 +43,30 @@ function onLoad(){
     console.log("onLoad in pub_read");
     form_type = {{ form_type | tojson }}
 
+    pub_review = {{ pub_review | tojson }}
     pubs_reviews = {{ pubs_reviews | tojson }}
     summary = {{ summary | tojson }}
     full = {{ full | tojson }}
+
+    input_controls = {{ input_list | tojson }}
+    dropdown_controls = {{ dropdown_list | tojson }}
+    slider_controls = {{ slider_list | tojson }}
+    check_controls = {{ check_list | tojson }}
+    date_controls = {{ date_list | tojson }}
+    star_controls = {{ star_list | tojson }}
+
+    pub_visible_list = {{ pub_visible_list | tojson }}
+    review_visible_list = {{ review_visible_list | tojson }}
+    pub_required_list = {{ pub_required_list | tojson }}
+    review_required_list = {{ review_required_list | tojson }}
+
+    pub_fields = {{ pub_fields | tojson }}
+    review_fields = {{ review_fields | tojson }}
+    pub_review_fields = pub_fields.concat(review_fields)
+
+    control_list = {{ control_list | tojson }}
+    alias_list = {{ alias_list | tojson }}
+    icon_list = {{ icon_list | tojson }}
 
     var js = document.createElement("script");
     js.type = "text/javascript";
@@ -54,26 +77,17 @@ function onLoad(){
     } else {
         //alert('You appear to offline so maps cannot be displayed')
     }
-    pub_review = {{ pub_review | tojson }}
-    console.log(pub_review[0])
-    zoom = 19
-    config = {{ config | tojson }}
-    pub_fields = config['pub']['column']
-    review_fields = config['review']['column']
-    pub_review_fields = config['pub']['column'].concat(config['review']['column'])
-    input_controls = config['control']['input']
-    dropdown_controls = config['control']['dropdown']
-    slider_controls = config['control']['slider']
-    check_controls = config['control']['check']
-    star_controls = config['control']['star']
-    score_list = config['review']['score']
 
     populate_form(form_type);
 }
 
 function initMap(){
     console.log("initMap in pub_read");
-    let { avg_lat, avg_lng } = latlng_avg(pub_review);
+    if (form_type == 'add') {
+        let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
+    } else {
+        let { avg_lat, avg_lng } = latlng_avg(pub_review);
+    }
     zoom = 16
     showMap({{summary | tojson}}, {{full | tojson}}, zoom, avg_lat, avg_lng)
 }
@@ -112,7 +126,7 @@ function showMap(summary, full, zoom, lat, lng){
 {% block main %}
 <div class="col-md-12 center-block text-center" style="background-color: #d9534f; ">
     <strong>
-        <a style="font-weight: bold; font-size: 20px; color: white; text-decoration: none; padding: 5px 0 0 0">{{pub_review[0]['name']}}</a>
+        <a style="font-weight: bold; font-size: 20px; color: white; text-decoration: none; padding: 5px 0 0 0">{{pub_review[0]['pub_name']}}</a>
     </strong>
 </div>
 {% endblock %}

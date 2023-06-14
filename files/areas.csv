@@ -1,4 +1,4 @@
-area_identity,area_deletion,area,type,latitude,longitude,parent_identity,photo_identity
+area_identity,area_deletion,area_name,area_type,area_latitude,area_longitude,parent_identity,photo_identity
 33869d87-05dc-4728-a03a-c94cbab80292,False,Belgravia,area,51.497189362627,-0.15312444757987,46d55da1-a72f-4221-bddc-676473092b49,48e727ee-6267-42fc-ba5b-be124326c01a
 a8270094-1d5b-4558-a1d0-5be568497233,False,Shepherds Bush,area,51.50616,-0.22483,6e1f4a8e-094c-4453-810d-a9a871de29c4,758baa09-e7dc-4c22-b05b-f70c37af0269
 632602fe-f847-4e12-9e03-31e3d22aa344,False,Mayfair,area,51.51334,-0.14812,46d55da1-a72f-4221-bddc-676473092b49,8cd1557c-c884-4e5f-a15a-0d110748a24f

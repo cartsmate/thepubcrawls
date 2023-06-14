@@ -14,95 +14,25 @@
 
     function onLoad() {
         console.log('pub_search')
+        key_list = {{ key_list | tojson }}
         var config = {{ config | tojson }}
         config2 = {{ config2 | tojson }}
+        headers = {{ headers | tojson }}
+        visible = {{ visible | tojson }}
+        form_obj = {{ form_obj | tojson }}
+        review_list = {{ review_list | tojson }}
         env = config2['env']
         pubs_reviews = {{ pubs_reviews | tojson }};
-        if ({{ pet | tojson }} == 'true') {
-            document.getElementById("pet").checked = {{ pet | tojson }}
-            document.getElementById("pet_caption").style.color = "white"
-            document.getElementById("pet_caption").style.opacity = "1.00"
-            document.getElementById("pet_img").style.opacity = "1.00";
-            document.getElementById("pet_col").style.background = "#0275D8";
-        }
-        if ({{ tv | tojson }} == 'true') {
-            document.getElementById("tv").checked = {{ tv | tojson }}
-            document.getElementById("tv_caption").style.color = "white"
-            document.getElementById("tv_caption").style.opacity = "1.00"
-            document.getElementById("tv_img").style.opacity = "1.00";
-            document.getElementById("tv_col").style.background = "#0275D8";
-        }
-        if ({{ garden | tojson }} == 'true') {
-            document.getElementById("garden").checked = {{ garden | tojson }}
-            document.getElementById("garden_caption").style.color = "white"
-            document.getElementById("garden_caption").style.opacity = "1.00"
-            document.getElementById("garden_img").style.opacity = "1.00";
-            document.getElementById("garden_col").style.background = "#0275D8";
-        }
-        if ({{ music | tojson }} == 'true') {
-            document.getElementById("music").checked = {{ music | tojson }}
-            document.getElementById("music_caption").style.color = "white"
-            document.getElementById("music_caption").style.opacity = "1.00"
-            document.getElementById("music_img").style.opacity = "1.00";
-            document.getElementById("music_col").style.background = "#0275D8";
-        }
-        if ({{ late | tojson }} == 'true') {
-            document.getElementById("late").checked = {{ late| tojson }}
-            document.getElementById("late_caption").style.color = "white"
-            document.getElementById("late_caption").style.opacity = "1.00"
-            document.getElementById("late_img").style.opacity = "1.00";
-            document.getElementById("late_col").style.background = "#0275D8";
-        }
-        if ({{ meals | tojson }} == 'true') {
-            document.getElementById("meals").checked = {{ meals | tojson }}
-            document.getElementById("meals_caption").style.color = "white"
-            document.getElementById("meals_caption").style.opacity = "1.00"
-            document.getElementById("meals_img").style.opacity = "1.00";
-            document.getElementById("meals_col").style.background = "#0275D8";
-        }
-        if ({{ toilets | tojson }} == 'true') {
-            document.getElementById("toilets").checked = {{ toilets | tojson }}
-            document.getElementById("toilets_caption").style.color = "white"
-            document.getElementById("toilets_caption").style.opacity = "1.00"
-            document.getElementById("toilets_img").style.opacity = "1.00";
-            document.getElementById("toilets_col").style.background = "#0275D8";
-        }
-        if ({{ cheap | tojson }} == 'true') {
-            document.getElementById("cheap").checked = {{ cheap | tojson }}
-            document.getElementById("cheap_caption").style.color = "white"
-            document.getElementById("cheap_caption").style.opacity = "1.00"
-            document.getElementById("cheap_img").style.opacity = "1.00";
-            document.getElementById("cheap_col").style.background = "#0275D8";
-        }
-        if ({{ games | tojson }} == 'true') {
-            document.getElementById("games").checked = {{ games | tojson }}
-            document.getElementById("games_caption").style.color = "white"
-            document.getElementById("games_caption").style.opacity = "1.00"
-            document.getElementById("games_img").style.opacity = "1.00";
-            document.getElementById("games_col").style.background = "#0275D8";
-        }
-        if ({{ quiz | tojson }} == 'true') {
-            document.getElementById("quiz").checked = {{ quiz | tojson }}
-            document.getElementById("quiz_caption").style.color = "white"
-            document.getElementById("quiz_caption").style.opacity = "1.00"
-            document.getElementById("quiz_img").style.opacity = "1.00";
-            document.getElementById("quiz_col").style.background = "#0275D8";
-        }
-        if ({{ pool | tojson }} == 'true') {
-            document.getElementById("pool").checked = {{ pool | tojson }}
-            document.getElementById("pool_caption").style.color = "white"
-            document.getElementById("pool_caption").style.opacity = "1.00"
-            document.getElementById("pool_img").style.opacity = "1.00";
-            document.getElementById("pool_col").style.background = "#0275D8";
-        }
-        if ({{ lively | tojson }} == 'true') {
-            document.getElementById("lively").checked = {{ lively | tojson }}
-            document.getElementById("lively_caption").style.color = "white"
-            document.getElementById("lively_caption").style.opacity = "1.00"
-            document.getElementById("lively_img").style.opacity = "1.00";
-            document.getElementById("lively_col").style.background = "#0275D8";
-        }
-        Search()
+        Object.keys(form_obj).forEach(function(key) {
+            if (form_obj[key] == 'true') {
+                document.getElementById(key).checked = true
+                document.getElementById(key + "_caption").style.color = "white"
+                document.getElementById(key + "_caption").style.opacity = "1.00"
+                document.getElementById(key + "_img").style.opacity = "1.00";
+                document.getElementById(key + "_col").style.background = "#0275D8";
+            }
+        })
+        Search(headers, visible)
     }
 
 </script>
@@ -119,5 +49,7 @@
 {% endblock %}
 
 {% block centre %}
-<div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
+    <div class="row" style="display: flex; align-items: center; background-color:#D3D3D3; overflow-x:scroll;">
+        {% include "search_table.html" %}
+    </div>
 {% endblock %}

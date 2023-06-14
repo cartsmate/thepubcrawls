@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from functions.functions import Functions
+from app.static.pythonscripts.csv import Csv
 from config import Configurations
 
 config = Configurations().get_config()
@@ -8,15 +8,19 @@ config = Configurations().get_config()
 
 class Dataframes:
 
+    def df_to_dict(self, df):
+        df_dict = df.to_dict(orient='records')
+        return df_dict
+
     def add_area(self, df):
         print('Dataframe.add_area')
-        df_areas = Functions().get_areas()
+        df_areas = Csv().get_areas()
         df_merged = pd.merge(df, df_areas, on='area_identity', how='left')
         return df_merged
 
     def add_station(self, df):
-        print('Dataframe.add_area')
-        df_stations = Functions().get_stations()
+        print('Dataframe.add_station')
+        df_stations = Csv().get_stations()
         df_merged = pd.merge(df, df_stations, on='station_identity', how='left')
         return df_merged
 
@@ -32,4 +36,6 @@ class Dataframes:
 
     def to_csv(self, df_appended, key):
         print('Dataframes: to_csv')
-        df_appended.to_csv(os.getcwd() + '/files/' + config[key]['aws_key'], sep=',', encoding='utf-8', index=False)
+        directory_path = os.getcwd()
+        directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
+        df_appended.to_csv(directory_path + '/files/' + config[key]['aws_key'], sep=',', encoding='utf-8', index=False)

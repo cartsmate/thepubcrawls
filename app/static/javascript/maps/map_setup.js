@@ -1,22 +1,12 @@
 function mapSetup2() {
     crawl = { start, walk, favourite, stops, criteria }
     var stop_offs = []
-    if ( crawl.favourite = 'all' ) {
-        crawl.score = pub[0]['rating']
-        crawl.score_name = 'Rating'
-    } else {
-        crawl.score = pub[0][favourite]
-        crawl.score_name = favourite
-    }
     pub_first_stop = {
-        name: pub[0]['name'],
+        name: pub[0]['pub_name'],
         distance_from_first: 0,
         distance_next: 0,
-        score: pub[0]['rating'],
-        star: pub[0]['star'],
-        star_score: pub[0][pub[0]['star']],
-        lat: pub[0]['latitude'],
-        lng: pub[0]['longitude'],
+        lat: pub[0]['pub_latitude'],
+        lng: pub[0]['pub_longitude'],
         place: pub[0]['place'],
         pub_identity: pubs[0]['pub_identity']
     }

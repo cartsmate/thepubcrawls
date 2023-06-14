@@ -1,4 +1,4 @@
-station_identity,station_deletion,station,latitude,longitude,zone,postcode
+station_identity,station_deletion,station_name,station_latitude,station_longitude,zone,postcode
 3bd8363a-0105-4c08-9cff-28e42443edbb,False,Abbey Road,51.53195199547294,0.0037233710983363,3,E15 3NB
 f6338a9e-aea0-4e03-b144-d7f450944a7a,False,Abbey Wood,51.49078429543708,0.1202719706406512,4,SE2 9RH
 b0a41353-fd1b-4caf-9491-40a19f7e38cb,False,Acton Central,51.508757351253415,-0.2634301953256889,2,W3 6BH

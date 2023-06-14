@@ -4,8 +4,8 @@ function listen_events(lat, lng, stations, areas) {
         console.log("listen events: get_location")
         records = []
         for (let i = 0; i < stations.length; i++) {
-            lat_diff = Math.abs(stations[i]['latitude'] - lat)
-            lng_diff = Math.abs(stations[i]['longitude'] - lng)
+            lat_diff = Math.abs(stations[i]['station_latitude'] - lat)
+            lng_diff = Math.abs(stations[i]['station_longitude'] - lng)
             tot_diff = lat_diff + lng_diff
             var record = { station: stations[i]['station'], distance: tot_diff}
             records.push(record);
@@ -22,8 +22,8 @@ function listen_events(lat, lng, stations, areas) {
         console.log("listen events: get_area")
         records = []
         for (let i = 0; i < areas.length; i++) {
-            lat_diff = Math.abs(areas[i]['latitude'] - lat)
-            lng_diff = Math.abs(areas[i]['longitude'] - lng)
+            lat_diff = Math.abs(areas[i]['area_latitude'] - lat)
+            lng_diff = Math.abs(areas[i]['area_longitude'] - lng)
             tot_diff = lat_diff + lng_diff
             var record = { area: areas[i]['area'], distance: tot_diff}
             records.push(record);

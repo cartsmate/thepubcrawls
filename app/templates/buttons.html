@@ -1,8 +1,12 @@
 <div class="row justify-content-center top-buffer">
     <div style="text-align: center;">
-            <a href="{{url_for('pub_crawl')}}"><img src="/static/icons/footer/route.png" class="button_size"></a>
-            <div class="button_caption">PUB<br>CRAWL</div>
-        </div>
+        <a href="{{url_for('pub_test')}}"><img src="/static/icons/footer/test.png" class="button_size"></a>
+        <div class="button_caption">TEST<br>SCRIPT</div>
+    </div>
+    <div style="text-align: center;">
+        <a href="{{url_for('pub_crawl')}}"><img src="/static/icons/footer/route.png" class="button_size"></a>
+        <div class="button_caption">PUB<br>CRAWL</div>
+    </div>
     {% if form_type != 'add' %}
         <div style="text-align: center;">
             <a href="{{url_for('pub_add', lat=map_lat, lng=map_lng)}}"><img src="/static/icons/footer/add1.png" class="button_size"></a>
@@ -37,7 +41,7 @@
     {% endif %}
     {% if (form_type != 'home') %}
         <div style="text-align: center;">
-            <a href="{{url_for('map_by_all')}}"><img src="/static/icons/footer/global.png" class="button_size"></a>
+            <a href="{{url_for('pub_map')}}"><img src="/static/icons/footer/global.png" class="button_size"></a>
             <div class="button_caption">MAP<br>VIEW</div>
         </div>
         <div style="text-align: center;">

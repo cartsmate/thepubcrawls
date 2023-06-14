@@ -27,8 +27,6 @@ function add_markers(map, zoom, data, clickable) {
                 fontSize: "1px",
             };
         }
-        console.log(label)
-        //console.log('label: ' + JSON.stringify(label))
         var markerImage = {  // https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel
             path: pinHole,
             anchor: new google.maps.Point(12,17),
@@ -40,9 +38,9 @@ function add_markers(map, zoom, data, clickable) {
             labelOrigin: labelOriginFilled
         };
         if (typeof data[key].name != "undefined") {
-            title_name = data[key].name
+            title_name = data[key].pub_name
         } else {
-            title_name = data[key].area
+            title_name = data[key].area_name
         }
         if (data[key].colour == '#d9534f' ) {
             var indie = 2
@@ -50,9 +48,8 @@ function add_markers(map, zoom, data, clickable) {
             var indie = 1
         }
         marker = new google.maps.Marker({
-            position: new google.maps.LatLng(data[key].latitude, data[key].longitude),
+            position: new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude),
             map: map,
-            label: label,
             icon: markerImage,
             title: title_name,
             zIndex: indie
@@ -62,7 +59,7 @@ function add_markers(map, zoom, data, clickable) {
                 google.maps.event.addListener(marker, 'click', (function (marker, key) {
                     return function () {
                         set=data[key].area.trim().replace(/%20/g, " ");
-                        console.log(data[key].area)
+                        console.log(data[key].area_name)
                         console.log(set)
                         infowindow.x = set;
                         infowindow.setContent("<p><b>" + set + "</b></p>" +
@@ -73,14 +70,13 @@ function add_markers(map, zoom, data, clickable) {
             } else {
                 google.maps.event.addListener(marker, 'click', (function (marker, key) {
                     return function () {
-                        infowindow.x = data[key].name;
-                        infowindow.setContent("<p><b>" + data[key].name + "</b></p>" +
+                        infowindow.x = data[key].pub_name;
+                        infowindow.setContent("<p><b>" + data[key].pub_name + "</b></p>" +
                             "<p>address : " + data[key].address + "</p>" +
                             "<p>category : " + data[key].category + "</p>" +
                             "<p>rank : " + data[key].rank + "</p>" +
-                            "<p>best for : " + data[key].star + "</p>" +
-                            "<p>station : " + data[key].station + "</p>" +
-                            "<p>area : " + data[key].area + "</p>" +
+                            "<p>station : " + data[key].station_name + "</p>" +
+                            "<p>area : " + data[key].area_name + "</p>" +
                             "<a href='/pub/" + data[key].pub_identity + "'>click for more details</a>");
                         infowindow.open(map, marker);
                     }

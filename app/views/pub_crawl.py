@@ -1,10 +1,12 @@
 import pandas as pd
-from flask import render_template, request, redirect, url_for, g, session
+from flask import render_template, request
 from app import app
 from config import Configurations
-from functions.functions import Functions
 from app.static.pythonscripts.dataframes import Dataframes
-from ..models.crawl import Crawl
+from app.static.pythonscripts.csv import Csv
+from app.static.pythonscripts.entities_multi import EntitiesMulti
+from app.static.pythonscripts.uuid import Uuid
+from app.models.crawl.crawl import Crawl
 
 config = Configurations().get_config()
 config2 = Configurations().get_config2()
@@ -16,8 +18,8 @@ def pub_crawl():
     #     return redirect(url_for('login'))
     if request.method == 'GET':
         print('/pub/crawl/: GET')
-        df_stations = Functions().get_stations()
-        df_all = Functions().get_pubs_reviews()
+        df_stations = Csv().get_stations()
+        df_all = EntitiesMulti().get_pubs_reviews()
         df_all_x = df_all[['name', 'area_identity', 'place']]
         pub_list = df_all['name'].tolist()
         df_new_trunc = df_all[['name', 'station_identity']]
@@ -26,11 +28,11 @@ def pub_crawl():
             .rename(columns={'name': 'count'}).astype(str) \
             .sort_values(by='station')
         station_list = df_new_latlng['station'].tolist()
-        all_json = Functions().df_to_dict(df_new_latlng)
+        all_json = Dataframes().df_to_dict(df_new_latlng)
         df_small = df_all[['name', 'place']].sort_values(by='name', ascending=False)
         place_list = df_small.values.tolist()
 
-        df_area = Functions().get_areas()
+        df_area = Csv().get_areas()
         df_area_x = df_area[['area', 'area_identity']]
         df_pub_with_area = pd.merge(df_all_x, df_area_x, on='area_identity', how='left').sort_values(by='area')
         df_pub_area = df_pub_with_area[['place', 'name', 'area']]
@@ -64,15 +66,15 @@ def pub_crawl():
             criteria = request.form['criteria']
         except:
             criteria = "NONE"
-        df_pubs = Functions().get_pubs_reviews()
+        df_pubs = EntitiesMulti().get_pubs_reviews()
         df_pub = df_pubs.loc[df_pubs['place'] == start]
-        pubs_json = Functions().df_to_dict(df_pubs)
-        pub_json = Functions().df_to_dict(df_pub)
+        pubs_json = Dataframes().df_to_dict(df_pubs)
+        pub_json = Dataframes().df_to_dict(df_pub)
 
-        new_crawl = Crawl(crawl_identity=str(Functions().generate_uuid()), crawl_deletion=False, start=start,
+        new_crawl = Crawl(crawl_identity=str(Uuid().generate_uuid()), crawl_deletion=False, start=start,
                           walk=walk, favourite=favourite, stops=stops, criteria=criteria)
         df_new_crawl = pd.DataFrame([new_crawl.__dict__])
-        df_crawl_appended = Dataframes().append_df(Functions().get_crawls(), df_new_crawl)
+        df_crawl_appended = Dataframes().append_df(Csv().get_crawls(), df_new_crawl)
         Dataframes().to_csv(df_crawl_appended, 'crawl')
 
         return render_template('pub_crawl.html', google_key=config2['google_key'], station=station, start=start,

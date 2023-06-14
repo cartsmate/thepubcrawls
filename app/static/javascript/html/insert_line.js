@@ -1,4 +1,4 @@
-function insert_line(which_list, toggle, name, type, list_required, date_controls, input_controls, dropdown_controls, slider_controls, check_controls, star_controls){
+function insert_line(which_list, toggle, name, type, list_required, list_controls){
     var actual_width = window.innerWidth;
     if(actual_width < 480) {
         var slider_col = "col-xs-6"
@@ -22,7 +22,7 @@ function insert_line(which_list, toggle, name, type, list_required, date_control
     label_node.appendChild(textnode);
     document.getElementById(id_row).appendChild(label_node);
     //console.log('name: ' + name)
-    if (dropdown_controls.includes(name)) {
+    if (name in dropdown_controls.includes(name)) {
         //console.log('dropdown')
         const div_node = document.createElement("div");
         div_node.setAttribute("class", "col-xs-6");

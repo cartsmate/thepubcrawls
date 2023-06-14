@@ -4,7 +4,6 @@ from configparser import ConfigParser
 from flask import render_template, redirect, url_for, session, g
 from app import app
 from config import Configurations
-from functions.functions import Functions
 
 config = Configurations().get_config()
 functions = Functions()

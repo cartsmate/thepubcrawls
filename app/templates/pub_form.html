@@ -1,18 +1,20 @@
 
-{% for field in config['pub']['column'] %}
-    {% if field in config['pub']['visible'] %}
+{% for field in pub_fields %}
+    <script>console.log("{{field}}")</script>
+    {% if field in pub_visible_list %}
+        <script>console.log("{{field}}: visible")</script>
         <div class="form-group row" id="row_{{field}}">
             <div class="col" style="text-align:right; width:75px; padding:0px; margin:0px;">
                 <label class="col-form-label" style="width:75px; padding:0px; margin:0px;" for="{{field}}" >{{field}}</label>
             </div>
             <div class="col" id="div_{{field}}" style="width:220px; text-align:left; visibility:visible; display:block; text-align:left" >
-                {% if field in config['control']['dropdown'] %}
+                {% if field in dropdown_list %}
                     {% include "control_dropdown.html" %}
-                {% elif field in config['control']['star'] %}
+                {% elif field in star_list %}
                     {% include "control_star.html" %}
-                {% elif field in config['control']['slider'] %}
+                {% elif field in slider_list %}
                     {% include "control_slider.html" %}
-                {% elif field in config['control']['date'] %}
+                {% elif field in date_list %}
                     {% include "control_date.html" %}
                 {% else %}
                     <input style="text-align:left; visibility:visible; display:block; width:220px;" class="form-control" type='text' name="{{field}}" id="{{field}}">
@@ -20,7 +22,7 @@
                         <script>document.getElementById("{{field}}").setAttribute("readonly", "true");</script>
                     {% endif %}
                 {% endif %}
-                {% if field in config['control']['required'] %}
+                {% if field in pub2_required_list %}
                     <script>document.getElementById("{{field}}"}).required = true</script>
                 {% endif %}
             </div>

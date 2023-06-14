@@ -11,13 +11,7 @@ from .pub_read import pub_read
 from .pub_edit import pub_edit
 from .pub_delete import pub_delete
 from .pub_search import pub_search
-# from .pub_by_category import pub_by_category
-# from .pub_by_area import pub_by_area
-# from .pub_by_star import pub_by_star
-from .pub_map_all import map_by_all
-from .pub_map_new import map_by_new
-from .pub_map_reviewed import map_by_reviewed
+from .pub_map import pub_map
 from .pub_crawl import pub_crawl
-# from .pub_crawl_show import pub_crawl_show
 from .pub_test import pub_test
 from .photo_upload import photo_upload

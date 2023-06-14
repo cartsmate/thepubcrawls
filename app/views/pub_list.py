@@ -2,7 +2,9 @@ import json
 from flask import render_template, redirect, url_for, g, session
 from app import app
 from config import Configurations
-from functions.functions import Functions
+from app.static.pythonscripts.dataframes import Dataframes
+from app.static.pythonscripts.csv import Csv
+from app.static.pythonscripts.entities_multi import EntitiesMulti
 
 config = Configurations().get_config()
 config2 = Configurations().get_config2()
@@ -13,9 +15,9 @@ def pub_list(list_type, id_type):
     # if list_type == 'all':
     #     df = Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False)
     #     heading = "All pubs"
-    df_pubs_reviews = Functions().get_pubs_reviews()
+    df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
     if id_type == 'True':
-        df_scores = Functions().get_pubs_reviews()
+        df_scores = EntitiesMulti().get_pubs_reviews()
         # filters = scores.loc[(scores['garden'] == True)]
         print(list_type.lower())
         df = df_scores.loc[(df_scores[list_type.lower()] == True)]
@@ -23,10 +25,10 @@ def pub_list(list_type, id_type):
         #     .sort_values(by=['rank'], ascending=False)
         heading = list_type
     elif id_type == 'all':
-        df = Functions().get_pubs_reviews()
+        df = EntitiesMulti().get_pubs_reviews()
         heading = list_type
     else:
-        df = Functions().get_pubs_reviews().loc[Functions().get_pubs_reviews()[list_type] == id_type]\
+        df = EntitiesMulti().get_pubs_reviews().loc[EntitiesMulti().get_pubs_reviews()[list_type] == id_type]\
             .sort_values(by=['rank'], ascending=False)
 
         df_pubs_reviews.loc[df_pubs_reviews[list_type] == id_type, 'colour'] = '#d9534f'
@@ -35,8 +37,8 @@ def pub_list(list_type, id_type):
         heading = id_type
     # print(df)
     # df['colour'] = '#0275d8'
-    pubs_reviews_all_json = Functions().df_to_dict(df_pubs_reviews)
-    pubs_reviews_json = Functions().df_to_dict(df)
+    pubs_reviews_all_json = Dataframes().df_to_dict(df_pubs_reviews)
+    pubs_reviews_json = Dataframes().df_to_dict(df)
 
     list_L = df[['latitude', 'longitude']].values.tolist()
     _lat = []
@@ -48,9 +50,9 @@ def pub_list(list_type, id_type):
     review_lat = sum(_lat) / len(_lat)
     review_long = sum(_long) / len(_long)
 
-    df_stations = Functions().get_stations()
-    areas_json = Functions().df_to_dict(Functions().get_records(config['area']['aws_prefix'], config['area']['model']))
-    stations_json = Functions().df_to_dict(df_stations)
+    df_stations = Csv().get_stations()
+    areas_json = Dataframes().df_to_dict(Csv().get_records('area'))
+    stations_json = Dataframes().df_to_dict(df_stations)
 
     return render_template('pub_list.html', filter=heading, pubs_reviews=pubs_reviews_json, map_view=list_type,
                            pubs_reviews_all=pubs_reviews_all_json,

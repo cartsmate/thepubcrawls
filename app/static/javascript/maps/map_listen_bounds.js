@@ -39,7 +39,7 @@ function map_listen_bounds(map, searchBox, stations, areas) {
                 bounds.extend(place.geometry.location);
             }
             //document.getElementById("place").value = place.place_id
-            document.getElementById("name").value = place.name
+            document.getElementById("pub_name").value = place.name
             document.getElementById("address").value = place.formatted_address
             //document.getElementById("latitude").value = place.geometry.location.lat()
             //document.getElementById("longitude").value = place.geometry.location.lng()
@@ -63,10 +63,10 @@ function map_listen_bounds(map, searchBox, stations, areas) {
 
             records = []
             for (let i = 0; i < stations.length; i++) {
-                lat_diff = Math.abs(stations[i]['latitude'] - place.geometry.location.lat())
-                lng_diff = Math.abs(stations[i]['longitude'] - place.geometry.location.lng())
+                lat_diff = Math.abs(stations[i]['stationlatitude'] - place.geometry.location.lat())
+                lng_diff = Math.abs(stations[i]['stationlongitude'] - place.geometry.location.lng())
                 tot_diff = lat_diff + lng_diff
-                var record = { name: stations[i]['station'], id: stations[i]['station_identity'], distance: tot_diff}
+                var record = { name: stations[i]['station_name'], id: stations[i]['station_identity'], distance: tot_diff}
                 records.push(record);
             }
             records = records.sort((a, b) => {
@@ -74,15 +74,15 @@ function map_listen_bounds(map, searchBox, stations, areas) {
                     return -1;
                 }
             });
-            document.getElementById("station").value = records[0]['name']
+            document.getElementById("station_name").value = records[0]['name']
             document.getElementById("station_identity").value = records[0]['id']
 
             records = []
             for (let i = 0; i < areas.length; i++) {
-                lat_diff = Math.abs(areas[i]['latitude'] - place.geometry.location.lat())
-                lng_diff = Math.abs(areas[i]['longitude'] - place.geometry.location.lng())
+                lat_diff = Math.abs(areas[i]['area_latitude'] - place.geometry.location.lat())
+                lng_diff = Math.abs(areas[i]['area_longitude'] - place.geometry.location.lng())
                 tot_diff = lat_diff + lng_diff
-                var record = { name: areas[i]['area'], id: areas[i]['area_identity'], distance: tot_diff}
+                var record = { name: areas[i]['area_name'], id: areas[i]['area_identity'], distance: tot_diff}
                 records.push(record);
             }
             records = records.sort((a, b) => {
@@ -90,7 +90,7 @@ function map_listen_bounds(map, searchBox, stations, areas) {
                     return -1;
                 }
             });
-            document.getElementById("area").value = records[0]['name']
+            document.getElementById("area_name").value = records[0]['name']
             document.getElementById("area_identity").value = records[0]['id']
         });
         map.setCenter({lat:lat1, lng:lng1});
