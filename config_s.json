@@ -1,21 +1,18 @@
 {
   "pub": {
-    "aws_key": "venues.csv",
-    "aws_prefix": "venue",
-    "model": ["pub_identity", "pub_deletion", "place", "name", "address", "latitude", "longitude", "category", "rank", "station_identity", "area_identity"],
+    "aws_key": "pubs.csv",
+    "aws_prefix": "pub",
     "column": ["pub_identity", "pub_deletion", "place", "name", "address", "station", "area", "latitude", "longitude", "station_identity", "area_identity", "category", "colour", "rank"],
     "visible": ["name", "address", "station", "area", "category", "rank"],
     "required": ["latitude", "longitude", "place", "name", "address", "area", "station", "category"]
   },
   "crawl": {
     "aws_key": "crawls.csv",
-    "aws_prefix": "crawl",
-    "model": ["crawl_identity", "crawl_deletion", "start", "walk", "favourite", "stops", "criteria"]
+    "aws_prefix": "crawl"
   },
   "review": {
-    "aws_key": "scores.csv",
-    "aws_prefix": "score",
-    "model": ["review_identity", "review_deletion", "pub_identity", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "rating", "reviewer", "pet", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "quiz", "pool", "lively"],
+    "aws_key": "reviews.csv",
+    "aws_prefix": "review",
     "column": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "rating", "reviewer", "pet", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "quiz", "pool", "lively"],
     "visible": ["review_identity", "review_deletion", "visit", "star", "atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection", "rating", "reviewer", "pet", "tv", "garden", "music", "late", "meals", "toilets", "cheap", "games", "quiz", "pool", "lively"],
     "photo": ["atmosphere", "cleanliness", "clientele", "decor", "entertainment", "food", "friendliness", "opening", "price", "selection"],
@@ -23,18 +20,14 @@
   },
   "station": {
     "aws_key": "stations.csv",
-    "aws_prefix": "station",
-    "model": ["station_identity", "station_deletion", "station", "latitude", "longitude", "zone", "postcode"]
+    "aws_prefix": "station"
   },
   "area": {
     "aws_key": "areas.csv",
-    "aws_prefix": "area",
-    "model": ["area_identity", "area_deletion", "area", "type", "latitude", "longitude", "parent_identity", "photo_identity"]
+    "aws_prefix": "area"
   },
   "photo": {
-    "aws_key": "photos.csv",
-    "aws_prefix": "photo",
-    "model": ["pub_identity", "photo_identity", "photo_deletion"]
+    "aws_key": "photos.csv"
   },
   "control" : {
     "date": ["visit"],

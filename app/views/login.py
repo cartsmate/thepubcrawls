@@ -4,10 +4,10 @@ from configparser import ConfigParser
 from flask import render_template, redirect, url_for, session, request, g
 from app import *
 from config import Configurations
-from functions.functions import Functions
+
 
 config = Configurations().get_config()
-functions = Functions()
+
 
 
 # @app.before_request

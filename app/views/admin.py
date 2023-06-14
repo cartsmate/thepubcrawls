@@ -4,8 +4,7 @@ from configparser import ConfigParser
 from flask import render_template, redirect, url_for, g, session
 from app import app
 from config import Configurations
-from functions.functions import Functions
-
+from app.static.pythonscripts.csv import Csv
 config = Configurations().get_config()
 
 
@@ -13,8 +12,8 @@ config = Configurations().get_config()
 def admin():
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
-    df_areas = Functions().get_areas()
-    df_pubs = Functions().get_pubs()
+    df_areas = Csv().get_areas()
+    df_pubs = Csv().get_pubs()
 
     for i, pub in df_pubs.iterrows():
         records = []

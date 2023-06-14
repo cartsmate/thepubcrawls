@@ -1,4 +1,4 @@
-function featureClick(check_item, auto_exec) {
+function featureClick(check_item, auto_exec, features) {
     console.log("featureClick")
     console.log(check_item)
     console.log(auto_exec)
@@ -19,7 +19,7 @@ function featureClick(check_item, auto_exec) {
         checkCol.style.background = "#CDCDCD"
     }
     if (auto_exec == 'on') {
-        featureSearch()
+        featureSearch(features)
     }
     /*
     if (auto_exec == 'on') {

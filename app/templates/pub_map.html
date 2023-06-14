@@ -60,7 +60,7 @@ function initMap(){
     full = {{ full | tojson }}
     let { avg_lat, avg_lng } = latlng_avg(area);
     zoom = 13
-    showMap(station, area, full, zoom, avg_lat, avg_lng)
+    showMap(station, area, full, zoom, {{map_lat}}, {{map_lng}})
 }
 function all_pubs(){
     location.href = "/pub/map/all";

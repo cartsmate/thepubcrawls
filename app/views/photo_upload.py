@@ -1,17 +1,17 @@
 import os
 import uuid
-import json
 import pandas as pd
-from configparser import ConfigParser
 # from PIL import Image
-from flask import render_template, redirect, url_for, g, session, request, flash
+from flask import render_template, redirect, url_for, request, flash
 from app import app
 from csv import writer
 from config import Configurations
-from app.models.photo import Photo
-from functions.functions import Functions
+from app.models.photo.photo import Photo
 from werkzeug.utils import secure_filename
 from app.static.pythonscripts.dataframes import Dataframes
+from app.static.pythonscripts.entities_single import EntitiesSingle
+from app.static.pythonscripts.s3 import S3
+from app.static.pythonscripts.csv import Csv
 
 
 UPLOAD_FOLDER = 'static/uploads/'
@@ -55,7 +55,7 @@ def photo_upload(pub_identity):
         if file and allowed_file(file.filename):
         #
         #     print(file.filename)
-            df_pub = Functions().get_pub(pub_identity)
+            df_pub = EntitiesSingle().get_pub(pub_identity)
             pub_name = df_pub['name'].values[0].lower()
             print(pub_name)
             print('got here')
@@ -70,9 +70,9 @@ def photo_upload(pub_identity):
 
             new_photo = Photo(pub_identity=pub_identity, photo_identity=new_name, photo_deletion=False)
             df_new_photo = pd.DataFrame([new_photo.__dict__])
-            df_photo_appended = Dataframes().append_df(Functions().get_photos(), df_new_photo)
+            df_photo_appended = Dataframes().append_df(Csv().get_photos(), df_new_photo)
             Dataframes().to_csv(df_photo_appended, 'photo')
-            s3_resp = Functions().s3_write(df_photo_appended, config['photo']['aws_key'])
+            s3_resp = S3().s3_write(df_photo_appended, config['photo']['aws_key'])
 
             file.save(os.getcwd() + '/app/static/images/venue/' + str(new_name) + '.jpeg')
             new_row = [pub_identity, new_name, False]

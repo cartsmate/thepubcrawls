@@ -1,0 +1,34 @@
+
+<table id="pub_list" class="table table-striped" style="font-size:16px;">
+    <thead>
+        <tr>
+            {% for k in headers %}
+                <th>{{k}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    {% for i in range(pubs_reviews |length) %}
+        <tr>
+            {% for k in headers %}
+                {% if (k != 'rank') %}
+                    <td><a href="/pub/{{pubs_reviews[i]['pub_identity']}}">{{pubs_reviews[i][k]}}</a></td>
+                {% else %}
+                    <td><div class="star_container">
+                        <script>console.log({{pubs_reviews[i][k].rank}})</script>
+                        {% if (pubs_reviews[i][k] != 0) %}
+                            <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:1.0;">
+                            <div class="star_centre" id="rounder"></div>
+                            <script>
+                                var rounder = Math.trunc({{pubs_reviews[i][k]}})
+                                document.getElementById("rounder").innerHTML = rounder
+                            </script>
+                        {% else %}
+                            <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:0.25;">
+                            <div class="star_centre"></div>
+                        {% endif %}
+                    </div></td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>

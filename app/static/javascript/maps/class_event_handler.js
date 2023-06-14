@@ -22,7 +22,7 @@ class ClickEventHandler {
     this.placesService.getDetails({ placeId: placeId }, (place, status) => {
         if (status === "OK" && place && place.geometry && place.geometry.location) {
             console.log('clickEventHandler class')
-            document.getElementById("name").value = place.name;
+            document.getElementById("pub_name").value = place.name;
             document.getElementById("address").value = place.formatted_address;
             document.getElementById("place").value = place.place_id;
 

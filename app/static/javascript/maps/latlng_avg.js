@@ -6,12 +6,12 @@ function latlng_avg(data) {
     avg_lng = 0
     var valid = 0
     for (var key in data) {
-        max_lat = parseFloat(data[key].latitude)
+        max_lat = parseFloat(data[key].pub_latitude)
         min_lat = max_lat
-        max_lng = parseFloat(data[key].longitude)
+        max_lng = parseFloat(data[key].pub_longitude)
         min_lng = max_lng
-        xx = parseFloat(data[key].latitude)
-        yy = parseFloat(data[key].longitude)
+        xx = parseFloat(data[key].pub_latitude)
+        yy = parseFloat(data[key].pub_longitude)
         if (! (isNaN(xx)) && (! (isNaN(yy)))) {
             valid += 1
             tot_lat += xx

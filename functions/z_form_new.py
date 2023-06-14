@@ -1,7 +1,7 @@
 from flask import request
 from config import Configurations
-from ..app.models.pub import Pub
-from ..app.models.review import Review
+from app.models.pub.pub import Pub
+from app.models.review.review import Review
 
 config = Configurations().get_config()
 

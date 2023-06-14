@@ -29,6 +29,7 @@ stops = {{ stops | tojson }}
 criteria = {{ criteria | tojson }}
 counter = {{ counter | tojson }}
 
+
 function mapSetup() {
     crawl = { start, walk, favourite, stops, criteria }
     var stop_offs = []
@@ -93,6 +94,7 @@ function mapSetup() {
 
 <script>
 function onLoad(){
+    features = {{ features | tojson }}
     form = {{ form_type | tojson }}
     var photo_array = {{ photo_array | tojson }}
     var map_lat = {{ map_lat | tojson }}
@@ -111,32 +113,6 @@ function onLoad(){
         //alert('You appear to offline so maps cannot be displayed')
     }
     config2 = {{ config2 | tojson }}
-
-    console.log(counter)
-
-    let result = counter.substring(0, 1);
-    console.log(result)
-    document.getElementById("digit_100000").innerHTML = result;
-
-    let result1 = counter.substring(1, 2);
-    console.log(result1)
-    document.getElementById("digit_10000").innerHTML = result1;
-
-    let result2 = counter.substring(2, 3);
-    console.log(result2)
-    document.getElementById("digit_1000").innerHTML = result2;
-
-    let result3 = counter.substring(3, 4);
-    console.log(result3)
-    document.getElementById("digit_100").innerHTML = result3;
-
-    let result4 = counter.substring(4, 5);
-    console.log(result4)
-    document.getElementById("digit_10").innerHTML = result4;
-
-    let result5 = counter.substring(5, 6);
-    console.log(result5)
-    document.getElementById("digit_1").innerHTML = result5;
 
 }
 </script>
@@ -158,7 +134,7 @@ function onLoad(){
     </div>
     <div class="row" style="background-color: #0275d8">
         <div class="col-12 center-block text-center">
-            <a onclick="featureSearch()" style="font-weight: bold; font-size: 14px; color: white;">Search</a>
+            <a onclick="featureSearch(features)" style="font-weight: bold; font-size: 14px; color: white;">Search</a>
         </div>
     </div>
     {% include "home_area.html" %}

@@ -1,10 +1,10 @@
 import pandas as pd
-from flask import render_template, request, redirect, url_for, g, session
+from flask import render_template, request
 from app import app
 from config import Configurations
 from functions.functions import Functions
 from app.static.pythonscripts.dataframes import Dataframes
-from ..models.crawl import Crawl
+from app.models.crawl.crawl import Crawl
 
 config = Configurations().get_config()
 config2 = Configurations().get_config2()
