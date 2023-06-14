@@ -43,6 +43,6 @@ class Csv:
         # print('read_csv')
         directory_path = os.getcwd()
         directory_path = config2['directory_path']
-        # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
+        # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls'
         obj_df = pd.read_csv(directory_path + 'files/' + prefix + 's.csv')
         return obj_df
