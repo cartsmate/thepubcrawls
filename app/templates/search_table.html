@@ -17,11 +17,8 @@
                         <script>console.log({{pubs_reviews[i][k].rank}})</script>
                         {% if (pubs_reviews[i][k] != 0) %}
                             <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:1.0;">
-                            <div class="star_centre" id="rounder"></div>
-                            <script>
-                                var rounder = Math.trunc({{pubs_reviews[i][k]}})
-                                document.getElementById("rounder").innerHTML = rounder
-                            </script>
+                            <div class="star_centre" id="rounder">{{pubs_reviews[i][k]}}</div>
+
                         {% else %}
                             <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:0.25;">
                             <div class="star_centre"></div>

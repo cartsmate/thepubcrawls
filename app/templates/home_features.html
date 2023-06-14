@@ -9,10 +9,10 @@
                 <input type="checkbox" id="{{field.name}}" name="{{field.name}}" style="display: none;" onclick="featureClick('{{field.name}}', '{{auto_exec}}', {{features}})">
             {% endif %}
             <label for="{{field.name}}" style="margin:0px; padding:0px" >
-                <img src="{{ url_for('static', filename='icons/features/' + field.icon ) }}" id="{{field.name}}_img" width="30" height="30"
+                <img src="{{ url_for('static', filename='icons/features/' + field.icon ) }}" id="{{field.name}}_img" width="25" height="25"
                      style="opacity: 1.0;">
             </label>
-            <div class="caption" id="{{field.name}}_caption" style="padding:0px; margin:0px; opacity:1.0;"></div>
+            <div class="caption" id="{{field.name}}_caption" style="font-size: 8px; padding:0px; margin:0px; opacity:1.0;"></div>
         </div>
         <script>
             document.getElementById("{{field.name}}_caption").innerHTML = "<p>" + "{{field.alias1}}" + "<br />" + "{{field.alias2}}" + "</p>";

@@ -33,8 +33,13 @@ function onLoad() {
     var map_view = {{ map_view | tojson }}
     pubs_reviews = {{ pubs_reviews | tojson }};
     pubs_reviews_all = {{ pubs_reviews_all | tojson }};
+    headers = {{ headers | tojson }}
+    visible = {{ visible | tojson }}
     list_type = {{ list_type | tojson }}
     id_type = {{ id_type | tojson }}
+
+    Search(headers, visible)
+    /*
     if (list_type == 'area') {
         console.log('area')
         Area()
@@ -42,6 +47,7 @@ function onLoad() {
         console.log('NOT area')
         Category()
     }
+    */
 }
 function initMap(){
     console.log("initMap in pub_read");
@@ -81,7 +87,7 @@ function initMap(){
 {% endblock %}
 
 {% block right %}
-    <div class="col-md-12 mx-auto">
-        <div id="table-pubs-json" style="background-color:#CDCDCD; overflow-x:scroll" ></div>
+    <div class="row" style="display: flex; align-items: center; background-color:#D3D3D3; overflow-x:scroll;">
+        {% include "search_table.html" %}
     </div>
 {% endblock %}

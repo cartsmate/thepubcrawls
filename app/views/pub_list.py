@@ -5,6 +5,8 @@ from config import Configurations
 from app.static.pythonscripts.dataframes import Dataframes
 from app.static.pythonscripts.csv import Csv
 from app.static.pythonscripts.entities_multi import EntitiesMulti
+from app.models.pub.pub2 import Pub2
+from app.models.review.review2 import Review2
 
 config = Configurations().get_config()
 config2 = Configurations().get_config2()
@@ -40,7 +42,7 @@ def pub_list(list_type, id_type):
     pubs_reviews_all_json = Dataframes().df_to_dict(df_pubs_reviews)
     pubs_reviews_json = Dataframes().df_to_dict(df)
 
-    list_L = df[['latitude', 'longitude']].values.tolist()
+    list_L = df[['pub_latitude', 'pub_longitude']].values.tolist()
     _lat = []
     _long = []
     for l in list_L:
@@ -54,8 +56,22 @@ def pub_list(list_type, id_type):
     areas_json = Dataframes().df_to_dict(Csv().get_records('area'))
     stations_json = Dataframes().df_to_dict(df_stations)
 
+    filtered_values = EntitiesMulti().get_pubs_reviews()
+
+    headers = list(filtered_values.columns)
+
+    inst_pub = Pub2()
+    inst_review = Review2()
+    inst_pub.__dict__.update(inst_review.__dict__)
+    inst_pub_review = inst_pub
+    visible = {}
+    for k, v in inst_pub_review.__dict__.items():
+        visible[k] = v.visible
+
     return render_template('pub_list.html', filter=heading, pubs_reviews=pubs_reviews_json, map_view=list_type,
                            pubs_reviews_all=pubs_reviews_all_json,
-                           map_lat=review_lat, map_lng=review_long, list_type=list_type, id_type=id_type,
+                           map_lat=review_lat, map_lng=review_long,
+                           list_type=list_type, id_type=id_type,
                            form_type='list', google_key=config2['google_key'],
-                           stations=stations_json, areas=areas_json,)
+                           stations=stations_json, areas=areas_json,
+                           visible=visible, headers=headers)

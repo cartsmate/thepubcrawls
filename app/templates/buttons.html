@@ -23,7 +23,7 @@
             <div class="button_caption">EDIT<br>PUB</div>
         </div>
         <div style="text-align: center;">
-            <a href="{{url_for('pub_list', list_type='area', id_type=pub_review[0]['area'])}}"><img src="/static/icons/footer/location.png" class="button_size"></a>
+            <a href="{{url_for('pub_list', list_type='area_name', id_type=pub_review[0]['area_name'])}}"><img src="/static/icons/footer/location.png" class="button_size"></a>
             <div class="button_caption">PUB<br>AREA</div>
         </div>
     {% endif %}
@@ -43,6 +43,10 @@
         <div style="text-align: center;">
             <a href="{{url_for('pub_map')}}"><img src="/static/icons/footer/global.png" class="button_size"></a>
             <div class="button_caption">MAP<br>VIEW</div>
+        </div>
+        <div style="text-align: center;">
+            <a href="{{url_for('pub_search')}}"><img src="/static/icons/footer/search.png" class="button_size"></a>
+            <div class="button_caption">SEARCH<br>PUBS</div>
         </div>
         <div style="text-align: center;">
             <a href="{{url_for('home')}}"><img src="/static/icons/footer/home1.png" class="button_size"></a>
