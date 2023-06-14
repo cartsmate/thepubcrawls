@@ -35,43 +35,44 @@ def home():
     if config2['env'] == 'prod':
         obj_df = S3().s3_read('counter_prod', ['pub_counter'])
     else:
-        directory_path = os.getcwd()
-        directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
+        # directory_path = os.getcwd()
+        # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
         directory_path = config2['directory_path']
-        obj_df = pd.read_csv(directory_path + 'files/counter_qual.csv')
+        obj_df = pd.read_csv(directory_path + '/files/counter_qual.csv')
     obj_df["pub_counter"] = obj_df["pub_counter"] + 1
 
     if config2['env'] == 'prod':
         s3_resp = S3().s3_write(obj_df, 'counter_prod.csv')
     else:
-        directory_path = os.getcwd()
-        directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
+        # directory_path = os.getcwd()
+        # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
         directory_path = config2['directory_path']
-        obj_df.to_csv(directory_path + 'files/counter_qual.csv', sep=',', encoding='utf-8', index=False)
+        obj_df.to_csv(directory_path + '/files/counter_qual.csv', sep=',', encoding='utf-8', index=False)
     counter = str(obj_df["pub_counter"].values[0]).zfill(6)
 
-    directory_path = os.getcwd()
-    directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
+    # directory_path = os.getcwd()
+    # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
+    directory_path = config2['directory_path']
 
     try:
         df_pubs = S3().get_s3_pubs()
-        df_pubs.to_csv(directory_path + 'files/pubs.csv', index=False, sep=',', encoding='utf-8')
+        df_pubs.to_csv(directory_path + '/files/pubs.csv', index=False, sep=',', encoding='utf-8')
         # print(df_pubs)
 
         df_reviews = S3().get_s3_reviews()
-        df_reviews.to_csv(directory_path + 'files/reviews.csv', index=False, sep=',', encoding='utf-8')
+        df_reviews.to_csv(directory_path + '/files/reviews.csv', index=False, sep=',', encoding='utf-8')
 
         df_areas = S3().get_s3_areas()
-        df_areas.to_csv(directory_path + 'files/areas.csv', index=False, sep=',', encoding='utf-8')
+        df_areas.to_csv(directory_path + '/files/areas.csv', index=False, sep=',', encoding='utf-8')
 
         df_crawls = S3().get_s3_crawls()
-        df_crawls.to_csv(directory_path + 'files/crawls.csv', index=False, sep=',', encoding='utf-8')
+        df_crawls.to_csv(directory_path + '/files/crawls.csv', index=False, sep=',', encoding='utf-8')
 
         df_stations = S3().get_s3_stations()
-        df_stations.to_csv(directory_path + 'files/stations.csv', index=False, sep=',', encoding='utf-8')
+        df_stations.to_csv(directory_path + '/files/stations.csv', index=False, sep=',', encoding='utf-8')
 
         df_photos = S3().get_s3_photos()
-        df_photos.to_csv(directory_path + 'files/photos.csv', index=False, sep=',', encoding='utf-8')
+        df_photos.to_csv(directory_path + '/files/photos.csv', index=False, sep=',', encoding='utf-8')
 
     except botocore.exceptions.EndpointConnectionError:
         df_pubs = Csv().get_pubs()
