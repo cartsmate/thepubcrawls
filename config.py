@@ -6,7 +6,7 @@ from configparser import ConfigParser
 class Configurations:
     def get_config(self):
         directory_path = os.getcwd()
-        directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
+        # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
         with open(directory_path + 'config_s.json') as file:  # Opening JSON file
             config = json.load(file)  # returns JSON object as a dictionary
         return config
