@@ -19,16 +19,6 @@
 <!--<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_setup.js') }}"></script>-->
 
 <script>
-key = {{ google_key | tojson }}
-pubs = {{ pubs | tojson }}
-pub = {{ pub | tojson }}
-start = {{ start | tojson }}
-walk = {{ walk | tojson }}
-favourite = {{ favourite | tojson }}
-stops = {{ stops | tojson }}
-criteria = {{ criteria | tojson }}
-counter = {{ counter | tojson }}
-
 
 function mapSetup() {
     crawl = { start, walk, favourite, stops, criteria }
@@ -94,6 +84,16 @@ function mapSetup() {
 
 <script>
 function onLoad(){
+    key = {{ google_key | tojson }}
+    pubs = {{ pubs | tojson }}
+    pub = {{ pub | tojson }}
+    start = {{ start | tojson }}
+    walk = {{ walk | tojson }}
+    favourite = {{ favourite | tojson }}
+    stops = {{ stops | tojson }}
+    criteria = {{ criteria | tojson }}
+    counter = {{ counter | tojson }}
+    console.log(counter)
     features = {{ features | tojson }}
     form = {{ form_type | tojson }}
     var photo_array = {{ photo_array | tojson }}
