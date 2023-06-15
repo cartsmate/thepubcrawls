@@ -14,7 +14,7 @@ config = Configurations().get_config()
 class ControlsList:
 
     def get_control_lists(self):
-        ignore_list = ['review_deletion', 'review_identity', 'pub_identity']
+        ignore_list = ['review_deletion', 'review_identity', 'pub_identity', 'detail']
 
         visible_list = []
         required_list = []
