@@ -1,46 +1,47 @@
 
 {% for field in fields_list %}
-    <script>console.log("{{field}}")</script>
-    {% if field in visible_list %}
-        <script>console.log("{{field}}: visible")</script>
-        <div class="form-group row" id="row_{{field}}">
-            <div class="col" style="text-align:right; width:75px; padding:0px; margin:0px;">
-                <label class="col-form-label" style="width:75px; padding:0px; margin:0px;" for="{{field}}" >{{field}}</label>
-            </div>
-            <div class="col" id="div_{{field}}" style="width:220px; text-align:left; visibility:visible; display:block; text-align:left" >
-                {% if field in dropdown_list %}
-                    {% include "control_dropdown.html" %}
-                {% elif field in star_list %}
-                    {% include "control_star.html" %}
-                {% elif field in slider_list %}
-                    {% include "control_slider.html" %}
-                {% elif field in date_list %}
-                    {% include "control_date.html" %}
-                {% elif field in input_list %}
-                    <input style="text-align:left; visibility:visible; display:block; width:220px;" class="form-control" type='text' name="{{field}}" id="{{field}}">
-                    {% if form_type == 'read' %}
-                        <script>document.getElementById("{{field}}").setAttribute("readonly", "true");</script>
+    {% if field not in icon_list %}
+        {% if field in visible_list %}
+            <div class="form-group row" id="row_{{field}}" >
+                <div class="col" style="text-align:right; width:75px; padding:0px; margin:0px;">
+                    <label class="col-form-label" style="width:75px; padding:0px; margin:0px;" for="{{field}}" >{{field}}</label>
+                </div>
+                <div class="col" id="div_{{field}}" style="width:220px; text-align:left; visibility:visible; display:block; text-align:left" >
+                    {% if field in dropdown_list %}
+                        {% include "control_dropdown.html" %}
+                    {% elif field in star_list %}
+                        {% include "control_star.html" %}
+                    {% elif field in slider_list %}
+                        {% include "control_slider.html" %}
+                    {% elif field in date_list %}
+                        {% include "control_date.html" %}
+                    {% elif field in input_list %}
+                        <input style="text-align:left; visibility:visible; display:block; width:220px;" class="form-control" type='text' name="{{field}}" id="{{field}}">
+                        {% if form_type == 'read' %}
+                            <script>document.getElementById("{{field}}").setAttribute("readonly", "true");</script>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-                {% if field in required_list %}
-                    <script>document.getElementById("{{field}}").required = true</script>
-                {% endif %}
+                    {% if field in required_list %}
+                        <script>document.getElementById("{{field}}").required = true</script>
+                    {% endif %}
+                </div>
+                <!--
+                <div class="col" style="padding:0px; margin:0px;" >
+                    {% if form_type == 'read' %}
+                        <img id="edit_{{field}}" src="/static/icons/buttons/edit.png" onclick="editClick('{{field}}')" style="width:30px; height:30px; margin:0px; padding:0px;">
+                    {% endif %}
+                </div>
+                -->
             </div>
-            <div class="col" style="padding:0px; margin:0px;" >
-                {% if form_type == 'read' %}
-                    <img id="edit_{{field}}" src="/static/icons/buttons/edit.png" onclick="editClick('{{field}}')" style="width:30px; height:30px; margin:0px; padding:0px;">
-                {% endif %}
+        {% else %}
+            <div class="form-group row" id="row_{{field}}" style="display: none;">
+                <div class="col">
+                    <label class="col-form-label" for="{{field}}" style="display: none;"></label>
+                </div>
+                <div class="col" id="div_{{field}}">
+                    <input class="form-control" type='text' name="{{field}}" id="{{field}}" style="display: none;">
+                </div>
             </div>
-        </div>
-    {% else %}
-        <div class="form-group row" id="row_{{field}}" style="display: none;">
-            <div class="col">
-                <label class="col-form-label" for="{{field}}" style="display: none;"></label>
-            </div>
-            <div class="col" id="div_{{field}}">
-                <input class="form-control" type='text' name="{{field}}" id="{{field}}" style="display: none;">
-            </div>
-        </div>
+        {% endif %}
     {% endif %}
-
 {% endfor %}

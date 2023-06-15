@@ -86,7 +86,7 @@ def pub_read(pub_id):
         review_lat = df_pub_photos['pub_latitude']
         review_long = df_pub_photos['pub_latitude']
 
-
+        print(check_list)
         # print(df_pub_photos[['pet','tv','garden','music','late','meals','toilets','cheap','games','quiz','pool','lively']])
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
                                pub_review=pub_review_json, config=config, stations=stations_json, areas=areas_json,
