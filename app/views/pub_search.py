@@ -4,6 +4,7 @@ from app import app
 from config import Configurations
 from app.static.pythonscripts.entities_multi import EntitiesMulti
 from app.static.pythonscripts.dataframes import Dataframes
+from app.static.pythonscripts.controls_list import ControlsList
 from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
 
@@ -14,7 +15,9 @@ config2 = Configurations().get_config2()
 @app.route("/pub/search/")
 def pub_search():
     print('pub_search')
-    ignore_list = ['review_deletion', 'review_identity', 'pub_identity', 'detail']
+    dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
+    required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
+
     review_list = {}
     form_obj = {}
     for review in list(Review2().__dict__.keys()):
@@ -57,4 +60,9 @@ def pub_search():
     return render_template('pub_search.html', config=config, pubs_reviews=pubs_reviews_json, form_obj=form_obj,
                            config2=config2, review_list=review_list, review_obj=Review2(), ignore_list=ignore_list,
                            features=l3, review_dict=Review2().__dict__.values(), review_obj_list=review_obj_list,
-                           key_list=key_list, review_object=review_object, headers=headers, visible=visible)
+                           key_list=key_list, review_object=review_object, headers=headers, visible=visible,
+                           fields_list=fields_list,
+                           star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
+                           check_list=check_list, slider_list=slider_list, date_list=date_list,
+                           visible_list=visible_list, required_list=required_list,
+                           alias_list=alias_list, icon_list=icon_list)

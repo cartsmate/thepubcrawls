@@ -1,6 +1,6 @@
-function featureSearch(features) {
+function featureSearch() {
     console.log("featureSearch")
-
+    console.log(icon_list)
     var base_url = window.location.hostname
     if (config2['env'] == 'prod') {
         var url = "http://" + base_url + "/pub/search/"
@@ -9,8 +9,10 @@ function featureSearch(features) {
     }
 
     const myUrlWithParams = new URL(url);
-    for (var i = 0; i < features.length; i++) {
-        myUrlWithParams.searchParams.append(features[i], document.getElementById(features[i]).checked);
+    for (var i = 0; i < icon_list.length; i++) {
+        console.log(icon_list[i])
+        console.log(document.getElementById(icon_list[i]).checked)
+        myUrlWithParams.searchParams.append(icon_list[i], document.getElementById(icon_list[i]).checked);
     }
     window.location.replace(myUrlWithParams.href);
 }
