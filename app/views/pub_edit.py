@@ -20,11 +20,8 @@ def pub_edit(pub_id):
 
     print('pub_edit')
 
-    dropdown_list, star_list, input_list, date_list, slider_list, check_list, control_list, alias_list, \
-    pub2_required_list, pub2_visible_list, icon_list, review2_required_list, \
-    review2_visible_list, pub_fields, review_fields = ControlsList().get_control_lists()
-
-    ignore_list = ['review_deletion', 'review_identity', 'pub_identity']
+    dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
+    required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
 
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
@@ -75,14 +72,12 @@ def pub_edit(pub_id):
 
     return render_template('pub_read.html', form_type='edit', google_key=config2['google_key'],
                            pub_review=pub_review_json,
-                           pub_fields=pub_fields, review_fields=review_fields,
+                           fields_list=fields_list,
                            stations=stations_json, areas=areas_json, config=config,
                            pubs_reviews=pubs_reviews_json, full=all_json, summary=station_all_json,
                            map_lat=review_lat, map_lng=review_long,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,
-                           pub_visible_list=pub2_visible_list, pub_required_list=pub2_required_list,
-                           review_visible_list=review2_visible_list,
-                           review_required_list=review2_required_list,
-                           control_list=control_list, alias_list=alias_list, icon_list=icon_list,
+                           visible_list=visible_list, required_list=required_list,
+                           alias_list=alias_list, icon_list=icon_list,
                            review_obj=Review2(), ignore_list=ignore_list)

@@ -49,7 +49,7 @@ class S3:
         return df_false
 
     def s3_read(self, prefix, list_of_columns):
-        print(prefix)
+        # print(prefix)
         # print(list_of_columns)
         # print('s3_read')
         s3 = boto3.resource('s3',
@@ -70,7 +70,7 @@ class S3:
             # print(obj_df)
             for obj in list_of_objects:
                 temp_df = pd.DataFrame(data=obj)
-                print(temp_df)
+                # print(temp_df)
                 obj_df = pd.DataFrame(np.concatenate([obj_df.values, temp_df.values]), columns=obj_df.columns)
         else:
             obj_df = None

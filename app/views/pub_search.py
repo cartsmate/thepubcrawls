@@ -14,7 +14,7 @@ config2 = Configurations().get_config2()
 @app.route("/pub/search/")
 def pub_search():
     print('pub_search')
-    ignore_list = ['review_deletion', 'review_identity', 'pub_identity']
+    ignore_list = ['review_deletion', 'review_identity', 'pub_identity', 'detail']
     review_list = {}
     form_obj = {}
     for review in list(Review2().__dict__.keys()):

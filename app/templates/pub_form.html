@@ -1,7 +1,7 @@
 
-{% for field in pub_fields %}
+{% for field in fields_list %}
     <script>console.log("{{field}}")</script>
-    {% if field in pub_visible_list %}
+    {% if field in visible_list %}
         <script>console.log("{{field}}: visible")</script>
         <div class="form-group row" id="row_{{field}}">
             <div class="col" style="text-align:right; width:75px; padding:0px; margin:0px;">
@@ -16,14 +16,14 @@
                     {% include "control_slider.html" %}
                 {% elif field in date_list %}
                     {% include "control_date.html" %}
-                {% else %}
+                {% elif field in input_list %}
                     <input style="text-align:left; visibility:visible; display:block; width:220px;" class="form-control" type='text' name="{{field}}" id="{{field}}">
                     {% if form_type == 'read' %}
                         <script>document.getElementById("{{field}}").setAttribute("readonly", "true");</script>
                     {% endif %}
                 {% endif %}
-                {% if field in pub2_required_list %}
-                    <script>document.getElementById("{{field}}"}).required = true</script>
+                {% if field in required_list %}
+                    <script>document.getElementById("{{field}}").required = true</script>
                 {% endif %}
             </div>
             <div class="col" style="padding:0px; margin:0px;" >

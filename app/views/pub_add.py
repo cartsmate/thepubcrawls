@@ -21,9 +21,8 @@ config2 = Configurations().get_config2()
 @app.route("/pub/add/<lat>/<lng>")
 def pub_add(lat, lng):
 
-    dropdown_list, star_list, input_list, date_list, slider_list, check_list, control_list, alias_list, \
-    pub2_required_list, pub2_visible_list, icon_list, review2_required_list, \
-    review2_visible_list, pub_fields, review_fields = ControlsList().get_control_lists()
+    dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
+    required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
 
     df_all = EntitiesMulti().get_pubs_reviews()
     if lat == 'None' and lng == 'None':
@@ -76,15 +75,13 @@ def pub_add(lat, lng):
     df_pub_review = pd.merge(df_new_pub, df_new_review, how="left", on='pub_identity')
     pub_json = Dataframes().df_to_dict(df_pub_review)
 
-    ignore_list = ['review_deletion', 'review_identity', 'pub_identity']
     return render_template("pub_read.html", form_type='add', google_key=config2['google_key'],
                            config=config,
                            pub_review=pub_json, pubs_reviews=pubs_reviews_json, full=all_json, summary=station_all_json,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,
-                           control_list=control_list, alias_list=alias_list, icon_list=icon_list,
-                           pub_visible_list=pub2_visible_list, pub_required_list=pub2_required_list,
-                           review_visible_list=review2_visible_list, review_required_list=review2_required_list,
-                           pub_fields=pub_fields, review_fields=review_fields,
+                           alias_list=alias_list, icon_list=icon_list,
+                           visible_list=visible_list, required_list=required_list,
+                           fields_list=fields_list,
                            stations=stations_json, areas=areas_json,
                            map_lat=review_lat, map_lng=review_long, review_obj=Review2(), ignore_list=ignore_list)

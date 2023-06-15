@@ -1,7 +1,8 @@
 
 class AreaLatitude:
-    def __init__(self, name='area_latitude', required=False, visible=False, value="", control=None):
+    def __init__(self, name='area_latitude', alias="Latitude", required=False, visible=False, value="", control=None):
         self.name = name
+        self.alias = alias
         self.required = required
         self.visible = visible
         self.value = value
