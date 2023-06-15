@@ -48,23 +48,18 @@ function onLoad(){
     summary = {{ summary | tojson }}
     full = {{ full | tojson }}
 
-    input_controls = {{ input_list | tojson }}
-    dropdown_controls = {{ dropdown_list | tojson }}
-    slider_controls = {{ slider_list | tojson }}
-    check_controls = {{ check_list | tojson }}
+    input_list = {{ input_list | tojson }}
+    dropdown_list = {{ dropdown_list | tojson }}
+    slider_list = {{ slider_list | tojson }}
+    check_list = {{ check_list | tojson }}
     date_controls = {{ date_list | tojson }}
-    star_controls = {{ star_list | tojson }}
+    star_list = {{ star_list | tojson }}
 
-    pub_visible_list = {{ pub_visible_list | tojson }}
-    review_visible_list = {{ review_visible_list | tojson }}
-    pub_required_list = {{ pub_required_list | tojson }}
-    review_required_list = {{ review_required_list | tojson }}
+    visible_list = {{ visible_list | tojson }}
+    required_list = {{ required_list | tojson }}
 
-    pub_fields = {{ pub_fields | tojson }}
-    review_fields = {{ review_fields | tojson }}
-    pub_review_fields = pub_fields.concat(review_fields)
+    fields_list = {{ fields_list | tojson }}
 
-    control_list = {{ control_list | tojson }}
     alias_list = {{ alias_list | tojson }}
     icon_list = {{ icon_list | tojson }}
 
@@ -160,7 +155,7 @@ function showMap(summary, full, zoom, lat, lng){
     <div class="row justify-content-center align-items-center">
         <form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">
             {% include "pub_form.html" %}
-            {% include "review_form.html" %}
+
             <div class="row" style="display: flex; align-items: center; background-color:#CDCDCD;">
                 {% with search='off' %}
                     {% include "home_features.html" %}

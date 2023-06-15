@@ -8,6 +8,7 @@ from config import Configurations
 from app.static.pythonscripts.dataframes import Dataframes
 from app.static.pythonscripts.csv import Csv
 from app.static.pythonscripts.s3 import S3
+from app.static.pythonscripts.controls_list import ControlsList
 from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
 
@@ -17,6 +18,10 @@ config2 = Configurations().get_config2()
 
 @app.route("/home/")
 def home():
+    dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
+    required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
+
+    print(icon_list)
     if config2['env'] == 'prod':
         obj_df = S3().s3_read('counter_prod', ['pub_counter'])
     else:
@@ -135,7 +140,7 @@ def home():
     l1 = list(Review2().__dict__.keys())
     # for l in l1:
     #     print(l)
-    ignore_list = ['review_deletion', 'review_identity', 'pub_identity']
+    ignore_list = ['review_deletion', 'review_identity', 'pub_identity', 'detail']
 
     l3 = [x for x in l1 if x not in ignore_list]
 
@@ -144,4 +149,4 @@ def home():
                             row_loop=range(3), col_loop=range(4), areas=areas_json2, start=start,
                             walk=walk, favourite=favourite, stops=stops, criteria=criteria, photo_id=photo_id,
                             pubs=pubs_json, pub=pub_json, config2=config2, form_type='home', counter=counter,
-                            ignore_list=ignore_list, review_obj=Review2(), features=l3)
+                            ignore_list=ignore_list, review_obj=Review2(), features=l3, icon_list=icon_list)

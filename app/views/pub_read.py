@@ -35,10 +35,9 @@ def pub_read(pub_id):
     #     return redirect(url_for('login'))
     print('pub_read')
 
-    dropdown_list, star_list, input_list, date_list, slider_list, check_list, control_list, alias_list, \
-    pub2_required_list, pub2_visible_list, icon_list, review2_required_list, \
-    review2_visible_list, pub_fields, review_fields = ControlsList().get_control_lists()
-    ignore_list = ['review_deletion', 'review_identity', 'pub_identity']
+    dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
+    required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
+
     df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
     df_pubs_reviews['colour'] = '#0275d8'
     df_pubs_reviews.loc[df_pubs_reviews['pub_identity'] == pub_id, 'colour'] = '#d9534f'
@@ -93,12 +92,11 @@ def pub_read(pub_id):
                                pub_review=pub_review_json, config=config, stations=stations_json, areas=areas_json,
                                full=pubs_reviews_json, summary=station_all_json, pubs_reviews=pubs_reviews_json,
                                map_lat=review_lat, map_lng=review_long,
-                               pub_fields=pub_fields, review_fields=review_fields,
+                               fields_list=fields_list,
                                star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                check_list=check_list, slider_list=slider_list, date_list=date_list,
-                               pub_visible_list=pub2_visible_list, pub_required_list=pub2_required_list,
-                               review_visible_list=review2_visible_list, review_required_list=review2_required_list,
-                               control_list=control_list, alias_list=alias_list, icon_list=icon_list,
+                               visible_list=visible_list, required_list=required_list,
+                               alias_list=alias_list, icon_list=icon_list,
                                review_obj=Review2(), ignore_list=ignore_list)
 
     if request.method == 'POST':
@@ -156,14 +154,12 @@ def pub_read(pub_id):
                 return render_template('pub_read.html', error=error, form_type='read', google_key=config2['google_key'],
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                        pub_review=pub_review_json, config=config,
-                                       pub_fields=pub_fields, review_fields=review_fields,
+                                       fields_list=fields_list,
                                        full=pubs_reviews_json, summary=station_all_json, map_lat=review_lat, map_lng=review_long,
                                        star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                        check_list=check_list, slider_list=slider_list, date_list=date_list,
-                                       pub_visible_list=pub2_visible_list, pub_required_list=pub2_required_list,
-                                       review_visible_list=review2_visible_list,
-                                       review_required_list=review2_required_list,
-                                       control_list=control_list, alias_list=alias_list, icon_list=icon_list,
+                                       visible_list=visible_list, required_list=required_list,
+                                       calias_list=alias_list, icon_list=icon_list,
                                        review_obj=Review2(), ignore_list=ignore_list)
             else:
                 print('duplicate pub')
@@ -212,11 +208,10 @@ def pub_read(pub_id):
             return render_template('pub_read.html', form_type='read', google_key=config2['google_key'],
                                    pub_review=pub_review_json, pubs_reviews=pubs_reviews_json, config=config,
                                    stations=stations_json, areas=areas_json,
-                                   pub_fields=pub_fields, review_fields=review_fields,
+                                   fields_list=fields_list,
                                    full=pubs_reviews_json, summary=station_all_json, map_lat=review_lat, map_lng=review_long,
                                    star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                    check_list=check_list, slider_list=slider_list, date_list=date_list,
-                                   pub_visible_list=pub2_visible_list, pub_required_list=pub2_required_list,
-                                   review_visible_list=review2_visible_list, review_required_list=review2_required_list,
-                                   control_list=control_list, alias_list=alias_list, icon_list=icon_list,
+                                   visible_list=visible_list, required_list=required_list,
+                                   alias_list=alias_list, icon_list=icon_list,
                                    review_obj=Review2(), ignore_list=ignore_list)

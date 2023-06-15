@@ -1,6 +1,6 @@
 
 {% for k, field in review_obj.__dict__.items() %}
-    {% if field.name not in ignore_list %}
+    {% if field.name in icon_list %}
 
         <div class="col" style="text-align:center; padding:10px; background-color:#CDCDCD;" id="{{field.name}}_col">
             {% if form_type=='read' %}
