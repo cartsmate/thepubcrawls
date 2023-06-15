@@ -20,7 +20,7 @@ False,False,,False,False,False,False,False,False,False,e96d9cfd-fb5e-4f5f-b722-b
 False,False,,False,False,False,False,False,False,False,7f3d8913-5a6d-40a4-a3e4-cd6eb0b0b8bf,False,False,f8d06143-d50e-4c2d-b231-b6c0233658ea,False,False
 False,False,,False,False,False,False,False,False,False,cf5bc9ca-01c3-43e1-8b44-89b0cd5eac28,False,False,73a32858-85fd-47ab-b7df-c350f6d2ed70,False,False
 False,False,,False,False,False,False,False,False,False,3e38be80-48d3-4177-a80d-7b670494e234,False,False,c2fe8297-6be5-49b1-b6c8-cf132390cb70,False,False
-True,False,,False,False,True,False,False,False,False,0027d4bf-8c57-473e-aa7e-33a3b1b1d95b,True,False,2e72dba8-34d9-403e-a1c3-e6de20da8dc0,True,False
+True,False,Thursday 7.30pm quiz,False,False,True,False,False,False,False,0027d4bf-8c57-473e-aa7e-33a3b1b1d95b,True,False,2e72dba8-34d9-403e-a1c3-e6de20da8dc0,True,False
 False,False,,False,False,False,False,False,False,False,7ed9d8f5-8c66-4cc4-a083-705f2322d4ff,False,False,d7c7178c-b66b-458d-91cc-8690fdb52cae,False,False
 False,False,,False,False,False,False,False,False,False,ed83e610-bf91-434a-9679-b88b61402c22,False,False,9d6d8da3-c230-4eeb-b6d8-5f91553af467,False,False
 False,False,,False,False,False,False,False,False,False,3b022027-061c-4f8b-8d59-c81ecf41e4b2,False,False,416b2b9b-fa75-4926-a195-cd8a59676c85,False,False
@@ -94,8 +94,8 @@ True,False,,False,False,False,False,False,True,False,9922ebbb-b740-4db1-8d96-fd7
 True,False,,False,False,True,False,False,True,False,b790e0b6-004c-4bfc-aebb-914d397ec152,True,False,25c66b68-cfad-4c23-9877-64a4803ab293,False,False
 True,False,,False,False,True,False,False,False,False,2ecaa7d1-f3e6-4ae6-8883-d924136dcb3d,True,False,e3b1ca9b-a864-49ad-b828-c4642847cc65,True,True
 True,False,,False,False,False,False,False,False,False,8d85eb7d-2d41-4752-bbd1-85220ec9ea72,True,False,f357c22e-314a-4a3c-826a-d869dbfd9786,False,False
-True,False,,False,False,True,False,False,True,False,f58f32e4-8be0-40d2-bfd8-6d42721b0f3c,False,False,9ed5bb3f-1011-4482-87a8-b2d2b87d1ea4,True,True
-True,False,,False,False,True,False,False,True,False,2f9dbf26-90b6-4038-ace2-2157654824b3,True,False,8d08e3e3-7098-4141-8d1f-507d2d045237,False,False
+False,True,0,False,False,True,False,False,False,True,f58f32e4-8be0-40d2-bfd8-6d42721b0f3c,False,False,9ed5bb3f-1011-4482-87a8-b2d2b87d1ea4,True,True
+False,False,0,False,False,True,False,False,False,False,2f9dbf26-90b6-4038-ace2-2157654824b3,False,False,8d08e3e3-7098-4141-8d1f-507d2d045237,True,False
 True,False,,False,False,True,False,False,False,False,8ed775df-3b78-4f88-850f-ba9e25d82ee8,False,False,03c57b4a-9948-4c4e-8e51-78ab7b747149,True,False
 True,False,,False,False,False,False,True,False,False,9495bd1e-b7aa-4f8e-bf1a-c48eb02c0ec6,False,False,d2ccb2ab-c170-4808-87ef-9dd53618d5e7,False,True
 True,False,,False,False,True,False,False,False,False,3caa5c02-ee38-4a1d-9c2b-39bfcae80981,False,False,83368ca3-2eda-4b0f-9e99-6aac7cd643a1,False,False
@@ -179,7 +179,7 @@ False,False,,False,False,False,False,False,False,False,7685a7db-c6df-4182-a3c1-c
 False,False,,False,False,False,False,False,False,False,97a112a9-31a7-4be6-bae9-0b828715e042,False,False,f936be36-25d6-4c16-98f2-b2240f2b50c1,False,False
 False,False,,False,False,False,False,False,False,False,e620aa52-3217-4d9c-b733-36b8e5fe71d6,False,False,9c7d668f-4aac-4ac6-b9ad-197ad89e38c9,False,False
 False,False,,False,False,False,False,False,False,False,4d2b172a-3f76-4936-af1f-3a9fa3129835,False,False,4e6fd938-f52a-4eb7-bd70-0306f36c1523,False,False
-False,False,,False,False,False,False,False,False,False,c1780172-c0ae-4986-9870-c1f41d07186a,False,False,1d109064-2e94-4806-a858-dc7e58a4c4a2,False,False
+False,False,Hotel and events venue,False,False,False,False,False,False,False,c1780172-c0ae-4986-9870-c1f41d07186a,False,False,1d109064-2e94-4806-a858-dc7e58a4c4a2,False,False
 False,False,,False,False,False,False,False,False,False,4b4763d9-f1d4-4967-b6ff-f60295e0b08a,False,False,762f9d9e-a089-4b38-8442-973e50ec6441,False,False
 False,False,,False,False,False,False,False,False,False,2187101a-c4ba-4e73-abba-01f094808673,False,False,61040888-fbc1-4c02-8e33-82bd90415a53,False,False
 False,False,,False,False,False,False,False,False,False,390c3f91-bd96-45a4-88da-a47c537cfe89,False,False,ac0957b1-2473-4ba9-8624-ce914354001d,False,False
