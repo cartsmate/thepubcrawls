@@ -45,6 +45,7 @@ class EntitiesMulti:
 
     def get_pubs_reviews(self):
         df_pubs_reviews = pd.merge(self.get_pubs_station(), Csv().get_reviews(), how='left', on='pub_identity')
+        df_pubs_reviews = df_pubs_reviews.loc[df_pubs_reviews['pub_deletion'] == 'False']
         # df_pubs_reviews['score'] = round(df_pubs_reviews.loc[:, config['review']['score']].mean(axis=1) * 10)
         df_pubs_reviews.fillna(False, inplace=True)
         # print(df_pubs_reviews[['name', 'pet', 'tv', 'garden', 'music', 'late', 'meals', 'toilets', 'cheap', 'games', 'quiz', 'pool', 'lively']])

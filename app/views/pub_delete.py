@@ -14,8 +14,8 @@ config = Configurations().get_config()
 @app.route("/pub/delete/<pub_id>")
 def pub_delete(pub_id):
     print('/pub/delete/<pub_id>')
-    pubs_area = EntitiesSingle().get_pubs_area()
-    id_type = pubs_area.loc[pubs_area['pub_identity'] == pub_id, 'area'].iloc[0]
+    pubs_area = EntitiesMulti().get_pubs_area()
+    id_type = pubs_area.loc[pubs_area['pub_identity'] == pub_id, 'area_name'].iloc[0]
     df_pubs = Csv().get_pubs()
     df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'pub_deletion'] = True
     Dataframes().to_csv(df_pubs, 'pub')
@@ -33,16 +33,16 @@ def pub_delete(pub_id):
     df_stations = Csv().get_stations()
     df_all = EntitiesMulti().get_pubs_reviews()
     all_json = Dataframes().df_to_dict(df_all)
-    df_all_trunc = df_all[['name', 'station_identity']]
+    df_all_trunc = df_all[['pub_name', 'station_identity']]
     df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()
     df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity').rename(
-        columns={'name': 'count'}).astype(str)
-    df_all_latlng['colour'] = config['colour']['primary']
+        columns={'pub_name': 'count'}).astype(str)
+    # df_all_latlng['colour'] = config['colour']['primary']
     station_all_json = Dataframes().df_to_dict(df_all_latlng)
     view = "all"
 
     # return redirect(url_for('pub_list/area/'))
-    return redirect(url_for('pub_list', list_type='area', id_type=id_type))
+    return redirect(url_for('pub_list', list_type='area_name', id_type=id_type))
 
         # url_for('pub_map', google_key=config['google_key'], full=all_json,
         #             summary=station_all_json, map_view=view, map_lat=51.5, map_lng=-0.1))

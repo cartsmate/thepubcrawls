@@ -159,7 +159,7 @@ def pub_read(pub_id):
                                        star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                        check_list=check_list, slider_list=slider_list, date_list=date_list,
                                        visible_list=visible_list, required_list=required_list,
-                                       calias_list=alias_list, icon_list=icon_list,
+                                       alias_list=alias_list, icon_list=icon_list,
                                        review_obj=Review2(), ignore_list=ignore_list)
             else:
                 print('duplicate pub')
