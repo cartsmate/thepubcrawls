@@ -837,7 +837,5 @@ False,False,,False,False,False,False,False,False,False,f18b1d06-5448-40f8-b98f-1
 False,False,,False,False,False,False,False,False,False,53314102-b77d-423c-bd03-6deb04941105,False,False,b9f643c2-537f-4038-93ea-6700a68cf929,False,False
 False,False,,False,False,False,False,False,False,False,9a32f0a7-3092-4ecc-8701-f72b367ac93c,False,False,8505c0e9-f6a5-4337-a6d1-dd2800b8b57d,False,False
 False,False,Canoes. Weekend only,True,False,True,False,False,False,False,ecd43a0d-0ceb-4e86-b9af-b408eee96b18,False,False,87b71dd0-2fc3-4c37-a2ca-99fc94f08a20,False,False
-False,False,<app.models.review.detail.Detail object at 0x7fb542689ac0>,True,False,True,False,False,False,False,a5c65fc1-a543-4015-b803-2ebdc8035ab3,True,False,3ff32a8c-7bea-4218-92c8-f1d44c310ebf,True,True
-False,False, ,False,False,False,False,False,False,False,835860fc-2d9c-4e1d-a9e3-fc330f9a9043,False,False,bd989634-7b59-4c07-82c0-ba2131378e28,False,False
-False,False, ,False,False,False,False,False,False,False,eeb52bb4-449c-4b35-b25e-c9ff9795e4f0,True,False,f3ea9678-7c10-400f-b4e0-a039c4e0dadb,False,False
+False,False,Monday quiz. Open mic nights 1st Thur/month,True,False,True,False,False,True,False,eeb52bb4-449c-4b35-b25e-c9ff9795e4f0,True,False,f3ea9678-7c10-400f-b4e0-a039c4e0dadb,True,True
 False,False,Weatherspoons,False,False,False,False,False,False,False,cdece2d6-cd2d-48bd-be70-2317db1ef773,False,False,c9acd8a9-6965-4b2d-9159-2fbe28ca78bd,False,True
