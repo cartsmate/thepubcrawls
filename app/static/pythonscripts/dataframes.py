@@ -4,7 +4,7 @@ from app.static.pythonscripts.csv import Csv
 from config import Configurations
 
 config = Configurations().get_config()
-
+config2 = Configurations().get_config2()
 
 class Dataframes:
 
@@ -36,6 +36,7 @@ class Dataframes:
 
     def to_csv(self, df_appended, key):
         print('Dataframes: to_csv')
-        directory_path = os.getcwd()
-        directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
+        # directory_path = os.getcwd()
+        # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
+        directory_path = config2['directory_path']
         df_appended.to_csv(directory_path + '/files/' + config[key]['aws_key'], sep=',', encoding='utf-8', index=False)
