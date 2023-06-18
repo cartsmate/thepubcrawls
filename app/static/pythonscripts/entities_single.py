@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
 from config import Configurations
-from app.static.pythonscripts.csv import Csv
+# from app.static.pythonscripts.csv import Csv
+from app.static.pythonscripts.s3 import S3
 from app.static.pythonscripts.entities_multi import EntitiesMulti
 
 config = Configurations().get_config()
@@ -15,8 +16,10 @@ class EntitiesSingle:
 
     def get_pub_station(self, id_code):
         df_pub = self.get_pub(id_code)
-        df_stations = Csv().get_stations()
-        df_areas = Csv().get_areas()
+        # df_stations = Csv().get_stations()
+        df_stations = S3().get_s3_stations()
+        # df_areas = Csv().get_areas()
+        df_areas = S3().get_s3_areas()
         df_stations = df_stations[['station_identity', 'station_name']]
         df_areas = df_areas[['area_identity', 'area_name']]
         df_pub_station = pd.merge(df_pub, df_stations, how='left', on='station_identity')
@@ -24,12 +27,14 @@ class EntitiesSingle:
         return df_pub_area
 
     def get_pub(self, id_code):
-        df_pub = self.get_record(Csv().get_records('pub'), id_code)
+        df_pubs = S3().get_s3_pubs()
+        df_pub = self.get_record(df_pubs, id_code)
         # print(df_pub)
         return df_pub
 
     def get_review(self, pub_id):
-        df_reviews = Csv().get_records('review')
+        # df_reviews = Csv().get_records('review')
+        df_reviews = S3().get_s3_reviews()
         df_review = df_reviews.loc[df_reviews['pub_identity'] == pub_id]
         return df_review
 
