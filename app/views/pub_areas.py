@@ -5,8 +5,8 @@ from flask import render_template, redirect, url_for, g, session
 from app import app
 from config import Configurations
 from app.static.pythonscripts.dataframes import Dataframes
-# from app.static.pythonscripts.csv import Csv
-from app.static.pythonscripts.s3 import S3
+from app.static.pythonscripts.csv import Csv
+# from app.static.pythonscripts.s3 import S3
 from app.static.pythonscripts.entities_multi import EntitiesMulti
 
 config = Configurations().get_config()
@@ -18,8 +18,8 @@ def pub_areas():
     df = EntitiesMulti().get_pubs_reviews()
     pubs_reviews_json = Dataframes().df_to_dict(df)
 
-    # df_areas = Csv().get_areas()
-    df_areas = S3().get_s3_areas()
+    df_areas = Csv().get_areas()
+    # df_areas = S3().get_s3_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
 
     df_all = EntitiesMulti().get_pubs_reviews()

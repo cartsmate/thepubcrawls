@@ -11,7 +11,7 @@ from werkzeug.utils import secure_filename
 from app.static.pythonscripts.dataframes import Dataframes
 from app.static.pythonscripts.entities_single import EntitiesSingle
 from app.static.pythonscripts.s3 import S3
-# from app.static.pythonscripts.csv import Csv
+from app.static.pythonscripts.csv import Csv
 
 
 UPLOAD_FOLDER = 'static/uploads/'
@@ -70,7 +70,8 @@ def photo_upload(pub_identity):
 
             new_photo = Photo(pub_identity=pub_identity, photo_identity=new_name, photo_deletion=False)
             df_new_photo = pd.DataFrame([new_photo.__dict__])
-            df_photos = S3().get_s3_photos()
+            df_photos = Csv().get_photos()
+            # df_photos = S3().get_s3_photos()
             df_photo_appended = Dataframes().append_df(df_photos, df_new_photo)
             Dataframes().to_csv(df_photo_appended, 'photo')
             s3_resp = S3().s3_write(df_photo_appended, config['photo']['aws_key'])

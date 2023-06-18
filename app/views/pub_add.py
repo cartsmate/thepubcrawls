@@ -8,8 +8,8 @@ from app.models.area.area import Area
 from app.models.photo.photo import Photo
 from app.models.station.station import Station
 from config import Configurations
-# from app.static.pythonscripts.csv import Csv
-from app.static.pythonscripts.s3 import S3
+from app.static.pythonscripts.csv import Csv
+# from app.static.pythonscripts.s3 import S3
 from app.static.pythonscripts.dataframes import Dataframes
 from app.static.pythonscripts.entities_multi import EntitiesMulti
 from app.static.pythonscripts.controls_list import ControlsList
@@ -41,10 +41,11 @@ def pub_add(lat, lng):
         # print('lat and lng RECEIVED')
         review_lat = lat
         review_long = lng
-    # df_stations = Csv().get_stations()
-    df_stations = S3().get_s3_stations()
+    df_stations = Csv().get_stations()
+    # df_stations = S3().get_s3_stations()
     stations_json = Dataframes().df_to_dict(df_stations)
-    df_areas = S3().get_s3_areas()
+    # df_areas = S3().get_s3_areas()
+    df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
 
     new_id = str(Uuid().generate_uuid())

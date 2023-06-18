@@ -3,8 +3,8 @@ from flask import render_template, redirect, url_for, g, session
 from app import app
 from config import Configurations
 from app.static.pythonscripts.entities_multi import EntitiesMulti
-# from app.static.pythonscripts.csv import Csv
-from app.static.pythonscripts.s3 import S3
+from app.static.pythonscripts.csv import Csv
+# from app.static.pythonscripts.s3 import S3
 from app.static.pythonscripts.dataframes import Dataframes
 
 config = Configurations().get_config()
@@ -20,16 +20,16 @@ def pub_map():
     all_json = Dataframes().df_to_dict(df_all)
 
 
-    # df_stations = Csv().get_stations()
-    df_stations = S3().get_s3_stations()
+    df_stations = Csv().get_stations()
+    # df_stations = S3().get_s3_stations()
     df_all_station = df_all[['pub_name', 'station_identity']]
     df_all_station_group = df_all_station.groupby(['station_identity'], as_index=False).count()
     df_all_station_count = pd.merge(df_all_station_group, df_stations, how='left', on='station_identity')\
         .rename(columns={'pub_name': 'count'}).astype(str)
     station_all_json = Dataframes().df_to_dict(df_all_station_count)
 
-    # df_areas = Csv().get_areas()
-    df_areas = S3().get_s3_areas()
+    df_areas = Csv().get_areas()
+    # df_areas = S3().get_s3_areas()
     df_all_area = df_all[['pub_name', 'area_identity']]
     df_all_area_group = df_all_area.groupby(['area_identity'], as_index=False).count()
     df_all_area_count = pd.merge(df_all_area_group, df_areas, how='left', on='area_identity') \
