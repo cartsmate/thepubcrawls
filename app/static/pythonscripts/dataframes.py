@@ -1,7 +1,7 @@
 import os
 import pandas as pd
-# from app.static.pythonscripts.csv import Csv
-from app.static.pythonscripts.s3 import S3
+from app.static.pythonscripts.csv import Csv
+# from app.static.pythonscripts.s3 import S3
 from config import Configurations
 
 config = Configurations().get_config()
@@ -15,15 +15,15 @@ class Dataframes:
 
     def add_area(self, df):
         print('Dataframe.add_area')
-        # df_areas = Csv().get_areas()
-        df_areas = S3().get_s3_areas()
+        df_areas = Csv().get_areas()
+        # df_areas = S3().get_s3_areas()
         df_merged = pd.merge(df, df_areas, on='area_identity', how='left')
         return df_merged
 
     def add_station(self, df):
         print('Dataframe.add_station')
-        # df_stations = Csv().get_stations()
-        df_stations = S3().get_s3_stations()
+        df_stations = Csv().get_stations()
+        # df_stations = S3().get_s3_stations()
         df_merged = pd.merge(df, df_stations, on='station_identity', how='left')
         return df_merged
 

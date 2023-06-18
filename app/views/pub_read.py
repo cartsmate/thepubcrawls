@@ -7,7 +7,7 @@ from config import Configurations
 from app.static.pythonscripts.form_input import FormInput
 from app.static.pythonscripts.form_new import FormNew
 from app.static.pythonscripts.dataframes import Dataframes
-# from app.static.pythonscripts.csv import Csv
+from app.static.pythonscripts.csv import Csv
 from app.static.pythonscripts.s3 import S3
 from app.static.pythonscripts.entities_multi import EntitiesMulti
 from app.static.pythonscripts.entities_single import EntitiesSingle
@@ -60,9 +60,10 @@ def pub_read(pub_id):
     # df_all['colour'] = '#0275d8'
     # df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
     # all_json = Dataframes().df_to_dict(df_all)
-    # df_stations = Csv().get_stations()
-    df_stations = S3().get_s3_stations()
-    df_areas = S3().get_s3_areas()
+    df_stations = Csv().get_stations()
+    # df_stations = S3().get_s3_stations()
+    df_areas = Csv().get_areas()
+    # df_areas = S3().get_s3_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
     stations_json = Dataframes().df_to_dict(df_stations)
     df_all_trunc = df_pubs_reviews[['pub_name', 'station_identity']]
@@ -111,7 +112,8 @@ def pub_read(pub_id):
 
                 df_new_pub = FormNew().get_pub(pub_id)
                 print('got new pub')
-                df_pubs = S3().get_s3_pubs()
+                # df_pubs = S3().get_s3_pubs()
+                df_pubs = Csv().get_pubs()
                 df_pub_appended = Dataframes().append_df(df_pubs, df_new_pub)
                 # print(df_pub_appended)
                 error=""
@@ -125,7 +127,8 @@ def pub_read(pub_id):
                     flash(error)
 
                 df_new_review = FormNew().get_review(pub_id)
-                df_reviews = S3().get_s3_reviews()
+                # df_reviews = S3().get_s3_reviews()
+                df_reviews = Csv().get_reviews()
                 df_review_appended = Dataframes().append_df(df_reviews, df_new_review)
                 if df_review_appended.shape[1] == len(Review2().__dict__.items()):
                     Dataframes().to_csv(df_review_appended, 'review')
@@ -176,12 +179,14 @@ def pub_read(pub_id):
                 #                        dupe_id=dupe_id)
         else:
             print('edit pub')
-            df_pubs = S3().get_s3_pubs()
+            # df_pubs = S3().get_s3_pubs()
+            df_pubs = Csv().get_pubs()
             df_pubs_updated = FormInput().get_pub(df_pubs, pub_id)
             Dataframes().to_csv(df_pubs_updated, 'pub')
             s3_resp = S3().s3_write(df_pubs_updated, config['pub']['aws_key'])
 
-            df_reviews = S3().get_s3_reviews()
+            # df_reviews = S3().get_s3_reviews()
+            df_reviews = Csv().get_reviews()
             df_review_updated = FormInput().get_review(df_reviews, pub_id)
             Dataframes().to_csv(df_review_updated, 'review')
             s3_resp = S3().s3_write(df_review_updated, config['review']['aws_key'])

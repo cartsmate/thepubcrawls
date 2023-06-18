@@ -3,8 +3,8 @@ from flask import render_template, redirect, url_for, g, session
 from app import app
 from config import Configurations
 from app.static.pythonscripts.dataframes import Dataframes
-# from app.static.pythonscripts.csv import Csv
-from app.static.pythonscripts.s3 import S3
+from app.static.pythonscripts.csv import Csv
+# from app.static.pythonscripts.s3 import S3
 from app.static.pythonscripts.entities_multi import EntitiesMulti
 from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
@@ -53,9 +53,10 @@ def pub_list(list_type, id_type):
     review_lat = sum(_lat) / len(_lat)
     review_long = sum(_long) / len(_long)
 
-    # df_stations = Csv().get_stations()
-    df_stations = S3().get_s3_stations()
-    df_areas = S3().get_s3_areas()
+    df_stations = Csv().get_stations()
+    # df_stations = S3().get_s3_stations()
+    df_areas = Csv().get_areas()
+    # df_areas = S3().get_s3_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
     stations_json = Dataframes().df_to_dict(df_stations)
 

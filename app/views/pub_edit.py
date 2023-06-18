@@ -6,8 +6,8 @@ from config import Configurations
 from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
 from app.static.pythonscripts.dataframes import Dataframes
-# from app.static.pythonscripts.csv import Csv
-from app.static.pythonscripts.s3 import S3
+from app.static.pythonscripts.csv import Csv
+# from app.static.pythonscripts.s3 import S3
 from app.static.pythonscripts.entities_multi import EntitiesMulti
 from app.static.pythonscripts.entities_single import EntitiesSingle
 from app.static.pythonscripts.controls_list import ControlsList
@@ -31,8 +31,8 @@ def pub_edit(pub_id):
     df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
     all_json = Dataframes().df_to_dict(df_all)
 
-    # df_stations = Csv().get_stations()
-    df_stations = S3().get_s3_stations()
+    df_stations = Csv().get_stations()
+    # df_stations = S3().get_s3_stations()
     df_all_trunc = df_all[['pub_name', 'station_identity']]
     df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()
     df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity') \
@@ -56,7 +56,8 @@ def pub_edit(pub_id):
     print(df_pub_photos)
     pub_review_json = Dataframes().df_to_dict(df_pub_photos)
 
-    df_areas = S3().get_s3_areas()
+    df_areas = Csv().get_areas()
+    # df_areas = S3().get_s3_areas()
     stations_json = Dataframes().df_to_dict(df_stations)
     areas_json = Dataframes().df_to_dict(df_areas)
 
