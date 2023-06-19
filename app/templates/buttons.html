@@ -26,23 +26,27 @@
             <a href="{{url_for('pub_list', list_type='area_name', id_type=pub_review[0]['area_name'])}}"><img src="/static/icons/footer/location.png" class="button_size"></a>
             <div class="button_caption">PUB<br>AREA</div>
         </div>
-            <div style="text-align: center;">
+        <div style="text-align: center;">
+            <a href="{{url_for('pub_list', list_type='station_name', id_type=pub_review[0]['station_name'])}}"><img src="/static/icons/footer/underground.png" class="button_size"></a>
+            <div class="button_caption">STATION<br>AREA</div>
+        </div>
+        <div style="text-align: center;">
             <a href="{{url_for('pub_delete', pub_id=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/delete.png" class="button_size"></a>
             <div class="button_caption">DELETE<br>PUB</div>
         </div>
     {% endif %}
+    <!--
     {% if (form_type  == 'add' or form_type == 'home' or form_type == 'list' or form_type == 'read') %}
         <div style="text-align: center;">
             <a href="{{url_for('pub_areas')}}"><img src="/static/icons/footer/areas1.png" class="button_size"></a>
             <div class="button_caption">ALL<br>AREAS</div>
         </div>
-    <!--
         <div style="text-align: center;">
             <a href="{{url_for('admin')}}"><img src="/static/icons/footer/admin.png" class="button_size"></a>
             <div class="button_caption">RUN<br>ADMIN</div>
         </div>
-    -->
     {% endif %}
+    -->
     {% if (form_type != 'home') %}
         <div style="text-align: center;">
             <a href="{{url_for('pub_map')}}"><img src="/static/icons/footer/global.png" class="button_size"></a>

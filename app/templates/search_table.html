@@ -11,14 +11,19 @@
         <tr>
             {% for k in headers %}
                 {% if (k != 'rank') %}
-                    <td><a href="/pub/{{pubs_reviews[i]['pub_identity']}}">{{pubs_reviews[i][k]}}</a></td>
+                    {% if k == 'area_name' %}
+                        <td><a href="/pub/list/area_name/{{pubs_reviews[i][k]}}">{{pubs_reviews[i][k]}}</a></td>
+                    {% elif k == 'station_name' %}
+                        <td><a href="/pub/list/station_name/{{pubs_reviews[i][k]}}">{{pubs_reviews[i][k]}}</a></td>
+                    {% else %}
+                        <td><a href="/pub/{{pubs_reviews[i]['pub_identity']}}">{{pubs_reviews[i][k]}}</a></td>
+                    {% endif %}
                 {% else %}
                     <td><div class="star_container">
                         <script>console.log({{pubs_reviews[i][k].rank}})</script>
                         {% if (pubs_reviews[i][k] != 0) %}
                             <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:1.0;">
                             <div class="star_centre" id="rounder">{{pubs_reviews[i][k]}}</div>
-
                         {% else %}
                             <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:0.25;">
                             <div class="star_centre"></div>
