@@ -1,20 +1,20 @@
 brunch,dart,detail,entertain,favourite,garden,history,late,music,pool,pub_identity,quiz,review_deletion,review_identity,roast,sport
 False,False,,False,False,False,False,False,False,False,00ffd490-b3b8-424d-b5d2-5122bbebdba2,False,False,1869bc0d-e2a8-40c9-bcba-073bfaaa4ba0,False,False
-False,False,,False,False,False,False,False,False,False,10f611a2-512f-4b07-aa57-8de878ccbb3b,False,False,e1c5fd3e-8fb3-40ff-a7cb-1bf2d20e8611,False,False
-True,False,,False,False,False,False,False,False,False,efcf3870-da4d-4a44-9c1b-3d5be38edeaa,False,False,f2df2681-9b63-46a7-83f2-1fb8d6e3e0a1,False,False
-False,False,,False,False,True,False,False,False,False,eabe0a83-2841-4c72-b86a-4fb5504e2161,False,False,50fa15ac-5cd3-41ab-a183-54e52897955a,False,True
+False,False,Scenic bar views,False,False,False,False,False,False,False,10f611a2-512f-4b07-aa57-8de878ccbb3b,False,False,e1c5fd3e-8fb3-40ff-a7cb-1bf2d20e8611,False,False
+False,False,Classic pub,False,False,False,False,False,False,False,efcf3870-da4d-4a44-9c1b-3d5be38edeaa,False,False,f2df2681-9b63-46a7-83f2-1fb8d6e3e0a1,False,False
+False,False,Beautiful facade,False,False,False,True,False,False,False,eabe0a83-2841-4c72-b86a-4fb5504e2161,False,False,50fa15ac-5cd3-41ab-a183-54e52897955a,True,False
 True,False,,False,False,False,False,False,False,False,75d7f798-4740-483c-9140-88318b66078e,False,False,e55d062a-f75b-4d7e-95bb-2f7199650949,False,False
-True,False,,False,False,False,False,False,False,False,e8cbe945-648f-4a82-8e4b-8a6eb043af7f,False,False,aa272853-1d21-42b2-a927-507904cbe0f3,False,False
+False,False,American restaurant,False,False,False,False,False,False,False,e8cbe945-648f-4a82-8e4b-8a6eb043af7f,False,False,aa272853-1d21-42b2-a927-507904cbe0f3,False,False
 False,False,,False,False,False,False,True,True,False,5c5aa314-0ef0-4a92-9aa2-45e89bcd7f0c,False,False,9aa2f873-b061-4b53-9c8d-f2aedc25dfe7,False,False
 False,False,,False,False,True,False,False,False,False,0ca14449-0d5b-4e03-9247-99fed9cebbc3,False,False,b2fc5b4f-5be7-4366-a632-09e166da3bfa,False,False
-True,False,,False,False,False,False,False,False,False,49bf46f8-088d-44aa-afee-c96875a311a7,False,False,a1f75b71-aeba-4a08-8a3c-ae5b3ae7098a,False,False
+False,False,Traditional pub,False,False,False,False,False,False,False,49bf46f8-088d-44aa-afee-c96875a311a7,False,False,a1f75b71-aeba-4a08-8a3c-ae5b3ae7098a,False,False
 False,False,,False,False,False,False,False,False,False,57fe4fa1-3339-47f7-be7c-8de1e4b539d6,False,False,8c8692f4-a7f3-4622-98a6-dec317bcca02,False,False
-True,False,,False,False,False,False,False,False,False,9b7c0aba-1eb5-4006-887b-d7903b0a566d,False,False,9dbbb2b3-381a-43ad-892a-0ecdbc16bb35,False,True
+False,False,Unique facade ,False,False,False,True,False,False,False,9b7c0aba-1eb5-4006-887b-d7903b0a566d,False,False,9dbbb2b3-381a-43ad-892a-0ecdbc16bb35,True,True
 False,False,,False,False,False,False,False,False,False,79bfdc53-24f4-4f44-8b80-3a0a553b0898,False,False,bc67b93f-1caf-4db7-a2b7-d09b9d1dccc2,False,False
 False,False,,False,False,False,False,False,False,False,fc01e35d-870c-4e42-9465-9087f316a824,False,False,682c5f2f-0b06-4235-89ab-e029de358c5a,False,False
 False,False,,False,False,False,False,False,False,False,a9001d88-fd2e-4240-a95a-c98322365eb0,False,False,9e062add-a4c8-4aa2-afd0-9091ee1d6bdd,False,False
 False,False,Quirky inside,False,False,False,True,False,False,False,9f2df78c-a1c4-4070-88da-8ba2d8bbe87d,False,False,a0109ed7-ce3e-4aa9-855c-f8bbe27360a2,False,False
-False,False,,False,False,False,False,False,False,False,8905f38f-5abe-4ff7-9b22-72ab50645c21,False,False,f3d4192b-6ed2-4e2c-9db4-f04faf9e46ea,False,False
+False,False,Belgian bar with beer tasting evenings,True,False,False,False,False,False,False,8905f38f-5abe-4ff7-9b22-72ab50645c21,False,False,f3d4192b-6ed2-4e2c-9db4-f04faf9e46ea,False,False
 False,False,Classic pub,False,False,False,False,False,False,False,85734c01-6261-4784-b024-637b12b8d4f4,False,False,21afb3d4-1d3b-4bd3-90ed-21ac95bf2f81,False,False
 False,False,,False,False,False,False,False,False,False,e96d9cfd-fb5e-4f5f-b722-bf6cd1ad3aad,False,False,9d0f7c5c-9d16-423e-9888-6cc78381e898,False,False
 False,False,,False,False,False,False,False,False,False,7f3d8913-5a6d-40a4-a3e4-cd6eb0b0b8bf,False,False,f8d06143-d50e-4c2d-b231-b6c0233658ea,False,False
@@ -77,13 +77,12 @@ True,False,,False,False,True,False,False,False,False,42d5431d-d6f1-435a-8d51-6a4
 True,False,,False,False,True,False,False,False,False,350d77be-b4c5-4984-ab2f-6d2de41415e0,True,False,b8ecd900-58b2-4990-917e-001ee286476a,True,True
 True,False,,False,False,True,False,True,True,False,3c88a054-9473-4368-b392-af38c73e9797,True,False,8fb07e3f-8030-4909-93df-6b36d75468e0,False,True
 True,False,,False,False,True,False,False,False,False,55f393ed-9aa5-4bb1-96b1-1b940022e694,False,False,eb3a20ee-e620-47a0-896a-ee0f64c2c9b6,False,True
-True,False,,False,False,False,False,False,False,False,5e058b73-66f3-4f57-9baf-87ec2eda01da,True,False,bbb0d6f5-eb7e-4a55-9e97-36936216871b,True,True
 True,False,,False,False,True,False,False,False,False,4b0f5199-a980-4d1b-b0df-15fd21df824c,False,False,08ae6c25-4957-41cd-b77e-31cacd2dd329,False,False
 True,False,,False,False,True,False,False,False,False,b27cf358-fcae-422f-8e0c-012bdd4e3d2c,False,False,1c779e60-92f5-4cf9-aad4-51e72db92c85,True,False
 True,False,,False,False,True,False,False,False,False,b6eaa368-3cd0-4d61-b58a-94687b0161e6,False,False,7588973b-113f-48bd-810b-e08ccf816d22,False,False
 False,False,,False,False,False,False,True,True,False,151d3217-4404-46d9-a61d-15524b6fe9fd,False,False,1a147774-639b-458b-8aaa-093c3a22b250,False,False
 True,False,,False,False,False,False,False,False,False,e1b8a550-763a-48be-bffc-1572f55cb618,False,False,acea8420-207e-42ef-885f-835978cfedc9,False,False
-True,False,,False,False,False,False,False,False,False,9a11791d-2841-491b-b52e-e465f25d8a1e,False,False,b93b8538-19b9-4336-90ab-6cf8011ddd2f,False,False
+False,False,Cocktail pub. Closed Sat/Sun,False,False,False,False,False,False,False,9a11791d-2841-491b-b52e-e465f25d8a1e,False,False,b93b8538-19b9-4336-90ab-6cf8011ddd2f,False,False
 True,False,Weekday only,False,False,False,True,False,False,False,a87d1063-5e93-4f22-967e-9c799607767b,False,False,c1539dc6-b4b9-49e7-bf39-29628745a8f9,False,False
 True,False,Gothic decor,False,False,False,False,False,False,False,e05e4f12-07df-48e9-a02b-7bff82ad964d,False,False,8055ee15-be36-4da1-bb53-24ee86484f35,False,False
 True,False,,False,False,False,True,True,True,False,cb8b3078-6cff-48dc-a629-5b562730874c,False,False,a67e2acb-c4b2-4f91-a945-776035d8f5cb,False,False
@@ -97,36 +96,31 @@ True,False,,False,False,False,False,False,False,False,8d85eb7d-2d41-4752-bbd1-85
 False,True,0,False,False,True,False,False,False,True,f58f32e4-8be0-40d2-bfd8-6d42721b0f3c,False,False,9ed5bb3f-1011-4482-87a8-b2d2b87d1ea4,True,True
 False,False,Edge of the forest,False,False,True,False,False,True,False,2f9dbf26-90b6-4038-ace2-2157654824b3,False,False,8d08e3e3-7098-4141-8d1f-507d2d045237,True,False
 True,False,,False,False,True,False,False,False,False,8ed775df-3b78-4f88-850f-ba9e25d82ee8,False,False,03c57b4a-9948-4c4e-8e51-78ab7b747149,True,False
-True,False,,False,False,False,False,True,False,False,9495bd1e-b7aa-4f8e-bf1a-c48eb02c0ec6,False,False,d2ccb2ab-c170-4808-87ef-9dd53618d5e7,False,True
 True,False,,False,False,True,False,False,False,False,3caa5c02-ee38-4a1d-9c2b-39bfcae80981,False,False,83368ca3-2eda-4b0f-9e99-6aac7cd643a1,False,False
 True,False,,False,False,True,False,False,False,True,2855e2bc-9671-4348-9a03-206ed3626791,True,False,5b5e068a-2053-45b6-9bd0-71e90a9b5342,False,False
-True,False,,False,False,True,False,False,False,False,d8b030ff-fb74-4f72-9cf4-8a3ec8434007,False,False,0a8bff29-a3ae-403b-aae1-059f68d21c37,True,False
+False,False,Classic pub,False,False,True,False,False,False,False,d8b030ff-fb74-4f72-9cf4-8a3ec8434007,False,False,0a8bff29-a3ae-403b-aae1-059f68d21c37,True,False
 False,False,Tues 8.30pm quiz and some other events,True,False,True,False,False,False,False,4ab3f087-d76f-42f4-89bb-014e0ff75021,True,False,83c959d2-9888-49cc-875c-6710d00efcb2,False,True
-True,False,,False,False,False,False,True,False,False,66bd87de-c861-4537-b1df-2c6850d70cf6,False,False,c9feacfd-597b-47bc-94a7-809bdd0298a8,False,False
+False,False,Traditional pub,False,False,True,False,True,False,False,66bd87de-c861-4537-b1df-2c6850d70cf6,False,False,c9feacfd-597b-47bc-94a7-809bdd0298a8,True,False
 True,False,,False,False,True,False,True,False,False,b9ba11c6-1c1a-4448-890c-e1dc43246aa3,False,False,1f753492-f99f-4a50-a6eb-f3d5b898e1eb,True,True
 False,True,,False,False,True,False,True,False,False,66847832-c585-42bf-9d4c-eca8ca58951d,True,False,db0f8e3a-ef24-4400-864c-4c1b5eb33f15,False,True
 False,False,Mon 7.30pm quiz. Tue/Sun some comedy/blues. Weekend drawing classes. Whimsical decor. ,True,False,False,False,False,True,False,b57acb97-c412-4df8-b4e9-f7774da0f995,True,False,db2b2413-7806-46e8-b6b0-fa0bebaf4d29,False,False
 True,False,Duckpin alley,True,False,False,False,True,False,False,2dc38644-2fce-446f-a813-a2ba3e18eedf,False,False,3575ffb7-c6ba-49a0-b872-805696e1a71a,False,False
-True,False,,False,False,True,False,False,False,False,0a2f0994-ef98-4dce-86d9-86bb7318e669,False,False,e573fa2a-f7dd-433b-b190-86b786a3a4c3,False,False
 True,False,,False,False,True,False,False,False,False,70cac35c-23d5-4e67-a176-f3e020e13c64,False,False,dea88068-089e-4891-9779-a13d8cc546c2,False,False
 True,False,,False,False,True,False,False,False,False,898d94cc-8741-4e7c-b6a7-332027506f14,False,False,ef3840d1-b800-4fcd-ade9-b219b2705f44,True,True
 False,False,Sun 7.30pm quiz. Various events,True,False,False,False,True,True,False,2dbf12b8-120a-46fd-ab1a-d1bb0a6ea778,True,False,94fe84d1-af07-476f-9299-96f08d62128c,False,False
 True,False,,False,False,True,False,False,False,False,e3de24bc-e69f-4784-8d48-4c838416e0d4,True,False,3dd9b336-66bd-4e1e-99df-0669868bfae5,True,True
-True,False,,False,False,True,False,False,False,False,8ec79343-13d3-46e6-90dc-3d4504f99a4a,False,False,e53a81e3-1946-4abc-a139-350325a3f181,False,False
 True,False,,False,False,True,False,True,False,False,bd1d917c-7a1c-49d0-bd99-c286cf7f9904,True,False,e75f650b-d221-4e9c-86c9-c673fd75a83d,False,True
 True,False,,False,False,True,False,True,False,True,511adef6-e61b-41cd-a6f8-8377830d98ed,False,False,bc90cee8-e9e8-4c07-bcc1-a5394a6a4eac,False,True
 True,False,,False,False,True,False,True,True,False,a92f9512-6b77-49ad-b12b-87690ae6646f,True,False,a0a98e5d-e1ef-438d-b032-539883ac8b14,False,False
-True,False,,False,False,True,False,False,False,False,f4007b37-d224-4fc3-a41f-44727dcd8e73,True,False,4ca306a7-8e32-49fe-a2dc-3e48039c999d,True,False
-True,False,,False,False,True,False,False,False,False,528783f6-5ba8-4207-9de5-ba7bcfa50cae,False,False,16b6b4f8-dbbb-4ef5-ab66-8916cce06565,False,False
-False,False,,False,False,False,False,False,False,False,1cb373eb-0960-4612-8d53-921786f9db0f,False,False,9d990e66-15b4-4c77-8dae-19d73c8cec57,False,False
+False,False,Riverside,False,False,False,False,False,False,False,528783f6-5ba8-4207-9de5-ba7bcfa50cae,False,False,16b6b4f8-dbbb-4ef5-ab66-8916cce06565,False,False
 True,False,,False,False,True,False,False,True,False,35b16663-5fcd-43fc-9f22-f4e1ae6e3304,True,False,caac8592-e55f-4be8-a7f3-40b0a4b0bf40,False,True
 True,False,,False,False,True,False,False,False,False,b8e65aa2-55ce-4734-8e7e-c681fac95e69,False,False,33e3bc4a-751f-4f0e-8131-a0987b7112fa,False,False
-True,False,,False,True,False,True,True,True,False,86de190a-4e39-4e2c-add6-2ffa05d0f991,False,False,269958f3-f0ce-4d2f-814a-11fdbe1a0c2f,False,False
-True,False,,False,True,False,False,False,False,False,46179aca-6f27-4242-9f71-f1c2b420f94c,False,False,1bca9fa0-a91e-4105-b719-ec3490f949bd,False,False
+False,False,Mon 7.30pm music,False,False,False,False,True,True,False,86de190a-4e39-4e2c-add6-2ffa05d0f991,False,False,269958f3-f0ce-4d2f-814a-11fdbe1a0c2f,False,False
+True,False,Impressive setting for a bar,False,False,False,False,False,False,False,46179aca-6f27-4242-9f71-f1c2b420f94c,False,False,1bca9fa0-a91e-4105-b719-ec3490f949bd,False,False
 False,False,Weekday only with outdoor seating,False,False,False,False,False,False,False,57fbcd08-b7c0-4279-b268-7600aa09cc98,False,False,6de42a2a-2391-44e3-be21-5cbe66100b41,False,True
 True,False,City bar,False,False,False,False,True,False,False,9430e071-be89-43fc-8198-1078c99be6a0,False,False,84453038-693b-427b-b753-3b3e4c53d932,False,False
 False,False,"Tue: beer pong, Sat/Sun/Mon: Closed, Outside seating",True,False,False,False,True,False,False,96ffc2fb-55cd-4c1b-a52c-707767216645,False,False,452b3c96-32f9-4706-a524-96a9e6dc75ba,False,False
-True,False,,False,False,True,False,False,False,False,16f76f29-ae95-49a7-8591-27ab87dd1bf4,False,False,c7b4e608-cfc0-47b9-b6d0-cd1a50623648,False,True
+False,False,Cricket themed sports bar,False,False,False,False,False,False,False,16f76f29-ae95-49a7-8591-27ab87dd1bf4,False,False,c7b4e608-cfc0-47b9-b6d0-cd1a50623648,False,True
 False,False,,False,False,True,False,False,True,False,859eb4d9-ba6e-43d6-b14b-275cf2a0b5ad,False,False,724b662a-5f5a-4c6e-aa48-0eb64fefea2c,False,False
 True,False,,False,False,True,False,False,False,False,955ae281-5169-495d-ac79-8900c326b1a0,False,False,aeb2c371-3698-465c-abb9-4b566525495a,False,False
 True,False,,False,False,True,False,True,False,False,21ba3669-2407-4fa3-928f-3ab6943c4917,False,False,df84ec4a-961d-49ce-91a1-f8e4529ca608,False,True
@@ -135,7 +129,6 @@ True,False,,False,False,True,False,False,False,False,662486bd-2954-486f-8cb3-d23
 True,False,,False,False,True,False,False,False,False,06f154c0-d04f-45a7-9c9b-2832b779a411,False,False,12b00d6d-fd39-4acd-a39b-15b60f7f4a2e,False,False
 True,False,,False,False,False,False,True,True,False,6b75d781-b8c3-490d-b586-116dd69cad7c,False,False,27d74cc0-f093-4ec6-ab0b-ea8154496718,False,False
 True,False,,False,False,True,False,False,True,False,ed530a98-058f-4b2d-afb1-2adc4916e305,False,False,448560c3-aad3-4da3-879d-28bbdbd60398,True,False
-True,False,,False,False,False,False,True,True,False,0d7f42b0-6541-437c-a096-8d29675c3e0a,False,False,12bf96c7-2a2f-45c2-87e6-91b15817e0c9,False,False
 False,False,,False,False,False,False,False,False,False,80aeb850-5686-44ac-8e1b-424ef9cea747,False,False,9bf50acf-234e-4d47-a3a1-c52ccc25b2a6,False,True
 True,False,,False,False,False,False,False,True,False,a81d00e5-7e30-4a8d-a012-acadc43c01b0,False,False,900d1056-2fd4-4b48-8c3e-e9432e0c159c,False,False
 False,False,,False,False,True,False,False,False,False,b38678b1-85a6-418e-8741-4957ee3f7f5c,False,False,ffed3e5b-7f2e-428f-8633-951cfee6acc0,False,False
@@ -143,7 +136,6 @@ False,False,Weatherspoons,False,False,True,False,True,False,False,45852adf-75c3-
 False,False,,False,False,False,False,False,False,False,3ce5eac8-17c9-4a33-aba1-c10f695660ef,False,False,33ffbda2-5092-4c4a-8af5-85e4980390e5,False,False
 True,False,,False,False,True,False,False,True,False,62d2a587-2e8c-41e0-8e7d-90737363d45e,True,False,7bc34c4b-64a4-4753-92db-bdad04ff7297,False,True
 True,False,,False,False,True,False,False,False,False,2cd9035f-af04-41dd-b63c-f47b75c90a8f,True,False,1cb5911f-0c62-4ef6-bdf4-3d77671b8044,False,False
-False,False,,False,False,False,False,False,False,False,18bd5071-1fc1-48b1-bdc9-d91f88d36f3a,False,False,08f270ad-e9b3-4bc3-afa2-6fb9d09cbdef,False,False
 False,False,,False,False,False,False,False,False,False,3ebbdbe5-032f-4cc3-ad27-424c04fbf30e,False,False,25782f5d-d153-47f0-abab-629d736b5635,False,False
 True,False,Table football,False,False,True,False,False,False,True,7eb2bc28-8b0c-4409-be4a-13cd97394d9b,False,False,3a285501-820c-468c-bba1-bf8f6f6e4943,False,True
 False,False,,False,False,False,False,False,False,False,85f36fdf-63f5-4b98-ad76-21b2ba5ef8dd,False,False,a09c62bf-53a7-4728-b7b4-9ce9dc33b857,False,False
@@ -192,9 +184,9 @@ False,False,,False,False,False,False,False,False,False,78295944-cac8-4b2c-b9cb-0
 False,False,,False,False,False,False,False,False,False,4db0af7c-e9ca-4475-9d0f-0d7ca82d31e8,False,False,30189288-b310-423e-b708-4393ae28ac1a,False,False
 False,False,,False,False,False,False,False,False,False,ff1be3fe-9942-441e-a9e3-f329d0b65eb2,False,False,618b880a-bc45-4955-b32b-068dd5d6aad3,False,False
 False,False,Tuesday 7.30pm quiz,False,False,False,False,True,True,False,0252299e-ca2a-4dad-941f-c48bd96d99b6,True,False,0ba448d4-10e4-4fc9-a6d2-a43ce44645f6,True,False
-False,False,,False,False,False,False,False,False,False,c9cb2f10-838b-400b-aaa9-a2a2a4defe64,False,False,15dc0bb3-16a3-4a7b-8d52-6b12c85a087c,False,False
-False,False,,False,False,False,False,False,False,False,0b938518-efd3-47e3-bdc8-5c276cf701ef,False,False,a3036362-0fad-4f9d-8553-57297d6b6d43,False,False
-False,False,,False,False,False,False,False,False,False,b22a8a03-1b58-4aba-b2c8-1098315cfeda,False,False,1714fc5c-d648-4564-9de4-2cda3a5150f5,False,False
+False,False,Wed 8pm quiz. Jazz Sundays. Outdoor seating,False,False,False,False,True,True,False,c9cb2f10-838b-400b-aaa9-a2a2a4defe64,True,False,15dc0bb3-16a3-4a7b-8d52-6b12c85a087c,False,False
+False,True,Outdoor seating and poker nights,True,False,False,False,False,True,True,0b938518-efd3-47e3-bdc8-5c276cf701ef,False,False,a3036362-0fad-4f9d-8553-57297d6b6d43,True,True
+False,False,Outdoor seating,False,False,False,False,False,False,False,b22a8a03-1b58-4aba-b2c8-1098315cfeda,False,False,1714fc5c-d648-4564-9de4-2cda3a5150f5,True,True
 False,False,,False,False,False,False,False,False,False,9b2e6647-660e-43d8-9e27-a5f06b0ddb54,False,False,172d2ed4-b021-4550-88d3-672e496224c9,False,False
 False,False,"Tuesday 7.30pm quiz, Outdoor seating",False,False,False,False,True,False,False,12a39cf2-449c-4e3e-b7ca-40622cf386aa,True,False,d4fe1abb-5d60-4d0e-8f93-aaf3f5bfdd2f,True,False
 False,False,,False,False,False,False,False,False,False,740a2044-a117-4a58-96a4-6861ab0fc8aa,False,False,4a16f596-0138-4f03-9bd6-ca1694a072cf,False,False
@@ -217,10 +209,10 @@ False,False,,False,False,False,False,False,False,False,013c54a0-e7d1-4da6-bce1-9
 False,False,,False,False,False,False,False,False,False,04738700-75a2-4d5c-864d-de41c81995db,False,False,33dc90f9-4fca-4318-b0f2-9b503e492ee5,False,False
 False,False,,False,False,False,False,False,False,False,d0f180bb-334a-4c66-8027-ffa9879ff465,False,False,08a56d0c-bc59-41dd-bf4e-c8e3bf1befde,False,False
 False,False,Comedy,True,False,True,False,False,False,False,f62b6c54-6847-47f8-8112-f6269578125f,False,False,04df2856-11f0-42da-9217-4af63c305f23,False,False
-False,False,,False,False,False,False,False,False,False,76282d16-e2c6-40c8-96d1-92b81da07619,False,False,a47ebe8d-5f1c-4efb-a059-23c5b2d674ca,False,False
+False,True,Thursday comedy. Sun jazz,True,False,False,False,False,True,True,76282d16-e2c6-40c8-96d1-92b81da07619,False,False,a47ebe8d-5f1c-4efb-a059-23c5b2d674ca,True,False
 False,False,,False,False,False,False,False,False,False,139bde09-27ac-4b94-a94e-9a030fffa1a8,False,False,292aa275-85d6-480f-8f12-ec2c3ffa4428,False,False
 True,False,Afro-Caribbean,False,False,False,False,True,False,False,4a8884c1-3f3e-4ad8-ad30-15d90ed08b3d,False,False,e94c9fec-d63e-4697-9880-299fb9f334ea,False,False
-False,False,,False,False,False,False,False,False,False,c2d548eb-fa0d-4685-ad65-298a326e7095,False,False,a778969e-ee78-45da-9094-20db2f7a74f4,False,False
+True,False,Rooftop bar with DJs,False,False,True,False,True,False,False,c2d548eb-fa0d-4685-ad65-298a326e7095,False,False,a778969e-ee78-45da-9094-20db2f7a74f4,False,False
 False,False,Bar with ball pits,True,False,False,False,True,False,False,6ce3e404-091d-4e74-82cc-4649ed2c567e,False,False,6c12cea5-ad61-4a78-8c99-c92ab958af87,False,False
 False,False,Themed cocktail event,True,False,False,False,False,False,False,88b8f8e1-ab4c-4659-8c59-79fb38e29086,False,False,e9781463-d6ce-47a1-b5a2-fff71bcc237a,False,False
 False,False,Irish pub,False,False,True,False,True,False,False,2f149ce3-29c5-4f29-b3cc-de9f72f917b3,False,False,24589345-f0e4-49e3-987a-7dadcc9bfb28,False,True
@@ -256,7 +248,7 @@ False,False,Outdoor seating,False,False,False,False,False,False,False,78b09dc3-4
 False,False,,False,False,False,False,False,False,False,31de6bf0-9819-4cad-81fc-6d787312acc3,False,False,dbd90136-004f-4c5c-9fa8-615d99ed3938,False,False
 False,False,Thur & Sun music. Outdoor seating,False,False,False,False,False,True,False,c7e41c6b-81d4-411c-b051-3447583813fe,False,False,770b5672-5f3b-43e4-9eb8-e4c499691add,False,False
 False,False,,False,False,False,False,False,False,False,74bdbecd-70a9-4a81-88e3-dc98da654833,False,False,bdebff2c-57df-4970-b372-5cf0de6a3d48,False,False
-False,False,,False,False,False,False,False,False,False,b96faccc-34f7-4499-b3c4-9fc4b208ff34,False,False,e96fddbd-77c0-45b2-9601-9ed523ef58bd,False,False
+False,False,Thurs piano or jazz,False,False,False,False,False,True,False,b96faccc-34f7-4499-b3c4-9fc4b208ff34,False,False,e96fddbd-77c0-45b2-9601-9ed523ef58bd,False,True
 False,False,,False,False,False,False,False,False,False,b088ce95-c5f2-4afe-a1d4-9245e5690ac6,False,False,bac275e4-0570-4476-b961-45c328628228,False,False
 False,False,,False,False,False,False,False,False,False,6a7cf78e-1877-47ec-87bf-a4e84423c763,False,False,22a271d1-99ba-469a-aa08-8b813bae4e18,False,False
 False,False,Outdoor seating,False,False,False,False,False,False,False,a617848d-fd1a-40c8-b6e3-9f92126c8bd4,False,False,5e501764-0696-4918-8c45-72bae602e23f,True,True
@@ -273,14 +265,14 @@ False,False,,False,False,False,False,False,False,False,1d738594-fab9-441a-ae75-2
 False,False,,False,False,False,False,False,False,False,64665ab3-1572-4051-826b-20503fcaa085,False,False,0dc3ef07-4fde-41b3-aac3-d9cfa15f1efd,False,False
 False,False,,False,False,False,False,False,False,False,ae591583-747e-46be-8bbe-986fb220f09b,False,False,ddb81be7-8f34-420e-9c33-2c3f090600f1,False,False
 False,False,0,False,False,False,False,False,False,False,cec763ee-5ad8-4b86-8d58-bbf96c5407d9,False,False,34842639-2fed-4b59-9ef8-514f8ed3ae93,True,False
-False,False,,False,False,False,False,False,False,False,9b12f0b5-d10c-4d43-8f44-b5601fa510be,False,False,69411f1b-b4a0-4c8e-a67c-5cff55c3be70,False,False
+False,False,Ale pub,False,False,False,False,True,False,False,9b12f0b5-d10c-4d43-8f44-b5601fa510be,False,False,69411f1b-b4a0-4c8e-a67c-5cff55c3be70,True,False
 False,False,,False,False,False,False,False,False,False,10a50535-ea54-48e5-840b-0f467d4b339a,False,False,241f8df5-adf3-46ec-8819-6f945561d87a,False,False
 False,False,,False,False,False,False,False,False,False,7ac26e9b-a9c7-44db-ad5c-3a08f45f50ca,False,False,d17f0e4b-ed9d-4f6b-a01b-f4a9f54908b6,False,False
 False,False,"Only Fri, Sat & Sun",False,False,True,False,False,False,False,fa24fedf-0c19-4e57-8870-90101bc42aa1,False,False,071ecd1e-97d0-45da-8762-2c5a97907bca,False,False
-False,False,,False,False,False,False,False,False,False,55cfb269-6585-4ae1-bd89-8ef6cae6ea79,False,False,a9b3a49d-93ac-432e-8db3-fd9011fc67a9,False,False
-False,False,,False,False,False,False,False,False,False,745707c2-e7a4-4b33-9f7a-f6dfc2d6a221,False,False,55b3a05f-6290-4791-a9c4-1df01fb4d032,False,False
-False,False,,False,False,False,False,False,False,False,3b8f956e-0a9a-4a8e-9a30-afb90e73eae8,False,False,82a95957-6448-4968-8c8b-36768953aee2,False,False
-False,False,,False,False,False,False,False,False,False,7027ed4a-f38c-4d5f-9049-468f2bb12324,False,False,dd6f4677-409f-42cb-baa7-f964ab2b1743,False,False
+False,False,Tue 8pm quiz. Thur comedy. Sun live music.,True,False,True,False,True,True,False,55cfb269-6585-4ae1-bd89-8ef6cae6ea79,True,False,a9b3a49d-93ac-432e-8db3-fd9011fc67a9,False,False
+True,False,Wed:jazz. Sun:live music,False,False,True,False,False,True,False,745707c2-e7a4-4b33-9f7a-f6dfc2d6a221,False,False,55b3a05f-6290-4791-a9c4-1df01fb4d032,True,False
+False,False,Traditional pub,False,False,False,False,True,False,False,3b8f956e-0a9a-4a8e-9a30-afb90e73eae8,False,False,82a95957-6448-4968-8c8b-36768953aee2,False,True
+False,False,Classic pub,False,False,True,False,True,False,False,7027ed4a-f38c-4d5f-9049-468f2bb12324,False,False,dd6f4677-409f-42cb-baa7-f964ab2b1743,True,False
 False,False,Thur steak night,False,False,True,False,False,False,False,12b05c98-b08f-4df2-850e-76180a358f48,False,False,713cd321-8b0b-4f75-a695-7a8d13eaf0bb,False,False
 False,False,,False,False,False,False,False,False,False,89509f12-75e8-4b62-8b7a-f709776ddd2c,False,False,96a227ed-ca1e-4337-bacd-c611cd10aca4,False,False
 False,False,,False,False,False,False,False,False,False,2b99f168-e63b-445e-a7dc-7f8bf76da331,False,False,2760730d-9f08-421c-8183-643c1170d052,False,False
@@ -307,7 +299,7 @@ False,False,,False,False,False,False,False,False,False,9cd250f7-f340-4f1b-a8bd-4
 False,False,,False,False,False,False,False,False,False,3ec4f64f-6065-4e19-8b70-031605d30962,False,False,ac9e73ee-2783-4141-b83f-4dfa1d31bfee,False,False
 False,False,,False,False,False,False,False,False,False,f2e85f28-1978-481b-a3d4-87259afcde64,False,False,eee91c48-02e1-4b00-89c7-e1fbe9ad786d,False,False
 False,False,,False,False,False,False,False,False,False,86de5080-7da2-4cd1-aac3-d91cf018b910,False,False,032e2d69-3041-43f5-9c47-5df8cd11b0a7,False,False
-False,False,,False,False,False,False,False,False,False,868b221f-aea2-4448-b3e9-1c3e44fff92e,False,False,2eb4a42e-44cb-4754-8e14-4a7252561731,False,False
+False,False,Outdoor seating,False,False,False,False,False,False,False,868b221f-aea2-4448-b3e9-1c3e44fff92e,False,False,2eb4a42e-44cb-4754-8e14-4a7252561731,True,False
 False,False,,False,False,False,False,False,False,False,b6b8e759-b519-43ee-9bdc-bebaa7bef1c8,False,False,39b2dea6-2558-4525-85d2-0d4f069338a3,False,False
 False,False,,False,False,False,False,False,False,False,b948ebf2-4ed4-4188-afdd-8d4daf242706,False,False,5a63873c-d179-478d-9331-1bcb18c34389,False,False
 False,False,,False,False,False,False,False,False,False,d6bce8f4-f1db-4b8b-8bcf-c12cb7581e81,False,False,5b0ad4a8-9e8a-434f-a12b-ec43c4833e30,False,False
@@ -338,15 +330,15 @@ False,False,,False,False,False,False,False,False,False,87582c9a-a4ff-4f8a-9c1f-1
 False,False,,False,False,False,False,False,False,False,0749dc1d-64cb-4c59-b900-82481ccb3fc4,False,False,2ff32f41-c7fa-48cd-8299-3d837b926ce4,False,False
 False,False,,False,False,False,False,False,False,False,180f2d7c-ac08-4db1-88a7-ffb8f4d0029d,False,False,59270c22-5191-46ef-91fa-500b138b92ea,False,False
 False,False,Basic pub,False,False,True,False,False,False,False,5b4b2fef-e480-4c23-aed5-4f5f180e50e1,False,False,ef368f1e-9168-42a8-835c-6c8a3f80eca8,False,True
-False,False,,False,False,False,False,False,False,False,b97c49e9-c8a8-40f6-b7be-5604e201548a,False,False,ea536836-842d-4d10-9c57-7af151ec97f1,False,False
+False,False,Wed 8pm quiz,False,False,True,False,False,False,False,b97c49e9-c8a8-40f6-b7be-5604e201548a,True,False,ea536836-842d-4d10-9c57-7af151ec97f1,True,True
 False,False,Thur: opening mic. Fri-Sun live music,True,False,False,False,True,True,False,93ca1ef7-254a-40f8-b767-aab9beefbfc3,True,False,a51219f3-46da-4ed5-8a11-caa68f5ecec8,False,True
 False,False,,False,False,False,False,False,False,False,0a0b64ce-badb-49b7-b4e6-2a725d564598,False,False,71d0f1b2-358b-4167-85a9-454c121da1a5,False,False
 False,False,,False,False,False,False,False,False,False,44f933f3-3089-4df8-b983-489565b2424b,False,False,78930605-bc04-4133-b229-f12c55eb149d,False,False
-False,False,,False,False,False,False,False,False,False,9d834e48-f83d-4419-9899-e4b3b9a3dc69,False,False,98bdff11-1112-41c4-bd68-fb954299aa3c,False,False
+False,True,Games room,False,False,True,False,True,False,True,9d834e48-f83d-4419-9899-e4b3b9a3dc69,False,False,98bdff11-1112-41c4-bd68-fb954299aa3c,False,True
 False,False,Shisha pipes with various events,True,False,True,False,True,False,False,7125c473-2206-4d03-a5ea-920308ad3e68,False,False,2744cf52-3263-4e53-a018-a00488ba869b,False,False
-False,False,,False,False,False,False,False,False,False,d3a1324e-92ef-46d4-bcbe-5a616bfe8cee,False,False,5c84e3e5-2cdd-436a-910c-d8691fe2c1e7,False,False
-False,False,,False,False,False,False,False,False,False,0f579ca8-06f4-427a-ab4d-ae685bc3a473,False,False,169476b8-1b13-4a17-aeda-24e8ab41ab2d,False,False
-False,False,,False,False,False,False,False,False,False,90833296-6041-48c9-9837-fe090ff67fde,False,False,f5fc6394-8bad-485b-92e4-4d846286e5d0,False,False
+False,True,Traditional pub,False,False,True,False,False,False,False,d3a1324e-92ef-46d4-bcbe-5a616bfe8cee,False,False,5c84e3e5-2cdd-436a-910c-d8691fe2c1e7,True,False
+False,False,Some live acts,False,False,True,False,True,True,False,0f579ca8-06f4-427a-ab4d-ae685bc3a473,False,False,169476b8-1b13-4a17-aeda-24e8ab41ab2d,False,True
+False,False,Weatherspoons,False,False,False,False,False,False,False,90833296-6041-48c9-9837-fe090ff67fde,False,False,f5fc6394-8bad-485b-92e4-4d846286e5d0,False,False
 False,False,Thur karaoke. Sat/Sun live music,False,False,False,False,True,True,False,e4a67441-49af-40bd-ad4c-df88ba87f85e,False,False,d16a528e-85a2-4e62-a1a7-94a494cdf7b5,False,True
 False,False,,False,False,False,False,False,False,False,31661734-bb83-4bf4-8c68-0b7afd4f8d48,False,False,cb73ccfc-86a9-49a0-b654-41c657866af9,False,False
 False,False,,False,False,False,False,False,False,False,781b0d4c-788a-4bcb-8cec-c4384c566b57,False,False,3c5dd826-23d8-40af-93c7-407cbb3dcc79,False,False
@@ -387,14 +379,14 @@ False,False,,False,False,False,False,False,False,False,99158172-b45e-4f12-ba5b-4
 False,False,,False,False,False,False,False,False,False,7b15a256-3742-43ad-94d9-b41f98266050,False,False,84e7f012-857c-455b-bc46-50dcf2a50c2a,False,False
 False,False,,False,False,False,False,False,False,False,a89e3f76-afa6-4c4a-96f4-2fbda8ffaa54,False,False,47bb1d07-8b3d-47e7-850b-34f632116c31,False,False
 False,False,,False,False,False,False,False,False,False,2ee54ca1-e1cf-4d1f-bc86-89c2136cbeae,False,False,fe16763a-5ee3-448d-a1b9-c07fc8b37ef3,False,False
-False,False,,False,False,False,False,False,False,False,bfbc7812-741b-443c-b9d7-a737434aee94,False,False,617a6ceb-e4d5-41df-b35c-f809c96027d4,False,False
-False,False,,False,False,False,False,False,False,False,04ea139a-05b9-42ee-8bd0-3f3271c750e1,False,False,68265bf3-6191-4039-81c4-740099bc3c7c,False,False
+False,True,Traditional pub,False,False,False,False,False,False,True,bfbc7812-741b-443c-b9d7-a737434aee94,False,False,617a6ceb-e4d5-41df-b35c-f809c96027d4,False,False
+False,False,Monday bingo,True,False,False,False,True,False,False,04ea139a-05b9-42ee-8bd0-3f3271c750e1,False,False,68265bf3-6191-4039-81c4-740099bc3c7c,False,True
 False,False,Various events,True,False,False,False,True,False,False,7a2f2062-ba1c-4d26-94db-a019a562211d,False,False,f572f42d-9cf9-402e-bb37-5f6eadf77433,True,True
 False,False,,False,False,False,False,False,False,False,8d4e6681-dff8-4b38-955a-44fb6e2431cc,False,False,742ad312-a0e1-4752-bee5-c297cda2b6d5,False,False
 False,False,,False,False,False,False,False,False,False,cda9928e-ee30-4c1d-a992-327d64725d81,False,False,edd5fd56-be53-4085-88b7-300e91b7e959,False,False
 False,False,Sunday night music,False,False,False,False,False,True,False,a37b38ba-4deb-4930-beaf-e29d4faa1a8e,False,False,8834b57a-260f-43a4-9220-7f66182b8caa,False,False
 False,False,,False,False,False,False,False,False,False,d5ec18cc-ae6f-4138-a904-a0a68b98adf5,False,False,5306b9bb-7bcb-4828-bc79-b4cdc4012204,False,False
-False,False,,False,False,False,False,False,False,False,74b09557-7f64-4357-b20b-70869e7bb253,False,False,462ae636-5421-4f04-b566-3d12bf130320,False,False
+False,False,Occasional entertainment and music,True,False,False,False,False,True,False,74b09557-7f64-4357-b20b-70869e7bb253,False,False,462ae636-5421-4f04-b566-3d12bf130320,False,True
 False,False,,False,False,False,False,False,False,False,23a49eca-7ba3-4e8e-acc1-24a6ef5bb145,False,False,55a807aa-d023-46f6-ae75-594e1816d6d6,False,False
 False,False,,False,False,False,False,False,False,False,c997af44-8b84-43df-b0d4-91a4479649ca,False,False,d3e74453-5185-4be5-a25d-3af9253b980e,False,False
 False,False,,False,False,False,False,False,False,False,c08f2b51-f079-4dfd-b6df-8a1a9a8f15c3,False,False,df3815fa-3b48-4e46-a67c-893cf8ebcef5,False,False
@@ -406,10 +398,10 @@ False,False,,False,False,False,False,False,False,False,59b1023e-1eb6-453e-8036-6
 False,False,Roof top bar,False,False,True,False,False,False,False,d5337a02-d51d-448a-8cce-608673fffdfd,False,False,11283451-6ced-44ce-a35d-673c3a332f9e,False,False
 False,False,,False,False,False,False,False,False,False,49e9472f-a4ea-4195-ab5e-191a4fdcf889,False,False,f0133510-6ac9-4534-ad4c-5d59598f5d03,False,False
 False,False,Clay pigeon shooting,True,False,False,False,False,False,False,d23dc1c7-778d-45df-a78b-fb96bf7fbfec,False,False,24331e7a-c171-4e02-94ac-c285aa48053d,False,False
-False,False,,False,False,False,False,False,False,False,79221a90-d83b-4f07-b756-a493b4801e40,False,False,9c491d3a-fefa-4e63-96ea-8227e2f514e3,False,False
+True,False,Green outside,False,False,False,False,False,False,False,79221a90-d83b-4f07-b756-a493b4801e40,False,False,9c491d3a-fefa-4e63-96ea-8227e2f514e3,False,False
 True,False,Brunch 12noon Saturdays,False,False,False,False,True,False,False,05493a89-5d8f-407c-b5ca-d269f6d5af55,False,False,bda5e456-47dc-4c97-a909-b36480c7302b,False,False
-False,False,,False,False,False,False,False,False,False,be392cbb-c520-4bf8-b2bc-af0185a610e1,False,False,7dabee89-a02d-4a90-82d2-23ce750d5e93,False,False
-False,False,,False,False,False,False,False,False,False,9ed0b369-18f3-45e5-b53e-028a2747cfa8,False,False,d05b55cf-e8f4-460f-8fee-1fe07ddca49d,False,False
+False,False,Mon 7pm quiz. Karaoke hire,True,False,False,False,True,False,False,be392cbb-c520-4bf8-b2bc-af0185a610e1,True,False,7dabee89-a02d-4a90-82d2-23ce750d5e93,True,False
+False,False,Theme dinner evening,True,False,False,False,False,False,False,9ed0b369-18f3-45e5-b53e-028a2747cfa8,False,False,d05b55cf-e8f4-460f-8fee-1fe07ddca49d,False,False
 False,False,,False,False,False,False,False,False,False,9321fedb-a70a-42a3-a59f-1ba4ca6621d6,False,False,9a451b4c-f483-424c-8a9d-d8cdf938c57b,False,False
 False,False,,False,False,False,False,False,False,False,9fb9e451-6e05-4804-9e9c-a41156ba4d6d,False,False,e6c62481-ed17-45ab-bc38-6b002f4a2557,False,False
 False,False,,False,False,False,False,False,False,False,56d385be-abf8-4bf1-9afd-8c57441333c7,False,False,eaa96017-ec3f-4ac2-84f4-49c08020933a,False,False
@@ -423,10 +415,10 @@ False,False,,False,False,False,False,False,False,False,086c0823-e45c-4973-9bff-e
 False,False,,False,False,False,False,False,False,False,a28b9b6b-b92c-491c-b241-269104e4b20c,False,False,99e13f88-b6ae-4c84-b1d3-80fd3b604ac4,False,False
 False,False,Various events,True,False,True,False,True,True,False,24011888-8956-4721-bd31-16e25befa503,False,False,12210512-3ea7-4325-bc03-4c309c166bd1,False,False
 False,False,"Tue: pottery, Sun: music, kayak hire",True,False,True,False,True,True,False,bf525a4f-4c2f-42cb-9ecd-1513e1decf68,False,False,2b79bb13-e411-40cc-ade6-c572918eaaaa,False,False
-False,False,,False,False,False,False,False,False,False,64a3a706-c4b2-4a1c-81fe-278ddc1fb014,False,False,525c939d-11c8-4dc1-8760-342ce49a09c3,False,False
-False,False,,False,False,False,False,False,False,False,f7f4c32c-c57b-4e00-a47c-3090616cd866,False,False,f0e7c14b-6c59-4a54-a542-aeb493b019b9,False,False
+False,False,Riverside bar with frequent live music and events,True,False,True,False,True,True,False,64a3a706-c4b2-4a1c-81fe-278ddc1fb014,False,False,525c939d-11c8-4dc1-8760-342ce49a09c3,False,False
+False,False,Shisha and cocktail bar,False,False,False,False,True,False,False,f7f4c32c-c57b-4e00-a47c-3090616cd866,False,False,f0e7c14b-6c59-4a54-a542-aeb493b019b9,False,False
 False,False,,False,False,False,False,False,False,False,284bc813-b322-4dfc-9476-0a96d7bf5b53,False,False,9cb7c851-de31-4fbb-95fd-80991b56c1c9,False,False
-False,False,,False,False,False,False,False,False,False,94788b05-bb7f-4428-9b59-93e2d3ce7183,False,False,ce6c82e2-a94e-4891-a519-000f6398136a,False,False
+False,False,Mon 8pm quiz. Fri music,False,False,False,False,False,True,False,94788b05-bb7f-4428-9b59-93e2d3ce7183,True,False,ce6c82e2-a94e-4891-a519-000f6398136a,True,True
 False,False,Members club,False,False,False,False,False,False,False,93c74508-cfb4-4b02-ae5d-10bb3cf304f1,False,False,2e460d34-9ae4-4021-8cf5-0cab3fe5cc70,False,False
 False,False,,False,False,False,False,False,False,False,c00317f7-3f5a-4b01-9f11-4833c28b0d2a,False,False,a77ea2fe-5987-4f4e-9996-aa2f6d480768,False,False
 False,False,,False,False,False,False,False,False,False,105f372b-0c99-4eaf-8490-6355c87414b7,False,False,79d30d48-5eca-433e-bd50-8db3ca85a83b,False,False
@@ -446,23 +438,23 @@ False,False,,False,False,False,False,False,False,False,f8912654-fd42-472b-ab2c-e
 False,False,,False,False,False,False,False,False,False,030c2476-0498-4cdf-8368-5a55a1e8f902,False,False,21df1f0a-90ae-4eed-b40b-5f2f1d8ddd6e,False,False
 False,False,Mon/Tue closed,False,False,False,False,False,False,False,569209fe-7b87-4d11-8d24-3525d6b8e560,False,False,ed962663-63ca-4eec-9fc0-fc4b347cdfdb,False,False
 False,False,,False,False,False,False,False,False,False,55160e29-789d-4ec1-ae2c-07ae7dd30194,False,False,08a74d70-70c7-4891-9467-a9e49333b5d9,False,False
-False,False,,False,False,False,False,False,False,False,35562c4e-3c2f-4a4f-add6-e8c7f407bcf9,False,False,5380a03a-461a-4d5d-a08b-47917625696e,False,False
+False,False,Riverside bar,False,False,False,False,False,False,False,35562c4e-3c2f-4a4f-add6-e8c7f407bcf9,False,False,5380a03a-461a-4d5d-a08b-47917625696e,True,False
 False,False,Thu-Sat: music,False,False,True,True,False,True,False,753df00b-babe-4873-a8f2-8f4cd8e02749,False,False,ee916ffa-cdb2-4a5b-b544-834787f7f479,True,True
-False,False,,False,False,False,False,False,False,False,c0120f51-ab4c-476d-bd91-4d5f246e9074,False,False,0c89e7a8-bba1-42bc-b984-03ae1ffd6a4b,False,False
-False,False,,False,False,False,False,False,False,False,d4ea95cf-e3b8-488f-b3c5-160b4cd5d974,False,False,40701601-ec9b-491a-9fd2-7280a1499dec,False,False
-False,False,,False,False,False,False,False,False,False,c898bd8c-d5b4-4bb5-819b-d80378ecbd70,False,False,84624c9d-d032-492c-9f24-7358550e7ae8,False,False
-False,False,,False,False,False,False,False,False,False,24f5f284-5c7b-41cf-bcec-56e7db601464,False,False,d0d19189-0818-43b0-9960-21ff3a2bb0d3,False,False
-False,False,,False,False,False,False,False,False,False,915508e0-ea3d-4082-9142-7b178298dded,False,False,d465cf78-907d-4683-9da2-16f1861df2df,False,False
+False,False,Table tennis and table football. Closed Sun-Tue,True,False,False,False,False,False,False,c0120f51-ab4c-476d-bd91-4d5f246e9074,False,False,0c89e7a8-bba1-42bc-b984-03ae1ffd6a4b,False,False
+False,False,Sat live music. Outdoor seating,False,False,False,False,False,True,False,d4ea95cf-e3b8-488f-b3c5-160b4cd5d974,False,False,40701601-ec9b-491a-9fd2-7280a1499dec,True,False
+False,False,Table football. Karaoke hire. Outdoor seating,True,False,False,False,False,False,False,c898bd8c-d5b4-4bb5-819b-d80378ecbd70,False,False,84624c9d-d032-492c-9f24-7358550e7ae8,False,False
+False,False,Wed quiz night,False,False,False,False,False,False,False,24f5f284-5c7b-41cf-bcec-56e7db601464,True,False,d0d19189-0818-43b0-9960-21ff3a2bb0d3,True,False
+False,False,Outside seating. Thurs pub quiz or karaoke,False,False,False,False,True,False,False,915508e0-ea3d-4082-9142-7b178298dded,True,False,d465cf78-907d-4683-9da2-16f1861df2df,True,False
 False,False,Jazz on Wed/Thur 9.30pm,False,False,False,False,True,True,False,d324bef0-4d75-438b-8a2a-9be977c67942,False,False,b7996a0b-a23d-45e6-a35d-d7341bb1ca83,False,False
-False,False,,False,False,False,False,False,False,False,4d03fd58-b12d-4800-a087-dfbf347e2625,False,False,1025f7d3-bbd1-47a8-8f6e-582c68ee768e,False,False
+False,False,Outdoor seating,False,False,False,False,False,False,False,4d03fd58-b12d-4800-a087-dfbf347e2625,False,False,1025f7d3-bbd1-47a8-8f6e-582c68ee768e,False,True
 False,False,Steak restaurant,False,False,False,False,False,False,False,4910bad5-cc2a-488c-a645-fb92c3273982,False,False,4c9b84d4-6fb3-4d43-bf4d-1a21f85f64c8,False,False
-False,False,,False,False,False,False,False,False,False,cb9c11de-61f1-4583-a8eb-4b7a9d89f912,False,False,009b2478-ee0a-4afb-ba7e-dff45ef52b56,False,False
+False,False,Classic pub,False,False,False,False,False,False,False,cb9c11de-61f1-4583-a8eb-4b7a9d89f912,False,False,009b2478-ee0a-4afb-ba7e-dff45ef52b56,False,True
 False,False,Shuffleboard,True,False,False,False,False,False,False,49e0632f-b944-4e35-a03d-b97b132e9b0f,False,False,92d91752-257b-498f-8a59-6b81dc7551b3,False,False
-False,False,,False,False,False,False,False,False,False,0070a010-95c5-494b-878f-47bcae4be933,False,False,29ea2c43-8471-4313-a5d5-63d812fb8cf2,False,False
-False,False,,False,False,False,False,False,False,False,be8eb9ff-1018-4efd-8d78-984e50ed2365,False,False,1697c2b1-bb52-4dff-9e96-3f030ae3a6ba,False,False
-False,False,,False,False,False,False,False,False,False,dc337edd-d2e4-4886-89e7-a34ab1892ab9,False,False,0cce7a95-1e69-4911-b228-fb0eab9a70b7,False,False
+False,False,Outdoor seating. Closed Sunday.,False,False,False,False,False,False,False,0070a010-95c5-494b-878f-47bcae4be933,False,False,29ea2c43-8471-4313-a5d5-63d812fb8cf2,False,False
+False,False,Traditional pub,False,False,False,False,False,False,False,be8eb9ff-1018-4efd-8d78-984e50ed2365,False,False,1697c2b1-bb52-4dff-9e96-3f030ae3a6ba,True,False
+True,False,Wed/Sun jazz,False,False,True,False,True,True,False,dc337edd-d2e4-4886-89e7-a34ab1892ab9,False,False,0cce7a95-1e69-4911-b228-fb0eab9a70b7,True,False
 True,False,Outdoor seating,False,False,False,False,False,False,False,6837ba08-86b6-425e-9056-45c7ae80b59c,False,False,5264f027-a528-4b29-806d-7636a832a867,False,True
-False,False,,False,False,False,False,False,False,False,62d723d6-d338-406e-a1fa-cca2747ba338,False,False,81851372-a87b-4ab5-b665-97a8cb5161e8,False,False
+False,False,Shisha bar,False,False,False,False,False,False,False,62d723d6-d338-406e-a1fa-cca2747ba338,False,False,81851372-a87b-4ab5-b665-97a8cb5161e8,False,False
 False,False,,False,False,False,False,False,False,False,ee6111f6-779e-4e3a-b6f8-bbf26d0d53c2,False,False,77827add-c3bd-46c3-acd2-f483f0165f55,False,False
 False,False,Beer mile,False,False,False,False,False,False,False,882c968d-b5a1-4877-8e4f-4845ffb59ee7,False,False,cbf87891-0006-4a82-a646-525be678185a,False,False
 False,False,,False,False,False,False,False,False,False,3c5d3d3d-05d0-415e-8b19-9229f77932b1,False,False,4d4a6102-fd13-4721-9a2e-b8737bdaa619,False,False
@@ -476,7 +468,7 @@ False,False,,False,False,False,False,False,False,False,0f955e0b-e77a-4a59-8c8d-3
 False,False,,False,False,False,False,False,False,False,6b057b63-eb50-45f9-92cf-e8be7e1a1933,False,False,c875a108-f723-4c7c-a091-8adc02b30195,False,False
 False,False,,False,False,False,False,False,False,False,c5750a08-a2e0-4957-9628-b7425700ea90,False,False,de1a8188-7bc3-49b4-9c09-4ab25b160146,False,False
 False,False,,False,False,False,False,False,False,False,d015539a-55fe-480f-b96d-156382cf87b5,False,False,c6202f12-0c2f-4037-9ff4-d5a489ba5009,False,False
-False,False,,False,False,False,False,False,False,False,6ac5780f-598c-48e6-9684-b2504c81312f,False,False,97f91c1c-0dee-4455-9611-95b93e54dea9,False,False
+True,False,Cocktail masterclass,True,False,False,False,True,False,False,6ac5780f-598c-48e6-9684-b2504c81312f,False,False,97f91c1c-0dee-4455-9611-95b93e54dea9,False,False
 False,False,,False,False,False,False,False,False,False,08d5404b-ae5c-4e66-b7d3-b3b50958895e,False,False,65b45a0e-9fed-42e4-8702-d8ee747090b8,False,False
 False,False,,False,False,False,False,False,False,False,144c41db-e6f0-4b3f-b6d1-5b6b5b2e5fcb,False,False,ae92dac0-3a58-42fc-bf07-1cba0767a8ca,False,False
 False,False,,False,False,False,False,False,False,False,2e161f42-7d5a-4ff5-80c9-daa6f53f61c8,False,False,348c2102-ecc0-4fc8-b079-b5c225f7f68a,False,False
@@ -494,32 +486,32 @@ False,False,,False,False,False,False,False,False,False,152d53a2-07ed-4b5b-8cc4-e
 False,False,,False,False,False,False,False,False,False,542030c6-7749-45ca-8705-44a741296f1e,False,False,5cdb95bd-3782-4313-9dbe-d81e91578177,False,False
 False,False,,False,False,False,False,False,False,False,038b9ae5-c670-4797-ae52-571c8eea95f1,False,False,e5c94d49-5e79-465b-81bf-130b255b4226,False,False
 False,False,,False,False,False,False,False,False,False,059d6c74-dbe3-4b7b-96cf-baa93595976c,False,False,0034fca3-74ea-4430-8f03-e8bd1f4326df,False,False
-False,False,,False,False,False,False,False,False,False,376cd451-32f0-4895-8f0e-ce61fb413b6d,False,False,a247ec20-30ba-4d5b-b9d5-131aea485235,False,False
-False,False,,False,False,False,False,False,False,False,f739b77a-f490-46b9-8809-10b986844d8f,False,False,95217ada-3e24-4a96-b4f6-8bbd17c92406,False,False
-False,False,,False,False,False,False,False,False,False,ecb72215-6284-4876-8d89-b5ba30789ab2,False,False,0dabeff0-165e-45b4-9dff-fd14c7c6b8f3,False,False
-False,False,,False,False,False,False,False,False,False,7fee2378-ec80-4632-8309-b6dd60094fd8,False,False,524ee63f-5977-4f5a-9d73-c8bf884a3443,False,False
-False,False,,False,False,False,False,False,False,False,a869327b-e950-498e-8e26-2fd0a9bfcf5e,False,False,bafc8603-faa0-46d3-89e2-32bb283fbc4a,False,False
-False,False,,False,False,False,False,False,False,False,1ba25292-f62c-49c1-8d27-f6f237d469a0,False,False,1191136c-1229-4750-9ee4-46edfaefbdc3,False,False
+False,False,Mon 9pm quiz. Conservatory dining with board games,True,False,False,False,False,False,False,376cd451-32f0-4895-8f0e-ce61fb413b6d,True,False,a247ec20-30ba-4d5b-b9d5-131aea485235,False,False
+False,False,Wed 7.30pm quiz. Every 2nd Thurs comedy,True,False,False,False,False,False,False,f739b77a-f490-46b9-8809-10b986844d8f,True,False,95217ada-3e24-4a96-b4f6-8bbd17c92406,False,False
+False,False,Small pub,False,False,False,False,False,False,False,ecb72215-6284-4876-8d89-b5ba30789ab2,False,False,0dabeff0-165e-45b4-9dff-fd14c7c6b8f3,False,False
+False,False,Mon-Wed: comedy,True,False,True,False,False,False,False,7fee2378-ec80-4632-8309-b6dd60094fd8,False,False,524ee63f-5977-4f5a-9d73-c8bf884a3443,True,True
+False,False,Tues 7.30pm quiz. Huge dining conservatory,False,False,True,False,False,False,False,a869327b-e950-498e-8e26-2fd0a9bfcf5e,True,False,bafc8603-faa0-46d3-89e2-32bb283fbc4a,True,False
+False,False,Classic pub with outdoor seating,False,False,False,False,False,False,False,1ba25292-f62c-49c1-8d27-f6f237d469a0,False,False,1191136c-1229-4750-9ee4-46edfaefbdc3,False,False
 False,False,Tuesday 7pm quiz. Sat/Sun dinner DJs,False,False,False,False,False,False,False,7edc3e66-7f68-4a09-a085-5bf2b778831c,True,False,0bae8a41-ed52-483f-87dc-e3ad2af4628d,True,False
 False,False,Thurs 7.30pm quiz,False,False,True,False,False,False,False,060e9c82-2b9f-4547-bd1e-eb313934bc6b,True,False,a3e21d38-69d2-476b-8dba-6d2dafc2e540,True,False
-False,False,,False,False,False,False,False,False,False,20a2785f-94a0-474f-ac6b-284bd9366bf7,False,False,5978adb8-bcd3-4f40-9ea5-f4e96c709545,False,False
+False,False,Wed 7.30pm quiz. Thurs bingo. Outdoor seating,True,False,False,False,False,False,False,20a2785f-94a0-474f-ac6b-284bd9366bf7,True,False,5978adb8-bcd3-4f40-9ea5-f4e96c709545,True,True
 False,False,Foody pub,False,False,False,False,False,False,False,c850db37-4d0b-41de-8e41-eb3f812a2e4b,False,False,3db01d5c-77a5-4e78-a53b-f2cfccef1735,True,False
-False,False,,False,False,False,False,False,False,False,ae6dfbf2-a16e-40f6-9ff8-6133fa2f49ae,False,False,f5226846-c81c-4dfe-963f-1c2f496bb345,False,False
+False,False,Tue quiz night,False,False,False,False,True,False,False,ae6dfbf2-a16e-40f6-9ff8-6133fa2f49ae,True,False,f5226846-c81c-4dfe-963f-1c2f496bb345,False,True
 False,False,Monday 7.45pm Quiz,False,False,True,False,False,True,False,bcb5569d-e16c-4959-985e-0e52ab7d293f,True,False,633fabfe-b249-4da6-bfed-97625d9cdce0,False,True
 False,False,,False,False,False,False,False,False,False,4838e1e2-675e-4c43-addd-4bcf7cc58b42,False,False,cb4b3ac4-871a-4b82-a61e-c20c166077a9,False,False
 False,False,,False,False,False,False,False,False,False,942ba769-e41f-49e9-9fee-0198fe3391c4,False,False,7dc6f9bf-675a-4525-80fd-25c994eeba84,False,False
 False,False,,False,False,False,False,False,False,False,da97ad9b-7ee1-4822-a788-85ede5f580b1,False,False,cc7b931a-e571-44fc-b915-b3e49f3066b9,False,False
 False,False,,False,False,False,False,False,False,False,ab382c1c-2aab-44fe-9f71-7a0aa26aed92,False,False,fce4a32a-89f0-432a-aa38-61bb84fd3ef0,False,False
 False,False,,False,False,False,False,False,False,False,3cd77292-ecb6-4d7f-b29f-d0dd14c27324,False,False,1bb65fb4-89f6-4f03-8a62-02ca9e00a89c,False,False
-False,False,,False,False,False,False,False,False,False,1133ab17-2ca6-456a-844f-e1eb40a8bb3d,False,False,307dbcfc-fc04-493f-9e0a-aeddef9bdbce,False,False
+False,False,Outdoor seating,False,False,False,False,False,False,False,1133ab17-2ca6-456a-844f-e1eb40a8bb3d,False,False,307dbcfc-fc04-493f-9e0a-aeddef9bdbce,True,False
 False,False,,False,False,False,False,False,False,False,f2fad9c5-2686-483e-83f1-977936d31f39,False,False,fbbe82e0-3424-4035-b161-b63c6c10f5c0,False,False
 False,False,,False,False,False,False,False,False,False,5778512f-1a16-4a77-bd7e-ac430fedf578,False,False,fa4f604c-2a95-4536-8178-41550c5948fc,False,False
 False,False,,False,False,False,False,False,False,False,9c8bcfc9-5b8e-40a1-9772-86dcb8eac3da,False,False,c58ac780-e8c3-4a13-b335-a3efd8e98c0d,False,False
 False,False,,False,False,False,False,False,False,False,445269c4-b88d-4a1a-a51a-38556661f43c,False,False,af5980da-5550-468c-b289-3acdf15ce5e1,False,False
 False,False,,False,False,False,False,False,False,False,f43635e9-6270-4bd9-bb3f-cde1eb4e0484,False,False,cd5057e7-22ba-4e9b-8f8a-d379b723077f,False,False
 False,False,,False,False,False,False,False,False,False,aacbc803-7d43-40b9-ad14-da1cf55de22f,False,False,0a06aada-2f26-4d15-84a1-d5d769923e5e,False,False
-False,False,,False,False,False,False,False,False,False,70347840-2dff-4d32-a47f-8fb63742607a,False,False,372fa2a7-f9e9-49e0-899e-00fd6aaee712,False,False
-False,False,,False,False,False,False,False,False,False,3a9f3f92-5149-4e45-a962-97220c43a1cc,False,False,2508f300-c93f-4bf9-8c86-a8e818546758,False,False
+False,False,Weatherspoons,False,False,False,False,True,False,False,70347840-2dff-4d32-a47f-8fb63742607a,False,False,372fa2a7-f9e9-49e0-899e-00fd6aaee712,False,False
+False,False,Walled garden,False,False,True,False,False,False,False,3a9f3f92-5149-4e45-a962-97220c43a1cc,False,False,2508f300-c93f-4bf9-8c86-a8e818546758,False,False
 False,False,Wine tasting,True,False,False,False,False,False,False,f4c9d531-837c-4977-ab52-3201a9ce664f,False,False,abf796a5-13cd-4170-9904-ec9b5089e6e9,False,False
 False,False,,False,False,False,False,False,False,False,0a8a43f0-000e-4a88-9874-d13926e71eed,False,False,0f65322a-c306-4a47-ab7c-4c2ca1283330,False,False
 False,False,,False,False,False,False,False,False,False,225ccf9c-41d4-4a1d-8316-a50397a1776f,False,False,432a2158-eb5e-49a8-bac0-94a16b7e59d2,False,False
@@ -551,8 +543,8 @@ False,False,,False,False,False,False,False,False,False,096d7663-cbd1-446f-8c85-6
 False,False,Daily shows,False,False,False,False,True,True,False,4f74f192-299e-4ef7-a3ca-28afb731cba9,False,False,4cbcf87c-e793-482b-b5c2-230f6ace96c2,False,False
 False,False,Wine shop & bar,False,False,False,False,False,False,False,182940a3-51d2-4bf5-aa13-e4d5e3770660,False,False,5aefe468-09bd-4e61-a908-a2b9e704757a,False,False
 False,False,Fri/Sat music or disco karaoke,False,False,True,False,True,True,True,4d771274-5f0e-4df4-a0dd-728951e700dc,False,False,0b6316a7-c116-4b50-8c1a-9892572916f8,False,True
-False,False,,False,False,False,False,False,False,False,fe2c34eb-b44c-4b72-8a6c-dcd9aaedf162,False,False,58d90024-68f0-4bb7-91af-dd69c9549bf1,False,False
-False,False,,False,False,False,False,False,False,False,4184f086-d263-4cc3-8466-cb19af980b3c,False,False,49ff80d4-c6e9-4e14-b605-67801e9932aa,False,False
+False,False,Outdoor seating,False,False,False,False,False,False,False,fe2c34eb-b44c-4b72-8a6c-dcd9aaedf162,False,False,58d90024-68f0-4bb7-91af-dd69c9549bf1,True,False
+False,False,Cocktail bar,False,False,True,False,False,False,False,4184f086-d263-4cc3-8466-cb19af980b3c,False,False,49ff80d4-c6e9-4e14-b605-67801e9932aa,False,False
 False,False,Wine bar,False,False,False,False,False,False,False,25226e95-c677-4537-9acb-11e2f96b1647,False,False,ea552b30-5e7f-4d1e-b0d4-9c4a29506dcc,False,False
 True,False,Outdoor seating,False,False,False,False,False,False,False,34cf8a86-8ad8-4a9a-b8ca-0569b43de2db,False,False,a4a16903-efd6-4707-89d1-70c1bde9d871,False,False
 False,False,,False,False,False,False,False,False,False,754227fd-d267-4750-a6f8-59914f8d95fd,False,False,a52a5c9e-ff06-4b65-9bc3-914f14bdb15a,False,False
@@ -600,17 +592,17 @@ False,False,,False,False,False,False,False,False,False,22646d9c-ddb7-4170-86d6-d
 False,False,Contemporary bar/restaurant,False,False,False,False,True,False,False,9cfa8cef-6b6d-4908-8a49-26dc32ae9cc0,False,False,5ecfe0a1-85b5-4fa3-9eab-99f93e16d17a,False,False
 False,False,,False,False,False,False,False,False,False,f587af14-eb99-4aa9-b0ac-b9de7fc72a10,False,False,6e296fee-c783-44f5-9b51-63e08f455dae,False,False
 False,False,,False,False,False,False,False,False,False,5940cff1-e2c4-40c8-9653-d01417856d82,False,False,f1a415a7-0df0-45f6-8889-c8b0d50eaaaf,False,False
-False,False,,False,False,False,False,False,False,False,596663de-c258-469b-a183-99d517ea29af,False,False,96b605da-7fda-4384-81a2-0a33044bc6f7,False,False
-False,False,,False,False,False,False,False,False,False,f7c8fe0f-e105-4225-830b-18b9c049b030,False,False,4fb131f5-21ae-40e6-b0c2-54e0c5cb1272,False,False
-False,False,,False,False,False,False,False,False,False,f933b4b5-3a06-4015-b23d-ded0d4dd8f70,False,False,f4b1f34a-68ae-4260-b8a4-202c244f440b,False,False
+False,False,Weatherspoons,False,False,True,False,False,False,False,596663de-c258-469b-a183-99d517ea29af,False,False,96b605da-7fda-4384-81a2-0a33044bc6f7,False,False
+False,False,Closed Sat/Sun,False,False,False,False,False,False,False,f7c8fe0f-e105-4225-830b-18b9c049b030,False,False,4fb131f5-21ae-40e6-b0c2-54e0c5cb1272,False,False
+False,False,Traditional pub,False,False,False,False,False,False,False,f933b4b5-3a06-4015-b23d-ded0d4dd8f70,False,False,f4b1f34a-68ae-4260-b8a4-202c244f440b,False,False
 False,False,,False,False,False,False,False,False,False,40059dcc-b717-453f-80cf-90aafee63127,False,False,281629dd-48fa-4060-a379-4588432dd01c,False,False
 False,False,Hotel cocktail bar,False,False,False,False,False,True,False,bb7965da-eb3b-4807-a947-5f3291f4a4af,False,False,5d0b8915-55b3-4b37-bfac-159ab6fe139e,False,False
 False,False,,False,False,False,False,False,False,False,1f0559e7-d494-4404-8d53-e093ba2091b6,False,False,e2c8d94b-142e-4497-8e3e-5c8f3bb921d6,False,False
 False,False,,False,False,False,False,False,False,False,2e367eb2-c546-4db2-b71c-c3446b63889f,False,False,a8d71d4b-3a40-4816-8113-90bf18f341cf,False,False
 False,False,,False,False,False,False,False,False,False,87953131-c0eb-4469-993e-1ae074e9d99a,False,False,643eff75-3e4e-4d96-99c6-6884cab2ad61,False,False
 False,False,,False,False,False,False,False,False,False,c39dc71f-10e9-49de-8ee2-d4327dbf23e4,False,False,07891566-577b-4af3-b059-3eaffd2fe37e,False,False
-False,False,,False,False,False,False,False,False,False,bf961439-ab47-47bc-a3f0-b1aba8ffaa4f,False,False,818f0f0a-00e1-4d9b-a584-afda5fe97c09,False,False
-False,False,,False,False,False,False,False,False,False,f2b74a89-ca18-4500-adf6-80d04d21fc35,False,False,aff8c8cc-fcdf-46a1-9ec4-f2848092c2a6,False,False
+False,False,Classic pub,False,False,False,False,False,False,False,bf961439-ab47-47bc-a3f0-b1aba8ffaa4f,False,False,818f0f0a-00e1-4d9b-a584-afda5fe97c09,True,True
+False,False,Jazz once a month,False,False,False,False,False,True,False,f2b74a89-ca18-4500-adf6-80d04d21fc35,False,False,aff8c8cc-fcdf-46a1-9ec4-f2848092c2a6,True,True
 False,False,,False,False,False,False,False,False,False,f523c8d4-fe35-45af-b9bb-af9f411feac5,False,False,2c00b5cf-e8de-4333-b262-72c6a601a13e,False,False
 False,False,,False,False,False,False,False,False,False,348549ff-4830-4c4f-906f-90a84e1cfb96,False,False,6d092d33-1eb4-498b-b2d7-8fa946ab0c48,False,False
 False,False,,False,False,False,False,False,False,False,b912402e-627d-43e8-83ff-b7604706a5c7,False,False,e1f3ca52-4691-4f4d-8f28-449f04ae1c92,False,False
@@ -630,7 +622,7 @@ False,False,,False,False,False,False,False,False,False,034f929e-3ec9-4e3d-b7aa-e
 False,False,Outdoor seating,False,False,False,False,False,False,False,9c93bcb5-03c4-4b75-9138-70659d32544b,False,False,43c22ba8-050f-4058-840a-636defc273f6,False,False
 False,False,,False,False,False,False,False,False,False,c9a47e3c-2575-4575-a2c0-869a98cdfb6e,False,False,b3c08db7-c120-42be-963d-ddeea9b2bb28,False,False
 False,False,,False,False,False,False,False,False,False,3fb949ca-cd80-45b2-b7c9-d450ee2f2c6d,False,False,ec7fa3f0-6674-4ac1-9747-72f056f883cc,False,False
-False,False,,False,False,False,False,False,False,False,1b463e1c-9190-4275-a39c-d694eb42d636,False,False,d5cbc6a9-d279-4f05-adbd-70ba6622ad4c,False,False
+False,False,Closed Sunday,False,False,False,False,False,False,False,1b463e1c-9190-4275-a39c-d694eb42d636,False,False,d5cbc6a9-d279-4f05-adbd-70ba6622ad4c,False,False
 False,False,,False,False,False,False,False,False,False,37fe2046-8028-40ca-bf77-c2e2ef611671,False,False,7c99630e-cba6-42ee-b0c8-1ed6bd88cf1e,False,False
 False,False,,False,False,False,False,False,False,False,068816e9-c598-43e3-a324-2e79bbdbe25f,False,False,1f5a9901-b1c3-49c7-94f1-3e5059204293,False,False
 False,False,,False,False,False,False,False,False,False,dbd26126-fc61-4fc9-9b3c-a62dc1032abb,False,False,a0a45ec6-d17a-4d17-ae71-d1f632d8bc19,False,False
@@ -643,7 +635,7 @@ False,False,Karaoke,True,False,True,False,False,False,False,4e4e3842-c27a-4cbe-a
 False,False,,False,False,False,False,False,False,False,6338abc5-9a97-40c8-9e13-b7de1a2c5852,False,False,7ec00c28-2aba-47a8-a773-cb75e82f8404,False,False
 False,False,,False,False,False,False,False,False,False,ce8c001f-8bd1-4a19-a7b6-170cce6dda6e,False,False,ca54625b-4f3d-4512-83a7-a96e91dad2a5,False,False
 False,False,Various events,True,False,False,False,False,False,False,cbf845e6-0b18-4153-a87c-a916cef54fab,False,False,7623862a-ee13-49e6-a6d7-9a0bb7a4c055,False,False
-False,False,,False,False,True,False,False,False,False,b661c685-8e84-46d3-8c88-4bebf01edacb,True,False,b291f430-3183-4f50-8307-53b554fa796e,True,False
+False,False,Outdoor seating. Wed 7.30pm quiz.,False,False,False,False,False,False,False,b661c685-8e84-46d3-8c88-4bebf01edacb,True,False,b291f430-3183-4f50-8307-53b554fa796e,True,False
 False,False,"Tue 8.30pm quiz, Thur/Sat/Sun:live music",False,False,True,False,False,True,False,35ce64f3-76a5-4b65-a8a8-88324cbb95a0,True,False,50d251f0-f830-4080-9d22-85dae7f9bb4c,True,True
 False,False,,False,False,False,False,False,False,False,30f4c88f-c2da-49ec-9671-a7e2c7cfda2e,False,False,d34fcdc6-f597-46d1-917f-cfd426d01130,False,False
 False,False,,False,False,False,False,False,False,False,df78699d-0f0f-4bef-bbc7-dcbcc926fcc2,False,False,d18200e8-11ec-487b-b469-5275d540c181,False,False
@@ -662,15 +654,15 @@ True,False,Shuffleboard,True,False,True,False,False,False,False,78a786cb-976f-42
 False,False,,False,False,False,False,False,False,False,d16c1055-642f-4853-a97c-5c7ed1baf76b,False,False,75e7f6d5-6b57-4b7f-a5ac-33c454b2446c,False,False
 False,False,,False,False,False,False,False,False,False,75ff695e-964e-4d8a-bdb5-fbc0a6c5e540,False,False,fb838fac-1974-4ac7-9dbc-7610f4358791,False,False
 False,False,Cookery classes,True,False,False,False,False,False,False,63db9012-b8c4-42e1-8d9b-20a6784a5bcc,False,False,28c4b3cd-5e1c-44d8-a196-ca47736b3c9f,False,False
-False,False,,False,False,False,False,False,False,False,ba80cc96-10c6-4a81-b064-939b49818c4e,False,False,c4d2f553-24af-4990-a324-8ffda2d62017,False,False
+False,False,Botanical bar with occasional live music performances,False,False,False,False,False,True,False,ba80cc96-10c6-4a81-b064-939b49818c4e,False,False,c4d2f553-24af-4990-a324-8ffda2d62017,False,False
 False,False,,False,False,False,False,False,False,False,d272b768-d040-401f-b3e4-f6f70bce1896,False,False,1df57aee-ddde-4ebc-aa3d-af92b16834b1,False,False
 True,False,Shuffle board,True,False,False,False,False,False,False,bd91ccd3-b983-4477-a300-f8916dc45c1d,False,False,24ea9c3e-44c6-4d1f-bac6-932601628ff5,False,False
 False,False,City bar,False,False,False,False,True,False,False,f941dc57-006f-47b0-99db-c265d31e4139,False,False,80652899-7c2e-447c-a605-3a18c2b571a8,False,False
-False,False,,False,False,False,False,False,False,False,c1f966e4-2396-4607-bf7c-638fe4f68399,False,False,aa1df77c-bbda-4d15-bb4f-231f6b23decd,False,False
-False,False,,False,False,False,False,False,False,False,b5a2c34a-55bc-4845-8a76-6e98db66aaf8,False,False,51620bf9-5004-499c-9b21-a6807da7750e,False,False
-False,False,,False,False,False,False,False,False,False,f5e951e4-ab9a-4e8e-926e-94d26bcdc5cf,False,False,2371c2c1-18ba-48b5-9558-4ecf7088a5c8,False,False
-False,False,,False,False,False,False,False,False,False,7e16cbd6-a99a-47cf-80be-c703c8124708,False,False,c94c4846-a71f-4518-ab2a-97f23fe7c1a6,False,False
-False,False,,False,False,False,False,False,False,False,a200a385-ff70-45dc-9adf-9510a1987cca,False,False,a2d198ae-7641-4326-a96d-3a8ac938a125,False,False
+False,False,City bar,False,False,False,False,True,False,False,c1f966e4-2396-4607-bf7c-638fe4f68399,False,False,aa1df77c-bbda-4d15-bb4f-231f6b23decd,False,False
+False,False,City pub,False,False,False,False,False,False,False,b5a2c34a-55bc-4845-8a76-6e98db66aaf8,False,False,51620bf9-5004-499c-9b21-a6807da7750e,False,True
+True,False,Outdoor seating. Sat/Sun closed,False,False,False,False,False,False,False,f5e951e4-ab9a-4e8e-926e-94d26bcdc5cf,False,False,2371c2c1-18ba-48b5-9558-4ecf7088a5c8,False,False
+True,False,Cocktail making classes,True,False,False,False,False,False,False,7e16cbd6-a99a-47cf-80be-c703c8124708,False,False,c94c4846-a71f-4518-ab2a-97f23fe7c1a6,False,False
+False,False,City bar,False,False,False,False,False,False,False,a200a385-ff70-45dc-9adf-9510a1987cca,False,False,a2d198ae-7641-4326-a96d-3a8ac938a125,True,False
 False,False,,False,False,False,False,False,False,False,f322dcd3-d294-447d-b40f-2293fe1d3659,False,False,e71c98bd-b9a9-4fb6-a204-65a4c18a0e88,False,False
 True,False,Outdoor seating,False,False,False,False,False,False,False,a89a85f1-3fa7-4d38-9d21-19044982d2b1,False,False,878e2cd1-b993-485e-b4aa-a5c575a71cf9,False,False
 False,False,,False,False,False,False,False,False,False,72debb8c-1ea0-453a-a93e-e127a262ea06,False,False,da414e17-96a4-439a-a93d-cbe4dae8161a,False,False
@@ -712,7 +704,7 @@ False,False,,False,False,False,False,False,False,False,667004f6-2829-40a8-b1ab-7
 False,False,,False,False,False,False,False,False,False,5a3094e9-5f78-4caa-bc21-23cefc0d0afe,False,False,9db16fde-aa4a-4b1e-ae5f-72d3ab449822,False,False
 False,False,Japanese gyoza,False,False,True,False,False,False,False,14ca1c76-ccbf-48b7-aa3f-d0276cb0e0dd,False,False,0c8d44a5-d8c2-4d06-bbfc-a26ff6f3486e,False,False
 False,False,,False,False,False,False,False,False,False,d5518e94-d024-4dec-a5ae-7ce30ef25743,False,False,17c44f22-db76-45e0-bdc2-1d5601e7a1ac,False,False
-False,False,,False,False,False,False,False,False,False,c1044c8f-4f99-4056-8d6a-c0ada8f65bb8,False,False,5c1cd837-3002-4d31-a119-9d92ea54b800,False,False
+False,False,Tue: jazz. Sat; live music,False,False,False,False,True,True,False,c1044c8f-4f99-4056-8d6a-c0ada8f65bb8,False,False,5c1cd837-3002-4d31-a119-9d92ea54b800,False,True
 True,False,Outside tables,False,False,False,False,True,False,False,25f791cc-a5a6-4cac-8b69-586702af957d,False,False,3a307ef4-9853-4b68-b870-5fb7aeb66615,True,True
 False,False,,False,False,False,False,False,False,False,d32da59a-43c2-4478-a9a0-70e724acc75a,False,False,448170de-3a79-49aa-b8bc-6bcc03b74c93,False,False
 False,False,,False,False,False,False,False,False,False,0f215e66-e989-484c-a456-e2c06e807d29,False,False,92cb2a82-ade4-4a67-8f89-d0ec3d728e20,False,False
@@ -727,7 +719,7 @@ False,False,Fairground games,True,False,False,False,True,False,False,72f45121-bf
 True,False,Shuffleboard,True,False,False,False,True,False,False,e7a5873d-e2ce-45d0-bbd3-f3a37575a672,False,False,bf947bbc-a97c-4016-96bb-33e294dbb354,False,False
 False,False,,False,False,False,False,False,False,False,ef3de685-4c13-4560-bd49-e6060f9ea86b,False,False,1b44bf4a-7957-4cc5-8a7a-8cbad311ed4e,False,False
 False,False,,False,False,False,False,False,False,False,132ae07c-5a77-4646-b439-efb23e4ae3cf,False,False,ecbc89e5-9949-4484-8d20-8fb11c68eb32,False,False
-False,False,,False,False,False,False,False,False,False,d0a713b3-1211-417a-b221-1b2679230679,False,False,04b4d442-7ac3-4c13-9a04-a7b42d5d5eaa,False,False
+False,False,Riverside setting with some events,True,False,True,False,False,False,False,d0a713b3-1211-417a-b221-1b2679230679,False,False,04b4d442-7ac3-4c13-9a04-a7b42d5d5eaa,True,False
 False,False,,False,False,False,False,False,False,False,5a95a497-6a8a-4c1c-99bc-92d74e20921f,False,False,49ab558d-4a75-4ae7-85fa-011751f8248c,False,False
 False,False,,False,False,False,False,False,False,False,1150b070-051c-4757-9539-0b085a4551dc,False,False,4a47f365-9643-4215-87a9-6f5a69869cf3,False,False
 False,False,Brewery tours,False,False,True,False,False,True,False,dce72725-aec6-495c-93a4-88fa5b2ddef5,False,False,287712f4-6d18-48fc-8002-28033c5c3182,False,False
@@ -737,7 +729,7 @@ False,False,,False,False,False,False,False,False,False,9e9a798f-92a8-4846-9d34-e
 False,False,,False,False,False,False,False,False,False,06d84519-d68f-4037-a943-fb10361b023d,False,False,396d4550-a6e2-4fc0-9ab9-58c3be54bfeb,False,False
 False,False,,False,False,False,False,False,False,False,9b132499-96eb-417c-af3d-9f364172ef33,False,False,e863cbb5-db2c-447a-93fa-773ff4ec7738,False,False
 False,False,,False,False,False,False,False,False,False,ce2548a3-47f9-4e24-9ac3-3cd34805290a,False,False,714feed4-a2c0-49dc-b32f-e55fcde221b6,False,False
-False,False,,False,False,False,False,False,False,False,b8008c1f-9c21-46e9-9d45-6ea226c5cedb,False,False,f33cf5f4-2e72-4e85-8ed7-65ef0f5200d1,False,False
+False,False,Brewery tours and Thurs live music,True,False,False,False,False,True,False,b8008c1f-9c21-46e9-9d45-6ea226c5cedb,False,False,f33cf5f4-2e72-4e85-8ed7-65ef0f5200d1,False,True
 False,False,,False,False,False,False,False,False,False,0b1ef52c-4497-4de4-b606-305b2ee1911e,False,False,74edb169-e56e-436b-8cf3-6dc8f78a28b3,False,False
 False,False,,False,False,False,False,False,False,False,6fe92b26-ef10-4919-bcff-4e47c5cf763c,False,False,08a6b58e-29b5-4b2e-a9a7-143206625cf5,False,False
 False,False,,False,False,False,False,False,False,False,c842ceb4-a74b-43d4-8441-3adbbd4daf8d,False,False,606878f2-cec6-4cf0-8e2d-d8da6c1f1479,False,False
@@ -748,7 +740,7 @@ False,False,Outside space and £6 Thurs,False,False,False,False,True,False,False
 False,False,,False,False,False,False,False,False,False,be73a1f9-62cc-470a-955b-094c4b734938,False,False,cf1942ac-2ae9-45ef-99e7-e6cbb9c6a7fe,False,False
 False,False,Bar billiards and outdoor seating,True,False,False,False,False,False,False,d27344c5-c1f5-4d13-b79f-057b14a0a360,False,False,b015da6b-9e23-4c75-b6a2-f5346e2d7ae1,False,False
 False,False,Basement music venue,False,False,False,False,True,True,False,a8467bfa-1f5e-482c-96d3-0e2206aa81c2,False,False,3cdbf21c-00e1-4e20-afd2-15709db01c06,False,False
-False,False,,False,False,False,False,False,False,False,a406bcc7-0efb-4c7d-af97-eb24246d24bf,False,False,cd805bf0-e182-42e4-a098-e8dd6c6a072a,False,False
+False,False,Classic pub,False,False,True,False,False,False,False,a406bcc7-0efb-4c7d-af97-eb24246d24bf,False,False,cd805bf0-e182-42e4-a098-e8dd6c6a072a,True,False
 False,False,,False,False,False,False,False,False,False,45897c9f-51e7-43fa-91a0-e7e89e29590e,False,False,66b76b68-7ade-4dd9-9e93-6639198637af,False,False
 False,False,,False,False,False,False,False,False,False,a2e88552-9cc0-48d5-bb3f-e39cc0006313,False,False,4a0fcb8c-041d-494a-98d8-6bc0c8b1edc9,False,False
 False,False,Daytime only,False,False,False,False,False,False,False,44e3ec1e-f40a-445b-9edb-7994fc4d08d1,False,False,f741bcce-71e1-4e88-8268-b0d7a8c153a1,False,False
@@ -757,12 +749,12 @@ False,False,,False,False,False,False,False,False,False,9bb7e86c-ca97-4f53-a349-e
 False,False,,False,False,False,False,False,False,False,f47dbe6b-1428-4bb8-a017-0a0062785ed9,False,False,6bf02bfd-6e95-4130-9fec-53d5f0c7bfb1,False,False
 True,False,Afro-Caribbean shish bar and restaurant. Wed: bottomless bubbles,False,False,False,False,True,False,False,9a0fe706-c6f5-4caf-8916-9455700a81f6,False,False,e59d92a1-0b17-427d-afb6-b71b3522e473,False,False
 False,False,Outside tables,False,False,False,False,True,False,False,aae5bfb3-9a38-4bbc-beab-32ec07e1fd9e,False,False,273289bc-68d2-4cf0-bf30-3a10cce599e4,False,False
-False,False,,False,False,False,False,False,False,False,1342830d-e087-49e6-8266-71ea278355b2,False,False,49f7b839-f170-4d25-9b58-f0c9ccb20802,False,False
-False,False,,False,False,False,False,False,False,False,e742eaeb-ca3a-4b61-bf87-186aec8dd672,False,False,55080b2b-e62f-42ce-ab50-ef2084c412d3,False,False
+True,False,Regular DJs,False,False,False,False,False,True,False,1342830d-e087-49e6-8266-71ea278355b2,False,False,49f7b839-f170-4d25-9b58-f0c9ccb20802,False,True
+False,False,Rooftop bar Fri-Sun only,False,False,True,False,True,False,False,e742eaeb-ca3a-4b61-bf87-186aec8dd672,False,False,55080b2b-e62f-42ce-ab50-ef2084c412d3,False,False
 False,False,Wed 8pm quiz and drag nights,True,False,False,False,True,False,False,c73c73e4-aefa-48fd-aaa7-c2abdae3aaf5,True,False,147273b9-b5a5-4b9f-9864-9bf54614077d,False,False
 False,False,Arcade games,True,False,False,False,True,False,False,abf8bc80-06ed-4fbd-95f5-69aaea242fe5,False,False,5b2a9021-fc5b-4197-8b37-5040f18c119f,False,False
 False,False,Cask ales,False,False,True,False,False,False,False,1d87e7f7-723f-46eb-b9b2-cb5b25a489c0,False,False,223d72fa-a700-4352-bcfb-6833b738f5e6,False,False
-False,False,,False,False,False,False,False,False,False,1605a183-1c79-44a6-905a-aab6d109bfbf,False,False,f1d20739-7d34-4510-8abe-19c98a9cdf4a,False,False
+False,False,Comedy and live music events. Mon-Tue closed,True,False,True,False,False,True,False,1605a183-1c79-44a6-905a-aab6d109bfbf,False,False,f1d20739-7d34-4510-8abe-19c98a9cdf4a,False,True
 False,False,Various events,True,False,True,False,False,False,False,8a9a733c-f36b-49e9-8da7-aeb884293d92,False,False,c08f6ffe-4cd7-402c-b399-b7f0ca3abf21,False,False
 False,False,Hotel,False,False,True,False,False,False,False,52af26bd-dc00-4812-8766-f2e791d62a50,False,False,1976c287-2c7e-43ce-b71f-a0ba412714f6,False,False
 False,False,,False,False,False,False,False,False,False,e11b2048-5a29-48e1-a059-a87797a18ebc,False,False,2bbe7b81-4605-41c9-af7a-f7bee3b46f17,False,False
@@ -839,3 +831,4 @@ False,False,,False,False,False,False,False,False,False,9a32f0a7-3092-4ecc-8701-f
 False,False,Canoes. Weekend only,True,False,True,False,False,False,False,ecd43a0d-0ceb-4e86-b9af-b408eee96b18,False,False,87b71dd0-2fc3-4c37-a2ca-99fc94f08a20,False,False
 False,False,Monday quiz. Open mic nights 1st Thur/month,True,False,True,False,False,True,False,eeb52bb4-449c-4b35-b25e-c9ff9795e4f0,True,False,f3ea9678-7c10-400f-b4e0-a039c4e0dadb,True,True
 False,False,Weatherspoons,False,False,False,False,False,False,False,cdece2d6-cd2d-48bd-be70-2317db1ef773,False,False,c9acd8a9-6965-4b2d-9159-2fbe28ca78bd,False,True
+False,True,Traditional pub ,False,False,True,False,False,False,False,d7dccf30-51e4-4766-b25f-34b4eec401c7,False,False,d33b1c2a-5d66-48e4-9ee0-02ba91312dde,False,True
