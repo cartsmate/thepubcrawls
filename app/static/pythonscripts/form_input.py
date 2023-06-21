@@ -19,7 +19,6 @@ class FormInput:
     def get_review(self, df_reviews, pub_id):
         for review in list(Review2().__dict__.keys()):
             if review not in self.ignore_list:
-                print(review)
                 df_reviews.loc[df_reviews['pub_identity'] == pub_id, review] = True if request.form.get(review) == 'on' else False
             if review == 'detail':
                 df_reviews.loc[df_reviews['pub_identity'] == pub_id, review] = request.form[review]

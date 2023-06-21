@@ -17,6 +17,11 @@ def pub_map():
     #     return redirect(url_for('login'))
     df_all = EntitiesMulti().get_pubs_reviews()
 
+    df_group = df_all.groupby(['rank'], as_index=False).count()
+    no_all = df_all.shape[0]
+    no_0 = df_group[df_group['rank'] == 0]['pub_identity'].item()
+    no_reviewed = no_all - no_0
+
     all_json = Dataframes().df_to_dict(df_all)
 
 
@@ -66,6 +71,6 @@ def pub_map():
     print(review_lat)
     print(review_long)
 
-    return render_template('pub_map.html', google_key=config2['google_key'],
+    return render_template('pub_map.html', google_key=config2['google_key'], no_all=no_all, no_reviewed=no_reviewed,
                            full=all_json, station=station_all_json, area=area_all_json, form_type='map',
                            icon_hole=False, info_box=False, map_view=view, map_lat=review_lat, map_lng=review_long)

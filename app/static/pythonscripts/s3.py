@@ -90,5 +90,6 @@ class S3:
             else:
                 print(f"Unsuccessful {s3_obj_name }S3 put_object response. Status - {status}")
 
-        s3_resp = client.head_object(Bucket=config2['bucket_name'], Key=s3_obj_name)
-        return s3_resp
+        # s3_resp = client.head_object(Bucket=config2['bucket_name'], Key=s3_obj_name)
+
+        return status
