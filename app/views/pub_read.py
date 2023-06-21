@@ -33,7 +33,10 @@ def allowed_file(filename):
 def pub_read(pub_id):
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
+
     print('pub_read')
+
+    directory_path = config2['directory_path']
 
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
     required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
@@ -117,15 +120,17 @@ def pub_read(pub_id):
                 df_pub_appended = Dataframes().append_df(df_pubs, df_new_pub)
                 # print(df_pub_appended)
                 error=""
+                response = ""
                 if df_pub_appended.shape[1] == len(Pub2().__dict__.items()):
                     Dataframes().to_csv(df_pub_appended, 'pub')
                     s3_resp = S3().s3_write(df_pub_appended, 'pubs.csv')
+                    response = str(s3_resp)
                 else:
                     print('Error in processing')
                     # tkinter.messagebox.showwarning("Error in processing", "Failed to save new venue")
                     error = "Failed to save new venue"
-                    flash(error)
-
+                    # flash(error)
+                    response = str('pub error')
                 df_new_review = FormNew().get_review(pub_id)
                 # df_reviews = S3().get_s3_reviews()
                 df_reviews = Csv().get_reviews()
@@ -133,14 +138,17 @@ def pub_read(pub_id):
                 if df_review_appended.shape[1] == len(Review2().__dict__.items()):
                     Dataframes().to_csv(df_review_appended, 'review')
                     s3_resp = S3().s3_write(df_review_appended, 'reviews.csv')
+                    # flash(s3_resp)
+                    response += " | " + str(s3_resp)
                 else:
                     print('Error in processing')
                     # top = tkinter.Tk()
                     # top.geometry("150x150")
                     # tkinter.messagebox.showwarning("Error in processing", "Failed to save review")
                     # top.mainloop()
-                    error = "Failed to save review"
-                    flash(error)
+                    # error = "Failed to save review"
+                    # flash(error)
+                    response += " | " + str('review error')
 
                 df_new_merged = Dataframes().merge_dfs(df_new_pub, df_new_review)
                 df_area_added = Dataframes().add_area(df_new_merged)
@@ -157,8 +165,9 @@ def pub_read(pub_id):
 
                 review_lat = df_station_added['pub_latitude']
                 review_long = df_station_added['pub_longitude']
-
-                return render_template('pub_read.html', error=error, form_type='read', google_key=config2['google_key'],
+                flash(response)
+                return render_template('pub_read.html', response=response,
+                                       error=error, form_type='read', google_key=config2['google_key'],
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                        pub_review=pub_review_json, config=config,
                                        fields_list=fields_list,
@@ -179,17 +188,24 @@ def pub_read(pub_id):
                 #                        dupe_id=dupe_id)
         else:
             print('edit pub')
-            # df_pubs = S3().get_s3_pubs()
-            df_pubs = Csv().get_pubs()
-            df_pubs_updated = FormInput().get_pub(df_pubs, pub_id)
-            Dataframes().to_csv(df_pubs_updated, 'pub')
-            s3_resp = S3().s3_write(df_pubs_updated, config['pub']['aws_key'])
 
-            # df_reviews = S3().get_s3_reviews()
-            df_reviews = Csv().get_reviews()
+            df_pubs = S3().get_s3_pubs()
+            df_pubs_updated = FormInput().get_pub(df_pubs, pub_id)
+            df_pubs_updated.to_csv(directory_path + '/files/pubs.csv', index=False, sep=',', encoding='utf-8')
+            s3_resp = S3().s3_write(df_pubs_updated, config['pub']['aws_key'])
+            response = int(s3_resp)
+            print(response)
+
+            df_reviews = S3().get_s3_reviews()
             df_review_updated = FormInput().get_review(df_reviews, pub_id)
-            Dataframes().to_csv(df_review_updated, 'review')
+            df_review_updated.to_csv(directory_path + '/files/reviews.csv', index=False, sep=',', encoding='utf-8')
             s3_resp = S3().s3_write(df_review_updated, config['review']['aws_key'])
+            response += int(s3_resp)
+            if response == 400:
+                word_response = "Successfully updated"
+            else:
+                word_response = "Error in processing"
+            print(word_response)
 
             df_pub_review = EntitiesSingle().get_pub_review(pub_id)
 
@@ -203,20 +219,12 @@ def pub_read(pub_id):
             df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
             pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
 
-            # list_L = df_pub_photos[['pub_latitude', 'pub_longitude']].values.tolist()
-            # _lat = []
-            # _long = []
-            # for l in list_L:
-            #     _lat.append(l[0])
-            #     _long.append(l[1])
-            #
-            # review_lat = sum(_lat) / len(_lat)
-            # review_long = sum(_long) / len(_long)
             review_lat = df_pub_photos['pub_latitude']
             review_long = df_pub_photos['pub_longitude']
+            flash(word_response)
 
-
-            return render_template('pub_read.html', form_type='read', google_key=config2['google_key'],
+            return render_template('pub_read.html', response=response,
+                                   form_type='read', google_key=config2['google_key'],
                                    pub_review=pub_review_json, pubs_reviews=pubs_reviews_json, config=config,
                                    stations=stations_json, areas=areas_json,
                                    fields_list=fields_list,
