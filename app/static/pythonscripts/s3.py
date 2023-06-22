@@ -29,7 +29,7 @@ class S3:
         return df
 
     def get_s3_pubs(self):
-        pubby = Pub2()
+        # pubby = Pub2()
         df = self.get_s3_records('pub', list(Pub2().__dict__.keys()))
         # print(list(Pub2().__dict__.keys()))
         return df

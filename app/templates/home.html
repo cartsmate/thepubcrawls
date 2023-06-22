@@ -21,9 +21,9 @@
 <script>
 
 function mapSetup() {
+/*
     crawl = { start, walk, favourite, stops, criteria }
     var stop_offs = []
-    /*
     if ( crawl.favourite = 'all' ) {
         crawl.score = pub[0]['score']
         crawl.score_name = 'Rating'
@@ -31,7 +31,6 @@ function mapSetup() {
         crawl.score = pub[0][favourite]
         crawl.score_name = favourite
     }
-    */
     pub_first_stop = {
         name: pub[0]['name'],
         distance_from_first: 0,
@@ -79,32 +78,15 @@ function mapSetup() {
         window.location.href = "/pub/map/all"
     });
     add_markers(map2, 16, pubs, Boolean(false));
+*/
 }
 </script>
 
 <script>
 function onLoad(){
-    key = {{ google_key | tojson }}
-    pubs = {{ pubs | tojson }}
-    pub = {{ pub | tojson }}
-    start = {{ start | tojson }}
-    walk = {{ walk | tojson }}
-    favourite = {{ favourite | tojson }}
-    stops = {{ stops | tojson }}
-    criteria = {{ criteria | tojson }}
     counter = {{ counter | tojson }}
     console.log(counter)
-    features = {{ features | tojson }}
-    form = {{ form_type | tojson }}
-    icon_list = {{ icon_list | tojson }}
-    var photo_array = {{ photo_array | tojson }}
-    var map_lat = {{ map_lat | tojson }}
-    var map_lng = {{ map_lng | tojson }}
-    var map_view = {{ map_view | tojson }}
-    var config = {{ config | tojson }}
-    var areas = {{ areas | tojson }}
-    var pubs_reviews = {{ pubs_reviews | tojson }}
-    var photo_id = {{ photo_id | tojson }}
+
     var js = document.createElement("script");
     js.type = "text/javascript";
     if ( window.navigator.onLine == true) {
@@ -113,8 +95,6 @@ function onLoad(){
     } else {
         //alert('You appear to offline so maps cannot be displayed')
     }
-    config2 = {{ config2 | tojson }}
-
 }
 </script>
 {% endblock %}
@@ -122,7 +102,7 @@ function onLoad(){
 {% block main %}
 <div class="col-md-12 mx-auto" id="main">
     {% include "home_intro.html" %}
-    {% include "home_crawl.html" %}
+    {% include "home_station.html" %}
     <div class="row top-buffer">
         <div class="col-12 center-block text-center">
             <a style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">Search pubs by feature</a>
@@ -139,7 +119,6 @@ function onLoad(){
         </div>
     </div>
     {% include "home_area.html" %}
-    {% include "home_location.html" %}
 
 </div>
 {% endblock %}
