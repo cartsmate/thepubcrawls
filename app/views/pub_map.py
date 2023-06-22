@@ -16,7 +16,6 @@ def pub_map():
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
     df_all = EntitiesMulti().get_pubs_reviews()
-
     df_group = df_all.groupby(['rank'], as_index=False).count()
     no_all = df_all.shape[0]
     no_0 = df_group[df_group['rank'] == 0]['pub_identity'].item()

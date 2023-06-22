@@ -1,3 +1,16 @@
+<script>
+function onLoad(){
+    key = {{ google_key | tojson }}
+    pubs = {{ pubs | tojson }}
+    pub = {{ pub | tojson }}
+    start = {{ start | tojson }}
+    walk = {{ walk | tojson }}
+    favourite = {{ favourite | tojson }}
+    stops = {{ stops | tojson }}
+    criteria = {{ criteria | tojson }}
+}
+</script>
+
 <div class="row">
     <div class="col-12 center-block text-center">
         <a href="/pub/crawl" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">Create your own pub crawl</a>
