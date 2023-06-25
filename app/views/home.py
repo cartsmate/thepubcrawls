@@ -160,8 +160,19 @@ def home():
 
     no_reviewed_2 = no_all_2 - no_0_2
 
+    list_L = df_pubs[['pub_latitude', 'pub_longitude']].values.tolist()
+    _lat = []
+    _long = []
+    for l in list_L:
+        _lat.append(l[0])
+        _long.append(l[1])
+
+    review_lat = sum(_lat) / len(_lat)
+    review_long = sum(_long) / len(_long)
+
     return render_template('home.html', list_areas=list_areas, list_stations=list_stations,
                            areas=areas_json, stations=stations_json,
+                           map_lat=review_lat, map_lng=review_long,
                            # pubs_reviews=pubs_json, photo_array=config, map_view="stations",
                             config=config, google_key=config2['google_key'],
                             # row_loop=range(3), col_loop=range(4),
