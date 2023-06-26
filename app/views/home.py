@@ -24,27 +24,31 @@ def home():
     required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
 
     print(icon_list)
+    directory_path = config2['directory_path']
     if config2['env'] == 'prod':
-        obj_df = S3().s3_read('counter_prod', ['pub_counter'])
+        # obj_df = S3().s3_read('counter_prod', ['pub_counter'])
+        obj_df = pd.read_csv(directory_path + '/files/counter_prod.csv')
     else:
         # directory_path = os.getcwd()
         # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
-        directory_path = config2['directory_path']
+        # directory_path = config2['directory_path']
         obj_df = pd.read_csv(directory_path + '/files/counter_qual.csv')
+
     obj_df["pub_counter"] = obj_df["pub_counter"] + 1
 
     if config2['env'] == 'prod':
-        s3_resp = S3().s3_write(obj_df, 'counter_prod.csv')
+        # s3_resp = S3().s3_write(obj_df, 'counter_prod.csv')
+        obj_df.to_csv(directory_path + '/files/counter_prod.csv', sep=',', encoding='utf-8', index=False)
     else:
         # directory_path = os.getcwd()
         # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
-        directory_path = config2['directory_path']
+        # directory_path = config2['directory_path']
         obj_df.to_csv(directory_path + '/files/counter_qual.csv', sep=',', encoding='utf-8', index=False)
     counter = str(obj_df["pub_counter"].values[0]).zfill(6)
 
     # directory_path = os.getcwd()
     # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
-    directory_path = config2['directory_path']
+    # directory_path = config2['directory_path']
 
     # try:
     # df_pubs = S3().get_s3_pubs()
@@ -64,7 +68,7 @@ def home():
     # df_crawls.to_csv(directory_path + '/files/crawls.csv', index=False, sep=',', encoding='utf-8')
 
     # df_stations = S3().get_s3_stations()
-    df_stations = Csv().get_station()
+    df_stations = Csv().get_stations()
     stations_json = Dataframes().df_to_dict(df_stations)
     # df_stations.to_csv(directory_path + '/files/stations.csv', index=False, sep=',', encoding='utf-8')
 
@@ -142,26 +146,20 @@ def home():
 
     l3 = [x for x in l1 if x not in ignore_list]
 
-    df_all = Csv().get_pubs()
-    df_all_less_del = df_all[df_all["pub_deletion"] == "False"]
-    no_all = df_all_less_del.shape[0]
-    print(no_all)
+    # df_all = Csv().get_pubs()
+    # df_all_less_del = df_all[df_all["pub_deletion"] == "False"]
+    # no_all = df_all_less_del.shape[0]
+    # print(no_all)
 
-    df_pubs_less_del_2 = df_pubs[df_pubs["pub_deletion"] == "False"]
-    no_all_2 = df_pubs_less_del_2.shape[0]
-    print(no_all_2)
-
-    df_group = df_all_less_del.groupby(['rank'], as_index=False).count()
-    no_0 = df_group[df_group['rank'] == 0]['pub_identity'].item()
-    print(no_0)
-
-    df_group_2 = df_pubs_less_del_2.groupby(['rank'], as_index=False).count()
-    no_0_2 = df_group_2[df_group_2['rank'] == 0]['pub_identity'].item()
-    print(no_0_2)
-
-    no_reviewed = no_all - no_0
-
-    no_reviewed_2 = no_all_2 - no_0_2
+    # df_pubs_less_del = df_pubs[df_pubs["pub_deletion"] == "False"]
+    # no_all = df_pubs_less_del.shape[0]
+    # print(no_all)
+    #
+    # df_group = df_pubs_less_del.groupby(['rank'], as_index=False).count()
+    # no_0 = df_group[df_group['rank'] == 0]['pub_identity'].item()
+    # print(no_0)
+    #
+    # no_reviewed = no_all - no_0
 
     list_L = df_pubs[['pub_latitude', 'pub_longitude']].values.tolist()
     _lat = []
@@ -182,6 +180,7 @@ def home():
                            # start=start,
                            #  walk=walk, favourite=favourite, stops=stops, criteria=criteria, photo_id=photo_id,
                            #  pubs=pubs_json, pub=pub_json, config2=config2, form_type='home',
-                           counter=counter, no_all=no_all, no_reviewed=no_reviewed,
-                           no_all_2=no_all_2, no_reviewed_2=no_reviewed_2,
+                           counter=counter,
+                           # no_all=no_all, no_reviewed=no_reviewed,
+                           # no_all_2=no_all_2, no_reviewed_2=no_reviewed_2,
                             ignore_list=ignore_list, review_obj=Review2(), features=l3, icon_list=icon_list)
