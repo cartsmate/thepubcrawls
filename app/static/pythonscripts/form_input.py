@@ -14,6 +14,7 @@ class FormInput:
     def get_pub(self, df_pubs, pub_id):
         for pub in list(Pub2().__dict__.keys()):
             df_pubs.loc[df_pubs['pub_identity'] == pub_id, pub] = request.form[pub]
+            print(request.form[pub])
         return df_pubs
 
     def get_review(self, df_reviews, pub_id):
