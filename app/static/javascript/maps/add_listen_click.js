@@ -14,8 +14,10 @@ function add_listen_click(map) {
             // add pop up box with info and do you want to add this pub?
             infowindow.setContent(
                 '<div>'
-                + '<strong>Click the link to add pub</strong><br>'
+                + '<strong>Click the link to open the add pub page</strong>'
+                + '<br>' +
                 + '<a href="/pub/add/' + event.latLng.lat() + '/' + event.latLng.lng() + '">Add Venue</a>'
+                + '<br>'
                 + '</div>');
             infowindow.open(map);
         }
