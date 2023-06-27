@@ -28,7 +28,7 @@ def pub_delete(pub_id):
     # df_reviews = S3().get_s3_reviews()
     df_reviews.loc[df_reviews['pub_identity'] == pub_id, 'review_deletion'] = True
     Dataframes().to_csv(df_reviews, 'review')
-    s3_resp = S3().s3_write(df_reviews, config['review']['aws_key'])
+    # s3_resp = S3().s3_write(df_reviews, config['review']['aws_key'])
 
     # s3_resp = Functions().s3_write(df_reviews.to_csv(sep=',', encoding='utf-8', index=False), config['review']['aws_key'])
     # print(s3_resp)

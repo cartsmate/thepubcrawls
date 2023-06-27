@@ -53,11 +53,13 @@
         </div>
     {% endif %}
     -->
-    {% if (form_type != 'home') %}
+    {% if (form_type != 'search' and form_type != 'home') %}
         <div style="text-align: center;">
             <a href="{{url_for('pub_search')}}"><img src="/static/icons/footer/search.png" class="button_size"></a>
             <div class="button_caption">SEARCH<br>PUBS</div>
         </div>
+    {% endif %}
+    {% if (form_type != 'home') %}
         <div style="text-align: center;">
             <a href="{{url_for('home')}}"><img src="/static/icons/footer/home1.png" class="button_size"></a>
             <div class="button_caption">RETURN<br>HOME</div>

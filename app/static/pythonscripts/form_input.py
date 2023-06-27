@@ -9,7 +9,8 @@ config = Configurations().get_config()
 class FormInput:
 
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
-        required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
+        required_list, form_visible_list, table_visible_list, icon_list, fields_list, \
+        ignore_list = ControlsList().get_control_lists()
 
     def get_pub(self, df_pubs, pub_id):
         for pub in list(Pub2().__dict__.keys()):

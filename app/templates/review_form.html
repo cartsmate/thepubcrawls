@@ -1,7 +1,7 @@
 
 {% for field in review_fields %}
     <script>console.log("{{field}}")</script>
-    {% if field in visible_list %}
+    {% if field in form_visible_list %}
         <script>console.log("{{field}}: visible")</script>
         <div class="form-group row" id="row_{{field}}" >
             <label class="col-xs-2 col-form-label" for="{{field}}" style="margin: auto; visibility: visible; display: block;">"{{field}}"</label>

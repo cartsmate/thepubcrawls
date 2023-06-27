@@ -22,25 +22,25 @@ def pub_crawl():
         df_stations = Csv().get_stations()
         # df_stations = S3().get_s3_stations()
         df_all = EntitiesMulti().get_pubs_reviews()
-        df_all_x = df_all[['name', 'area_identity', 'place']]
-        pub_list = df_all['name'].tolist()
-        df_new_trunc = df_all[['name', 'station_identity']]
+        df_all_x = df_all[['pub_name', 'area_identity', 'place']]
+        pub_list = df_all['pub_name'].tolist()
+        df_new_trunc = df_all[['pub_name', 'station_identity']]
         df_new_count = df_new_trunc.groupby(['station_identity'], as_index=False).count()
         df_new_latlng = pd.merge(df_new_count, df_stations, how='left', on='station_identity') \
-            .rename(columns={'name': 'count'}).astype(str) \
-            .sort_values(by='station')
-        station_list = df_new_latlng['station'].tolist()
+            .rename(columns={'pub_name': 'count'}).astype(str) \
+            .sort_values(by='station_name')
+        station_list = df_new_latlng['station_name'].tolist()
         all_json = Dataframes().df_to_dict(df_new_latlng)
-        df_small = df_all[['name', 'place']].sort_values(by='name', ascending=False)
+        df_small = df_all[['pub_name', 'place']].sort_values(by='pub_name', ascending=False)
         place_list = df_small.values.tolist()
 
         df_area = Csv().get_areas()
         # df_area = S3().get_s3_areas()
-        df_area_x = df_area[['area', 'area_identity']]
+        df_area_x = df_area[['area_name', 'area_identity']]
         df_pub_with_area = pd.merge(df_all_x, df_area_x, on='area_identity', how='left').sort_values(by='area')
-        df_pub_area = df_pub_with_area[['place', 'name', 'area']]
+        df_pub_area = df_pub_with_area[['place', 'pub_name', 'area_name']]
         pub_area_list = df_pub_area.values.tolist()
-        df_area_list = df_pub_with_area['area']
+        df_area_list = df_pub_with_area['area_name']
 
         df_unique = df_area_list.unique()
         list_pub_area = df_unique.tolist()
@@ -52,7 +52,7 @@ def pub_crawl():
     if request.method == 'POST':
         print('/pub/crawl/show: POST')
         try:
-            station = request.form['station']
+            station = request.form['station_name']
         except:
             station = "NONE"
         try:

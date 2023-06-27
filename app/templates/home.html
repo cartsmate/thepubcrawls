@@ -19,82 +19,17 @@
 <!--<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_setup.js') }}"></script>-->
 
 <script>
-
-function mapSetup() {
-/*
-    crawl = { start, walk, favourite, stops, criteria }
-    var stop_offs = []
-    if ( crawl.favourite = 'all' ) {
-        crawl.score = pub[0]['score']
-        crawl.score_name = 'Rating'
-    } else {
-        crawl.score = pub[0][favourite]
-        crawl.score_name = favourite
-    }
-    pub_first_stop = {
-        name: pub[0]['name'],
-        distance_from_first: 0,
-        distance_next: 0,
-        rank: pub[0]['rank'],
-        //score: pub[0]['score'],
-        //star: pub[0]['star'],
-        //star_score: pub[0][pub[0]['star']],
-        lat: pub[0]['latitude'],
-        lng: pub[0]['longitude'],
-        place: pub[0]['place'],
-        pub_identity: pubs[0]['pub_identity']
-    }
-    pubs = pubs.filter (obj => !(obj.place == pub_first_stop.place))
-    if ( crawl.favourite != 'all' ) {
-        pubs = pubs.filter (obj => (obj[crawl.favourite] === true))
-    }
-    if (pubs.length > 0 ) {
-        stop_offs.push(pub_first_stop)
-        for (let i=0; i<crawl.stops; i++) {
-            list_got = distancing(pub_first_stop, stop_offs[i], pubs, crawl)
-            if ( list_got === undefined ) {
-                break;
-            } else {
-                stop_offs.push(list_got)
-                pubs = pubs.filter (obj => !(obj.place == list_got.place))
-            }
-        }
-        displayCrawl(stop_offs, 'map');
-    } else {
-        displayNone(pub_first_stop);
-    }
-    var myOptions = {
-        zoom: 14,
-        center: new google.maps.LatLng(51.52302856214283,-0.1070362329483032),
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        zoomControl: false,
-        streetViewControl: false,
-        disableDefaultUI: true
-    }
-    map2 = new google.maps.Map(document.getElementById("map2"), myOptions)
-    map2.addListener("click", (event) => {
-        console.log('you clicked on the map')
-        event.stop();
-        window.location.href = "/pub/map/all"
-    });
-    add_markers(map2, 16, pubs, Boolean(false));
-*/
-}
-</script>
-
-<script>
 function onLoad(){
     counter = {{ counter | tojson }}
+    icon_list = {{ icon_list | tojson }}
+    config2 = {{ config2 | tojson }}
     console.log(counter)
-
-    var js = document.createElement("script");
-    js.type = "text/javascript";
-    if ( window.navigator.onLine == true) {
-        js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=mapSetup'
-        document.head.appendChild(js)
-    } else {
-        //alert('You appear to offline so maps cannot be displayed')
-    }
+    document.getElementById("digit_100000").innerHTML = counter.substring(0,1)
+    document.getElementById("digit_10000").innerHTML = counter.substring(1,2)
+    document.getElementById("digit_1000").innerHTML = counter.substring(2,3)
+    document.getElementById("digit_100").innerHTML = counter.substring(3,4)
+    document.getElementById("digit_10").innerHTML = counter.substring(4,5)
+    document.getElementById("digit_1").innerHTML = counter.substring(5,6)
 }
 </script>
 {% endblock %}
@@ -113,9 +48,9 @@ function onLoad(){
             {% include "home_features.html" %}
         {% endwith %}
     </div>
-    <div class="row" style="background-color: #0275d8">
-        <div class="col-12 center-block text-center">
-            <a onclick="featureSearch(features)" style="font-weight: bold; font-size: 14px; color: white;">Search</a>
+    <div class="row">
+        <div class="col mx-auto">
+            <button type="button" onclick="featureSearch()" class="btn btn-primary rounded-pill">Search</button>
         </div>
     </div>
     {% include "home_area.html" %}
@@ -132,6 +67,6 @@ function onLoad(){
         <div id="digit_10" class="span"></div>
         <div id="digit_1" class="span"></div>
     </div>
-    <div class="message">Unique Visits to this Page: </div>
+    <div class="message">Visits to this Page</div>
     <h3><span id="visits"></span></h3>
 {% endblock %}
