@@ -16,7 +16,8 @@ class ControlsList:
     def get_control_lists(self):
         ignore_list = ['review_deletion', 'review_identity', 'pub_identity', 'detail']
 
-        visible_list = []
+        form_visible_list = []
+        table_visible_list = []
         required_list = []
         alias_list = []
         icon_list = []
@@ -31,8 +32,10 @@ class ControlsList:
         for cl in class_list:
             for k, v in cl.__dict__.items():
                 fields_list.append(v.name)
-                if v.visible == True:
-                    visible_list.append(v.name)
+                if v.form_visible == True:
+                    form_visible_list.append(v.name)
+                if v.table_visible == True:
+                    table_visible_list.append(v.name)
                 if v.required == True:
                     required_list.append(v.name)
                 try:
@@ -63,4 +66,4 @@ class ControlsList:
                     check_list.append(v.name)
 
         return dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
-               required_list, visible_list, icon_list, fields_list, ignore_list
+               required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list

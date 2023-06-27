@@ -21,7 +21,8 @@ config2 = Configurations().get_config2()
 @app.route("/home/")
 def home():
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
-    required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
+    required_list, form_visible_list, table_visible_list, icon_list, fields_list, \
+    ignore_list = ControlsList().get_control_lists()
 
     print(icon_list)
     directory_path = config2['directory_path']
@@ -171,6 +172,8 @@ def home():
     review_lat = sum(_lat) / len(_lat)
     review_long = sum(_long) / len(_long)
 
+    print("{:06d}".format(int(counter)))
+
     return render_template('home.html', list_areas=list_areas, list_stations=list_stations,
                            areas=areas_json, stations=stations_json,
                            map_lat=review_lat, map_lng=review_long,
@@ -179,7 +182,8 @@ def home():
                             # row_loop=range(3), col_loop=range(4),
                            # start=start,
                            #  walk=walk, favourite=favourite, stops=stops, criteria=criteria, photo_id=photo_id,
-                           #  pubs=pubs_json, pub=pub_json, config2=config2, form_type='home',
+                           #  pubs=pubs_json, pub=pub_json,
+                            config2=config2, form_type='home',
                            counter=counter,
                            # no_all=no_all, no_reviewed=no_reviewed,
                            # no_all_2=no_all_2, no_reviewed_2=no_reviewed_2,

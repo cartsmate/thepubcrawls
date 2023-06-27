@@ -10,7 +10,7 @@ function Search(headers, visible) {
     console.log('inside Search')
     $(document).ready(function () {
         $('#pub_list').DataTable({
-            paging: false,
+            paging: true,
             info: false,
             order: [[9, 'desc']],
             columnDefs: addJson(headers, visible)
@@ -23,7 +23,7 @@ function Area() {
     document.getElementById("table-pubs-json").innerHTML = create_table()
     $(document).ready(function () {
         $('#pub_list').DataTable({
-            paging: false,
+            paging: true,
             info: false,
             order: [[8, 'desc']],
             searching: false,
@@ -88,7 +88,7 @@ function Category() {
     document.getElementById("table-pubs-json").innerHTML = create_table()
     $(document).ready(function () {
         $('#pub_list').DataTable({
-            paging: false,
+            paging: true,
             info: false,
             order: [[7, 'desc']],
             columnDefs: [

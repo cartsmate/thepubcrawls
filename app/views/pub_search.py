@@ -16,7 +16,8 @@ config2 = Configurations().get_config2()
 def pub_search():
     print('pub_search')
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
-    required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
+    required_list, form_visible_list, table_visible_list, icon_list, fields_list, \
+    ignore_list = ControlsList().get_control_lists()
 
     review_list = {}
     form_obj = {}
@@ -53,7 +54,7 @@ def pub_search():
     inst_pub_review = inst_pub
     visible = {}
     for k, v in inst_pub_review.__dict__.items():
-        visible[k] = v.visible
+        visible[k] = v.table_visible
         # print(k)
         # print(v.visible)
 
@@ -61,8 +62,9 @@ def pub_search():
                            config2=config2, review_list=review_list, review_obj=Review2(), ignore_list=ignore_list,
                            features=l3, review_dict=Review2().__dict__.values(), review_obj_list=review_obj_list,
                            key_list=key_list, review_object=review_object, headers=headers, visible=visible,
-                           fields_list=fields_list,
+                           fields_list=fields_list, form_type='search',
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,
-                           visible_list=visible_list, required_list=required_list,
+                           form_visible_list=form_visible_list, table_visible_list=table_visible_list,
+                           required_list=required_list,
                            alias_list=alias_list, icon_list=icon_list)

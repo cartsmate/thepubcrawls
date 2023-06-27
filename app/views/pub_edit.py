@@ -22,7 +22,8 @@ def pub_edit(pub_id):
     print('pub_edit')
 
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
-    required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
+    required_list, form_visible_list, table_visible_list, icon_list, fields_list, \
+    ignore_list = ControlsList().get_control_lists()
 
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
@@ -82,6 +83,7 @@ def pub_edit(pub_id):
                            map_lat=review_lat, map_lng=review_long,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,
-                           visible_list=visible_list, required_list=required_list,
+                           form_visible_list=form_visible_list, table_visible_list=table_visible_list,
+                           required_list=required_list,
                            alias_list=alias_list, icon_list=icon_list,
                            review_obj=Review2(), ignore_list=ignore_list)

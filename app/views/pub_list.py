@@ -70,7 +70,7 @@ def pub_list(list_type, id_type):
     inst_pub_review = inst_pub
     visible = {}
     for k, v in inst_pub_review.__dict__.items():
-        visible[k] = v.visible
+        visible[k] = v.table_visible
 
     return render_template('pub_list.html', filter=heading, pubs_reviews=pubs_reviews_json, map_view=list_type,
                            pubs_reviews_all=pubs_reviews_all_json,

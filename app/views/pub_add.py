@@ -23,7 +23,7 @@ config2 = Configurations().get_config2()
 def pub_add(lat, lng):
 
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
-    required_list, visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
+    required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
 
     df_all = EntitiesMulti().get_pubs_reviews()
     if lat == 'None' and lng == 'None':
@@ -85,7 +85,8 @@ def pub_add(lat, lng):
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,
                            alias_list=alias_list, icon_list=icon_list,
-                           visible_list=visible_list, required_list=required_list,
+                           form_visible_list=form_visible_list,
+                           table_visible_list=table_visible_list, required_list=required_list,
                            fields_list=fields_list,
                            stations=stations_json, areas=areas_json,
                            map_lat=review_lat, map_lng=review_long, review_obj=Review2(), ignore_list=ignore_list)
