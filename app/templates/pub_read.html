@@ -147,26 +147,13 @@ function showMap(summary, full, zoom, lat, lng){
     {% endif %}
 {% endblock %}
 
-{% block right %}
-{% if form_type != 'add' %}
-    <div class="row">
-        <a href="{{ url_for('photo_upload', pub_identity=pub_review[0]['pub_identity']) }}">
-        <img class="map_height"
-             src="{{ url_for('static', filename='images/venue/' + pub_review[0]['photo_identity'] + '.jpeg') }}"
-             onerror="this.onerror=null; this.src='/static/icons/buttons/camera.png'"
-             style="display: block; object-fit: cover;"
-             alt="upload photo">
-        </a>
-    </div>
-{% endif %}
-{% endblock %}
 
 {% block centre %}
     <div class="row justify-content-center align-items-center">
         <form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">
             {% include "pub_form.html" %}
 
-            <div class="form-group row" style="display: flex; align-items: center; background-color:#CDCDCD;">
+            <div class="form-group row" style="display: flex; align-items: center; background-color:#CDCDCD; border-style:solid; background-color:#D3D3D3; border-width:thin">
                 {% with auto_exec='off' %}
                     {% include "home_features.html" %}
                 {% endwith %}
