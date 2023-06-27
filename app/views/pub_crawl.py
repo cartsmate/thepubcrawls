@@ -37,7 +37,7 @@ def pub_crawl():
         df_area = Csv().get_areas()
         # df_area = S3().get_s3_areas()
         df_area_x = df_area[['area_name', 'area_identity']]
-        df_pub_with_area = pd.merge(df_all_x, df_area_x, on='area_identity', how='left').sort_values(by='area')
+        df_pub_with_area = pd.merge(df_all_x, df_area_x, on='area_identity', how='left').sort_values(by='area_name')
         df_pub_area = df_pub_with_area[['place', 'pub_name', 'area_name']]
         pub_area_list = df_pub_area.values.tolist()
         df_area_list = df_pub_with_area['area_name']

@@ -120,16 +120,12 @@ function pubSwitch() {
 {% endblock %}
 
 {% block controls %}
-<div id="number_all_pubs">{{no_all}}</div>
-<div> : </div>
 <div>ALL PUBS</div>
 <label class="switch">
     <input type="checkbox" id="pub_switch" onclick="pubSwitch()">
     <span class="slider"></span>
 </label>
 <div>REVIEWED PUBS</div>
-<div> : </div>
-<div id="number_review_pubs">{{no_reviewed}}</div>
 {% endblock %}
 
 {% block main %}

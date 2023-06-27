@@ -1,22 +1,44 @@
 
 <div class="row top-buffer">
     <div class="col-12 center-block text-center">
-        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area or station</a>
+        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area/station and features</a>
     </div>
 </div>
-<select class="form-control" id="station" name="station" style="width:220px;">
-    <option value>select station</option>
-    {% for x in list_stations %}
-        <option value={{x}}>{{x}}</option>
-    {% endfor %}
-</select>
-<select class="form-control" id="area" name="area" style="width:220px;">
-    <option value>select area</option>
-    {% for y in list_areas %}
-        <option value={{y}}>{{y}}</option>
-    {% endfor %}
-</select>
-<div id="number_all_pubs">{{no_all}}</div>
-<div id="number_all_pubs_2">{{no_all_2}}</div>
-<div id="number_all_reviewed">{{no_reviewed}}</div>
-<div id="number_all_reviewed_2">{{no_reviewed_2}}</div>
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center">
+            <select class="form-control" id="station" name="station" style="width:220px;">
+                <option value>select station</option>
+                {% for x in list_stations %}
+                    <option value={{x}}>{{x}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center">
+             or
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center">
+            <select class="form-control" id="area" name="area" style="width:220px;">
+                <option value>select area</option>
+                {% for y in list_areas %}
+                    <option value={{y}}>{{y}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center">
+             with
+        </div>
+    </div>
+</div>
