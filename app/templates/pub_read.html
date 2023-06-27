@@ -149,6 +149,7 @@ function showMap(summary, full, zoom, lat, lng){
 
 
 {% block centre %}
+<div class="col-md-12 mx-auto" id="main">
     <div class="row justify-content-center align-items-center">
         <form action="{{ url_for('pub_read', pub_id=pub_review[0]['pub_identity']) }}" method="post">
             {% include "pub_form.html" %}
@@ -175,4 +176,5 @@ function showMap(summary, full, zoom, lat, lng){
             </div>
         </form>
     </div>
+</div>
 {% endblock %}
