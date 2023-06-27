@@ -19,6 +19,49 @@
 <!--<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_setup.js') }}"></script>-->
 
 <script>
+function removeOptions(selectElement) {
+   var i, L = selectElement.options.length - 1;
+   for(i = L; i >= 0; i--) {
+      selectElement.remove(i);
+   }
+}
+function station_changed(dropdown_pick) {
+    document.getElementById("area").selectedIndex = 0;
+}
+function area_changed(dropdown_pick) {
+    document.getElementById("station").selectedIndex = 0;
+    /*
+    {% if form_type == 'get' %}
+        list_areas = {{ list_areas | tojson }}
+        var select = document.getElementById("station");
+        removeOptions(document.getElementById('station'));
+        var option = document.createElement("option");
+        option.text = "select from " + dropdown_pick + " pubs";
+        select.add(option);
+        if (dropdown_pick == 'all') {
+            for(var i = 0; i < list_areas.length; i++) {
+                var opt = list_areas[i][1];
+                var el = document.createElement("option");
+                el.textContent = list_areas[i][1];
+                el.value = list_areas[i][0];
+                select.appendChild(el);
+            }
+        } else {
+            filteredArray = list_areas.filter(item => item[2] == dropdown_pick);
+            for(var i = 0; i < filteredArray.length; i++) {
+                var opt = filteredArray[i][1];
+                var el = document.createElement("option");
+                el.textContent = filteredArray[i][1];
+                el.value = filteredArray[i][0];
+                select.appendChild(el);
+            }
+        }
+    {% endif %}
+    */
+}
+</script>
+
+<script>
 function onLoad(){
     counter = {{ counter | tojson }}
     icon_list = {{ icon_list | tojson }}

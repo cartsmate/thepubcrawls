@@ -9,6 +9,7 @@ function featureSearch() {
     }
 
     const myUrlWithParams = new URL(url);
+    //myUrlWithParams.searchParams.append('area', document.getElementById('area').value)
     for (var i = 0; i < icon_list.length; i++) {
         console.log(icon_list[i])
         console.log(document.getElementById(icon_list[i]).checked)
