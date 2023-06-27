@@ -97,16 +97,27 @@ def home():
     # print("--- %s seconds ---" % (time.time() - start_time))
 
     # start_time = time.time()
-    df_pubs_unique = df_pubs['area_identity'].unique()
-    df_x = pd.DataFrame({'area_identity': df_pubs_unique})
-    list_areas = pd.merge(df_areas, df_x, how='inner', on=['area_identity'])[['area_name']].values.tolist()
-    print(list_areas)
+    # df_pubs_unique = df_pubs['area_identity'].unique()
+    # df_x = pd.DataFrame({'area_identity': df_pubs_unique})
+    # list_areas = pd.merge(df_areas, df_x, how='inner', on=['area_identity'])[['area_name']].values.tolist()
+    # print(list_areas)
     # print("--- %s seconds ---" % (time.time() - start_time))
 
+    # df_areas = Csv().get_areas()
+    df_pub_with_area = pd.merge(df_pubs, df_areas, on='area_identity', how='left').sort_values(by='area_name')
+    df_area_list = df_pub_with_area['area_name']
+    df_area_unique = df_area_list.unique()
+    list_areas = df_area_unique.tolist()
+
     # areas_json = Dataframes().df_to_dict(df_areas_count)
-    df_pubs_unique = df_pubs['station_identity'].unique()
-    df_x = pd.DataFrame({'station_identity': df_pubs_unique})
-    list_stations = pd.merge(df_stations, df_x, how='inner', on=['station_identity'])[['station_name']].values.tolist()
+    # df_pubs_unique = df_pubs['station_identity'].unique()
+    # df_x = pd.DataFrame({'station_identity': df_pubs_unique})
+    # list_stations = pd.merge(df_stations, df_x, how='inner', on=['station_identity'])[['station_name']].values.tolist()
+
+    df_pub_with_station = pd.merge(df_pubs, df_stations, on='station_identity', how='left').sort_values(by='station_name')
+    df_station_list = df_pub_with_station['station_name']
+    df_station_unique = df_station_list.unique()
+    list_stations = df_station_unique.tolist()
 
     # PUB CRAWLS
     # df_crawl_last = df_crawls.tail(1)

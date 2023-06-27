@@ -38,11 +38,6 @@ function onLoad(){
 <div class="col-md-12 mx-auto" id="main">
     {% include "home_intro.html" %}
     {% include "home_station.html" %}
-    <div class="row top-buffer">
-        <div class="col-12 center-block text-center">
-            <a style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none; padding: 5px 0 0 0">Search pubs by feature</a>
-        </div>
-    </div>
     <div class="row" style="display:flex; align-items:center; border-color:#0275d8; border-style:solid; background-color:#D3D3D3; border-width:thin">
         {% with auto_exec='off' %}
             {% include "home_features.html" %}
@@ -50,7 +45,9 @@ function onLoad(){
     </div>
     <div class="row">
         <div class="col mx-auto">
-            <button type="button" onclick="featureSearch()" class="btn btn-primary rounded-pill">Search</button>
+            <div class="d-flex justify-content-center">
+                <button type="button" onclick="featureSearch()" class="btn btn-primary rounded-pill">Search</button>
+            </div>
         </div>
     </div>
     {% include "home_area.html" %}
