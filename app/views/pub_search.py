@@ -12,12 +12,17 @@ config = Configurations().get_config()
 config2 = Configurations().get_config2()
 
 
+# @app.route("/pub/search/<id_area>/")
+# def pub_search(id_area):
 @app.route("/pub/search/")
 def pub_search():
     print('pub_search')
+
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
     required_list, form_visible_list, table_visible_list, icon_list, fields_list, \
     ignore_list = ControlsList().get_control_lists()
+
+    # print(id_area)
 
     review_list = {}
     form_obj = {}
@@ -33,6 +38,9 @@ def pub_search():
 
     for review in review_list:
         filtered_values = filtered_values.loc[(filtered_values[review].astype(str).isin(review_list[review]))]
+
+    # if request.args.get('area') != "":
+    #     filtered_values = filtered_values.loc[filtered_values['area_name'] == request.args.get('area')]
 
     headers = list(filtered_values.columns)
     print('headers')
