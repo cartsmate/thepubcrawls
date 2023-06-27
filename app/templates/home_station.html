@@ -1,4 +1,14 @@
+<script>
+function areaClicked() {
+    console.log('on click worked')
+    console.log(document.getElementById("area").value)
+    window.location.href = "/pub/list/area_name/" + document.getElementById("area").value
 
+}
+function stationClicked() {
+    window.location.href = "/pub/list/station_name/" + document.getElementById("station").value
+}
+</script>
 <div class="row top-buffer">
     <div class="col-12 center-block text-center">
         <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area/station and features</a>
@@ -13,6 +23,7 @@
                     <option value={{y}}>{{y}}</option>
                 {% endfor %}
             </select>
+            <a><img src="/static/icons/buttons/arrow.png" onClick="areaClicked()" class="button_size"></a>
         </div>
     </div>
 </div>
@@ -32,13 +43,14 @@
                     <option value={{x}}>{{x}}</option>
                 {% endfor %}
             </select>
+            <a><img src="/static/icons/buttons/arrow.png" onClick="stationClicked()" class="button_size"></a>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center">
-             with
+             or
         </div>
     </div>
 </div>

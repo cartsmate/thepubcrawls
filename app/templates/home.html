@@ -27,9 +27,15 @@ function removeOptions(selectElement) {
 }
 function station_changed(dropdown_pick) {
     document.getElementById("area").selectedIndex = 0;
+    var station_selection = document.getElementById('station').value
+    console.log(station_selection)
+    console.log(dropdown_pick)
 }
 function area_changed(dropdown_pick) {
     document.getElementById("station").selectedIndex = 0;
+    var area_selection = document.getElementById('area').value
+    console.log(area_selection)
+    console.log(dropdown_pick)
     /*
     {% if form_type == 'get' %}
         list_areas = {{ list_areas | tojson }}

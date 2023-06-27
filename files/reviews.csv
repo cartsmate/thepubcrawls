@@ -769,7 +769,7 @@ False,False,Riverside pub,False,False,True,False,False,False,False,565e8b02-df6d
 False,True,Traditional pub,False,False,False,False,False,False,True,f729fee1-c655-47be-bdef-4278fdb7c3e5,False,False,6c622efb-5bfc-4574-a940-299a6032395d,False,True
 False,False,Irish live music and pizza,False,False,False,False,False,True,False,8d85b0e1-fe2f-4aa9-b6cb-6c07e1531653,False,False,0da34778-579c-499b-b332-c0a34dbf6a4a,False,True
 True,False,Tue 8pm quiz,False,False,True,False,False,False,False,5bed5842-4c53-4d3e-9d25-470516b5436c,True,False,4e63250b-a90a-4b39-a0a3-5d874a0ef893,True,False
-False,False,Occasional quiz,False,False,True,True,False,False,False,1271097e-084d-4fe9-a4fa-753df9ad1268,True,False,f07fec68-e45e-4c80-897a-9c1730630fb6,False,True
+False,False,Occasional quiz night,False,False,True,True,False,False,False,1271097e-084d-4fe9-a4fa-753df9ad1268,True,False,f07fec68-e45e-4c80-897a-9c1730630fb6,False,True
 False,False,Pub with accommodation,False,False,True,False,False,False,False,c6a3924f-4677-41aa-8abb-b6f330655602,False,False,5c840041-7a20-4bb8-a95c-f665f8a16765,True,False
 False,False,Traditional pub,False,False,True,False,False,False,False,34884411-b1fd-4746-9d3d-790d803464ed,False,False,76e0745e-5af4-4066-b631-56c3bb6ca498,True,False
 False,False,Traditional pub,False,False,True,False,False,False,False,e660f5e3-b9f5-4dd8-90ef-0ecc6c87a15c,False,False,f5b2b247-c93d-412b-b742-0fc4c3462e5d,True,False
@@ -799,3 +799,4 @@ False,False,Gothic decor ,False,False,False,True,False,False,False,f4e708fc-7f10
 False,False, Sun 7pm quiz,False,False,False,False,False,False,False,fc458d09-1661-41da-bad9-867e49c720ce,True,False,3fea4554-5452-4d1d-86b2-426d37c978ad,True,True
 False,False, ,False,False,False,False,False,False,False,841e85cf-4e8a-442e-bc33-4a13384c66ad,False,False,a946e7a8-f4ca-462b-93e9-e859c6a17da7,False,False
 False,False,Epic decor and outdoor seating,False,False,False,False,False,False,False,59127bd0-05e0-4988-984c-fbec6c37c634,False,False,a1fc6396-49a5-436d-b093-a0818ea923eb,False,False
+False,False, ,False,False,False,False,False,False,False,5195d970-0ad2-4437-84a1-6cf4c3724f8e,False,False,d994199e-c9e7-476b-8d27-2e98c63b94a1,False,False
