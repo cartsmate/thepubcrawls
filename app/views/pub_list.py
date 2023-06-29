@@ -34,14 +34,17 @@ def pub_list(list_type, id_type):
         df = EntitiesMulti().get_pubs_reviews().loc[EntitiesMulti().get_pubs_reviews()[list_type] == id_type]\
             .sort_values(by=['rank'], ascending=False)
 
-        df_pubs_reviews.loc[df_pubs_reviews[list_type] == id_type, 'colour'] = '#d9534f'
-        df_pubs_reviews.loc[df_pubs_reviews[list_type] != id_type, 'colour'] = '#0275d8'
+        df2 =df_pubs_reviews.loc[(df_pubs_reviews[list_type] == id_type)]
+        # df_pubs_reviews.loc[df_pubs_reviews[list_type] == id_type, 'colour'] = '#d9534f'
+        # df_pubs_reviews.loc[df_pubs_reviews[list_type] != id_type, 'colour'] = '#0275d8'
 
         heading = id_type
     # print(df)
     # df['colour'] = '#0275d8'
-    pubs_reviews_all_json = Dataframes().df_to_dict(df_pubs_reviews)
+    pubs_reviews_all_json = Dataframes().df_to_dict(df2)
+    # pubs_reviews_all_json = Dataframes().df_to_dict(df_pubs_reviews)
     pubs_reviews_json = Dataframes().df_to_dict(df)
+
 
     list_L = df[['pub_latitude', 'pub_longitude']].values.tolist()
     _lat = []
