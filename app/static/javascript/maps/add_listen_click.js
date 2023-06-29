@@ -15,7 +15,7 @@ function add_listen_click(map) {
             infowindow.setContent(
                 '<div>'
                 + '<strong>Click the link to open the add pub page</strong>'
-                + '<br>' +
+                + '<br>'
                 + '<a href="/pub/add/' + event.latLng.lat() + '/' + event.latLng.lng() + '">Add Venue</a>'
                 + '<br>'
                 + '</div>');
