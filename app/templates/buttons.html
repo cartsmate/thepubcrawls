@@ -5,7 +5,7 @@
         <div class="button_caption">TEST<br>SCRIPT</div>
     </div>
     -->
-    {% if form_type != 'add' %}
+    {% if form_type == 'list' %}
         <div style="text-align: center;">
             <a href="{{url_for('pub_add', lat=map_lat, lng=map_lng)}}"><img src="/static/icons/footer/add1.png" class="button_size"></a>
             <div class="button_caption">ADD<br>PUB</div>
