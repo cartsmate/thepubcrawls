@@ -41,15 +41,7 @@ function onLoad() {
     id_type = {{ id_type | tojson }}
 
     Search(headers, visible)
-    /*
-    if (list_type == 'area') {
-        console.log('area')
-        Area()
-    } else {
-        console.log('NOT area')
-        Category()
-    }
-    */
+
 }
 function initMap(){
     console.log("initMap in pub_read");
@@ -85,6 +77,11 @@ function initMap(){
 {% block left %}
     <div class="row">
         <div id="map" class="map_height"></div>
+    </div>
+    <div class="row" style="display: flex; align-items: center; border-style:solid; background-color:#D3D3D3; border-width:thin">
+        {% with auto_exec='on' %}
+            {% include "home_features.html" %}
+        {% endwith %}
     </div>
 {% endblock %}
 

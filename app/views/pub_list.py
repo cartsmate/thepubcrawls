@@ -76,7 +76,7 @@ def pub_list(list_type, id_type):
         visible[k] = v.table_visible
 
     return render_template('pub_list.html', filter=heading, pubs_reviews=pubs_reviews_json, map_view=list_type,
-                           pubs_reviews_all=pubs_reviews_all_json,
+                           pubs_reviews_all=pubs_reviews_all_json, review_obj=Review2(),
                            map_lat=review_lat, map_lng=review_long,
                            list_type=list_type, id_type=id_type,
                            form_type='list', google_key=config2['google_key'],
