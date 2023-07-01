@@ -1,13 +1,12 @@
 <script>
-function areaClicked() {
-    console.log('on click worked')
-    console.log(document.getElementById("area").value)
-    window.location.href = "/pub/list/area_name/" + document.getElementById("area").value
-
+function directionClicked() {
+    window.location.href = "/pub/list/direction/" + document.getElementById("direction").value
 }
+
 function stationClicked() {
     window.location.href = "/pub/list/station_name/" + document.getElementById("station").value
 }
+
 </script>
 <div class="row">
     <div class="col-12 center-block text-center">
@@ -17,20 +16,20 @@ function stationClicked() {
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center">
-            <select class="form-control" id="area" name="area" onchange="area_changed(this.value);" style="width:220px;">
-                <option value>select area</option>
-                {% for y in list_areas %}
-                    <option value={{y}}>{{y}}</option>
+            <select class="form-control" id="direction" name="direction" onchange="direction_changed(this.value);" style="width:220px;">
+                <option value>select direction</option>
+                {% for direction in list_directions %}
+                    <option value={{direction}}>{{direction}}</option>
                 {% endfor %}
             </select>
-            <a><img src="/static/icons/buttons/arrow.png" onClick="areaClicked()" class="button_size"></a>
+            <a><img src="/static/icons/buttons/arrow.png" onClick="directionClicked()" class="button_size"></a>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center" style="font-weight: bold;">
-             or
+             and/or
         </div>
     </div>
 </div>

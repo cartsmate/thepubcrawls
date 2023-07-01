@@ -8,6 +8,8 @@ from app.static.pythonscripts.csv import Csv
 from app.static.pythonscripts.entities_multi import EntitiesMulti
 from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
+from app.models.area.area import Area
+from app.models.station.station import Station
 
 config = Configurations().get_config()
 config2 = Configurations().get_config2()
@@ -19,6 +21,7 @@ def pub_list(list_type, id_type):
     #     df = Functions().get_pubs_reviews().sort_values(by=['score'], ascending=False)
     #     heading = "All pubs"
     df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
+    print(df_pubs_reviews[['pub_name', 'station_name', 'direction']])
     if id_type == 'True':
         df_scores = EntitiesMulti().get_pubs_reviews()
         # filters = scores.loc[(scores['garden'] == True)]
@@ -34,14 +37,14 @@ def pub_list(list_type, id_type):
         df = EntitiesMulti().get_pubs_reviews().loc[EntitiesMulti().get_pubs_reviews()[list_type] == id_type]\
             .sort_values(by=['rank'], ascending=False)
 
-        df2 =df_pubs_reviews.loc[(df_pubs_reviews[list_type] == id_type)]
+        df = df.loc[(df[list_type] == id_type)]
         # df_pubs_reviews.loc[df_pubs_reviews[list_type] == id_type, 'colour'] = '#d9534f'
         # df_pubs_reviews.loc[df_pubs_reviews[list_type] != id_type, 'colour'] = '#0275d8'
 
         heading = id_type
     # print(df)
     # df['colour'] = '#0275d8'
-    pubs_reviews_all_json = Dataframes().df_to_dict(df2)
+    pubs_reviews_all_json = Dataframes().df_to_dict(df)
     # pubs_reviews_all_json = Dataframes().df_to_dict(df_pubs_reviews)
     pubs_reviews_json = Dataframes().df_to_dict(df)
 
@@ -70,6 +73,10 @@ def pub_list(list_type, id_type):
     inst_pub = Pub2()
     inst_review = Review2()
     inst_pub.__dict__.update(inst_review.__dict__)
+    inst_area = Area()
+    inst_pub.__dict__.update(inst_area.__dict__)
+    inst_station = Station()
+    inst_pub.__dict__.update(inst_station.__dict__)
     inst_pub_review = inst_pub
     visible = {}
     for k, v in inst_pub_review.__dict__.items():

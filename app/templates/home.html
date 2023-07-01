@@ -25,6 +25,33 @@ function removeOptions(selectElement) {
       selectElement.remove(i);
    }
 }
+function direction_changed(dropdown_pick) {
+    document.getElementById("station").selectedIndex = 0;
+    stations_directions_list = {{ stations_directions_list | tojson }}
+    var select = document.getElementById("station");
+    removeOptions(document.getElementById('station'));
+    var option = document.createElement("option");
+    option.text = "select from " + dropdown_pick + " pubs";
+    select.add(option);
+    if (dropdown_pick == 'all') {
+        for(var i = 0; i < stations_directions_list.length; i++) {
+            var opt = stations_directions_list[i][1];
+            var el = document.createElement("option");
+            el.textContent = stations_directions_list[i][1];
+            el.value = stations_directions_list[i][0];
+            select.appendChild(el);
+        }
+    } else {
+        filteredArray = stations_directions_list.filter(item => item[2] == dropdown_pick);
+        for(var i = 0; i < filteredArray.length; i++) {
+            var opt = filteredArray[i][1];
+            var el = document.createElement("option");
+            el.textContent = filteredArray[i][1];
+            el.value = filteredArray[i][0];
+            select.appendChild(el);
+        }
+    }
+}
 function station_changed(dropdown_pick) {
     document.getElementById("area").selectedIndex = 0;
     var station_selection = document.getElementById('station').value

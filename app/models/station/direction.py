@@ -1,7 +1,7 @@
 
-class StationName:
-    def __init__(self, name='station_name', required=True, form_visible=True, table_visible=True,
-                 alias=None, value="", control='input'):
+class Direction:
+    def __init__(self, name='direction', required=False, form_visible=False, table_visible=False, alias=None, value="",
+                 control=None):
         self.name = name
         self.required = required
         self.form_visible = form_visible
