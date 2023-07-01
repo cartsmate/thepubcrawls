@@ -40,8 +40,8 @@ def pub_crawl():
         df_pub_with_area = pd.merge(df_all_x, df_area_x, on='area_identity', how='left').sort_values(by='area_name')
         df_pub_area = df_pub_with_area[['place', 'pub_name', 'area_name']]
         pub_area_list = df_pub_area.values.tolist()
-        df_area_list = df_pub_with_area['area_name']
 
+        df_area_list = df_pub_with_area['area_name']
         df_unique = df_area_list.unique()
         list_pub_area = df_unique.tolist()
         range_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']

@@ -3,6 +3,7 @@ import random
 import botocore.exceptions
 import time
 import pandas as pd
+import numpy as np
 from flask import render_template
 from app import app
 from config import Configurations
@@ -71,6 +72,7 @@ def home():
     # df_stations = S3().get_s3_stations()
     df_stations = Csv().get_stations()
     stations_json = Dataframes().df_to_dict(df_stations)
+
     # df_stations.to_csv(directory_path + '/files/stations.csv', index=False, sep=',', encoding='utf-8')
 
     # df_photos = S3().get_s3_photos()
@@ -118,6 +120,17 @@ def home():
     df_station_list = df_pub_with_station['station_name']
     df_station_unique = df_station_list.unique()
     list_stations = df_station_unique.tolist()
+
+    df_directions_unique = df_pub_with_station['direction'].unique()
+    list_directions = df_directions_unique.tolist()
+
+    unique_stations_list = df_pub_with_station['station_identity'].unique()
+    df = pd.DataFrame({'station_identity': unique_stations_list})
+    df_stations_directions = pd.merge(df, df_stations, on='station_identity', how='left')
+    df_stations_directions2 = df_stations_directions[['station_identity', 'station_name', 'direction']]
+    stations_directions_list = df_stations_directions2.values.tolist()
+
+
 
     # PUB CRAWLS
     # df_crawl_last = df_crawls.tail(1)
@@ -186,8 +199,8 @@ def home():
     print("{:06d}".format(int(counter)))
 
     return render_template('home.html', list_areas=list_areas, list_stations=list_stations,
-                           areas=areas_json, stations=stations_json,
-                           map_lat=review_lat, map_lng=review_long,
+                           areas=areas_json, stations=stations_json, stations_directions_list=stations_directions_list,
+                           map_lat=review_lat, map_lng=review_long, list_directions=list_directions,
                            # pubs_reviews=pubs_json, photo_array=config, map_view="stations",
                             config=config, google_key=config2['google_key'],
                             # row_loop=range(3), col_loop=range(4),
