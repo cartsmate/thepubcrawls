@@ -10,10 +10,11 @@ function featureClick(check_item, auto_exec) {
     if (checkBox.checked == true){
         console.log(checkBox.checked)
         //window.location.replace("/pub/list/" + check_item + "/True");
-        image.style.opacity = "1.00"
-        caption.style.opacity = "1.00"
+        image.style.opacity = "1.0"
+        caption.style.opacity = "1.0"
         caption.style.color = "white"
         checkCol.style.background = "#0275D8"
+        checkCol.style.border = "thick solid #0275D8";
     } else {
         console.log(checkBox.checked)
         image.style.opacity = "1.0"
@@ -22,6 +23,6 @@ function featureClick(check_item, auto_exec) {
         checkCol.style.background = "#CDCDCD"
     }
     if (auto_exec == 'on') {
-        featureSearch()
+        featureSearch(direction, station)
     }
 }

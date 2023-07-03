@@ -4,9 +4,9 @@
 
         <div class="col" style="text-align:center; padding:10px; background-color:#CDCDCD;" id="{{field.name}}_col">
         {% if form_type=='read' %}
-            <input type="checkbox" id="{{field.name}}" name="{{field.name}}" style="display: none;" onclick="return false">
+            <input type="checkbox" id="{{field.name}}" name="{{field.name}}" onclick="return false">
         {% else %}
-            <input type="checkbox" id="{{field.name}}" name="{{field.name}}" style="display: none;" onclick="featureClick('{{field.name}}', '{{auto_exec}}')">
+            <input type="checkbox" id="{{field.name}}" name="{{field.name}}" onclick="featureClick('{{field.name}}', '{{auto_exec}}')">
         {% endif %}
             <label for="{{field.name}}" style="margin:0px; padding:0px" >
                 <img src="{{ url_for('static', filename='icons/features/' + field.icon ) }}" id="{{field.name}}_img" width="25" height="25"

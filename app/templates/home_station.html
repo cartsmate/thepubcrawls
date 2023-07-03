@@ -10,44 +10,44 @@ function stationClicked() {
 </script>
 <div class="row">
     <div class="col-12 center-block text-center">
-        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area or nearest station</a>
+        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area</a>
     </div>
 </div>
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center">
             <select class="form-control" id="direction" name="direction" onchange="direction_changed(this.value);" style="width:220px;">
-                <option value>select direction</option>
+                <option value="all">select direction</option>
                 {% for direction in list_directions %}
                     <option value={{direction}}>{{direction}}</option>
                 {% endfor %}
             </select>
-            <a><img src="/static/icons/buttons/arrow.png" onClick="directionClicked()" class="button_size"></a>
+            <a><img src="/static/icons/buttons/arrow.png" onClick="featureList()" class="button_size"></a>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center" style="font-weight: bold;">
-             and/or
+             and/or nearest station
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center">
-            <select class="form-control" id="station" name="station"  onchange="station_changed(this.value);" style="width:220px;">
-                <option value>select station</option>
-                {% for x in list_stations %}
-                    <option value={{x}}>{{x}}</option>
+            <select class="form-control" id="station" name="station" onchange="station_changed(this.value);" style="width:220px;">
+                <option value="all">select station</option>
+                {% for x in stations_directions_list %}
+                    <option value={{x[0]}}>{{x[1]}}</option>
                 {% endfor %}
             </select>
-            <a><img src="/static/icons/buttons/arrow.png" onClick="stationClicked()" class="button_size"></a>
+            <a><img src="/static/icons/buttons/arrow.png" onClick="featureList()" class="button_size"></a>
         </div>
     </div>
 </div>
 <div class="row top-buffer">
     <div class="col-12 center-block text-center">
-        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">or search by favourite feature</a>
+        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">or by favourite feature</a>
     </div>
 </div>
