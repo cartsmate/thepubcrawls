@@ -11,10 +11,8 @@
         <tr>
             {% for k in headers %}
                 {% if (k != 'rank') %}
-                    {% if k == 'area_name' %}
-                        <td><a href="/pub/list/area_name/{{pubs_reviews[i][k]}}">{{pubs_reviews[i][k]}}</a></td>
-                    {% elif k == 'station_name' %}
-                        <td><a href="/pub/list/station_name/{{pubs_reviews[i][k]}}">{{pubs_reviews[i][k]}}</a></td>
+                    {% if k == 'station_name' %}
+                        <td><a href="#" onclick="stationClick('{{pubs_reviews[i]['station_identity']}}')">{{pubs_reviews[i][k]}}</a></td>
                     {% else %}
                         <td><a href="/pub/{{pubs_reviews[i]['pub_identity']}}">{{pubs_reviews[i][k]}}</a></td>
                     {% endif %}

@@ -12,6 +12,9 @@
 <!--
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
 -->
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_search.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/station_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 <script>
@@ -28,17 +31,40 @@ function onLoad() {
     }
 
     filter = {{ filter | tojson }}
+    total_rows = {{ total_rows | tojson }}
     var header_listing = String(filter['0']).toUpperCase() + String(filter).substring(1)
-    document.getElementById("header_listing").innerHTML = "<h2>" + header_listing + "</h2>"
+    document.getElementById("header_listing").innerHTML = header_listing + " (" + total_rows + ")"
     var map_lat = {{ map_lat | tojson }}
     var map_lng = {{ map_lng | tojson }}
-    var map_view = {{ map_view | tojson }}
     pubs_reviews = {{ pubs_reviews | tojson }};
-    pubs_reviews_all = {{ pubs_reviews_all | tojson }};
     headers = {{ headers | tojson }}
     visible = {{ visible | tojson }}
-    list_type = {{ list_type | tojson }}
-    id_type = {{ id_type | tojson }}
+    form_obj = {{ form_obj | tojson }}
+    station = {{ station | tojson }}
+    direction = {{ direction | tojson }}
+    icon_list = {{ icon_list | tojson }}
+    config2 = {{ config2 | tojson }}
+    Object.keys(form_obj).forEach(function(key) {
+
+        if (form_obj[key] == 'all') {
+            document.getElementById(key).checked = true
+            document.getElementById(key + "_caption").style.color = "white"
+            document.getElementById(key + "_caption").style.opacity = "1.00"
+            document.getElementById(key + "_img").style.opacity = "1.00";
+            document.getElementById(key + "_col").style.background = "#0275D8";
+        } else if (form_obj[key] == 'some') {
+            document.getElementById(key).checked = false
+            document.getElementById(key + "_caption").style.color = "black"
+            document.getElementById(key + "_caption").style.opacity = "1.00"
+            document.getElementById(key + "_img").style.opacity = "1.00";
+            document.getElementById(key + "_col").style.border = "thick solid #0275D8";
+        } else {
+            document.getElementById(key).checked = false
+            document.getElementById(key + "_caption").style.color = "black"
+            document.getElementById(key + "_caption").style.opacity = "0.25"
+            document.getElementById(key + "_img").style.opacity = "0.25";
+        }
+    })
 
     Search(headers, visible)
 
@@ -51,7 +77,7 @@ function initMap(){
     key = {{ google_key | tojson }}
     stations = {{ stations | tojson }}
     areas = {{ areas | tojson }}
-    data = pubs_reviews_all
+    data = pubs_reviews
     add_markers(map, zoom, data);
     add_listen_click(map);
     var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
@@ -69,8 +95,8 @@ function initMap(){
 {% endblock %}
 
 {% block main %}
-<div class="col-md-12 center-block text-center" style="background-color: #d9534f; ">
-    <div id="header_listing"></div>
+<div class="col-md-12 center-block text-center" style="background-color: #d9534f;">
+    <a class="mx-auto" id="header_listing" style="height:25px; font-size:20px"></a>
 </div>
 {% endblock %}
 
