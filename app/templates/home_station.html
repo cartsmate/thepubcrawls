@@ -1,4 +1,10 @@
-
+<script>
+  $( function() {
+    $( "#tags" ).autocomplete({
+      source: {{list_of_pubs | tojson}}
+    });
+  } );
+  </script>
 <div class="row">
     <div class="col-12 center-block text-center">
         <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area</a>
@@ -34,6 +40,21 @@
                 {% endfor %}
             </select>
             <a><img src="/static/icons/buttons/arrow.png" onClick="featureList()" class="button_size"></a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center" style="font-weight: bold;">
+             or pub name
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center">
+            <input id="tags" style="background-color:#F9F9F9">
+            <a><img src="/static/icons/buttons/arrow.png" onClick="goPub(document.getElementById('tags').value)" class="button_size"></a>
         </div>
     </div>
 </div>
