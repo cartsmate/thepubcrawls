@@ -73,6 +73,7 @@ function onLoad(){
     counter = {{ counter | tojson }}
     icon_list = {{ icon_list | tojson }}
     config2 = {{ config2 | tojson }}
+    areas = {{ areas | tojson }}
     console.log(counter)
     document.getElementById("digit_100000").innerHTML = counter.substring(0,1)
     document.getElementById("digit_10000").innerHTML = counter.substring(1,2)

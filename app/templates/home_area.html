@@ -2,7 +2,7 @@
 <div class="row top-buffer">
     <div class="col-12 center-block text-center">
         <strong>
-        <a href="/pub/stations" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by nearest station</a>
+        <a href="/pub/area" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by nearest station</a>
         </strong>
     </div>
 </div>
@@ -24,7 +24,7 @@
                     <img src="{{ url_for('static', filename='images/location/' + area['photo_identity'] + '.jpeg') }}"
                          style="width:100%; height:175px; object-fit: none;" alt="">
                     <div class="carousel-caption" style="top: 50%; transform: translateY(-50%);" >
-                        <a href="/pub/list/area_name/{{area['area_name']}}" style="text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; font-weight: bold; font-size: 24px; color: #FFFFFF; text-decoration: none;">{{area['area_name']}}</a>
+                        <a href="#" style="text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; font-weight: bold; font-size: 24px; color: #FFFFFF; text-decoration: none;">{{area['area_name']}}</a>
                     </div>
                 </div>
             {% endfor %}
