@@ -86,11 +86,12 @@ def home():
     review_long = sum(_long) / len(_long)
 
     print("{:06d}".format(int(counter)))
-
+    df_areas = Csv().get_areas()
+    areas_json = Dataframes().df_to_dict(df_areas)
     return render_template('home.html',
                            # list_areas=list_areas,
                            list_stations=list_stations,
-                           # areas=areas_json,
+                           areas=areas_json,
                            stations=stations_json, stations_directions_list=stations_directions_list,
                            map_lat=review_lat, map_lng=review_long, directions_list=directions_list,
                            # pubs_reviews=pubs_json, photo_array=config, map_view="stations",
