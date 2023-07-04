@@ -1,13 +1,4 @@
-<script>
-function directionClicked() {
-    window.location.href = "/pub/list/direction/" + document.getElementById("direction").value
-}
 
-function stationClicked() {
-    window.location.href = "/pub/list/station_name/" + document.getElementById("station").value
-}
-
-</script>
 <div class="row">
     <div class="col-12 center-block text-center">
         <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area</a>
@@ -16,10 +7,10 @@ function stationClicked() {
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center">
-            <select class="form-control" id="direction" name="direction" onchange="direction_changed(this.value);" style="width:220px;">
+            <select class="form-control" id="direction" name="direction" onchange="direction_changed();" style="width:220px;">
                 <option value="all">select direction</option>
-                {% for direction in list_directions %}
-                    <option value={{direction}}>{{direction}}</option>
+                {% for direction in directions_list %}
+                    <option value={{direction[0]}}>{{direction[1]}}</option>
                 {% endfor %}
             </select>
             <a><img src="/static/icons/buttons/arrow.png" onClick="featureList()" class="button_size"></a>
@@ -29,14 +20,14 @@ function stationClicked() {
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center" style="font-weight: bold;">
-             and/or nearest station
+             and/or
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center">
-            <select class="form-control" id="station" name="station" onchange="station_changed(this.value);" style="width:220px;">
+            <select class="form-control" id="station" name="station" onchange="station_changed();" style="width:220px;">
                 <option value="all">select station</option>
                 {% for x in stations_directions_list %}
                     <option value={{x[0]}}>{{x[1]}}</option>

@@ -2,7 +2,7 @@
 <div class="row top-buffer">
     <div class="col-12 center-block text-center">
         <strong>
-        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area</a>
+        <a href="/pub/stations" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by nearest station</a>
         </strong>
     </div>
 </div>
@@ -10,7 +10,7 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            {% for x in areas.length %}
+            {% for x in stations.length %}
                 <li data-target="#carouselExampleIndicators" data-slide-to="{{x}}"></li>
             {% endfor %}
         </ol>

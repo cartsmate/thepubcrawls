@@ -16,7 +16,7 @@ class EntitiesMulti:
         # df_pubs = S3().get_s3_pubs()
         # df_stations = S3().get_s3_stations()
         # df_areas = S3().get_s3_areas()
-        df_stations = df_stations[['station_identity', 'station_name','direction']]
+        df_stations = df_stations[['station_identity', 'station_name', 'direction_identity']]
         df_areas = df_areas[['area_identity', 'area_name']]
         df_pubs_stations = pd.merge(df_pubs, df_stations, how='left', on='station_identity')
         df_pubs_areas = pd.merge(df_pubs_stations, df_areas, how='left', on='area_identity')
