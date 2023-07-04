@@ -1,4 +1,4 @@
-function map_listen_click(map, stations, areas) {
+function map_listen_click(map, data) {
 
     map.addListener('click', function (event) {
         // If the event is a POI
