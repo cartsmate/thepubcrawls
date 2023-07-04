@@ -2,10 +2,10 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Quiz:
-    def __init__(self, name="quiz", alias1="quiz", alias2="night", required=True, form_visible=False,
+    def __init__(self, name="quiz", alias="quiz", alias2="night", required=True, form_visible=False,
                  table_visible=False, value=False, control="check", icon="quiz.png"):
         self.name = name
-        self.alias1 = alias1
+        self.alias = alias
         self.alias2 = alias2
         self.required = required
         self.form_visible = form_visible

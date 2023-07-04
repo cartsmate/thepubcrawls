@@ -76,16 +76,13 @@ function initMap(){
     map = show_map(avg_lat, avg_lng, zoom)
     key = {{ google_key | tojson }}
     stations = {{ stations | tojson }}
-    areas = {{ areas | tojson }}
     data = pubs_reviews
     add_markers(map, zoom, data);
     add_listen_click(map);
     var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
     const input = document.getElementById("search-input-navbar");
     const searchBox = new google.maps.places.SearchBox(input);
-    map_listen_click(map, stations, areas);
     listen_search(map, searchBox);
-    map_listen_bounds(map, searchBox, stations, areas);
     function isIconMouseEvent(e) {
         console.log("place icon clicked")
         return "placeId" in e;

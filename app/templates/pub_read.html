@@ -46,10 +46,6 @@ function onLoad(){
     form_type = {{ form_type | tojson }}
 
     pub_review = {{ pub_review | tojson }}
-    pubs_reviews = {{ pubs_reviews | tojson }}
-    summary = {{ summary | tojson }}
-    full = {{ full | tojson }}
-
     input_list = {{ input_list | tojson }}
     dropdown_list = {{ dropdown_list | tojson }}
     slider_list = {{ slider_list | tojson }}
@@ -87,17 +83,16 @@ function initMap(){
         let { avg_lat, avg_lng } = latlng_avg(pub_review);
     }
     zoom = 16
-    showMap({{summary | tojson}}, {{full | tojson}}, zoom, avg_lat, avg_lng)
+    showMap({{pub_review | tojson}}, zoom, avg_lat, avg_lng)
 }
 
-function showMap(summary, full, zoom, lat, lng){
+function showMap(full, zoom, lat, lng){
     console.log('showMap')
     console.log('zoom: ' + zoom)
     map = show_map(lat, lng, zoom)
     key = {{ google_key | tojson }}
-    stations = {{ stations | tojson }}
-    areas = {{ areas | tojson }}
-    data = pubs_reviews
+
+    data = pub_review
     add_markers(map, zoom, data);
     if (form_type == 'read') {
         add_listen_click(map);
@@ -106,19 +101,12 @@ function showMap(summary, full, zoom, lat, lng){
         var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
         const input = document.getElementById("search-input-navbar");
         const searchBox = new google.maps.places.SearchBox(input);
-        map_listen_click(map, stations, areas);
         listen_search(map, searchBox);
-        map_listen_bounds(map, searchBox, stations, areas);
         function isIconMouseEvent(e) {
             console.log("place icon clicked")
             return "placeId" in e;
         }
     }
-    /*
-    if (form_type == 'edit') {
-        listen_click_off(map);
-    }
-    */
 }
 </script>
 {% endblock %}
