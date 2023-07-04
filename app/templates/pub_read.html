@@ -77,28 +77,28 @@ function onLoad(){
 
 function initMap(){
     console.log("initMap in pub_read");
-    if (form_type == 'add') {
-        let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
-    } else {
-        let { avg_lat, avg_lng } = latlng_avg(pub_review);
-    }
     zoom = 16
-    showMap({{pub_review | tojson}}, zoom, avg_lat, avg_lng)
+    if (form_type == 'add') {
+        data = {{pubs_reviews | tojson}}
+    } else {
+        data = {{pub_review | tojson}}
+    }
+    showMap(data, zoom, {{map_lat}}, {{map_lng}})
 }
 
-function showMap(full, zoom, lat, lng){
+function showMap(data, zoom, lat, lng){
     console.log('showMap')
     console.log('zoom: ' + zoom)
+    console.log('lat: ' + lat)
+    console.log('lng: ' + lng)
     map = show_map(lat, lng, zoom)
     key = {{ google_key | tojson }}
-
-    data = pub_review
     add_markers(map, zoom, data);
     if (form_type == 'read') {
         add_listen_click(map);
     }
     if (form_type == 'add') {
-        var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
+        var class_event_handler = new ClickEventHandler(map, origin, key, data);
         const input = document.getElementById("search-input-navbar");
         const searchBox = new google.maps.places.SearchBox(input);
         listen_search(map, searchBox);

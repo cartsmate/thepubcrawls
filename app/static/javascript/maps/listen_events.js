@@ -1,4 +1,4 @@
-function listen_events(lat, lng, stations, areas) {
+function listen_events(lat, lng, data) {
 
     var get_location = function closest_station(lat, lng) {
         console.log("listen events: get_location")
