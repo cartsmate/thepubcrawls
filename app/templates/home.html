@@ -26,16 +26,21 @@ function removeOptions(selectElement) {
       selectElement.remove(i);
    }
 }
-function direction_changed(dropdown_pick) {
+function direction_changed() {
+    var directionSelect = document.getElementById("direction");
+    var selectedText = directionSelect.options[directionSelect.selectedIndex].text;
+    value = document.getElementById("direction").value
+    console.log(value)
+    console.log(selectedText)
     document.getElementById("station").selectedIndex = 0;
     stations_directions_list = {{ stations_directions_list | tojson }}
     var select = document.getElementById("station");
     removeOptions(document.getElementById('station'));
     var option = document.createElement("option");
     option.value = 'all'
-    option.text = "select from " + dropdown_pick + " pubs";
+    option.text = "the nearest station"
     select.add(option);
-    if (dropdown_pick == 'all') {
+    if (value == 'all') {
         for(var i = 0; i < stations_directions_list.length; i++) {
             var opt = stations_directions_list[i][1];
             var el = document.createElement("option");
@@ -44,7 +49,7 @@ function direction_changed(dropdown_pick) {
             select.appendChild(el);
         }
     } else {
-        filteredArray = stations_directions_list.filter(item => item[2] == dropdown_pick);
+        filteredArray = stations_directions_list.filter(item => item[2] == value);
         for(var i = 0; i < filteredArray.length; i++) {
             var opt = filteredArray[i][1];
             var el = document.createElement("option");
@@ -54,46 +59,12 @@ function direction_changed(dropdown_pick) {
         }
     }
 }
-function station_changed(dropdown_pick) {
-    document.getElementById("area").selectedIndex = 0;
+function station_changed() {
     var station_selection = document.getElementById('station').value
-    console.log(station_selection)
-    console.log(dropdown_pick)
+    console.log(document.getElementById('station').value)
+    console.log(document.getElementById('station').text)
 }
-function area_changed(dropdown_pick) {
-    document.getElementById("station").selectedIndex = 0;
-    var area_selection = document.getElementById('area').value
-    console.log(area_selection)
-    console.log(dropdown_pick)
-    /*
-    {% if form_type == 'get' %}
-        list_areas = {{ list_areas | tojson }}
-        var select = document.getElementById("station");
-        removeOptions(document.getElementById('station'));
-        var option = document.createElement("option");
-        option.text = "select from " + dropdown_pick + " pubs";
-        select.add(option);
-        if (dropdown_pick == 'all') {
-            for(var i = 0; i < list_areas.length; i++) {
-                var opt = list_areas[i][1];
-                var el = document.createElement("option");
-                el.textContent = list_areas[i][1];
-                el.value = list_areas[i][0];
-                select.appendChild(el);
-            }
-        } else {
-            filteredArray = list_areas.filter(item => item[2] == dropdown_pick);
-            for(var i = 0; i < filteredArray.length; i++) {
-                var opt = filteredArray[i][1];
-                var el = document.createElement("option");
-                el.textContent = filteredArray[i][1];
-                el.value = filteredArray[i][0];
-                select.appendChild(el);
-            }
-        }
-    {% endif %}
-    */
-}
+
 </script>
 
 <script>

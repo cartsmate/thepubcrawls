@@ -28,15 +28,17 @@ def pub_list():
     df_selection = EntitiesMulti().get_pubs_reviews()
 
     station = request.args.get('station')
+    print(station)
     direction = request.args.get('direction')
+    print(direction)
     if request.args.get('station') != 'all':
         df_selection = df_selection.loc[df_selection['station_identity'] == station]
-        print(df_selection)
-        print(df_selection[['brunch', 'dart', 'entertain', 'favourite', 'garden', 'history', 'late', 'music', 'pool', 'quiz', 'roast', 'sport']])
+        # print(df_selection)
+        # print(df_selection[['brunch', 'dart', 'entertain', 'favourite', 'garden', 'history', 'late', 'music', 'pool', 'quiz', 'roast', 'sport']])
         heading = df_selection.iloc[0]['station_name']
     elif request.args.get('direction') != 'all':
         heading = direction
-        df_selection = df_selection.loc[df_selection['direction'] == direction]
+        df_selection = df_selection.loc[df_selection['direction_identity'] == direction]
     else:
         heading = 'All'
 

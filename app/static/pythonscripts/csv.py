@@ -8,6 +8,10 @@ config2 = Configurations().get_config2()
 
 class Csv:
 
+    def get_directions(self):
+        df_directions = self.get_records('direction')
+        return df_directions
+
     def get_areas(self):
         df_areas = self.get_records('area')
         return df_areas
@@ -34,9 +38,13 @@ class Csv:
         return df_stations
 
     def get_records(self, aws_prefix):
+        print(aws_prefix)
         df = self.read_csv(aws_prefix)
+        print(df)
         del_consol = aws_prefix + "_deletion"
+        print(del_consol)
         df_false = df.loc[df[del_consol] != True]
+        print(df_false)
         return df_false
 
     def read_csv(self, prefix):

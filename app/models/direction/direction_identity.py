@@ -1,7 +1,7 @@
 
-class Direction:
-    def __init__(self, name='direction', required=False, form_visible=False, table_visible=False, alias=None, value="",
-                 control=None):
+class DirectionIdentity:
+    def __init__(self, name='direction_identity', required=False, form_visible=False, table_visible=False, alias=None,
+                 value="", control=None):
         self.name = name
         self.required = required
         self.form_visible = form_visible
