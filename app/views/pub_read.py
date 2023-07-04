@@ -36,6 +36,16 @@ def pub_read(pub_id):
 
     print('pub_read')
 
+    inst_pub = Pub2()
+    inst_review = Review2()
+    inst_pub.__dict__.update(inst_review.__dict__)
+    inst_station = Station()
+    inst_pub.__dict__.update(inst_station.__dict__)
+    inst_pub_review = inst_pub
+    alias = {}
+    for k, v in inst_pub_review.__dict__.items():
+        alias[k] = v.alias
+
     directory_path = config2['directory_path']
 
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
@@ -56,6 +66,7 @@ def pub_read(pub_id):
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
     df_pub_photos.fillna('0', inplace=True)
     df_pub_photos['colour'] = '#d9534f'
+    df_pub_photos.sort_values(by='pub_name', ascending=False)
     pub_review_json = Dataframes().df_to_dict(df_pub_photos)
     print(df_pub_photos)
 
@@ -74,6 +85,7 @@ def pub_read(pub_id):
     df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity') \
         .rename(columns={'pub_name': 'count'}).astype(str)
     # df_all_latlng['colour'] = config['colour']['primary']
+
     station_all_json = Dataframes().df_to_dict(df_all_latlng)
 
 
@@ -95,10 +107,9 @@ def pub_read(pub_id):
         print(check_list)
         # print(df_pub_photos[['pet','tv','garden','music','late','meals','toilets','cheap','games','quiz','pool','lively']])
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
-                               pub_review=pub_review_json, config=config, stations=stations_json, areas=areas_json,
-                               full=pubs_reviews_json, summary=station_all_json, pubs_reviews=pubs_reviews_json,
+                               pub_review=pub_review_json, config=config,
                                map_lat=review_lat, map_lng=review_long,
-                               fields_list=fields_list,
+                               fields_list=fields_list, alias=alias,
                                star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                check_list=check_list, slider_list=slider_list, date_list=date_list,
                                form_visible_list=form_visible_list, table_visible_list=table_visible_list,
@@ -171,7 +182,7 @@ def pub_read(pub_id):
                                        error=error, form_type='read', google_key=config2['google_key'],
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                        pub_review=pub_review_json, config=config,
-                                       fields_list=fields_list,
+                                       fields_list=fields_list, alias=alias,
                                        full=pubs_reviews_json, summary=station_all_json, map_lat=review_lat, map_lng=review_long,
                                        star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                        check_list=check_list, slider_list=slider_list, date_list=date_list,
@@ -232,7 +243,7 @@ def pub_read(pub_id):
                                    form_type='read', google_key=config2['google_key'],
                                    pub_review=pub_review_json, pubs_reviews=pubs_reviews_json, config=config,
                                    stations=stations_json, areas=areas_json,
-                                   fields_list=fields_list,
+                                   fields_list=fields_list, alias=alias,
                                    full=pubs_reviews_json, summary=station_all_json, map_lat=review_lat, map_lng=review_long,
                                    star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                    check_list=check_list, slider_list=slider_list, date_list=date_list,

@@ -5,6 +5,7 @@ from app import app
 from config import Configurations
 from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
+from app.models.station.station import Station
 from app.static.pythonscripts.dataframes import Dataframes
 from app.static.pythonscripts.csv import Csv
 # from app.static.pythonscripts.s3 import S3
@@ -20,6 +21,16 @@ config2 = Configurations().get_config2()
 def pub_edit(pub_id):
 
     print('pub_edit')
+
+    inst_pub = Pub2()
+    inst_review = Review2()
+    inst_pub.__dict__.update(inst_review.__dict__)
+    inst_station = Station()
+    inst_pub.__dict__.update(inst_station.__dict__)
+    inst_pub_review = inst_pub
+    alias = {}
+    for k, v in inst_pub_review.__dict__.items():
+        alias[k] = v.alias
 
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
     required_list, form_visible_list, table_visible_list, icon_list, fields_list, \
@@ -77,7 +88,7 @@ def pub_edit(pub_id):
 
     return render_template('pub_read.html', form_type='edit', google_key=config2['google_key'],
                            pub_review=pub_review_json,
-                           fields_list=fields_list,
+                           fields_list=fields_list, alias=alias,
                            stations=stations_json, areas=areas_json, config=config,
                            pubs_reviews=pubs_reviews_json, full=all_json, summary=station_all_json,
                            map_lat=review_lat, map_lng=review_long,

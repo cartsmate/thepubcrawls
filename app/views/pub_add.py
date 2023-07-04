@@ -21,7 +21,15 @@ config2 = Configurations().get_config2()
 
 @app.route("/pub/add/<lat>/<lng>")
 def pub_add(lat, lng):
-
+    inst_pub = Pub2()
+    inst_review = Review2()
+    inst_pub.__dict__.update(inst_review.__dict__)
+    inst_station = Station()
+    inst_pub.__dict__.update(inst_station.__dict__)
+    inst_pub_review = inst_pub
+    alias = {}
+    for k, v in inst_pub_review.__dict__.items():
+        alias[k] = v.alias
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
     required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
 
@@ -84,7 +92,7 @@ def pub_add(lat, lng):
                            pub_review=pub_json, pubs_reviews=pubs_reviews_json, full=all_json, summary=station_all_json,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,
-                           alias_list=alias_list, icon_list=icon_list,
+                           alias_list=alias_list, icon_list=icon_list, alias=alias,
                            form_visible_list=form_visible_list,
                            table_visible_list=table_visible_list, required_list=required_list,
                            fields_list=fields_list,

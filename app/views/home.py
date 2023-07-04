@@ -25,32 +25,18 @@ def home():
     required_list, form_visible_list, table_visible_list, icon_list, fields_list, \
     ignore_list = ControlsList().get_control_lists()
 
-    # print(icon_list)
     directory_path = config2['directory_path']
     if config2['env'] == 'prod':
-        # obj_df = S3().s3_read('counter_prod', ['pub_counter'])
         obj_df = pd.read_csv(directory_path + '/files/counter_prod.csv')
     else:
-        # directory_path = os.getcwd()
-        # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
-        # directory_path = config2['directory_path']
         obj_df = pd.read_csv(directory_path + '/files/counter_qual.csv')
-
     obj_df["pub_counter"] = obj_df["pub_counter"] + 1
 
     if config2['env'] == 'prod':
-        # s3_resp = S3().s3_write(obj_df, 'counter_prod.csv')
         obj_df.to_csv(directory_path + '/files/counter_prod.csv', sep=',', encoding='utf-8', index=False)
     else:
-        # directory_path = os.getcwd()
-        # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
-        # directory_path = config2['directory_path']
         obj_df.to_csv(directory_path + '/files/counter_qual.csv', sep=',', encoding='utf-8', index=False)
     counter = str(obj_df["pub_counter"].values[0]).zfill(6)
-
-    # directory_path = os.getcwd()
-    # directory_path = '/Users/andycarter/Documents/develop/thepubcrawls/'
-    # directory_path = config2['directory_path']
 
     # try:
     # df_pubs = S3().get_s3_pubs()
