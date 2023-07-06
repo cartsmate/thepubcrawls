@@ -77,7 +77,7 @@ def pub_add():
     pub_json = Dataframes().df_to_dict(df_pub_review)
 
     return render_template("pub_read.html", form_type='add', google_key=config2['google_key'],
-                           config=config,
+                           config=config, config2=config2,
                            map_lat=review_lat, map_lng=review_long,
                            pub_review=pub_json, pubs_reviews=pubs_reviews_json,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
