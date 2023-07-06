@@ -26,16 +26,16 @@ def pub_list():
     required_list, form_visible_list, table_visible_list, icon_list, fields_list, \
     ignore_list = ControlsList().get_control_lists()
 
-    df_selection = EntitiesMulti().get_pubs_reviews()
+    df_pubs_reviews = EntitiesMulti().get_pubs_reviews_stations()
 
     station = request.args.get('station')
     direction = request.args.get('direction')
     if request.args.get('station') != 'all':
-        df_selection = df_selection.loc[df_selection['station_identity'] == station]
+        df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == station]
         heading = df_selection.iloc[0]['station_name']
     elif request.args.get('direction') != 'all':
         heading = direction
-        df_selection = df_selection.loc[df_selection['direction_identity'] == direction]
+        df_selection = df_pubs_reviews.loc[df_pubs_reviews['direction_identity'] == direction]
     else:
         heading = 'All'
 
@@ -51,6 +51,7 @@ def pub_list():
     for review in review_list:
         df_selection = df_selection.loc[(df_selection[review].astype(str).isin(review_list[review]))]
 
+    df_selection['colour'] = 'blue'
     headers = list(df_selection.columns)
 
     inst_pub = Pub2()
@@ -64,7 +65,10 @@ def pub_list():
     visible = {}
     alias = {}
     for k, v in inst_pub_review.__dict__.items():
-        visible[k] = v.table_visible
+        if (k == 'station_name') and (request.args.get('station') != 'all'):
+            visible[k] = False
+        else:
+            visible[k] = v.table_visible
         alias[k] = v.alias
 
     form_obj = {}
@@ -75,7 +79,6 @@ def pub_list():
                 form_obj[review] = 'none'
         review_lat = 51.0
         review_long = -0.15
-        data_list = []
         data_list = []
         for df in df_selection.columns:
             data_list.append(None)
@@ -92,7 +95,8 @@ def pub_list():
             _long.append(l[1])
         review_lat = sum(_lat) / len(_lat)
         review_long = sum(_long) / len(_long)
-        
+        print(review_lat)
+        print(review_long)
         pubs_reviews_json = Dataframes().df_to_dict(df_selection)
 
         for review in list(Review2().__dict__.keys()):

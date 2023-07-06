@@ -1,4 +1,5 @@
 function map_listen_bounds(map, searchBox, data) {
+    console.log('map_listen_bounds')
     let markers = [];
     searchBox.addListener("places_changed", () => {
         console.log('map_listen_bounds')

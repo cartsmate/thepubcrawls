@@ -8,6 +8,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery.dataTables.min.js') }}"></script>
 <!--
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
@@ -16,7 +17,8 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_search.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/station_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_station.js') }}"></script>
+
 <script>
 function onLoad() {
     console.log("onLoad in pub_list");
@@ -29,7 +31,6 @@ function onLoad() {
     } else {
         //alert('You appear to offline so maps cannot be displayed')
     }
-
     filter = {{ filter | tojson }}
     total_rows = {{ total_rows | tojson }}
     var header_listing = String(filter['0']).toUpperCase() + String(filter).substring(1)
@@ -44,8 +45,8 @@ function onLoad() {
     direction = {{ direction | tojson }}
     icon_list = {{ icon_list | tojson }}
     config2 = {{ config2 | tojson }}
-    Object.keys(form_obj).forEach(function(key) {
 
+    Object.keys(form_obj).forEach(function(key) {
         if (form_obj[key] == 'all') {
             document.getElementById(key).checked = true
             document.getElementById(key + "_caption").style.color = "white"
@@ -65,20 +66,20 @@ function onLoad() {
             document.getElementById(key + "_img").style.opacity = "0.25";
         }
     })
-
     Search(headers, visible)
-
 }
+
 function initMap(){
     console.log("initMap in pub_read");
     let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
-    zoom = 15
+    zoom = 10
     map = show_map(avg_lat, avg_lng, zoom)
     key = {{ google_key | tojson }}
     stations = {{ stations | tojson }}
     data = pubs_reviews
     add_markers(map, zoom, data);
     add_listen_click(map);
+    /*
     var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
     const input = document.getElementById("search-input-navbar");
     const searchBox = new google.maps.places.SearchBox(input);
@@ -87,13 +88,14 @@ function initMap(){
         console.log("place icon clicked")
         return "placeId" in e;
     }
+    */
 }
 </script>
 {% endblock %}
 
 {% block main %}
-<div class="col-md-12 center-block text-center" style="background-color: #d9534f;">
-    <a class="mx-auto" id="header_listing" style="height:25px; font-size:20px"></a>
+<div class="col-md-12 center-block text-center" style="background-color: #0275d8">
+    <a class="mx-auto" id="header_listing" style="height:25px; font-size:20px; color: white"></a>
 </div>
 {% endblock %}
 

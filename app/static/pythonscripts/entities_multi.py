@@ -38,18 +38,9 @@ class EntitiesMulti:
         df_pubs_new = df_pubs_new.loc[df_pubs_new['reviewer'] != 'BOTH']
         return df_pubs_new
 
-    def get_pubs_reviews_areas(self):
+    def get_pubs_reviews_stations(self):
         df_reviews = Csv().get_reviews()
-        # df_reviews = S3().get_s3_reviews()
         df_pubs_reviews = pd.merge(self.get_pubs_station(), df_reviews, how='left', on='pub_identity')
-        # df_pubs_reviews['score'] = round(df_pubs_reviews.loc[:, config['review']['score']].sum(axis=1) * 10)
-        # df_pubs_reviews['colour'] = np.where(df_pubs_reviews['reviewer'] == 'BOTH',
-        #                                      config['colour']['reviewed'],
-        #                                      np.where(df_pubs_reviews['reviewer'] == 'ANDY',
-        #                                               config['colour']['reviewed'],
-        #                                               np.where(df_pubs_reviews['reviewer'] == 'AVNI',
-        #                                                        config['colour']['reviewed'],
-        #                                                        config['colour']['new'])))
         df_pubs_reviews.fillna(0, inplace=True)
         return df_pubs_reviews
 

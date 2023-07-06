@@ -1,5 +1,5 @@
 function listen_events(lat, lng, data) {
-
+    console.log('listen_events')
     var get_location = function closest_station(lat, lng) {
         console.log("listen events: get_location")
         records = []

@@ -1,9 +1,9 @@
 function add_listen_bounds() {
-
+    console.log('add_listen_bounds')
     map.addListener('click', function (event) {
         // If the event is a POI
         if (event.placeId) {
-            console.log('add_listen_bounds')
+            console.log('add_listen_bounds - place Id clicked')
             // Call event.stop() on the event to prevent the default info window from showing.
             event.stop();
             // do any other stuff you want to do

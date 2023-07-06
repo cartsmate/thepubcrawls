@@ -1,9 +1,24 @@
 function map_listen_click(map, data) {
-
+    console.log('map_listen_click')
     map.addListener('click', function (event) {
         // If the event is a POI
         if (event.placeId) {
-            console.log('map_listen_click')
+
+            var request = {
+                placeId: event.placeId,
+                fields: ['rating', 'reviews', 'user_ratings_total']
+            };
+            var service = new google.maps.places.PlacesService(map);
+            service.getDetails(request, function(place, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    var reviews = place.reviews;
+                    // console.log(place.rating + ' ' + place.user_ratings_total)
+                    document.getElementById("rank").value = place.rating
+                    document.getElementById("detail").value = place.rating
+                    // Process and display the reviews on your web page as desired
+                }
+            });
+
             if (document.getElementById("submit").disabled = true) {
                 document.getElementById("submit").disabled = false
                 document.getElementById("submit_message").style.display = "none"
@@ -77,9 +92,6 @@ function map_listen_click(map, data) {
                 map: map,
                 icon: markerImage2,
             })
-
-
-
 
             var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
             const input = document.getElementById("search-input-navbar");

@@ -2,6 +2,7 @@ function addJson(headers, visible) {
     json_list = []
     for (i=0; i<headers.length; i++) {
         json_list.push({target: i, visible: visible[headers[i]], searchable: true, })
+        console.log(headers[i] + " : " + visible[headers[i]])
     }
     return json_list
 }

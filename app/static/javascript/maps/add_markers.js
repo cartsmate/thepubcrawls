@@ -7,11 +7,11 @@ function add_markers(map, zoom, data, clickable) {
     var labelOriginFilled =  new google.maps.Point(12,9);
     var infowindow = new google.maps.InfoWindow();
     var marker, i, j;
-    var bounds = new google.maps.LatLngBounds();
+    //var bounds = new google.maps.LatLngBounds();
     for (var key in data) {
         //console.log(data[key])
-        //var pinColor = data[key].colour
         var pinColor = data[key].colour
+        //var pinColor = "#0275d8"
         console.log(pinColor)
         if (true == false) {
             var pinHole = pinSVGFilled
@@ -55,8 +55,8 @@ function add_markers(map, zoom, data, clickable) {
             title: title_name,
             zIndex: indie
         })
-        var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
-        bounds.extend(myLatLng);
+        //var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
+        //bounds.extend(myLatLng);
         if (clickable == true) {
             if (true == false) {
                 google.maps.event.addListener(marker, 'click', (function (marker, key) {
@@ -87,6 +87,5 @@ function add_markers(map, zoom, data, clickable) {
             }
         }
     }
-    map.fitBounds(bounds);
-    return marker
+    //map.fitBounds(bounds);
 }

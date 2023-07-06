@@ -29,7 +29,7 @@ class Csv:
         return df_pubs
 
     def get_reviews(self):
-        print('get_reviews')
+        # print('get_reviews')
         df_reviews = self.get_records('review')
         return df_reviews
 
@@ -38,13 +38,14 @@ class Csv:
         return df_stations
 
     def get_records(self, aws_prefix):
-        print(aws_prefix)
+        # print(aws_prefix)
         df = self.read_csv(aws_prefix)
-        print(df)
+        # if aws_prefix == 'pub': print(df[['pub_identity', 'pub_name', 'pub_deletion']])
         del_consol = aws_prefix + "_deletion"
-        print(del_consol)
-        df_false = df.loc[df[del_consol] != True]
-        print(df_false)
+        # print(del_consol)
+        df_false = df.loc[(df[del_consol] == 'False') | (df[del_consol] == False)]
+        # if aws_prefix == 'pub': print(df_false[['pub_identity', 'pub_name', 'pub_deletion']])
+        # print(df[['pub_identity', 'pub_name', 'pub_deletion']])
         return df_false
 
     def read_csv(self, prefix):

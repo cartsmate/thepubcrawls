@@ -1,9 +1,6 @@
 function listen_search(map, searchBox) {
-
+    console.log("listen_search")
     map.addListener("bounds_changed", () => {
-        console.log("listen_search")
         searchBox.setBounds(map.getBounds());
-
     });
-
 }

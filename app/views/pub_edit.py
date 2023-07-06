@@ -60,31 +60,16 @@ def pub_edit(pub_id):
     df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
     df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
 
-    print(df_pub_photos)
     df_pub_photos.fillna('0', inplace=True)
-    # if 'photo_identity' not in df_pub_photos.columns:
-    #     df_pub_photos['photo_identity'] = '0'
     df_pub_photos['colour'] = '#d9534f'
-    print(df_pub_photos)
     pub_review_json = Dataframes().df_to_dict(df_pub_photos)
 
     df_areas = Csv().get_areas()
-    # df_areas = S3().get_s3_areas()
     stations_json = Dataframes().df_to_dict(df_stations)
     areas_json = Dataframes().df_to_dict(df_areas)
 
-    # list_L = df_pub_photos[['latitude', 'longitude']].values.tolist()
-    # _lat = []
-    # _long = []
-    # for l in list_L:
-    #     _lat.append(l[0])
-    #     _long.append(l[1])
-    #
-    # review_lat = sum(_lat) / len(_lat)
-    # review_long = sum(_long) / len(_long)
-
-    review_lat = df_pub_photos['pub_latitude']
-    review_long = df_pub_photos['pub_longitude']
+    review_lat = df_pub_photos['pub_latitude'].values[0]
+    review_long = df_pub_photos['pub_longitude'].values[0]
 
     return render_template('pub_read.html', form_type='edit', google_key=config2['google_key'],
                            pub_review=pub_review_json,
