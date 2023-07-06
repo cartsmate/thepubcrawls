@@ -8,6 +8,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_bounds.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_events.js') }}"></script>
@@ -17,16 +18,28 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/mouse_down_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/insert_line.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_form.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/shade_stars.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/star_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/edit_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_add.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_station.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/station_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/sum_score.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
+
 <!--
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_click_off.js') }}"></script>
 -->
 <script>form_type = {{ form_type | tojson }}</script>
+
+<script>
+
+</script>
+
 <style>
+.horizontal-gradient {
+    background: linear-gradient(to right, blue, pink);
+}
 .top-buffer {
     margin-top:20px;
 }
@@ -44,13 +57,13 @@ function onLoad(){
     //alert({{response}})
     console.log("onLoad in pub_read");
     form_type = {{ form_type | tojson }}
-
+    config2 = {{config2 | tojson }}
     pub_review = {{ pub_review | tojson }}
     input_list = {{ input_list | tojson }}
     dropdown_list = {{ dropdown_list | tojson }}
     slider_list = {{ slider_list | tojson }}
     check_list = {{ check_list | tojson }}
-    console.log(check_list)
+    //console.log(check_list)
     date_controls = {{ date_list | tojson }}
     star_list = {{ star_list | tojson }}
 
@@ -77,7 +90,9 @@ function onLoad(){
 
 function initMap(){
     console.log("initMap in pub_read");
-    zoom = 16
+    zoom = 13
+    form_type = {{ form_type | tojson }}
+
     if (form_type == 'add') {
         data = {{pubs_reviews | tojson}}
     } else {
@@ -88,31 +103,44 @@ function initMap(){
 
 function showMap(data, zoom, lat, lng){
     console.log('showMap')
-    console.log('zoom: ' + zoom)
-    console.log('lat: ' + lat)
-    console.log('lng: ' + lng)
     map = show_map(lat, lng, zoom)
     key = {{ google_key | tojson }}
+    data = {{pubs_reviews | tojson}}
+    stations = {{stations | tojson}}
+    areas = {{areas | tojson}}
     add_markers(map, zoom, data);
-    if (form_type == 'read') {
+    if (form_type == 'read' || form_type == 'list'){
         add_listen_click(map);
     }
+    /*
+    map.setCenter({ lat: 0, lng: 0 });
+    */
     if (form_type == 'add') {
         var class_event_handler = new ClickEventHandler(map, origin, key, data);
         const input = document.getElementById("search-input-navbar");
         const searchBox = new google.maps.places.SearchBox(input);
         listen_search(map, searchBox);
+        map_listen_bounds(map, searchBox, data);
+    }
+    if (form_type == 'add' || form_type == 'edit') {
+        listen_events(lat, lng, data)
+        map_listen_click(map, data)
         function isIconMouseEvent(e) {
             console.log("place icon clicked")
             return "placeId" in e;
         }
     }
+    const center = new google.maps.LatLng(lat, lng);
+    // using global variable:
+    console.log('lat: ' + lat)
+    console.log('lng: ' + lng)
+    window.map.panTo(center);
 }
 </script>
 {% endblock %}
 
 {% block main %}
-<div class="col-md-12 center-block text-center" style="background-color: #d9534f; ">
+<div class="col-md-12 center-block text-center" style="background-color: #0275d8">
     <div style="font-weight: bold; font-size: 20px; color: white; text-decoration: none; padding: 5px 0 0 0">{{pub_review[0]['pub_name']}}</div>
     {% with messages = get_flashed_messages() %}
         {% if messages %}

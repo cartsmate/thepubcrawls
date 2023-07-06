@@ -48,12 +48,10 @@ False,False,Classic pub,False,False,True,False,True,False,False,ad2bbf86-9982-41
 False,False,,False,False,False,False,False,False,False,e7e819fb-a913-467e-94d3-1ca2f6473a6e,False,False,e7e819fb-a913-467e-94d3-1ca2f6473a6e,False,False
 False,False,Restaurant,False,False,False,False,False,True,False,32a17618-9e23-450c-b921-a6bab0dfdd6f,False,False,32a17618-9e23-450c-b921-a6bab0dfdd6f,False,False
 False,False,,False,False,False,False,False,False,False,bbf5d575-eb9c-4b6c-b6ba-b0d325f452cc,False,False,bbf5d575-eb9c-4b6c-b6ba-b0d325f452cc,False,False
-True,False,,False,False,True,False,False,False,False,0c00dbd3-a6fd-4c6b-8006-2d98c0d8b175,False,False,0c00dbd3-a6fd-4c6b-8006-2d98c0d8b175,False,False
+True,False,0,False,False,True,False,False,False,False,0c00dbd3-a6fd-4c6b-8006-2d98c0d8b175,False,False,0c00dbd3-a6fd-4c6b-8006-2d98c0d8b175,False,False
 False,False,Tues: 7pm quiz. Fri: free beer. Sun: dog day. Various events,True,False,True,False,False,False,False,3c0e13d2-57f5-4e20-85da-8c49873b9224,True,False,3c0e13d2-57f5-4e20-85da-8c49873b9224,False,True
 False,False,,False,False,False,False,False,False,False,e7c2cc87-e065-41e0-b34e-5607b0d6cb68,False,False,e7c2cc87-e065-41e0-b34e-5607b0d6cb68,False,False
 False,False,,False,False,True,False,False,False,False,54ed8eb6-770a-4ed4-b269-a7c770447aed,False,False,54ed8eb6-770a-4ed4-b269-a7c770447aed,False,False
-False,False,,False,False,False,False,False,False,False,1e2588e4-74eb-49b7-9c44-e9716b26c64d,False,,9a3d88cf-4910-4f24-921c-c20fe0febd29,False,False
-False,False,,False,False,False,False,False,False,False,589baf35-626d-4581-9a9f-b15e60f6fc84,False,,0512afe3-4cc4-4b01-82df-caee56e82b4d,False,False
 False,False,,False,False,False,False,False,False,False,d156ac75-0402-4b7f-8140-1272cc620366,False,False,b5ac8d4d-7c3f-4698-9948-6885ac08892a,False,False
 False,False,,False,False,False,False,False,False,False,2615935b-9f1d-4181-bfd7-cc492b5e16f1,False,False,c44e9e14-ff8b-4a5c-b633-d4e040aa8362,False,False
 False,False,,False,False,False,False,False,False,False,496c556c-124e-45ed-a9a6-5630502257b2,False,False,21bf8d65-522f-4309-a018-ac4321ea303a,False,False
@@ -800,3 +798,5 @@ False,False, Sun 7pm quiz,False,False,False,False,False,False,False,fc458d09-166
 False,False, ,False,False,False,False,False,False,False,841e85cf-4e8a-442e-bc33-4a13384c66ad,False,False,a946e7a8-f4ca-462b-93e9-e859c6a17da7,False,False
 False,False,Epic decor and outdoor seating,False,False,False,False,False,False,False,59127bd0-05e0-4988-984c-fbec6c37c634,False,False,a1fc6396-49a5-436d-b093-a0818ea923eb,False,False
 False,False, ,False,False,False,False,False,False,False,5195d970-0ad2-4437-84a1-6cf4c3724f8e,False,False,d994199e-c9e7-476b-8d27-2e98c63b94a1,False,False
+False,False,4.2,False,False,True,False,False,False,False,bc32e738-6d62-4be7-bf42-a447723bf076,True,False,1f2cb5c4-cfef-442d-965e-95d74e3f41f4,True,True
+False,False,4.1,False,False,False,False,False,False,False,f6bb17a0-473c-4c1c-bec2-6e1392b674f9,False,False,b26bb778-0f40-4e4a-aef3-39ee3ee36d63,False,False

@@ -4,9 +4,9 @@ function goPub(selected_pub) {
 
     var base_url = window.location.hostname
     if (config2['env'] == 'prod') {
-        var url = "http://" + base_url + "/pub/name/"
+        var url = "http://" + base_url + "/pub/"
     } else {
-        var url = "http://" + base_url + ":5000/pub/name/"
+        var url = "http://" + base_url + ":5000/pub/"
     }
 
     window.location.href = url + selected_pub

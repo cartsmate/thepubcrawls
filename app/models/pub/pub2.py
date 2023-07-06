@@ -8,6 +8,7 @@ from app.models.pub.pub_longitude import PubLongitude
 from app.models.pub.pub_name import PubName
 from app.models.pub.place import Place
 from app.models.pub.rank import Rank
+from app.models.pub.colour import Colour
 from app.models.area.area import Area
 from app.models.station.station import Station
 from app.models.review.review2 import Review2
@@ -19,11 +20,13 @@ class Pub2:
 
     def __init__(self, pub_deletion=PubDeletion(), place=Place(), pub_name=PubName(), address=Address(),
                  pub_latitude=PubLatitude(), pub_longitude=PubLongitude(), category=Category(), rank=Rank(),
-                 station_identity=StationIdentity(), area_identity=AreaIdentity(), pub_identity=PubIdentity()):
+                 station_identity=StationIdentity(), area_identity=AreaIdentity(), pub_identity=PubIdentity(),
+                 colour=Colour()):
         self.address = address
         self.area_identity = area_identity
         self.category = category
         self.place = place
+        self.colour = colour
         self.pub_deletion = pub_deletion
         self.pub_identity = pub_identity
         self.pub_latitude = pub_latitude

@@ -1,5 +1,5 @@
 
-<table id="pub_list" class="table table-striped" style="font-size:16px;">
+<table id="pub_list" class="table table-striped" style="font-size:14px;">
     <thead>
         <tr>
             {% for k in headers %}
@@ -12,15 +12,14 @@
             {% for k in headers %}
                 {% if (k != 'rank') %}
                     {% if k == 'station_name' %}
-                        <td><a href="#" onclick="stationClick('{{pubs_reviews[i]['station_identity']}}')">{{pubs_reviews[i][k]}}</a></td>
+                        <td style="vertical-align: middle;"><a href="#" onclick="stationClick('{{pubs_reviews[i]['station_identity']}}')">{{pubs_reviews[i][k]}}</a></td>
                     {% else %}
-                        <td><a href="/pub/{{pubs_reviews[i]['pub_identity']}}">{{pubs_reviews[i][k]}}</a></td>
+                        <td style="vertical-align: middle;"><a href="/pub/{{pubs_reviews[i]['pub_identity']}}">{{pubs_reviews[i][k]}}</a></td>
                     {% endif %}
                 {% else %}
                     <td><div class="star_container">
-                        <script>console.log({{pubs_reviews[i][k].rank}})</script>
                         {% if (pubs_reviews[i][k] != 0) %}
-                            <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:1.0;">
+                            <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:0.25;">
                             <div class="star_centre" id="rounder">{{pubs_reviews[i][k]}}</div>
                         {% else %}
                             <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:0.25;">

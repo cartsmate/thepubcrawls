@@ -40,8 +40,15 @@ def home():
 
     # try:
     # df_pubs = S3().get_s3_pubs()
-    df_pubs = Csv().get_pubs()
-    list_of_pubs = df_pubs['pub_name'].values.tolist()
+    df_pubs = Csv().get_pubs().sort_values(by=['pub_name'], ascending=True)
+    list_pub = []
+    # list_of_pubs = df_pubs['pub_name'].values.tolist()
+    for index, row in df_pubs.iterrows():
+        # print("id: " + row['pub_identity'] + "| name: " + row['pub_name'])
+        dict_pub = {'label': row['pub_name'], 'del': row['pub_deletion'], 'value': row['pub_identity']}
+        list_pub.append(dict_pub)
+    # print(list_pub)
+
     # list_of_pubs = df_pubs[['pub_identity', 'pub_name']].values.tolist()
     # for pub in list_of_pubs:
     #     json_pubs =
@@ -62,7 +69,7 @@ def home():
     df_stations_directions = pd.merge(df_unique_stations, df_directions, on='direction_identity', how='left')
     df_stations_directions_trunc = df_stations_directions[['station_identity', 'station_name', 'direction_identity', 'direction_name']]
     stations_directions_list = df_stations_directions_trunc.values.tolist()
-
+    print(stations_directions_list)
     unique_directions_list = df_stations_directions['direction_identity'].unique()
     df_unique_directions_identity = pd.DataFrame({'direction_identity': unique_directions_list})
     df_unique_directions = pd.merge(df_unique_directions_identity, df_directions, on='direction_identity', how='left')
@@ -75,15 +82,15 @@ def home():
 
     l3 = [x for x in l1 if x not in ignore_list]
 
-    list_L = df_pubs[['pub_latitude', 'pub_longitude']].values.tolist()
-    _lat = []
-    _long = []
-    for l in list_L:
-        _lat.append(l[0])
-        _long.append(l[1])
-
-    review_lat = sum(_lat) / len(_lat)
-    review_long = sum(_long) / len(_long)
+    # list_L = df_pubs[['pub_latitude', 'pub_longitude']].values.tolist()
+    # _lat = []
+    # _long = []
+    # for l in list_L:
+    #     _lat.append(l[0])
+    #     _long.append(l[1])
+    #
+    # review_lat = sum(_lat) / len(_lat)
+    # review_long = sum(_long) / len(_long)
 
     print("{:06d}".format(int(counter)))
     df_areas = Csv().get_areas()
@@ -93,7 +100,8 @@ def home():
                            list_stations=list_stations,
                            areas=areas_json,
                            stations=stations_json, stations_directions_list=stations_directions_list,
-                           map_lat=review_lat, map_lng=review_long, directions_list=directions_list,
+                           # map_lat=review_lat, map_lng=review_long,
+                           directions_list=directions_list,
                            # pubs_reviews=pubs_json, photo_array=config, map_view="stations",
                             config=config, google_key=config2['google_key'],
                             # row_loop=range(3), col_loop=range(4),
@@ -101,7 +109,7 @@ def home():
                            #  walk=walk, favourite=favourite, stops=stops, criteria=criteria, photo_id=photo_id,
                            #  pubs=pubs_json, pub=pub_json,
                             config2=config2, form_type='home',
-                           counter=counter, list_of_pubs=list_of_pubs,
+                           counter=counter, list_of_pubs=list_pub,
                            # no_all=no_all, no_reviewed=no_reviewed,
                            # no_all_2=no_all_2, no_reviewed_2=no_reviewed_2,
                             ignore_list=ignore_list, review_obj=Review2(), features=l3, icon_list=icon_list)

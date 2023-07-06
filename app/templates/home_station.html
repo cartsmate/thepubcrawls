@@ -1,10 +1,21 @@
+<style>
+    .highlight {
+        background: #0275d8;
+        color: white;
+    }
+</style>
 <script>
-  $( function() {
+$( function() {
     $( "#tags" ).autocomplete({
-      source: {{list_of_pubs | tojson}}
+        source: {{list_of_pubs | tojson}},
+        classes: {
+            "ui-autocomplete": "highlight"
+        }
     });
-  } );
-  </script>
+} );
+</script>
+
+
 <div class="row">
     <div class="col-12 center-block text-center">
         <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">Search pubs by area</a>
@@ -13,7 +24,7 @@
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center">
-            <select class="form-control" id="direction" name="direction" onchange="direction_changed();" style="width:220px;">
+            <select class="form-control" id="direction" name="direction" onchange="direction_changed();" style="background-color: #FFFFFF; width:220px;">
                 <option value="all">select direction</option>
                 {% for direction in directions_list %}
                     <option value={{direction[0]}}>{{direction[1]}}</option>
@@ -33,7 +44,7 @@
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center">
-            <select class="form-control" id="station" name="station" onchange="station_changed();" style="width:220px;">
+            <select class="form-control" id="station" name="station" onchange="station_changed();" style="background-color: #FFFFFF; width:220px;">
                 <option value="all">select station</option>
                 {% for x in stations_directions_list %}
                     <option value={{x[0]}}>{{x[1]}}</option>
@@ -53,7 +64,7 @@
 <div class="row">
     <div class="col mx-auto">
         <div class="d-flex justify-content-center">
-            <input id="tags" style="background-color:#F9F9F9">
+            <input placeholder="search pubs" id="tags" style="background-color: #F6F6F6; background-image: linear-gradient(#FAF9F6, #F6F6F6); width:220px; border-radius: 5px;">
             <a><img src="/static/icons/buttons/arrow.png" onClick="goPub(document.getElementById('tags').value)" class="button_size"></a>
         </div>
     </div>

@@ -3,7 +3,7 @@
     {% if field not in icon_list %}
         {% if field in form_visible_list %}
             <div class="form-group row" id="row_{{field}}" >
-                <div class="col" style="text-align:right; width:75px; padding:0px; margin:0px;">
+                <div class="col" style="text-align:right; width:75px; padding:0px; margin:auto;">
                     <label class="col-form-label" style="width:75px; padding:0px; margin:0px;" for="{{field}}" >{{alias[field]}}</label>
                 </div>
                 <div class="col" id="div_{{field}}" style="width:220px; text-align:left; visibility:visible; display:block; text-align:left" >

@@ -10,8 +10,8 @@ function add_markers(map, zoom, data, clickable) {
     var bounds = new google.maps.LatLngBounds();
     for (var key in data) {
         //console.log(data[key])
-        //var pinColor = data[key].colour
         var pinColor = data[key].colour
+        //var pinColor = "#0275d8"
         console.log(pinColor)
         if (true == false) {
             var pinHole = pinSVGFilled
@@ -87,6 +87,9 @@ function add_markers(map, zoom, data, clickable) {
             }
         }
     }
+    //var bounds = new google.maps.LatLngBounds();
+    //var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
+    //bounds.extend(myLatLng);
     map.fitBounds(bounds);
-    return marker
+
 }
