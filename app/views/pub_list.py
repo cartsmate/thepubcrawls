@@ -51,7 +51,7 @@ def pub_list():
     for review in review_list:
         df_selection = df_selection.loc[(df_selection[review].astype(str).isin(review_list[review]))]
 
-    df_selection['colour'] = 'blue'
+    df_selection['colour'] = '#0275d8'
     headers = list(df_selection.columns)
 
     inst_pub = Pub2()

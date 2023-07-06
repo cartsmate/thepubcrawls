@@ -56,8 +56,9 @@ def pub_read(pub_id):
 
     df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
     df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
-    df_selection['colour'] = 'blue'
-    df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = 'red'
+    station = selected_station
+    df_selection['colour'] = '#0275d8'
+    df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
     pubs_reviews_json = Dataframes().df_to_dict(df_selection)
 
     df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
@@ -66,14 +67,7 @@ def pub_read(pub_id):
     df_pub_photos['colour'] = '#d9534f'
     df_pub_photos.sort_values(by='pub_name', ascending=False)
     pub_review_json = Dataframes().df_to_dict(df_pub_photos)
-    # print(df_pub_photos)
 
-    # df_all = EntitiesMulti().get_pubs_reviews()
-    # df_all['colour'] = '#0275d8'
-    # df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
-    # all_json = Dataframes().df_to_dict(df_all)
-
-    # df_stations = S3().get_s3_stations()
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
 
@@ -83,21 +77,19 @@ def pub_read(pub_id):
     df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()
     df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity') \
         .rename(columns={'pub_name': 'count'}).astype(str)
-    # df_all_latlng['colour'] = config['colour']['primary']
-
     station_all_json = Dataframes().df_to_dict(df_all_latlng)
 
-    # print(df_pub_review['rank'])
     if request.method == 'GET':
         print('pub_read: GET')
 
-        review_lat = df_pub_photos['pub_latitude'].values[0]
-        review_long = df_pub_photos['pub_longitude'].values[0]
-
+        review_lat = df_pub_review['pub_latitude'].values[0]
+        review_long = df_pub_review['pub_longitude'].values[0]
+        print(df_pub_review)
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
-                               pub_review=pub_review_json, config=config,
+                               pub_review=pub_review_json, config=config, config2=config2,
                                map_lat=review_lat, map_lng=review_long,
                                fields_list=fields_list, alias=alias,
+                               station=station,
                                pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                check_list=check_list, slider_list=slider_list, date_list=date_list,
@@ -170,8 +162,8 @@ def pub_read(pub_id):
                 return render_template('pub_read.html', response=response,
                                        error=error, form_type='read', google_key=config2['google_key'],
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
-                                       pub_review=pub_review_json, config=config,
-                                       fields_list=fields_list, alias=alias,
+                                       pub_review=pub_review_json, config=config, config2=config2,
+                                       fields_list=fields_list, alias=alias, station=station,
                                        full=pubs_reviews_json, summary=station_all_json, map_lat=review_lat, map_lng=review_long,
                                        star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                        check_list=check_list, slider_list=slider_list, date_list=date_list,
@@ -219,9 +211,14 @@ def pub_read(pub_id):
             df_pub_photos.fillna('0', inplace=True)
             pub_review_json = Dataframes().df_to_dict(df_pub_photos)
 
-            # print(df_pub_review)
+            selected_station = df_pub_review['station_identity'].values[0]
+
             df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
-            pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
+            df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
+            station = selected_station
+            df_selection['colour'] = '#0275d8'
+            df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
+            pubs_reviews_json = Dataframes().df_to_dict(df_selection)
 
             review_lat = df_pub_photos['pub_latitude'].values[0]
             review_long = df_pub_photos['pub_longitude'].values[0]
@@ -232,9 +229,9 @@ def pub_read(pub_id):
                                    form_type='read', google_key=config2['google_key'],
                                    pub_review=pub_review_json,
                                    pubs_reviews=pubs_reviews_json,
-                                   config=config,
+                                   config=config, config2=config2,
                                    stations=stations_json, areas=areas_json,
-                                   fields_list=fields_list, alias=alias,
+                                   fields_list=fields_list, alias=alias, station=station,
                                    full=pubs_reviews_json, summary=station_all_json, map_lat=review_lat, map_lng=review_long,
                                    star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                    check_list=check_list, slider_list=slider_list, date_list=date_list,

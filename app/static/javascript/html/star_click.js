@@ -43,11 +43,11 @@ function starClick(check_item) {
             break;
         case 5:
             console.log('5')
-            document.getElementById("img_rank1").style.opacity = "1.0"
-            document.getElementById("img_rank2").style.opacity = "1.0"
-            document.getElementById("img_rank3").style.opacity = "1.0"
-            document.getElementById("img_rank4").style.opacity = "1.0"
-            document.getElementById("img_rank5").style.opacity = "1.0"
+            document.getElementById("img_rank1").className = "horizontal-gradient";
+            document.getElementById("img_rank2").className = "horizontal-gradient";
+            document.getElementById("img_rank3").className = "horizontal-gradient";
+            document.getElementById("img_rank4").className = "horizontal-gradient";
+            document.getElementById("img_rank5").className = "horizontal-gradient";
             break;
     }
 }

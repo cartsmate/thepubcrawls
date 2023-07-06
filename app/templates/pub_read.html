@@ -18,17 +18,28 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/mouse_down_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/insert_line.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_form.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/shade_stars.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/star_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/edit_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_add.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_station.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/station_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/sum_score.js') }}"></script>
 
 <!--
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_click_off.js') }}"></script>
 -->
 <script>form_type = {{ form_type | tojson }}</script>
+
+<script>
+
+</script>
+
 <style>
+.horizontal-gradient {
+    background: linear-gradient(to right, blue, pink);
+}
 .top-buffer {
     margin-top:20px;
 }
@@ -46,13 +57,13 @@ function onLoad(){
     //alert({{response}})
     console.log("onLoad in pub_read");
     form_type = {{ form_type | tojson }}
-
+    config2 = {{config2 | tojson }}
     pub_review = {{ pub_review | tojson }}
     input_list = {{ input_list | tojson }}
     dropdown_list = {{ dropdown_list | tojson }}
     slider_list = {{ slider_list | tojson }}
     check_list = {{ check_list | tojson }}
-    console.log(check_list)
+    //console.log(check_list)
     date_controls = {{ date_list | tojson }}
     star_list = {{ star_list | tojson }}
 
@@ -119,7 +130,11 @@ function showMap(data, zoom, lat, lng){
             return "placeId" in e;
         }
     }
-
+    const center = new google.maps.LatLng(lat, lng);
+    // using global variable:
+    console.log('lat: ' + lat)
+    console.log('lng: ' + lng)
+    window.map.panTo(center);
 }
 </script>
 {% endblock %}

@@ -7,7 +7,7 @@
     -->
     {% if form_type != 'add' or form_type != 'edit' %}
         <div style="text-align: center;">
-            <a href="#"><img src="/static/icons/footer/add1.png" onclick="goStation('{{direction}}','{{station}}')" class="button_size"></a>
+            <a href="#"><img src="/static/icons/footer/add1.png" onclick="goAdd('{{direction}}','{{station}}')" class="button_size"></a>
             <div class="button_caption">ADD<br>PUB</div>
         </div>
     {% endif %}
@@ -21,7 +21,7 @@
             <div class="button_caption">EDIT<br>PUB</div>
         </div>
         <div style="text-align: center;">
-            <a href="#"><img src="/static/icons/footer/underground.png" onclick="goStation('{{direction}}','{{station}}')" class="button_size"></a>
+            <a href="#"><img src="/static/icons/footer/underground.png" onclick="stationClick('{{station}}')" class="button_size"></a>
             <div class="button_caption">STATION<br>AREA</div>
         </div>
         <div style="text-align: center;">

@@ -14,7 +14,7 @@ function map_listen_click(map, data) {
                     var reviews = place.reviews;
                     // console.log(place.rating + ' ' + place.user_ratings_total)
                     document.getElementById("rank").value = place.rating
-                    document.getElementById("detail").value = place.rating
+                    shadeStars('rank', place.rating)
                     // Process and display the reviews on your web page as desired
                 }
             });
