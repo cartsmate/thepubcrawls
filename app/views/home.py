@@ -109,7 +109,7 @@ def home():
                            #  walk=walk, favourite=favourite, stops=stops, criteria=criteria, photo_id=photo_id,
                            #  pubs=pubs_json, pub=pub_json,
                             config2=config2, form_type='home',
-                           counter=counter, list_of_pubs=list_pub,
+                           counter=counter, list_of_pubs=list_pub, station='all', direction='all',
                            # no_all=no_all, no_reviewed=no_reviewed,
                            # no_all_2=no_all_2, no_reviewed_2=no_reviewed_2,
                             ignore_list=ignore_list, review_obj=Review2(), features=l3, icon_list=icon_list)
