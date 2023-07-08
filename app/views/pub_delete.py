@@ -20,7 +20,7 @@ def pub_delete(pub_id):
     # df_pubs = S3().get_s3_pubs()
     df_pubs.loc[df_pubs['pub_identity'] == pub_id, 'pub_deletion'] = True
     Dataframes().to_csv(df_pubs, 'pub')
-    s3_resp = S3().s3_write(df_pubs, config['pub']['aws_key'])
+    # s3_resp = S3().s3_write(df_pubs, config['pub']['aws_key'])
 
     # s3_resp = Functions().s3_write(df_pubs.to_csv(sep=',', encoding='utf-8', index=False), config['pub']['aws_key'])
     # print(s3_resp)

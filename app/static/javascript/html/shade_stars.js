@@ -1,11 +1,12 @@
-function shadeStars(star, num){
-    console.log('shade stars')
+function shadeStars(star, num, where){
+    console.log('shade stars from ' + where)
+    console.log('rating: ' + num)
     //console.log(star)
     star_num = 30
     star_size = star_num + "px"
     document.getElementById(star).value = num;
-    num = pub_review[0][star]
-    if (num >= 0 && num <1) {
+    //num = pub_review[0][star]
+    if (num > 0 && num <1) {
         console.log('between 0 and 1')
         document.getElementById("img_rank1").style.width = star_size
         document.getElementById("img_rank2").style.width = "0px"

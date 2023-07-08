@@ -22,7 +22,7 @@ function populate_form(form){
                 //console.log('false')
             }
         } else if (star_list.includes(fields_list[i])) {
-            shadeStars(fields_list[i], pub_review[0][fields_list[i]])
+            shadeStars(fields_list[i], pub_review[0][fields_list[i]], 'populate')
             /*
             star_num = 30
             star_size = star_num + "px"

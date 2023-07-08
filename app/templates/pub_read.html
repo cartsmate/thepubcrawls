@@ -8,6 +8,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_marker_bounds.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_bounds.js') }}"></script>
@@ -16,6 +17,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_zoom.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/class_event_handler.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/mouse_down_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/nearest_station.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/insert_line.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_form.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/shade_stars.js') }}"></script>
@@ -37,6 +39,12 @@
 </script>
 
 <style>
+.fa-quora {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
 .horizontal-gradient {
     background: linear-gradient(to right, blue, pink);
 }
@@ -82,60 +90,19 @@ function onLoad(){
         js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
         document.head.appendChild(js)
     } else {
+        var elem = document.createElement("img");
+        elem.src = "/static/icons/no-wifi.png"
+        elem.className = "fa-quora"
+        elem.height = "100"
+        document.getElementById('map').appendChild(elem);
         //alert('You appear to offline so maps cannot be displayed')
     }
 
     populate_form(form_type);
+
 }
 
-function initMap(){
-    console.log("initMap in pub_read");
-    zoom = 13
-    form_type = {{ form_type | tojson }}
 
-    if (form_type == 'add') {
-        data = {{pubs_reviews | tojson}}
-    } else {
-        data = {{pub_review | tojson}}
-    }
-    showMap(data, zoom, {{map_lat}}, {{map_lng}})
-}
-
-function showMap(data, zoom, lat, lng){
-    console.log('showMap')
-    map = show_map(lat, lng, zoom)
-    key = {{ google_key | tojson }}
-    data = {{pubs_reviews | tojson}}
-    stations = {{stations | tojson}}
-    areas = {{areas | tojson}}
-    add_markers(map, zoom, data);
-    if (form_type == 'read' || form_type == 'list'){
-        add_listen_click(map);
-    }
-    /*
-    map.setCenter({ lat: 0, lng: 0 });
-    */
-    if (form_type == 'add') {
-        var class_event_handler = new ClickEventHandler(map, origin, key, data);
-        const input = document.getElementById("search-input-navbar");
-        const searchBox = new google.maps.places.SearchBox(input);
-        listen_search(map, searchBox);
-        map_listen_bounds(map, searchBox, data);
-    }
-    if (form_type == 'add' || form_type == 'edit') {
-        listen_events(lat, lng, data)
-        map_listen_click(map, data)
-        function isIconMouseEvent(e) {
-            console.log("place icon clicked")
-            return "placeId" in e;
-        }
-    }
-    const center = new google.maps.LatLng(lat, lng);
-    // using global variable:
-    console.log('lat: ' + lat)
-    console.log('lng: ' + lng)
-    window.map.panTo(center);
-}
 </script>
 {% endblock %}
 
@@ -153,14 +120,7 @@ function showMap(data, zoom, lat, lng){
 {% endblock %}
 
 {% block left %}
-    <div class="row">
-        <div id="map" class="map_height"></div>
-    </div>
-    {% if form_type == 'add' %}
-        <div class="row">
-            <input id="search-input-navbar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        </div>
-    {% endif %}
+    {% include "pub_map.html" %}
 {% endblock %}
 
 

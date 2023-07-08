@@ -5,7 +5,7 @@
         <div class="button_caption">TEST<br>SCRIPT</div>
     </div>
     -->
-    {% if form_type != 'add' or form_type != 'edit' %}
+    {% if form_type != 'add' and form_type != 'edit' %}
         <div style="text-align: center;">
             <a href="#"><img src="/static/icons/footer/add1.png" onclick="goAdd('{{direction}}','{{station}}')" class="button_size"></a>
             <div class="button_caption">ADD<br>PUB</div>

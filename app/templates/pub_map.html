@@ -1,135 +1,56 @@
-{% extends 'base.html' %}
-
-{% block title %}Map View{% endblock %}
-
-{% block script %}
-<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4- toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
-<!--
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=marker&callback=initMap" type="text/javascript"></script>
--->
-<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
+<div class="row">
+    <div id="map" style="border: 1px solid #0275d8" class="map_height"></div>
+</div>
+{% if form_type == 'add' %}
+    <div class="row">
+        <input id="search-input-navbar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </div>
+{% endif %}
 
 <script>
-function listen_zoom(map, station, area, full) {
-    map.addListener('center_changed', function() {
-        console.log('center_change')
-        var newCenter = map.getCenter();
-        console.log(newCenter.lat())
-        console.log(newCenter.lng())
-    })
-    map.addListener('zoom_changed', function() {
-        var newZoom = map.getZoom();
-        showMap(station, area, full, map.getZoom(), map.getCenter().lat(), map.getCenter().lng())
-    });
-}
-function onLoad(){
-    console.log("onLoad in pub_map")
+    function initMap(){
+    console.log("initMap in pub_read");
+    zoom = {{map_zoom}}
     form_type = {{ form_type | tojson }}
-    var js = document.createElement("script");
-    js.type = "text/javascript";
-    if ( window.navigator.onLine == true) {
-        js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
-        document.head.appendChild(js)
+    if (form_type == 'add') {
+        data = {{pubs_reviews | tojson}}
     } else {
-        //alert('You appear to offline so maps cannot be displayed')
+        data = {{pub_review | tojson}}
     }
+    showMap(data, zoom, {{map_lat}}, {{map_lng}})
 }
-function showMap(station, area, full, zoom, lat, lng){
+
+function showMap(data, zoom, lat, lng){
     console.log('showMap')
-    map = show_map(lat, lng, zoom)
-    switch (true) {
-        case (zoom < 15):
-            data = full
-            break;
-        default:
-            data = full
+    map = show_map(lat, lng, zoom, data)
+    key = {{ google_key | tojson }}
+    data = {{pubs_reviews | tojson}}
+    stations = {{stations | tojson}}
+    areas = {{areas | tojson}}
+    //add_markers(map, zoom, data);
+    if (form_type == 'read' || form_type == 'list'){
+        add_listen_click(map, lat, lng);
     }
-    for(let i=0; i<data.length; i++){
-        if (data[i].rank > 0) {
-            var newV = "#d9534f";
-            data[i].colour = newV;
-        } else {
-            var newV = "#0275d8";
-            data[i].colour = newV;
+    if (form_type == 'add') {
+        var class_event_handler = new ClickEventHandler(map, origin, key, data);
+        const input = document.getElementById("search-input-navbar");
+        const searchBox = new google.maps.places.SearchBox(input);
+        listen_search(map, searchBox);
+        map_listen_bounds(map, searchBox, data);
+    }
+    if (form_type == 'add' || form_type == 'edit') {
+        listen_events(lat, lng, data)
+        map_listen_click(map, data)
+        function isIconMouseEvent(e) {
+            console.log("place icon clicked")
+            return "placeId" in e;
         }
     }
-    add_markers(map, zoom, data, Boolean(true));
-    add_listen_click(map);
-    listen_zoom(map, station, area, full);
+    const center = new google.maps.LatLng(lat, lng);
+    console.log('lat: ' + lat)
+    console.log('lng: ' + lng)
+    window.map.panTo(center);
+    //add_marker_bounds(map, data);
+}
 
-}
-function initMap(){
-    map_view =  {{ map_view | tojson }}
-    station = {{ station | tojson }}
-    area = {{ area | tojson }}
-    full = {{ full | tojson }}
-    let { avg_lat, avg_lng } = latlng_avg(area);
-    zoom = 13
-    showMap(station, area, full, zoom, {{map_lat}}, {{map_lng}})
-}
-function all_pubs(){
-    location.href = "/pub/map/all";
-}
-function new_pubs(){
-    var lat = map.getCenter().lat()
-    var lng = map.getCenter().lat()
-    var zoom = map.getZoom()
-    location.href="/pub/map/new"
-}
-function reviewed_pubs(){
-    location.href = "/pub/map/reviewed";
-}
-function pubSwitch() {
-    var check_value = document.getElementById("pub_switch").checked
-
-    var lat = map.getCenter().lat()
-    var lng = map.getCenter().lng()
-    zoom = 13
-
-    var arr = [ 1, 9, 3, 8, 6, 1, 5, 9, 4, 7, 3, 8, 6, 9, 1 ];
-
-    if (check_value == true) {
-        myNewArray= $(full).filter( function(i, n){
-                        return n.rank>0;
-                    });
-        for(let i=0; i<myNewArray.length; i++){
-            var newV = "#d9534f";
-            myNewArray[i].colour = newV;
-        }
-    } else {
-        myNewArray= full
-        for(let i=0; i<myNewArray.length; i++){
-            if (myNewArray[i].rank > 0) {
-                var newV = "#d9534f";
-                myNewArray[i].colour = newV;
-            } else {
-                var newV = "#0275d8";
-                myNewArray[i].colour = newV;
-            }
-        }
-    }
-    map = show_map(lat, lng, zoom)
-    add_markers(map, zoom, myNewArray, Boolean(true));
-}
 </script>
-{% endblock %}
-
-{% block controls %}
-<div>ALL PUBS</div>
-<label class="switch">
-    <input type="checkbox" id="pub_switch" onclick="pubSwitch()">
-    <span class="slider"></span>
-</label>
-<div>REVIEWED PUBS</div>
-{% endblock %}
-
-{% block main %}
-    <div class="col-md-12 mx-auto" id="main">
-        <div id="map" style="width:100%; height:450px;"></div>
-    </div>
-{% endblock %}

@@ -14,7 +14,7 @@ function map_listen_click(map, data) {
                     var reviews = place.reviews;
                     // console.log(place.rating + ' ' + place.user_ratings_total)
                     document.getElementById("rank").value = place.rating
-                    shadeStars('rank', place.rating)
+                    shadeStars('rank', place.rating, 'map')
                     // Process and display the reviews on your web page as desired
                 }
             });
@@ -33,6 +33,8 @@ function map_listen_click(map, data) {
             document.getElementById("pub_latitude").value = lat_lng_obj.lat;
             document.getElementById("pub_longitude").value = lat_lng_obj.lng;
 
+            nearestStation(place, lat_lng_obj)
+            /*
             records = []
             for (let i = 0; i < stations.length; i++) {
                 lat_diff = Math.abs(stations[i]['station_latitude'] - lat_lng_obj.lat)
@@ -58,7 +60,6 @@ function map_listen_click(map, data) {
                 records2.push(record2);
 
             }
-            //console.log('records2: ' + JSON.stringify(records2))
             records2 = records2.sort((a, b) => {
                 if (a.distance < b.distance) {
                     return -1;
@@ -67,7 +68,7 @@ function map_listen_click(map, data) {
             document.getElementById("area_name").value = records2[0]['name']
             document.getElementById("area_identity").value = records2[0]['id']
 
-            //map.setCenter(event.latLng)
+            */
 
             map = show_map(lat_lng_obj.lat, lat_lng_obj.lng, map.getZoom())
             if (document.getElementById('rank').value > 0) {

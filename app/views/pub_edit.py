@@ -101,12 +101,13 @@ def pub_edit(pub_id):
 
     review_lat = df_pub_review['pub_latitude'].values[0]
     review_long = df_pub_review['pub_longitude'].values[0]
-
+    test_reviews = Dataframes().df_to_dict(df_pubs_reviews)
     return render_template('pub_read.html', form_type='edit', google_key=config2['google_key'],
                            pub_review=pub_review_json, config2=config2,
                            fields_list=fields_list, alias=alias,
                            stations=stations_json, areas=areas_json, config=config,
-                           pubs_reviews=pubs_reviews_json, summary=station_all_json,
+                           # pubs_reviews=pubs_reviews_json,
+                           pubs_reviews=test_reviews,
                            map_lat=review_lat, map_lng=review_long,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,

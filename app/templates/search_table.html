@@ -7,20 +7,20 @@
             {% endfor %}
         </tr>
     </thead>
-    {% for i in range(pubs_reviews |length) %}
+    {% for i in range(pubs_selection |length) %}
         <tr>
             {% for k in headers %}
                 {% if (k != 'rank') %}
                     {% if k == 'station_name' %}
-                        <td style="vertical-align: middle;"><a href="#" onclick="stationClick('{{pubs_reviews[i]['station_identity']}}')">{{pubs_reviews[i][k]}}</a></td>
+                        <td style="vertical-align: middle;"><a href="#" onclick="stationClick('{{pubs_reviews[i]['station_identity']}}')">{{pubs_selection[i][k]}}</a></td>
                     {% else %}
-                        <td style="vertical-align: middle;"><a href="/pub/{{pubs_reviews[i]['pub_identity']}}">{{pubs_reviews[i][k]}}</a></td>
+                        <td style="vertical-align: middle;"><a href="/pub/{{pubs_reviews[i]['pub_identity']}}">{{pubs_selection[i][k]}}</a></td>
                     {% endif %}
                 {% else %}
                     <td><div class="star_container">
-                        {% if (pubs_reviews[i][k] != 0) %}
+                        {% if (pubs_selection[i][k] != 0) %}
                             <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:0.25;">
-                            <div class="star_centre" id="rounder">{{pubs_reviews[i][k]}}</div>
+                            <div class="star_centre" id="rounder">{{pubs_selection[i][k]}}</div>
                         {% else %}
                             <img src="/static/icons/star.png" style="width:30px;height:30px;opacity:0.25;">
                             <div class="star_centre"></div>

@@ -42,6 +42,8 @@ function map_listen_bounds(map, searchBox, data) {
             //document.getElementById("place").value = place.place_id
             document.getElementById("pub_name").value = place.name
             document.getElementById("address").value = place.formatted_address
+            document.getElementById("rank").value = place.rating
+            shadeStars('rank', place.rating, 'map')
             //document.getElementById("latitude").value = place.geometry.location.lat()
             //document.getElementById("longitude").value = place.geometry.location.lng()
             place_text = String(place.types)

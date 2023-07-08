@@ -27,16 +27,10 @@ def pub_add():
     station = request.args.get('station')
     direction = request.args.get('direction')
 
-    df_pubs = Csv().get_pubs()
-    if station == all:
-        df_stations = Csv().get_stations()
-        df_pubs_staions = pd.merge(df_pubs, df_stations, how='left', on='station_identity')
-        df_selected = df_pubs_staions.loc[df_pubs_staions['direction_identity'] == direction]
-    else:
-        df_selected = df_pubs.loc[df_pubs['station_identity'] == station]
+    lat = request.args.get('lat')
+    lng = request.args.get('lng')
 
-    review_lat = df_selected['pub_latitude'].values[0]
-    review_long = df_selected['pub_longitude'].values[0]
+    zoom = request.args.get('zoom')
 
     inst_pub = Pub2()
     inst_review = Review2()
@@ -48,14 +42,34 @@ def pub_add():
     for k, v in inst_pub_review.__dict__.items():
         alias[k] = v.alias
 
-    dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
-    required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
-
     df_stations = Csv().get_stations()
     stations_json = Dataframes().df_to_dict(df_stations)
 
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
+
+    df_pubs = Csv().get_records('pub')
+    df_pubs_stations = pd.merge(df_pubs, df_stations, how='left', on='station_identity')
+
+    df_reviews = Csv().get_records('review')
+    df_pubs_stations_reviews = pd.merge(df_pubs_stations, df_reviews, how='left', on='pub_identity')
+
+    if station != 'all':
+        df_selected = df_pubs.loc[df_pubs['station_identity'] == station]
+    elif direction != 'all':
+        df_selected = df_pubs_stations.loc[df_pubs_stations['direction_identity'] == direction]
+    else:
+        df_selected = df_pubs_stations_reviews.loc[df_pubs_stations_reviews['favourite'] == True]
+
+    if lat != None:
+        review_lat = lat
+        review_long = lng
+    else:
+        review_lat = df_selected['pub_latitude'].values[0]
+        review_long = df_selected['pub_longitude'].values[0]
+
+    dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
+    required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
 
     pubs_reviews_json = Dataframes().df_to_dict(df_selected)
 
@@ -78,7 +92,7 @@ def pub_add():
 
     return render_template("pub_read.html", form_type='add', google_key=config2['google_key'],
                            config=config, config2=config2,
-                           map_lat=review_lat, map_lng=review_long,
+                           map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                            pub_review=pub_json, pubs_reviews=pubs_reviews_json,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,

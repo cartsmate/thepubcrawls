@@ -9,6 +9,7 @@ function featureList() {
     const myUrlWithParams = new URL(url);
     myUrlWithParams.searchParams.append('direction', document.getElementById('direction').value);
     myUrlWithParams.searchParams.append('station', document.getElementById('station').value);
+    myUrlWithParams.searchParams.append('zoom', 16);
     for (var i = 0; i < icon_list.length; i++) {
         console.log(icon_list[i])
         console.log(document.getElementById(icon_list[i]).checked)
