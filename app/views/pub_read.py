@@ -56,7 +56,7 @@ def pub_read(pub_id):
 
     df_stations = Csv().get_stations()
     stations_json = Dataframes().df_to_dict(df_stations)
-
+    zoom = 16
     if request.method == 'GET':
         print('pub_read: GET')
         df_pub_review = EntitiesSingle().get_pub_review(pub_id)
@@ -86,9 +86,10 @@ def pub_read(pub_id):
         review_lat = df_pub_review['pub_latitude'].values[0]
         review_long = df_pub_review['pub_longitude'].values[0]
         print(df_pub_review)
+
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
                                pub_review=pub_review_json, config=config, config2=config2,
-                               map_lat=review_lat, map_lng=review_long,
+                               map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                                fields_list=fields_list, alias=alias,
                                station=station,
                                pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
@@ -185,7 +186,7 @@ def pub_read(pub_id):
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                        pub_review=pub_review_json, config=config, config2=config2,
                                        fields_list=fields_list, alias=alias, station=station,
-                                       map_lat=review_lat, map_lng=review_long,
+                                       map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                                        star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                        check_list=check_list, slider_list=slider_list, date_list=date_list,
                                        form_visible_list=form_visible_list, table_visible_list=table_visible_list,
@@ -253,7 +254,7 @@ def pub_read(pub_id):
                                    config=config, config2=config2,
                                    stations=stations_json, areas=areas_json,
                                    fields_list=fields_list, alias=alias, station=station,
-                                   map_lat=review_lat, map_lng=review_long,
+                                   map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                                    star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                    check_list=check_list, slider_list=slider_list, date_list=date_list,
                                    form_visible_list=form_visible_list, table_visible_list=table_visible_list,

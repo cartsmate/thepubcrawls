@@ -1,4 +1,4 @@
-function nearestStation(place) {
+function nearestStation(place, lat_lng_obj) {
     console.log('nearest_station')
 
     records = []

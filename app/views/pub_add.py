@@ -27,6 +27,11 @@ def pub_add():
     station = request.args.get('station')
     direction = request.args.get('direction')
 
+    lat = request.args.get('lat')
+    lng = request.args.get('lng')
+
+    zoom = request.args.get('zoom')
+
     inst_pub = Pub2()
     inst_review = Review2()
     inst_pub.__dict__.update(inst_review.__dict__)
@@ -56,8 +61,12 @@ def pub_add():
     else:
         df_selected = df_pubs_stations_reviews.loc[df_pubs_stations_reviews['favourite'] == True]
 
-    review_lat = df_selected['pub_latitude'].values[0]
-    review_long = df_selected['pub_longitude'].values[0]
+    if lat != None:
+        review_lat = lat
+        review_long = lng
+    else:
+        review_lat = df_selected['pub_latitude'].values[0]
+        review_long = df_selected['pub_longitude'].values[0]
 
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
     required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
@@ -83,7 +92,7 @@ def pub_add():
 
     return render_template("pub_read.html", form_type='add', google_key=config2['google_key'],
                            config=config, config2=config2,
-                           map_lat=review_lat, map_lng=review_long,
+                           map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                            pub_review=pub_json, pubs_reviews=pubs_reviews_json,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,

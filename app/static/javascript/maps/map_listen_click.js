@@ -33,7 +33,7 @@ function map_listen_click(map, data) {
             document.getElementById("pub_latitude").value = lat_lng_obj.lat;
             document.getElementById("pub_longitude").value = lat_lng_obj.lng;
 
-            nearestStation(place)
+            nearestStation(place, lat_lng_obj)
             /*
             records = []
             for (let i = 0; i < stations.length; i++) {

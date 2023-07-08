@@ -14,6 +14,7 @@ function stationClick(station) {
     //myUrlWithParams.searchParams.append('area', document.getElementById('area').value)
     myUrlWithParams.searchParams.append('direction', 'all');
     myUrlWithParams.searchParams.append('station', station);
+    myUrlWithParams.searchParams.append('zoom', 16);
     for (var i = 0; i < icon_list.length; i++) {
         console.log(icon_list[i])
         console.log(document.getElementById(icon_list[i]).checked)

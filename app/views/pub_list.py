@@ -28,6 +28,8 @@ def pub_list():
 
     df_pubs_reviews = EntitiesMulti().get_pubs_reviews_stations()
 
+    zoom = request.args.get('zoom')
+
     station = request.args.get('station')
     direction = request.args.get('direction')
     if request.args.get('station') != 'all':
@@ -38,6 +40,7 @@ def pub_list():
         df_selection = df_pubs_reviews.loc[df_pubs_reviews['direction_identity'] == direction]
     else:
         heading = 'All'
+        df_selection = df_pubs_reviews.loc[df_pubs_reviews['favourite'] == True]
 
     review_list = {}
     for review in list(Review2().__dict__.keys()):
@@ -97,7 +100,7 @@ def pub_list():
         review_long = sum(_long) / len(_long)
         print(review_lat)
         print(review_long)
-        pubs_reviews_json = Dataframes().df_to_dict(df_selection)
+        pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
 
         for review in list(Review2().__dict__.keys()):
             if review not in ignore_list:
@@ -110,13 +113,13 @@ def pub_list():
                         form_obj[review] = 'all'
                 else:
                     form_obj[review] = 'none'
-
+    pubs_selection_json = Dataframes().df_to_dict(df_selection)
     df_stations = Csv().get_stations()
     stations_json = Dataframes().df_to_dict(df_stations)
 
     return render_template('pub_list.html', filter=heading, pubs_reviews=pubs_reviews_json,
-                           review_obj=Review2(),
-                           map_lat=review_lat, map_lng=review_long, config2=config2,
+                           review_obj=Review2(), pubs_selection=pubs_selection_json,
+                           map_lat=review_lat, map_lng=review_long, config2=config2, map_zoom=zoom,
                            form_type='list', google_key=config2['google_key'],
                            stations=stations_json, 
                            visible=visible, alias=alias, headers=headers, icon_list=icon_list,

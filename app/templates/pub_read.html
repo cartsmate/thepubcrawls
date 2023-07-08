@@ -8,6 +8,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_marker_bounds.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_bounds.js') }}"></script>
@@ -89,7 +90,6 @@ function onLoad(){
         js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
         document.head.appendChild(js)
     } else {
-
         var elem = document.createElement("img");
         elem.src = "/static/icons/no-wifi.png"
         elem.className = "fa-quora"
@@ -99,6 +99,7 @@ function onLoad(){
     }
 
     populate_form(form_type);
+
 }
 
 

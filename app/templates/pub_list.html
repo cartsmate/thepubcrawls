@@ -8,6 +8,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_marker_bounds.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery.dataTables.min.js') }}"></script>
 <!--
@@ -39,6 +40,7 @@ function onLoad() {
     var map_lat = {{ map_lat | tojson }}
     var map_lng = {{ map_lng | tojson }}
     pubs_reviews = {{ pubs_reviews | tojson }};
+    pubs_selection = {{ pubs_selection | tojson }};
     headers = {{ headers | tojson }}
     visible = {{ visible | tojson }}
     form_obj = {{ form_obj | tojson }}
@@ -72,14 +74,15 @@ function onLoad() {
 
 function initMap(){
     console.log("initMap in pub_read");
-    let { avg_lat, avg_lng } = latlng_avg(pubs_reviews);
-    zoom = 10
-    map = show_map(avg_lat, avg_lng, zoom)
+    let { avg_lat, avg_lng } = latlng_avg(pubs_selection);
+    zoom = {{ map_zoom }}
+    data = pubs_reviews
+    map = show_map(avg_lat, avg_lng, zoom, data)
     key = {{ google_key | tojson }}
     stations = {{ stations | tojson }}
-    data = pubs_reviews
-    add_markers(map, zoom, data);
-    add_listen_click(map);
+
+    //add_markers(map, zoom, data);
+    add_listen_click(map, {{ map_lat | tojson }}, {{ map_lng | tojson }});
     /*
     var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
     const input = document.getElementById("search-input-navbar");
