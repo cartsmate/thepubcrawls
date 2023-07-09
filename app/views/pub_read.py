@@ -76,7 +76,6 @@ def pub_read(pub_id):
         df_pub_photos.sort_values(by='pub_name', ascending=False)
         pub_review_json = Dataframes().df_to_dict(df_pub_photos)
 
-
         df_all_trunc = df_pubs_reviews[['pub_name', 'station_identity']]
         df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()
         df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity') \
@@ -88,7 +87,7 @@ def pub_read(pub_id):
         print(df_pub_review)
 
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
-                               pub_review=pub_review_json, config=config, config2=config2,
+                               pubs_selection=pub_review_json, config=config, config2=config2,
                                map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                                fields_list=fields_list, alias=alias,
                                station=station,
@@ -114,8 +113,9 @@ def pub_read(pub_id):
                 # df_pubs = S3().get_s3_pubs()
                 df_pubs = Csv().get_pubs()
                 df_pub_appended = Dataframes().append_df(df_pubs, df_new_pub)
+                print(df_pub_appended[['pub_identity', 'pub_name', 'pub_deletion']])
                 # print(df_pub_appended)
-                error=""
+                error = ""
                 response = ""
                 if df_pub_appended.shape[1] == len(Pub2().__dict__.items()):
                     Dataframes().to_csv(df_pub_appended, 'pub')
@@ -148,17 +148,13 @@ def pub_read(pub_id):
 
                 station = df_new_pub['station_identity'].values[0]
 
-
-
-
                 df_new_merged = Dataframes().merge_dfs(df_new_pub, df_new_review)
                 df_area_added = Dataframes().add_area(df_new_merged)
                 df_station_added = Dataframes().add_station(df_area_added)
                 df_station_added['colour'] = '#d9534f'
                 pd.set_option('display.max_columns', None)
-                print(df_station_added)
+                # print(df_station_added)
                 pub_review_json = Dataframes().df_to_dict(df_station_added)
-
 
                 df_all = EntitiesMulti().get_pubs_reviews()
                 df_all['colour'] = '#0275d8'
@@ -169,8 +165,6 @@ def pub_read(pub_id):
                 review_long = df_station_added['pub_longitude'].values[0]
                 flash(response)
 
-
-
                 df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
                 selected_station = df_new_pub['station_identity'].values[0]
                 df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
@@ -179,12 +173,10 @@ def pub_read(pub_id):
                 df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
                 pubs_reviews_json = Dataframes().df_to_dict(df_selection)
 
-
-
                 return render_template('pub_read.html', response=response,
                                        error=error, form_type='read', google_key=config2['google_key'],
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
-                                       pub_review=pub_review_json, config=config, config2=config2,
+                                       pubs_selection=pub_review_json, config=config, config2=config2,
                                        fields_list=fields_list, alias=alias, station=station,
                                        map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                                        star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
@@ -249,7 +241,7 @@ def pub_read(pub_id):
             return render_template('pub_read.html',
                                    # response=response,
                                    form_type='read', google_key=config2['google_key'],
-                                   pub_review=pub_review_json,
+                                   pubs_selection=pub_review_json,
                                    pubs_reviews=pubs_reviews_json,
                                    config=config, config2=config2,
                                    stations=stations_json, areas=areas_json,

@@ -54,7 +54,8 @@ def pub_list():
     for review in review_list:
         df_selection = df_selection.loc[(df_selection[review].astype(str).isin(review_list[review]))]
 
-    df_selection['colour'] = '#0275d8'
+    pubs_selection_json = Dataframes().df_to_dict(df_selection)
+
     headers = list(df_selection.columns)
 
     inst_pub = Pub2()
@@ -76,52 +77,56 @@ def pub_list():
 
     form_obj = {}
     total_rows = df_selection.shape[0]
-    if total_rows == 0:
-        for review in list(Review2().__dict__.keys()):
-            if review not in ignore_list:
-                form_obj[review] = 'none'
-        review_lat = 51.0
-        review_long = -0.15
-        data_list = []
-        for df in df_selection.columns:
-            data_list.append(None)
-        test_df = pd.DataFrame([data_list], columns=df_selection.columns)
-        print(test_df)
-        pubs_reviews_json = Dataframes().df_to_dict(test_df)
+    # if total_rows == 0:
+    #     for review in list(Review2().__dict__.keys()):
+    #         if review not in ignore_list:
+    #             form_obj[review] = 'none'
+    #     review_lat = 51.0
+    #     review_long = -0.15
+    #     data_list = []
+    #     for df in df_selection.columns:
+    #         data_list.append(None)
+    #     test_df = pd.DataFrame([data_list], columns=df_selection.columns)
+    #     print(test_df)
+    #     pubs_reviews_json = Dataframes().df_to_dict(test_df)
+    #
+    # else:
+    list_L = df_selection[['pub_latitude', 'pub_longitude']].values.tolist()
+    _lat = []
+    _long = []
+    for l in list_L:
+        _lat.append(l[0])
+        _long.append(l[1])
+    review_lat = sum(_lat) / len(_lat)
+    review_long = sum(_long) / len(_long)
+    df_pubs_reviews['colour'] = '#d9534f'
+    selection_id_list = df_selection['pub_identity'].tolist()
+    # print(selection_id_list)
+    df_pubs_reviews.loc[df_pubs_reviews['pub_identity'].isin(selection_id_list), 'colour'] = '#0275d8'
+    print(df_pubs_reviews[['pub_identity', 'colour']].sort_values(by='colour', ascending=False))
+    pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
 
-    else:
-        list_L = df_selection[['pub_latitude', 'pub_longitude']].values.tolist()
-        _lat = []
-        _long = []
-        for l in list_L:
-            _lat.append(l[0])
-            _long.append(l[1])
-        review_lat = sum(_lat) / len(_lat)
-        review_long = sum(_long) / len(_long)
-        print(review_lat)
-        print(review_long)
-        pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
-
-        for review in list(Review2().__dict__.keys()):
-            if review not in ignore_list:
-                df_unique = df_selection[review].unique()
-                list_unique = df_unique.tolist()
-                if True in list_unique:
-                    if False in list_unique:
-                        form_obj[review] = 'some'
-                    else:
-                        form_obj[review] = 'all'
+    for review in list(Review2().__dict__.keys()):
+        if review not in ignore_list:
+            df_unique = df_selection[review].unique()
+            list_unique = df_unique.tolist()
+            if True in list_unique:
+                if False in list_unique:
+                    form_obj[review] = 'some'
                 else:
-                    form_obj[review] = 'none'
-    pubs_selection_json = Dataframes().df_to_dict(df_selection)
+                    form_obj[review] = 'all'
+            else:
+                form_obj[review] = 'none'
+
     df_stations = Csv().get_stations()
     stations_json = Dataframes().df_to_dict(df_stations)
+    df_areas = Csv().get_areas()
+    areas_json = Dataframes().df_to_dict(df_areas)
 
-    return render_template('pub_list.html', filter=heading, pubs_reviews=pubs_reviews_json,
-                           review_obj=Review2(), pubs_selection=pubs_selection_json,
+    return render_template('pub_list.html', form_type='list', filter=heading, review_obj=Review2(), form_obj=form_obj,
+                           pubs_reviews=pubs_reviews_json, pubs_selection=pubs_selection_json,
                            map_lat=review_lat, map_lng=review_long, config2=config2, map_zoom=zoom,
-                           form_type='list', google_key=config2['google_key'],
-                           stations=stations_json, 
+                           google_key=config2['google_key'],
                            visible=visible, alias=alias, headers=headers, icon_list=icon_list,
-                           form_obj=form_obj,
+                           areas=areas_json, stations=stations_json,
                            station=station, direction=direction, total_rows=total_rows)

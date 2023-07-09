@@ -23,8 +23,8 @@ function add_marker_bounds(map, data, bounds) {
     var west = south_west_str[1]
     for (var key in data) {
 
-        var pinColor = '#0275d8'
-        //data[key].colour
+        //var pinColor = '#0275d8'
+        var pinColor = data[key].colour
         var markerImage = {  // https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel
             path: pinHole,
             anchor: new google.maps.Point(12,17),
