@@ -5,11 +5,11 @@ function populate_form(form){
         //console.log(check_list)
         if (dropdown_list.includes(fields_list[i])) {
             //console.log('dropdown')
-            var dropdown_str = String(pub_review[0][fields_list[i]]['0']).toUpperCase() + String(pub_review[0][fields_list[i]]).substring(1)
+            var dropdown_str = String(pubs_selection[0][fields_list[i]]['0']).toUpperCase() + String(pubs_selection[0][fields_list[i]]).substring(1)
             document.getElementById(fields_list[i]).value = dropdown_str
         } else if (check_list.includes(fields_list[i])) {
             //console.log('checklist')
-            if (pub_review[0][fields_list[i]] == true) {
+            if (pubs_selection[0][fields_list[i]] == true) {
                 //console.log('true')
                 document.getElementById(fields_list[i]).checked = true;
                 document.getElementById(fields_list[i]).style.hidden = "none";
@@ -22,7 +22,7 @@ function populate_form(form){
                 //console.log('false')
             }
         } else if (star_list.includes(fields_list[i])) {
-            shadeStars(fields_list[i], pub_review[0][fields_list[i]], 'populate')
+            shadeStars(fields_list[i], pubs_selection[0][fields_list[i]], 'populate')
             /*
             star_num = 30
             star_size = star_num + "px"
@@ -71,7 +71,7 @@ function populate_form(form){
             }
             */
         } else {
-            document.getElementById(fields_list[i]).value = pub_review[0][fields_list[i]];
+            document.getElementById(fields_list[i]).value = pubs_selection[0][fields_list[i]];
         }
     }
 }

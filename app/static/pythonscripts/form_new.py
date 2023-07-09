@@ -25,8 +25,9 @@ class FormNew:
                       pub_latitude=request.form['pub_latitude'], pub_longitude=request.form['pub_longitude'],
                       station_identity=request.form['station_identity'],
                       area_identity=request.form['area_identity'], category=request.form['category'].lower(),
-                      rank=request.form['rank'])
+                      rank=request.form['rank'], colour=request.form['colour'])
         df_new_pub = pd.DataFrame([new_pub.__dict__])
+        print(df_new_pub[['pub_identity', 'pub_name', 'pub_deletion']])
         return df_new_pub
 
     def get_review(self, pub_id):

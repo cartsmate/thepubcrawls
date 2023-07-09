@@ -72,28 +72,6 @@ function onLoad() {
     Search(headers, visible)
 }
 
-function initMap(){
-    console.log("initMap in pub_read");
-    let { avg_lat, avg_lng } = latlng_avg(pubs_selection);
-    zoom = {{ map_zoom }}
-    data = pubs_reviews
-    map = show_map(avg_lat, avg_lng, zoom, data)
-    key = {{ google_key | tojson }}
-    stations = {{ stations | tojson }}
-
-    //add_markers(map, zoom, data);
-    add_listen_click(map, {{ map_lat | tojson }}, {{ map_lng | tojson }});
-    /*
-    var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
-    const input = document.getElementById("search-input-navbar");
-    const searchBox = new google.maps.places.SearchBox(input);
-    listen_search(map, searchBox);
-    function isIconMouseEvent(e) {
-        console.log("place icon clicked")
-        return "placeId" in e;
-    }
-    */
-}
 </script>
 {% endblock %}
 
@@ -104,9 +82,7 @@ function initMap(){
 {% endblock %}
 
 {% block left %}
-    <div class="row">
-        <div id="map" class="map_height"></div>
-    </div>
+    {% include "pub_map.html" %}
     <div class="row" style="display: flex; align-items: center; border-style:solid; background-color:#D3D3D3; border-width:thin">
         {% with auto_exec='on' %}
             {% include "home_features.html" %}

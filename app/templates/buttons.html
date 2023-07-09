@@ -13,11 +13,11 @@
     {% endif %}
     {% if form_type == 'read' %}
         <div style="text-align: center;">
-            <a href="{{url_for('photo_upload', pub_identity=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/photo.png" class="button_size"></a>
+            <a href="{{url_for('photo_upload', pub_identity=pubs_selection[0]['pub_identity'])}}"><img src="/static/icons/buttons/photo.png" class="button_size"></a>
             <div class="button_caption">UPLOAD<br>PHOTO</div>
         </div>
         <div style="text-align: center;">
-            <a href="{{url_for('pub_edit', pub_id=pub_review[0]['pub_identity'])}}"><img src="/static/icons/footer/pencil.png" class="button_size"></a>
+            <a href="{{url_for('pub_edit', pub_id=pubs_selection[0]['pub_identity'])}}"><img src="/static/icons/footer/pencil.png" class="button_size"></a>
             <div class="button_caption">EDIT<br>PUB</div>
         </div>
         <div style="text-align: center;">
@@ -25,7 +25,7 @@
             <div class="button_caption">STATION<br>AREA</div>
         </div>
         <div style="text-align: center;">
-            <a href="{{url_for('pub_delete', pub_id=pub_review[0]['pub_identity'])}}"><img src="/static/icons/buttons/delete.png" class="button_size"></a>
+            <a href="{{url_for('pub_delete', pub_id=pubs_selection[0]['pub_identity'])}}"><img src="/static/icons/buttons/delete.png" class="button_size"></a>
             <div class="button_caption">DELETE<br>PUB</div>
         </div>
     {% endif %}
