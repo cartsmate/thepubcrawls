@@ -84,7 +84,7 @@ def pub_read(pub_id):
 
         review_lat = df_pub_review['pub_latitude'].values[0]
         review_long = df_pub_review['pub_longitude'].values[0]
-        print(df_pub_review)
+        # print(df_pub_review)
 
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
                                pubs_selection=pub_review_json, config=config, config2=config2,
@@ -109,11 +109,12 @@ def pub_read(pub_id):
                 print('new / not dupe pub')
 
                 df_new_pub = FormNew().get_pub(pub_id)
+                print(df_new_pub)
                 print('got new pub')
                 # df_pubs = S3().get_s3_pubs()
                 df_pubs = Csv().get_pubs()
                 df_pub_appended = Dataframes().append_df(df_pubs, df_new_pub)
-                print(df_pub_appended[['pub_identity', 'pub_name', 'pub_deletion']])
+                # print(df_pub_appended[['pub_identity', 'pub_name', 'pub_deletion']])
                 # print(df_pub_appended)
                 error = ""
                 response = ""
@@ -128,6 +129,7 @@ def pub_read(pub_id):
                     # flash(error)
                     response = str('pub error')
                 df_new_review = FormNew().get_review(pub_id)
+                print(df_new_review)
                 # df_reviews = S3().get_s3_reviews()
                 df_reviews = Csv().get_reviews()
                 df_review_appended = Dataframes().append_df(df_reviews, df_new_review)

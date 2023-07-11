@@ -2,6 +2,7 @@ import random
 
 import botocore.exceptions
 import time
+import uuid
 import pandas as pd
 import numpy as np
 from flask import render_template
@@ -9,10 +10,10 @@ from app import app
 from config import Configurations
 from app.static.pythonscripts.dataframes import Dataframes
 from app.static.pythonscripts.csv import Csv
-from app.static.pythonscripts.s3 import S3
+# from app.static.pythonscripts.s3 import S3
 from app.static.pythonscripts.controls_list import ControlsList
 from app.static.pythonscripts.entities_multi import EntitiesMulti
-from app.models.pub.pub2 import Pub2
+# from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
 
 config = Configurations().get_config()
@@ -69,28 +70,29 @@ def home():
     df_stations_directions = pd.merge(df_unique_stations, df_directions, on='direction_identity', how='left')
     df_stations_directions_trunc = df_stations_directions[['station_identity', 'station_name', 'direction_identity', 'direction_name']]
     stations_directions_list = df_stations_directions_trunc.values.tolist()
-    print(stations_directions_list)
+    # print(stations_directions_list)
     unique_directions_list = df_stations_directions['direction_identity'].unique()
     df_unique_directions_identity = pd.DataFrame({'direction_identity': unique_directions_list})
     df_unique_directions = pd.merge(df_unique_directions_identity, df_directions, on='direction_identity', how='left')
     df_unique_directions_trunc = df_unique_directions[['direction_identity', 'direction_name']]
     directions_list = df_unique_directions_trunc.values.tolist()
 
-    l1 = list(Review2().__dict__.keys())
+    pub_id = uuid.uuid4()
+    l1 = list(Review2(pub_id).__dict__.keys())
 
     ignore_list = ['review_deletion', 'review_identity', 'pub_identity', 'detail']
 
     l3 = [x for x in l1 if x not in ignore_list]
 
-    # list_L = df_pubs[['pub_latitude', 'pub_longitude']].values.tolist()
-    # _lat = []
-    # _long = []
-    # for l in list_L:
-    #     _lat.append(l[0])
-    #     _long.append(l[1])
-    #
-    # review_lat = sum(_lat) / len(_lat)
-    # review_long = sum(_long) / len(_long)
+    list_L = df_pubs[['pub_latitude', 'pub_longitude']].values.tolist()
+    _lat = []
+    _long = []
+    for l in list_L:
+        _lat.append(l[0])
+        _long.append(l[1])
+
+    review_lat = sum(_lat) / len(_lat)
+    review_long = sum(_long) / len(_long)
 
     print("{:06d}".format(int(counter)))
     df_areas = Csv().get_areas()
@@ -100,7 +102,7 @@ def home():
                            list_stations=list_stations,
                            areas=areas_json,
                            stations=stations_json, stations_directions_list=stations_directions_list,
-                           # map_lat=review_lat, map_lng=review_long,
+                           map_lat=review_lat, map_lng=review_long, map_zoom=16,
                            directions_list=directions_list,
                            # pubs_reviews=pubs_json, photo_array=config, map_view="stations",
                             config=config, google_key=config2['google_key'],
@@ -112,4 +114,4 @@ def home():
                            counter=counter, list_of_pubs=list_pub, station='all', direction='all',
                            # no_all=no_all, no_reviewed=no_reviewed,
                            # no_all_2=no_all_2, no_reviewed_2=no_reviewed_2,
-                            ignore_list=ignore_list, review_obj=Review2(), features=l3, icon_list=icon_list)
+                            ignore_list=ignore_list, review_obj=Review2(pub_id), features=l3, icon_list=icon_list)

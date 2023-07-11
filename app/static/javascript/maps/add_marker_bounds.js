@@ -50,9 +50,6 @@ function add_marker_bounds(map, data, bounds) {
                 map: map,
                 icon: markerImage
             })
-            if (data[key].pub_identity == '54ed8eb6-770a-4ed4-b269-a7c770447aed') {
-                break;
-            }
         }
     }
 }

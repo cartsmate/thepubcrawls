@@ -7,7 +7,7 @@
     -->
     {% if form_type != 'add' and form_type != 'edit' %}
         <div style="text-align: center;">
-            <a href="#"><img src="/static/icons/footer/add1.png" onclick="goAdd('{{direction}}','{{station}}')" class="button_size"></a>
+            <a href="#"><img src="/static/icons/footer/add1.png" onclick="goAdd('{{direction}}','{{station}}', zoom)" class="button_size"></a>
             <div class="button_caption">ADD<br>PUB</div>
         </div>
     {% endif %}
@@ -17,7 +17,7 @@
             <div class="button_caption">UPLOAD<br>PHOTO</div>
         </div>
         <div style="text-align: center;">
-            <a href="{{url_for('pub_edit', pub_id=pubs_selection[0]['pub_identity'])}}"><img src="/static/icons/footer/pencil.png" class="button_size"></a>
+            <a href="#"><img src="/static/icons/footer/pencil.png" onclick="goEdit(pubs_selection[0]['pub_identity'], '{{map_zoom}}')" class="button_size"></a>
             <div class="button_caption">EDIT<br>PUB</div>
         </div>
         <div style="text-align: center;">

@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import uuid
 from flask import render_template, redirect, url_for, g, session, request
 from app import app
 from config import Configurations
@@ -43,6 +44,7 @@ def pub_list():
         df_selection = df_pubs_reviews.loc[df_pubs_reviews['favourite'] == True]
 
     review_list = {}
+    pub_id = uuid.uuid4()
     for review in list(Review2().__dict__.keys()):
         if review not in ignore_list:
             # form_obj[review] = request.args.get(review)
@@ -69,6 +71,8 @@ def pub_list():
     visible = {}
     alias = {}
     for k, v in inst_pub_review.__dict__.items():
+        # print('k: ' + k)
+        # print('v: ' + str(v))
         if (k == 'station_name') and (request.args.get('station') != 'all'):
             visible[k] = False
         else:
@@ -103,7 +107,7 @@ def pub_list():
     selection_id_list = df_selection['pub_identity'].tolist()
     # print(selection_id_list)
     df_pubs_reviews.loc[df_pubs_reviews['pub_identity'].isin(selection_id_list), 'colour'] = '#0275d8'
-    print(df_pubs_reviews[['pub_identity', 'colour']].sort_values(by='colour', ascending=False))
+    # print(df_pubs_reviews[['pub_identity', 'colour']].sort_values(by='colour', ascending=False))
     pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
 
     for review in list(Review2().__dict__.keys()):
@@ -123,7 +127,7 @@ def pub_list():
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
 
-    return render_template('pub_list.html', form_type='list', filter=heading, review_obj=Review2(), form_obj=form_obj,
+    return render_template('pub_list.html', form_type='list', filter=heading, review_obj=Review2(pub_id), form_obj=form_obj,
                            pubs_reviews=pubs_reviews_json, pubs_selection=pubs_selection_json,
                            map_lat=review_lat, map_lng=review_long, config2=config2, map_zoom=zoom,
                            google_key=config2['google_key'],

@@ -1,7 +1,8 @@
-function goAdd(direction, station) {
+function goAdd(direction, station, zoom) {
     console.log("goAdd")
-    console.log(direction)
-    console.log(station)
+    console.log('direction: ' + direction)
+    console.log('station: ' + station)
+    console.log('zoom: ' + zoom)
 
     var base_url = window.location.hostname
     if (config2['env'] == 'prod') {
@@ -13,6 +14,7 @@ function goAdd(direction, station) {
     const myUrlWithParams = new URL(url);
     myUrlWithParams.searchParams.append('direction', direction);
     myUrlWithParams.searchParams.append('station', station);
+    myUrlWithParams.searchParams.append('zoom', zoom);
     /*
     for (var i = 0; i < icon_list.length; i++) {
         console.log(icon_list[i])

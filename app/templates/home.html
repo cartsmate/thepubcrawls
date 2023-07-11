@@ -71,6 +71,8 @@ function station_changed() {
 
 <script>
 function onLoad(){
+    zoom = {{ map_zoom }}
+    console.log('zoom: ' + zoom)
     counter = {{ counter | tojson }}
     icon_list = {{ icon_list | tojson }}
     config2 = {{ config2 | tojson }}
