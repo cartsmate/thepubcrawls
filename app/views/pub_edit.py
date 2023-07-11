@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from flask import render_template
+from flask import render_template, request
 from app import app
 from config import Configurations
 from app.models.pub.pub2 import Pub2
@@ -17,10 +17,13 @@ config = Configurations().get_config()
 config2 = Configurations().get_config2()
 
 
-@app.route("/pub/edit/<pub_id>")
-def pub_edit(pub_id):
-
+# @app.route("/pub/edit/<pub_id>")
+# def pub_edit(pub_id):
+@app.route("/pub/edit/")
+def pub_edit():
     print('pub_edit')
+    pub_id = request.args.get('pub_id')
+    zoom = request.args.get('zoom')
 
     inst_pub = Pub2()
     inst_review = Review2()
@@ -37,78 +40,38 @@ def pub_edit(pub_id):
     ignore_list = ControlsList().get_control_lists()
 
     df_pub_review = EntitiesSingle().get_pub_review(pub_id)
-    selected_station = df_pub_review['station_identity'].values[0]
+    # selected_station = df_pub_review['station_identity'].values[0]
 
     df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
-    df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
-    station = selected_station
-    df_selection['colour'] = '#0275d8'
-    df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
-    pubs_reviews_json = Dataframes().df_to_dict(df_selection)
+    # df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
+    # station = selected_station
+    # df_selection['colour'] = '#0275d8'
+    # df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
+    # pubs_reviews_json = Dataframes().df_to_dict(df_selection)
 
-    df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
-    df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
-    df_pub_photos.fillna('0', inplace=True)
-    df_pub_photos['colour'] = '#d9534f'
-    df_pub_photos.sort_values(by='pub_name', ascending=False)
-    pub_review_json = Dataframes().df_to_dict(df_pub_photos)
-
-    # if session.get('logged_in') != True:
-    #     return redirect(url_for('login'))
-    # df_all = EntitiesMulti().get_pubs_reviews()
-    # df_all['colour'] = '#0275d8'
-    # df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
-    # all_json = Dataframes().df_to_dict(df_all)
-
-    # df_stations = Csv().get_stations()
-    # # df_stations = S3().get_s3_stations()
-    # df_all_trunc = df_all[['pub_name', 'station_identity']]
-    # df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()
-    # df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity') \
-    #     .rename(columns={'pub_name': 'count'}).astype(str)
-    # df_all_latlng['colour'] = config['colour']['primary']
-    # station_all_json = Dataframes().df_to_dict(df_all_latlng)
-
-    # df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
-    # df_pubs_reviews['colour'] = '#0275d8'
-    # pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
-    #
-    # df_pub_review = EntitiesSingle().get_pub_review(pub_id)
     # df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
     # df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
-    #
     # df_pub_photos.fillna('0', inplace=True)
     # df_pub_photos['colour'] = '#d9534f'
-    # pub_review_json = Dataframes().df_to_dict(df_pub_photos)
-    #
-    # df_areas = Csv().get_areas()
-    # stations_json = Dataframes().df_to_dict(df_stations)
-    # areas_json = Dataframes().df_to_dict(df_areas)
-    #
-    # review_lat = df_pub_photos['pub_latitude'].values[0]
-    # review_long = df_pub_photos['pub_longitude'].values[0]
+    # df_pub_photos.sort_values(by='pub_name', ascending=False)
+    pubs_selected_json = Dataframes().df_to_dict(df_pub_review)
 
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
 
     df_stations = Csv().get_stations()
     stations_json = Dataframes().df_to_dict(df_stations)
-    df_all_trunc = df_pubs_reviews[['pub_name', 'station_identity']]
-    df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()
-    df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity') \
-        .rename(columns={'pub_name': 'count'}).astype(str)
-    station_all_json = Dataframes().df_to_dict(df_all_latlng)
 
     review_lat = df_pub_review['pub_latitude'].values[0]
     review_long = df_pub_review['pub_longitude'].values[0]
-    test_reviews = Dataframes().df_to_dict(df_pubs_reviews)
+    pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
     return render_template('pub_read.html', form_type='edit', google_key=config2['google_key'],
-                           pub_review=pub_review_json, config2=config2,
+                           pubs_selection=pubs_selected_json, config2=config2,
                            fields_list=fields_list, alias=alias,
                            stations=stations_json, areas=areas_json, config=config,
-                           # pubs_reviews=pubs_reviews_json,
-                           pubs_reviews=test_reviews,
-                           map_lat=review_lat, map_lng=review_long,
+                           pubs_reviews=pubs_reviews_json,
+                           # pubs_reviews=test_reviews,
+                           map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,
                            form_visible_list=form_visible_list, table_visible_list=table_visible_list,

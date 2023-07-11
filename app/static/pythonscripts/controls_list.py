@@ -1,6 +1,7 @@
 import os
 import json
 import pandas as pd
+import uuid
 from config import Configurations
 from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
@@ -28,7 +29,9 @@ class ControlsList:
         slider_list = []
         check_list = []
         fields_list = []
+        pub_id = uuid.uuid4()
         class_list = [Pub2(), Review2(), Area(), Station()]
+        # class_list = [Review2(), Area(), Station()]
         for cl in class_list:
             for k, v in cl.__dict__.items():
                 fields_list.append(v.name)
@@ -64,6 +67,6 @@ class ControlsList:
                     slider_list.append(v.name)
                 if v.control == "check":
                     check_list.append(v.name)
-
+        # print(form_visible_list)
         return dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
                required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list

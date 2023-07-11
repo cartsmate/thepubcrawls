@@ -20,7 +20,7 @@ class EntitiesMulti:
         df_areas = df_areas[['area_identity', 'area_name']]
         df_pubs_stations = pd.merge(df_pubs, df_stations, how='left', on='station_identity')
         df_pubs_areas = pd.merge(df_pubs_stations, df_areas, how='left', on='area_identity')
-        print(df_pubs_areas)
+        # print(df_pubs_areas)
         return df_pubs_areas
 
     def get_pubs_area(self):

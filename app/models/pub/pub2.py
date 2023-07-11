@@ -9,6 +9,8 @@ from app.models.pub.pub_name import PubName
 from app.models.pub.place import Place
 from app.models.pub.rank import Rank
 from app.models.pub.colour import Colour
+from app.models.pub.pub_base import Base
+from app.models.pub.pub_base import NewId
 from app.models.area.area import Area
 from app.models.station.station import Station
 from app.models.review.review2 import Review2
@@ -18,9 +20,24 @@ from app.models.station.station_identity import StationIdentity
 
 class Pub2:
 
-    def __init__(self, pub_deletion=PubDeletion(), place=Place(), pub_name=PubName(), address=Address(),
-                 pub_latitude=PubLatitude(), pub_longitude=PubLongitude(), category=Category(), rank=Rank(),
-                 station_identity=StationIdentity(), area_identity=AreaIdentity(), pub_identity=PubIdentity(),
+    # def __init__(self, pub_id):
+    #     self.pub_identity = PubIdentity(pub_id)
+    #     # self.Foo = Foo()
+    #     self.address = Address()
+    #     self.area_identity = AreaIdentity()
+    #     self.category = Category()
+    #     self.place = Place()
+    #     self.colour = Colour()
+    #     self.pub_deletion = PubDeletion()
+    #     self.pub_latitude = PubLatitude()
+    #     self.pub_longitude = PubLongitude()
+    #     self.pub_name = PubName()
+    #     self.rank = Rank()
+    #     self.station_identity = StationIdentity()
+
+    def __init__(self, pub_deletion=PubDeletion(), place=Place(), pub_name=PubName(),
+                 address=Address(), pub_latitude=PubLatitude(), pub_longitude=PubLongitude(), category=Category(),
+                 rank=Rank(), station_identity=StationIdentity(), area_identity=AreaIdentity(), pub_identity=PubIdentity(),
                  colour=Colour()):
         self.address = address
         self.area_identity = area_identity
@@ -34,6 +51,17 @@ class Pub2:
         self.pub_name = pub_name
         self.rank = rank
         self.station_identity = station_identity
+        # self.newid = newid
+        # self.base = base
+
+    # def attributes(self, pub_deletion=None, place=None, pub_name=PubName(), address=Address(),
+    #              pub_latitude=PubLatitude(), pub_longitude=PubLongitude(), category=Category(), rank=Rank(),
+    #              station_identity=StationIdentity(), area_identity=AreaIdentity(), pub_identity=PubIdentity(),
+    #              colour=Colour(), base=Base()):
+    #     if pub_deletion is None:
+    #         pub_deletion = self.pub_deletion
+
+
 
     def reprJSON(self):
         return dict(pub_identity=self.pub_identity, pub_deletion=self.pub_deletion, area_identity=self.area_identity,

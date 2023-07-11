@@ -17,12 +17,30 @@ from app.models.review.review_identity import ReviewIdentity
 from app.models.pub.pub_identity import PubIdentity
 
 
-class Review2:
+class Review2():
+    # def __init__(self, pub_id):
+    #     self.brunch = Brunch()
+    #     self.dart = Dart()
+    #     self.detail = Detail()
+    #     self.entertain = Entertain()
+    #     self.favourite = Favourite()
+    #     self.garden = Garden()
+    #     self.history = History()
+    #     self.late = Late()
+    #     self.music = Music()
+    #     self.pool = Pool()
+    #     self.pub_identity = PubIdentity(pub_id)
+    #     self.quiz = Quiz()
+    #     self.review_deletion = ReviewDeletion()
+    #     self.review_identity = ReviewIdentity()
+    #     self.roast = Roast()
+    #     self.sport = Sport()
 
     def __init__(self, review_deletion=ReviewDeletion(), sport=Sport(), garden=Garden(), music=Music(), roast=Roast(),
                  brunch=Brunch(), late=Late(), quiz=Quiz(), pool=Pool(), dart=Dart(), entertain=Entertain(),
-                 history=History(), favourite=Favourite(), review_identity=ReviewIdentity(),
-                 pub_identity=PubIdentity(), detail=Detail()):
+                 history=History(), favourite=Favourite(), pub_identity=PubIdentity(),
+                 review_identity=ReviewIdentity(), detail=Detail()):
+                 # pub_identity=PubIdentity,
         self.brunch = brunch
         self.dart = dart
         self.detail = detail
