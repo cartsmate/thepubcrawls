@@ -7,6 +7,7 @@
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_load.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_marker_bounds.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
@@ -36,31 +37,6 @@
 <script>form_type = {{ form_type | tojson }}</script>
 
 <script>
-
-</script>
-
-<style>
-.fa-quora {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-}
-.horizontal-gradient {
-    background: linear-gradient(to right, blue, pink);
-}
-.top-buffer {
-    margin-top:20px;
-}
-.andy_width {
-    width: 100%
-}
-.checked {
-    color: yellow;
-}
-</style>
-
-<script>
 function onLoad(){
 
     //alert({{response}})
@@ -86,20 +62,8 @@ function onLoad(){
     alias_list = {{ alias_list | tojson }}
     icon_list = {{ icon_list | tojson }}
 
-    var js = document.createElement("script");
-    js.type = "text/javascript";
-    if ( window.navigator.onLine == true) {
-        console.log('outside of function')
-        js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
-        document.head.appendChild(js)
-    } else {
-        var elem = document.createElement("img");
-        elem.src = "/static/icons/no-wifi.png"
-        elem.className = "fa-quora"
-        elem.height = "100"
-        document.getElementById('map').appendChild(elem);
-        //alert('You appear to offline so maps cannot be displayed')
-    }
+    mapLoad('{{google_key}}');
+
 
     populate_form(form_type);
 
@@ -124,35 +88,15 @@ function onLoad(){
 
 {% block left %}
     {% include "pub_map.html" %}
+    <div class="form-group row" style="display: flex; align-items: center; border-style:solid; background-color:#D3D3D3; border-width:thin">
+        {% with auto_exec='off' %}
+            {% include "home_features.html" %}
+        {% endwith %}
+    </div>
 {% endblock %}
 
-{% block centre %}
-<div class="col-md-12 mx-auto" id="main">
-    <div class="row justify-content-center align-items-center">
-        <form action="{{ url_for('pub_read', pub_id=pubs_selection[0]['pub_identity']) }}" method="post">
-            {% include "pub_form.html" %}
-
-            <div class="form-group row" style="display: flex; align-items: center; background-color:#CDCDCD; border-style:solid; background-color:#D3D3D3; border-width:thin">
-                {% with auto_exec='off' %}
-                    {% include "home_features.html" %}
-                {% endwith %}
-            </div>
-            <div class="form-group row" style="margin: 15px 0;">
-                {% if form_type == 'add' %}
-                    <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit" disabled>Submit</button>
-                    <div id="submit_message" class="font-size: 8px; text-align: center"><i>Click venue on map before submitting</i></div>
-                    <div href="{{url_for('pub_read', pub_id=pubs_selection[0]['pub_identity'])}}" style="color:#d9534f">Cancel</div>
-                {% elif form_type == 'edit' %}
-                    <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit">Submit</button>
-                    <div style="display:none;" id="submit_message" class="font-size: 8px; text-align: center"><i>Click venue on map before submitting</i></div>
-                    <div href="{{url_for('pub_read', pub_id=pubs_selection[0]['pub_identity'])}}" style="color:#d9534f">Cancel</div>
-                {% else %}
-                    <button style="display:none;" id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit">Submit</button>
-                    <div style="display:none;" id="submit_message" class="font-size: 8px; text-align: center"><i>Click venue on map before submitting</i></div>
-                    <div style="display:none;" href="{{url_for('pub_read', pub_id=pubs_selection[0]['pub_identity'])}}" style="color:#d9534f">Cancel</div>
-                {% endif %}
-            </div>
-        </form>
+{% block right %}
+    <div class="row">
+        {% include "pub_table.html" %}
     </div>
-</div>
 {% endblock %}

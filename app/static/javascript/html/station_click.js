@@ -1,5 +1,7 @@
-function stationClick(station) {
+function stationClick() {
     console.log("stationClick")
+    station = document.getElementById('station_identity').value
+    console.log(station)
     console.log(icon_list)
     var base_url = window.location.hostname
     console.log('base_url')

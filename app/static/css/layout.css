@@ -180,3 +180,21 @@ input:checked + .slider:before {
   font-size: 12px;
   font-family: Verdana;
 }
+.fa-quora {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+.horizontal-gradient {
+    background: linear-gradient(to right, blue, pink);
+}
+.top-buffer {
+    margin-top:20px;
+}
+.andy_width {
+    width: 100%
+}
+.checked {
+    color: yellow;
+}
