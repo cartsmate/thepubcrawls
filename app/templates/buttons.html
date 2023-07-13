@@ -42,6 +42,7 @@
     {% endif %}
     -->
     {% if (form_type == 'home') %}
+        <!--
         <div style="text-align: center;">
             <a href="{{url_for('pub_search')}}"><img src="/static/icons/footer/search.png" class="button_size"></a>
             <div class="button_caption">SEARCH<br>PUBS</div>
@@ -50,12 +51,17 @@
             <a href="{{url_for('pub_map')}}"><img src="/static/icons/footer/global.png" class="button_size"></a>
             <div class="button_caption">MAP<br>VIEW</div>
         </div>
+        -->
         <div style="text-align: center;">
             <a href="{{url_for('pub_crawl')}}"><img src="/static/icons/footer/route.png" class="button_size"></a>
             <div class="button_caption">PUB<br>CRAWL</div>
         </div>
     {% endif %}
     {% if (form_type != 'home') %}
+        <div style="text-align: center;">
+            <a href="{{url_for('home')}}"><img src="/static/icons/footer/search.png" class="button_size"></a>
+            <div class="button_caption">SEARCH<br>PUBS</div>
+        </div>
         <div style="text-align: center;">
             <a href="{{url_for('home')}}"><img src="/static/icons/footer/home1.png" class="button_size"></a>
             <div class="button_caption">RETURN<br>HOME</div>
