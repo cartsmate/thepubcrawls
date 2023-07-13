@@ -15,7 +15,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_pub.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_add.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_search.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_home.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_list.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_map_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
@@ -97,13 +97,15 @@ function onLoad(){
             {% include "home_features.html" %}
         {% endwith %}
     </div>
+    <!--
     <div class="row">
         <div class="col mx-auto">
             <div class="d-flex justify-content-center">
-                <button type="button" onclick="featureSearch(document.getElementById('direction').value, document.getElementById('station').value)" class="btn btn-primary rounded-pill">Search</button>
+                <button type="button" onclick="featureHome(zoom)" class="btn btn-primary rounded-pill">Search</button>
             </div>
         </div>
     </div>
+    -->
     {% include "home_area.html" %}
 
 </div>

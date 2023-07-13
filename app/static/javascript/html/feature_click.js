@@ -22,7 +22,8 @@ function featureClick(check_item, auto_exec) {
         caption.style.color = "black"
         checkCol.style.background = "#CDCDCD"
     }
+    
     if (auto_exec == 'on') {
-        featureSearch(direction, station)
+        featureList(direction, station, zoom)
     }
 }
