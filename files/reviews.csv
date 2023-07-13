@@ -521,13 +521,13 @@ False,False,Modern pub,False,False,False,False,False,False,False,07880a7e-e71d-4
 False,False,Great decor. Closed Sunday,False,False,False,False,False,False,False,6d6a1450-94bb-43fe-9ba1-d517bc6f8f3e,False,False,920b3a28-9bb8-4048-8357-97ad9d0de9b1,False,False
 False,False,Sat murder mystery,True,False,False,False,False,False,False,c85d9111-5376-444d-aadd-6959fe11f72d,False,False,88f1dc13-a84a-40ce-b404-8a5994dc5867,False,False
 False,False,Modern pub,False,False,False,False,False,False,False,beb70c0a-8a4c-4c39-b220-46b5a16cdb8c,False,False,ce5cc4e9-1695-49bd-a51e-a92e34f22efd,True,False
-False,False,Unique facade ,False,False,False,True,False,False,False,9c740bf3-dcaa-41e7-8783-c1658f369c19,False,False,5322dd94-0fdf-4a16-af87-19958bc5aaea,False,False
+False,False,Unique facade ,False,False,False,False,False,False,False,9c740bf3-dcaa-41e7-8783-c1658f369c19,False,False,5322dd94-0fdf-4a16-af87-19958bc5aaea,False,False
 False,False,Classic pub,False,False,False,False,False,False,False,3f98aa20-3786-4f61-a7c9-41c3a480f734,False,False,c86ea0b0-e989-4111-9b82-b3473513d004,False,False
-False,False,Great decor. Thur cocktails masterclass. Fri/Sat DJs. ,True,False,False,False,True,False,False,2690523e-72c8-42b2-be66-91a61c5ecdb8,False,False,36104d01-51a4-4dcb-ac84-ca2a1e5d80ad,False,False
-False,False,Hotel bar,False,False,False,False,True,False,False,614ce062-e09d-460a-914c-052afb1ac6c7,False,False,01a9e472-7e4f-4f14-949f-b937ca15689c,False,False
+False,False,Great decor. Thur cocktails masterclass. Fri/Sat DJs. ,False,False,False,False,False,False,False,2690523e-72c8-42b2-be66-91a61c5ecdb8,False,False,36104d01-51a4-4dcb-ac84-ca2a1e5d80ad,False,False
+False,False,Hotel bar,False,False,False,False,False,False,False,614ce062-e09d-460a-914c-052afb1ac6c7,False,False,01a9e472-7e4f-4f14-949f-b937ca15689c,False,False
 False,False,Sun/Mon closed,False,False,False,False,False,False,False,8d1fb67e-f964-456e-9dbd-d0c6e230c7cd,False,False,efa3eded-b403-4580-9795-371ce060e07f,False,False
-False,False,Speakeasy hotel cocktail bar,False,False,False,False,True,False,False,19058774-95fa-44a4-9dc3-ba8c1bf54c5e,False,False,337c0145-d71b-4e2a-8ea2-be1f5955ed6c,False,False
-False,False,Fri live music. Pub with dining. Closes at 9.30pm,False,False,False,False,False,True,False,6ddca2bf-663f-49bd-8a02-b21e9b7d192c,False,False,c33ea09f-0c0d-4f39-989d-7379fc495ecb,True,True
+False,False,Speakeasy hotel cocktail bar,False,False,False,False,False,False,False,19058774-95fa-44a4-9dc3-ba8c1bf54c5e,False,False,337c0145-d71b-4e2a-8ea2-be1f5955ed6c,False,False
+False,False,Fri live music. Pub with dining. Closes at 9.30pm,False,False,False,False,False,False,False,6ddca2bf-663f-49bd-8a02-b21e9b7d192c,False,False,c33ea09f-0c0d-4f39-989d-7379fc495ecb,False,False
 False,False,Outdoor seating,False,False,False,False,False,False,False,780320eb-cec1-4f3c-a538-c357426b7aa3,False,False,7183de10-12f2-44c6-8bf8-ba3ca4de6d68,False,False
 False,False,Private members club,False,False,False,False,True,False,False,5c966e30-cbd2-43c7-828d-7b4540dac274,False,False,ed46d47b-eaa6-4bb0-b77a-2c5287ecdaf2,False,False
 False,False,Classic pub,False,False,False,False,False,False,False,9ec7097c-39ac-42b0-8135-3817ce8b581f,False,False,f4eeee3f-0239-4e6f-9f27-1b7a65ee0178,True,False
@@ -743,11 +743,11 @@ False,False,Taproom with pizza. Closed Mon,False,False,True,False,False,False,Fa
 False,False,Mon 8pm quiz with some live music events,False,False,True,False,False,True,False,01e4fc21-05fd-4289-aa17-8b6f1ecbaff1,True,False,abcd6a2f-2237-479c-8543-241f7a26b80d,True,True
 True,False,Bar with pizza. Cocktail masterclass,True,False,True,False,True,False,False,643295da-0a57-457d-a6b5-84b4248020cd,False,False,8bbd292d-2eb8-4f97-b5fb-35aeaccb3390,False,False
 False,False,Riverside pub. Tue 7.30pm quiz,False,False,True,False,False,False,False,9599e4f0-ade0-4f0f-9474-79522540b795,True,False,fd0017b1-110e-4f40-a18c-f3c9a6da09b5,False,False
-False,False,Sat live music. Closed Mon,False,False,False,False,False,True,False,05f4d08e-e2cc-4597-9964-96bc3fd9c799,False,False,ff9f6c89-1eda-4c15-a68e-fa096053cbd3,False,False
-False,False,Riverside,False,False,True,False,False,False,False,40243318-45ae-459f-bc19-1eb43598bdd9,False,False,b50bda78-ad2b-4604-8434-1a35b920dff7,True,False
-False,False,Traditional pub,False,False,True,False,False,False,False,f555e6f4-e30d-43b2-acbe-e2c3fb4c4cea,False,False,e3ddd5e1-773e-454b-87e5-7c04bfdefd4b,True,False
-False,False,Traditional pub,False,False,True,False,False,False,False,8af6ff33-381c-4847-9fb2-cbf949fdb090,False,False,2b1fea73-87ef-4592-b14a-31fd63c96130,True,False
-False,False,Riverside pub. Tue 7pm quiz. Regular jazz nights,False,False,False,False,False,True,False,e9ec51c9-fd81-4b03-b3b2-0a3b1f16bfc6,True,False,ad091316-a378-468f-b42a-4d045cbe3c19,True,False
+False,False,Sat live music. Closed Mon,False,False,False,False,False,False,False,05f4d08e-e2cc-4597-9964-96bc3fd9c799,False,False,ff9f6c89-1eda-4c15-a68e-fa096053cbd3,False,False
+False,False,Riverside,False,False,False,False,False,False,False,40243318-45ae-459f-bc19-1eb43598bdd9,False,False,b50bda78-ad2b-4604-8434-1a35b920dff7,False,False
+False,False,Traditional pub,False,False,False,False,False,False,False,f555e6f4-e30d-43b2-acbe-e2c3fb4c4cea,False,False,e3ddd5e1-773e-454b-87e5-7c04bfdefd4b,False,False
+False,False,Traditional pub,False,False,False,False,False,False,False,8af6ff33-381c-4847-9fb2-cbf949fdb090,False,False,2b1fea73-87ef-4592-b14a-31fd63c96130,False,False
+False,False,Riverside pub. Tue 7pm quiz. Regular jazz nights,False,False,False,False,False,False,False,e9ec51c9-fd81-4b03-b3b2-0a3b1f16bfc6,False,False,ad091316-a378-468f-b42a-4d045cbe3c19,False,False
 False,False,Mon 7.30pm quiz,False,False,True,True,False,False,False,c9f7df01-abab-4555-a88e-26b323912bb7,False,False,231145ac-260b-4692-a4a6-db8040eab8ec,True,False
 False,False,1st Tue quiz. Fri live music,False,False,True,False,False,True,False,f86ba14f-22b0-4492-9aa4-6234cced8e8a,True,False,e6c65ab0-e4f2-4dcd-a91c-c6ce13e392f7,True,True
 False,False,Fri & Sat music,False,False,True,False,False,True,True,ae3acdb6-5195-4db8-8ac8-0815234d7f33,False,False,d4529f58-089a-4f4d-bfdc-e5c9a1797b14,False,True

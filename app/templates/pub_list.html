@@ -7,6 +7,7 @@
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_load.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_marker_bounds.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
@@ -26,15 +27,9 @@
 function onLoad() {
     console.log("onLoad in pub_list");
     zoom = {{ map_zoom }}
-    var js = document.createElement("script");
-    js.type = "text/javascript";
-    if ( window.navigator.onLine == true) {
-        console.log('outside of function')
-        js.src = 'https://maps.googleapis.com/maps/api/js?key={{google_key}}&libraries=places&callback=initMap'
-        document.head.appendChild(js)
-    } else {
-        //alert('You appear to offline so maps cannot be displayed')
-    }
+
+    mapLoad('{{google_key}}');
+
     filter = {{ filter | tojson }}
     total_rows = {{ total_rows | tojson }}
     var header_listing = String(filter['0']).toUpperCase() + String(filter).substring(1)
