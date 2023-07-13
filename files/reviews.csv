@@ -43,7 +43,7 @@ False,False,Jazz and blues every night,False,False,False,False,True,True,False,c
 False,False,,False,False,False,False,False,False,False,cf2f4001-5aa9-4923-80c1-46b7e9eb1736,False,False,cf2f4001-5aa9-4923-80c1-46b7e9eb1736,False,False
 False,False,Regular live music events,False,False,True,False,False,True,False,610d6a7a-b922-4a4a-9302-6cdd869ce4f5,False,False,610d6a7a-b922-4a4a-9302-6cdd869ce4f5,False,True
 False,False,,False,False,False,False,False,False,False,9ad4bece-d79b-44b3-9c2d-d57747e6c960,False,False,9ad4bece-d79b-44b3-9c2d-d57747e6c960,False,False
-False,False,Unique setting,False,False,True,False,True,False,False,d5cd1760-b22e-49e8-832e-6eb5cab180f3,False,False,d5cd1760-b22e-49e8-832e-6eb5cab180f3,True,True
+False,False,Unique setting,False,False,False,False,False,False,False,d5cd1760-b22e-49e8-832e-6eb5cab180f3,False,False,d5cd1760-b22e-49e8-832e-6eb5cab180f3,False,False
 False,False,Classic pub,False,False,True,False,True,False,False,ad2bbf86-9982-4180-a815-6e0b075eba1c,False,False,ad2bbf86-9982-4180-a815-6e0b075eba1c,True,True
 False,False,,False,False,False,False,False,False,False,e7e819fb-a913-467e-94d3-1ca2f6473a6e,False,False,e7e819fb-a913-467e-94d3-1ca2f6473a6e,False,False
 False,False,Restaurant,False,False,False,False,False,True,False,32a17618-9e23-450c-b921-a6bab0dfdd6f,False,False,32a17618-9e23-450c-b921-a6bab0dfdd6f,False,False
@@ -110,7 +110,7 @@ False,False,Traditional pub,False,False,True,False,False,False,False,b2d52630-79
 False,False,1st/3rd Wed 7.30pm quiz,False,False,True,False,False,False,False,3993b00b-0847-4431-9392-ff60a69e1074,True,False,b6aa21b8-cd53-4202-8346-70f610a3ad9a,True,True
 False,False,Outdoor seating,False,False,False,False,True,False,False,b953b279-995b-4f94-81a5-b201be523aa1,False,False,ae71a207-0d41-40a5-a298-2eace8c23a2e,True,True
 True,False,Tuesday 8pm quiz,False,False,True,False,True,False,False,d0b56227-3c66-40d6-81d7-aa19c1f50dea,True,False,d469e300-2409-4cfb-b2f4-80b847f98573,True,True
-False,False,Wed 8pm quiz,False,False,True,True,False,False,False,c39e7404-5f5c-4ebf-adaa-3412cb3f1a61,True,False,ba166878-8fe4-425c-b6f5-686113249938,True,False
+False,False,Wed 8pm quiz,False,False,False,False,False,False,False,c39e7404-5f5c-4ebf-adaa-3412cb3f1a61,False,False,ba166878-8fe4-425c-b6f5-686113249938,False,False
 False,False,Weatherspoons with riverside outdoor seating,False,False,False,False,False,False,False,7397e397-0fb2-4dc9-a13e-0e009a3c758a,False,False,2b63f8c6-93f0-434d-bf79-796d110f482f,False,False
 True,False,Traditional pub,False,False,False,False,False,False,True,e77e436f-d231-42f2-b45a-cae75e3219d8,False,False,0bb29d36-a6c2-47ab-bc78-c81665192e68,False,True
 True,False,Outdoor seating. Mon/Tue closed.,False,False,False,False,True,False,True,111a75e9-2d09-486a-a54e-5992dbc2eca0,False,False,c9f7c3bb-e94b-4e9c-bee1-7597dc7e186b,False,False
@@ -428,9 +428,9 @@ False,False,Distillery tours,True,False,False,False,False,False,False,2697bc03-5
 False,False,Tue quiz. Sun music. Outdoor seating,False,False,False,False,False,True,False,0f955e0b-e77a-4a59-8c8d-3297abca1313,True,False,aec61862-8f01-42f9-aa33-74ebeba6a995,True,False
 False,False,Classic pub,False,False,False,False,False,False,False,6b057b63-eb50-45f9-92cf-e8be7e1a1933,False,False,c875a108-f723-4c7c-a091-8adc02b30195,True,False
 False,False,Brewery tours. Mon-Wed closed,True,False,True,False,False,False,False,c5750a08-a2e0-4957-9628-b7425700ea90,False,False,de1a8188-7bc3-49b4-9c09-4ab25b160146,False,False
-False,False,Tue 7.30pm quiz. Fri/Sat DJs. Outdoor seating.,False,False,False,False,True,False,False,d015539a-55fe-480f-b96d-156382cf87b5,True,False,c6202f12-0c2f-4037-9ff4-d5a489ba5009,True,False
-True,False,Cocktail masterclass,True,False,False,False,True,False,False,6ac5780f-598c-48e6-9684-b2504c81312f,False,False,97f91c1c-0dee-4455-9611-95b93e54dea9,False,False
-False,False,Traditional pub,False,False,False,False,False,False,False,08d5404b-ae5c-4e66-b7d3-b3b50958895e,False,False,65b45a0e-9fed-42e4-8702-d8ee747090b8,True,False
+False,False,Tue 7.30pm quiz. Fri/Sat DJs. Outdoor seating.,False,False,False,False,False,False,False,d015539a-55fe-480f-b96d-156382cf87b5,False,False,c6202f12-0c2f-4037-9ff4-d5a489ba5009,False,False
+False,False,Cocktail masterclass,False,False,False,False,False,False,False,6ac5780f-598c-48e6-9684-b2504c81312f,False,False,97f91c1c-0dee-4455-9611-95b93e54dea9,False,False
+False,False,Traditional pub,False,False,False,False,False,False,False,08d5404b-ae5c-4e66-b7d3-b3b50958895e,False,False,65b45a0e-9fed-42e4-8702-d8ee747090b8,False,False
 False,False,Thur 7.30pm quiz,False,False,True,False,False,False,False,144c41db-e6f0-4b3f-b6d1-5b6b5b2e5fcb,True,False,ae92dac0-3a58-42fc-bf07-1cba0767a8ca,True,False
 False,True,Traditional pub,False,False,False,False,True,False,True,2e161f42-7d5a-4ff5-80c9-daa6f53f61c8,False,False,348c2102-ecc0-4fc8-b079-b5c225f7f68a,False,False
 False,False,Quirky Norwegian decor. Tue 8pm quiz. Board games,False,False,True,False,True,False,False,f6d03468-da16-4961-b622-f907e1958ded,True,False,0ae90bd1-be8c-4dbe-aa3e-6c11d87f606e,True,True
@@ -680,7 +680,7 @@ False,False,Fairground games,True,False,False,False,True,False,False,72f45121-bf
 True,False,Shuffleboard,True,False,False,False,True,False,False,e7a5873d-e2ce-45d0-bbd3-f3a37575a672,False,False,bf947bbc-a97c-4016-96bb-33e294dbb354,False,False
 False,False,Riverside bar with outdoor seating,False,False,False,False,False,False,False,ef3de685-4c13-4560-bd49-e6060f9ea86b,False,False,1b44bf4a-7957-4cc5-8a7a-8cbad311ed4e,True,False
 True,False,Riverside bar,False,False,False,False,True,False,False,132ae07c-5a77-4646-b439-efb23e4ae3cf,False,False,ecbc89e5-9949-4484-8d20-8fb11c68eb32,True,False
-False,False,Riverside setting with some events,True,False,True,False,False,False,False,d0a713b3-1211-417a-b221-1b2679230679,False,False,04b4d442-7ac3-4c13-9a04-a7b42d5d5eaa,True,False
+False,False,Riverside setting with some events,False,False,False,False,False,False,False,d0a713b3-1211-417a-b221-1b2679230679,False,False,04b4d442-7ac3-4c13-9a04-a7b42d5d5eaa,False,False
 False,False,Traditional pub at the O2,False,False,False,False,False,False,False,5a95a497-6a8a-4c1c-99bc-92d74e20921f,False,False,49ab558d-4a75-4ae7-85fa-011751f8248c,True,True
 False,False,Weatherspoons at O2,False,False,False,False,False,False,False,1150b070-051c-4757-9539-0b085a4551dc,False,False,4a47f365-9643-4215-87a9-6f5a69869cf3,False,False
 False,False,Brewery tours,False,False,True,False,False,True,False,dce72725-aec6-495c-93a4-88fa5b2ddef5,False,False,287712f4-6d18-48fc-8002-28033c5c3182,False,False
@@ -742,7 +742,7 @@ False,False,Wed 7pm quiz,False,False,True,False,False,False,False,479223e8-2444-
 False,False,Taproom with pizza. Closed Mon,False,False,True,False,False,False,False,273730d6-1943-4988-a03c-636b744e477e,False,False,7d2e918b-3f1f-4974-aab3-519a793451b4,False,False
 False,False,Mon 8pm quiz with some live music events,False,False,True,False,False,True,False,01e4fc21-05fd-4289-aa17-8b6f1ecbaff1,True,False,abcd6a2f-2237-479c-8543-241f7a26b80d,True,True
 True,False,Bar with pizza. Cocktail masterclass,True,False,True,False,True,False,False,643295da-0a57-457d-a6b5-84b4248020cd,False,False,8bbd292d-2eb8-4f97-b5fb-35aeaccb3390,False,False
-False,False,Riverside pub. Tue 7.30pm quiz,False,False,True,False,False,False,False,9599e4f0-ade0-4f0f-9474-79522540b795,True,False,fd0017b1-110e-4f40-a18c-f3c9a6da09b5,False,False
+False,False,Riverside pub. Tue 7.30pm quiz,False,False,False,False,False,False,False,9599e4f0-ade0-4f0f-9474-79522540b795,False,False,fd0017b1-110e-4f40-a18c-f3c9a6da09b5,False,False
 False,False,Sat live music. Closed Mon,False,False,False,False,False,False,False,05f4d08e-e2cc-4597-9964-96bc3fd9c799,False,False,ff9f6c89-1eda-4c15-a68e-fa096053cbd3,False,False
 False,False,Riverside,False,False,False,False,False,False,False,40243318-45ae-459f-bc19-1eb43598bdd9,False,False,b50bda78-ad2b-4604-8434-1a35b920dff7,False,False
 False,False,Traditional pub,False,False,False,False,False,False,False,f555e6f4-e30d-43b2-acbe-e2c3fb4c4cea,False,False,e3ddd5e1-773e-454b-87e5-7c04bfdefd4b,False,False
