@@ -97,14 +97,24 @@ def pub_list():
     #     pubs_reviews_json = Dataframes().df_to_dict(test_df)
     #
     # else:
-    list_L = df_selection[['pub_latitude', 'pub_longitude']].values.tolist()
-    _lat = []
-    _long = []
-    for l in list_L:
-        _lat.append(l[0])
-        _long.append(l[1])
-    review_lat = sum(_lat) / len(_lat)
-    review_long = sum(_long) / len(_long)
+    if total_rows == 0:
+        list_L = df_pubs_reviews[['pub_latitude', 'pub_longitude']].values.tolist()
+        _lat = []
+        _long = []
+        for l in list_L:
+            _lat.append(l[0])
+            _long.append(l[1])
+        review_lat = sum(_lat) / len(_lat)
+        review_long = sum(_long) / len(_long)
+    else:
+        list_L = df_selection[['pub_latitude', 'pub_longitude']].values.tolist()
+        _lat = []
+        _long = []
+        for l in list_L:
+            _lat.append(l[0])
+            _long.append(l[1])
+        review_lat = sum(_lat) / len(_lat)
+        review_long = sum(_long) / len(_long)
     df_pubs_reviews['colour'] = '#d9534f'
     selection_id_list = df_selection['pub_identity'].tolist()
     # print(selection_id_list)

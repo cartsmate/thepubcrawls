@@ -11,7 +11,7 @@
 function initMap(){
     console.log("initMap in pub_read");
     zoom = {{map_zoom}}
-    let { avg_lat, avg_lng } = latlng_avg(pubs_selection);
+    //let { avg_lat, avg_lng } = latlng_avg(pubs_selection);
     data = {{pubs_reviews | tojson}}
     showMap(data, zoom, {{map_lat}}, {{map_lng}})
 }
