@@ -57,6 +57,7 @@ def pub_list():
     for review in review_list:
         df_selection = df_selection.loc[(df_selection[review].astype(str).isin(review_list[review]))]
 
+    df_selection['colour'] = '#0275d8'
     pubs_selection_json = Dataframes().df_to_dict(df_selection)
 
     headers = list(df_selection.columns)
