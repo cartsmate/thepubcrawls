@@ -35,13 +35,14 @@ def pub_list():
     direction = request.args.get('direction')
     if request.args.get('station') != 'all':
         df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == station]
-        heading = df_selection.iloc[0]['station_name']
+        heading = df_selection.iloc[0]['station_name'] + " Pubs"
     elif request.args.get('direction') != 'all':
-        heading = direction
+        heading = direction + " Pubs"
         df_selection = df_pubs_reviews.loc[df_pubs_reviews['direction_identity'] == direction]
     else:
-        heading = 'All'
-        df_selection = df_pubs_reviews.loc[df_pubs_reviews['favourite'] == True]
+        heading = 'Pubs'
+        df_selection = df_pubs_reviews
+        # .loc[df_pubs_reviews['favourite'] == True]
 
     review_list = {}
     pub_id = uuid.uuid4()

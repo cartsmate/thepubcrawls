@@ -1,4 +1,4 @@
-function featureList(direction, station, zoom) {
+function featureHome(zoom) {
     console.log("featureList")
     var base_url = window.location.hostname
     if (config2['env'] == 'prod') {
@@ -7,8 +7,8 @@ function featureList(direction, station, zoom) {
         var url = "http://" + base_url + ":5000/pub/list/"
     }
     const myUrlWithParams = new URL(url);
-    myUrlWithParams.searchParams.append('direction', direction);
-    myUrlWithParams.searchParams.append('station', station);
+    myUrlWithParams.searchParams.append('direction', document.getElementById('direction').value);
+    myUrlWithParams.searchParams.append('station', document.getElementById('station').value);
     myUrlWithParams.searchParams.append('zoom', zoom);
     for (var i = 0; i < icon_list.length; i++) {
         console.log(icon_list[i])
