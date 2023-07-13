@@ -130,7 +130,7 @@ def pub_read(pub_id):
                     # flash(error)
                     response = str('pub error')
                 df_new_review = FormNew().get_review(pub_id)
-                print(df_new_review)
+                # print(df_new_review)
                 # df_reviews = S3().get_s3_reviews()
                 df_reviews = Csv().get_reviews()
                 df_review_appended = Dataframes().append_df(df_reviews, df_new_review)
@@ -159,22 +159,22 @@ def pub_read(pub_id):
                 # print(df_station_added)
                 pub_review_json = Dataframes().df_to_dict(df_station_added)
 
-                df_all = EntitiesMulti().get_pubs_reviews()
-                df_all['colour'] = '#0275d8'
-                df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
-                pubs_reviews_json = Dataframes().df_to_dict(df_all)
+                # df_all = EntitiesMulti().get_pubs_reviews()
+                # df_all['colour'] = '#0275d8'
+                # df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
+                # pubs_reviews_json = Dataframes().df_to_dict(df_all)
 
                 review_lat = df_station_added['pub_latitude'].values[0]
                 review_long = df_station_added['pub_longitude'].values[0]
                 flash(response)
 
                 df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
-                selected_station = df_new_pub['station_identity'].values[0]
-                df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
-                station = selected_station
-                df_selection['colour'] = '#0275d8'
+                # selected_station = df_new_pub['station_identity'].values[0]
+                # df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
+                # station = selected_station
+                # df_selection['colour'] = '#0275d8'
                 df_pubs_reviews['colour'] = '#d9534f'
-                df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
+                # df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
                 pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
 
                 return render_template('pub_read.html', response=response,
@@ -222,24 +222,24 @@ def pub_read(pub_id):
             # print(word_response)
 
             df_pub_review = EntitiesSingle().get_pub_review(pub_id)
-
-            df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
-            df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
-            df_pub_photos['colour'] = '#d9534f'
-            df_pub_photos.fillna('0', inplace=True)
-            pub_review_json = Dataframes().df_to_dict(df_pub_photos)
+            df_pub_review['colour'] = '#0275d8'
+            # df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
+            # df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
+            # df_pub_photos['colour'] = '#d9534f'
+            # df_pub_photos.fillna('0', inplace=True)
+            pub_review_json = Dataframes().df_to_dict(df_pub_review)
 
             selected_station = df_pub_review['station_identity'].values[0]
 
             df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
             df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
             station = selected_station
-            df_selection['colour'] = '#0275d8'
-            df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
-            pubs_reviews_json = Dataframes().df_to_dict(df_selection)
+            df_pubs_reviews['colour'] = '#d9534f'
+            # df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
+            pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
 
-            review_lat = df_pub_photos['pub_latitude'].values[0]
-            review_long = df_pub_photos['pub_longitude'].values[0]
+            review_lat = df_pub_review['pub_latitude'].values[0]
+            review_long = df_pub_review['pub_longitude'].values[0]
             # flash(word_response)
 
             return render_template('pub_read.html',

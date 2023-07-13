@@ -198,3 +198,7 @@ input:checked + .slider:before {
 .checked {
     color: yellow;
 }
+.highlight {
+    background: #0275d8;
+    color: white;
+}
