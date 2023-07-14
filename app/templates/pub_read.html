@@ -16,6 +16,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_events.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_search.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_zoom.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_bounds_changed.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/class_event_handler.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/mouse_down_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/nearest_station.js') }}"></script>
@@ -38,35 +39,27 @@
 
 <script>
 function onLoad(){
-
-    //alert({{response}})
     console.log("onLoad in pub_read");
     form_type = {{ form_type | tojson }}
     zoom = {{ map_zoom }}
     config2 = {{config2 | tojson }}
     pubs_selection = {{ pubs_selection | tojson }}
-    console.log(pubs_selection)
     input_list = {{ input_list | tojson }}
     dropdown_list = {{ dropdown_list | tojson }}
     slider_list = {{ slider_list | tojson }}
     check_list = {{ check_list | tojson }}
-    //console.log(check_list)
     date_controls = {{ date_list | tojson }}
     star_list = {{ star_list | tojson }}
-
+    station = '{{ station }}'
     form_visible_list = {{ form_visible_list | tojson }}
     required_list = {{ required_list | tojson }}
-
     fields_list = {{ fields_list | tojson }}
-
     alias_list = {{ alias_list | tojson }}
     icon_list = {{ icon_list | tojson }}
 
     mapLoad('{{google_key}}');
 
-
     populate_form(form_type);
-
 }
 
 
@@ -88,17 +81,21 @@ function onLoad(){
 
 {% block left %}
     {% include "pub_map.html" %}
-    <div class="form-group row" style="display: flex; align-items: center; border-style:solid; background-color:#D3D3D3; border-width:thin">
-        {% with auto_exec='off' %}
-            {% include "home_features.html" %}
-        {% endwith %}
-    </div>
+    <form action="{{ url_for('pub_read', pub_id=pubs_selection[0]['pub_identity']) }}" method="post">
+        <!--margin: 15px 0; display: flex; align-items: center; border:1px solid #0275d8; background-color:#D3D3D3;"-->
+        <div class="form-group row" style="">
+            {% with auto_exec='off' %}
+                {% include "home_features.html" %}
+            {% endwith %}
+        </div>
 {% endblock %}
 
 {% block right %}
-    <div class="row">
-        <div class="col">
-            {% include "pub_table.html" %}
+        <div class="form-group row" style="">
+            <div class="col">
+                {% include "pub_form.html" %}
+            </div>
+            {% include "pub_form_submit.html" %}
         </div>
-    </div>
+    </form>
 {% endblock %}

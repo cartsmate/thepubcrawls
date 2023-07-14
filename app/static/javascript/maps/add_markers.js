@@ -1,6 +1,5 @@
-function add_markers(map, zoom, data, clickable) {
+function add_markers(map, data) {
     console.log('add_markers')
-    console.log(zoom)
     var pinSVGHole = "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z";
     var labelOriginHole = new google.maps.Point(12,15);
     var pinSVGFilled = "M 12,2 C 8.1340068,2 5,5.1340068 5,9 c 0,5.25 7,13 7,13 0,0 7,-7.75 7,-13 0,-3.8659932 -3.134007,-7 -7,-7 z";
@@ -57,6 +56,7 @@ function add_markers(map, zoom, data, clickable) {
         })
         var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
         bounds.extend(myLatLng);
+        /*
         if (clickable == true) {
             if (true == false) {
                 google.maps.event.addListener(marker, 'click', (function (marker, key) {
@@ -86,10 +86,11 @@ function add_markers(map, zoom, data, clickable) {
                 })(marker, key));
             }
         }
+        */
     }
     //var bounds = new google.maps.LatLngBounds();
     //var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
     //bounds.extend(myLatLng);
     map.fitBounds(bounds);
-
+    add_marker_bounds(map, bounds, pubs_reviews)
 }

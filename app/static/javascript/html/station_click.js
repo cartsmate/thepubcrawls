@@ -1,11 +1,11 @@
-function stationClick() {
+function stationClick(station) {
     console.log("stationClick")
-    station = document.getElementById('station_identity').value
-    console.log(station)
-    console.log(icon_list)
+    //station = document.getElementById('station_identity').value
+    //console.log(station)
+    //console.log(icon_list)
     var base_url = window.location.hostname
-    console.log('base_url')
-    console.log(base_url)
+    //console.log('base_url')
+    //console.log(base_url)
     if (config2['env'] == 'prod') {
         var url = "http://" + base_url + "/pub/list/"
     } else {

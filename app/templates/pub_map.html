@@ -12,15 +12,16 @@ function initMap(){
     console.log("initMap in pub_read");
     zoom = {{map_zoom}}
     //let { avg_lat, avg_lng } = latlng_avg(pubs_selection);
-    data = {{pubs_reviews | tojson}}
-    showMap(data, zoom, {{map_lat}}, {{map_lng}})
-}
+    pubs_reviews = {{pubs_reviews | tojson}}
+    pubs_selection = {{pubs_selection | tojson}}
+    lat = {{map_lat}}
+    lng = {{map_lng}}
 
-function showMap(data, zoom, lat, lng){
-    console.log('showMap')
-    map = show_map(lat, lng, zoom, data)
+    map = show_map(lat, lng, zoom)
+    add_markers(map, pubs_selection)
+    listen_bounds_changed(map, pubs_reviews)
+
     key = {{ google_key | tojson }}
-
     stations = {{stations | tojson}}
     areas = {{areas | tojson}}
 
@@ -28,6 +29,7 @@ function showMap(data, zoom, lat, lng){
     if (form_type == 'read' || form_type == 'list') {
         add_listen_click(map, lat, lng);
     }
+    data = pubs_reviews
     if (form_type == 'add') {
         var class_event_handler = new ClickEventHandler(map, origin, key, data);
         const input = document.getElementById("search-input-navbar");
@@ -44,7 +46,7 @@ function showMap(data, zoom, lat, lng){
         }
     }
     const center = new google.maps.LatLng(lat, lng);
-    add_listen_click(map, {{ map_lat | tojson }}, {{ map_lng | tojson }});
+    add_listen_click(map, lat, lng);
     //var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
     //const input = document.getElementById("search-input-navbar");
     //const searchBox = new google.maps.places.SearchBox(input);
@@ -55,6 +57,8 @@ function showMap(data, zoom, lat, lng){
     }
     window.map.panTo(center);
     //add_marker_bounds(map, data);
+    current_zoom = map.getZoom();
+    console.log(current_zoom)
 }
 
 </script>
