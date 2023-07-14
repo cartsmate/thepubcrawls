@@ -1,7 +1,7 @@
 
 class Place:
     def __init__(self, name='place', alias="Place", required=True, form_visible=False,
-                 table_visible=False, value="", control=None):
+                 table_visible=False, value="", control=None, rank=0):
         self.name = name
         self.alias = alias
         self.required = required
@@ -9,3 +9,4 @@ class Place:
         self.table_visible = table_visible
         self.value = value
         self.control = control
+        self.rank = rank

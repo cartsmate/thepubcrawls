@@ -83,20 +83,7 @@ def pub_list():
 
     form_obj = {}
     total_rows = df_selection.shape[0]
-    # if total_rows == 0:
-    #     for review in list(Review2().__dict__.keys()):
-    #         if review not in ignore_list:
-    #             form_obj[review] = 'none'
-    #     review_lat = 51.0
-    #     review_long = -0.15
-    #     data_list = []
-    #     for df in df_selection.columns:
-    #         data_list.append(None)
-    #     test_df = pd.DataFrame([data_list], columns=df_selection.columns)
-    #     print(test_df)
-    #     pubs_reviews_json = Dataframes().df_to_dict(test_df)
-    #
-    # else:
+
     if total_rows == 0:
         list_L = df_pubs_reviews[['pub_latitude', 'pub_longitude']].values.tolist()
         _lat = []
@@ -139,7 +126,8 @@ def pub_list():
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
 
-    return render_template('pub_list.html', form_type='list', filter=heading, review_obj=Review2(pub_id), form_obj=form_obj,
+    return render_template('pub_list.html', form_type='list', filter=heading,
+                           review_obj=Review2(pub_id), form_obj=form_obj,
                            pubs_reviews=pubs_reviews_json, pubs_selection=pubs_selection_json,
                            map_lat=review_lat, map_lng=review_long, config2=config2, map_zoom=zoom,
                            google_key=config2['google_key'],

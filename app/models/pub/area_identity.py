@@ -1,7 +1,7 @@
 
 class AreaIdentity:
     def __init__(self, name='area_identity', alias="Id", required=False, form_visible=False,
-                 table_visible=False, value=0, control=None):
+                 table_visible=False, value=0, control=None, rank=0):
         self.name = name
         self.alias = alias
         self.required = required
@@ -9,3 +9,4 @@ class AreaIdentity:
         self.table_visible = table_visible
         self.value = value
         self.control = control
+        self.rank = rank

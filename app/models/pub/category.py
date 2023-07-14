@@ -1,7 +1,7 @@
 
 class Category:
     def __init__(self, name='category', alias="Category", required=True, form_visible=False,
-                 table_visible=False, value="", control="dropdown"):
+                 table_visible=False, value="", control="dropdown", rank=0):
         self.name = name
         self.alias = alias
         self.required = required
@@ -9,3 +9,4 @@ class Category:
         self.table_visible = table_visible
         self.value = value
         self.control = control
+        self.rank = rank

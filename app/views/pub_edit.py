@@ -40,21 +40,16 @@ def pub_edit():
     ignore_list = ControlsList().get_control_lists()
 
     df_pub_review = EntitiesSingle().get_pub_review(pub_id)
+    df_pub_review['colour'] = '#0275d8'
+    pubs_selected_json = Dataframes().df_to_dict(df_pub_review)
+
     # selected_station = df_pub_review['station_identity'].values[0]
 
+    pub_review_list = df_pub_review['pub_identity'].tolist()
     df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
-    # df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
-    # station = selected_station
-    # df_selection['colour'] = '#0275d8'
-    # df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
-    # pubs_reviews_json = Dataframes().df_to_dict(df_selection)
-
-    # df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
-    # df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
-    # df_pub_photos.fillna('0', inplace=True)
-    # df_pub_photos['colour'] = '#d9534f'
-    # df_pub_photos.sort_values(by='pub_name', ascending=False)
-    pubs_selected_json = Dataframes().df_to_dict(df_pub_review)
+    df_pubs_reviews['colour'] = '#d9534f'
+    df_pubs_reviews2 = df_pubs_reviews[~df_pubs_reviews['pub_identity'].isin([pub_review_list])]
+    pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews2)
 
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
@@ -64,7 +59,7 @@ def pub_edit():
 
     review_lat = df_pub_review['pub_latitude'].values[0]
     review_long = df_pub_review['pub_longitude'].values[0]
-    pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
+
     return render_template('pub_read.html', form_type='edit', google_key=config2['google_key'],
                            pubs_selection=pubs_selected_json, config2=config2,
                            fields_list=fields_list, alias=alias,
