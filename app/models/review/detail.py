@@ -2,8 +2,8 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Detail:
-    def __init__(self, name="detail", alias="Info", alias2="", required=False, form_visible=True,
-                 table_visible=True, value="TBC", control="input", icon=None, rank=3):
+    def __init__(self, name="detail", alias="Info", alias2="", required=False, form_visible=False,
+                 table_visible=False, value="TBC", control="input", icon=None, rank=3):
         self.name = name
         self.alias = alias
         self.alias2 = alias2

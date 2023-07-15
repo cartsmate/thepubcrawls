@@ -29,10 +29,25 @@ def pub_list():
 
     df_pubs_reviews = EntitiesMulti().get_pubs_reviews_stations()
 
-    zoom = request.args.get('zoom')
-
+    # day = request.args.get('day')
     station = request.args.get('station')
     direction = request.args.get('direction')
+    # zoom = request.args.get('zoom')
+
+    # if day is not None:
+    #     # print('day: ' + day)
+    #     directory_path = config2['directory_path']
+    #     df_diary = pd.read_csv(directory_path + '/files/diary.csv')
+    #     df_diary = df_diary.fillna('')
+    #     # print(df_diary[day])
+    #     df_diary_selected = df_diary.loc[df_diary[day] != '']
+    #     print(df_diary_selected[['pub_identity', day]])
+    #     list_of_ids = df_diary_selected['pub_identity'].tolist()
+    #
+    #     df_pubs_reviews = EntitiesMulti().get_pubs_reviews_stations()
+    #     df_selection = df_pubs_reviews.loc[df_pubs_reviews['pub_identity'].isin([list_of_ids])]
+    #     heading = 'Pubs on a ' + day
+    # else:
     if request.args.get('station') != 'all':
         df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == station]
         heading = df_selection.iloc[0]['station_name'] + " Pubs"
@@ -129,7 +144,8 @@ def pub_list():
     return render_template('pub_list.html', form_type='list', filter=heading,
                            review_obj=Review2(pub_id), form_obj=form_obj,
                            pubs_reviews=pubs_reviews_json, pubs_selection=pubs_selection_json,
-                           map_lat=review_lat, map_lng=review_long, config2=config2, map_zoom=zoom,
+                           map_lat=review_lat, map_lng=review_long, config2=config2,
+                           # map_zoom=zoom,
                            google_key=config2['google_key'],
                            visible=visible, alias=alias, headers=headers, icon_list=icon_list,
                            areas=areas_json, stations=stations_json,
