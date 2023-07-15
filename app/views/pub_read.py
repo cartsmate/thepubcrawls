@@ -14,6 +14,7 @@ from app.static.pythonscripts.entities_single import EntitiesSingle
 from app.static.pythonscripts.controls_list import ControlsList
 from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
+from app.models.diary.week import Week
 from app.models.station.station import Station
 from app.models.photo.photo import Photo
 from app.models.area.area import Area
@@ -64,41 +65,36 @@ def pub_read(pub_id):
         pub_review_json = Dataframes().df_to_dict(df_pub_review)
 
         selected_station = df_pub_review['station_identity'].values[0]
-        #
-        df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
-        # df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
         station = selected_station
-        # df_pubs_reviews['colour'] = '#d9534f'
-        # df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
-        # pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
-
-        # df_photos = pd.read_csv(os.getcwd() + '/files/photos.csv')
-        # df_pub_photos = pd.merge(df_pub_review, df_photos, how='left', on='pub_identity')
-        # df_pub_photos.fillna('0', inplace=True)
-
-        # df_pub_photos.sort_values(by='pub_name', ascending=False)
-
-        # df_all_trunc = df_pubs_reviews[['pub_name', 'station_identity']]
-        # df_all_count = df_all_trunc.groupby(['station_identity'], as_index=False).count()
-        # df_all_latlng = pd.merge(df_all_count, df_stations, how='left', on='station_identity') \
-        #     .rename(columns={'pub_name': 'count'}).astype(str)
-        # station_all_json = Dataframes().df_to_dict(df_all_latlng)
 
         pub_review_list = df_pub_review['pub_identity'].tolist()
         df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
         df_pubs_reviews['colour'] = '#d9534f'
         df_pubs_reviews2 = df_pubs_reviews[~df_pubs_reviews['pub_identity'].isin([pub_review_list])]
-        # print(df_pubs_reviews2)
         pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews2)
 
         review_lat = df_pub_review['pub_latitude'].values[0]
         review_long = df_pub_review['pub_longitude'].values[0]
-        # print(df_pub_review)
+
+        diary_headers = []
+        diary_week = Week().__dict__.items()
+        for k, v in diary_week:
+            diary_headers.append(k)
+        directory_path = config2['directory_path']
+        df_diary = pd.read_csv(directory_path + '/files/diary.csv')
+        df_diary_selected = df_diary.loc[df_diary['pub_identity'] == pub_id]
+        df_diary_selected = df_diary_selected.fillna('')
+        # for i in range(len(diary_headers)):
+        #     print(diary_headers[i])
+        #     print(df_diary_selected[diary_headers[i]])
+
+        diary_json = Dataframes().df_to_dict(df_diary_selected)
 
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
                                pubs_selection=pub_review_json, config=config, config2=config2,
                                map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
-                               fields_list=fields_list, alias=alias,
+                               fields_list=fields_list, alias=alias, diary_headers=diary_headers,
+                               diary_body=diary_json,
                                station=station,
                                pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,

@@ -61,9 +61,9 @@ def pub_delete(pub_id):
     # heading = df_selection.iloc[0]['station_name'] + " Pubs"
 
     # return redirect(url_for('pub_list/area/'))
-    url_base = "http://127.0.0.1:5000"
-    url = url_base + "/pub/list/?direction=all&station=" + station_id + \
-          "&zoom=16&brunch=false&dart=false&entertain=false&favourite=false&garden=false&history=false&late=false&music=false&pool=false&quiz=false&roast=false&sport=false"
+    # url_base = "http://127.0.0.1:5000"
+    # url = url_base + "/pub/list/?direction=all&station=" + station_id + \
+    #       "&zoom=16&brunch=false&dart=false&entertain=false&favourite=false&garden=false&history=false&late=false&music=false&pool=false&quiz=false&roast=false&sport=false"
 
     return redirect(url_for('pub_list', direction='all', station=station_id, zoom=16))
                     # ,

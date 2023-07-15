@@ -1,0 +1,13 @@
+{% for field in diary_headers %}
+    <div class="form-group row" id="row_{{field}}" >
+        <div class="col" style="text-align:right; width:100px; padding:0px; margin:auto;">
+            <label class="col-form-label" for="{{field}}" style="width:75px; padding:0px; margin:0px;" >{{field}}</label>
+        </div>
+        <div class="col" id="div_{{field}}" style="width:220px; text-align:left; visibility:visible; display:block; text-align:left" >
+            <input class="form-control" type='textarea' name="{{field}}" id="{{field}}" style="overflow-y: scroll; resize: none; height: 50px; text-align:left; visibility:visible; display:block; width:300px;">
+            {% if form_type == 'read' %}
+                <script>document.getElementById("{{field}}").setAttribute("readonly", "true");</script>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}

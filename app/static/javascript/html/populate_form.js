@@ -23,53 +23,6 @@ function populate_form(form){
             }
         } else if (star_list.includes(fields_list[i])) {
             shadeStars(fields_list[i], pubs_selection[0][fields_list[i]], 'populate')
-            /*
-            star_num = 30
-            star_size = star_num + "px"
-            document.getElementById(fields_list[i]).value = pub_review[0][fields_list[i]];
-            num = pub_review[0][fields_list[i]]
-            if (num >= 0 && num <1) {
-                console.log('between 0 and 1')
-                document.getElementById("img_rank1").style.width = star_size
-                document.getElementById("img_rank2").style.width = "0px"
-                document.getElementById("img_rank3").style.width = "0px"
-                document.getElementById("img_rank4").style.width = "0px"
-                document.getElementById("img_rank5").style.width = "0px"
-            } else if (num >= 1 && num <2) {
-                console.log('between 1 and 2')
-                document.getElementById("img_rank1").style.width = star_size
-                document.getElementById("img_rank2").style.width = star_size
-                document.getElementById("img_rank3").style.width = "0px"
-                document.getElementById("img_rank4").style.width = "0px"
-                document.getElementById("img_rank5").style.width = "0px"
-            } else if (num >= 2 && num <3) {
-                console.log('between 2 and 3')
-                document.getElementById("img_rank1").style.width = star_size
-                document.getElementById("img_rank2").style.width = star_size
-                document.getElementById("img_rank3").style.width = star_size
-                document.getElementById("img_rank4").style.width = "0px"
-                document.getElementById("img_rank5").style.width = "0px"
-            } else if (num >= 3 && num <4) {
-                console.log('between 3 and 4')
-                document.getElementById("img_rank1").style.width = star_size
-                document.getElementById("img_rank2").style.width = star_size
-                document.getElementById("img_rank3").style.width = star_size
-                document.getElementById("img_rank4").style.width = star_size
-                document.getElementById("img_rank5").style.width = "0px"
-            } else {
-                console.log('greater than 4')
-                document.getElementById("img_rank1").style.width = star_size
-                document.getElementById("img_rank2").style.width = star_size
-                document.getElementById("img_rank3").style.width = star_size
-                document.getElementById("img_rank4").style.width = star_size
-                console.log('num: ' + num)
-                var fraction = num - 4
-                console.log('fraction: ' + fraction)
-                var section = star_num * fraction
-                console.log('section: ' + section)
-                document.getElementById("img_rank5").style.width = section + "px"
-            }
-            */
         } else {
             document.getElementById(fields_list[i]).value = pubs_selection[0][fields_list[i]];
         }
