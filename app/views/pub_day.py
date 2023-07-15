@@ -30,7 +30,7 @@ def pub_day():
     directory_path = config2['directory_path']
     df_diary = pd.read_csv(directory_path + '/files/diary.csv')
     df_diary = df_diary.fillna('')
-    df_diary_selected = df_diary.loc[df_diary[day] != '']
+    df_diary_selected = df_diary.loc[(df_diary[day] != '') & (df_diary[day] != 'Closed')]
     df_diary_selected = df_diary_selected[['pub_identity', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']]
     list_of_ids = df_diary_selected['pub_identity'].tolist()
 
@@ -58,10 +58,10 @@ def pub_day():
     visible = {}
     alias = {}
     for k, v in inst_pub_review.__dict__.items():
-        if (k == 'station_name') and (request.args.get('station') != 'all'):
-            visible[k] = False
-        else:
-            visible[k] = v.table_visible
+        # if (k == 'station_name') and (request.args.get('station') != 'all'):
+        #     visible[k] = False
+        # else:
+        visible[k] = v.table_visible
         alias[k] = v.alias
     diary_headers = []
     diary_week = Week().__dict__.items()
