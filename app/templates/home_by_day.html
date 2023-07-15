@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center" style="font-weight: bold;">
+             or day of the week
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center">
+            <select class="form-control" id="day" name="day" style="background-color: #FFFFFF; width:220px;">
+                <option value="all">select day of the week</option>
+                {% for day in diary_headers %}
+                    <option value={{day}}>{{day}}</option>
+                {% endfor %}
+            </select>
+            <a><img src="/static/icons/buttons/arrow.png" onClick="go_day(document.getElementById('day').value)" class="button_size"></a>
+        </div>
+    </div>
+</div>

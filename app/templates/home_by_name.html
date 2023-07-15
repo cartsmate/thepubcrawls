@@ -1,0 +1,26 @@
+<script>
+$( function() {
+    $( "#tags" ).autocomplete({
+        source: {{list_of_pubs | tojson}},
+        classes: {
+            "ui-autocomplete": "highlight"
+        }
+    });
+} );
+</script>
+
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center" style="font-weight: bold;">
+             or pub name
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center">
+            <input placeholder="search pubs" id="tags" style="background-color: #F6F6F6; background-image: linear-gradient(#FAF9F6, #F6F6F6); width:220px; border-radius: 5px;">
+            <a><img src="/static/icons/buttons/arrow.png" onClick="goPub(document.getElementById('tags').value)" class="button_size"></a>
+        </div>
+    </div>
+</div>

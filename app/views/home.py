@@ -15,6 +15,7 @@ from app.static.pythonscripts.controls_list import ControlsList
 from app.static.pythonscripts.entities_multi import EntitiesMulti
 # from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
+from app.models.diary.week import Week
 
 config = Configurations().get_config()
 config2 = Configurations().get_config2()
@@ -97,12 +98,19 @@ def home():
     print("{:06d}".format(int(counter)))
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
+
+    diary_headers = []
+    diary_week = Week().__dict__.items()
+    for k, v in diary_week:
+        diary_headers.append(k)
+
     return render_template('home.html',
                            # list_areas=list_areas,
                            list_stations=list_stations,
                            areas=areas_json,
                            stations=stations_json, stations_directions_list=stations_directions_list,
                            map_lat=review_lat, map_lng=review_long, map_zoom=16,
+                           diary_headers=diary_headers,
                            directions_list=directions_list,
                            # pubs_reviews=pubs_json, photo_array=config, map_view="stations",
                             config=config, google_key=config2['google_key'],

@@ -19,6 +19,17 @@ function Search(headers, visible) {
     });
 }
 
+function SearchDay(headers, visible) {
+    console.log('inside SearchDay')
+    $(document).ready(function () {
+        $('#pub_list').DataTable({
+            paging: true,
+            info: false,
+            columnDefs: addJson(headers, visible)
+        });
+    });
+}
+
 function Reset() {
      window.location = "/pub/list";
 }
