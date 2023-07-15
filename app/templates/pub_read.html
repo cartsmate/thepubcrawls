@@ -22,6 +22,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/nearest_station.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/insert_line.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_form.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_diary.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/shade_stars.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/star_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/edit_click.js') }}"></script>
@@ -40,6 +41,8 @@
 <script>
 function onLoad(){
     console.log("onLoad in pub_read");
+    diary_headers = {{ diary_headers | tojson }}
+    diary_body = {{ diary_body | tojson }}
     form_type = {{ form_type | tojson }}
     zoom = {{ map_zoom }}
     config2 = {{config2 | tojson }}
@@ -60,6 +63,7 @@ function onLoad(){
     mapLoad('{{google_key}}');
 
     populate_form(form_type);
+    populate_diary(form_type);
 }
 
 
@@ -94,6 +98,7 @@ function onLoad(){
         <div class="form-group row" style="">
             <div class="col">
                 {% include "pub_form.html" %}
+                {% include "pub_diary.html" %}
             </div>
             {% include "pub_form_submit.html" %}
         </div>
