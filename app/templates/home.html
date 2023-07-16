@@ -15,6 +15,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_pub.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_add.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_day.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_week.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_home.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_list.js') }}"></script>
@@ -93,13 +94,19 @@ function onLoad(){
 <div class="col-md-12 mx-auto" id="main">
     {% include "home_intro.html" %}
     {% include "home_station.html" %}
+    {% include "home_by_day.html" %}
+    <div class="row top-buffer">
+        <div class="col-12 center-block text-center">
+            <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">or by favourite feature</a>
+        </div>
+    </div>
     <div class="row" style="display:flex; align-items:center; border-color:#0275d8; border-style:solid; background-color:#D3D3D3; border-width:thin">
         {% with auto_exec='off' %}
             {% include "home_features.html" %}
         {% endwith %}
     </div>
     {% include "home_by_name.html" %}
-    {% include "home_by_day.html" %}
+
     {% include "home_area.html" %}
 
 </div>

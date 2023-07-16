@@ -13,6 +13,7 @@ from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
 from app.models.area.area import Area
 from app.models.station.station import Station
+from app.models.diary.week import Week
 
 config = Configurations().get_config()
 config2 = Configurations().get_config2()
@@ -27,48 +28,49 @@ def pub_list():
     required_list, form_visible_list, table_visible_list, icon_list, fields_list, \
     ignore_list = ControlsList().get_control_lists()
 
-    df_pubs_reviews = EntitiesMulti().get_pubs_reviews_stations()
+    directory_path = config2['directory_path']
 
-    # day = request.args.get('day')
+    day = request.args.get('day')
     station = request.args.get('station')
     direction = request.args.get('direction')
-    # zoom = request.args.get('zoom')
 
-    # if day is not None:
-    #     # print('day: ' + day)
-    #     directory_path = config2['directory_path']
-    #     df_diary = pd.read_csv(directory_path + '/files/diary.csv')
-    #     df_diary = df_diary.fillna('')
-    #     # print(df_diary[day])
-    #     df_diary_selected = df_diary.loc[df_diary[day] != '']
-    #     print(df_diary_selected[['pub_identity', day]])
-    #     list_of_ids = df_diary_selected['pub_identity'].tolist()
-    #
-    #     df_pubs_reviews = EntitiesMulti().get_pubs_reviews_stations()
-    #     df_selection = df_pubs_reviews.loc[df_pubs_reviews['pub_identity'].isin([list_of_ids])]
-    #     heading = 'Pubs on a ' + day
-    # else:
-    if request.args.get('station') != 'all':
-        df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == station]
-        heading = df_selection.iloc[0]['station_name'] + " Pubs"
+    # df_pubs_reviews = EntitiesMulti().get_pubs_reviews_stations()
+    df_pubs = pd.read_csv(directory_path + '/files/pubs.csv')
+    df_reviews = pd.read_csv(directory_path + '/files/reviews.csv')
+    df_areas = pd.read_csv(directory_path + '/files/areas.csv')
+    df_stations = pd.read_csv(directory_path + '/files/stations.csv')
+    df_diary = pd.read_csv(directory_path + '/files/diary.csv')
+
+    df_pb_rev = pd.merge(df_pubs, df_reviews, on='pub_identity', how='left')
+    df_pb_rev_ara = pd.merge(df_pb_rev, df_areas, on='area_identity', how='left')
+    df_pb_rev_ara_st = pd.merge(df_pb_rev_ara, df_stations, on='station_identity', how='left')
+    df_pb_rev_ara_st_dry = pd.merge(df_pb_rev_ara_st, df_diary, on='pub_identity', how='left')
+    df_pb_rev_ara_st_dry = df_pb_rev_ara_st_dry.fillna('')
+    heading = "Pubs"
+    if station != 'all':
+        print(f'station: {station}')
+        df_selection = df_pb_rev_ara_st_dry.loc[df_pb_rev_ara_st_dry['station_identity'] == station]
+        full_heading = f'{station} {heading}'
+        print(df_selection)
     elif request.args.get('direction') != 'all':
-        heading = direction + " Pubs"
-        df_selection = df_pubs_reviews.loc[df_pubs_reviews['direction_identity'] == direction]
+        print(f'direction: {direction}')
+        df_selection = df_pb_rev_ara_st_dry.loc[df_pb_rev_ara_st_dry['direction_identity'] == direction]
+        full_heading = f'{direction} {heading}'
     else:
-        heading = 'Pubs'
-        df_selection = df_pubs_reviews
-        # .loc[df_pubs_reviews['favourite'] == True]
-
+        df_selection = df_pb_rev_ara_st_dry
+        full_heading = heading
+    if day != 'all':
+        df_selection = df_selection.loc[(df_selection[day] != '') & (df_selection[day] != 'Closed')]
+        full_heading = f'{full_heading} on a {day}'
+    print(df_selection[['pub_name','monday','tuesday','wednesday','thursday','friday','saturday','sunday','detail']])
     review_list = {}
     pub_id = uuid.uuid4()
     for review in list(Review2().__dict__.keys()):
         if review not in ignore_list:
-            # form_obj[review] = request.args.get(review)
             if request.args.get(review) == 'true':
                 review_list[review] = ['True']
             else:
                 review_list[review] = ['True', 'False']
-
     for review in review_list:
         df_selection = df_selection.loc[(df_selection[review].astype(str).isin(review_list[review]))]
 
@@ -88,19 +90,24 @@ def pub_list():
     visible = {}
     alias = {}
     for k, v in inst_pub_review.__dict__.items():
-        # print('k: ' + k)
-        # print('v: ' + str(v))
         if (k == 'station_name') and (request.args.get('station') != 'all'):
             visible[k] = False
         else:
             visible[k] = v.table_visible
         alias[k] = v.alias
+    diary_week = Week().__dict__.items()
+    for k, v in diary_week:
+        if k == day:
+            visible[k] = True
+        else:
+            visible[k] = False
+        alias[k] = k
 
     form_obj = {}
     total_rows = df_selection.shape[0]
 
     if total_rows == 0:
-        list_L = df_pubs_reviews[['pub_latitude', 'pub_longitude']].values.tolist()
+        list_L = df_pb_rev_ara_st_dry[['pub_latitude', 'pub_longitude']].values.tolist()
         _lat = []
         _long = []
         for l in list_L:
@@ -117,12 +124,12 @@ def pub_list():
             _long.append(l[1])
         review_lat = sum(_lat) / len(_lat)
         review_long = sum(_long) / len(_long)
-    df_pubs_reviews['colour'] = '#d9534f'
+
     selection_id_list = df_selection['pub_identity'].tolist()
-    # print(selection_id_list)
-    df_pubs_reviews.loc[df_pubs_reviews['pub_identity'].isin(selection_id_list), 'colour'] = '#0275d8'
-    # print(df_pubs_reviews[['pub_identity', 'colour']].sort_values(by='colour', ascending=False))
-    pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews)
+    df_non_selection = df_pb_rev_ara_st_dry.loc[~df_pb_rev_ara_st_dry['pub_identity'].isin(selection_id_list)]
+    df_non_selection['colour'] = '#d9534f'
+
+    pubs_reviews_json = Dataframes().df_to_dict(df_non_selection)
 
     for review in list(Review2().__dict__.keys()):
         if review not in ignore_list:
@@ -141,7 +148,7 @@ def pub_list():
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
 
-    return render_template('pub_list.html', form_type='list', filter=heading,
+    return render_template('pub_list.html', form_type='list', filter=full_heading,
                            review_obj=Review2(pub_id), form_obj=form_obj,
                            pubs_reviews=pubs_reviews_json, pubs_selection=pubs_selection_json,
                            map_lat=review_lat, map_lng=review_long, config2=config2,
@@ -149,4 +156,4 @@ def pub_list():
                            google_key=config2['google_key'],
                            visible=visible, alias=alias, headers=headers, icon_list=icon_list,
                            areas=areas_json, stations=stations_json,
-                           station=station, direction=direction, total_rows=total_rows)
+                           station=station, direction=direction, day=day, total_rows=total_rows)

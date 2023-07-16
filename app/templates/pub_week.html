@@ -1,0 +1,30 @@
+<script>
+function handleChange(value) {
+    console.log("handleChange")
+    console.log(value)
+    var base_url = window.location.hostname
+    if (config2['env'] == 'prod') {
+        var url = "http://" + base_url + "/pub/list/"
+    } else {
+        var url = "http://" + base_url + ":5000/pub/list/"
+    }
+    const myUrlWithParams = new URL(url);
+    myUrlWithParams.searchParams.append('direction', direction);
+    myUrlWithParams.searchParams.append('station', station);
+    myUrlWithParams.searchParams.append('day', value);
+    for (var i = 0; i < icon_list.length; i++) {
+        console.log(icon_list[i])
+        console.log(document.getElementById(icon_list[i]).checked)
+        myUrlWithParams.searchParams.append(icon_list[i], document.getElementById(icon_list[i]).checked);
+    }
+    window.location.replace(myUrlWithParams.href);
+    }
+</script>
+<label><input type="radio" id="all" name="radio" value="all" onchange="handleChange(this.value);">ALL</label>
+<label><input type="radio" id="monday" name="radio" value="monday" onchange="handleChange(this.value);">MON</label>
+<label><input type="radio" id="tuesday" name="radio" value="tuesday" onchange="handleChange(this.value);">TUE</label>
+<label><input type="radio" id="wednesday" name="radio" value="wednesday" onchange="handleChange(this.value);">WED</label>
+<label><input type="radio" id="thursday" name="radio" value="thursday" onchange="handleChange(this.value);">THU</label>
+<label><input type="radio" id="friday" name="radio" value="friday" onchange="handleChange(this.value);">FRI</label>
+<label><input type="radio" id="saturday" name="radio" value="saturday" onchange="handleChange(this.value);">SAT</label>
+<label><input type="radio" id="sunday" name="radio" value="sunday" onchange="handleChange(this.value);">SUN</label>
