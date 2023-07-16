@@ -40,6 +40,7 @@ def pub_list():
     df_areas = pd.read_csv(directory_path + '/files/areas.csv')
     df_stations = pd.read_csv(directory_path + '/files/stations.csv')
     df_diary = pd.read_csv(directory_path + '/files/diary.csv')
+    df_directions = pd.read_csv(directory_path + '/files/directions.csv')
 
     df_pb_rev = pd.merge(df_pubs, df_reviews, on='pub_identity', how='left')
     df_pb_rev_ara = pd.merge(df_pb_rev, df_areas, on='area_identity', how='left')
@@ -50,12 +51,14 @@ def pub_list():
     if station != 'all':
         print(f'station: {station}')
         df_selection = df_pb_rev_ara_st_dry.loc[df_pb_rev_ara_st_dry['station_identity'] == station]
-        full_heading = f'{station} {heading}'
+        station_name = df_stations.loc[df_stations['station_identity'] == station]['station_name'].values[0]
+        full_heading = f'{station_name} {heading}'
         print(df_selection)
     elif request.args.get('direction') != 'all':
         print(f'direction: {direction}')
         df_selection = df_pb_rev_ara_st_dry.loc[df_pb_rev_ara_st_dry['direction_identity'] == direction]
-        full_heading = f'{direction} {heading}'
+        direction_name = df_directions.loc[df_directions['direction_identity'] == direction]['direction_name'].values[0]
+        full_heading = f'{direction_name} {heading}'
     else:
         df_selection = df_pb_rev_ara_st_dry
         full_heading = heading
