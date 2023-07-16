@@ -12,7 +12,7 @@
                     <option value={{direction[0]}}>{{direction[1]}}</option>
                 {% endfor %}
             </select>
-            <a><img src="/static/icons/buttons/arrow.png" onClick="featureHome(zoom)" class="button_size"></a>
+            <a><img src="/static/icons/buttons/arrow.png" onClick="goWeek(zoom)" class="button_size"></a>
         </div>
     </div>
 </div>
@@ -32,12 +32,7 @@
                     <option value={{x[0]}}>{{x[1]}}</option>
                 {% endfor %}
             </select>
-            <a><img src="/static/icons/buttons/arrow.png" onClick="featureHome(zoom)" class="button_size"></a>
+            <a><img src="/static/icons/buttons/arrow.png" onClick="goWeek()" class="button_size"></a>
         </div>
-    </div>
-</div>
-<div class="row top-buffer">
-    <div class="col-12 center-block text-center">
-        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">or by favourite feature</a>
     </div>
 </div>

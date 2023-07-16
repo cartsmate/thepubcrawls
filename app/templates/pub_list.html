@@ -38,6 +38,7 @@ function onLoad() {
     form_obj = {{ form_obj | tojson }}
     station = {{ station | tojson }}
     direction = {{ direction | tojson }}
+    day = {{ day | tojson }}
     icon_list = {{ icon_list | tojson }}
     config2 = {{ config2 | tojson }}
 
@@ -68,6 +69,9 @@ function onLoad() {
     })
     Search(headers, visible)
     mapLoad('{{google_key}}', station);
+
+    document.getElementById('{{day}}').checked = true;
+
 }
 
 </script>
@@ -89,6 +93,9 @@ function onLoad() {
 {% endblock %}
 
 {% block right %}
+    <div>
+        {% include "pub_week.html" %}
+    </div>
     <div class="row" style="display: flex; align-items: center; background-color:#D3D3D3; overflow-x:scroll;">
         {% include "search_table.html" %}
     </div>

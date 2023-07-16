@@ -22,8 +22,12 @@ function featureClick(check_item, auto_exec) {
         caption.style.color = "black"
         checkCol.style.background = "#CDCDCD"
     }
-    
+    var ele = document.getElementsByName('radio');
+    for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked)
+            day = ele[i].value;
+    }
     if (auto_exec == 'on') {
-        featureList(direction, station, zoom)
+        featureList(direction, station, day)
     }
 }

@@ -3,6 +3,11 @@ function stationClick(station) {
     //station = document.getElementById('station_identity').value
     //console.log(station)
     //console.log(icon_list)
+    var ele = document.getElementsByName('radio');
+    for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked)
+            day = ele[i].value;
+    }
     var base_url = window.location.hostname
     //console.log('base_url')
     //console.log(base_url)
@@ -16,7 +21,7 @@ function stationClick(station) {
     //myUrlWithParams.searchParams.append('area', document.getElementById('area').value)
     myUrlWithParams.searchParams.append('direction', 'all');
     myUrlWithParams.searchParams.append('station', station);
-    myUrlWithParams.searchParams.append('zoom', 16);
+    myUrlWithParams.searchParams.append('day', day);
     for (var i = 0; i < icon_list.length; i++) {
         console.log(icon_list[i])
         console.log(document.getElementById(icon_list[i]).checked)
