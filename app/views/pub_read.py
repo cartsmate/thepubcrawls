@@ -58,6 +58,12 @@ def pub_read(pub_id):
     df_stations = Csv().get_stations()
     stations_json = Dataframes().df_to_dict(df_stations)
     zoom = 16
+
+    diary_headers = []
+    diary_week = Week().__dict__.items()
+    for k, v in diary_week:
+        diary_headers.append(k)
+
     if request.method == 'GET':
         print('pub_read: GET')
         df_pub_review = EntitiesSingle().get_pub_review(pub_id)
@@ -76,10 +82,6 @@ def pub_read(pub_id):
         review_lat = df_pub_review['pub_latitude'].values[0]
         review_long = df_pub_review['pub_longitude'].values[0]
 
-        diary_headers = []
-        diary_week = Week().__dict__.items()
-        for k, v in diary_week:
-            diary_headers.append(k)
         directory_path = config2['directory_path']
         df_diary = pd.read_csv(directory_path + '/files/diary.csv')
         df_diary_selected = df_diary.loc[df_diary['pub_identity'] == pub_id]
@@ -94,7 +96,6 @@ def pub_read(pub_id):
                                pubs_selection=pub_review_json, config=config, config2=config2,
                                map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                                fields_list=fields_list, alias=alias, diary_headers=diary_headers,
-                               diary_body=diary_json,
                                station=station,
                                pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
@@ -183,7 +184,7 @@ def pub_read(pub_id):
                 # df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
                 pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews2)
 
-                return render_template('pub_read.html', response=response,
+                return render_template('pub_read.html', response=response, diary_headers=diary_headers,
                                        error=error, form_type='read', google_key=config2['google_key'],
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                        pubs_selection=pub_review_json, config=config, config2=config2,
@@ -216,6 +217,10 @@ def pub_read(pub_id):
             # print(df_review_updated)
             df_review_updated.to_csv(directory_path + '/files/reviews.csv', index=False, sep=',', encoding='utf-8')
 
+            df_diary = pd.read_csv(directory_path + '/files/diary.csv')
+            df_diary_updated = FormInput().get_diary(df_diary, pub_id)
+            df_diary_updated.to_csv(directory_path + '/files/diary.csv', index=False, sep=',', encoding='utf-8')
+
             selected_station = df_pub_review['station_identity'].values[0]
             station = selected_station
 
@@ -237,7 +242,7 @@ def pub_read(pub_id):
             return render_template('pub_read.html',
                                    # response=response,
                                    form_type='read', google_key=config2['google_key'],
-                                   pubs_selection=pub_review_json,
+                                   pubs_selection=pub_review_json, diary_headers=diary_headers,
                                    pubs_reviews=pubs_reviews_json,
                                    config=config, config2=config2,
                                    stations=stations_json, areas=areas_json,
