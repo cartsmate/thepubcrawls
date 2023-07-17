@@ -21,55 +21,6 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_list.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_map_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
-<!--<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_setup.js') }}"></script>-->
-
-<script>
-function removeOptions(selectElement) {
-   var i, L = selectElement.options.length - 1;
-   for(i = L; i >= 0; i--) {
-      selectElement.remove(i);
-   }
-}
-function direction_changed() {
-    var directionSelect = document.getElementById("direction");
-    var selectedText = directionSelect.options[directionSelect.selectedIndex].text;
-    value = document.getElementById("direction").value
-    //console.log(value)
-    //console.log(selectedText)
-    document.getElementById("station").selectedIndex = 0;
-    stations_directions_list = {{ stations_directions_list | tojson }}
-    var select = document.getElementById("station");
-    removeOptions(document.getElementById('station'));
-    var option = document.createElement("option");
-    option.value = 'all'
-    option.text = "the nearest station"
-    select.add(option);
-    if (value == 'all') {
-        for(var i = 0; i < stations_directions_list.length; i++) {
-            var opt = stations_directions_list[i][1];
-            var el = document.createElement("option");
-            el.textContent = stations_directions_list[i][1];
-            el.value = stations_directions_list[i][0];
-            select.appendChild(el);
-        }
-    } else {
-        filteredArray = stations_directions_list.filter(item => item[2] == value);
-        for(var i = 0; i < filteredArray.length; i++) {
-            var opt = filteredArray[i][1];
-            var el = document.createElement("option");
-            el.textContent = filteredArray[i][1];
-            el.value = filteredArray[i][0];
-            select.appendChild(el);
-        }
-    }
-}
-function station_changed() {
-    var station_selection = document.getElementById('station').value
-    console.log(document.getElementById('station').value)
-    console.log(document.getElementById('station').text)
-}
-
-</script>
 
 <script>
 function onLoad(){
@@ -79,13 +30,7 @@ function onLoad(){
     icon_list = {{ icon_list | tojson }}
     config2 = {{ config2 | tojson }}
     areas = {{ areas | tojson }}
-    console.log(counter)
-    document.getElementById("digit_100000").innerHTML = counter.substring(0,1)
-    document.getElementById("digit_10000").innerHTML = counter.substring(1,2)
-    document.getElementById("digit_1000").innerHTML = counter.substring(2,3)
-    document.getElementById("digit_100").innerHTML = counter.substring(3,4)
-    document.getElementById("digit_10").innerHTML = counter.substring(4,5)
-    document.getElementById("digit_1").innerHTML = counter.substring(5,6)
+    display_counter(counter);
 }
 </script>
 {% endblock %}
@@ -94,33 +39,17 @@ function onLoad(){
 <div class="col-md-12 mx-auto" id="main">
     {% include "home_intro.html" %}
     {% include "home_station.html" %}
-    {% include "home_by_day.html" %}
-    <div class="row top-buffer">
-        <div class="col-12 center-block text-center">
-            <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">or by favourite feature</a>
-        </div>
-    </div>
-    <div class="row" style="display:flex; align-items:center; border-color:#0275d8; border-style:solid; background-color:#D3D3D3; border-width:thin">
-        {% with auto_exec='off' %}
-            {% include "home_features.html" %}
-        {% endwith %}
-    </div>
-    {% include "home_by_name.html" %}
+    {% include "pub_week.html" %}
 
+    {% with auto_exec='off' %}
+        {% include "home_features.html" %}
+        {% include "home_by_name.html" %}
+    {% endwith %}
     {% include "home_area.html" %}
 
 </div>
 {% endblock %}
 
 {% block counter %}
-    <div class="body counter">
-        <div id="digit_100000" class="span"></div>
-        <div id="digit_10000" class="span"></div>
-        <div id="digit_1000" class="span"></div>
-        <div id="digit_100" class="span"></div>
-        <div id="digit_10" class="span"></div>
-        <div id="digit_1" class="span"></div>
-    </div>
-    <div class="message">Visits to this Page</div>
-    <h3><span id="visits"></span></h3>
+    {% include "counter.html" %}
 {% endblock %}

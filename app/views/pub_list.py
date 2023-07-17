@@ -151,11 +151,17 @@ def pub_list():
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
 
+    diary_headers = []
+    diary_week = Week().__dict__.items()
+    for k, v in diary_week:
+        diary_headers.append(k)
+
     return render_template('pub_list.html', form_type='list', filter=full_heading,
                            review_obj=Review2(pub_id), form_obj=form_obj,
                            pubs_reviews=pubs_reviews_json, pubs_selection=pubs_selection_json,
                            map_lat=review_lat, map_lng=review_long, config2=config2,
                            # map_zoom=zoom,
+                           diary_headers=diary_headers,
                            google_key=config2['google_key'],
                            visible=visible, alias=alias, headers=headers, icon_list=icon_list,
                            areas=areas_json, stations=stations_json,

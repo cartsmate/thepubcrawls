@@ -36,3 +36,50 @@
         </div>
     </div>
 </div>
+
+<script>
+function removeOptions(selectElement) {
+   var i, L = selectElement.options.length - 1;
+   for(i = L; i >= 0; i--) {
+      selectElement.remove(i);
+   }
+}
+function direction_changed() {
+    var directionSelect = document.getElementById("direction");
+    var selectedText = directionSelect.options[directionSelect.selectedIndex].text;
+    value = document.getElementById("direction").value
+    //console.log(value)
+    //console.log(selectedText)
+    document.getElementById("station").selectedIndex = 0;
+    stations_directions_list = {{ stations_directions_list | tojson }}
+    var select = document.getElementById("station");
+    removeOptions(document.getElementById('station'));
+    var option = document.createElement("option");
+    option.value = 'all'
+    option.text = "the nearest station"
+    select.add(option);
+    if (value == 'all') {
+        for(var i = 0; i < stations_directions_list.length; i++) {
+            var opt = stations_directions_list[i][1];
+            var el = document.createElement("option");
+            el.textContent = stations_directions_list[i][1];
+            el.value = stations_directions_list[i][0];
+            select.appendChild(el);
+        }
+    } else {
+        filteredArray = stations_directions_list.filter(item => item[2] == value);
+        for(var i = 0; i < filteredArray.length; i++) {
+            var opt = filteredArray[i][1];
+            var el = document.createElement("option");
+            el.textContent = filteredArray[i][1];
+            el.value = filteredArray[i][0];
+            select.appendChild(el);
+        }
+    }
+}
+function station_changed() {
+    var station_selection = document.getElementById('station').value
+    console.log(document.getElementById('station').value)
+    console.log(document.getElementById('station').text)
+}
+</script>

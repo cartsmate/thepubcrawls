@@ -103,7 +103,7 @@ def home():
     diary_week = Week().__dict__.items()
     for k, v in diary_week:
         diary_headers.append(k)
-
+    # print(diary_headers)
     return render_template('home.html',
                            # list_areas=list_areas,
                            list_stations=list_stations,

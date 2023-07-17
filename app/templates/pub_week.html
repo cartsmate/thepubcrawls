@@ -1,4 +1,26 @@
 <script>
+function checkRadio(value, auto_exec) {
+    diary_headers = {{diary_headers | tojson}}
+    for (let i = 0; i < diary_headers.length; i++) {
+        var checkBox = document.getElementById(diary_headers[i])
+        var imageBox = document.getElementById(diary_headers[i] + "_img")
+        if (diary_headers[i] == value) {
+            if (checkBox.checked == true) {
+                imageBox.style.opacity = "1"
+                document.getElementById('day').value = value
+            } else {
+                imageBox.style.opacity = "0.5"
+                document.getElementById('day').value = 'all'
+            }
+        } else {
+            checkBox.checked = false
+            imageBox.style.opacity = "0.5"
+        }
+    }
+    if (auto_exec == 'on') {
+        handleChange(document.getElementById('day').value)
+    }
+}
 function handleChange(value) {
     console.log("handleChange")
     console.log(value)
@@ -18,13 +40,36 @@ function handleChange(value) {
         myUrlWithParams.searchParams.append(icon_list[i], document.getElementById(icon_list[i]).checked);
     }
     window.location.replace(myUrlWithParams.href);
-    }
+}
 </script>
-<label><input type="radio" id="all" name="radio" value="all" onchange="handleChange(this.value);">ALL</label>
-<label><input type="radio" id="monday" name="radio" value="monday" onchange="handleChange(this.value);">MON</label>
-<label><input type="radio" id="tuesday" name="radio" value="tuesday" onchange="handleChange(this.value);">TUE</label>
-<label><input type="radio" id="wednesday" name="radio" value="wednesday" onchange="handleChange(this.value);">WED</label>
-<label><input type="radio" id="thursday" name="radio" value="thursday" onchange="handleChange(this.value);">THU</label>
-<label><input type="radio" id="friday" name="radio" value="friday" onchange="handleChange(this.value);">FRI</label>
-<label><input type="radio" id="saturday" name="radio" value="saturday" onchange="handleChange(this.value);">SAT</label>
-<label><input type="radio" id="sunday" name="radio" value="sunday" onchange="handleChange(this.value);">SUN</label>
+
+{% if form_type=='home' %}
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center" style="font-weight: bold;">
+             and/or daily activity
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center">
+            <input type="text" id="day" style="display: none" value="all">
+            {% for day in diary_headers %}
+            <div>
+                <div>
+                    <input style="display:none" type="checkbox" id='{{day}}' name='{{day}}' value='{{day}}' onclick="checkRadio(this.value, '{{auto_exec}}')">
+                </div>
+                <div>
+                    <label for='{{day}}' style="margin:0px; padding:0px" >
+                        <img src="{{ url_for('static', filename='icons/' + day + '.png' ) }}" id="{{day}}_img"
+                             width="25" height="25" style="opacity: 0.5;">
+                    </label>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
