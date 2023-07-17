@@ -6,6 +6,7 @@ from config import Configurations
 from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
 from app.models.station.station import Station
+from app.models.diary.week import Week
 from app.static.pythonscripts.dataframes import Dataframes
 from app.static.pythonscripts.csv import Csv
 # from app.static.pythonscripts.s3 import S3
@@ -60,12 +61,18 @@ def pub_edit():
     review_lat = df_pub_review['pub_latitude'].values[0]
     review_long = df_pub_review['pub_longitude'].values[0]
 
+    diary_headers = []
+    diary_week = Week().__dict__.items()
+    for k, v in diary_week:
+        diary_headers.append(k)
+
     return render_template('pub_read.html', form_type='edit', google_key=config2['google_key'],
                            pubs_selection=pubs_selected_json, config2=config2,
                            fields_list=fields_list, alias=alias,
                            stations=stations_json, areas=areas_json, config=config,
                            pubs_reviews=pubs_reviews_json,
                            # pubs_reviews=test_reviews,
+                           diary_headers=diary_headers,
                            map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,

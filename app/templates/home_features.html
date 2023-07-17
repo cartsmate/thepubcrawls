@@ -1,3 +1,12 @@
+{% if form_type=='home' %}
+<div class="row top-buffer">
+    <div class="col-12 center-block text-center">
+        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">or by favourite feature</a>
+    </div>
+</div>
+{% endif %}
+
+<div class="row" style="display:flex; align-items:center; border-color:#0275d8; border-style:solid; background-color:#D3D3D3; border-width:thin">
 {% for k, field in review_obj.__dict__.items() %}
     {% if field.name in icon_list %}
         <div class="col" style="border:1px solid #0275d8; text-align:center; padding:10px; background-color:#CDCDCD;" id="{{field.name}}_col">
@@ -7,7 +16,7 @@
                 {% else %}
                     <input type="checkbox" id="{{field.name}}" name="{{field.name}}" onclick="featureClick('{{field.name}}', '{{auto_exec}}')">
                 {% endif %}
-                </div>
+            </div>
             <div>
                 <label for="{{field.name}}" style="margin:0px; padding:0px" >
                     <img src="{{ url_for('static', filename='icons/features/' + field.icon ) }}" id="{{field.name}}_img" width="25" height="25"
@@ -23,3 +32,4 @@
         </script>
     {% endif %}
 {% endfor %}
+</div>

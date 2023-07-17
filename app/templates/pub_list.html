@@ -13,9 +13,6 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_bounds_changed.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery.dataTables.min.js') }}"></script>
-<!--
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
--->
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_home.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_list.js') }}"></script>
@@ -69,9 +66,10 @@ function onLoad() {
     })
     Search(headers, visible)
     mapLoad('{{google_key}}', station);
-
-    document.getElementById('{{day}}').checked = true;
-
+    console.log(day)
+    document.getElementById('day').value = day;
+    document.getElementById(day).checked = true
+    document.getElementById(day + "_img").style.opacity = "1.0"
 }
 
 </script>
@@ -85,16 +83,16 @@ function onLoad() {
 
 {% block left %}
     {% include "pub_map.html" %}
-    <div class="row" style="display: flex; align-items: center; border-style:solid; background-color:#D3D3D3; border-width:thin">
-        {% with auto_exec='on' %}
-            {% include "home_features.html" %}
-        {% endwith %}
-    </div>
+    {% with auto_exec='on' %}
+        {% include "home_features.html" %}
+    {% endwith %}
 {% endblock %}
 
 {% block right %}
     <div>
-        {% include "pub_week.html" %}
+        {% with auto_exec='on' %}
+            {% include "pub_week.html" %}
+        {% endwith %}
     </div>
     <div class="row" style="display: flex; align-items: center; background-color:#D3D3D3; overflow-x:scroll;">
         {% include "search_table.html" %}
