@@ -2,6 +2,7 @@ from flask import request
 from config import Configurations
 from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
+from app.models.diary.week import Week
 from app.static.pythonscripts.controls_list import ControlsList
 config = Configurations().get_config()
 
@@ -16,8 +17,6 @@ class FormInput:
         for pub in list(Pub2().__dict__.keys()):
             df_pubs.loc[df_pubs['pub_identity'] == pub_id, pub] = request.form[pub]
             print(pub + ' : ' + request.form[pub])
-        # print('new pub from input: df_pubs:')
-        # print(df_pubs[['pub_identity', 'pub_name', 'pub_deletion']])
         return df_pubs
 
     def get_review(self, df_reviews, pub_id):
@@ -29,3 +28,9 @@ class FormInput:
                 print(review + ' : ' + request.form[review])
                 df_reviews.loc[df_reviews['pub_identity'] == pub_id, review] = request.form[review]
         return df_reviews
+
+    def get_diary(self, df_diary, pub_id):
+        for diary in list(Week().__dict__.keys()):
+            df_diary.loc[df_diary['pub_identity'] == pub_id, diary] = request.form[diary]
+            print(diary + ' : ' + request.form[diary])
+        return df_diary

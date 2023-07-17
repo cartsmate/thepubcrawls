@@ -42,7 +42,6 @@
 function onLoad(){
     console.log("onLoad in pub_read");
     diary_headers = {{ diary_headers | tojson }}
-    diary_body = {{ diary_body | tojson }}
     form_type = {{ form_type | tojson }}
     zoom = {{ map_zoom }}
     config2 = {{config2 | tojson }}
