@@ -68,8 +68,10 @@ function onLoad() {
     mapLoad('{{google_key}}', station);
     console.log(day)
     document.getElementById('day').value = day;
-    document.getElementById(day).checked = true
-    document.getElementById(day + "_img").style.opacity = "1.0"
+    if (day != 'all') {
+        document.getElementById(day).checked = true
+        document.getElementById(day + "_img").style.opacity = "1.0"
+    }
 }
 
 </script>
