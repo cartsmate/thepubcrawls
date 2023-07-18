@@ -9,12 +9,12 @@ function checkRadio(value, auto_exec) {
                 imageBox.style.opacity = "1"
                 document.getElementById('day').value = value
             } else {
-                imageBox.style.opacity = "0.5"
+                imageBox.style.opacity = "0.25"
                 document.getElementById('day').value = 'all'
             }
         } else {
             checkBox.checked = false
-            imageBox.style.opacity = "0.5"
+            imageBox.style.opacity = "0.25"
         }
     }
     if (auto_exec == 'on') {
@@ -63,9 +63,9 @@ function handleChange(value) {
                     <input style="display:none" type="checkbox" id='{{day}}' name='{{day}}' value='{{day}}' onclick="checkRadio(this.value, '{{auto_exec}}')">
                 </div>
                 <div>
-                    <label for='{{day}}' style="margin:0px; padding:0px 5px" >
+                    <label for='{{day}}' style="margin:0px; padding:0px 3px" >
                         <img src="{{ url_for('static', filename='icons/diary/' + day + '.png' ) }}" id="{{day}}_img"
-                             width="50" height="50" style="opacity: 0.5;">
+                             width="40" height="40" style="opacity: 0.5;">
                     </label>
                 </div>
             </div>

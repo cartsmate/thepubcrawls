@@ -12,9 +12,9 @@
         <div class="col" style="border:1px solid #0275d8; text-align:center; padding:10px; background-color:#CDCDCD;" id="{{field.name}}_col">
             <div>
                 {% if form_type=='read' %}
-                    <input type="checkbox" id="{{field.name}}" name="{{field.name}}" onclick="return false">
+                    <input type="checkbox" id="{{field.name}}" name="{{field.name}}" style="display:none" onclick="return false">
                 {% else %}
-                    <input type="checkbox" id="{{field.name}}" name="{{field.name}}" onclick="featureClick('{{field.name}}', '{{auto_exec}}')">
+                    <input type="checkbox" id="{{field.name}}" name="{{field.name}}" style="display:none" onclick="featureClick('{{field.name}}', '{{auto_exec}}')">
                 {% endif %}
             </div>
             <div>
