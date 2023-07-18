@@ -152,9 +152,10 @@ def pub_list():
     areas_json = Dataframes().df_to_dict(df_areas)
 
     diary_headers = []
-    diary_week = Week().__dict__.items()
-    for k, v in diary_week:
-        diary_headers.append(k)
+    diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
+    # diary_week = Week().__dict__.items()
+    # for k, v in diary_week:
+    #     diary_headers.append(k)
 
     return render_template('pub_list.html', form_type='list', filter=full_heading,
                            review_obj=Review2(pub_id), form_obj=form_obj,
