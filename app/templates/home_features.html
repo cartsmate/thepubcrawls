@@ -1,15 +1,15 @@
 {% if form_type=='home' %}
-<div class="row top-buffer">
+<div class="row">
     <div class="col-12 center-block text-center">
-        <a href="/pub/areas" style="font-weight: bold; font-size: 16px; color: #000000; text-decoration: none;">or by favourite feature</a>
+        <a href="/pub/areas" style="font-weight: bold; font-size: 14px; color: #000000; text-decoration: none;">or by favourite feature</a>
     </div>
 </div>
 {% endif %}
 
-<div class="row" style="display:flex; align-items:center; border-color:#0275d8; border-style:solid; background-color:#D3D3D3; border-width:thin">
+<div class="row justify-content-center" style="display:flex; align-items:center; border-color:#0275d8; border-style:solid; background-color:#D3D3D3; border-width:thin">
 {% for k, field in review_obj.__dict__.items() %}
     {% if field.name in icon_list %}
-        <div class="col" style="border:1px solid #0275d8; text-align:center; padding:10px; background-color:#CDCDCD;" id="{{field.name}}_col">
+        <div style="border:1px solid #0275d8; text-align:center; padding:5px; background-color:#CDCDCD;" id="{{field.name}}_col">
             <div>
                 {% if form_type=='read' %}
                     <input type="checkbox" id="{{field.name}}" name="{{field.name}}" style="display:none" onclick="return false">
@@ -26,7 +26,7 @@
             <div class="caption" id="{{field.name}}_caption" style="font-size: 8px; padding:0px; margin:0px; opacity:1.0;"></div>
         </div>
         <script>
-            document.getElementById("{{field.name}}_caption").innerHTML = "<p>" + "{{field.alias}}" + "<br />" + "{{field.alias2}}" + "</p>";
+            document.getElementById("{{field.name}}_caption").innerHTML = "{{field.alias}}" + "<br />" + "{{field.alias2}}";
             document.getElementById("{{field.name}}_caption").style.fontSize = "x-small";
             document.getElementById("{{field.name}}_caption").style.fontWeight = "bold";
         </script>
