@@ -36,12 +36,16 @@ function onLoad(){
 {% endblock %}
 
 {% block main %}
-<div class="col-md-12 mx-auto" id="main">
+<div class="col-md-12 mx-auto " id="main">
     {% include "home_intro.html" %}
-    {% include "home_station.html" %}
-    {% include "pub_week.html" %}
+    <div style="border:1px solid #0275d8;">
+        {% include "home_station.html" %}
+        {% include "pub_week.html" %}
+        {% with auto_exec='off' %}
+            {% include "home_features.html" %}
+        {% endwith %}
+    </div>
     {% with auto_exec='off' %}
-        {% include "home_features.html" %}
         {% include "home_by_name.html" %}
     {% endwith %}
     {% include "home_area.html" %}
