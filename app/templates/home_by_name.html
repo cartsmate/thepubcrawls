@@ -9,16 +9,20 @@ $( function() {
 } );
 </script>
 
-<div class="row top-buffer justify-content-center">
-        <div class="d-flex " style="font-weight: bold; font-size: 14px;">
-             or pub name
+<div class="row top-buffer " style="padding: 10px; border:1px solid #0275d8;">
+    <div class="col">
+        <div class="row justify-content-center">
+            <div style="font-weight: bold; font-size: 14px;">
+                 Search pubs by name
+            </div>
         </div>
-</div>
-<div class="row">
-    <div class="col mx-auto">
-        <div class="d-flex justify-content-center">
-            <input placeholder="search pubs" id="tags" style="background-color: #F6F6F6; background-image: linear-gradient(#FAF9F6, #F6F6F6); width:220px; border-radius: 5px;">
-            <a><img src="/static/icons/buttons/arrow.png" onClick="goPub(document.getElementById('tags').value)" class="button_size"></a>
+        <div class="row">
+            <div class="col mx-auto">
+                <div class="d-flex justify-content-center">
+                    <input placeholder="search pubs" id="tags" style="background-color: #F6F6F6; background-image: linear-gradient(#FAF9F6, #F6F6F6); width:220px; border-radius: 5px;">
+                    <a><img src="/static/icons/buttons/arrow.png" onClick="goPub(document.getElementById('tags').value)" class="button_size"></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

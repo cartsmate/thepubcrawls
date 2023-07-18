@@ -6,10 +6,10 @@
 </div>
 {% endif %}
 
-<div class="row justify-content-center" style="display:flex; align-items:center; border-color:#0275d8; border-style:solid; background-color:#D3D3D3; border-width:thin">
+<div class="row justify-content-center" style="display:flex; align-items:center;">
 {% for k, field in review_obj.__dict__.items() %}
     {% if field.name in icon_list %}
-        <div style="border:1px solid #0275d8; text-align:center; padding:5px; background-color:#CDCDCD;" id="{{field.name}}_col">
+        <div style="text-align:center; padding:5px;" id="{{field.name}}_col">
             <div>
                 {% if form_type=='read' %}
                     <input type="checkbox" id="{{field.name}}" name="{{field.name}}" style="display:none" onclick="return false">
