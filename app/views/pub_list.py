@@ -34,6 +34,20 @@ def pub_list():
     station = request.args.get('station')
     direction = request.args.get('direction')
 
+    brunch = request.args.get('brunch')
+    dart = request.args.get('dart')
+    detail = request.args.get('detail')
+    entertain = request.args.get('entertain')
+    favourite = request.args.get('favourite')
+    garden = request.args.get('garden')
+    history = request.args.get('history')
+    late = request.args.get('late')
+    music = request.args.get('music')
+    pool = request.args.get('pool')
+    quiz = request.args.get('quiz')
+    roast = request.args.get('roast')
+    sport = request.args.get('sport')
+
     # df_pubs_reviews = EntitiesMulti().get_pubs_reviews_stations()
     df_pubs = pd.read_csv(directory_path + '/files/pubs.csv')
     df_reviews = pd.read_csv(directory_path + '/files/reviews.csv')
@@ -48,6 +62,15 @@ def pub_list():
     df_pb_rev_ara_st_dry = pd.merge(df_pb_rev_ara_st, df_diary, on='pub_identity', how='left')
     df_pb_rev_ara_st_dry = df_pb_rev_ara_st_dry.fillna('')
     heading = "Pubs"
+    # df2 = df[df['detail'].str.contains("music")]
+    df_selection = df_pb_rev_ara_st_dry
+    if day != 'all' and music == 'true':
+        print(f'music {music} on {day}')
+        df_selection = df_selection[df_selection[day].str.contains('music')]
+    if day != 'all' and quiz == 'true':
+        print(f'music {music} on {day}')
+        df_selection = df_selection[df_selection[day].str.contains('quiz')]
+
     if station != 'all':
         print(f'station: {station}')
         df_selection = df_pb_rev_ara_st_dry.loc[df_pb_rev_ara_st_dry['station_identity'] == station]
@@ -60,7 +83,7 @@ def pub_list():
         direction_name = df_directions.loc[df_directions['direction_identity'] == direction]['direction_name'].values[0]
         full_heading = f'{direction_name} {heading}'
     else:
-        df_selection = df_pb_rev_ara_st_dry
+        # df_selection = df_pb_rev_ara_st_dry
         full_heading = heading
     if day != 'all':
         df_selection = df_selection.loc[(df_selection[day] != '') & (df_selection[day] != 'Closed')]
