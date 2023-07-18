@@ -42,6 +42,7 @@
 function onLoad(){
     console.log("onLoad in pub_read");
     diary_headers = {{ diary_headers | tojson }}
+    diary_body = {{ diary_body | tojson }}
     form_type = {{ form_type | tojson }}
     zoom = {{ map_zoom }}
     config2 = {{config2 | tojson }}
@@ -86,11 +87,9 @@ function onLoad(){
     {% include "pub_map.html" %}
     <form action="{{ url_for('pub_read', pub_id=pubs_selection[0]['pub_identity']) }}" method="post">
         <!--margin: 15px 0; display: flex; align-items: center; border:1px solid #0275d8; background-color:#D3D3D3;"-->
-        <div class="form-group row" style="">
-            {% with auto_exec='off' %}
-                {% include "home_features.html" %}
-            {% endwith %}
-        </div>
+        {% with auto_exec='off' %}
+            {% include "home_features.html" %}
+        {% endwith %}
 {% endblock %}
 
 {% block right %}

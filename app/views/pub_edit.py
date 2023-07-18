@@ -62,15 +62,22 @@ def pub_edit():
     review_long = df_pub_review['pub_longitude'].values[0]
 
     diary_headers = []
-    diary_week = Week().__dict__.items()
-    for k, v in diary_week:
-        diary_headers.append(k)
+    diary_headers = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    # diary_week = Week().__dict__.items()
+    # for k, v in diary_week:
+    #     diary_headers.append(k)
+
+    directory_path = config2['directory_path']
+    df_diary = pd.read_csv(directory_path + '/files/diary.csv')
+    df_diary_selected = df_diary.loc[df_diary['pub_identity'] == pub_id]
+    df_diary_selected = df_diary_selected.fillna('')
+    diary_json = Dataframes().df_to_dict(df_diary_selected)
 
     return render_template('pub_read.html', form_type='edit', google_key=config2['google_key'],
                            pubs_selection=pubs_selected_json, config2=config2,
                            fields_list=fields_list, alias=alias,
                            stations=stations_json, areas=areas_json, config=config,
-                           pubs_reviews=pubs_reviews_json,
+                           pubs_reviews=pubs_reviews_json, diary_body=diary_json,
                            # pubs_reviews=test_reviews,
                            diary_headers=diary_headers,
                            map_lat=review_lat, map_lng=review_long, map_zoom=zoom,

@@ -60,9 +60,10 @@ def pub_read(pub_id):
     zoom = 16
 
     diary_headers = []
-    diary_week = Week().__dict__.items()
-    for k, v in diary_week:
-        diary_headers.append(k)
+    diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
+    # diary_week = Week().__dict__.items()
+    # for k, v in diary_week:
+    #     diary_headers.append(k)
 
     if request.method == 'GET':
         print('pub_read: GET')
@@ -86,17 +87,13 @@ def pub_read(pub_id):
         df_diary = pd.read_csv(directory_path + '/files/diary.csv')
         df_diary_selected = df_diary.loc[df_diary['pub_identity'] == pub_id]
         df_diary_selected = df_diary_selected.fillna('')
-        # for i in range(len(diary_headers)):
-        #     print(diary_headers[i])
-        #     print(df_diary_selected[diary_headers[i]])
-
         diary_json = Dataframes().df_to_dict(df_diary_selected)
 
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
                                pubs_selection=pub_review_json, config=config, config2=config2,
                                map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
                                fields_list=fields_list, alias=alias, diary_headers=diary_headers,
-                               station=station,
+                               station=station, diary_body=diary_json,
                                pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                check_list=check_list, slider_list=slider_list, date_list=date_list,
@@ -120,8 +117,6 @@ def pub_read(pub_id):
                 # df_pubs = S3().get_s3_pubs()
                 df_pubs = Csv().get_pubs()
                 df_pub_appended = Dataframes().append_df(df_pubs, df_new_pub)
-                # print(df_pub_appended[['pub_identity', 'pub_name', 'pub_deletion']])
-                # print(df_pub_appended)
                 error = ""
                 response = ""
                 if df_pub_appended.shape[1] == len(Pub2().__dict__.items()):
@@ -134,8 +129,8 @@ def pub_read(pub_id):
                     error = "Failed to save new venue"
                     # flash(error)
                     response = str('pub error')
+
                 df_new_review = FormNew().get_review(pub_id)
-                # print(df_new_review)
                 # df_reviews = S3().get_s3_reviews()
                 df_reviews = Csv().get_reviews()
                 df_review_appended = Dataframes().append_df(df_reviews, df_new_review)
@@ -154,6 +149,14 @@ def pub_read(pub_id):
                     # flash(error)
                     response += " | " + str('review error')
 
+                df_new_diary = FormNew().get_diary(pub_id)
+                directory_path = config2['directory_path']
+                df_diary = pd.read_csv(directory_path + '/files/diary.csv')
+                df_diary_appended = Dataframes().append_df(df_diary, df_new_diary)
+                if df_diary_appended.shape[1] == len(Week().__dict__.items()):
+                    df_diary_appended.to_csv(directory_path + '/files/diary.csv', sep=',', encoding='utf-8', index=False)
+                else:
+                    print('Error in processing')
                 station = df_new_pub['station_identity'].values[0]
 
                 df_new_merged = Dataframes().merge_dfs(df_new_pub, df_new_review)
@@ -161,27 +164,17 @@ def pub_read(pub_id):
                 df_station_added = Dataframes().add_station(df_area_added)
                 df_station_added['colour'] = '#0275d8'
                 pd.set_option('display.max_columns', None)
-                # print(df_station_added)
                 pub_review_json = Dataframes().df_to_dict(df_station_added)
 
-                # df_all = EntitiesMulti().get_pubs_reviews()
-                # df_all['colour'] = '#0275d8'
-                # df_all.loc[df_all['pub_identity'] == pub_id, 'colour'] = '#d9534f'
-                # pubs_reviews_json = Dataframes().df_to_dict(df_all)
-
+                diary_json = Dataframes().df_to_dict(df_diary)
                 review_lat = df_station_added['pub_latitude'].values[0]
                 review_long = df_station_added['pub_longitude'].values[0]
                 flash(response)
                 pub_review_list = df_pub_review['pub_identity'].tolist()
 
                 df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
-                # selected_station = df_new_pub['station_identity'].values[0]
-                # df_selection = df_pubs_reviews.loc[df_pubs_reviews['station_identity'] == selected_station]
-                # station = selected_station
-                # df_selection['colour'] = '#0275d8'
                 df_pubs_reviews['colour'] = '#d9534f'
                 df_pubs_reviews2 = df_pubs_reviews[~df_pubs_reviews['pub_identity'].isin([pub_review_list])]
-                # df_selection.loc[df_selection['pub_identity'] == pub_id, 'colour'] = '#d9534f'
                 pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews2)
 
                 return render_template('pub_read.html', response=response, diary_headers=diary_headers,
@@ -193,7 +186,7 @@ def pub_read(pub_id):
                                        star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                        check_list=check_list, slider_list=slider_list, date_list=date_list,
                                        form_visible_list=form_visible_list, table_visible_list=table_visible_list,
-                                       required_list=required_list,
+                                       required_list=required_list, diary_body=diary_json,
                                        alias_list=alias_list, icon_list=icon_list,
                                        review_obj=Review2(), ignore_list=ignore_list)
             else:
@@ -220,6 +213,9 @@ def pub_read(pub_id):
             df_diary = pd.read_csv(directory_path + '/files/diary.csv')
             df_diary_updated = FormInput().get_diary(df_diary, pub_id)
             df_diary_updated.to_csv(directory_path + '/files/diary.csv', index=False, sep=',', encoding='utf-8')
+            df_diary_selected = df_diary_updated.loc[df_diary_updated['pub_identity'] == pub_id]
+            df_diary_selected = df_diary_selected.fillna('')
+            diary_json = Dataframes().df_to_dict(df_diary_selected)
 
             selected_station = df_pub_review['station_identity'].values[0]
             station = selected_station
@@ -243,7 +239,7 @@ def pub_read(pub_id):
                                    # response=response,
                                    form_type='read', google_key=config2['google_key'],
                                    pubs_selection=pub_review_json, diary_headers=diary_headers,
-                                   pubs_reviews=pubs_reviews_json,
+                                   pubs_reviews=pubs_reviews_json, diary_body=diary_json,
                                    config=config, config2=config2,
                                    stations=stations_json, areas=areas_json,
                                    fields_list=fields_list, alias=alias, station=station,

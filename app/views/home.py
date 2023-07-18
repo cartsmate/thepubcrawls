@@ -100,9 +100,10 @@ def home():
     areas_json = Dataframes().df_to_dict(df_areas)
 
     diary_headers = []
-    diary_week = Week().__dict__.items()
-    for k, v in diary_week:
-        diary_headers.append(k)
+    diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
+    # diary_week = Week().__dict__.items()
+    # for k, v in diary_week:
+    #     diary_headers.append(k)
     # print(diary_headers)
     return render_template('home.html',
                            # list_areas=list_areas,
