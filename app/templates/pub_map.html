@@ -17,9 +17,13 @@ function initMap(){
     lat = {{map_lat}}
     lng = {{map_lng}}
 
-    map = show_map(lat, lng, zoom)
+    map = show_map(lat, lng)
+
     add_markers(map, pubs_selection)
     listen_bounds_changed(map, pubs_reviews)
+
+    var zoom = map.getZoom()
+    console.log('zoom: ' + zoom)
 
     key = {{ google_key | tojson }}
     stations = {{stations | tojson}}

@@ -33,16 +33,15 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/station_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/sum_score.js') }}"></script>
 
-<!--
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_click_off.js') }}"></script>
--->
 <script>form_type = {{ form_type | tojson }}</script>
 
 <script>
 function onLoad(){
     console.log("onLoad in pub_read");
     diary_headers = {{ diary_headers | tojson }}
+    console.log(diary_headers)
     diary_body = {{ diary_body | tojson }}
+    console.log(diary_body)
     form_type = {{ form_type | tojson }}
     zoom = {{ map_zoom }}
     config2 = {{config2 | tojson }}
@@ -60,7 +59,7 @@ function onLoad(){
     alias_list = {{ alias_list | tojson }}
     icon_list = {{ icon_list | tojson }}
 
-    mapLoad('{{google_key}}');
+    mapLoad('{{google_key}}', form_type, station);
 
     populate_form(form_type);
     populate_diary(form_type);

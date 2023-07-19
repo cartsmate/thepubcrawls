@@ -2,7 +2,7 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Late:
-    def __init__(self, name="late", alias="open", alias2="late", required=True, form_visible=False,
+    def __init__(self, name="late", alias="late", alias2="open", required=True, form_visible=False,
                  table_visible=False, value=False, control="check", icon="late.png"):
         self.name = name
         self.alias = alias

@@ -2,7 +2,7 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Music:
-    def __init__(self, name="music", alias="live", alias2="music", required=True, form_visible=False,
+    def __init__(self, name="music", alias="music", alias2="live", required=True, form_visible=False,
                  table_visible=False, value=False, control="check", icon="music.png"):
         self.name = name
         self.alias = alias

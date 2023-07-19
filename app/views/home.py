@@ -100,14 +100,22 @@ def home():
     areas_json = Dataframes().df_to_dict(df_areas)
 
     diary_headers = []
-    diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
+    diary_headers = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     # diary_week = Week().__dict__.items()
     # for k, v in diary_week:
     #     diary_headers.append(k)
     # print(diary_headers)
+
+    directory_path = config2['directory_path']
+    df_1 = pd.read_csv(directory_path + '/files/pubs.csv')
+    df_2 = pd.read_csv(directory_path + '/files/reviews.csv')
+    pubs_selection = pd.merge(df_1, df_2, on='pub_identity', how='left')
+    pubs_selection['colour'] = '#d9534f'
+    pub_review_json = Dataframes().df_to_dict(pubs_selection)
+
     return render_template('home.html',
                            # list_areas=list_areas,
-                           list_stations=list_stations,
+                           list_stations=list_stations, pubs_selection=pub_review_json,
                            areas=areas_json,
                            stations=stations_json, stations_directions_list=stations_directions_list,
                            map_lat=review_lat, map_lng=review_long, map_zoom=16,

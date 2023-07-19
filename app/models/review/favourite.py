@@ -2,7 +2,7 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Favourite:
-    def __init__(self, name="favourite", alias="PC", alias2="favs", required=True, form_visible=False,
+    def __init__(self, name="favourite", alias="best", alias2="favourites", required=True, form_visible=False,
                  table_visible=False, value=False, control="check", icon="favourite.png"):
         self.name = name
         self.alias = alias

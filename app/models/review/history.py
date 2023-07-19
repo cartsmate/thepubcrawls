@@ -2,8 +2,8 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class History:
-    def __init__(self, name="history", alias="historic", alias2="venue", required=True, form_visible=False,
-                 table_visible=False, value=False, control="check", icon="castle.png"):
+    def __init__(self, name="history", alias="history", alias2="venue", required=True, form_visible=False,
+                 table_visible=False, value=False, control="check", icon="history.png"):
         self.name = name
         self.alias = alias
         self.alias2 = alias2

@@ -30,28 +30,12 @@
         </div>
     {% endif %}
     <!--
-    {% if (form_type  == 'add' or form_type == 'home' or form_type == 'list' or form_type == 'read') %}
-        <div style="text-align: center;">
-            <a href="{{url_for('pub_areas')}}"><img src="/static/icons/footer/areas1.png" class="button_size"></a>
-            <div class="button_caption">ALL<br>AREAS</div>
-        </div>
         <div style="text-align: center;">
             <a href="{{url_for('admin')}}"><img src="/static/icons/footer/admin.png" class="button_size"></a>
             <div class="button_caption">RUN<br>ADMIN</div>
         </div>
-    {% endif %}
     -->
     {% if (form_type == 'home') %}
-        <!--
-        <div style="text-align: center;">
-            <a href="{{url_for('pub_search')}}"><img src="/static/icons/footer/search.png" class="button_size"></a>
-            <div class="button_caption">SEARCH<br>PUBS</div>
-        </div>
-        <div style="text-align: center;">
-            <a href="{{url_for('pub_map')}}"><img src="/static/icons/footer/global.png" class="button_size"></a>
-            <div class="button_caption">MAP<br>VIEW</div>
-        </div>
-        -->
         <div style="text-align: center;">
             <a href="{{url_for('pub_crawl')}}"><img src="/static/icons/footer/route.png" class="button_size"></a>
             <div class="button_caption">PUB<br>CRAWL</div>

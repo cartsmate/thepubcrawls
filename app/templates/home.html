@@ -19,31 +19,54 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_home.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_list.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/code_address.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_map_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_load.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_search.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_bounds.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_marker_bounds.js') }}"></script>
 
 <script>
 function onLoad(){
-    zoom = {{ map_zoom }}
-    console.log('zoom: ' + zoom)
-    counter = {{ counter | tojson }}
-    icon_list = {{ icon_list | tojson }}
-    config2 = {{ config2 | tojson }}
-    areas = {{ areas | tojson }}
-    display_counter(counter);
-}
+        console.log('onLoad')
+        zoom = {{ map_zoom }}
+        console.log('zoom: ' + zoom)
+        counter = {{ counter | tojson }}
+        icon_list = {{ icon_list | tojson }}
+        config2 = {{ config2 | tojson }}
+        areas = {{ areas | tojson }}
+
+        form_type = {{ form_type | tojson }}
+        mapLoad('{{google_key}}', form_type, 'all');
+
+        display_counter(counter);
+    }
+
+function initMap(){
+        console.log('initMap')
+        pubs_selection = {{pubs_selection | tojson }}
+        const input = document.getElementById("tags_postcode");
+        const searchBox = new google.maps.places.SearchBox(input);
+        map = show_map(0, 0)
+        add_markers(map, pubs_selection)
+
+    }
 </script>
 {% endblock %}
 
 {% block main %}
 <div class="col-md-12 mx-auto " id="main">
     {% include "home_intro.html" %}
-    <div style="border:1px solid #0275d8;">
-        {% include "home_station.html" %}
-        {% include "pub_week.html" %}
-        {% with auto_exec='off' %}
-            {% include "home_features.html" %}
-        {% endwith %}
+    <div class="row top-buffer" style="padding: 10px; border:1px solid #0275d8;">
+        <div class="col">
+            {% include "home_station.html" %}
+            {% include "pub_week.html" %}
+            {% with auto_exec='off' %}
+                {% include "home_features.html" %}
+            {% endwith %}
+        </div>
     </div>
     {% with auto_exec='off' %}
         {% include "home_by_name.html" %}

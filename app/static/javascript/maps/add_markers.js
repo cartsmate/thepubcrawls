@@ -7,11 +7,12 @@ function add_markers(map, data) {
     var infowindow = new google.maps.InfoWindow();
     var marker, i, j;
     var bounds = new google.maps.LatLngBounds();
+    console.log(data)
     for (var key in data) {
         //console.log(data[key])
         var pinColor = data[key].colour
         //var pinColor = "#0275d8"
-        console.log(pinColor)
+        console.log('colour: ' + pinColor)
         if (true == false) {
             var pinHole = pinSVGFilled
             var label = {
@@ -92,5 +93,5 @@ function add_markers(map, data) {
     //var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
     //bounds.extend(myLatLng);
     map.fitBounds(bounds);
-    add_marker_bounds(map, bounds, pubs_reviews)
+    add_marker_bounds(map, bounds, data)
 }
