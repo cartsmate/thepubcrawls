@@ -2,7 +2,7 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Dart:
-    def __init__(self, name='dart', alias="dart", alias2="board", required=True, form_visible=False,
+    def __init__(self, name='dart', alias="darts", alias2="board", required=True, form_visible=False,
                  table_visible=False, value=False, control="check", icon="dart.png"):
         self.name = name
         self.alias = alias
