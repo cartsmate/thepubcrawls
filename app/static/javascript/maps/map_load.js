@@ -4,7 +4,7 @@ function mapLoad(google_key, form_type, station) {
     console.log('station: ' + station)
     var js = document.createElement("script");
     js.type = "text/javascript";
-    if (station != 'all' || form_type == 'home') {
+    if (station != 'all' || form_type == 'home' || total_rows < 100) {
         if ( window.navigator.onLine == true) {
             console.log('google map api')
             js.src = 'https://maps.googleapis.com/maps/api/js?key=' + google_key + '&libraries=places&callback=initMap'

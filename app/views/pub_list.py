@@ -93,7 +93,6 @@ def pub_list():
         df_selection = df_selection.loc[(df_selection[day] != '') & (df_selection[day] != 'Closed')]
         full_heading = f'{full_heading} on a {day}'
 
-    print(df_selection[['pub_name', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'detail']])
     review_list = {}
     pub_id = uuid.uuid4()
     for review in list(Review2().__dict__.keys()):
@@ -104,8 +103,6 @@ def pub_list():
                 review_list[review] = ['True', 'False']
     for review in review_list:
         df_selection = df_selection.loc[(df_selection[review].astype(str).isin(review_list[review]))]
-
-
 
     headers = list(df_selection.columns)
 
@@ -134,20 +131,25 @@ def pub_list():
         alias[k] = k
 
     if lat is not None:
-        dist_attr_list = ['pub_identity', 'pub_latitude', 'pub_longitude', 'distance']
+        dist_attr_list = ['pub_identity', 'pub_name', 'station', 'lat', 'lng', 'pub_latitude', 'pub_longitude', 'distance']
         df_distance = pd.DataFrame(columns=dist_attr_list)
         for index, row in df_selection.iterrows():
-
-            lat_diff = row['pub_latitude'] - float(lat)
-            lng_diff = row['pub_longitude'] - float(lng)
+            lat_diff = abs(row['pub_latitude'] - float(lat))
+            lng_diff = abs(row['pub_longitude'] - float(lng))
             tot_diff = lat_diff + lng_diff
-            dist_val_list = [row['pub_identity'], row['pub_latitude'], row['pub_longitude'], tot_diff]
-            df_new_dist = pd.DataFrame(columns=dist_attr_list, data=[dist_val_list])
-            df_distance = pd.concat([df_distance, df_new_dist], axis=0)
-        df_distance = df_distance.sort_values(by='distance', ascending=False)
-        df_distance = df_distance.head(10)
-        distance_list = df_distance['pub_identity'].tolist()
-        df_selection = df_selection.loc[df_selection['pub_identity'].isin(distance_list)]
+            df_selection['distance'] = tot_diff
+            dist_val_list = [row['pub_identity'], row['pub_name'], row['station_name'], lat, lng, row['pub_latitude'], row['pub_longitude'], tot_diff]
+            # df_new_dist = pd.DataFrame(columns=dist_attr_list, data=[dist_val_list])
+            # df_distance = pd.concat([df_distance, df_new_dist], axis=0)
+        df_selection = df_selection.sort_values(by='distance', ascending=True)
+        print(df_selection[['pub_identity', 'pub_name', 'station_name', 'pub_latitude', 'pub_longitude', 'distance']])
+        df_selection = df_selection.head(10)
+        print(df_selection[['pub_identity', 'pub_name', 'station_name', 'pub_latitude', 'pub_longitude', 'distance']])
+        # distance_list = df_distance['pub_identity'].tolist()
+        # print(distance_list)
+        # df_selection = df_selection.loc[df_selection['pub_identity'].isin(distance_list)]
+
+        # print(df_selection[['pub_identity', 'pub_name', 'station_name', 'pub_latitude', 'pub_longitude']])
         df_selection['colour'] = '#0275d8'
         # print(df_selection)
     else:
@@ -184,7 +186,7 @@ def pub_list():
         review_lat = sum(_lat) / len(_lat)
         review_long = sum(_long) / len(_long)
 
-    print(df_selection)
+    # print(df_selection)
     for review in list(Review2().__dict__.keys()):
         if review not in ignore_list:
             df_unique = df_selection[review].unique()
