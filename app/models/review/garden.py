@@ -2,7 +2,7 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Garden:
-    def __init__(self, name="garden", alias="beer", alias2="garden", required=True, form_visible=False,
+    def __init__(self, name="garden", alias="garden", alias2="outside", required=True, form_visible=False,
                  table_visible=False, value=False, control="check", icon="garden.png"):
         self.name = name
         self.alias = alias

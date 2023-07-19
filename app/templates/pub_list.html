@@ -38,7 +38,7 @@ function onLoad() {
     day = {{ day | tojson }}
     icon_list = {{ icon_list | tojson }}
     config2 = {{ config2 | tojson }}
-
+    form_type = {{form_type | tojson}}
     filter = {{ filter | tojson }}
     total_rows = {{ total_rows | tojson }}
     var header_listing = String(filter['0']).toUpperCase() + String(filter).substring(1)
@@ -65,7 +65,8 @@ function onLoad() {
         }
     })
     Search(headers, visible)
-    mapLoad('{{google_key}}', station);
+    console.log('station: ' + '{{station}}')
+    mapLoad('{{google_key}}', form_type, station);
     console.log(day)
     document.getElementById('day').value = day;
     if (day != 'all') {

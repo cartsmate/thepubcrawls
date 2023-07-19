@@ -34,6 +34,9 @@ def pub_list():
     station = request.args.get('station')
     direction = request.args.get('direction')
 
+    lat = request.args.get('lat')
+    lng = request.args.get('lng')
+
     brunch = request.args.get('brunch')
     dart = request.args.get('dart')
     detail = request.args.get('detail')
@@ -63,13 +66,6 @@ def pub_list():
     df_pb_rev_ara_st_dry = df_pb_rev_ara_st_dry.fillna('')
     heading = "Pubs"
     # df2 = df[df['detail'].str.contains("music")]
-    df_selection = df_pb_rev_ara_st_dry
-    if day != 'all' and music == 'true':
-        print(f'music {music} on {day}')
-        df_selection = df_selection[df_selection[day].str.contains('music')]
-    if day != 'all' and quiz == 'true':
-        print(f'music {music} on {day}')
-        df_selection = df_selection[df_selection[day].str.contains('quiz')]
 
     if station != 'all':
         print(f'station: {station}')
@@ -85,10 +81,19 @@ def pub_list():
     else:
         # df_selection = df_pb_rev_ara_st_dry
         full_heading = heading
+        df_selection = df_pb_rev_ara_st_dry
+    if day != 'all' and music == 'true':
+        print(f'music {music} on {day}')
+        df_selection = df_selection[df_selection[day].str.contains('music')]
+    if day != 'all' and quiz == 'true':
+        print(f'music {music} on {day}')
+        df_selection = df_selection[df_selection[day].str.contains('quiz')]
+
     if day != 'all':
         df_selection = df_selection.loc[(df_selection[day] != '') & (df_selection[day] != 'Closed')]
         full_heading = f'{full_heading} on a {day}'
-    print(df_selection[['pub_name','monday','tuesday','wednesday','thursday','friday','saturday','sunday','detail']])
+
+    print(df_selection[['pub_name', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'detail']])
     review_list = {}
     pub_id = uuid.uuid4()
     for review in list(Review2().__dict__.keys()):
@@ -100,8 +105,7 @@ def pub_list():
     for review in review_list:
         df_selection = df_selection.loc[(df_selection[review].astype(str).isin(review_list[review]))]
 
-    df_selection['colour'] = '#0275d8'
-    pubs_selection_json = Dataframes().df_to_dict(df_selection)
+
 
     headers = list(df_selection.columns)
 
@@ -129,6 +133,35 @@ def pub_list():
             visible[k] = False
         alias[k] = k
 
+    if lat is not None:
+        dist_attr_list = ['pub_identity', 'pub_latitude', 'pub_longitude', 'distance']
+        df_distance = pd.DataFrame(columns=dist_attr_list)
+        for index, row in df_selection.iterrows():
+
+            lat_diff = row['pub_latitude'] - float(lat)
+            lng_diff = row['pub_longitude'] - float(lng)
+            tot_diff = lat_diff + lng_diff
+            dist_val_list = [row['pub_identity'], row['pub_latitude'], row['pub_longitude'], tot_diff]
+            df_new_dist = pd.DataFrame(columns=dist_attr_list, data=[dist_val_list])
+            df_distance = pd.concat([df_distance, df_new_dist], axis=0)
+        df_distance = df_distance.sort_values(by='distance', ascending=False)
+        df_distance = df_distance.head(10)
+        distance_list = df_distance['pub_identity'].tolist()
+        df_selection = df_selection.loc[df_selection['pub_identity'].isin(distance_list)]
+        df_selection['colour'] = '#0275d8'
+        # print(df_selection)
+    else:
+        df_selection['colour'] = '#0275d8'
+
+    pubs_selection_json = Dataframes().df_to_dict(df_selection)
+
+    selection_id_list = df_selection['pub_identity'].tolist()
+    df_non_selection = df_pb_rev_ara_st_dry.loc[~df_pb_rev_ara_st_dry['pub_identity'].isin(selection_id_list)]
+    df_non_selection['colour'] = '#d9534f'
+
+    pubs_reviews_json = Dataframes().df_to_dict(df_non_selection)
+
+
     form_obj = {}
     total_rows = df_selection.shape[0]
 
@@ -151,12 +184,7 @@ def pub_list():
         review_lat = sum(_lat) / len(_lat)
         review_long = sum(_long) / len(_long)
 
-    selection_id_list = df_selection['pub_identity'].tolist()
-    df_non_selection = df_pb_rev_ara_st_dry.loc[~df_pb_rev_ara_st_dry['pub_identity'].isin(selection_id_list)]
-    df_non_selection['colour'] = '#d9534f'
-
-    pubs_reviews_json = Dataframes().df_to_dict(df_non_selection)
-
+    print(df_selection)
     for review in list(Review2().__dict__.keys()):
         if review not in ignore_list:
             df_unique = df_selection[review].unique()
@@ -175,7 +203,7 @@ def pub_list():
     areas_json = Dataframes().df_to_dict(df_areas)
 
     diary_headers = []
-    diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
+    diary_headers = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     # diary_week = Week().__dict__.items()
     # for k, v in diary_week:
     #     diary_headers.append(k)

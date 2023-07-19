@@ -29,7 +29,9 @@ def pub_add():
     station = request.args.get('station')
     direction = request.args.get('direction')
     lat = request.args.get('lat')
+    print(lat)
     lng = request.args.get('lng')
+    print(lng)
     zoom = request.args.get('zoom')
 
     pub_id = uuid.uuid4()
@@ -57,27 +59,39 @@ def pub_add():
 
     df_reviews = Csv().get_records('review')
     df_pubs_stations_reviews = pd.merge(df_pubs_stations, df_reviews, how='left', on='pub_identity')
+    df_pubs_stations_reviews['colour'] = '#d9534f'
 
     if station != 'all':
-        df_selected = df_pubs.loc[df_pubs['station_identity'] == station]
+        df_selected = df_pubs_stations_reviews.loc[df_pubs_stations_reviews['station_identity'] == station]
     elif direction != 'all':
-        df_selected = df_pubs_stations.loc[df_pubs_stations['direction_identity'] == direction]
+        df_selected = df_pubs_stations_reviews.loc[df_pubs_stations_reviews['direction_identity'] == direction]
     else:
-        df_selected = df_pubs_stations_reviews.loc[df_pubs_stations_reviews['favourite'] == True]
+        df_selected = df_pubs_stations_reviews
 
-    df_selected = df_pubs_stations_reviews
 
-    if lat != None:
+    if lat is not None:
         review_lat = lat
         review_long = lng
     else:
-        review_lat = df_selected['pub_latitude'].values[0]
-        review_long = df_selected['pub_longitude'].values[0]
+        list_L = df_selected[['pub_latitude', 'pub_longitude']].values.tolist()
+        _lat = []
+        _long = []
+        for l in list_L:
+            _lat.append(l[0])
+            _long.append(l[1])
+        review_lat = sum(_lat) / len(_lat)
+        review_long = sum(_long) / len(_long)
+    # if lat != None:
+    #     review_lat = lat
+    #     review_long = lng
+    # else:
+    #     review_lat = df_selected['pub_latitude'].values[0]
+    #     review_long = df_selected['pub_longitude'].values[0]
 
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
     required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
 
-    pubs_reviews_json = Dataframes().df_to_dict(df_selected)
+    pubs_reviews_json = Dataframes().df_to_dict(df_pubs_stations_reviews)
 
     pub_attr_list = []
     pub_val_list = []
@@ -114,15 +128,32 @@ def pub_add():
     df_pub_review.fillna(' ', inplace=True)
     pub_json = Dataframes().df_to_dict(df_pub_review)
 
+    diary_attr_list = []
+    diary_val_list = []
+    for k, v in Review2().__dict__.items():
+        if k == 'pub_identity':
+            diary_attr_list.append(k)
+            print('id in loop: ' + str(pub_id))
+            diary_val_list.append(str(pub_id))
+        else:
+            diary_attr_list.append(k)
+            diary_val_list.append(k)
+    df_new_diary = pd.DataFrame(columns=diary_attr_list, data=[diary_val_list])
+    df_new_diary.fillna('', inplace=True)
+    diary_json = Dataframes().df_to_dict(df_new_diary)
+
+    diary_headers = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+
     return render_template("pub_read.html", form_type='add', google_key=config2['google_key'],
-                           config=config, config2=config2,
+                           config=config, config2=config2, diary_body=diary_json,
                            map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
-                           pubs_selection=pub_json, pubs_reviews=pubs_reviews_json,
+                           pubs_selection=pub_json,
+                           pubs_reviews=pubs_reviews_json,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,
                            alias_list=alias_list, icon_list=icon_list, alias=alias,
                            form_visible_list=form_visible_list,
                            table_visible_list=table_visible_list, required_list=required_list,
-                           fields_list=fields_list,
+                           fields_list=fields_list, diary_headers=diary_headers,
                            stations=stations_json, areas=areas_json,
                            review_obj=Review2(), ignore_list=ignore_list)

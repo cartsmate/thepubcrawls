@@ -2,7 +2,7 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Brunch:
-    def __init__(self, name="brunch", alias="bottom", alias2="brunch",  required=True, form_visible=False,
+    def __init__(self, name="brunch", alias="brunch", alias2="bottomless",  required=True, form_visible=False,
                  table_visible=False, value=False, control="check", icon="brunch.png"):
         self.name = name
         self.alias = alias

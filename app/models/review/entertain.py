@@ -2,9 +2,9 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Entertain:
-    def __init__(self, name="entertain", alias="entertain", alias2="ment", required=True, form_visible=False,
+    def __init__(self, name="entertain", alias="fun", alias2="games", required=True, form_visible=False,
                  table_visible=False, value=False,
-                 control="check", icon="entertainment.png"):
+                 control="check", icon="theatre.png"):
         self.name = name
         self.alias = alias
         self.alias2 = alias2
