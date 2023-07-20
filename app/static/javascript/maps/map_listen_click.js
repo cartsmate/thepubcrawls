@@ -6,7 +6,7 @@ function map_listen_click(map, data) {
 
             var request = {
                 placeId: event.placeId,
-                fields: ['rating', 'reviews', 'user_ratings_total']
+                fields: ['rating', 'reviews', 'user_ratings_total', 'editorial_summary']
             };
             var service = new google.maps.places.PlacesService(map);
             service.getDetails(request, function(place, status) {
@@ -14,6 +14,7 @@ function map_listen_click(map, data) {
                     var reviews = place.reviews;
                     // console.log(place.rating + ' ' + place.user_ratings_total)
                     document.getElementById("rank").value = place.rating
+                    console.log(place.editorial_summary)
                     shadeStars('rank', place.rating, 'map')
                     // Process and display the reviews on your web page as desired
                 }

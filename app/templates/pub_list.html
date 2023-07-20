@@ -32,6 +32,7 @@ function onLoad() {
     pubs_selection = {{ pubs_selection | tojson }};
     headers = {{ headers | tojson }}
     visible = {{ visible | tojson }}
+    order = {{ order | tojson }}
     form_obj = {{ form_obj | tojson }}
     station = {{ station | tojson }}
     direction = {{ direction | tojson }}
@@ -64,10 +65,8 @@ function onLoad() {
             document.getElementById(key + "_img").style.opacity = "0.25";
         }
     })
-    Search(headers, visible)
-    console.log('station: ' + '{{station}}')
+    Search(headers, visible, order)
     mapLoad('{{google_key}}', form_type, station);
-    console.log(day)
     document.getElementById('day').value = day;
     if (day != 'all') {
         document.getElementById(day).checked = true
@@ -85,10 +84,10 @@ function onLoad() {
 {% endblock %}
 
 {% block left %}
-    {% include "pub_map.html" %}
     {% with auto_exec='on' %}
         {% include "home_features.html" %}
     {% endwith %}
+    {% include "pub_map.html" %}
 {% endblock %}
 
 {% block right %}
@@ -97,7 +96,7 @@ function onLoad() {
             {% include "pub_week.html" %}
         {% endwith %}
     </div>
-    <div class="row" style="display: flex; align-items: center; background-color:#D3D3D3; overflow-x:scroll;">
+    <div class="row justify-content-center" style="overflow-x:scroll;">
         {% include "search_table.html" %}
     </div>
 {% endblock %}

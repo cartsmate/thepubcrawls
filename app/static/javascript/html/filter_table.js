@@ -7,28 +7,22 @@ function addJson(headers, visible) {
     return json_list
 }
 
-function Search(headers, visible) {
+function Search(headers, visible, order) {
     console.log('inside Search')
+    console.log(headers)
+    console.log(visible)
+    console.log(order)
     $(document).ready(function () {
         $('#pub_list').DataTable({
             paging: true,
             info: false,
-            order: [[9, 'desc']],
+            order: [[48, 'asc']],
             columnDefs: addJson(headers, visible)
         });
     });
 }
 
-function SearchDay(headers, visible) {
-    console.log('inside SearchDay')
-    $(document).ready(function () {
-        $('#pub_list').DataTable({
-            paging: true,
-            info: false,
-            columnDefs: addJson(headers, visible)
-        });
-    });
-}
+
 
 function Reset() {
      window.location = "/pub/list";
