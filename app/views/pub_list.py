@@ -157,7 +157,7 @@ def pub_list():
         print(visible_order)
     else:
         df_selection['colour'] = '#0275d8'
-        visible_order = df_selection.columns.get_loc("rating")
+        visible_order = df_selection.columns.get_loc("rank")
         visible['distance'] = False
         print(visible_order)
 

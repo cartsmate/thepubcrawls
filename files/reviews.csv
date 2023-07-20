@@ -291,7 +291,7 @@ False,False,Quirky front room decor with outdoor seating,False,False,False,False
 False,False,Hotel bar,False,False,False,False,False,False,False,180f2d7c-ac08-4db1-88a7-ffb8f4d0029d,False,False,59270c22-5191-46ef-91fa-500b138b92ea,False,False
 False,False,Basic pub,False,False,True,False,False,False,False,5b4b2fef-e480-4c23-aed5-4f5f180e50e1,False,False,ef368f1e-9168-42a8-835c-6c8a3f80eca8,False,True
 False,False,Wed 8pm quiz,False,False,True,False,False,False,False,b97c49e9-c8a8-40f6-b7be-5604e201548a,True,False,ea536836-842d-4d10-9c57-7af151ec97f1,True,True
-False,False,Thur: opening mic. Fri-Sun live music,True,False,False,False,True,True,False,93ca1ef7-254a-40f8-b767-aab9beefbfc3,True,False,a51219f3-46da-4ed5-8a11-caa68f5ecec8,False,True
+False,False,,True,False,False,False,True,True,False,93ca1ef7-254a-40f8-b767-aab9beefbfc3,True,False,a51219f3-46da-4ed5-8a11-caa68f5ecec8,False,True
 False,True,Tue board games night. Fri/Sat DJs. Sun 8pm quiz,True,False,True,False,True,False,True,0a0b64ce-badb-49b7-b4e6-2a725d564598,True,False,71d0f1b2-358b-4167-85a9-454c121da1a5,True,True
 False,False,Wed 7.30pm quiz,False,False,True,False,False,False,False,44f933f3-3089-4df8-b983-489565b2424b,True,False,78930605-bc04-4133-b229-f12c55eb149d,True,True
 False,False,Games room,False,False,False,False,False,False,False,9d834e48-f83d-4419-9899-e4b3b9a3dc69,False,False,98bdff11-1112-41c4-bd68-fb954299aa3c,False,False
@@ -856,8 +856,8 @@ False,False,TBC,False,False,False,False,False,False,False,3994296a-ca1a-4a2d-863
 False,False,TBC,False,False,False,False,False,False,False,1190fe04-7140-4fc0-82a1-8aa5e60e2cf0,False,False,b8ee1c28-2290-4a20-9d43-f8ffbd787962,False,False
 False,False,TBC,False,False,False,False,False,False,False,56175398-3dfa-42ab-89b3-782e4fa9faa5,False,False,50cd4cba-a722-4e0d-a036-9f8c32eade31,False,False
 False,False,TBC,False,False,False,False,False,False,False,ba0800b7-647d-425f-8089-6507c417b099,False,False,3e6277b6-b613-489a-8331-4f9b9c723a69,False,False
-False,False,TBC,False,False,False,False,False,False,False,d2197b2d-46ee-44dd-98f8-4ea345880c75,False,False,5b8bd426-0393-4a56-8a22-a18485a76aff,False,False
-False,False,TBC,False,False,False,False,False,False,False,cd2277a1-8247-4dbd-90cb-8181ad7c70e3,False,False,6c133753-6eee-43ac-aa28-f606af7d1d91,False,False
+False,True,Table football and karaoke,True,False,True,False,True,False,False,d2197b2d-46ee-44dd-98f8-4ea345880c75,True,False,5b8bd426-0393-4a56-8a22-a18485a76aff,True,True
+False,False,TBC,True,False,False,False,False,True,False,cd2277a1-8247-4dbd-90cb-8181ad7c70e3,False,False,6c133753-6eee-43ac-aa28-f606af7d1d91,False,False
 False,False,TBC,False,False,False,False,False,False,False,fdfafe8a-871c-404c-8353-bf04ecfcded6,False,False,8a25f5d6-4b15-48e3-be13-78b6d619f05c,False,False
 False,False,TBC,False,False,False,False,False,False,False,8db5a004-e021-440d-9076-277bcdc9c36f,False,False,5274a54d-4481-44ce-86ba-28943c20022d,False,False
 False,False,TBC,False,False,False,False,False,False,False,43c1b734-6005-4366-a3f2-688c0f8d1a9b,False,False,2f0f1fb8-80bb-4c75-9b8f-783653318bdd,False,False
@@ -1234,3 +1234,5 @@ False,False,TBC,False,False,False,False,False,False,False,fa89134a-ed35-4bea-a4d
 False,False,TBC,False,False,False,False,False,False,False,0f721e37-3d72-4942-a154-5e8e453421eb,False,False,1db0d54b-502e-4f07-9bc9-141ce6db91b1,False,False
 False,False,TBC,False,False,False,False,False,False,False,6c2685e9-a582-44ce-aa82-a506db4810a0,False,False,c76911c2-ee86-43a0-a936-8f494526bf87,False,False
 False,False,TBC,False,False,False,False,False,False,False,4e10d94f-8393-471b-a1ab-7a10b475227d,False,False,507d3cff-a782-4aeb-ad38-851bdbf1dd7b,False,False
+False,False,TBC,False,False,False,False,False,False,False,49e1ca62-3f10-415d-8542-ae86ac75e25e,False,False,7c9a6c93-9214-4fb2-a106-53b2839dadec,False,False
+False,False,TBC,False,False,False,False,False,False,False,a795e025-2fa8-4b66-a22b-fbecca53fd4d,False,False,30664123-9de0-49ff-b004-531f016880cc,False,False

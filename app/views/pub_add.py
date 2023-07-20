@@ -32,7 +32,6 @@ def pub_add():
     print(lat)
     lng = request.args.get('lng')
     print(lng)
-    zoom = request.args.get('zoom')
 
     pub_id = uuid.uuid4()
     print('new id: ' + str(pub_id))
@@ -146,7 +145,7 @@ def pub_add():
 
     return render_template("pub_read.html", form_type='add', google_key=config2['google_key'],
                            config=config, config2=config2, diary_body=diary_json,
-                           map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
+                           map_lat=review_lat, map_lng=review_long,
                            pubs_selection=pub_json,
                            pubs_reviews=pubs_reviews_json,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
