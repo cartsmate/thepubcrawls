@@ -3,7 +3,6 @@ function goPub() {
     selected_pub = document.getElementById('tags').value
     requested_postcode = document.getElementById('tags_postcode').value
     if (requested_postcode == "") {
-        alert("none")
         var base_url = window.location.hostname
         if (config2['env'] == 'prod') {
             var url = "http://" + base_url + "/pub/"
@@ -16,7 +15,5 @@ function goPub() {
         window.location.replace(myUrlWithParams.href);
     } else {
         codeAddress(requested_postcode)
-
     }
-
 }

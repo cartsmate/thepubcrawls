@@ -68,13 +68,13 @@ def pub_list():
     # df2 = df[df['detail'].str.contains("music")]
 
     if station != 'all':
-        print(f'station: {station}')
+        # print(f'station: {station}')
         df_selection = df_pb_rev_ara_st_dry.loc[df_pb_rev_ara_st_dry['station_identity'] == station]
         station_name = df_stations.loc[df_stations['station_identity'] == station]['station_name'].values[0]
         full_heading = f'{station_name} {heading}'
-        print(df_selection)
+        # print(df_selection)
     elif request.args.get('direction') != 'all':
-        print(f'direction: {direction}')
+        # print(f'direction: {direction}')
         df_selection = df_pb_rev_ara_st_dry.loc[df_pb_rev_ara_st_dry['direction_identity'] == direction]
         direction_name = df_directions.loc[df_directions['direction_identity'] == direction]['direction_name'].values[0]
         full_heading = f'{direction_name} {heading}'
@@ -83,10 +83,10 @@ def pub_list():
         full_heading = heading
         df_selection = df_pb_rev_ara_st_dry
     if day != 'all' and music == 'true':
-        print(f'music {music} on {day}')
+        # print(f'music {music} on {day}')
         df_selection = df_selection[df_selection[day].str.contains('music')]
     if day != 'all' and quiz == 'true':
-        print(f'music {music} on {day}')
+        # print(f'music {music} on {day}')
         df_selection = df_selection[df_selection[day].str.contains('quiz')]
 
     if day != 'all':
@@ -104,8 +104,10 @@ def pub_list():
     for review in review_list:
         df_selection = df_selection.loc[(df_selection[review].astype(str).isin(review_list[review]))]
 
+    # print(df_selection)
+    df_selection['distance'] = 0
     headers = list(df_selection.columns)
-
+    print(headers)
     inst_pub = Pub2()
     inst_review = Review2()
     inst_pub.__dict__.update(inst_review.__dict__)
@@ -116,44 +118,48 @@ def pub_list():
     inst_pub_review = inst_pub
     visible = {}
     alias = {}
+
     for k, v in inst_pub_review.__dict__.items():
+        # visible[k] = True
         if (k == 'station_name') and (request.args.get('station') != 'all'):
             visible[k] = False
         else:
             visible[k] = v.table_visible
         alias[k] = v.alias
+
+
     diary_week = Week().__dict__.items()
     for k, v in diary_week:
+        # visible[k] = True
         if k == day:
             visible[k] = True
         else:
             visible[k] = False
         alias[k] = k
+    alias['distance'] = 'distance'
+    # visible_list = list(visible)
+    # print(visible_list)
+    # visible_order = visible_list.index('distance')
 
     if lat is not None:
-        dist_attr_list = ['pub_identity', 'pub_name', 'station', 'lat', 'lng', 'pub_latitude', 'pub_longitude', 'distance']
-        df_distance = pd.DataFrame(columns=dist_attr_list)
         for index, row in df_selection.iterrows():
             lat_diff = abs(row['pub_latitude'] - float(lat))
             lng_diff = abs(row['pub_longitude'] - float(lng))
             tot_diff = lat_diff + lng_diff
-            df_selection['distance'] = tot_diff
-            dist_val_list = [row['pub_identity'], row['pub_name'], row['station_name'], lat, lng, row['pub_latitude'], row['pub_longitude'], tot_diff]
-            # df_new_dist = pd.DataFrame(columns=dist_attr_list, data=[dist_val_list])
-            # df_distance = pd.concat([df_distance, df_new_dist], axis=0)
+            diff_rounded = round(tot_diff, 3)
+            df_selection.loc[df_selection['pub_identity'] == row['pub_identity'], 'distance'] = diff_rounded
         df_selection = df_selection.sort_values(by='distance', ascending=True)
-        print(df_selection[['pub_identity', 'pub_name', 'station_name', 'pub_latitude', 'pub_longitude', 'distance']])
         df_selection = df_selection.head(10)
-        print(df_selection[['pub_identity', 'pub_name', 'station_name', 'pub_latitude', 'pub_longitude', 'distance']])
-        # distance_list = df_distance['pub_identity'].tolist()
-        # print(distance_list)
-        # df_selection = df_selection.loc[df_selection['pub_identity'].isin(distance_list)]
-
-        # print(df_selection[['pub_identity', 'pub_name', 'station_name', 'pub_latitude', 'pub_longitude']])
         df_selection['colour'] = '#0275d8'
-        # print(df_selection)
+        visible['distance'] = True
+
+        visible_order = df_selection.columns.get_loc("distance")
+        print(visible_order)
     else:
         df_selection['colour'] = '#0275d8'
+        visible_order = df_selection.columns.get_loc("rating")
+        visible['distance'] = False
+        print(visible_order)
 
     pubs_selection_json = Dataframes().df_to_dict(df_selection)
 
@@ -162,7 +168,6 @@ def pub_list():
     df_non_selection['colour'] = '#d9534f'
 
     pubs_reviews_json = Dataframes().df_to_dict(df_non_selection)
-
 
     form_obj = {}
     total_rows = df_selection.shape[0]
@@ -204,18 +209,14 @@ def pub_list():
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
 
-    diary_headers = []
     diary_headers = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    # diary_week = Week().__dict__.items()
-    # for k, v in diary_week:
-    #     diary_headers.append(k)
 
     return render_template('pub_list.html', form_type='list', filter=full_heading,
                            review_obj=Review2(pub_id), form_obj=form_obj,
                            pubs_reviews=pubs_reviews_json, pubs_selection=pubs_selection_json,
                            map_lat=review_lat, map_lng=review_long, config2=config2,
                            # map_zoom=zoom,
-                           diary_headers=diary_headers,
+                           diary_headers=diary_headers, order=visible_order,
                            google_key=config2['google_key'],
                            visible=visible, alias=alias, headers=headers, icon_list=icon_list,
                            areas=areas_json, stations=stations_json,
