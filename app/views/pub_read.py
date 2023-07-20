@@ -30,12 +30,19 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route("/pub/<pub_id>", methods=['GET', 'POST'])
-def pub_read(pub_id):
+# @app.route("/pub/<pub_id>", methods=['GET', 'POST'])
+# def pub_read(pub_id):
+@app.route("/pub/", methods=['GET', 'POST'])
+def pub_read():
     # if session.get('logged_in') != True:
     #     return redirect(url_for('login'))
 
     print('pub_read')
+
+    pub_id = request.args.get('pub_id')
+    station = request.args.get('station')
+    day = request.args.get('day')
+    # station = request.args.get('station')
 
     inst_pub = Pub2()
     inst_review = Review2()
@@ -98,7 +105,7 @@ def pub_read(pub_id):
                                star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                check_list=check_list, slider_list=slider_list, date_list=date_list,
                                form_visible_list=form_visible_list, table_visible_list=table_visible_list,
-                               required_list=required_list,
+                               required_list=required_list, day=day,
                                alias_list=alias_list, icon_list=icon_list,
                                review_obj=Review2(), ignore_list=ignore_list)
 
@@ -187,7 +194,7 @@ def pub_read(pub_id):
                                        check_list=check_list, slider_list=slider_list, date_list=date_list,
                                        form_visible_list=form_visible_list, table_visible_list=table_visible_list,
                                        required_list=required_list, diary_body=diary_json,
-                                       alias_list=alias_list, icon_list=icon_list,
+                                       alias_list=alias_list, icon_list=icon_list, day=day,
                                        review_obj=Review2(), ignore_list=ignore_list)
             else:
                 print('duplicate pub')
@@ -240,7 +247,7 @@ def pub_read(pub_id):
                                    form_type='read', google_key=config2['google_key'],
                                    pubs_selection=pub_review_json, diary_headers=diary_headers,
                                    pubs_reviews=pubs_reviews_json, diary_body=diary_json,
-                                   config=config, config2=config2,
+                                   config=config, config2=config2, day=day,
                                    stations=stations_json, areas=areas_json,
                                    fields_list=fields_list, alias=alias, station=station,
                                    map_lat=review_lat, map_lng=review_long, map_zoom=zoom,

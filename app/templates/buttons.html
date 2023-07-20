@@ -7,7 +7,7 @@
     -->
     {% if form_type != 'add' and form_type != 'edit' %}
         <div style="text-align: center;">
-            <a href="#"><img src="/static/icons/footer/add1.png" onclick="goAdd('{{direction}}','{{station}}', zoom)" class="button_size"></a>
+            <a href="#"><img src="/static/icons/footer/add1.png" onclick="goAdd('{{direction}}','{{station}}')" class="button_size"></a>
             <div class="button_caption">ADD<br>PUB</div>
         </div>
     {% endif %}
@@ -42,10 +42,6 @@
         </div>
     {% endif %}
     {% if (form_type != 'home') %}
-        <div style="text-align: center;">
-            <a href="{{url_for('home')}}"><img src="/static/icons/footer/search.png" class="button_size"></a>
-            <div class="button_caption">SEARCH<br>PUBS</div>
-        </div>
         <div style="text-align: center;">
             <a href="{{url_for('home')}}"><img src="/static/icons/footer/home1.png" class="button_size"></a>
             <div class="button_caption">RETURN<br>HOME</div>

@@ -39,11 +39,9 @@
 function onLoad(){
     console.log("onLoad in pub_read");
     diary_headers = {{ diary_headers | tojson }}
-    console.log(diary_headers)
     diary_body = {{ diary_body | tojson }}
     console.log(diary_body)
     form_type = {{ form_type | tojson }}
-    zoom = {{ map_zoom }}
     config2 = {{config2 | tojson }}
     pubs_selection = {{ pubs_selection | tojson }}
     input_list = {{ input_list | tojson }}
@@ -53,6 +51,7 @@ function onLoad(){
     date_controls = {{ date_list | tojson }}
     star_list = {{ star_list | tojson }}
     station = '{{ station }}'
+    day = '{{ day }}'
     form_visible_list = {{ form_visible_list | tojson }}
     required_list = {{ required_list | tojson }}
     fields_list = {{ fields_list | tojson }}
@@ -84,7 +83,7 @@ function onLoad(){
 
 {% block left %}
     {% include "pub_map.html" %}
-    <form action="{{ url_for('pub_read', pub_id=pubs_selection[0]['pub_identity']) }}" method="post">
+    <form action="/pub/?pub_id={{pubs_selection[0]['pub_identity']}}&station={{pubs_selection[0]['station_identity']}}&day=all" method="post">
         <!--margin: 15px 0; display: flex; align-items: center; border:1px solid #0275d8; background-color:#D3D3D3;"-->
         {% with auto_exec='off' %}
             {% include "home_features.html" %}

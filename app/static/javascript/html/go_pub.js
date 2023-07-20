@@ -9,9 +9,11 @@ function goPub() {
         } else {
             var url = "http://" + base_url + ":5000/pub/"
         }
-        const myUrlWithParams = new URL(url + selected_pub);
+        const myUrlWithParams = new URL(url);
         myUrlWithParams.searchParams.append('pub_id', selected_pub);
-        myUrlWithParams.searchParams.append('zoom', zoom);
+        myUrlWithParams.searchParams.append('direction', 'all');
+        myUrlWithParams.searchParams.append('station', 'all');
+        myUrlWithParams.searchParams.append('day', 'all');
         window.location.replace(myUrlWithParams.href);
     } else {
         codeAddress(requested_postcode)

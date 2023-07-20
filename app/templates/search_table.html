@@ -13,7 +13,7 @@
                     {% if k == 'station_name' %}
                         <td style="vertical-align: middle;"><a href="#" onclick="stationClick('{{pubs_selection[i]['station_identity']}}')">{{pubs_selection[i][k]}}</a></td>
                     {% else %}
-                        <td style="vertical-align: middle;"><a href="/pub/{{pubs_selection[i]['pub_identity']}}">{{pubs_selection[i][k]}}</a></td>
+                        <td style="vertical-align: middle;"><a href="/pub/?pub_id={{pubs_selection[i]['pub_identity']}}&station={{pubs_selection[i]['station_identity']}}&day=all">{{pubs_selection[i][k]}}</a></td>
                     {% endif %}
                 {% else %}
                     <td><div class="star_container">
