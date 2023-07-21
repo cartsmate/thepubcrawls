@@ -42,6 +42,7 @@ function onLoad() {
     form_type = {{form_type | tojson}}
     filter = {{ filter | tojson }}
     total_rows = {{ total_rows | tojson }}
+    show_other_pubs = {{ show_other_pubs | tojson }}
     var header_listing = String(filter['0']).toUpperCase() + String(filter).substring(1)
     document.getElementById("header_listing").innerHTML = header_listing + " (" + total_rows + ")"
 

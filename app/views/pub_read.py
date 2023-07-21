@@ -100,7 +100,7 @@ def pub_read():
                                star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                check_list=check_list, slider_list=slider_list, date_list=date_list,
                                form_visible_list=form_visible_list, table_visible_list=table_visible_list,
-                               required_list=required_list, day=day,
+                               required_list=required_list, day=day,  show_other_pubs=True,
                                alias_list=alias_list, icon_list=icon_list,
                                review_obj=Review2(), ignore_list=ignore_list)
 
@@ -184,7 +184,7 @@ def pub_read():
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                        pubs_selection=pub_review_json, config=config, config2=config2,
                                        fields_list=fields_list, alias=alias, station=station,
-                                       map_lat=review_lat, map_lng=review_long,
+                                       map_lat=review_lat, map_lng=review_long, show_other_pubs=True,
                                        star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                        check_list=check_list, slider_list=slider_list, date_list=date_list,
                                        form_visible_list=form_visible_list, table_visible_list=table_visible_list,
@@ -242,7 +242,7 @@ def pub_read():
                                    form_type='read', google_key=config2['google_key'],
                                    pubs_selection=pub_review_json, diary_headers=diary_headers,
                                    pubs_reviews=pubs_reviews_json, diary_body=diary_json,
-                                   config=config, config2=config2, day=day,
+                                   config=config, config2=config2, day=day,  show_other_pubs=True,
                                    stations=stations_json, areas=areas_json,
                                    fields_list=fields_list, alias=alias, station=station,
                                    map_lat=review_lat, map_lng=review_long,
