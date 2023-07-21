@@ -68,5 +68,8 @@ class ControlsList:
                 if v.control == "check":
                     check_list.append(v.name)
         # print(form_visible_list)
+        selected_pub_colour = '#0275d8'
+        other_pub_colour = '#d9534f'
         return dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
-               required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list
+               required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list, \
+               selected_pub_colour, other_pub_colour

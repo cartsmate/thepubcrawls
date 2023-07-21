@@ -26,7 +26,7 @@ def pub_list():
     print('pub_list')
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
     required_list, form_visible_list, table_visible_list, icon_list, fields_list, \
-    ignore_list = ControlsList().get_control_lists()
+    ignore_list, selected_pub_colour, other_pub_colour = ControlsList().get_control_lists()
 
     directory_path = config2['directory_path']
 
@@ -151,7 +151,7 @@ def pub_list():
         df_selection = df_selection.sort_values(by='distance', ascending=True)
         df_selection = df_selection.head(10)
         df_selection['colour'] = '#0275d8'
-        visible['distance'] = True
+        visible['distance'] = False
 
         visible_order = df_selection.columns.get_loc("distance")
         print(visible_order)

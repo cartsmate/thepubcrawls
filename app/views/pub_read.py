@@ -42,7 +42,6 @@ def pub_read():
     pub_id = request.args.get('pub_id')
     station = request.args.get('station')
     day = request.args.get('day')
-    # station = request.args.get('station')
 
     inst_pub = Pub2()
     inst_review = Review2()
@@ -57,25 +56,21 @@ def pub_read():
     directory_path = config2['directory_path']
 
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
-    required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
+    required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list, \
+    selected_pub_colour, other_pub_colour = ControlsList().get_control_lists()
 
     df_areas = Csv().get_areas()
     areas_json = Dataframes().df_to_dict(df_areas)
 
     df_stations = Csv().get_stations()
     stations_json = Dataframes().df_to_dict(df_stations)
-    zoom = 16
 
-    diary_headers = []
-    diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
-    # diary_week = Week().__dict__.items()
-    # for k, v in diary_week:
-    #     diary_headers.append(k)
+    diary_headers = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
     if request.method == 'GET':
         print('pub_read: GET')
         df_pub_review = EntitiesSingle().get_pub_review(pub_id)
-        df_pub_review['colour'] = '#0275d8'
+        df_pub_review['colour'] = selected_pub_colour
         pub_review_json = Dataframes().df_to_dict(df_pub_review)
 
         selected_station = df_pub_review['station_identity'].values[0]
@@ -83,7 +78,7 @@ def pub_read():
 
         pub_review_list = df_pub_review['pub_identity'].tolist()
         df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
-        df_pubs_reviews['colour'] = '#d9534f'
+        df_pubs_reviews['colour'] = other_pub_colour
         df_pubs_reviews2 = df_pubs_reviews[~df_pubs_reviews['pub_identity'].isin([pub_review_list])]
         pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews2)
 
@@ -98,7 +93,7 @@ def pub_read():
 
         return render_template("pub_read.html", form_type='read', google_key=config2['google_key'],
                                pubs_selection=pub_review_json, config=config, config2=config2,
-                               map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
+                               map_lat=review_lat, map_lng=review_long,
                                fields_list=fields_list, alias=alias, diary_headers=diary_headers,
                                station=station, diary_body=diary_json,
                                pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
@@ -189,7 +184,7 @@ def pub_read():
                                        pubs_reviews=pubs_reviews_json, stations=stations_json, areas=areas_json,
                                        pubs_selection=pub_review_json, config=config, config2=config2,
                                        fields_list=fields_list, alias=alias, station=station,
-                                       map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
+                                       map_lat=review_lat, map_lng=review_long,
                                        star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                        check_list=check_list, slider_list=slider_list, date_list=date_list,
                                        form_visible_list=form_visible_list, table_visible_list=table_visible_list,
@@ -250,7 +245,7 @@ def pub_read():
                                    config=config, config2=config2, day=day,
                                    stations=stations_json, areas=areas_json,
                                    fields_list=fields_list, alias=alias, station=station,
-                                   map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
+                                   map_lat=review_lat, map_lng=review_long,
                                    star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                    check_list=check_list, slider_list=slider_list, date_list=date_list,
                                    form_visible_list=form_visible_list, table_visible_list=table_visible_list,
