@@ -10,7 +10,6 @@ function goEdit(selected_pub, zoom) {
     }
     const myUrlWithParams = new URL(url);
     myUrlWithParams.searchParams.append('pub_id', selected_pub);
-    myUrlWithParams.searchParams.append('zoom', zoom);
 //    window.location.href = url + selected_pub
     window.location.replace(myUrlWithParams.href);
     /*

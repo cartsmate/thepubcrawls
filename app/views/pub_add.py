@@ -88,7 +88,8 @@ def pub_add():
     #     review_long = df_selected['pub_longitude'].values[0]
 
     dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
-    required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list = ControlsList().get_control_lists()
+    required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list,\
+    selected_pub_colour, other_pub_colour = ControlsList().get_control_lists()
 
     pubs_reviews_json = Dataframes().df_to_dict(df_pubs_stations_reviews)
 
