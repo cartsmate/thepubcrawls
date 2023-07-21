@@ -26,12 +26,12 @@ config2 = Configurations().get_config2()
 @app.route("/pub/add/")
 def pub_add():
     print('pub_add')
-    station = request.args.get('station')
-    direction = request.args.get('direction')
     lat = request.args.get('lat')
     print(lat)
     lng = request.args.get('lng')
     print(lng)
+    station = request.args.get('station')
+    direction = request.args.get('direction')
 
     pub_id = uuid.uuid4()
     print('new id: ' + str(pub_id))
@@ -61,15 +61,18 @@ def pub_add():
     df_pubs_stations_reviews['colour'] = '#d9534f'
 
     if station != 'all':
+        print('station not all')
         df_selected = df_pubs_stations_reviews.loc[df_pubs_stations_reviews['station_identity'] == station]
     elif direction != 'all':
+        print('direction not all')
         df_selected = df_pubs_stations_reviews.loc[df_pubs_stations_reviews['direction_identity'] == direction]
     else:
+        print('else')
         df_selected = df_pubs_stations_reviews
-
 
     if lat is not None:
         review_lat = lat
+        print('lat: ' + lat)
         review_long = lng
     else:
         list_L = df_selected[['pub_latitude', 'pub_longitude']].values.tolist()
@@ -79,7 +82,9 @@ def pub_add():
             _lat.append(l[0])
             _long.append(l[1])
         review_lat = sum(_lat) / len(_lat)
+        print('review_lat: ' + str(review_lat))
         review_long = sum(_long) / len(_long)
+
     # if lat != None:
     #     review_lat = lat
     #     review_long = lng
@@ -147,7 +152,7 @@ def pub_add():
     return render_template("pub_read.html", form_type='add', google_key=config2['google_key'],
                            config=config, config2=config2, diary_body=diary_json,
                            map_lat=review_lat, map_lng=review_long,
-                           pubs_selection=pub_json,
+                           pubs_selection=pub_json, show_other_pubs=True,
                            pubs_reviews=pubs_reviews_json,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,

@@ -93,5 +93,5 @@ function add_markers(map, data) {
     //var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
     //bounds.extend(myLatLng);
     map.fitBounds(bounds);
-    add_marker_bounds(map, bounds, data)
+    //add_marker_bounds(map, bounds, data)
 }

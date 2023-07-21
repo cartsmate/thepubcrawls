@@ -30,7 +30,10 @@ def pub_list():
 
     directory_path = config2['directory_path']
 
+    show_other_pubs = True
     day = request.args.get('day')
+    if day != 'all':
+        show_other_pubs = False
     station = request.args.get('station')
     direction = request.args.get('direction')
 
@@ -39,7 +42,6 @@ def pub_list():
 
     brunch = request.args.get('brunch')
     dart = request.args.get('dart')
-    detail = request.args.get('detail')
     entertain = request.args.get('entertain')
     favourite = request.args.get('favourite')
     garden = request.args.get('garden')
@@ -50,6 +52,10 @@ def pub_list():
     quiz = request.args.get('quiz')
     roast = request.args.get('roast')
     sport = request.args.get('sport')
+    if brunch == True or dart == True or entertain == True or favourite == True or garden == True or history == True:
+        show_other_pubs = False
+    if late == True or music == True or pool == True or quiz == True or roast == True or sport == True:
+        show_other_pubs = False
 
     # df_pubs_reviews = EntitiesMulti().get_pubs_reviews_stations()
     df_pubs = pd.read_csv(directory_path + '/files/pubs.csv')
@@ -217,7 +223,7 @@ def pub_list():
                            map_lat=review_lat, map_lng=review_long, config2=config2,
                            # map_zoom=zoom,
                            diary_headers=diary_headers, order=visible_order,
-                           google_key=config2['google_key'],
+                           google_key=config2['google_key'], show_other_pubs=show_other_pubs,
                            visible=visible, alias=alias, headers=headers, icon_list=icon_list,
                            areas=areas_json, stations=stations_json,
                            station=station, direction=direction, day=day, total_rows=total_rows)
