@@ -9,11 +9,10 @@
 
 <script>
 function initMap(){
-    console.log("initMap");
+    console.log("initMap in pub_read");
     //let { avg_lat, avg_lng } = latlng_avg(pubs_selection);
-
+    pubs_reviews = {{pubs_reviews | tojson}}
     pubs_selection = {{pubs_selection | tojson}}
-    pubs_reviews = {{ pubs_reviews | tojson }}
     lat = {{map_lat}}
     lng = {{map_lng}}
 

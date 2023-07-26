@@ -7,12 +7,5 @@ function show_map(lat, lng) {
             mapTypeControl: false,
             streetViewControl: false
         });
-        /*
-    google.maps.event.addListener(map, 'bounds_changed', function() {
-        let bounds = map.getBounds();
-        add_marker_bounds(map, data, bounds)
-    });
-    */
-
     return map
 }

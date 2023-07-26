@@ -1,10 +1,12 @@
-function mapLoad(google_key, form_type, station) {
+function mapLoad(google_key) {
     console.log('map_load')
+    form_type = document.getElementById('form_type')
+    station = document.getElementById('x_station')
     console.log('form_type: ' + form_type)
     console.log('station: ' + station)
     var js = document.createElement("script");
     js.type = "text/javascript";
-    if (station != 'all' || form_type == 'home' || total_rows < 100) {
+    if (filtered_data < 50) {
         if ( window.navigator.onLine == true) {
             console.log('google map api')
             js.src = 'https://maps.googleapis.com/maps/api/js?key=' + google_key + '&libraries=places&callback=initMap'

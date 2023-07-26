@@ -2,7 +2,6 @@ function map_listen_bounds(map, searchBox) {
     console.log('map_listen_bounds')
     let markers = [];
     searchBox.addListener("places_changed", () => {
-        console.log('map_listen_bounds')
         const places = searchBox.getPlaces();
         if (places.length == 0) {
             return;

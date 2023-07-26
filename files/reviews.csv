@@ -292,7 +292,7 @@ False,False,Hotel bar,False,False,False,False,False,False,False,180f2d7c-ac08-4d
 False,False,Basic pub,False,False,True,False,False,False,False,5b4b2fef-e480-4c23-aed5-4f5f180e50e1,False,False,ef368f1e-9168-42a8-835c-6c8a3f80eca8,False,True
 False,False,Wed 8pm quiz,False,False,True,False,False,False,False,b97c49e9-c8a8-40f6-b7be-5604e201548a,True,False,ea536836-842d-4d10-9c57-7af151ec97f1,True,True
 False,False,,True,False,False,False,True,True,False,93ca1ef7-254a-40f8-b767-aab9beefbfc3,True,False,a51219f3-46da-4ed5-8a11-caa68f5ecec8,False,True
-False,True,Tue board games night. Fri/Sat DJs. Sun 8pm quiz,True,False,True,False,True,False,True,0a0b64ce-badb-49b7-b4e6-2a725d564598,True,False,71d0f1b2-358b-4167-85a9-454c121da1a5,True,True
+False,True,,True,False,True,False,True,False,True,0a0b64ce-badb-49b7-b4e6-2a725d564598,True,False,71d0f1b2-358b-4167-85a9-454c121da1a5,True,True
 False,False,Wed 7.30pm quiz,False,False,True,False,False,False,False,44f933f3-3089-4df8-b983-489565b2424b,True,False,78930605-bc04-4133-b229-f12c55eb149d,True,True
 False,False,Games room,False,False,False,False,False,False,False,9d834e48-f83d-4419-9899-e4b3b9a3dc69,False,False,98bdff11-1112-41c4-bd68-fb954299aa3c,False,False
 False,False,Shisha pipes with various events,True,False,True,False,True,False,False,7125c473-2206-4d03-a5ea-920308ad3e68,False,False,2744cf52-3263-4e53-a018-a00488ba869b,False,False
@@ -1238,3 +1238,4 @@ False,False,TBC,False,False,False,False,False,False,False,49e1ca62-3f10-415d-854
 False,False,TBC,False,False,False,False,False,False,False,a795e025-2fa8-4b66-a22b-fbecca53fd4d,False,False,30664123-9de0-49ff-b004-531f016880cc,False,False
 False,False,TBC,False,False,False,False,False,False,False,1af9d9d1-a455-4477-a0fd-26666057e66c,False,False,6c12b45d-9424-476e-8163-4fcfd852fbd2,False,False
 False,False,TBC,False,False,False,False,False,False,False,dbd13772-603d-48c9-b826-47847fd55fc9,False,False,a03ffe57-2081-4bc3-95fb-5b372f1d8127,False,False
+False,False,TBC,False,False,False,False,False,False,False,1297ac9a-d0ed-48e0-b7ab-ccf684a500e1,False,False,65738c87-c310-468a-ae73-6124545bab16,False,False

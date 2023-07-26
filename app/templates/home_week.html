@@ -1,0 +1,20 @@
+<div id="pub_week" class="row">
+    <div class="col mx-auto">
+        <div class="d-flex justify-content-center">
+            <input type="text" id="day" style="display: none" value="all">
+            {% for day in diary_headers %}
+            <div>
+                <div>
+                    <input style="display:none" type="checkbox" id='{{day}}' name='{{day}}' value='{{day}}' onclick="check_week_home(this.value)">
+                </div>
+                <div>
+                    <label for='{{day}}' style="margin:0px; padding:0px 3px" >
+                        <img src="{{ url_for('static', filename='icons/diary/' + day + '.png' ) }}" id="{{day}}_img"
+                             width="40" height="40" style="opacity: 0.25;">
+                    </label>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

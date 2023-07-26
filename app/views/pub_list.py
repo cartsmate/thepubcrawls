@@ -216,13 +216,13 @@ def pub_list():
     areas_json = Dataframes().df_to_dict(df_areas)
 
     diary_headers = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-
+    all_data_json = Dataframes().df_to_dict(df_pb_rev_ara_st_dry)
     return render_template('pub_list.html', form_type='list', filter=full_heading,
                            review_obj=Review2(pub_id), form_obj=form_obj,
                            pubs_reviews=pubs_reviews_json, pubs_selection=pubs_selection_json,
                            map_lat=review_lat, map_lng=review_long, config2=config2,
                            # map_zoom=zoom,
-                           diary_headers=diary_headers, order=visible_order,
+                           diary_headers=diary_headers, order=visible_order, all_data=all_data_json,
                            google_key=config2['google_key'], show_other_pubs=show_other_pubs,
                            visible=visible, alias=alias, headers=headers, icon_list=icon_list,
                            areas=areas_json, stations=stations_json,

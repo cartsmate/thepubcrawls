@@ -1,103 +1,67 @@
-function camel_case(word) {
-    return String(word['0']).toUpperCase() + String(word).substring(1)
-}
+function create_table(pubs_selection, alias) {
+    console.log('create_table')
+    //var tbl = document.getElementById('pub_list');
+        //if(tbl) tbl.parentNode.removeChild(tbl);
+  // creates a <table> element and a <tbody> element
+    var tbl = document.createElement("table");
+    tbl.setAttribute("id", "pub_list");
+    tbl.style.cssText = 'font-size:14px;'
+    tbl.className = "table table-striped";
 
-function editClick(id) {
-    window.alert(id)
-}
-
-function escape(htmlStr) {
-   return htmlStr.replace(/&/g, "&amp;")
-         .replace(/</g, "&lt;")
-         .replace(/>/g, "&gt;")
-         .replace(/"/g, "&quot;")
-         .replace(/'/g, "&#39;");
-
-}
-
-function unEscape(htmlStr) {
-    htmlStr = htmlStr.replace(/&lt;/g , "<");
-    htmlStr = htmlStr.replace(/&gt;/g , ">");
-    htmlStr = htmlStr.replace(/&quot;/g , "\"");
-    htmlStr = htmlStr.replace(/&#39;/g , "\'");
-    htmlStr = htmlStr.replace(/&amp;/g , "&");
-    return htmlStr;
-}
-
-function create_table() {
-    console.log("create_table")
-    table_string = '<table id="pub_list" class="table table-striped" style="font-size:16px;">'
-    for (let i=0; i<key_list.length; i++) {
-        console.log(key_list[i])
-        console.log("{{review_object}}"[key_list[i]])
-    }
-
-    table_string += '<thead><tr>' +
-                        '<th>Id</th>' +
-                        '<th>Name</th>' +
-                        '<th>Category</th>' +
-                        '<th>Station</th>' +
-                        '<th>Area</th>' +
-                        '<th>Rank</th>' +
-                        '<th>Tv</th>' +
-                        '<th>Garden</th>' +
-                        '<th>Music</th>' +
-                        '<th>Late</th>' +
-                        '<th>Meals</th>' +
-                        '<th>Toilets</th>' +
-                        '<th>Cheap</th>' +
-                        '<th>Games</th>' +
-                        '<th></th>' +
-                        '<th></th>' +
-                        '</tr></thead>'
-   for (var key in pubs_reviews) {
-        if (pubs_reviews[key].rank == 0) {
-            str_reviewed =
-             '<td>None</a></td>' +
-             '<td>None</a></td>'
-        } else {
-            str_reviewed =
-            '<td><a href="/pub/list/star/' + pubs_reviews[key].rank + '">' + camel_case(pubs_reviews[key].rank) + '</a></td>' +
-            '<td><a href="../review/' + pubs_reviews[key].pub_identity + '">Review</a></td>'
+    var tblBody = document.createElement("tbody");
+    var header = tbl.createTHead();
+    var row = header.insertRow(0);
+    for (let k = 0; k < headers.length; k++) {
+        var cell = row.insertCell(k);
+        cell.innerHTML = "<b>" + alias[headers[k]] + "</b>";
         }
-        table_string += '<tr>' +
-            '<td><a href="/pub/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].pub_identity + '</a></td>' +
-            '<td><a href="/pub/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].name + '</a></td>' +
-            '<td><a href="/pub/list/category/' + pubs_reviews[key].category + '">' + camel_case(pubs_reviews[key].category) + '</a></td>' +
-            '<td><a href="/pub/list/station/' + pubs_reviews[key].station + '">' + pubs_reviews[key].station + '</a></td>' +
-            '<td><a href="/pub/list/area/' + pubs_reviews[key].area + '">' + pubs_reviews[key].area + '</a></td>' +
-            '<td><a href="/pub/list/area/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].rank + '</a></td>' +
-            str_reviewed
-            if (pubs_reviews[key].rank != '0') {
-                table_string +=
-                    '<td>' +
-                        '<div class="star_container">' +
-                            '<img src="/static/icons/star.png" style="width:30px;height:30px;opacity:1.0;">' +
-                            '<div class="star_centre">' + pubs_reviews[key].rank + '</div>' +
-                        '</div>' +
-                    '</td>'
-            } else {
-                table_string +=
-                    '<td>' +
-                        '<div class="star_container">' +
-                            '<img src="/static/icons/star.png" style="width:25px;height:25px;opacity:0.25;">' +
-                            '<div class="star_centre"></div>' +
-                        '</div>' +
-                    '</td>'
+
+  // creating all cells
+    for (let i = 0; i < pubs_selection.length; i++) {
+    // creates a table row
+        var row = document.createElement("tr");
+
+        for (let j = 0; j < headers.length; j++) {
+            //console.log(pubs_selection[i][headers[j]])
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+            const cell = document.createElement("td");
+            const href = document.createElement("a");
+            if (headers[j] == 'station_name') {
+                href.setAttribute("href", "#");
+                href.setAttribute("onclick", "stationClick('" + pubs_selection[i]['station_identity'] + "')");
+                text_ref = pubs_selection[i][headers[j]]
+                const cellText = document.createTextNode(text_ref);
+                href.appendChild(cellText);
+                cell.appendChild(href)
+                row.appendChild(cell);
+                } else if (headers[j] == 'pub_name') {
+                    href.setAttribute("href", "#");
+                    href.setAttribute("onclick", "pubClick('" + pubs_selection[i]['pub_identity'] + "')");
+                    text_ref = pubs_selection[i][headers[j]]
+                    const cellText = document.createTextNode(text_ref);
+                    href.appendChild(cellText);
+                    cell.appendChild(href)
+                    row.appendChild(cell);
+                } else {
+                    text_ref = pubs_selection[i][headers[j]]
+                    const cellText = document.createTextNode(text_ref);
+                    cell.appendChild(cellText)
+                    row.appendChild(cell);
+                }
             }
-            table_string +=
-            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].sport + '</a></td>' +
-            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].garden + '</a></td>' +
-            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].music + '</a></td>' +
-            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].late + '</a></td>' +
-            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].brunch + '</a></td>' +
-            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].history + '</a></td>' +
-            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].pool + '</a></td>' +
-            '<td><a href="/review/' + pubs_reviews[key].pub_identity + '">' + pubs_reviews[key].dart + '</a></td>' +
-            '<td><a href="/pub/edit/' + pubs_reviews[key].pub_identity + '"><img src="/static/icons/buttons/edit.png" style="width:25px;height:25px; padding:0px; margin:0px"></a></td>' +
-            '<td><a href="/pub/delete/' + pubs_reviews[key].pub_identity + '"><img src="/static/icons/buttons/delete.png" style="width:25px;height:25px; padding:0px; margin:0px"></a></td>' +
-            '</tr>'
-    }
-    table_string += '</table>'
-    return table_string;
+
+    // add the row to the end of the table body
+        tblBody.appendChild(row);
+        }
+
+  // put the <tbody> in the <table>
+    tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  //document.body.appendChild(tbl);
+    document.getElementById('dynamic_table').appendChild(tbl)
+  // sets the border attribute of tbl to '2'
+    tbl.setAttribute("border", "2");
+
 }

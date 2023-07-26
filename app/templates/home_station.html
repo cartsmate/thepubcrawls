@@ -56,10 +56,21 @@ function direction_changed() {
             select.appendChild(el);
         }
     }
+
+    var e = document.getElementById("direction");
+    var value = e.value;
+    var text = e.options[e.selectedIndex].text;
+    console.log(text)
+    document.getElementById("x_direction").value = value
 }
 function station_changed() {
     var station_selection = document.getElementById('station').value
-    console.log(document.getElementById('station').value)
-    console.log(document.getElementById('station').text)
+    //console.log(document.getElementById('station').value)
+    //console.log(document.getElementById('station').text)
+    var e = document.getElementById("station");
+    var value = e.value;
+    var text = e.options[e.selectedIndex].text;
+    console.log(text)
+    document.getElementById("x_station").value = value
 }
 </script>

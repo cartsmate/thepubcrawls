@@ -4,7 +4,7 @@ function add_listen_click(map, lat, lng) {
     map.addListener('click', function (event) {
         // If the event is a POI
         if (event.placeId) {
-            console.log('add_listen_click')
+            //console.log('add_listen_click')
             //console.log(event)
             // Call event.stop() on the event to prevent the default info window from showing.
             event.stop();
@@ -18,7 +18,7 @@ function add_listen_click(map, lat, lng) {
                 + '<strong>Click the link to open the add pub page</strong>'
                 + '<br>'
                 //+ '<a href="#"Add Venue onclick=&quot;goAdd(&quot;{{direction}}&quot;,&quot;{{station}}&quot;)&quot;</a>'
-                + '<a href="/pub/add/?lat=' + event.latLng.lat() + '&lng=' + event.latLng.lng() + '&zoom=' + map.getZoom() + '">Add Venue</a>'
+                + '<a href="/pub/add/?lat=' + event.latLng.lat() + '&lng=' + event.latLng.lng() + '">Add Venue</a>'
                 + '<br>'
                 + '</div>');
             infowindow.open(map);
