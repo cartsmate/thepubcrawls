@@ -1,5 +1,20 @@
 function add_markers(map, data) {
     console.log('add_markers')
+    //console.log(data)
+    /*
+    if (typeof map.markers !== "undefined") {
+        for(var i=0; i < map.markers.length; i++){
+            this.markers[i].setMap(null);
+        }
+        markers = []
+    }
+    */
+    for (let i = 0; i < markersArray.length; i++) {
+        markersArray[i].setMap(null);
+        }
+    markersArray = []
+    console.log(markersArray.length)
+    console.log(data.length)
     var pinSVGHole = "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z";
     var labelOriginHole = new google.maps.Point(12,15);
     var pinSVGFilled = "M 12,2 C 8.1340068,2 5,5.1340068 5,9 c 0,5.25 7,13 7,13 0,0 7,-7.75 7,-13 0,-3.8659932 -3.134007,-7 -7,-7 z";
@@ -7,12 +22,12 @@ function add_markers(map, data) {
     var infowindow = new google.maps.InfoWindow();
     var marker, i, j;
     var bounds = new google.maps.LatLngBounds();
-    console.log(data)
+    //console.log(data)
     for (var key in data) {
         //console.log(data[key])
-        var pinColor = data[key].colour
-        //var pinColor = "#0275d8"
-        console.log('colour: ' + pinColor)
+        //var pinColor = data[key].colour
+        var pinColor = "#0275d8"
+        //console.log('colour: ' + pinColor)
         if (true == false) {
             var pinHole = pinSVGFilled
             var label = {
@@ -36,13 +51,15 @@ function add_markers(map, data) {
             strokeWeight: 2,
             strokeColor: "white",
             scale: 2,
-            labelOrigin: labelOriginFilled
+            labelOrigin: labelOriginHole
         };
+        /*
         if (typeof data[key].name != "undefined") {
             title_name = data[key].pub_name
         } else {
             title_name = data[key].area_name
         }
+        */
         if (data[key].colour == '#d9534f' ) {
             var indie = 2
         } else {
@@ -52,9 +69,10 @@ function add_markers(map, data) {
             position: new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude),
             map: map,
             icon: markerImage,
-            title: title_name,
+            //title: title_name,
             zIndex: indie
         })
+        markersArray.push(marker);
         var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
         bounds.extend(myLatLng);
         /*
@@ -94,4 +112,6 @@ function add_markers(map, data) {
     //bounds.extend(myLatLng);
     map.fitBounds(bounds);
     //add_marker_bounds(map, bounds, data)
+    console.log(markersArray.length)
+    console.log(data.length)
 }

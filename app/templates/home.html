@@ -5,6 +5,7 @@
 {% block script %}
 <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
 <!--<script src="https://apis.google.com/js/api.js" type="text/javascript"></script>-->
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='jquery/css/jquery.dataTables.min.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/layout.css') }}">
 <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery.dataTables.min.js') }}"></script>
@@ -13,33 +14,50 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/display_none.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/show_map_home.js') }}"></script>
 
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/click_edit.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/click_list.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/click_pub.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/click_station.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/check_week_home.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/check_week_list.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click_home.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click_list.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_home.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/column_filter.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_list.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
+
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_pub.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_add.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_day.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_week.js') }}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_diary.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_form.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_pub.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_test.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_table.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_station.js') }}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/shade_stars.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/update_data.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/update_header.js') }}"></script>
 
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_map_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_marker_bounds.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/code_address.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_bounds_changed.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_search.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_bounds.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_load.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_visible.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/show_map.js') }}"></script>
 
 <script>
+let markersArray = []
+
 function onLoad(){
     console.log('onLoad')
 
@@ -54,31 +72,54 @@ function onLoad(){
     all_data = {{ all_data | tojson }}
     review_obj = "{{ review_obj }}"
     review_obj2 = "{{ review_obj2 }}"
+    key = {{ google_key | tojson }}
+    stations_directions_list = {{ stations_directions_list | tojson }}
+    //console.log(stations_directions_list)
+    fields_list = {{ fields_list | tojson }}
+    form_visible_list = {{ form_visible_list | tojson }}
+    alias_list = {{ alias_list | tojson }}
+    required_list = {{ required_list | tojson }}
+    input_list = {{ input_list | tojson }}
+    dropdown_list = {{ dropdown_list | tojson }}
+    slider_list = {{ slider_list | tojson }}
+    check_list = {{ check_list | tojson }}
+    date_controls = {{ date_list | tojson }}
+    star_list = {{ star_list | tojson }}
+
     display_counter(counter);
     document.getElementById('home_page').style.display = 'block'
-    document.getElementById('header_page').style.display = 'none'
+    document.getElementById('list_header').style.display = 'none'
     document.getElementById('list_page1').style.display = 'none'
     document.getElementById('list_page2').style.display = 'none'
+    document.getElementById('pub_read').style.display = 'none'
+    map_load('{{google_key}}')
+
 
 }
 </script>
 {% endblock %}
 
 {% block controls %}
-<input type="text" style="border: solid;" id="form_type" value="home">
-<input type="text" style="border: solid;" id="auto_exec" value="off">
+<input type="text" class="hide_x_boxes" id="load" value="">
 
-<input type="text" style="border: solid; display:none;" id="x_direction" value="all">
-<input type="text" style="border: solid; display:none;" id="x_station" value="all">
-<input type="text" style="border: solid; display:none;" id="x_day" value="all">
+<input type="text" class="hide_x_boxes" id="form_type" value="home">
+<input type="text" class="hide_x_boxes" id="auto_exec" value="off">
 
-<input type="text"  style="border: solid;" id="x_brunch" value="false">
-<input type="text"  style="border: solid;" id="x_dart" value="false">
+<input type="text" class="hide_x_boxes" id="x_direction" value="all">
+<input type="text" class="hide_x_boxes" id="x_direction_name" value="">
+
+<input type="text" class="hide_x_boxes" id="x_station" value="all">
+<input type="text" class="hide_x_boxes" id="x_station_name" value="">
+<input type="text" class="hide_x_boxes" id="x_pub_identity" value="">
+<input type="text" class="hide_x_boxes" id="x_day" value="all">
+
+<input type="text"  style="border: solid; display:none;" id="x_brunch" value="false">
+<input type="text"  style="border: solid; display:none;" id="x_dart" value="false">
 <input type="text"  style="border: solid; display:none;" id="x_entertain" value="false">
 <input type="text"  style="border: solid; display:none;" id="x_favourite" value="false">
 <input type="text"  style="border: solid; display:none;" id="x_garden" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_history" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_late" value="false">
+<input type="text"  class="hide_x_boxes" id="x_history" value="false">
+<input type="text"  class="hide_x_boxes" id="x_late" value="false">
 <input type="text"  style="border: solid; display:none;" id="x_music" value="false">
 <input type="text"  style="border: solid; display:none;" id="x_pool" value="false">
 <input type="text"  style="border: solid; display:none;" id="x_quiz" value="false">
@@ -86,9 +127,15 @@ function onLoad(){
 <input type="text"  style="border: solid; display:none;" id="x_sport" value="false">
 {% endblock %}
 
+{% block sub_heading %}
+<div id="list_header">
+    <div id="search_header"></div>
+</div>
+{% endblock %}
+
 {% block main %}
 <div id="home_page">
-    <div class="col-md-12 mx-auto " id="main">
+    <div class="col-md-12 mx-auto" id="main">
         {% include "home_intro.html" %}
         <div class="row" style="padding: 10px; border:1px solid #0275d8;">
             <div class="col">
@@ -101,16 +148,12 @@ function onLoad(){
         </div>
     </div>
 </div>
-<div id="header_page">
-    <div class="col-md-12 center-block text-center" style="background-color: #0275d8">
-        <a class="mx-auto" id="header_listing" style="height:25px; font-size:20px; color: white"></a>
-    </div>
-</div>
 {% endblock %}
 
 
 {% block left %}
 <div id="list_page1">
+    {% include "list_station.html" %}
     {% include "list_features.html" %}
     {% include "pub_map.html" %}
 </div>
@@ -123,6 +166,17 @@ function onLoad(){
         {% include "list_week.html" %}
     </div>
     <div id="dynamic_table"></div>
+</div>
+<div id="pub_read">
+    <form action="/pub/?pub_id={{pubs_selection[0]['pub_identity']}}&station={{pubs_selection[0]['station_identity']}}&day=all" method="post">
+        <div class="form-group row" style="">
+            <div class="col">
+                {% include "pub_form.html" %}
+                {% include "pub_diary.html" %}
+            </div>
+            {% include "pub_form_submit.html" %}
+        </div>
+    </form>
 </div>
 {% endblock %}
 

@@ -1,4 +1,4 @@
-function populate_diary(){
+function populate_diary(diary_body){
     console.log('populate diary')
     for (i = 0; i < diary_headers.length; i++) {
         //console.log(diary_headers[i])

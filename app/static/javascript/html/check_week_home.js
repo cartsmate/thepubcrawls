@@ -1,5 +1,6 @@
 function check_week_home(value) {
-    console.log('check_week')
+    console.log('check_week_home')
+    console.log('value: ' + value)
     auto_exec = document.getElementById('auto_exec').value
     diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
     //diary_headers = {{diary_headers | tojson}}
@@ -20,9 +21,5 @@ function check_week_home(value) {
             checkBox.checked = false
             imageBox.style.opacity = "0.25"
         }
-    }
-    if (auto_exec == 'on') {
-        console.log('auto_exec: on')
-        update_data()
     }
 }

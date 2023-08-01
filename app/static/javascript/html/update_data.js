@@ -1,28 +1,27 @@
-function update_data() {
-    console.log('update_data')
-    //console.log(pubs_selection)
-    diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
-    day = document.getElementById('x_day').value
-    station = document.getElementById('x_station').value
-    direction = document.getElementById('x_direction').value
-    Delete_table()
-    //console.log('all_data: ' + all_data.length)
-    filtered_data = populate_test(all_data)
-    console.log('filtered_data: ' + filtered_data.length)
-    create_table(filtered_data, alias)
-    if (day != 'all') {
-        const isIndex = (element) => element == day;
-        order = headers.findIndex(isIndex);
-        for (let i = 0; i < diary_headers.length; i++) {
-            visible[diary_headers[i]] = false
-            }
-        visible.rank = false
-        visible[day] = true
-        Search(headers, visible, order)
-    } else {
-        const isIndex = (element) => element == 'rank';
-        order = headers.findIndex(isIndex);
-        Search(headers, visible, order)
+function update_features_icons(filtered_data) {
+    console.log('update_features_icons')
+    //console.log(filtered_data)
+    review_list = ['brunch','dart','entertain','favourite','garden','history','late','music','pool','quiz','roast','sport']
+    for (let i = 0; i < review_list.length; i++) {
+        var image = document.getElementById(review_list[i] + "_img_2");
+        var caption = document.getElementById(review_list[i] + "_caption_2");
+        var checkCol = document.getElementById(review_list[i] + "_col_2");
+        var count = filtered_data.filter(function (el) {
+            return el[review_list[i]] == true;
+        }).length;
+        //console.log(count)
+        if (count == filtered_data.length) {
+            checkCol.style.border = "thick solid #0275D8";
+            checkCol.style.background = "#0275D8"
+            caption.style.color = "white"
+        } else if (count > 0) {
+            checkCol.style.border = "thick solid #0275D8";
+            checkCol.style.background = "#BCBCBC"
+            caption.style.color = "black"
+        } else {
+            checkCol.style.border = "thick solid #BCBCBC";
+            checkCol.style.background = "#BCBCBC"
+            caption.style.color = "black"
+        }
     }
-    mapLoad('{{google_key}}');
 }

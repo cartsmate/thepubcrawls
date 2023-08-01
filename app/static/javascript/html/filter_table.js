@@ -7,22 +7,22 @@ function addJson(headers, visible) {
     return json_list
 }
 
-function Delete_table() {
+function delete_table() {
     console.log('delete_table')
     $('#pub_list').DataTable().destroy();
     $("#pub_list").remove();
 
 }
 
-function Search(headers, visible, order) {
-    console.log('Search')
+function filter_table(headers, visible, order) {
+    console.log('filter_table')
     //console.log(headers)
     //console.log(visible)
     //console.log(order)
     $(document).ready(function () {
         $('#pub_list').DataTable({
             paging: true,
-            pagingType: 'first_last_numbers',
+            //pagingType: 'first_last_numbers',
             info: false,
             //order: [[order, 'asc']],
             order: [[order, 'desc']],
@@ -30,7 +30,6 @@ function Search(headers, visible, order) {
         });
     });
 }
-
 
 
 function Reset() {

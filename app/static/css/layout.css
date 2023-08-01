@@ -202,3 +202,17 @@ input:checked + .slider:before {
     background: #0275d8;
     color: white;
 }
+.hide_x_boxes {
+    border: solid;
+    display:none;
+}
+.show_x_boxes {
+    border: solid;
+    display: block;
+}
+.hide_button {
+    display:none;
+}
+.show_button {
+    display:block;
+}

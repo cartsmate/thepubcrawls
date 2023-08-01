@@ -24,7 +24,7 @@ config2 = Configurations().get_config2()
 def pub_edit():
     print('pub_edit')
     pub_id = request.args.get('pub_id')
-    zoom = request.args.get('zoom')
+    # zoom = request.args.get('zoom')
 
     inst_pub = Pub2()
     inst_review = Review2()
@@ -80,7 +80,8 @@ def pub_edit():
                            pubs_reviews=pubs_reviews_json, diary_body=diary_json,
                            # pubs_reviews=test_reviews,
                            diary_headers=diary_headers, show_other_pubs=False,
-                           map_lat=review_lat, map_lng=review_long, map_zoom=zoom,
+                           map_lat=review_lat, map_lng=review_long,
+                           # map_zoom=zoom,
                            star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                            check_list=check_list, slider_list=slider_list, date_list=date_list,
                            form_visible_list=form_visible_list, table_visible_list=table_visible_list,

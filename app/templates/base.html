@@ -23,7 +23,8 @@
     <body onload="onLoad()" style="background-color:#CDCDCD;">
         <div class="container-fluid mx-auto">
             <div class="row header_band" id="header_band"><a href="#" style="color:white; text-decoration: none;" onclick="go_home()" class="mx-auto">The Pub Crawls</a></div>
-            <div class="row" style="margin: 5px 0 0 0;">{% block navbar %}{% endblock %}</div>
+            <div class="row header_band" style="margin-top: 5px"><a class="mx-auto" style="color:white;">{% block sub_heading %}{% endblock %}</a></div>
+            <!--<div class="row" style="margin: 5px 0 0 0;">{% block navbar %}{% endblock %}</div>-->
             <div class="row" style="margin: 0 0 0 0;">{% block controls %}{% endblock %}</div>
             <div class="row top-buffer" style="margin: 0 0 0 0;">{% block main %}{% endblock %}</div>
             <div class="row top-buffer" style="margin: 0 0 0 0;">

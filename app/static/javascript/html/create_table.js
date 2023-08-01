@@ -22,6 +22,7 @@ function create_table(pubs_selection, alias) {
         var row = document.createElement("tr");
 
         for (let j = 0; j < headers.length; j++) {
+            //console.log(headers[j])
             //console.log(pubs_selection[i][headers[j]])
       // Create a <td> element and a text node, make the text
       // node the contents of the <td>, and put the <td> at
@@ -30,7 +31,7 @@ function create_table(pubs_selection, alias) {
             const href = document.createElement("a");
             if (headers[j] == 'station_name') {
                 href.setAttribute("href", "#");
-                href.setAttribute("onclick", "stationClick('" + pubs_selection[i]['station_identity'] + "')");
+                href.setAttribute("onclick", "station_click('" + pubs_selection[i]['station_identity'] + "')");
                 text_ref = pubs_selection[i][headers[j]]
                 const cellText = document.createTextNode(text_ref);
                 href.appendChild(cellText);
@@ -38,7 +39,7 @@ function create_table(pubs_selection, alias) {
                 row.appendChild(cell);
                 } else if (headers[j] == 'pub_name') {
                     href.setAttribute("href", "#");
-                    href.setAttribute("onclick", "pubClick('" + pubs_selection[i]['pub_identity'] + "')");
+                    href.setAttribute("onclick", "pub_click('" + pubs_selection[i]['pub_identity'] + "')");
                     text_ref = pubs_selection[i][headers[j]]
                     const cellText = document.createTextNode(text_ref);
                     href.appendChild(cellText);
