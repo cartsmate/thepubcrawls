@@ -7,7 +7,13 @@ function shadeStars(star, num, where){
     star_size = star_num + "px"
     document.getElementById(star).value = num;
     //num = pub_review[0][star]
-    if (num > 0 && num <1) {
+    if (num == 0){
+        document.getElementById("img_rank1").style.width = "0px"
+        document.getElementById("img_rank2").style.width = "0px"
+        document.getElementById("img_rank3").style.width = "0px"
+        document.getElementById("img_rank4").style.width = "0px"
+        document.getElementById("img_rank5").style.width = "0px"
+    } else if (num > 0 && num <1) {
         //console.log('between 0 and 1')
         document.getElementById("img_rank1").style.width = star_size
         document.getElementById("img_rank2").style.width = "0px"

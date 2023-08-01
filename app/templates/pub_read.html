@@ -13,6 +13,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_listen_bounds.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/map_visible.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_events.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_search.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_zoom.js') }}"></script>
@@ -20,20 +21,26 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/class_event_handler.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/mouse_down_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/nearest_station.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/edit_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click_home.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click_list.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_add.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_edit.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_station.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/insert_line.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_form.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_diary.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/shade_stars.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/star_click.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/edit_click.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_add.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_edit.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_station.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/station_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/update_data.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/sum_score.js') }}"></script>
 
-<script>form_type = {{ form_type | tojson }}</script>
+<script>
+form_type = {{ form_type | tojson }}
+map_load('{{google_key}}');
+</script>
 
 <script>
 function onLoad(){
@@ -58,10 +65,15 @@ function onLoad(){
     alias_list = {{ alias_list | tojson }}
     icon_list = {{ icon_list | tojson }}
 
-    mapLoad('{{google_key}}', form_type, station);
 
+    //map = show_map(50, 0)
+    /*
+    console.log(form_type)
     populate_form(form_type);
     populate_diary(form_type);
+    update_features_icons(pubs_selection)
+    map_visible(pubs_selection);
+    */
 }
 
 
@@ -85,9 +97,7 @@ function onLoad(){
     {% include "pub_map.html" %}
     <form action="/pub/?pub_id={{pubs_selection[0]['pub_identity']}}&station={{pubs_selection[0]['station_identity']}}&day=all" method="post">
         <!--margin: 15px 0; display: flex; align-items: center; border:1px solid #0275d8; background-color:#D3D3D3;"-->
-        {% with auto_exec='off' %}
-            {% include "home_features.html" %}
-        {% endwith %}
+        {% include "list_features.html" %}
 {% endblock %}
 
 {% block right %}

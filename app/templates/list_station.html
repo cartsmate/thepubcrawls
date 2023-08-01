@@ -1,20 +1,16 @@
 <div class="row justify-content-center">
-    <a href="/pub/areas" style="font-weight: bold; font-size: 14px; color: #000000; text-decoration: none;">Search pubs by area</a>
-</div>
-<div class="row justify-content-center">
-    <select class="form-control" id="direction" name="direction" onchange="direction_changed();" style="font-size:12px; background-color: #FFFFFF; width:140px;">
+    <select class="form-control" id="direction_2" name="direction_2" onchange="direction_changed_2();" style="font-size:12px; background-color: #FFFFFF; width:140px;">
         <option value="all">select direction</option>
         {% for direction in directions_list %}
             <option value={{direction[0]}}>{{direction[1]}}</option>
         {% endfor %}
     </select>
-    <select class="form-control" id="station" name="station" onchange="station_changed();" style="font-size:12px; background-color: #FFFFFF; width:140px;">
+    <select class="form-control" id="station_2" name="station_2" onchange="station_changed_2();" style="font-size:12px; background-color: #FFFFFF; width:140px;">
         <option value="all">select station</option>
         {% for x in stations_directions_list %}
             <option value={{x[0]}}>{{x[1]}}</option>
         {% endfor %}
     </select>
-    <a><img src="/static/icons/buttons/arrow.png" onClick="click_list(stations_directions_list)" class="button_size"></a>
 </div>
 
 <script>
@@ -24,16 +20,17 @@ function removeOptions(selectElement) {
       selectElement.remove(i);
    }
 }
-function direction_changed() {
-    var directionSelect = document.getElementById("direction");
+function direction_changed_2() {
+    console.log('direction_changed_2')
+    var directionSelect = document.getElementById("direction_2");
     var selectedText = directionSelect.options[directionSelect.selectedIndex].text;
-    value = document.getElementById("direction").value
+    value = document.getElementById("direction_2").value
     //console.log(value)
     //console.log(selectedText)
-    document.getElementById("station").selectedIndex = 0;
+    document.getElementById("station_2").selectedIndex = 0;
     stations_directions_list = {{ stations_directions_list | tojson }}
-    var select = document.getElementById("station");
-    removeOptions(document.getElementById('station'));
+    var select = document.getElementById("station_2");
+    removeOptions(document.getElementById('station_2'));
     var option = document.createElement("option");
     option.value = 'all'
     option.text = "the nearest station"
@@ -57,22 +54,24 @@ function direction_changed() {
         }
     }
 
-    var e = document.getElementById("direction");
+    var e = document.getElementById("direction_2");
     var value = e.value;
     var text = e.options[e.selectedIndex].text;
     //console.log(text)
     document.getElementById("x_direction").value = value
     document.getElementById("x_direction_name").value = text
 }
-function station_changed() {
-    var station_selection = document.getElementById('station').value
-    //console.log(document.getElementById('station').value)
-    //console.log(document.getElementById('station').text)
-    var e = document.getElementById("station");
+function station_changed_2() {
+    console.log('station_changed_2')
+    var station_selection = document.getElementById('station_2').value
+    //console.log(document.getElementById('station_2').value)
+    //console.log(document.getElementById('station_2').text)
+    var e = document.getElementById("station_2");
     var value = e.value;
     var text = e.options[e.selectedIndex].text;
     //console.log(text)
     document.getElementById("x_station").value = value
     document.getElementById("x_station_name").value = text
+    station_click(station_selection)
 }
 </script>

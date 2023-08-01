@@ -11,20 +11,20 @@
             <div class="button_caption">ADD<br>PUB</div>
         </div>
     {% endif %}
-    {% if form_type == 'read' %}
-        <div style="text-align: center;">
+    {% if form_type == 'home' %}
+        <div style="text-align: center;" class="hide_button" id="upload_button">
             <a href="{{url_for('photo_upload', pub_identity=pubs_selection[0]['pub_identity'])}}"><img src="/static/icons/buttons/photo.png" class="button_size"></a>
             <div class="button_caption">UPLOAD<br>PHOTO</div>
         </div>
-        <div style="text-align: center;">
-            <a href="#"><img src="/static/icons/footer/pencil.png" onclick="goEdit(pubs_selection[0]['pub_identity'])" class="button_size"></a>
+        <div style="text-align: center;" class="hide_button" id="edit_button">
+            <a href="#"><img src="/static/icons/footer/pencil.png" onclick="click_edit(pubs_selection[0]['pub_identity'])" class="button_size"></a>
             <div class="button_caption">EDIT<br>PUB</div>
         </div>
-        <div style="text-align: center;">
-            <a href="#"><img src="/static/icons/footer/underground.png" onclick="stationClick('{{station}}')" class="button_size"></a>
+        <div style="text-align: center;" class="hide_button" id="station_button">
+            <a href="#"><img src="/static/icons/footer/underground.png" onclick="station_click(document.getElementById('x_station').value)" class="button_size"></a>
             <div class="button_caption">STATION<br>AREA</div>
         </div>
-        <div style="text-align: center;">
+        <div style="text-align: center;" class="hide_button" id="delete_button">
             <a href="{{url_for('pub_delete', pub_id=pubs_selection[0]['pub_identity'])}}"><img src="/static/icons/buttons/delete.png" class="button_size"></a>
             <div class="button_caption">DELETE<br>PUB</div>
         </div>
@@ -42,7 +42,7 @@
         </div>
     {% endif %}
     {% if (form_type != 'home') %}
-        <div style="text-align: center;">
+        <div style="text-align: center;" class="hide_button">
             <a href="{{url_for('home')}}"><img src="/static/icons/footer/home1.png" class="button_size"></a>
             <div class="button_caption">RETURN<br>HOME</div>
         </div>

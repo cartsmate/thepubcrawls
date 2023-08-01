@@ -5,7 +5,7 @@ import time
 import uuid
 import pandas as pd
 import numpy as np
-from flask import render_template
+from flask import render_template, request
 from app import app
 from config import Configurations
 from app.static.pythonscripts.dataframes import Dataframes
@@ -13,8 +13,10 @@ from app.static.pythonscripts.csv import Csv
 # from app.static.pythonscripts.s3 import S3
 from app.static.pythonscripts.controls_list import ControlsList
 from app.static.pythonscripts.entities_multi import EntitiesMulti
-# from app.models.pub.pub2 import Pub2
+from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
+from app.models.area.area import Area
+from app.models.station.station import Station
 from app.models.diary.week import Week
 
 config = Configurations().get_config()
@@ -113,22 +115,69 @@ def home():
     pubs_selection['colour'] = '#d9534f'
     pub_review_json = Dataframes().df_to_dict(pubs_selection)
 
+    df_pubs = pd.read_csv(directory_path + '/files/pubs.csv')
+    df_reviews = pd.read_csv(directory_path + '/files/reviews.csv')
+    df_areas = pd.read_csv(directory_path + '/files/areas.csv')
+    df_stations = pd.read_csv(directory_path + '/files/stations.csv')
+    df_diary = pd.read_csv(directory_path + '/files/diary.csv')
+    df_directions = pd.read_csv(directory_path + '/files/directions.csv')
+
+    df_pb_rev = pd.merge(df_pubs, df_reviews, on='pub_identity', how='left')
+    df_pb_rev_ara = pd.merge(df_pb_rev, df_areas, on='area_identity', how='left')
+    df_pb_rev_ara_st = pd.merge(df_pb_rev_ara, df_stations, on='station_identity', how='left')
+    df_pb_rev_ara_st_dry = pd.merge(df_pb_rev_ara_st, df_diary, on='pub_identity', how='left')
+    df_pb_rev_ara_st_dry = df_pb_rev_ara_st_dry.fillna('')
+    headers = list(df_pb_rev_ara_st_dry.columns)
+    all_data_json = Dataframes().df_to_dict(df_pb_rev_ara_st_dry)
+
+    inst_pub = Pub2()
+    inst_review = Review2()
+    inst_pub.__dict__.update(inst_review.__dict__)
+    inst_area = Area()
+    inst_pub.__dict__.update(inst_area.__dict__)
+    inst_station = Station()
+    inst_pub.__dict__.update(inst_station.__dict__)
+    inst_pub_review = inst_pub
+    visible = {}
+    alias = {}
+
+    for k, v in inst_pub_review.__dict__.items():
+        # visible[k] = True
+        if (k == 'station_name') and (request.args.get('station') != 'all'):
+            visible[k] = False
+        else:
+            visible[k] = v.table_visible
+        alias[k] = v.alias
+
+    diary_week = Week().__dict__.items()
+    for k, v in diary_week:
+        # visible[k] = True
+        # if k == day:
+        #     visible[k] = True
+        # else:
+        visible[k] = False
+        alias[k] = k
+    alias['distance'] = 'distance'
+
     return render_template('home.html',
                            # list_areas=list_areas,
-                           list_stations=list_stations, pubs_selection=pub_review_json,
-                           areas=areas_json,
+                           list_stations=list_stations, pubs_selection=all_data_json,
+                           areas=areas_json, all_data=all_data_json, pubs_reviews=pub_review_json,
                            stations=stations_json, stations_directions_list=stations_directions_list,
                            map_lat=review_lat, map_lng=review_long, map_zoom=16,
-                           diary_headers=diary_headers,
-                           directions_list=directions_list,
+                           diary_headers=diary_headers, headers=headers, visible=visible,
+                           directions_list=directions_list, fields_list=fields_list, required_list=required_list,
+                           star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
+                           check_list=check_list, slider_list=slider_list, date_list=date_list,
                            # pubs_reviews=pubs_json, photo_array=config, map_view="stations",
-                            config=config, google_key=config2['google_key'],
+                            config=config, google_key=config2['google_key'], form_visible_list=form_visible_list,
                             # row_loop=range(3), col_loop=range(4),
                            # start=start,
                            #  walk=walk, favourite=favourite, stops=stops, criteria=criteria, photo_id=photo_id,
                            #  pubs=pubs_json, pub=pub_json,
-                            config2=config2, form_type='home',
+                            config2=config2, form_type='home', alias=alias, alias_list=alias_list,
                            counter=counter, list_of_pubs=list_pub, station='all', direction='all',
                            # no_all=no_all, no_reviewed=no_reviewed,
                            # no_all_2=no_all_2, no_reviewed_2=no_reviewed_2,
-                            ignore_list=ignore_list, review_obj=Review2(pub_id), features=l3, icon_list=icon_list)
+                            ignore_list=ignore_list, review_obj=Review2(pub_id), features=l3, icon_list=icon_list,
+                           review_obj2=Review2(pub_id).__dict__.items())

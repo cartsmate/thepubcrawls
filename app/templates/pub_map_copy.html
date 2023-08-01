@@ -6,46 +6,32 @@
         <input id="search-input-navbar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </div>
 {% endif %}
-<div class="row">
-    <div id="no_map" style="border: 1px solid #0275d8" class="map_height">
-        <img class="fa-quora" height="100" src = "/static/icons/no-map.png">
-    </div>
-</div>
 
 <script>
-function initMap() {
-    console.log("initMap");
-    map = show_map(50, 0)
-    var markersArray = []
-}
-/*
-    //pubs_selection = {{pubs_selection | tojson}}
-    //pubs_reviews = {{ pubs_reviews | tojson }}
-
+function initMap(){
+    console.log("initMap in pub_read");
+    //let { avg_lat, avg_lng } = latlng_avg(pubs_selection);
+    pubs_reviews = {{pubs_reviews | tojson}}
+    pubs_selection = {{pubs_selection | tojson}}
     lat = {{map_lat}}
     lng = {{map_lng}}
-    //filtered_data = [{pub_latitude: 51.0, pub_longitude: -0.1}]
-    //filtered_data = populate_test(all_data)
-    let { avg_lat, avg_lng } = latlng_avg(filtered_data);
 
-    add_markers(map, filtered_data)
-    //if (station != 'all') {
-    //    console.log('station - all')
-    //    listen_bounds_changed(map, pubs_reviews)
-    //    }
+    map = show_map(lat, lng)
+
+    add_markers(map, pubs_selection)
+    if (station != 'all') {
+        listen_bounds_changed(map, pubs_reviews)
+        }
     key = {{ google_key | tojson }}
-    //console.log(key)
     stations = {{stations | tojson}}
     areas = {{areas | tojson}}
 
     form_type = {{ form_type | tojson}}
     if (form_type == 'read' || form_type == 'list') {
-        console.log('read & list')
         add_listen_click(map, lat, lng);
     }
-    data = filtered_data
+    data = pubs_reviews
     if (form_type == 'add') {
-        console.log('add')
         var class_event_handler = new ClickEventHandler(map, origin, key, data);
         const input = document.getElementById("search-input-navbar");
         const searchBox = new google.maps.places.SearchBox(input);
@@ -53,7 +39,6 @@ function initMap() {
         map_listen_bounds(map, searchBox, data);
         }
     if (form_type == 'add' || form_type == 'edit') {
-        console.log('add & edit')
         listen_events(lat, lng, data)
         map_listen_click(map, data)
         function isIconMouseEvent(e) {
@@ -62,7 +47,6 @@ function initMap() {
         }
     }
     if (form_type == 'list') {
-        console.log('list')
         const center = new google.maps.LatLng(lat, lng);
         add_listen_click(map, lat, lng);
         window.map.panTo(center);
@@ -80,5 +64,5 @@ function initMap() {
     //current_zoom = map.getZoom();
     //console.log(current_zoom)
 }
-*/
+
 </script>

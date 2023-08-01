@@ -17,15 +17,19 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_home.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_list.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/station_click.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/pub_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_add.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_station.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_test.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/check_week.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/update_data.js') }}"></script>
 
 <script>
 function onLoad() {
     console.log("onLoad in pub_list");
 
-<!--    zoom = {{ map_zoom }}-->
     var map_lat = {{ map_lat | tojson }}
     var map_lng = {{ map_lng | tojson }}
     pubs_reviews = {{ pubs_reviews | tojson }};
@@ -42,10 +46,12 @@ function onLoad() {
     form_type = {{form_type | tojson}}
     filter = {{ filter | tojson }}
     total_rows = {{ total_rows | tojson }}
-    show_other_pubs = {{ show_other_pubs | tojson }}
-    var header_listing = String(filter['0']).toUpperCase() + String(filter).substring(1)
-    document.getElementById("header_listing").innerHTML = header_listing + " (" + total_rows + ")"
 
+    //var header_listing = String(filter['0']).toUpperCase() + String(filter).substring(1)
+    //document.getElementById("header_listing").innerHTML = header_listing + " (" + total_rows + ")"
+    all_data = {{ all_data | tojson }}
+    alias = {{ alias | tojson }}
+    diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
     Object.keys(form_obj).forEach(function(key) {
         if (form_obj[key] == 'all') {
             document.getElementById(key).checked = true
@@ -66,13 +72,15 @@ function onLoad() {
             document.getElementById(key + "_img").style.opacity = "0.25";
         }
     })
-    Search(headers, visible, order)
+
     mapLoad('{{google_key}}', form_type, station);
     document.getElementById('day').value = day;
     if (day != 'all') {
         document.getElementById(day).checked = true
         document.getElementById(day + "_img").style.opacity = "1.0"
     }
+    update_data()
+
 }
 
 </script>
@@ -97,7 +105,5 @@ function onLoad() {
             {% include "pub_week.html" %}
         {% endwith %}
     </div>
-    <div class="row justify-content-center" style="overflow-x:scroll;">
-        {% include "search_table.html" %}
-    </div>
+    <div id="dynamic_table"></div>
 {% endblock %}

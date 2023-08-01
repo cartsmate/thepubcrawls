@@ -7,21 +7,29 @@ function addJson(headers, visible) {
     return json_list
 }
 
-function Search(headers, visible, order) {
-    console.log('inside Search')
-    console.log(headers)
-    console.log(visible)
-    console.log(order)
+function delete_table() {
+    console.log('delete_table')
+    $('#pub_list').DataTable().destroy();
+    $("#pub_list").remove();
+
+}
+
+function filter_table(headers, visible, order) {
+    console.log('filter_table')
+    //console.log(headers)
+    //console.log(visible)
+    //console.log(order)
     $(document).ready(function () {
         $('#pub_list').DataTable({
             paging: true,
+            //pagingType: 'first_last_numbers',
             info: false,
-            order: [[48, 'asc']],
+            //order: [[order, 'asc']],
+            order: [[order, 'desc']],
             columnDefs: addJson(headers, visible)
         });
     });
 }
-
 
 
 function Reset() {
