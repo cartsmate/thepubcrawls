@@ -4,13 +4,14 @@
         <a href="{{url_for('pub_test')}}"><img src="/static/icons/footer/test.png" class="button_size"></a>
         <div class="button_caption">TEST<br>SCRIPT</div>
     </div>
-    -->
+
     {% if form_type != 'add' and form_type != 'edit' %}
         <div style="text-align: center;">
             <a href="#"><img src="/static/icons/footer/add1.png" onclick="goAdd('{{direction}}','{{station}}')" class="button_size"></a>
             <div class="button_caption">ADD<br>PUB</div>
         </div>
     {% endif %}
+    -->
     {% if form_type == 'home' %}
         <div style="text-align: center;" class="hide_button" id="upload_button">
             <a href="{{url_for('photo_upload', pub_identity=pubs_selection[0]['pub_identity'])}}"><img src="/static/icons/buttons/photo.png" class="button_size"></a>
@@ -34,13 +35,14 @@
             <a href="{{url_for('admin')}}"><img src="/static/icons/footer/admin.png" class="button_size"></a>
             <div class="button_caption">RUN<br>ADMIN</div>
         </div>
-    -->
+
     {% if (form_type == 'home') %}
         <div style="text-align: center;">
             <a href="{{url_for('pub_crawl')}}"><img src="/static/icons/footer/route.png" class="button_size"></a>
             <div class="button_caption">PUB<br>CRAWL</div>
         </div>
     {% endif %}
+    -->
     {% if (form_type != 'home') %}
         <div style="text-align: center;" class="hide_button">
             <a href="{{url_for('home')}}"><img src="/static/icons/footer/home1.png" class="button_size"></a>
