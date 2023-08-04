@@ -17,5 +17,6 @@ function map_load(google_key) {
         elem.className = "fa-quora"
         elem.height = "100"
         document.getElementById('map').appendChild(elem);
+
     }
 }

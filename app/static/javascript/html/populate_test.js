@@ -15,9 +15,9 @@ function populate_test(filtered_data) {
     favourite = document.getElementById("x_favourite").value
     garden = document.getElementById("x_garden").value
     history = document.getElementById("x_history").value
-    console.log('history: ' + history)
+    //console.log('history: ' + history)
     late = document.getElementById("x_late").value
-    console.log('late: ' + late)
+    //console.log('late: ' + late)
     music = document.getElementById("x_music").value
     pool = document.getElementById("x_pool").value
     quiz = document.getElementById("x_quiz").value
@@ -87,23 +87,23 @@ function populate_test(filtered_data) {
             });
     }
     if (history == 'true') {
-        console.log('history true')
+        //console.log('history true')
         var filtered_data = filtered_data.filter(function(pub) {
             return pub.history == true
             });
     } else {
-        console.log('history false')
+        //console.log('history false')
         var filtered_data = filtered_data.filter(function(pub) {
             return (pub.history == true || pub.history == false)
             });
     }
     if (late == 'true') {
-        console.log('late true')
+        //console.log('late true')
         var filtered_data = filtered_data.filter(function(pub) {
             return pub.late == true
             });
     } else {
-        console.log('late false')
+        //console.log('late false')
         var filtered_data = filtered_data.filter(function(pub) {
             return (pub.late == true || pub.late == false)
             });

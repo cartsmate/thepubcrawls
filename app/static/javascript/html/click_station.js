@@ -1,5 +1,10 @@
-function station_click(station_identity) {
+function station_click() {
     console.log("station_click")
+    document.getElementById('pub_read').style.display = 'none'
+    document.getElementById('list_header').style.display = 'block'
+    document.getElementById('list_page1').style.display = 'block'
+    document.getElementById('list_page2').style.display = 'block'
+
     /*
     var base_url = window.location.hostname
     if (config2['env'] == 'prod') {
@@ -9,10 +14,10 @@ function station_click(station_identity) {
     }
     */
     delete_table()
-    document.getElementById("x_station").value = station_identity
+    //document.getElementById("x_station").value = station_identity
     //var drop1 = document.getElementById("station");
     //drop1.value = station_identity
-
+    /*
     for (iLoop = 0; iLoop< stations_directions_list.length; iLoop++)
     {
       if (stations_directions_list[iLoop][0] == station_identity)
@@ -24,15 +29,17 @@ function station_click(station_identity) {
         break;
       }
     }
+    */
+    //document.getElementById("x_station_name").value = stations_directions_list[iLoop][1]
 
-    document.getElementById("x_station_name").value = stations_directions_list[iLoop][1]
-
+    station_identity = document.getElementById("x_station").value
     filtered_data = populate_station(all_data, station_identity)
+    json_array = calculate_directions_count(filtered_data)
     update_features_icons(filtered_data)
     create_table(filtered_data, alias)
     visible, order = column_filter()
     filter_table(headers, visible, order)
-    map_visible(filtered_data);
+    map_visible(filtered_data, json_array);
     header = update_header() + " (" + filtered_data.length + ")"
     document.getElementById('search_header').innerHTML = header
     document.getElementById('list_header').style.display = 'block'

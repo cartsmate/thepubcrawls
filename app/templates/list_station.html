@@ -1,12 +1,12 @@
 <div class="row justify-content-center">
     <select class="form-control" id="direction_2" name="direction_2" onchange="direction_changed_2();" style="font-size:12px; background-color: #FFFFFF; width:140px;">
-        <option value="all">select direction</option>
+        <option value="all">Area</option>
         {% for direction in directions_list %}
             <option value={{direction[0]}}>{{direction[1]}}</option>
         {% endfor %}
     </select>
     <select class="form-control" id="station_2" name="station_2" onchange="station_changed_2();" style="font-size:12px; background-color: #FFFFFF; width:140px;">
-        <option value="all">select station</option>
+        <option value="all">Tube/Train Station</option>
         {% for x in stations_directions_list %}
             <option value={{x[0]}}>{{x[1]}}</option>
         {% endfor %}
@@ -60,6 +60,7 @@ function direction_changed_2() {
     //console.log(text)
     document.getElementById("x_direction").value = value
     document.getElementById("x_direction_name").value = text
+    click_direction()
 }
 function station_changed_2() {
     console.log('station_changed_2')
@@ -72,6 +73,6 @@ function station_changed_2() {
     //console.log(text)
     document.getElementById("x_station").value = value
     document.getElementById("x_station_name").value = text
-    station_click(station_selection)
+    station_click()
 }
 </script>

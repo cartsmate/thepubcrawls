@@ -233,22 +233,23 @@ def pub_read():
             df_pubs_reviews2 = df_pubs_reviews[~df_pubs_reviews['pub_identity'].isin([pub_review_list])]
             pubs_reviews_json = Dataframes().df_to_dict(df_pubs_reviews2)
 
-            review_lat = df_pub_review['pub_latitude'].values[0]
-            review_long = df_pub_review['pub_longitude'].values[0]
+            # review_lat = df_pub_review['pub_latitude'].values[0]
+            # review_long = df_pub_review['pub_longitude'].values[0]
             # flash(word_response)
 
-            return render_template('pub_read.html',
-                                   # response=response,
-                                   form_type='read', google_key=config2['google_key'],
-                                   pubs_selection=pub_review_json, diary_headers=diary_headers,
-                                   pubs_reviews=pubs_reviews_json, diary_body=diary_json,
-                                   config=config, config2=config2, day=day,  show_other_pubs=True,
-                                   stations=stations_json, areas=areas_json,
-                                   fields_list=fields_list, alias=alias, station=station,
-                                   map_lat=review_lat, map_lng=review_long,
-                                   star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
-                                   check_list=check_list, slider_list=slider_list, date_list=date_list,
-                                   form_visible_list=form_visible_list, table_visible_list=table_visible_list,
-                                   required_list=required_list,
-                                   alias_list=alias_list, icon_list=icon_list,
-                                   review_obj=Review2(), ignore_list=ignore_list)
+            return redirect(url_for('home'))
+            # return render_template('pub_read.html',
+            #                        # response=response,
+            #                        form_type='read', google_key=config2['google_key'],
+            #                        pubs_selection=pub_review_json, diary_headers=diary_headers,
+            #                        pubs_reviews=pubs_reviews_json, diary_body=diary_json,
+            #                        config=config, config2=config2, day=day,  show_other_pubs=True,
+            #                        stations=stations_json, areas=areas_json,
+            #                        fields_list=fields_list, alias=alias, station=station,
+            #                        map_lat=review_lat, map_lng=review_long,
+            #                        star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
+            #                        check_list=check_list, slider_list=slider_list, date_list=date_list,
+            #                        form_visible_list=form_visible_list, table_visible_list=table_visible_list,
+            #                        required_list=required_list,
+            #                        alias_list=alias_list, icon_list=icon_list,
+            #                        review_obj=Review2(), ignore_list=ignore_list)

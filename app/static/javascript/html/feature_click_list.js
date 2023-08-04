@@ -46,11 +46,14 @@ function feature_click_list(check_item) {
         console.log('auto_exec: on')
         delete_table()
         filtered_data = populate_test(all_data)
+        console.log('filtered_data')
+        console.log(filtered_data)
+        json_array = calculate_directions_count(filtered_data)
         update_features_icons(filtered_data)
         create_table(filtered_data, alias)
         visible, order = column_filter()
         filter_table(headers, visible, order)
-        map_visible(filtered_data);
+        map_visible(filtered_data, json_array);
         header = update_header() + " (" + filtered_data.length + ")"
         document.getElementById('search_header').innerHTML = header
         document.getElementById('list_header').style.display = 'block'

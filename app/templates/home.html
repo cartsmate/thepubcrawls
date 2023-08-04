@@ -14,6 +14,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/display_none.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/crawl/show_map_home.js') }}"></script>
 
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/click_direction.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/click_edit.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/click_list.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/click_pub.js') }}"></script>
@@ -27,25 +28,25 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/column_filter.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_list.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/filter_table.js') }}"></script>
-
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_pub.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_add.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/go_day.js') }}"></script>
-
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_diary.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_form.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_pub.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_test.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_station.js') }}"></script>
-
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/shade_stars.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/update_data.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/update_header.js') }}"></script>
 
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_map_click.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_markers_2.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_marker_bounds.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/calculate_directions_count.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/calculate_stations_count.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/code_address.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/latlng_avg.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/listen_bounds_changed.js') }}"></script>
@@ -88,10 +89,10 @@ function onLoad(){
 
     display_counter(counter);
     document.getElementById('home_page').style.display = 'block'
-    document.getElementById('list_header').style.display = 'none'
-    document.getElementById('list_page1').style.display = 'none'
-    document.getElementById('list_page2').style.display = 'none'
-    document.getElementById('pub_read').style.display = 'none'
+    //document.getElementById('list_header').style.display = 'none'
+    //document.getElementById('list_page1').style.display = 'none'
+    //document.getElementById('list_page2').style.display = 'none'
+    //document.getElementById('pub_read').style.display = 'none'
     map_load('{{google_key}}')
 
 
@@ -117,7 +118,7 @@ function onLoad(){
 <input type="text"  style="border: solid; display:none;" id="x_dart" value="false">
 <input type="text"  style="border: solid; display:none;" id="x_entertain" value="false">
 <input type="text"  style="border: solid; display:none;" id="x_favourite" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_garden" value="false">
+<input type="text"  class="hide_x_boxes" id="x_garden" value="false">
 <input type="text"  class="hide_x_boxes" id="x_history" value="false">
 <input type="text"  class="hide_x_boxes" id="x_late" value="false">
 <input type="text"  style="border: solid; display:none;" id="x_music" value="false">
@@ -128,7 +129,7 @@ function onLoad(){
 {% endblock %}
 
 {% block sub_heading %}
-<div id="list_header">
+<div id="list_header" style="display:none">
     <div id="search_header"></div>
 </div>
 {% endblock %}
@@ -152,7 +153,7 @@ function onLoad(){
 
 
 {% block left %}
-<div id="list_page1">
+<div id="list_page1" style="display:none">
     {% include "list_station.html" %}
     {% include "list_features.html" %}
     {% include "pub_map.html" %}
@@ -161,14 +162,14 @@ function onLoad(){
 
 
 {% block right %}
-<div id="list_page2">
+<div id="list_page2" style="display:none">
     <div>
         {% include "list_week.html" %}
     </div>
     <div id="dynamic_table"></div>
 </div>
-<div id="pub_read">
-    <form action="/pub/?pub_id={{pubs_selection[0]['pub_identity']}}&station={{pubs_selection[0]['station_identity']}}&day=all" method="post">
+<div id="pub_read" style="display:none">
+    <form action="/pub/?pub_id={{pubs_selection[0]['pub_identity']}}" method="post">
         <div class="form-group row" style="">
             <div class="col">
                 {% include "pub_form.html" %}

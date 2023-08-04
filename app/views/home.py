@@ -17,6 +17,7 @@ from app.models.pub.pub2 import Pub2
 from app.models.review.review2 import Review2
 from app.models.area.area import Area
 from app.models.station.station import Station
+from app.models.direction.direction import Direction
 from app.models.diary.week import Week
 
 config = Configurations().get_config()
@@ -116,19 +117,23 @@ def home():
     pub_review_json = Dataframes().df_to_dict(pubs_selection)
 
     df_pubs = pd.read_csv(directory_path + '/files/pubs.csv')
+    # print(df_pubs.shape[0])
     df_reviews = pd.read_csv(directory_path + '/files/reviews.csv')
-    df_areas = pd.read_csv(directory_path + '/files/areas.csv')
+    df_rev_no_dupes = df_reviews.drop_duplicates(subset='pub_identity', keep="last")
+    # df_reviews.groupby('pub_identity', group_keys=False).apply(lambda x: x.loc[x.review_identity.idxmax()])
+    # df_areas = pd.read_csv(directory_path + '/files/areas.csv')
     df_stations = pd.read_csv(directory_path + '/files/stations.csv')
     df_diary = pd.read_csv(directory_path + '/files/diary.csv')
     df_directions = pd.read_csv(directory_path + '/files/directions.csv')
 
-    df_pb_rev = pd.merge(df_pubs, df_reviews, on='pub_identity', how='left')
-    df_pb_rev_ara = pd.merge(df_pb_rev, df_areas, on='area_identity', how='left')
-    df_pb_rev_ara_st = pd.merge(df_pb_rev_ara, df_stations, on='station_identity', how='left')
-    df_pb_rev_ara_st_dry = pd.merge(df_pb_rev_ara_st, df_diary, on='pub_identity', how='left')
-    df_pb_rev_ara_st_dry = df_pb_rev_ara_st_dry.fillna('')
-    headers = list(df_pb_rev_ara_st_dry.columns)
-    all_data_json = Dataframes().df_to_dict(df_pb_rev_ara_st_dry)
+    df_pb_rev = pd.merge(df_pubs, df_rev_no_dupes, on='pub_identity', how='left')
+    # df_pb_rev_ara = pd.merge(df_pb_rev, df_areas, on='area_identity', how='left')
+    df_pb_rev_st = pd.merge(df_pb_rev, df_stations, on='station_identity', how='left')
+    df_pb_rev_st_dir = pd.merge(df_pb_rev_st, df_directions, on='direction_identity', how='left')
+    df_pb_rev_st_dir_dry = pd.merge(df_pb_rev_st_dir, df_diary, on='pub_identity', how='left')
+    df_pb_rev_st_dir_dry = df_pb_rev_st_dir_dry.fillna('')
+    headers = list(df_pb_rev_st_dir_dry.columns)
+    all_data_json = Dataframes().df_to_dict(df_pb_rev_st_dir_dry)
 
     inst_pub = Pub2()
     inst_review = Review2()
@@ -137,6 +142,8 @@ def home():
     inst_pub.__dict__.update(inst_area.__dict__)
     inst_station = Station()
     inst_pub.__dict__.update(inst_station.__dict__)
+    inst_direction = Direction()
+    inst_pub.__dict__.update(inst_direction.__dict__)
     inst_pub_review = inst_pub
     visible = {}
     alias = {}

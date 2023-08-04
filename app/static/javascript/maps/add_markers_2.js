@@ -1,5 +1,5 @@
-function add_markers(data) {
-    console.log('add_markers')
+function add_markers_2(data) {
+    console.log('add_markers_2')
     //console.log(data)
     /*
     if (typeof map.markers !== "undefined") {
@@ -15,37 +15,42 @@ function add_markers(data) {
     markersArray = []
     //console.log(markersArray.length)
     //console.log(data.length)
-    var pinSVGHole = "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z";
-    var labelOriginHole = new google.maps.Point(12,15);
-    //var pinSVGFilled = "M 12,2 C 8.1340068,2 5,5.1340068 5,9 c 0,5.25 7,13 7,13 0,0 7,-7.75 7,-13 0,-3.8659932 -3.134007,-7 -7,-7 z";
-    //var labelOriginFilled =  new google.maps.Point(12,9);
+    //var pinSVGHole = "M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z";
+    //var labelOriginHole = new google.maps.Point(12,15);
+    var pinSVGFilled = "M 12,2 C 8.1340068,2 5,5.1340068 5,9 c 0,5.25 7,13 7,13 0,0 7,-7.75 7,-13 0,-3.8659932 -3.134007,-7 -7,-7 z";
+    var labelOriginFilled =  new google.maps.Point(12,9);
     var infowindow = new google.maps.InfoWindow();
     var marker, i, j;
     var bounds = new google.maps.LatLngBounds();
     //console.log(data)
     for (var key in data) {
+        //console.log('key')
         //console.log(key)
-        //console.log(data[key])
+        //console.log('data')
+        //console.log(data)
+        //console.log('data[key].count')
+        //console.log(data[key].count)
         //var pinColor = data[key].colour
         var pinColor = "#0275d8"
-        /*
-        console.log('colour: ' + pinColor)
-        if (true == false) {
-            var pinHole = pinSVGFilled
-            var label = {
-                text: data[key].count,
-                color: "white",
-                fontSize: "12px",
-            };
-        } else {
-        */
-        var pin = pinSVGHole
+        //console.log('colour: ' + pinColor)
+        //if (true == false) {
+        var pin = pinSVGFilled
+
         var label = {
-            text: " ",
+            text: data[key].count.toString(),
             color: "white",
-            fontSize: "1px",
+            fontSize: "12px",
         };
-        //}
+        /*
+        } else {
+            var pinHole = pinSVGHole
+            var label = {
+                text: " ",
+                color: "white",
+                fontSize: "1px",
+            };
+        }
+        */
         var markerImage = {  // https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel
             path: pin,
             anchor: new google.maps.Point(12,17),
@@ -54,7 +59,7 @@ function add_markers(data) {
             strokeWeight: 2,
             strokeColor: "white",
             scale: 2,
-            labelOrigin: labelOriginHole
+            labelOrigin: labelOriginFilled
         };
         /*
         if (typeof data[key].name != "undefined") {
@@ -63,29 +68,33 @@ function add_markers(data) {
             title_name = data[key].area_name
         }
         */
-        if (data[key].colour == '#d9534f' ) {
-            var indie = 1
-        } else {
-            var indie = 2
-        }
+
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude),
             map: map,
             icon: markerImage,
-            //title: title_name,
-            zIndex: indie
+            label: label
         })
 
         google.maps.event.addListener(marker, 'click', (function (marker, key) {
             return function () {
-                set=data[key].pub_name.trim().replace(/%20/g, " ");
+                console.log('listener click')
+                document.getElementById('x_direction').value = data[key].direction_identity.toString()
+                document.getElementById('x_direction_name').value = data[key].direction_name.toString()
+                click_direction()
+                }
+            })(marker, key))
+        /*
+        google.maps.event.addListener(marker, 'click', (function (marker, key) {
+            return function () {
+                set=data[key].direction_identity.trim().replace(/%20/g, " ");
                 infowindow.x = set;
                 infowindow.setContent("<p><b>" + set + "</b></p>" +
                     "<a href='#' onclick='pub_click()'>" + set + "</a>");
                 infowindow.open(map, marker);
                 }
             })(marker, key));
-
+        */
         markersArray.push(marker);
         var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
         bounds.extend(myLatLng);

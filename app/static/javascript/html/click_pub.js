@@ -22,11 +22,12 @@ function pub_click(id) {
 
     filtered_data = populate_pub(all_data, id)
 
-    console.log(filtered_data)
+    //console.log(filtered_data)
     populate_form(filtered_data);
     populate_diary(filtered_data);
     update_features_icons(filtered_data)
     map_visible(filtered_data);
+    document.getElementById('x_pub_identity').innerHTML = id
     document.getElementById('search_header').innerHTML = filtered_data[0].pub_name
     document.getElementById('list_header').style.display = 'block'
 }
