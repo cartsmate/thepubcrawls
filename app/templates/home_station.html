@@ -3,13 +3,13 @@
 </div>
 <div class="row justify-content-center">
     <select class="form-control" id="direction" name="direction" onchange="direction_changed();" style="font-size:12px; background-color: #FFFFFF; width:140px;">
-        <option value="all">select direction</option>
+        <option value="all">Area</option>
         {% for direction in directions_list %}
             <option value={{direction[0]}}>{{direction[1]}}</option>
         {% endfor %}
     </select>
     <select class="form-control" id="station" name="station" onchange="station_changed();" style="font-size:12px; background-color: #FFFFFF; width:140px;">
-        <option value="all">select station</option>
+        <option value="all">Tube/Train Station</option>
         {% for x in stations_directions_list %}
             <option value={{x[0]}}>{{x[1]}}</option>
         {% endfor %}

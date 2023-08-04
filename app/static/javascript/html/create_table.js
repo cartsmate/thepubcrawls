@@ -1,5 +1,6 @@
 function create_table(pubs_selection, alias) {
     console.log('create_table')
+    console.log(pubs_selection)
     //var tbl = document.getElementById('pub_list');
         //if(tbl) tbl.parentNode.removeChild(tbl);
   // creates a <table> element and a <tbody> element

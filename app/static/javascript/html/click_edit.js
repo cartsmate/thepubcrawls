@@ -1,4 +1,4 @@
-function click_edit(id) {
+function click_edit() {
     console.log("click_edit")
     /*
     var base_url = window.location.hostname
