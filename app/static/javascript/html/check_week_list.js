@@ -29,7 +29,7 @@ function check_week_list(value) {
         create_table(filtered_data, alias)
         visible, order = column_filter()
         filter_table(headers, visible, order)
-        map_visible(filtered_data);
+        //map_visible(filtered_data);
         header = update_header() + " (" + filtered_data.length + ")"
         document.getElementById('search_header').innerHTML = header
         document.getElementById('list_header').style.display = 'block'

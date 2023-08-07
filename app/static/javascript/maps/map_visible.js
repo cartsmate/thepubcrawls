@@ -13,7 +13,7 @@ function map_visible(filtered_data, json_array, json_array_stations) {
             add_markers_2(json_array)
         } else {
             console.log('one directions')
-            add_markers_2(json_array_stations)
+            add_markers_3(json_array_stations)
         }
     } else {
         document.getElementById('no_wifi').style.display = "block";

@@ -16,9 +16,12 @@ function delete_table() {
 
 function filter_table(headers, visible, order) {
     console.log('filter_table')
-    //console.log(headers)
-    //console.log(visible)
-    //console.log(order)
+    console.log('headers')
+    console.log(headers)
+    console.log('visible')
+    console.log(visible)
+    console.log('order')
+    console.log(order)
     $(document).ready(function () {
         $('#pub_list').DataTable({
             paging: true,
@@ -29,6 +32,7 @@ function filter_table(headers, visible, order) {
             columnDefs: addJson(headers, visible)
         });
     });
+    console.log('end of filter table')
 }
 
 
