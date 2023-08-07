@@ -716,9 +716,9 @@ f1d20739-7d34-4510-8abe-19c98a9cdf4a,False,1605a183-1c79-44a6-905a-aab6d109bfbf,
 c08f6ffe-4cd7-402c-b399-b7f0ca3abf21,False,8a9a733c-f36b-49e9-8da7-aeb884293d92,Various events,False,False,True,False,True,False,False,False,False,False,False,False
 1976c287-2c7e-43ce-b71f-a0ba412714f6,False,52af26bd-dc00-4812-8766-f2e791d62a50,Hotel,False,False,False,False,False,False,False,False,False,False,False,False
 2bbe7b81-4605-41c9-af7a-f7bee3b46f17,False,e11b2048-5a29-48e1-a059-a87797a18ebc,Mon 8pm quiz. Outdoor seating,False,False,False,False,False,False,False,False,False,True,False,True
-ba3f1186-cb12-4988-a3a0-ff8abf78a1b3,False,b7f16ea4-7f50-4d2c-bc48-46cddf0984c0,Quirky bar. Sunday 5pm quiz. Mon-Wed closed.,False,False,False,False,False,False,False,False,False,True,False,True
+ba3f1186-cb12-4988-a3a0-ff8abf78a1b3,False,b7f16ea4-7f50-4d2c-bc48-46cddf0984c0,Quirky bar,False,False,False,False,False,False,False,False,False,False,False,False
 f808b692-a457-44f6-9083-1677f8f2e72c,False,03720287-a239-42f8-9919-ba66747271b4,Table tennis and outdoor seating,False,False,True,False,False,False,True,False,True,False,True,True
-86d4bed9-0eb8-456f-9195-d7aebce3477b,False,85c71873-b209-4b30-a592-5054413b6d84,Taproom Wed-Sat only,False,False,False,False,False,False,False,False,False,False,False,False
+86d4bed9-0eb8-456f-9195-d7aebce3477b,False,85c71873-b209-4b30-a592-5054413b6d84,Taproom,False,False,False,False,False,False,False,False,False,False,False,False
 4e560109-3f90-47a2-9df5-cc0e0274e738,False,d99dfb84-5486-422d-9698-cec02a5bb71a,Wine tours,False,False,False,False,False,False,False,False,False,False,False,False
 857df822-a4a5-4eca-b72a-742549fe2972,False,8963e59d-8ccb-4992-9834-7904450120e6,"Mon, Thur-Sat live music",False,False,False,False,True,False,True,True,False,False,False,False
 f9d9066b-81cc-40c9-9258-eb5c66079535,False,5b901c7f-6de6-4051-897b-d2366f5d92a6,Theatre pub. Mon 7.30pm quiz,False,False,True,False,True,False,False,False,False,True,True,True
@@ -947,7 +947,7 @@ f4977457-d6f0-4ed7-ac92-6c5c52e58dd3,False,82861b12-4ce4-4cea-91d2-3c8880938e0e,
 9c12e893-2f56-4992-b727-fd7f71b9d85e,False,af1eed5b-ad31-4fc7-a014-137676ff694f,,False,False,False,False,False,False,False,False,False,False,False,False
 4bed298b-60d8-4c95-8b56-74dbbdb92471,False,949463e4-2002-4162-8637-161d26f3db80,TBC,False,False,False,False,False,False,False,False,False,False,False,False
 da111a28-1841-406b-936a-be2c51438918,False,3249ed26-bb22-423b-9de6-11c7b104af32,TBC,False,False,False,False,False,False,False,False,False,False,False,False
-a66c1a4f-0f56-4e22-abfb-bd66e34ad17e,False,cf39e857-00e3-481d-a901-145fa643a1e1,TBC,False,False,False,False,False,False,False,False,False,False,False,False
+a66c1a4f-0f56-4e22-abfb-bd66e34ad17e,False,cf39e857-00e3-481d-a901-145fa643a1e1,TBC2,False,False,False,False,False,False,False,False,False,False,False,False
 f8c756ab-b521-4612-bc12-4bf2d9e03ca1,False,f930011f-7457-4827-8db5-63a6df6c1b1d,TBC,False,False,False,False,False,False,False,False,False,False,False,False
 cb2f1387-696a-4d28-8801-e243c49f1701,False,a2ef9932-e307-4f41-bfa1-05ce937e8fbb,TBC,False,False,False,False,False,False,False,False,False,False,False,False
 1bd4f341-06d8-47cb-8864-f13c8243305d,False,98eab8ce-62e7-4ab7-a019-6f73a000d115,TBC,False,False,False,False,False,False,False,False,False,False,False,False
@@ -1172,7 +1172,7 @@ b3238d85-afac-4f1c-b311-e088e2492f09,False,8816bccc-9c8f-4689-bd45-6795e8c29328,
 1258fdf7-33c5-4899-a0d6-e17956809ee8,False,28328615-6a74-4a68-b0c8-20394316eaf6,TBC,False,False,False,False,False,False,False,False,False,False,False,False
 aeaeb348-b2bb-4819-a7d0-d4b6f99d04b3,False,94b27a36-c1b3-4883-909c-f42c1c7a17d2,TBC,False,False,False,False,False,False,False,False,False,False,False,False
 7f4851cb-e222-45e6-ad7d-7d43d4541f80,False,57ac397a-2a33-45db-bd87-8bab7610420e,TBC,False,False,False,False,False,False,False,False,False,False,False,False
-05b225bd-7e67-41b8-bc5a-f38c06edb567,False,65905a5a-49ec-427a-8c80-7ae65097ebb3,TBC,False,False,False,False,False,False,False,False,False,False,False,False
+05b225bd-7e67-41b8-bc5a-f38c06edb567,False,65905a5a-49ec-427a-8c80-7ae65097ebb3,TBC2,False,False,False,False,False,False,False,False,False,False,False,False
 dfc97579-8d32-4d2f-ade3-85e6b94e6719,False,0fd1f61f-7584-4a4d-b8dd-5b455d110d09,TBC,False,False,False,False,False,False,False,False,False,False,False,False
 f00a127c-7d8f-46f2-8982-34a16f4f723c,False,e31b0b3b-7b4d-4c10-a4f9-de8ed39bfc28,TBC,False,False,False,False,False,False,False,False,False,False,False,False
 6d1e0285-0a34-482c-97ae-58bb71be0c3e,False,86381027-556c-48d6-8583-ddc4190b7cd3,TBC,False,False,False,False,False,False,False,False,False,False,False,False

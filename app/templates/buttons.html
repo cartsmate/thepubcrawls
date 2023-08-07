@@ -12,12 +12,13 @@
         </div>
     {% endif %}
     -->
-    <!--
+
+    <div style="text-align: center;" class="hide_button" id="edit_button">
+        <a href="#"><img src="/static/icons/footer/pencil.png" onclick="click_edit()" class="button_size"></a>
+        <div class="button_caption">EDIT<br>PUB</div>
+    </div>
+        <!--
     {% if form_type == 'read' %}
-        <div style="text-align: center;" class="hide_button" id="edit_button">
-            <a href="#"><img src="/static/icons/footer/pencil.png" onclick="click_edit()" class="button_size"></a>
-            <div class="button_caption">EDIT<br>PUB</div>
-        </div>
         <div style="text-align: center;" class="hide_button" id="delete_button">
             <a href="{{url_for('pub_delete', pub_id=pubs_selection[0]['pub_identity'])}}"><img src="/static/icons/buttons/delete.png" class="button_size"></a>
             <div class="button_caption">DELETE<br>PUB</div>
@@ -28,7 +29,7 @@
         </div>
     {% endif %}
     -->
-    <div style="text-align: center; display:none" id="station_button">
+    <div style="text-align: center;" class="hide_button" id="station_button">
         <a href="#"><img src="/static/icons/footer/underground.png" onclick="click_station()" class="button_size"></a>
         <div class="button_caption">STATION<br>AREA</div>
     </div>
@@ -45,7 +46,7 @@
         </div>
     {% endif %}
     -->
-    <div style="text-align: center; display: none;" id="home_button">
+    <div style="text-align: center;" class="hide_button" id="home_button">
         <a href="{{url_for('home')}}"><img src="/static/icons/footer/home1.png" class="button_size"></a>
         <div class="button_caption">RETURN<br>HOME</div>
     </div>

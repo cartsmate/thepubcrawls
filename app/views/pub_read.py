@@ -209,7 +209,6 @@ def pub_read():
 
             df_reviews = Csv().get_reviews()
             df_review_updated = FormInput().get_review(df_reviews, pub_id)
-            # print(df_review_updated)
             df_review_updated.to_csv(directory_path + '/files/reviews.csv', index=False, sep=',', encoding='utf-8')
 
             df_diary = pd.read_csv(directory_path + '/files/diary.csv')
@@ -237,7 +236,7 @@ def pub_read():
             # review_long = df_pub_review['pub_longitude'].values[0]
             # flash(word_response)
 
-            return redirect(url_for('home'))
+            return redirect(url_for('home', pub_id=pub_id), code=307)
             # return render_template('pub_read.html',
             #                        # response=response,
             #                        form_type='read', google_key=config2['google_key'],
