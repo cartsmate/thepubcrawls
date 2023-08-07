@@ -1,4 +1,4 @@
-function station_click() {
+function click_station() {
     console.log("station_click")
     document.getElementById('pub_read').style.display = 'none'
 
