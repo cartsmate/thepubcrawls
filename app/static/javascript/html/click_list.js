@@ -27,7 +27,7 @@ function click_list(stations_directions_list) {
         removeOptions(document.getElementById('station_2'));
         var option = document.createElement("option");
         option.value = 'all'
-        option.text = "the nearest station"
+        option.text = "Tube/Train Station"
         select.add(option);
         if (value == 'all') {
             for(var i = 0; i < stations_directions_list.length; i++) {
