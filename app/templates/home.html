@@ -39,6 +39,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/populate_station.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/shade_stars.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/update_data.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/update_features_icons.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/update_header.js') }}"></script>
 
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/maps/add_map_click.js') }}"></script>
@@ -89,6 +90,7 @@ function onLoad(){
 
     display_counter(counter);
     document.getElementById('home_page').style.display = 'block'
+    document.getElementById('home_button').style.display = 'none'
     //document.getElementById('list_header').style.display = 'none'
     //document.getElementById('list_page1').style.display = 'none'
     //document.getElementById('list_page2').style.display = 'none'
@@ -114,18 +116,18 @@ function onLoad(){
 <input type="text" class="hide_x_boxes" id="x_pub_identity" value="">
 <input type="text" class="hide_x_boxes" id="x_day" value="all">
 
-<input type="text"  style="border: solid; display:none;" id="x_brunch" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_dart" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_entertain" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_favourite" value="false">
-<input type="text"  class="hide_x_boxes" id="x_garden" value="false">
-<input type="text"  class="hide_x_boxes" id="x_history" value="false">
-<input type="text"  class="hide_x_boxes" id="x_late" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_music" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_pool" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_quiz" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_roast" value="false">
-<input type="text"  style="border: solid; display:none;" id="x_sport" value="false">
+<input type="text" class="hide_x_boxes" id="x_brunch" value="false">
+<input type="text" class="hide_x_boxes" id="x_dart" value="false">
+<input type="text" class="hide_x_boxes" id="x_entertain" value="false">
+<input type="text" class="hide_x_boxes" id="x_favourite" value="false">
+<input type="text" class="hide_x_boxes" id="x_garden" value="false">
+<input type="text" class="hide_x_boxes" id="x_history" value="false">
+<input type="text" class="hide_x_boxes" id="x_late" value="false">
+<input type="text" class="hide_x_boxes" id="x_music" value="false">
+<input type="text" class="hide_x_boxes" id="x_pool" value="false">
+<input type="text" class="hide_x_boxes" id="x_quiz" value="false">
+<input type="text" class="hide_x_boxes" id="x_roast" value="false">
+<input type="text" class="hide_x_boxes" id="x_sport" value="false">
 {% endblock %}
 
 {% block sub_heading %}

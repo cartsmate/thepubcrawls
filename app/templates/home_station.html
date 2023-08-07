@@ -19,12 +19,14 @@
 
 <script>
 function removeOptions(selectElement) {
-   var i, L = selectElement.options.length - 1;
-   for(i = L; i >= 0; i--) {
-      selectElement.remove(i);
-   }
+    console.log('remove dropdown options')
+    var i, L = selectElement.options.length - 1;
+    for(i = L; i >= 0; i--) {
+        selectElement.remove(i);
+    }
 }
 function direction_changed() {
+    console.log('direction dropdown change')
     var directionSelect = document.getElementById("direction");
     var selectedText = directionSelect.options[directionSelect.selectedIndex].text;
     value = document.getElementById("direction").value
@@ -36,7 +38,7 @@ function direction_changed() {
     removeOptions(document.getElementById('station'));
     var option = document.createElement("option");
     option.value = 'all'
-    option.text = "the nearest station"
+    option.text = "Tube/Train Station"
     select.add(option);
     if (value == 'all') {
         for(var i = 0; i < stations_directions_list.length; i++) {
@@ -65,6 +67,7 @@ function direction_changed() {
     document.getElementById("x_direction_name").value = text
 }
 function station_changed() {
+    console.log('station dropdown changed')
     var station_selection = document.getElementById('station').value
     //console.log(document.getElementById('station').value)
     //console.log(document.getElementById('station').text)

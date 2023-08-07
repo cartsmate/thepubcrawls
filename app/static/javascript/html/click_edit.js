@@ -1,5 +1,7 @@
 function click_edit() {
     console.log("click_edit")
+    form_type = 'edit'
+    document.getElementById('form_type').value = form_type
     /*
     var base_url = window.location.hostname
     if (config2['env'] == 'prod') {
@@ -12,16 +14,22 @@ function click_edit() {
     window.location.replace(myUrlWithParams.href);
     */
 
-    for (let i = 0; i < fields_list.length; i++) {
-        if (!icon_list.includes(fields_list[i])) {
-            if (form_visible_list.includes(fields_list[i])) {
-                if (fields_list[i] in input_list) {
-                    document.getElementById(fields_list[i]).setAttribute("readonly", "false");
+    if (document.getElementById('form_type').value == 'edit') {
+        for (let i = 0; i < fields_list.length; i++) {
+            if (!icon_list.includes(fields_list[i])) {
+                if (form_visible_list.includes(fields_list[i])) {
+                    if (fields_list[i] in input_list) {
+                        console.log('for fields loop: ' + fields_list[i])
+                        document.getElementById(fields_list[i]).setAttribute("readonly", "false");
                     }
                 }
             }
         }
-
+        for (let i = 0; i < diary_headers.length; i++) {
+            console.log('for diary loop: ' + diary_headers[i])
+            document.getElementById(diary_headers[i]).setAttribute('readonly', 'false')
+        }
+    }
     //elem_submit_btn.disabled = false
     elem_submit_btn.setAttribute("style","display:block;");
     elem_submit_msg.setAttribute("style","display:none;");

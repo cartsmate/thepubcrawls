@@ -1,7 +1,20 @@
 function feature_click_list(check_item) {
     console.log("feature_click_list")
     console.log(check_item)
+    var checkBox = document.getElementById(check_item + "_2");
+    if (checkBox.checked == true) {
+        document.getElementById("x_" + check_item).value = "true"
+    } else {
+        document.getElementById("x_" + check_item).value = "false"
+    }
 
+
+
+    //console.log(all_data)
+    filtered_data = populate_test(all_data)
+    //console.log(filtered_data)
+    update_data(filtered_data)
+    /*
     form_type = document.getElementById('form_type').value
     auto_exec = document.getElementById('auto_exec').value
 
@@ -58,4 +71,5 @@ function feature_click_list(check_item) {
         document.getElementById('search_header').innerHTML = header
         document.getElementById('list_header').style.display = 'block'
     }
+    */
 }

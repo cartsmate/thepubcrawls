@@ -4,7 +4,7 @@ function check_week_list(value) {
     diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
     //diary_headers = {{diary_headers | tojson}}
     for (let i = 0; i < diary_headers.length; i++) {
-        var checkBox = document.getElementById(diary_headers[i] + "_2")
+        var checkBox = document.getElementById("btn_" + diary_headers[i] + "_2")
         var imageBox = document.getElementById(diary_headers[i] + "_img_2")
         if (diary_headers[i] == value) {
             if (checkBox.checked == true) {

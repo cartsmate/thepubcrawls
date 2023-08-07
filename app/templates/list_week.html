@@ -5,10 +5,10 @@
             {% for day in diary_headers %}
             <div>
                 <div>
-                    <input style="display:none" type="checkbox" id='{{day}}_2' name='{{day}}_2' value='{{day}}' onclick="check_week_list(this.value)">
+                    <input style="display:none" type="checkbox" id='btn_{{day}}_2' name='btn_{{day}}_2' value='{{day}}' onclick="check_week_list(this.value)">
                 </div>
                 <div>
-                    <label for='{{day}}_2' style="margin:0px; padding:0px 3px" >
+                    <label for='btn_{{day}}_2' style="margin:0px; padding:0px 3px" >
                         <img src="{{ url_for('static', filename='icons/diary/' + day + '.png' ) }}" id="{{day}}_img_2"
                              width="40" height="40" style="opacity: 0.25;">
                     </label>

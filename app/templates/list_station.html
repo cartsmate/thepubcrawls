@@ -15,10 +15,11 @@
 
 <script>
 function removeOptions(selectElement) {
-   var i, L = selectElement.options.length - 1;
-   for(i = L; i >= 0; i--) {
-      selectElement.remove(i);
-   }
+    console.log('remove dropdown options')
+    var i, L = selectElement.options.length - 1;
+    for(i = L; i >= 0; i--) {
+        selectElement.remove(i);
+    }
 }
 function direction_changed_2() {
     console.log('direction_changed_2')
