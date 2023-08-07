@@ -22,6 +22,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/create_table.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/check_week_home.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/check_week_list.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click_edit.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click_home.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_click_list.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/html/feature_home.js') }}"></script>
@@ -63,7 +64,7 @@ let markersArray = []
 
 function onLoad(){
     console.log('onLoad')
-
+    pub_id = {{ pub_id | tojson }}
     counter = {{ counter | tojson }}
     icon_list = {{ icon_list | tojson }}
     config2 = {{ config2 | tojson }}
@@ -77,7 +78,6 @@ function onLoad(){
     review_obj2 = "{{ review_obj2 }}"
     key = {{ google_key | tojson }}
     stations_directions_list = {{ stations_directions_list | tojson }}
-    //console.log(stations_directions_list)
     fields_list = {{ fields_list | tojson }}
     form_visible_list = {{ form_visible_list | tojson }}
     alias_list = {{ alias_list | tojson }}
@@ -90,15 +90,29 @@ function onLoad(){
     star_list = {{ star_list | tojson }}
 
     display_counter(counter);
-    document.getElementById('home_page').style.display = 'block'
-    document.getElementById('home_button').style.display = 'none'
-    //document.getElementById('list_header').style.display = 'none'
-    //document.getElementById('list_page1').style.display = 'none'
-    //document.getElementById('list_page2').style.display = 'none'
-    //document.getElementById('pub_read').style.display = 'none'
+    /*
+    if (pub_id == '0') {
+        console.log('pub_id: ' + pub_id)
+        console.log('pub is a zero')
+        document.getElementById('home_page').style.display = 'block'
+        document.getElementById('home_button').style.display = 'none'
+        document.getElementById('list_header').style.display = 'none'
+        document.getElementById('list_page1').style.display = 'none'
+        document.getElementById('list_page2').style.display = 'none'
+        document.getElementById('pub_read').style.display = 'none'
+    } else {
+        console.log('pub_id: ' + pub_id)
+        console.log('pub id is a number')
+        pub_click(pub_id)
+        document.getElementById('home_page').style.display = 'none'
+        document.getElementById('home_button').style.display = 'block'
+        document.getElementById('list_header').style.display = 'none'
+        document.getElementById('list_page1').style.display = 'block'
+        document.getElementById('list_page2').style.display = 'none'
+        document.getElementById('pub_read').style.display = 'block'
+    }
+    */
     map_load('{{google_key}}')
-
-
 }
 </script>
 {% endblock %}
@@ -172,11 +186,12 @@ function onLoad(){
     <div id="dynamic_table"></div>
 </div>
 <div id="pub_read" style="display:none">
-    <form action="/pub/?pub_id={{pubs_selection[0]['pub_identity']}}" method="post">
+    <form id="pub_form" method="post">
         <div class="form-group row" style="">
             <div class="col">
                 {% include "pub_form.html" %}
                 {% include "pub_diary.html" %}
+                {% include "edit_features.html" %}
             </div>
             {% include "pub_form_submit.html" %}
         </div>

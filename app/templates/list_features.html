@@ -1,22 +1,22 @@
 <div id="list_features" class="row justify-content-center" style="display:flex; align-items:center;">
 {% for k, field in review_obj.__dict__.items() %}
     {% if field.name in icon_list %}
-        <div style="text-align:center; padding:5px;" id="{{field.name}}_col_2">
+        <div style="text-align:center; padding:5px;" id="{{field.name}}_col_list">
             <div>
-                <input type="checkbox" id="{{field.name}}_20" name="{{field.name}}_20" style="display:none" onclick="feature_click_list('{{field.name}}')">
+                <input type="checkbox" id="{{field.name}}_list" name="{{field.name}}_list" style="display:none" onclick="feature_click_list('{{field.name}}')">
             </div>
             <div>
-                <label for="{{field.name}}_20" style="margin:0px; padding:0px" >
-                    <img src="{{ url_for('static', filename='icons/features/' + field.icon ) }}" id="{{field.name}}_img_2" width="25" height="25"
+                <label for="{{field.name}}_list" style="margin:0px; padding:0px" >
+                    <img src="{{ url_for('static', filename='icons/features/' + field.icon ) }}" id="{{field.name}}_img_list" width="25" height="25"
                          style="opacity: 1;">
                 </label>
             </div>
-            <div class="caption" id="{{field.name}}_caption_2" style="font-size: 8px; padding:0px; margin:0px; opacity:1;"></div>
+            <div class="caption" id="{{field.name}}_caption_list" style="font-size: 8px; padding:0px; margin:0px; opacity:1;"></div>
         </div>
         <script>
-            document.getElementById("{{field.name}}_caption_2").innerHTML = "{{field.alias}}"
-            document.getElementById("{{field.name}}_caption_2").style.fontSize = "x-small";
-            document.getElementById("{{field.name}}_caption_2").style.fontWeight = "bold";
+            document.getElementById("{{field.name}}_caption_list").innerHTML = "{{field.alias}}"
+            document.getElementById("{{field.name}}_caption_list").style.fontSize = "x-small";
+            document.getElementById("{{field.name}}_caption_list").style.fontWeight = "bold";
         </script>
     {% endif %}
 {% endfor %}

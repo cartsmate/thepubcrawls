@@ -18,7 +18,14 @@ function click_station() {
     document.getElementById('list_header').style.display = 'block'
     document.getElementById('list_page1').style.display = 'block'
     document.getElementById('list_page2').style.display = 'block'
-    document.getElementById('station_button').style.display = 'none'
+
+    document.getElementById('list_features').style.display = 'flex'
+
+    document.getElementById('station_button').classList.remove("show_button");
+    document.getElementById('station_button').classList.add("hide_button");
+
+    document.getElementById('edit_button').classList.remove("show_button");
+    document.getElementById('edit_button').classList.add("hide_button");
 
     filtered_data = populate_test(all_data)
     update_data(filtered_data)

@@ -1,5 +1,5 @@
-function feature_click_home(check_item) {
-    console.log("feature_click_home")
+function feature_click_edit(check_item) {
+    console.log("feature_click_edit")
     //console.log(check_item)
 
     //form_type = document.getElementById('form_type').value
@@ -9,11 +9,11 @@ function feature_click_home(check_item) {
     //console.log(auto_exec)
     console.log('form_type: ' + form_type)
     //if (form_type != 'read') {
-    var checkBox = document.getElementById(check_item);
+    var checkBox = document.getElementById(check_item + "_edit")
     //console.log(checkBox)
-    var image = document.getElementById(check_item + "_img");
-    var caption = document.getElementById(check_item + "_caption");
-    var checkCol = document.getElementById(check_item + "_col");
+    var image = document.getElementById(check_item + "_img_edit");
+    var caption = document.getElementById(check_item + "_caption_edit");
+    var checkCol = document.getElementById(check_item + "_col_edit");
     if (checkBox.checked == true){
         //console.log(checkBox.checked)
         document.getElementById("x_" + check_item).value = checkBox.checked

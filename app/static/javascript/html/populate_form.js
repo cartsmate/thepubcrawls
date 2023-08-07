@@ -14,9 +14,9 @@ function populate_form(pubs_selection){
                 //console.log('true')
                 document.getElementById(fields_list[i]).checked = true;
                 document.getElementById(fields_list[i]).style.hidden = "none";
-                var feature_img = fields_list[i] + "_img_2"
-                var feature_col = fields_list[i] + "_col_2"
-                var feature_caption = fields_list[i] + "_caption_2"
+                var feature_img = fields_list[i] + "_img_edit"
+                var feature_col = fields_list[i] + "_col_edit"
+                var feature_caption = fields_list[i] + "_caption_edit"
                 document.getElementById(feature_col).style.background = "#0275D8";
                 document.getElementById(feature_caption).style.color = "white";
             } else {
