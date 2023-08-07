@@ -16,9 +16,6 @@
                         {% include "control_date.html" %}
                     {% elif field in input_list %}
                         <input style="font-size:12px; overflow-y: scroll; resize: none; height: 30px; text-align:left; visibility:visible; display:block; width:250px;" class="form-control" type='textarea' name="{{field}}" id="{{field}}">
-                        {% if form_type == 'read' %}
-                            <script>document.getElementById("{{field}}").setAttribute("readonly", "true");</script>
-                        {% endif %}
                     {% endif %}
                     {% if field in required_list %}
                         <script>document.getElementById("{{field}}").required = true</script>

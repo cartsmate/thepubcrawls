@@ -1,7 +1,7 @@
 function calculate_directions_count(filtered_data) {
     console.log('calculate_directions_count')
     group_by = groupBy(filtered_data, 'direction_identity')
-    //console.log(group_by)
+    console.log(group_by)
     keys_list = Object.keys(group_by);
 
     var json_array = []
