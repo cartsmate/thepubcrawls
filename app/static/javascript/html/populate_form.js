@@ -1,5 +1,6 @@
 function populate_form(pubs_selection){
     console.log('populate_form')
+    //console.log(pubs_selection)
     for (i = 0; i < fields_list.length; i++) {
         //console.log(fields_list[i])
         //console.log(check_list)

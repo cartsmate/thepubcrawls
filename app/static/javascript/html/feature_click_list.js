@@ -1,7 +1,7 @@
 function feature_click_list(check_item) {
     console.log("feature_click_list")
     console.log(check_item)
-    var checkBox = document.getElementById(check_item + "_2");
+    var checkBox = document.getElementById(check_item + "_20");
     if (checkBox.checked == true) {
         document.getElementById("x_" + check_item).value = "true"
     } else {

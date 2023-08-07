@@ -10,6 +10,7 @@ function update_features_icons(filtered_data) {
             return el[review_list[i]] == true;
         }).length;
         console.log(review_list[i] + ": " + count)
+        document.getElementById(review_list[i] + '_20').setAttribute("onclick", "feature_click_list('" + review_list[i] + "')")
         if (count == filtered_data.length) {
             console.log('all')
             checkCol.style.border = "thick solid #0275D8";

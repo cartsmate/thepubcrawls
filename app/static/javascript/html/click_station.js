@@ -19,6 +19,7 @@ function station_click() {
     document.getElementById('list_page1').style.display = 'block'
     document.getElementById('list_page2').style.display = 'block'
     document.getElementById('station_button').style.display = 'none'
+
     filtered_data = populate_test(all_data)
     update_data(filtered_data)
 
