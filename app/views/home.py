@@ -192,8 +192,8 @@ def home():
                                review_obj2=Review2(pub_id).__dict__.items())
 
     if request.method == 'POST':
-        print('home/: POST')
         pub_id = request.args.get('pub_id')
+        print('home/: POST: ' + pub_id)
         return render_template('home.html', pub_id=pub_id,
                                list_stations=list_stations, pubs_selection=all_data_json,
                                areas=areas_json, all_data=all_data_json, pubs_reviews=pub_review_json,

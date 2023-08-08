@@ -88,9 +88,8 @@ function onLoad(){
     check_list = {{ check_list | tojson }}
     date_controls = {{ date_list | tojson }}
     star_list = {{ star_list | tojson }}
-
+    map_load('{{google_key}}')
     display_counter(counter);
-    /*
     if (pub_id == '0') {
         console.log('pub_id: ' + pub_id)
         console.log('pub is a zero')
@@ -100,19 +99,15 @@ function onLoad(){
         document.getElementById('list_page1').style.display = 'none'
         document.getElementById('list_page2').style.display = 'none'
         document.getElementById('pub_read').style.display = 'none'
+
     } else {
         console.log('pub_id: ' + pub_id)
         console.log('pub id is a number')
-        pub_click(pub_id)
         document.getElementById('home_page').style.display = 'none'
         document.getElementById('home_button').style.display = 'block'
-        document.getElementById('list_header').style.display = 'none'
-        document.getElementById('list_page1').style.display = 'block'
-        document.getElementById('list_page2').style.display = 'none'
-        document.getElementById('pub_read').style.display = 'block'
+        pub_click(pub_id)
     }
-    */
-    map_load('{{google_key}}')
+
 }
 </script>
 {% endblock %}
