@@ -1,12 +1,14 @@
 function map_load(google_key) {
     console.log('map_load')
-    //console.log(google_key)
+    console.log(google_key)
     var js = document.createElement("script");
     js.type = "text/javascript";
     if (window.navigator.onLine == true) {
         console.log('google map api')
         js.setAttribute("defer", "defer");
-        js.src = 'https://maps.googleapis.com/maps/api/js?key=' + google_key + '&libraries=places&callback=initMap'
+        var testsy = 'https://maps.googleapis.com/maps/api/js?key=' + google_key + '&libraries=places&callback=initMap'
+        console.log(testsy)
+        js.src = testsy
         //js.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCbb6tdoROEQuBKLZXybG5cNIB4UTc6A20&libraries=places&callback=initMap'
         document.head.appendChild(js)
     } else {
