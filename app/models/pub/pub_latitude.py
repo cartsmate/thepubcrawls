@@ -1,7 +1,7 @@
 
 class PubLatitude:
-    def __init__(self, name="pub_latitude", alias="Latitude", required=True, form_visible=False,
-                 table_visible=False, value=0, control=None, rank=0):
+    def __init__(self, name="pub_latitude", alias="Latitude", required='true', form_visible='true',
+                 table_visible='false', value=0, control='false', rank=0):
         self.name = name
         self.alias = alias
         self.required = required

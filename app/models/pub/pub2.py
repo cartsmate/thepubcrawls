@@ -9,6 +9,7 @@ from app.models.pub.pub_name import PubName
 from app.models.pub.place import Place
 from app.models.pub.rank import Rank
 from app.models.pub.colour import Colour
+from app.models.pub.detail import Detail
 from app.models.pub.pub_base import Base
 from app.models.pub.pub_base import NewId
 from app.models.area.area import Area
@@ -38,7 +39,7 @@ class Pub2:
     def __init__(self, pub_deletion=PubDeletion(), place=Place(), pub_name=PubName(),
                  address=Address(), pub_latitude=PubLatitude(), pub_longitude=PubLongitude(), category=Category(),
                  rank=Rank(), station_identity=StationIdentity(), area_identity=AreaIdentity(), pub_identity=PubIdentity(),
-                 colour=Colour()):
+                 colour=Colour(), detail=Detail()):
         self.address = address
         self.area_identity = area_identity
         self.category = category
@@ -51,6 +52,7 @@ class Pub2:
         self.pub_name = pub_name
         self.rank = rank
         self.station_identity = station_identity
+        self.detail = detail
         # self.newid = newid
         # self.base = base
 

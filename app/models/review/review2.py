@@ -1,7 +1,5 @@
-from app.static.pythonscripts.uuid import Uuid
 from app.models.review.brunch import Brunch
 from app.models.review.dart import Dart
-from app.models.review.detail import Detail
 from app.models.review.garden import Garden
 from app.models.review.favourite import Favourite
 from app.models.review.history import History
@@ -39,11 +37,10 @@ class Review2():
     def __init__(self, review_deletion=ReviewDeletion(), sport=Sport(), garden=Garden(), music=Music(), roast=Roast(),
                  brunch=Brunch(), late=Late(), quiz=Quiz(), pool=Pool(), dart=Dart(), entertain=Entertain(),
                  history=History(), favourite=Favourite(), pub_identity=PubIdentity(),
-                 review_identity=ReviewIdentity(), detail=Detail()):
+                 review_identity=ReviewIdentity()):
                  # pub_identity=PubIdentity,
         self.brunch = brunch
         self.dart = dart
-        self.detail = detail
         self.entertain = entertain
         self.favourite = favourite
         self.garden = garden

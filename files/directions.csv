@@ -1,10 +1,10 @@
 direction_identity,direction_name,direction_deletion
-fa3a9c79-9948-4923-ac41-55e5962faba9,Central,False
-9beb28ec-f491-4ffd-8601-0ad71c0bdbc2,North,False
-4e8ce58e-daea-4d93-9490-11e0724e6445,South,False
-d760aad1-f5d3-476a-9030-9fb1c919b639,East,False
-095bb39d-fce2-48a9-a766-d2c297c55985,West,False
-56f2aa1c-b9ad-4a39-a5cb-fb55a75e1355,North West,False
-c31d725d-5697-4031-94b4-0b4545cf75ef,North East,False
-d68422e6-b4c1-4d76-ad60-6fdc8758d831,South West,False
-a1f41008-b499-4a71-82d4-444dc4d71d82,South East,False
+fa3a9c79-9948-4923-ac41-55e5962faba9,Central,false
+9beb28ec-f491-4ffd-8601-0ad71c0bdbc2,North,false
+4e8ce58e-daea-4d93-9490-11e0724e6445,South,false
+d760aad1-f5d3-476a-9030-9fb1c919b639,East,false
+095bb39d-fce2-48a9-a766-d2c297c55985,West,false
+56f2aa1c-b9ad-4a39-a5cb-fb55a75e1355,North West,false
+c31d725d-5697-4031-94b4-0b4545cf75ef,North East,false
+d68422e6-b4c1-4d76-ad60-6fdc8758d831,South West,false
+a1f41008-b499-4a71-82d4-444dc4d71d82,South East,false

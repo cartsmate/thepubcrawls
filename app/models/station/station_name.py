@@ -1,6 +1,6 @@
 
 class StationName:
-    def __init__(self, name='station_name', required=True, form_visible=True, table_visible=True,
+    def __init__(self, name='station_name', required='true', form_visible='true', table_visible='true',
                  alias="station", value="", control='input', rank=2):
         self.name = name
         self.required = required

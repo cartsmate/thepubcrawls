@@ -1,4 +1,4 @@
-function update_data(filtered_data) {
+function update_data(filtered_data, alias, headers) {
     console.log('update_data')
     delete_table()
 
@@ -10,7 +10,7 @@ function update_data(filtered_data) {
 
     update_features_icons(filtered_data)
 
-    create_table(filtered_data, alias)
+    create_table(filtered_data, alias, headers)
 
     visible, order = column_filter()
 

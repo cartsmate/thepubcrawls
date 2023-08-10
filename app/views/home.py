@@ -116,15 +116,23 @@ def home():
     pubs_selection['colour'] = '#d9534f'
     pub_review_json = Dataframes().df_to_dict(pubs_selection)
 
-    df_pubs = pd.read_csv(directory_path + '/files/pubs.csv')
+    df_pubs = pd.read_csv(directory_path + '/files/pubs.csv', dtype={'pub_deletion': str})
+    # df = pd.read_csv('test.csv', dtype={'pub_deletion': str, 'b': str})
+    # all_data_json = Dataframes().df_to_dict(df_pubs)
+    # print(all_data_json)
     # print(df_pubs.shape[0])
-    df_reviews = pd.read_csv(directory_path + '/files/reviews.csv')
+    df_reviews = pd.read_csv(directory_path + '/files/reviews.csv', dtype={'review_deletion': str, 'brunch': str,
+                                                                           'dart': str, 'entertain': str,
+                                                                           'favourite': str, 'garden': str,
+                                                                           'history': str, 'late': str,
+                                                                           'music': str, 'pool': str, 'quiz': str,
+                                                                           'roast': str, 'sport': str})
     df_rev_no_dupes = df_reviews.drop_duplicates(subset='pub_identity', keep="last")
     # df_reviews.groupby('pub_identity', group_keys=False).apply(lambda x: x.loc[x.review_identity.idxmax()])
     # df_areas = pd.read_csv(directory_path + '/files/areas.csv')
-    df_stations = pd.read_csv(directory_path + '/files/stations.csv')
+    df_stations = pd.read_csv(directory_path + '/files/stations.csv', dtype={'station_deletion': str})
     df_diary = pd.read_csv(directory_path + '/files/diary.csv')
-    df_directions = pd.read_csv(directory_path + '/files/directions.csv')
+    df_directions = pd.read_csv(directory_path + '/files/directions.csv', dtype={'direction_deletion': str})
 
     df_pb_rev = pd.merge(df_pubs, df_rev_no_dupes, on='pub_identity', how='left')
     # df_pb_rev_ara = pd.merge(df_pb_rev, df_areas, on='area_identity', how='left')
@@ -133,6 +141,7 @@ def home():
     df_pb_rev_st_dir_dry = pd.merge(df_pb_rev_st_dir, df_diary, on='pub_identity', how='left')
     df_pb_rev_st_dir_dry = df_pb_rev_st_dir_dry.fillna('')
     headers = list(df_pb_rev_st_dir_dry.columns)
+    print(df_pb_rev_st_dir_dry.dtypes)
     all_data_json = Dataframes().df_to_dict(df_pb_rev_st_dir_dry)
 
     inst_pub = Pub2()
@@ -165,9 +174,11 @@ def home():
         visible[k] = False
         alias[k] = k
     alias['distance'] = 'distance'
-
+    # print(alias)
+    print(all_data_json)
     if request.method == 'GET':
         print('home/: GET')
+
         return render_template('home.html', pub_id='0',
                                # list_areas=list_areas,
                                list_stations=list_stations, pubs_selection=all_data_json,
@@ -193,7 +204,7 @@ def home():
 
     if request.method == 'POST':
         pub_id = request.args.get('pub_id')
-        print('home/: POST: ' + pub_id)
+        # print('home/: POST: ' + pub_id)
         return render_template('home.html', pub_id=pub_id,
                                list_stations=list_stations, pubs_selection=all_data_json,
                                areas=areas_json, all_data=all_data_json, pubs_reviews=pub_review_json,

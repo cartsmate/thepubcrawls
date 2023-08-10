@@ -1,4 +1,4 @@
-function create_table(pubs_selection, alias) {
+function create_table(pubs_selection, alias, headers) {
     console.log('create_table')
     console.log(pubs_selection)
     //var tbl = document.getElementById('pub_list');

@@ -1,6 +1,8 @@
 function populate_test(filtered_data) {
     console.log('populate_test')
-    console.log('all data: ' + all_data.length)
+    //console.log(filtered_data)
+    //console.log({{all_data}})
+    //console.log('all data: ' + all_data.length)
     direction = document.getElementById("x_direction").value
     direction_name = document.getElementById("x_direction_name").value
     //console.log('direction: ' + direction)

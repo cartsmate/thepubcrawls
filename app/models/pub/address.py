@@ -1,7 +1,7 @@
 
 class Address:
-    def __init__(self, name='address', alias="address", required=True, form_visible=True,
-                 table_visible=False, value="", control='input', rank=1):
+    def __init__(self, name='address', alias="address", required='true', form_visible='true',
+                 table_visible='false', value="", control='input', rank=1):
         self.name = name
         self.alias = alias
         self.required = required

@@ -1,6 +1,6 @@
 function map_load(google_key) {
     console.log('map_load')
-    console.log(google_key)
+    //console.log(google_key)
     var js = document.createElement("script");
     js.type = "text/javascript";
     if (window.navigator.onLine == true) {
