@@ -9,10 +9,11 @@ function map_load(google_key) {
         console.log('on-line')
         js.setAttribute("defer", "defer");
         var google_string = 'https://maps.googleapis.com/maps/api/js?key=' + google_key + '&libraries=places&callback=initMap'
-        //console.log(google_string)
+        console.log('google_string')
+        console.log(google_string)
         js.src = google_string
-        //js.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCbb6tdoROEQuBKLZXybG5cNIB4UTc6A20&libraries=places&callback=initMap'
         document.head.appendChild(js)
+        console.log('end of on-line if')
     } else {
         console.log('off-line')
         var elem = document.createElement("img");
