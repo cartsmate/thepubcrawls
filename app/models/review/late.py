@@ -2,8 +2,8 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Late:
-    def __init__(self, name="late", alias="late", alias2="open", required=True, form_visible=False,
-                 table_visible=False, value=False, control="check", icon="late.png"):
+    def __init__(self, name="late", alias="late", alias2="open", required='true', form_visible='false',
+                 table_visible='false', value='false', control="check", icon="late.png"):
         self.name = name
         self.alias = alias
         self.alias2 = alias2

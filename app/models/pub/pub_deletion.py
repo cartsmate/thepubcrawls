@@ -1,7 +1,7 @@
 
 class PubDeletion:
-    def __init__(self, name='pub_deletion', alias="Delete", required=False, form_visible=False,
-                 table_visible=False, value=False, control=None, rank=0):
+    def __init__(self, name='pub_deletion', alias="Delete", required='false', form_visible='false',
+                 table_visible='false', value='false', control='false', rank=0):
         self.name = name
         self.alias = alias
         self.required = required

@@ -35,14 +35,14 @@ class ControlsList:
         for cl in class_list:
             for k, v in cl.__dict__.items():
                 fields_list.append(v.name)
-                if v.form_visible == True:
+                if v.form_visible == 'true':
                     form_visible_list.append(v.name)
-                if v.table_visible == True:
+                if v.table_visible == 'true':
                     table_visible_list.append(v.name)
-                if v.required == True:
+                if v.required == 'true':
                     required_list.append(v.name)
                 try:
-                    if v.icon is not None:
+                    if v.icon is not 'none':
                         icon_list.append(v.name)
                 except:
                     pass
@@ -67,9 +67,12 @@ class ControlsList:
                     slider_list.append(v.name)
                 if v.control == "check":
                     check_list.append(v.name)
+        # print('form_visible_list')
         # print(form_visible_list)
         selected_pub_colour = '#0275d8'
         other_pub_colour = '#d9534f'
+        # print('icon_list')
+        # print(icon_list)
         return dropdown_list, star_list, input_list, date_list, slider_list, check_list, alias_list, \
                required_list, form_visible_list, table_visible_list, icon_list, fields_list, ignore_list, \
                selected_pub_colour, other_pub_colour

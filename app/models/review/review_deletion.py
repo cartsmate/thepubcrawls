@@ -1,7 +1,7 @@
 
 class ReviewDeletion:
-    def __init__(self, name='review_deletion', alias="Review Delete", alias2="", required=False, form_visible=False,
-                 table_visible=False, value=False, control=None, icon=None):
+    def __init__(self, name='review_deletion', alias="Review Delete", alias2="", required='false', form_visible='false',
+                 table_visible='false', value='false', control='none', icon='none'):
         self.name = name
         self.alias = alias
         self.alias2 = alias2

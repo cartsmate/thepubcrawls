@@ -1,0 +1,22 @@
+
+
+<input type="text" class="hide_x_boxes" id="form_type" value="home">
+<input type="text" class="hide_x_boxes" id="auto_exec" value="off">
+
+{% set var_list = ['x_direction', 'x_station', 'x_day'] %}
+{% for var in var_list %}
+    <label class="hide_x_boxes" for="{{var}}">{{var}}</label>
+    <input type="text" class="hide_x_boxes" id="{{var}}" value="all">
+{% endfor %}
+
+{% set var_list = ['load', 'x_pub_identity', 'x_station_name', 'x_direction_name'] %}
+{% for var in var_list %}
+    <label class="hide_x_boxes" for="{{var}}">{{var}}</label>
+    <input type="text" class="hide_x_boxes" id="{{var}}" value="">
+{% endfor %}
+
+{% set var_list = ['x_brunch', 'x_dart', 'x_entertain', 'x_favourite', 'x_garden', 'x_history', 'x_late', 'x_music', 'x_pool', 'x_quiz', 'x_roast', 'x_sport'] %}
+{% for var in var_list %}
+    <label class="hide_x_boxes" for="{{var}}">{{var}}</label>
+    <input type="text" class="hide_x_boxes" id="{{var}}" value="false">
+{% endfor %}

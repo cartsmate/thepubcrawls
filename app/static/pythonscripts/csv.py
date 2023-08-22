@@ -40,7 +40,7 @@ class Csv:
     def get_records(self, aws_prefix):
         df = self.read_csv(aws_prefix)
         del_consol = aws_prefix + "_deletion"
-        df_false = df.loc[(df[del_consol] == 'False') | (df[del_consol] == False)]
+        df_false = df.loc[(df[del_consol] == 'false')]
         return df_false
 
     def read_csv(self, prefix):

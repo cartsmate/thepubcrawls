@@ -1,5 +1,5 @@
 function check_week_list(value) {
-    console.log('check_week_list')
+    console.log('CHECK_WEEK_LIST')
     auto_exec = document.getElementById('auto_exec').value
     diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
     //diary_headers = {{diary_headers | tojson}}
@@ -22,10 +22,14 @@ function check_week_list(value) {
         }
     }
     if (auto_exec == 'on') {
+
         console.log('auto_exec: on')
+        update_data(filtered_data)
+        update_icons_list(filtered_data)
+        /*
         delete_table()
         filtered_data = populate_test(all_data)
-        update_features_icons(filtered_data)
+        update_icons_pub(filtered_data)
         create_table(filtered_data, alias)
         visible, order = column_filter()
         filter_table(headers, visible, order)
@@ -33,5 +37,6 @@ function check_week_list(value) {
         header = update_header() + " (" + filtered_data.length + ")"
         document.getElementById('search_header').innerHTML = header
         document.getElementById('list_header').style.display = 'block'
+        */
     }
 }

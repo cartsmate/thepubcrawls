@@ -28,27 +28,29 @@ class FormNew:
         return df_new_pub
 
     def get_review(self, pub_id):
-        review_val_list = [True if request.form.get('brunch') == 'on' else False,
-                         True if request.form.get('dart') == 'on' else False,
-                           request.form['detail'],
-                         True if request.form.get('entertain') == 'on' else False,
-                         True if request.form.get('favourite') == 'on' else False,
-                         True if request.form.get('garden') == 'on' else False,
-                         True if request.form.get('history') == 'on' else False,
-                         True if request.form.get('late') == 'on' else False,
-                         True if request.form.get('music') == 'on' else False,
-                         True if request.form.get('pool') == 'on' else False,
-                           pub_id,
-                           True if request.form.get('quiz') == 'on' else False,
-                         False,
-                           uuid.uuid4(),
-                         True if request.form.get('roast') == 'on' else False,
-                         True if request.form.get('sport') == 'on' else False]
+        new_review = Review2(review_identity=uuid.uuid4(), review_deletion='false', pub_identity=pub_id,
+                             brunch='true' if request.form.get('brunch') == 'on' else 'false',
+                           dart='true' if request.form.get('dart') == 'on' else 'false',
+                           entertain='true' if request.form.get('entertain') == 'on' else 'false',
+                           favourite='true' if request.form.get('favourite') == 'on' else 'false',
+                           garden='true' if request.form.get('garden') == 'on' else 'false',
+                           history='true' if request.form.get('history') == 'on' else 'false',
+                           late='true' if request.form.get('late') == 'on' else 'false',
+                           music='true' if request.form.get('music') == 'on' else 'false',
+                           pool='true' if request.form.get('pool') == 'on' else 'false',
+                           quiz='true' if request.form.get('quiz') == 'on' else 'false',
+                           roast='true' if request.form.get('roast') == 'on' else 'false',
+                           sport='true' if request.form.get('sport') == 'on' else 'false')
 
-        review_attr_list = []
-        for k, v in Review2().__dict__.items():
-            review_attr_list.append(v.name)
-        df_new_review = pd.DataFrame(columns=review_attr_list, data=[review_val_list])
+        # review_attr_list = []
+        # for k, v in Review2().__dict__.items():
+        #     review_attr_list.append(v.name)
+        # print('review_attr_list')
+        # print(review_attr_list)
+        # df_new_review = pd.DataFrame(columns=review_attr_list, data=[review_val_list])
+        df_new_review = pd.DataFrame([new_review.__dict__])
+        print('df_new_review')
+        print(df_new_review)
         return df_new_review
 
     def get_diary(self, pub_id):

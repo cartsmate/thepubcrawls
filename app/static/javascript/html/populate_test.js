@@ -1,46 +1,63 @@
-function populate_test(filtered_data) {
-    console.log('populate_test')
-    console.log('all data: ' + all_data.length)
-    direction = document.getElementById("x_direction").value
+function populate_test() {
+    console.log('POPULATE_TEST')
+
+    filtered_data = all_data
+    //console.log('filtered_data')
+    //console.log(filtered_data)
+
     direction_name = document.getElementById("x_direction_name").value
-    //console.log('direction: ' + direction)
-    station = document.getElementById('x_station').value
     station_name = document.getElementById('x_station_name').value
-    //console.log('station: ' + station)
     day = document.getElementById('x_day').value
-    //console.log('day: ' + day)
     brunch = document.getElementById("x_brunch").value
     dart = document.getElementById("x_dart").value
     entertain = document.getElementById("x_entertain").value
     favourite = document.getElementById("x_favourite").value
     garden = document.getElementById("x_garden").value
     history = document.getElementById("x_history").value
-    //console.log('history: ' + history)
     late = document.getElementById("x_late").value
-    //console.log('late: ' + late)
     music = document.getElementById("x_music").value
     pool = document.getElementById("x_pool").value
     quiz = document.getElementById("x_quiz").value
     roast = document.getElementById("x_roast").value
     sport = document.getElementById("x_sport").value
     pre_header = ""
-    //console.log('brunch: ' + brunch)
-    //filtered_data = pubs_selection
-    //console.log('filtered data before filters: ' + filtered_data.length)
-    if (station != 'all') {
-        //console.log('NOT ALL STATION')
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.station_identity == station
+
+    if (document.getElementById('x_station').value != 'all') {
+        console.log('NOT ALL STATION: ' + document.getElementById('x_station').value)
+        var filtered_data = all_data.filter(function(pub) {
+            return pub.station_identity == document.getElementById('x_station').value
             });
         pre_header = station_name + " Pubs"
-    } else if (direction != 'all') {
-        //console.log(direction)
-        //console.log('NOT ALL DIRECTION')
-        var filtered_data =  filtered_data.filter(function(pub) {
-            return pub.direction_identity == direction
+    } else if (document.getElementById("x_direction").value != 'all') {
+        console.log('NOT ALL DIRECTION: ' + document.getElementById('x_direction').value)
+        var filtered_data =  all_data.filter(function(pub) {
+            return pub.direction_identity == document.getElementById('x_direction').value
             });
         pre_header = direction_name + " Pubs"
+    } else {
+        console.log('ALL STATION & ALL DIRECTION')
+    }
+    console.log('filtered_data')
+    console.log(filtered_data)
+
+    var review_list = ['brunch', 'dart', 'entertain', 'favourite', 'garden', 'history', 'late', 'music', 'pool', 'quiz', 'roast', 'sport']
+    for (let i = 0; i < review_list.length; i++) {
+        console.log('review: ' + review_list[i])
+        console.log(document.getElementById('x_' + review_list[i]).value)
+        if (document.getElementById("x_" + review_list[i]).value == 'true') {
+            console.log('true')
+            var filtered_data = filtered_data.filter(function(pub) {
+                return pub[review_list[i]] == 'true'
+                });
+        } else {
+            console.log('false')
+            var filtered_data = filtered_data.filter(function(pub) {
+                return (pub[review_list[i]] == 'true' || pub[review_list[i]] == 'false' || pub[review_list[i]] == '')
+                });
         }
+    }
+    /*
+    console.log(filtered_data)
     if (brunch == 'true') {
         var filtered_data = filtered_data.filter(function(pub) {
             return pub.brunch == true
@@ -153,6 +170,7 @@ function populate_test(filtered_data) {
             return (pub.sport == true || pub.sport == false)
             });
     }
+    */
 /*
     if (day != 'all' && document.getElementById('music').checked == 'true' && document.getElementById('quiz').checked == 'true') {
         console.log('day and music')
@@ -199,6 +217,7 @@ function populate_test(filtered_data) {
     */
     //console.log('filtered data after filters: ' + filtered_data.length)
     //document.getElementById("header_listing").innerHTML = pre_header + "(" + filtered_data.length + ")"
-
+    console.log('filtered_data')
+    console.log(filtered_data)
     return filtered_data
 }

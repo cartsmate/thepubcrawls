@@ -1,7 +1,7 @@
 
 class StationLatitude:
-    def __init__(self, name='station_latitude', required=False, form_visible=False, table_visible=False,
-                 alias=None, value=0, control=None):
+    def __init__(self, name='station_latitude', required='false', form_visible='false', table_visible='false',
+                 alias='none', value=0, control='none'):
         self.name = name
         self.required = required
         self.form_visible = form_visible

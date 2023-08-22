@@ -1,0 +1,40 @@
+<div class="col">
+    <div class="row">
+        <div id="map" style="border: 1px solid #0275d8" class="map_height"></div>
+    </div>
+    <!--
+    <div class="row">
+        <input id="search-input-navbar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </div>
+    -->
+    <div class="row">
+        <div id="no_map" style="display:none; border: 1px solid #0275d8" class="map_height">
+            <img class="fa-quora" height="100" src = "/static/icons/no-map.png">
+            <p style="padding: 200px; text-align: center;">Too many pubs to show on map</p>
+        </div>
+    </div>
+    <div class="row">
+        <div id="no_wifi" style="display:none; border: 1px solid #0275d8" class="map_height">
+            <img class="fa-quora" height="100" src = "/static/icons/no-wifi.png">
+            <p style="padding: 200px; text-align: center;">Too internet connect to show map</p>
+        </div>
+    </div>
+    <div class="row">
+        <div id="map_areas" style="display:none; border: 1px solid #0275d8" class="map_height">
+            <p style="margin: 10px; text-align: center;">North</p>
+            <p style="margin: 290px; text-align: center;">South</p>
+            <p style="margin: 150px 0px 0px 10px; text-align: center;">West</p>
+            <p style="margin: 150px 10px 0px 0px; text-align: center;">East</p>
+            <p style="margin: 150px 150px 0px 0px; text-align: center;">Central</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function initMap() {
+    console.log("initMap");
+    map = show_map(50, 0)
+    var markersArray = []
+}
+
+</script>

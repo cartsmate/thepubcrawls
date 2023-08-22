@@ -1,7 +1,7 @@
 
 class PubName:
-    def __init__(self, name='pub_name', alias="name", required=True, form_visible=True,
-                 table_visible=True, value="", control='input', rank=0):
+    def __init__(self, name='pub_name', alias="name", required='true', form_visible='true',
+                 table_visible='true', value="", control='input', rank=0):
         self.name = name
         self.alias = alias
         self.required = required
