@@ -10,8 +10,8 @@
     </select>
     <select class="form-control" id="station" name="station" onchange="home_station_changed();" style="font-size:12px; background-color: #FFFFFF; width:140px;">
         <option value="all">Tube/Train Station</option>
-        {% for x in stations_directions_list %}
-            <option value={{x[0]}}>{{x[1]}}</option>
+        {% for station in stations_directions_list %}
+            <option value={{station[0]}}>{{station[1]}}</option>
         {% endfor %}
     </select>
     <a><img src="/static/icons/buttons/arrow.png" onClick="click_list()" class="button_size"></a>

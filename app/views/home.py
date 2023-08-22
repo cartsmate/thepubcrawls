@@ -101,11 +101,11 @@ def home():
     df_stations_directions_trunc = df_stations_directions[['station_identity', 'station_name', 'direction_identity', 'direction_name']]
     stations_directions_list = df_stations_directions_trunc.values.tolist()
     # print(stations_directions_list)
-    # unique_directions_list = df_stations_directions['direction_identity'].unique()
-    # df_unique_directions_identity = pd.DataFrame({'direction_identity': unique_directions_list})
-    # df_unique_directions = pd.merge(df_unique_directions_identity, df_directions, on='direction_identity', how='left')
-    # df_unique_directions_trunc = df_unique_directions[['direction_identity', 'direction_name']]
-    # directions_list = df_unique_directions_trunc.values.tolist()
+    unique_directions_list = df_stations_directions['direction_identity'].unique()
+    df_unique_directions_identity = pd.DataFrame({'direction_identity': unique_directions_list})
+    df_unique_directions = pd.merge(df_unique_directions_identity, df_directions, on='direction_identity', how='left')
+    df_unique_directions_trunc = df_unique_directions[['direction_identity', 'direction_name']]
+    directions_list = df_unique_directions_trunc.values.tolist()
 
     pub_id = uuid.uuid4()
     # l1 = list(Review2(pub_id).__dict__.keys())
@@ -223,7 +223,7 @@ def home():
                                # map_lat=review_lat, map_lng=review_long, map_zoom=16,
                                diary_headers=diary_headers,
                                headers=headers, visible=visible,
-                               # directions_list=directions_list,
+                               directions_list=directions_list,
                                fields_list=fields_list, required_list=required_list,
                                star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                check_list=check_list, slider_list=slider_list, date_list=date_list,
@@ -258,7 +258,7 @@ def home():
                                stations_directions_list=stations_directions_list,
                                # map_lat=review_lat, map_lng=review_long, map_zoom=16,
                                diary_headers=diary_headers, headers=headers, visible=visible,
-                               # directions_list=directions_list,
+                               directions_list=directions_list,
                                fields_list=fields_list, required_list=required_list,
                                star_list=star_list, dropdown_list=dropdown_list, input_list=input_list,
                                check_list=check_list, slider_list=slider_list, date_list=date_list,
