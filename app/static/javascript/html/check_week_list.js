@@ -2,7 +2,6 @@ function check_week_list(value) {
     console.log('CHECK_WEEK_LIST')
     auto_exec = document.getElementById('auto_exec').value
     diary_headers = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
-    //diary_headers = {{diary_headers | tojson}}
     for (let i = 0; i < diary_headers.length; i++) {
         var checkBox = document.getElementById("btn_" + diary_headers[i] + "_2")
         var imageBox = document.getElementById(diary_headers[i] + "_img_2")

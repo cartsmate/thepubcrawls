@@ -10,6 +10,15 @@ function click_list() {
     update_data(filtered_data)
 
     update_icons_list(filtered_data)
+
+    var day = document.getElementById('x_day').value
+    if (day != 'all') {
+        var checkBox = document.getElementById("btn_" + day + "_2")
+        checkBox.checked == true
+        var imageBox = document.getElementById(day + "_img_2")
+        imageBox.style.opacity = "1"
+    }
+
 }
 
 
