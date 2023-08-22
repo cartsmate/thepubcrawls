@@ -1,25 +1,22 @@
-<input type="text" class="hide_x_boxes" id="load" value="">
+
 
 <input type="text" class="hide_x_boxes" id="form_type" value="home">
 <input type="text" class="hide_x_boxes" id="auto_exec" value="off">
 
-<input type="text" class="hide_x_boxes" id="x_direction" value="all">
-<input type="text" class="hide_x_boxes" id="x_direction_name" value="">
+{% set var_list = ['x_direction', 'x_station', 'x_day'] %}
+{% for var in var_list %}
+    <label class="hide_x_boxes" for="{{var}}">{{var}}</label>
+    <input type="text" class="hide_x_boxes" id="{{var}}" value="all">
+{% endfor %}
 
-<input type="text" class="hide_x_boxes" id="x_station" value="all">
-<input type="text" class="hide_x_boxes" id="x_station_name" value="">
-<input type="text" class="hide_x_boxes" id="x_pub_identity" value="">
-<input type="text" class="hide_x_boxes" id="x_day" value="all">
+{% set var_list = ['load', 'x_pub_identity', 'x_station_name', 'x_direction_name'] %}
+{% for var in var_list %}
+    <label class="hide_x_boxes" for="{{var}}">{{var}}</label>
+    <input type="text" class="hide_x_boxes" id="{{var}}" value="">
+{% endfor %}
 
-<input type="text" class="hide_x_boxes" id="x_brunch" value="false">
-<input type="text" class="hide_x_boxes" id="x_dart" value="false">
-<input type="text" class="hide_x_boxes" id="x_entertain" value="false">
-<input type="text" class="hide_x_boxes" id="x_favourite" value="false">
-<input type="text" class="hide_x_boxes" id="x_garden" value="false">
-<input type="text" class="hide_x_boxes" id="x_history" value="false">
-<input type="text" class="hide_x_boxes" id="x_late" value="false">
-<input type="text" class="hide_x_boxes" id="x_music" value="false">
-<input type="text" class="hide_x_boxes" id="x_pool" value="false">
-<input type="text" class="hide_x_boxes" id="x_quiz" value="false">
-<input type="text" class="hide_x_boxes" id="x_roast" value="false">
-<input type="text" class="hide_x_boxes" id="x_sport" value="false">
+{% set var_list = ['x_brunch', 'x_dart', 'x_entertain', 'x_favourite', 'x_garden', 'x_history', 'x_late', 'x_music', 'x_pool', 'x_quiz', 'x_roast', 'x_sport'] %}
+{% for var in var_list %}
+    <label class="hide_x_boxes" for="{{var}}">{{var}}</label>
+    <input type="text" class="hide_x_boxes" id="{{var}}" value="false">
+{% endfor %}

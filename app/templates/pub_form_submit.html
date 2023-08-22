@@ -1,7 +1,7 @@
 
 <button id="submit" type="submit" class="btn btn-primary btn-block" name="submit" value="submit">Submit</button>
 <div id="submit_message" class="font-size: 8px; text-align: center"><i>Click venue on map before submitting</i></div>
-<div><a id="submit_link" href="{{url_for('pub_read', pub_id=pubs_selection[0]['pub_identity'])}}">Cancel</a></div>
+<div><a id="submit_link" href="{{url_for('pub_read', pub_id=id)}}">Cancel</a></div>
 
 <script>
     elem_submit_btn = document.getElementById('submit')

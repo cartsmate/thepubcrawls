@@ -1,5 +1,5 @@
-function click_station() {
-    console.log("station_click")
+function click_station(id) {
+    console.log("CLICK_STATION")
     document.getElementById('pub_read').style.display = 'none'
 
     document.getElementById('brunch').value = 'false'
@@ -27,7 +27,7 @@ function click_station() {
     document.getElementById('edit_button').classList.remove("show_button");
     document.getElementById('edit_button').classList.add("hide_button");
 
-    filtered_data = populate_test(all_data)
+    filtered_data = populate_test()
     update_data(filtered_data)
 
     /*

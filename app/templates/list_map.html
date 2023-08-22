@@ -1,30 +1,32 @@
-<div class="row">
-    <div id="map" style="border: 1px solid #0275d8" class="map_height"></div>
-</div>
-{% if form_type == 'add' %}
+<div class="col">
+    <div class="row">
+        <div id="map" style="border: 1px solid #0275d8" class="map_height"></div>
+    </div>
+    <!--
     <div class="row">
         <input id="search-input-navbar" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </div>
-{% endif %}
-<div class="row">
-    <div id="no_map" style="display:none; border: 1px solid #0275d8" class="map_height">
-        <img class="fa-quora" height="100" src = "/static/icons/no-map.png">
-        <p style="padding: 200px; text-align: center;">Too many pubs to show on map</p>
+    -->
+    <div class="row">
+        <div id="no_map" style="display:none; border: 1px solid #0275d8" class="map_height">
+            <img class="fa-quora" height="100" src = "/static/icons/no-map.png">
+            <p style="padding: 200px; text-align: center;">Too many pubs to show on map</p>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div id="no_wifi" style="display:none; border: 1px solid #0275d8" class="map_height">
-        <img class="fa-quora" height="100" src = "/static/icons/no-wifi.png">
-        <p style="padding: 200px; text-align: center;">Too internet connect to show map</p>
+    <div class="row">
+        <div id="no_wifi" style="display:none; border: 1px solid #0275d8" class="map_height">
+            <img class="fa-quora" height="100" src = "/static/icons/no-wifi.png">
+            <p style="padding: 200px; text-align: center;">Too internet connect to show map</p>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div id="map_areas" style="display:none; border: 1px solid #0275d8" class="map_height">
-        <p style="margin: 10px; text-align: center;">North</p>
-        <p style="margin: 290px; text-align: center;">South</p>
-        <p style="margin: 150px 0px 0px 10px; text-align: center;">West</p>
-        <p style="margin: 150px 10px 0px 0px; text-align: center;">East</p>
-        <p style="margin: 150px 150px 0px 0px; text-align: center;">Central</p>
+    <div class="row">
+        <div id="map_areas" style="display:none; border: 1px solid #0275d8" class="map_height">
+            <p style="margin: 10px; text-align: center;">North</p>
+            <p style="margin: 290px; text-align: center;">South</p>
+            <p style="margin: 150px 0px 0px 10px; text-align: center;">West</p>
+            <p style="margin: 150px 10px 0px 0px; text-align: center;">East</p>
+            <p style="margin: 150px 150px 0px 0px; text-align: center;">Central</p>
+        </div>
     </div>
 </div>
 
@@ -34,67 +36,5 @@ function initMap() {
     map = show_map(50, 0)
     var markersArray = []
 }
-/*
-    //pubs_selection = {{pubs_selection | tojson}}
-    //pubs_reviews = {{ pubs_reviews | tojson }}
 
-    lat = {{map_lat}}
-    lng = {{map_lng}}
-    //filtered_data = [{pub_latitude: 51.0, pub_longitude: -0.1}]
-    //filtered_data = populate_test(all_data)
-    let { avg_lat, avg_lng } = latlng_avg(filtered_data);
-
-    add_markers(map, filtered_data)
-    //if (station != 'all') {
-    //    console.log('station - all')
-    //    listen_bounds_changed(map, pubs_reviews)
-    //    }
-    key = {{ google_key | tojson }}
-    //console.log(key)
-    stations = {{stations | tojson}}
-    areas = {{areas | tojson}}
-
-    form_type = {{ form_type | tojson}}
-    if (form_type == 'read' || form_type == 'list') {
-        console.log('read & list')
-        add_listen_click(map, lat, lng);
-    }
-    data = filtered_data
-    if (form_type == 'add') {
-        console.log('add')
-        var class_event_handler = new ClickEventHandler(map, origin, key, data);
-        const input = document.getElementById("search-input-navbar");
-        const searchBox = new google.maps.places.SearchBox(input);
-        listen_search(map, searchBox);
-        map_listen_bounds(map, searchBox, data);
-        }
-    if (form_type == 'add' || form_type == 'edit') {
-        console.log('add & edit')
-        listen_events(lat, lng, data)
-        map_listen_click(map, data)
-        function isIconMouseEvent(e) {
-            console.log("place icon clicked")
-            return "placeId" in e;
-        }
-    }
-    if (form_type == 'list') {
-        console.log('list')
-        const center = new google.maps.LatLng(lat, lng);
-        add_listen_click(map, lat, lng);
-        window.map.panTo(center);
-        }
-    //var class_event_handler = new ClickEventHandler(map, origin, key, stations, areas);
-    //const input = document.getElementById("search-input-navbar");
-    //const searchBox = new google.maps.places.SearchBox(input);
-    //listen_search(map, searchBox);
-    function isIconMouseEvent(e) {
-        console.log("place icon clicked")
-        return "placeId" in e;
-        }
-
-    //add_marker_bounds(map, data);
-    //current_zoom = map.getZoom();
-    //console.log(current_zoom)
-}
-*/
 </script>

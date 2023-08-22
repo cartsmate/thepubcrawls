@@ -1,6 +1,11 @@
-function create_table(pubs_selection, alias, headers) {
-    console.log('create_table')
+function create_table(pubs_selection) {
+    console.log('CREATE_TABLE')
+    console.log('pubs_selection')
     console.log(pubs_selection)
+    console.log('visible')
+    console.log(visible)
+    //console.log('all_data')
+    //console.log(all_data)
     //var tbl = document.getElementById('pub_list');
         //if(tbl) tbl.parentNode.removeChild(tbl);
   // creates a <table> element and a <tbody> element
@@ -32,7 +37,7 @@ function create_table(pubs_selection, alias, headers) {
             const href = document.createElement("a");
             if (headers[j] == 'station_name') {
                 href.setAttribute("href", "#");
-                href.setAttribute("onclick", "station_click('" + pubs_selection[i]['station_identity'] + "')");
+                href.setAttribute("onclick", "click_station('" + pubs_selection[i]['station_identity'] + "')");
                 text_ref = pubs_selection[i][headers[j]]
                 const cellText = document.createTextNode(text_ref);
                 href.appendChild(cellText);
@@ -40,7 +45,7 @@ function create_table(pubs_selection, alias, headers) {
                 row.appendChild(cell);
                 } else if (headers[j] == 'pub_name') {
                     href.setAttribute("href", "#");
-                    href.setAttribute("onclick", "pub_click('" + pubs_selection[i]['pub_identity'] + "')");
+                    href.setAttribute("onclick", "click_pub('" + pubs_selection[i]['pub_identity'] + "',)");
                     text_ref = pubs_selection[i][headers[j]]
                     const cellText = document.createTextNode(text_ref);
                     href.appendChild(cellText);

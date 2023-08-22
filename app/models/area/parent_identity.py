@@ -2,8 +2,8 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class ParentIdentity:
-    def __init__(self, name='parent_identity', alias="Id", required=False, form_visible=False,
-                 table_visible=False, value=0, control=None):
+    def __init__(self, name='parent_identity', alias="Id", required='false', form_visible='false',
+                 table_visible='false', value=0, control='none'):
         self.name = name
         self.alias = alias
         self.required = required

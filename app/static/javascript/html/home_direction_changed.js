@@ -1,4 +1,4 @@
-function home_direction_changed(stations_directions_list) {
+function home_direction_changed() {
     console.log('direction dropdown change')
     var directionSelect = document.getElementById("direction");
     var selectedText = directionSelect.options[directionSelect.selectedIndex].text;

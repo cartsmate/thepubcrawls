@@ -1,27 +1,15 @@
-function click_edit(id) {
-    console.log("click_edit")
+function click_edit() {
+    console.log("CLICK_EDIT")
+
+    id = document.getElementById('x_pub_identity').value
+    console.log('id: ' + id)
+
     form_type = 'edit'
     document.getElementById('form_type').value = form_type
-
-    //document.getElementById('station_button').classList.remove("hide_button");
-    //document.getElementById('station_button').classList.add("show_button");
-
-    document.getElementById('edit_button').classList.remove("show_button");
-    document.getElementById('edit_button').classList.add("hide_button");
-    /*
-    var base_url = window.location.hostname
-    if (config2['env'] == 'prod') {
-        var url = "http://" + base_url + "/pub//"
-    } else {
-        var url = "http://" + base_url + ":5000/pub//"
-    }
-    const myUrlWithParams = new URL(url);
-    myUrlWithParams.searchParams.append('pub_id', pub);
-    window.location.replace(myUrlWithParams.href);
-    */
+    page_layout('edit')
 
     for (let i = 0; i < icon_list.length; i++) {
-        document.getElementById(icon_list[i] + '_edit').setAttribute("onclick", "feature_click_edit('" + icon_list[i] + "')")
+        document.getElementById(icon_list[i]).setAttribute("onclick", "feature_click_pub('" + icon_list[i] + "')")
     }
     for (let i = 0; i < fields_list.length; i++) {
         if (!icon_list.includes(fields_list[i])) {

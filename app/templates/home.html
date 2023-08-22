@@ -7,21 +7,21 @@
 
 <script>
 let markersArray = []
-<!--import_variables()-->
-
+map_load('{{google_key}}')
+{% include "import_variables.html" %}
 
 function onLoad(){
     console.log('home - onLoad')
-    if ({{pub_id}} == '0') {
+    console.log('visible')
+    console.log(visible)
+    if ('{{pub_id}}' == '0') {
         page_layout('home')
     } else {
         page_layout('edit')
-        pub_click(pub_id)
+        click_pub('{{pub_id}}')
     }
-    map_load('{{google_key}}')
+
     display_counter('{{counter}}');
-
-
 }
 </script>
 {% endblock %}
@@ -57,18 +57,21 @@ function onLoad(){
 <div id="list_page1" style="display:none">
     {% include "list_station.html" %}
     {% include "list_features.html" %}
+</div>
+<div id="the_map" style="display:none">
     {% include "list_map.html" %}
 </div>
 {% endblock %}
 
 {% block right %}
-<div id="list_page2">
+<div id="list_page2" style="display:none">
     <div>
         {% include "list_week.html" %}
     </div>
     <div id="dynamic_table"></div>
 </div>
-<div id="pub_read">
+
+<div id="pub_read" style="display:none">
     <form id="pub_form" method="post">
         <div class="form-group row">
             <div class="col">

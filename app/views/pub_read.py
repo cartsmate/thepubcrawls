@@ -106,7 +106,14 @@ def pub_read():
 
     if request.method == 'POST':
         print('pub_read: POST')
-        df_pub_review = EntitiesSingle().get_pub_review(pub_id)
+        df_pubs = pd.read_csv(directory_path + '/files/pubs.csv',
+                              dtype={'pub_identity': str, 'area_identity': str, 'station_identity': str,
+                                     'pub_deletion': str, 'pub_name': str, 'address': str, 'category': str,
+                                     'colour': str, 'place': str, 'pub_latitude': float, 'pub_longitude': float,
+                                     'rank': float, 'detail': str})
+        df_pub_review = df_pubs.loc[df_pubs['pub_identity'] == pub_id]
+
+        # df_pub_review = EntitiesSingle().get_pub_review(pub_id)
         if df_pub_review.empty:
             print('new pub')
             df_pubs_reviews = EntitiesMulti().get_pubs_reviews()
@@ -202,18 +209,43 @@ def pub_read():
                 #                        dupe_id=dupe_id)
         else:
             print('edit pub')
-
-            df_pubs = Csv().get_pubs()
+            # PUB
+            df_pubs = pd.read_csv(directory_path + '/files/pubs.csv',
+                                  dtype={'pub_identity': str, 'area_identity': str, 'station_identity': str,
+                                         'pub_deletion': str, 'pub_name': str, 'address': str, 'category': str,
+                                         'colour': str, 'place': str, 'pub_latitude': str, 'pub_longitude': str,
+                                         'rank': str, 'detail': str})
             df_pubs_updated = FormInput().get_pub(df_pubs, pub_id)
             df_pubs_updated.to_csv(directory_path + '/files/pubs.csv', index=False, sep=',', encoding='utf-8')
 
-            df_reviews = Csv().get_reviews()
-            df_review_updated = FormInput().get_review(df_reviews, pub_id)
+            # REVIEW
+            df_reviews = pd.read_csv(directory_path + '/files/reviews.csv',
+                                     dtype={'review_identity': str, 'review_deletion': str, 'pub_identity': str,
+                                            'brunch': str, 'dart': str, 'entertain': str, 'favourite': str,
+                                            'garden': str, 'history': str, 'late': str, 'music': str, 'pool': str,
+                                            'quiz': str, 'roast': str, 'sport': str})
+            df_update_r = df_reviews.loc[df_reviews['pub_identity'] == pub_id]
+            if df_update_r.empty:
+                print('new review record')
+                df_new_review = FormNew().get_review(pub_id)
+                # print(df_new_review['favourite'])
+                df_review_updated = Dataframes().append_df(df_reviews, df_new_review)
+            else:
+                print('updated review record')
+                df_review_updated = FormInput().get_review(df_reviews, pub_id)
+                # print(df_review_updated.loc[df_review_updated['pub_identity'] == pub_id]['favourite'])
             df_review_updated.to_csv(directory_path + '/files/reviews.csv', index=False, sep=',', encoding='utf-8')
 
+            # DIARY
             df_diary = pd.read_csv(directory_path + '/files/diary.csv')
-            df_diary_updated = FormInput().get_diary(df_diary, pub_id)
+            df_update_d = df_diary.loc[df_diary['pub_identity'] == pub_id]
+            if df_update_d.empty:
+                df_new_diary = FormNew().get_diary(pub_id)
+                df_diary_updated = Dataframes().append_df(df_diary, df_new_diary)
+            else:
+                df_diary_updated = FormInput().get_diary(df_diary, pub_id)
             df_diary_updated.to_csv(directory_path + '/files/diary.csv', index=False, sep=',', encoding='utf-8')
+
             df_diary_selected = df_diary_updated.loc[df_diary_updated['pub_identity'] == pub_id]
             df_diary_selected = df_diary_selected.fillna('')
             diary_json = Dataframes().df_to_dict(df_diary_selected)

@@ -39,6 +39,9 @@ class Review2():
                  history=History(), favourite=Favourite(), pub_identity=PubIdentity(),
                  review_identity=ReviewIdentity()):
                  # pub_identity=PubIdentity,
+        self.review_identity = review_identity
+        self.review_deletion = review_deletion
+        self.pub_identity = pub_identity
         self.brunch = brunch
         self.dart = dart
         self.entertain = entertain
@@ -48,9 +51,6 @@ class Review2():
         self.late = late
         self.music = music
         self.pool = pool
-        self.pub_identity = pub_identity
         self.quiz = quiz
-        self.review_deletion = review_deletion
-        self.review_identity = review_identity
         self.roast = roast
         self.sport = sport

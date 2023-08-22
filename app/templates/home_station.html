@@ -2,7 +2,7 @@
     <a href="/pub/areas" style="font-weight: bold; font-size: 14px; color: #000000; text-decoration: none;">Search pubs by area</a>
 </div>
 <div class="row justify-content-center">
-    <select class="form-control" id="direction" name="direction" onchange="home_direction_changed({{stations_directions_list}});" style="font-size:12px; background-color: #FFFFFF; width:140px;">
+    <select class="form-control" id="direction" name="direction" onchange="home_direction_changed();" style="font-size:12px; background-color: #FFFFFF; width:140px;">
         <option value="all">Area</option>
         {% for direction in directions_list %}
             <option value={{direction[0]}}>{{direction[1]}}</option>
@@ -14,7 +14,7 @@
             <option value={{x[0]}}>{{x[1]}}</option>
         {% endfor %}
     </select>
-    <a><img src="/static/icons/buttons/arrow.png" onClick="click_list({{stations_directions_list}}, {{all_data}}, {{alias}}, {{headers}})" class="button_size"></a>
+    <a><img src="/static/icons/buttons/arrow.png" onClick="click_list()" class="button_size"></a>
 </div>
 
 <script>

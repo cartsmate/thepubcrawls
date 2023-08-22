@@ -2,10 +2,23 @@ function feature_click_list(check_item) {
     console.log("feature_click_list")
     console.log(check_item)
     var checkBox = document.getElementById(check_item + "_list");
+    var image = document.getElementById(check_item + "_img_list");
+    var caption = document.getElementById(check_item + "_caption_list");
+    var checkCol = document.getElementById(check_item + "_col_list");
     if (checkBox.checked == true) {
         document.getElementById("x_" + check_item).value = "true"
+        image.style.opacity = "1.0"
+        caption.style.opacity = "1.0"
+        caption.style.color = "white"
+        checkCol.style.background = "#0275D8"
+        checkCol.style.border = "thick solid #0275D8";
     } else {
         document.getElementById("x_" + check_item).value = "false"
+        image.style.opacity = "1.0"
+        caption.style.opacity = "1.0"
+        caption.style.color = "black"
+        checkCol.style.background = "#CDCDCD"
+        checkCol.style.border = "thick solid #CDCDCD";
     }
 
 
@@ -14,6 +27,8 @@ function feature_click_list(check_item) {
     filtered_data = populate_test(all_data)
     //console.log(filtered_data)
     update_data(filtered_data)
+
+    update_icons_list(filtered_data)
     /*
     form_type = document.getElementById('form_type').value
     auto_exec = document.getElementById('auto_exec').value

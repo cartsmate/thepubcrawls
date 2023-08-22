@@ -40,13 +40,14 @@ class Pub2:
                  address=Address(), pub_latitude=PubLatitude(), pub_longitude=PubLongitude(), category=Category(),
                  rank=Rank(), station_identity=StationIdentity(), area_identity=AreaIdentity(), pub_identity=PubIdentity(),
                  colour=Colour(), detail=Detail()):
+        self.pub_identity = pub_identity
         self.address = address
         self.area_identity = area_identity
         self.category = category
         self.place = place
         self.colour = colour
         self.pub_deletion = pub_deletion
-        self.pub_identity = pub_identity
+
         self.pub_latitude = pub_latitude
         self.pub_longitude = pub_longitude
         self.pub_name = pub_name

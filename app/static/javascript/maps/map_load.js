@@ -1,24 +1,26 @@
 function map_load(google_key) {
-    console.log('map_load')
+    console.log('MAP_LOAD')
     //console.log(google_key)
     var js = document.createElement("script");
     js.type = "text/javascript";
+    console.log('window.navigator.onLine')
+    console.log(window.navigator.onLine)
     if (window.navigator.onLine == true) {
-        console.log('google map api')
+        console.log('on-line')
         js.setAttribute("defer", "defer");
-        var testsy = 'https://maps.googleapis.com/maps/api/js?key=' + google_key + '&libraries=places&callback=initMap'
-        console.log(testsy)
-        js.src = testsy
+        var google_string = 'https://maps.googleapis.com/maps/api/js?key=' + google_key + '&libraries=places&callback=initMap'
+        //console.log(google_string)
+        js.src = google_string
         //js.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCbb6tdoROEQuBKLZXybG5cNIB4UTc6A20&libraries=places&callback=initMap'
         document.head.appendChild(js)
     } else {
-        console.log('off line')
+        console.log('off-line')
         var elem = document.createElement("img");
         elem.src = "/static/icons/no-wifi.png"
         elem.setAttribute("id", ",map_img");
         elem.className = "fa-quora"
         elem.height = "100"
-        document.getElementById('map').appendChild(elem);
+        //document.getElementById('map').appendChild(elem);
 
     }
 }

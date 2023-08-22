@@ -4,6 +4,8 @@ function addJson(headers, visible) {
         json_list.push({target: i, visible: visible[headers[i]], searchable: true, })
         //console.log(headers[i] + " : " + visible[headers[i]])
     }
+    console.log('json_list')
+    console.log(json_list)
     return json_list
 }
 
@@ -14,14 +16,23 @@ function delete_table() {
 
 }
 
-function filter_table(headers, visible, order) {
-    console.log('filter_table')
-    console.log('headers')
-    console.log(headers)
-    console.log('visible')
-    console.log(visible)
-    console.log('order')
-    console.log(order)
+function filter_table(visible, order) {
+    console.log('FILTER_TABLE')
+    //console.log('headers')
+    //console.log(headers)
+    //console.log('pre-visible')
+    //console.log(visible)
+    for (const key in visible) {
+        let trueStr = visible[key]
+        //console.log(typeof(trueStr) + " : " + trueStr)
+        trueStr = (trueStr === "true")
+        //console.log(typeof(trueStr) + " : " + trueStr)
+        visible[key] = trueStr
+    }
+    //console.log('post-visible')
+    //console.log(visible)
+    //console.log('order')
+    //console.log(order)
     $(document).ready(function () {
         $('#pub_list').DataTable({
             paging: true,
@@ -32,7 +43,7 @@ function filter_table(headers, visible, order) {
             columnDefs: addJson(headers, visible)
         });
     });
-    console.log('end of filter table')
+    //console.log('end of filter table')
 }
 
 

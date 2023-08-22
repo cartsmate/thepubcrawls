@@ -2,8 +2,8 @@ from app.static.pythonscripts.uuid import Uuid
 
 
 class Favourite:
-    def __init__(self, name="favourite", alias="best", alias2="favourites", required=True, form_visible=False,
-                 table_visible=False, value=False, control="check", icon="favourite.png"):
+    def __init__(self, name="favourite", alias="best", alias2="favourites", required='true', form_visible='false',
+                 table_visible='false', value='false', control="check", icon="favourite.png"):
         self.name = name
         self.alias = alias
         self.alias2 = alias2
