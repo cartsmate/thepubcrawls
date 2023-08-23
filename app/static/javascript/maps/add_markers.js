@@ -124,8 +124,15 @@ function add_markers(data) {
     //var bounds = new google.maps.LatLngBounds();
     //var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
     //bounds.extend(myLatLng);
-    map.fitBounds(bounds);
-    //add_marker_bounds(map, bounds, data)
     console.log(markersArray.length)
+    if (markersArray.length > 1 ) {
+        map.fitBounds(bounds);
+    } else {
+        map.setZoom(12)
+    }
+
+
+    //add_marker_bounds(map, bounds, data)
+
     console.log(data.length)
 }

@@ -1,13 +1,17 @@
 function map_visible(filtered_data, json_array, json_array_stations) {
     console.log('MAP_VISIBLE')
+    console.log('filtered_data')
+    console.log(filtered_data)
+    console.log('filtered_data.length')
+    console.log(filtered_data.length)
     if (window.navigator.onLine == true) {
         console.log('on-line')
         document.getElementById('no_wifi').style.display = "none";
         document.getElementById('no_map').style.display = "none";
         document.getElementById('map_areas').style.display = "none";
         document.getElementById('map').style.display = "block";
-        if (filtered_data.length > 0 && filtered_data.length < 50) {
-            console.log('< 50 pubs to show')
+        if (filtered_data.length > 0 && filtered_data.length <= 50) {
+            console.log('<= 50 pubs to show')
             add_markers(filtered_data)
         } else if (document.getElementById('x_direction').value == 'all') {
             console.log('all directions')

@@ -7,7 +7,9 @@
 
 <script>
 let markersArray = []
-map_load('{{google_key}}')
+var on_line = map_load('{{google_key}}')
+console.log('on_line')
+console.log(on_line)
 {% include "import_variables.html" %}
 
 function onLoad(){
@@ -20,15 +22,24 @@ function onLoad(){
         page_layout('edit')
         click_pub('{{pub_id}}')
     }
-    add_markers(all_data)
-    const input = document.getElementById("search-input-navbar");
-    const searchBox = new google.maps.places.SearchBox(input);
-    listen_search(map, searchBox);
+    if (on_line == 'true') {
+        document.getElementById('search_map').style.display = 'block'
+        console.log('all_data')
+        console.log(all_data)
+        var new_data = [{pub_name: "placeholder", pub_latitude: 51.52, pub_longitude: -0.127, colour: "#000000"}]
+        console.log('new_data')
+        console.log(new_data)
+        add_markers(new_data)
+        const input = document.getElementById("search-input-navbar");
+        const searchBox = new google.maps.places.SearchBox(input);
+        listen_search(map, searchBox);
+    }
+
     display_counter('{{counter}}');
 }
 function initMap() {
     console.log("initMap");
-    map = show_map(50, 0)
+    map = show_map(51.52, -0.127)
     var markersArray = []
 }
 </script>

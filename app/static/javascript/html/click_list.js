@@ -1,7 +1,10 @@
 function click_list() {
     console.log("CLICK_LIST")
     document.getElementById('x_search').value = document.getElementById('search-input-navbar').value
-    document.getElementById('search-output-navbar').value = document.getElementById('x_search').value
+    if (on_line == 'true') {
+        document.getElementById('search-output-navbar').value = document.getElementById('x_search').value
+        }
+
     page_layout('list')
     document.getElementById('auto_exec').value = 'on'
     update_list_station()
@@ -10,9 +13,11 @@ function click_list() {
     var inputAddress = document.getElementById('x_search').value
     console.log(inputAddress)
     if (inputAddress != '') {
+        console.log('searching for co-ordinates')
         code_address(inputAddress)
     } else {
-        go_update(all_data)
+        console.log('no co-ordinates search required')
+        go_update(all_data, 'all')
     }
 
     var day = document.getElementById('x_day').value
@@ -21,7 +26,7 @@ function click_list() {
         checkBox.checked == true
         var imageBox = document.getElementById(day + "_img_2")
         imageBox.style.opacity = "1"
-    }
+        }
 
     //alert(document.getElementById('search-input-navbar').value)
 }
@@ -48,7 +53,7 @@ function code_address(address) {
                 element['distance'] = (Math.abs(element.pub_latitude - loc_lat)) + (Math.abs(element.pub_longitude - loc_lng))
             }
             //filtered_data = all_data
-            go_update(all_data)
+            go_update(all_data, 10)
 
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
@@ -56,12 +61,19 @@ function code_address(address) {
     });
 }
 
-function go_update(data) {
+function go_update(data, limit) {
+
     filtered_data = populate_test(data)
 
-    update_data(filtered_data)
+    if (limit != 'all') {
+        limit_data = filtered_data.slice(0, limit)
+    } else {
+        limit_data = filtered_data
+    }
 
-    update_icons_list(filtered_data)
+    update_data(limit_data)
+
+    update_icons_list(limit_data)
 }
 
 function get_coordinates(address, fn){

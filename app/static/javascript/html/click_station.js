@@ -2,7 +2,7 @@ function click_station(id) {
     console.log("CLICK_STATION")
 
     //document.getElementById('pub_read').style.display = 'none'
-
+    //id = document.getElementById('x_pub_identity').value
     document.getElementById('x_station').value = id
     document.getElementById('x_brunch').value = 'false'
     document.getElementById('x_dart').value = 'false'
@@ -21,6 +21,9 @@ function click_station(id) {
     document.getElementById("x_station_name").value = new_direction_array[0][1]
     document.getElementById("x_direction").value = new_direction_array[0][2]
     document.getElementById("x_direction_name").value = new_direction_array[0][3]
+
+    document.getElementById("x_search").value = ''
+    document.getElementById("search-output-navbar").value = ''
 
     var desiredValue = new_direction_array[0][1]
     var el = document.getElementById("station_2");
