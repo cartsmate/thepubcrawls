@@ -12,7 +12,9 @@ function update_header() {
     search = document.getElementById('x_search').value
     header = "Pubs"
 
-    if (station != 'all') {
+    if (search != '') {
+        header = header + " nearest " + search
+    } else if (station != 'all') {
         header = station_name + " " + header
     } else if (direction != 'all') {
         header = direction_name + " " + header

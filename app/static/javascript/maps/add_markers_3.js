@@ -82,7 +82,7 @@ function add_markers_3(data) {
                 console.log('listener click')
                 document.getElementById('x_station').value = data[key].station_identity.toString()
                 document.getElementById('x_station_name').value = data[key].station_name.toString()
-                click_station()
+                click_station(data[key].station_identity.toString())
                 }
             })(marker, key))
         /*

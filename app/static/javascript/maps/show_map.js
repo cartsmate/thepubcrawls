@@ -1,11 +1,21 @@
 function show_map(lat, lng) {
+    const LONDON_BOUNDS = {
+        north: 51.68,
+        south: 51.40,
+        west: -0.549,
+        east: 0.3,
+    };
     console.log('SHOW_MAP')
     var map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(lat, lng),
-        //zoom: zoom,
+//        zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: false,
-        streetViewControl: false
+        streetViewControl: false,
+        restriction: {
+            latLngBounds: LONDON_BOUNDS,
+            strictBounds: false,
+        }
     });
     return map
 }

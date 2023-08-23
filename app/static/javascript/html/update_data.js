@@ -3,7 +3,8 @@ function update_data(filtered_data) {
 
     delete_table()
 
-    create_table(filtered_data.slice(0, 50))
+
+    create_table(filtered_data)
     const [new_visible, new_order, new_asc_desc] = column_filter()
     filter_table(new_visible, new_order, new_asc_desc)
 

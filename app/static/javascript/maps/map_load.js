@@ -5,6 +5,7 @@ function map_load(google_key) {
     js.type = "text/javascript";
     console.log('window.navigator.onLine')
     console.log(window.navigator.onLine)
+    var on_line = 'false'
     if (window.navigator.onLine == true) {
         console.log('on-line')
         js.setAttribute("defer", "defer");
@@ -13,6 +14,9 @@ function map_load(google_key) {
         console.log(google_string)
         js.src = google_string
         document.head.appendChild(js)
+        //document.getElementById('search_map').style.display = 'block'
+        //add_markers(all_data)
+        on_line = 'true'
         console.log('end of on-line if')
     } else {
         console.log('off-line')
@@ -21,7 +25,8 @@ function map_load(google_key) {
         elem.setAttribute("id", ",map_img");
         elem.className = "fa-quora"
         elem.height = "100"
+        //document.getElementById('search_map').style.display = 'none'
         //document.getElementById('map').appendChild(elem);
-
     }
+    return on_line
 }
