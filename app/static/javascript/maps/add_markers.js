@@ -124,11 +124,16 @@ function add_markers(data) {
     //var bounds = new google.maps.LatLngBounds();
     //var myLatLng = new google.maps.LatLng(data[key].pub_latitude, data[key].pub_longitude)
     //bounds.extend(myLatLng);
-    console.log(markersArray.length)
+    console.log('markersArray')
+    console.log(markersArray)
+    console.log('data')
+    console.log(data)
     if (markersArray.length > 1 ) {
         map.fitBounds(bounds);
     } else {
-        map.setZoom(12)
+        map.setZoom(17)
+        map.setCenter(new google.maps.LatLng(data[0].pub_latitude, data[0].pub_longitude))
+
     }
 
 
