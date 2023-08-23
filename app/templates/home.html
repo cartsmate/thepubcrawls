@@ -20,7 +20,10 @@ function onLoad(){
         page_layout('edit')
         click_pub('{{pub_id}}')
     }
-
+    add_markers(all_data)
+    const input = document.getElementById("search-input-navbar");
+    const searchBox = new google.maps.places.SearchBox(input);
+    listen_search(map, searchBox);
     display_counter('{{counter}}');
 }
 function initMap() {

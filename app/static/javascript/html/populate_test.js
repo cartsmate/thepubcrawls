@@ -22,6 +22,36 @@ function populate_test() {
     sport = document.getElementById("x_sport").value
     pre_header = ""
 
+
+    /*
+    if (document.getElementById('x_search').value != '') {
+//        var loc_lat = 0
+//        var loc_lng = 0
+        get_coordinates(inputAddress, function(location){
+            //alert(location.lat()); // this is where you get the return value
+            //alert(location.lng())
+
+            //filtered_data.forEach((element) => {
+            //    element.distance = (Math.abs(element.pub_latitude - location.lat())) + (Math.abs(element.pub_longitude - location.lng()))
+            //});
+            var loc_lat = location.lat()
+//            alert('loc_lat: in: ' + loc_lat)
+            var loc_lng = location.lng()
+//            alert('loc_lng: in: ' + loc_lng)
+            filtered_data = do_complete(loc_lat, loc_lng)
+        });
+        //while (loc_lat == 0 && loc_lng == 0) {
+        //}
+
+        for(const element of filtered_data) {
+            console
+            console.log(element.pub_latitude)
+            console.log(loc_lat)
+            console.log(element.pub_longitude)
+            console.log(loc_lng)
+            element['distance'] = (Math.abs(element.pub_latitude - loc_lat)) + (Math.abs(element.pub_longitude - loc_lng))
+        }
+        */
     if (document.getElementById('x_station').value != 'all') {
         console.log('NOT ALL STATION: ' + document.getElementById('x_station').value)
         var filtered_data = all_data.filter(function(pub) {
@@ -35,7 +65,7 @@ function populate_test() {
             });
         pre_header = direction_name + " Pubs"
     } else {
-        console.log('ALL STATION & ALL DIRECTION')
+        console.log('NO STATION & NO DIRECTION & NO SEARCH')
     }
     console.log('filtered_data')
     console.log(filtered_data)
@@ -56,168 +86,41 @@ function populate_test() {
                 });
         }
     }
-    /*
-    console.log(filtered_data)
-    if (brunch == 'true') {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.brunch == true
+
+    if (document.getElementById('x_search').value != '') {
+        console.log('sort by distance')
+
+        //filtered_data = filtered_data.sort(compare);
+        let sortedDates = filtered_data.sort((p1, p2) => (p1.distance > p2.distance) ? 1 : (p1.distance < p2.distance) ? -1 : 0);
+
+        filtered_data = sortedDates
+        /*
+        filtered_data = filtered_data.sort((a, b) => {
+            if (a.distance > b.distance) {
+                return -1;
+                }
             });
+        */
+        //filtered_data = filtered_data.slice(0, 10);
     } else {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.brunch == true || pub.brunch == false)
+        console.log('sort by rank')
+        filtered_data = filtered_data.sort((a, b) => {
+            if (a.rank < b.rank) {
+                return -1;
+                }
             });
     }
-    if (dart == 'true') {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.dart == true
-            });
-    } else {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.dart == true || pub.dart == false)
-            });
-    }
-    if (entertain == 'true') {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.entertain == true
-            });
-    } else {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.entertain == true || pub.entertain == false)
-            });
-    }
-    if (favourite == 'true') {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.favourite == true
-            });
-    } else {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.favourite == true || pub.favourite == false)
-            });
-    }
-    if (garden == 'true') {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.garden == true
-            });
-    } else {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.garden == true || pub.garden == false)
-            });
-    }
-    if (history == 'true') {
-        //console.log('history true')
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.history == true
-            });
-    } else {
-        //console.log('history false')
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.history == true || pub.history == false)
-            });
-    }
-    if (late == 'true') {
-        //console.log('late true')
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.late == true
-            });
-    } else {
-        //console.log('late false')
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.late == true || pub.late == false)
-            });
-    }
-    if (music == 'true') {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.music == true
-            });
-    } else {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.music == true || pub.music == false)
-            });
-    }
-    if (pool == 'true') {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.pool == true
-            });
-    } else {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.pool == true || pub.pool == false)
-            });
-    }
-    if (quiz == 'true') {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.quiz == true
-            });
-    } else {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.quiz == true || pub.quiz == false)
-            });
-    }
-    if (roast == 'true') {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.roast == true
-            });
-    } else {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.roast == true || pub.roast == false)
-            });
-    }
-    if (sport == 'true') {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.sport == true
-            });
-    } else {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub.sport == true || pub.sport == false)
-            });
-    }
-    */
-/*
-    if (day != 'all' && document.getElementById('music').checked == 'true' && document.getElementById('quiz').checked == 'true') {
-        console.log('day and music')
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub[day].contains('music') || pub[day].contains('music'))
-            });
-        pre_header += pre_header + " on " + day
-    } else if (day != 'all' && document.getElementById('music').checked == 'false' && document.getElementById('quiz').checked == 'true') {
-        console.log('day and quiz')
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub[day].contains('quiz'))
-            });
-        pre_header += pre_header + " on " + day
-    } else if (day != 'all' && document.getElementById('music').checked == 'true' && document.getElementById('quiz').checked == 'false') {
-        console.log('day and quiz')
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub[day].contains('music'))
-            });
-        pre_header += pre_header + " on " + day
-    } else if (day != 'all') {
-        console.log('no quiz & no music')
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub[day] !='Closed')
-            });
-        pre_header += pre_header + " on " + day
-    } else {
-        console.log('no day')
-        var filtered_data = filtered_data.filter(function(pub) {
-            return (pub)
-            });
-    }
-*/
-    filtered_data = filtered_data.sort((a, b) => {
-        if (a.rank < b.rank) {
-            return -1;
-            }
-        });
-    /*
-    for (let i = 0; i < icon_list.length; i++) {
-        var filtered_data = filtered_data.filter(function(pub) {
-            return pub.icon_list[i] == document.getElementById(icon_list[i]).checked
-        });
-        }
-    */
-    //console.log('filtered data after filters: ' + filtered_data.length)
-    //document.getElementById("header_listing").innerHTML = pre_header + "(" + filtered_data.length + ")"
     console.log('filtered_data')
     console.log(filtered_data)
     return filtered_data
+}
+
+function compare(a, b) {
+    if (a < b) {
+        return -1;
+    } else if (a > b) {
+        return 1;
+    } else {
+        return 0;
+    }
 }

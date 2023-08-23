@@ -8,12 +8,14 @@ function home_station_changed() {
     var value = e.value;
     var text = e.options[e.selectedIndex].text;
     //console.log(text)
+
     document.getElementById("x_station").value = value
     document.getElementById("x_station_name").value = text
 
     new_direction_array = stations_directions_list.filter(item => item[0] == value)
     document.getElementById("x_direction").value = new_direction_array[0][2]
     document.getElementById("x_direction_name").value = new_direction_array[0][3]
+
 
     var desiredValue = new_direction_array[0][3]
     var el = document.getElementById("direction");

@@ -2,6 +2,8 @@ function create_table(pubs_selection) {
     console.log('CREATE_TABLE')
     console.log('pubs_selection')
     console.log(pubs_selection)
+    //console.log(pubs_selection[0]['address'])
+    //console.log(pubs_selection[0]['distance'])
     console.log('visible')
     console.log(visible)
     //console.log('all_data')
@@ -28,8 +30,14 @@ function create_table(pubs_selection) {
         var row = document.createElement("tr");
 
         for (let j = 0; j < headers.length; j++) {
-            //console.log(headers[j])
-            //console.log(pubs_selection[i][headers[j]])
+            /*
+            if (headers[j] == 'distance') {
+                console.log('headers[j]')
+                console.log(headers[j])
+                console.log(pubs_selection[i]['station_identity'])
+                console.log(pubs_selection[i]['distance'])
+            }
+            */
       // Create a <td> element and a text node, make the text
       // node the contents of the <td>, and put the <td> at
       // the end of the table row

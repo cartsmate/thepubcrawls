@@ -3,9 +3,9 @@ function update_data(filtered_data) {
 
     delete_table()
 
-    create_table(filtered_data)
-    const [new_visible, new_order] = column_filter()
-    filter_table(new_visible, new_order)
+    create_table(filtered_data.slice(0, 50))
+    const [new_visible, new_order, new_asc_desc] = column_filter()
+    filter_table(new_visible, new_order, new_asc_desc)
 
     json_array = calculate_directions_count(filtered_data)
     json_array_stations = calculate_stations_count(filtered_data)

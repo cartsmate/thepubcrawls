@@ -173,6 +173,7 @@ def home():
     print(df_missing)
 
     headers = list(df_pb_rev_st_dir_dry.columns)
+    headers.append('distance')
     # print(df_pb_rev_st_dir_dry.dtypes)
     all_data_json = Dataframes().df_to_dict(df_pb_rev_st_dir_dry)
 

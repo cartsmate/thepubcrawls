@@ -1,20 +1,46 @@
 function click_station(id) {
     console.log("CLICK_STATION")
-    document.getElementById('pub_read').style.display = 'none'
 
-    document.getElementById('brunch').value = 'false'
-    document.getElementById('dart').value = 'false'
-    document.getElementById('entertain').value = 'false'
-    document.getElementById('favourite').value = 'false'
-    document.getElementById('garden').value = 'false'
-    document.getElementById('history').value = 'false'
-    document.getElementById('late').value = 'false'
-    document.getElementById('music').value = 'false'
-    document.getElementById('pool').value = 'false'
-    document.getElementById('quiz').value = 'false'
-    document.getElementById('roast').value = 'false'
-    document.getElementById('sport').value = 'false'
+    //document.getElementById('pub_read').style.display = 'none'
 
+    document.getElementById('x_station').value = id
+    document.getElementById('x_brunch').value = 'false'
+    document.getElementById('x_dart').value = 'false'
+    document.getElementById('x_entertain').value = 'false'
+    document.getElementById('x_favourite').value = 'false'
+    document.getElementById('x_garden').value = 'false'
+    document.getElementById('x_history').value = 'false'
+    document.getElementById('x_late').value = 'false'
+    document.getElementById('x_music').value = 'false'
+    document.getElementById('x_pool').value = 'false'
+    document.getElementById('x_quiz').value = 'false'
+    document.getElementById('x_roast').value = 'false'
+    document.getElementById('x_sport').value = 'false'
+
+    new_direction_array = stations_directions_list.filter(item => item[0] == id)
+    document.getElementById("x_station_name").value = new_direction_array[0][1]
+    document.getElementById("x_direction").value = new_direction_array[0][2]
+    document.getElementById("x_direction_name").value = new_direction_array[0][3]
+
+    var desiredValue = new_direction_array[0][1]
+    var el = document.getElementById("station_2");
+    for(var i=0; i<el.options.length; i++) {
+      if ( el.options[i].text == desiredValue ) {
+        el.selectedIndex = i;
+        break;
+      }
+    }
+
+    var desiredValue = new_direction_array[0][3]
+    var el = document.getElementById("direction_2");
+    for(var i=0; i<el.options.length; i++) {
+      if ( el.options[i].text == desiredValue ) {
+        el.selectedIndex = i;
+        break;
+      }
+    }
+
+    /*
     document.getElementById('list_header').style.display = 'block'
     document.getElementById('list_page1').style.display = 'block'
     document.getElementById('list_page2').style.display = 'block'
@@ -26,10 +52,11 @@ function click_station(id) {
 
     document.getElementById('edit_button').classList.remove("show_button");
     document.getElementById('edit_button').classList.add("hide_button");
+    */
 
     filtered_data = populate_test()
     update_data(filtered_data)
-
+    update_icons_list(filtered_data)
     /*
     var base_url = window.location.hostname
     if (config2['env'] == 'prod') {
