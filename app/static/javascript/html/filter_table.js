@@ -16,7 +16,7 @@ function delete_table() {
 
 }
 
-function filter_table(visible, order) {
+function filter_table(visible, order, asc_desc) {
     console.log('FILTER_TABLE')
     //console.log('headers')
     //console.log(headers)
@@ -39,7 +39,7 @@ function filter_table(visible, order) {
             //pagingType: 'first_last_numbers',
             info: false,
             //order: [[order, 'asc']],
-            order: [[order, 'desc']],
+            order: [[order, asc_desc]],
             columnDefs: addJson(headers, visible)
         });
     });

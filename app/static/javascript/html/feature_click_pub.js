@@ -1,6 +1,6 @@
 function feature_click_pub(check_item) {
     console.log("FEATURE_CLICK_PUB")
-    //console.log(check_item)
+    console.log(check_item)
 
     //form_type = document.getElementById('form_type').value
     //auto_exec = document.getElementById('auto_exec').value
