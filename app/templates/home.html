@@ -4,13 +4,13 @@
 
 {% block script %}
     {% include "scripts.html" %}
-
+    {% include "import_variables.html" %}
 <script>
 let markersArray = []
 var on_line = map_load('{{google_key}}')
 console.log('on_line')
 console.log(on_line)
-{% include "import_variables.html" %}
+
 
 function onLoad(){
     console.log('home - onLoad')
