@@ -29,14 +29,20 @@ function onLoad(){
         var new_data = [{pub_name: "placeholder", pub_latitude: 51.52, pub_longitude: -0.127, colour: "#000000"}]
         console.log('new_data')
         console.log(new_data)
-        add_markers(new_data)
+        add_markers(map, new_data)
+        var defaultBounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng(51.68, 0.3),      // N, E
+          new google.maps.LatLng(51.40, -0.549));  // S, W
+
         const input = document.getElementById("search-input-navbar");
-        const searchBox = new google.maps.places.SearchBox(input);
+        const searchBox = new google.maps.places.SearchBox(input, {
+            bounds: defaultBounds
+        });
         listen_search(map, searchBox);
     }
-
     display_counter('{{counter}}');
 }
+
 function initMap() {
     console.log("initMap");
     map = show_map(51.52, -0.127)
