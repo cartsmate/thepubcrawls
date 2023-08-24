@@ -132,7 +132,29 @@ function add_markers(map, data) {
     console.log(markersArray)
     console.log('data')
     console.log(data)
+    lat_ave = 0
+    lng_ave = 0
+    /*
+    data.forEach(function(item, index) {
+        total += item;
+        count++;
+    });
+    lat_ave = total / count
+    */
+    //const people = [{name:'Sarah', gender:'female', age:25}, {name:'Tom', gender:'male', age:18}, {name:'Tim', gender:'male', age:65}, {name:'Kim', gender:'female', age:58}];
+
+    //const females = people.filter(person => person.gender === 'female');
+
+
+    //const average = females.reduce((total, next) => total + next.age, 0) / females.length;
+
+    const lat_average = data.reduce((total, next) => total + next.pub_latitude, 0) / data.length;
+    const lng_average = data.reduce((total, next) => total + next.pub_longitude, 0) / data.length;
+
+    //console.log(average);
+
     if (markersArray.length > 1 ) {
+        map.setCenter(new google.maps.LatLng(lat_average, lng_average))
         map.fitBounds(bounds);
     } else {
         map.setZoom(17)
