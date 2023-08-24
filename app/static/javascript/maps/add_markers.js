@@ -1,5 +1,9 @@
-function add_markers(data) {
-    console.log('add_markers')
+function add_markers(map, data) {
+    console.log('ADD_MARKERS')
+    console.log('map')
+    console.log(map)
+    console.log('data')
+    console.log(data)
     //console.log(data)
     /*
     if (typeof map.markers !== "undefined") {
@@ -81,7 +85,7 @@ function add_markers(data) {
                 set=data[key].pub_name.trim().replace(/%20/g, " ");
                 infowindow.x = set;
                 infowindow.setContent("<p><b>" + set + "</b></p>" +
-                    "<a href='#' onclick='pub_click()'>" + set + "</a>");
+                    "<a href='#' onclick='click_pub()'>" + set + "</a>");
                 infowindow.open(map, marker);
                 }
             })(marker, key));

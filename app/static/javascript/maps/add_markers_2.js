@@ -1,4 +1,4 @@
-function add_markers_2(data) {
+function add_markers_2(map, data) {
     console.log('add_markers_2')
     console.log('data')
     console.log(data)

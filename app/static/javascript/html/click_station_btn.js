@@ -1,9 +1,9 @@
-function click_station(id) {
-    console.log("CLICK_STATION")
+function click_station_btn() {
+    console.log("CLICK_STATION_BTN")
 
     //document.getElementById('pub_read').style.display = 'none'
     //id = document.getElementById('x_pub_identity').value
-    document.getElementById('x_station').value = id
+    id = document.getElementById('x_station').value
     console.log('id')
     console.log(id)
     document.getElementById('x_brunch').value = 'false'
