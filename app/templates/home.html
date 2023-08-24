@@ -22,6 +22,14 @@ function onLoad(){
         page_layout('edit')
         click_pub('{{pub_id}}')
     }
+
+    display_counter('{{counter}}');
+}
+
+function initMap() {
+    console.log("initMap");
+    map = show_map(51.52, -0.127)
+    var markersArray = []
     if (on_line == 'true') {
         document.getElementById('search_map').style.display = 'block'
         console.log('all_data')
@@ -40,13 +48,6 @@ function onLoad(){
         });
         listen_search(map, searchBox);
     }
-    display_counter('{{counter}}');
-}
-
-function initMap() {
-    console.log("initMap");
-    map = show_map(51.52, -0.127)
-    var markersArray = []
 }
 </script>
 {% endblock %}
