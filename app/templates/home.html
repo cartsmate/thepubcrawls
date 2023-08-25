@@ -7,13 +7,13 @@
     {% include "import_variables.html" %}
 <script>
 let markersArray = []
-
+console.log('pre-load')
+var on_line = map_load('{{google_key}}')
+console.log('post-load')
 
 
 function onLoad(){
-    console.log('pre-load')
-    var on_line = map_load('{{google_key}}')
-    console.log('post-load')
+
     console.log('home - onLoad')
     console.log('visible')
     console.log(visible)
