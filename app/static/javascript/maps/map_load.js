@@ -17,7 +17,7 @@ function map_load(google_key) {
         //document.getElementById('search_map').style.display = 'block'
         //add_markers(all_data)
         on_line = 'true'
-        console.log('end of on-line if')
+        console.log(on_line)
     } else {
         console.log('off-line')
         var elem = document.createElement("img");
