@@ -6,7 +6,7 @@ function show_map(lat, lng) {
         east: 0.3,
     };
     console.log('SHOW_MAP')
-    var map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(document.getElementById('mapTEST'), {
         center: new google.maps.LatLng(lat, lng),
 //        zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
