@@ -30,7 +30,7 @@ function initMap() {
     console.log("initMap");
     map = show_map(51.52, -0.127)
     var markersArray = []
-    if (on_line == 'true') {
+    if (window.navigator.onLine == true) {
         document.getElementById('search_map').style.display = 'block'
         console.log('all_data')
         console.log(all_data)
