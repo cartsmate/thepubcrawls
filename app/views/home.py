@@ -60,6 +60,7 @@ def home():
                                                                            'history': str, 'late': str,
                                                                            'music': str, 'pool': str, 'quiz': str,
                                                                            'roast': str, 'sport': str})
+
     df_diary = pd.read_csv(directory_path + '/files/diary.csv', dtype={'pub_identity': str, 'monday': str,
                                                                        'tuesday': str, 'wednesday': str,
                                                                        'thursday': str, 'friday': str,
