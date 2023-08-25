@@ -29,6 +29,9 @@ function onLoad(){
 function initMap() {
     console.log("initMap");
     map = show_map(51.52, -0.127)
+    console.log('map - in iniMap')
+    console.log(map)
+    console.log('after map')
     var markersArray = []
     if (window.navigator.onLine == true) {
         document.getElementById('search_map').style.display = 'block'
