@@ -12,7 +12,7 @@ function update_data(filtered_data) {
         document.getElementById('no_wifi').style.display = "none";
         document.getElementById('no_map').style.display = "none";
         document.getElementById('map_areas').style.display = "none";
-        document.getElementById('map').style.display = "block";
+        document.getElementById('mapTEST').style.display = "block";
         if (filtered_data.length > 0 && filtered_data.length <= 50) {
             console.log('<= 50 pubs to show')
             add_markers(map, filtered_data)
