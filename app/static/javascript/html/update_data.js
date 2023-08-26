@@ -1,3 +1,4 @@
+
 function update_data(filtered_data) {
     console.log('UPDATE_DATA')
 
@@ -13,7 +14,10 @@ function update_data(filtered_data) {
         document.getElementById('no_map').style.display = "none";
         document.getElementById('map_areas').style.display = "none";
         document.getElementById('mapTEST').style.display = "block";
-        if ((filtered_data.length > 0 && filtered_data.length <= 50) || (document.getElementById('x_search').value != '')) {
+        filtered_data = limiting_data(filtered_data)
+        console.log('filtered_data.length')
+        console.log(filtered_data.length)
+        if (filtered_data.length > 0 && filtered_data.length <= 50) {
             console.log('<= 50 pubs to show')
             add_markers(map, filtered_data)
         } else if (document.getElementById('x_direction').value == 'all') {
