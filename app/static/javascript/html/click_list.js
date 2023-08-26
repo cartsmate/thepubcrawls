@@ -1,7 +1,8 @@
 function click_list() {
     console.log("CLICK_LIST")
     document.getElementById('x_search').value = document.getElementById('search-input-navbar').value
-    if (on_line == 'true') {
+    //if (on_line == 'true') {
+    if (window.navigator.onLine == true) {
         document.getElementById('search-output-navbar').value = document.getElementById('x_search').value
         }
 
