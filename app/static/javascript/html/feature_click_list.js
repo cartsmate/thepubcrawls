@@ -1,6 +1,8 @@
 function feature_click_list(check_item) {
     console.log("feature_click_list")
     console.log(check_item)
+    console.log('all_data')
+    console.log(all_data)
     var checkBox = document.getElementById(check_item + "_list");
     var image = document.getElementById(check_item + "_img_list");
     var caption = document.getElementById(check_item + "_caption_list");
